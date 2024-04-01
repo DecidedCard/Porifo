@@ -1,7 +1,8 @@
+import Cards from "@/Components/Community/Cards";
 import React from "react";
 
 const ComuunityPage = () => {
-    return <div>ComuunityPage</div>;
+    return <Cards />;
 };
 
 export default ComuunityPage;
