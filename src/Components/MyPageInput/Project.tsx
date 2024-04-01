@@ -4,15 +4,24 @@ import useProject from "@/hooks/project/useProject";
 import { useEffect } from "react";
 
 const Project = () => {
-    const { images, introduce, onChangeImagesHandler, onChangeIntroduceHandler } = useProject();
-
-    useEffect(() => {
-        console.log(introduce);
-    }, [introduce]);
+    const {
+        projectName,
+        introduce,
+        selected,
+        selectList,
+        onChangeProjectNameHandler,
+        onChangeImagesHandler,
+        onChangeIntroduceHandler,
+        onChangeSelectHandler,
+    } = useProject();
 
     return (
         <>
             <div>
+                <div>
+                    <label>프로젝트 이름: </label>
+                    <input type="text" value={projectName} onChange={onChangeProjectNameHandler} />
+                </div>
                 <div>
                     <label htmlFor="file">
                         <div>파일 업로드하기</div>
@@ -23,6 +32,27 @@ const Project = () => {
                     <label>소개: </label>
                     <input type="text" value={introduce} onChange={onChangeIntroduceHandler} maxLength={100} />
                 </div>
+                <div>
+                    <label>프로젝트 기간: </label>
+                    <input type="date" /> ~ <input type="date" />
+                </div>
+                <div>
+                    <label>블로그: </label>
+                    <input type="url" />
+                </div>
+                <div>
+                    <label>Github: </label>
+                    <input type="url" />
+                </div>
+                <select value={selected} onChange={onChangeSelectHandler}>
+                    {selectList.map((item) => {
+                        return (
+                            <option key={item.value} value={item.value}>
+                                {item.name}
+                            </option>
+                        );
+                    })}
+                </select>
             </div>
         </>
     );
