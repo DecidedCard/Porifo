@@ -1,7 +1,7 @@
 "use client";
 
-import useBasicInfo from "@/hooks/mypage/useBasicInfo";
 import React from "react";
+import useBasicInfo from "@/hooks/mypage/useBasicInfo";
 
 const Introduction = () => {
     const { introduce, onChangeIntroduceHandler } = useBasicInfo();
