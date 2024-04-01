@@ -1,7 +1,6 @@
 "use client";
 
-import useProject from "@/hooks/project/useProject";
-import { useEffect } from "react";
+import useProject from "@/hooks/mypage/useProject";
 
 const Project = () => {
     const {
