@@ -1,17 +1,23 @@
 "use client";
 
-import useProject from "@/hooks/mypage/useProject";
+import useProject from "@/hooks/myPage/useProject";
 
 const Project = () => {
     const {
         projectName,
         introduce,
-        selected,
-        selectList,
+        startDate,
+        endDate,
+        deployLink,
+        githubLink,
         onChangeProjectNameHandler,
         onChangeImagesHandler,
         onChangeIntroduceHandler,
-        onChangeSelectHandler,
+        onChangeStartDateHandler,
+        onChangeEndDateHandler,
+        onChangeDeployLinkHandler,
+        onChangeGithubLinkHandler,
+        onClickInsertHandler,
     } = useProject();
 
     return (
@@ -23,7 +29,7 @@ const Project = () => {
                 </div>
                 <div>
                     <label htmlFor="file">
-                        <div>파일 업로드하기</div>
+                        <div>사진 업로드하기</div>
                     </label>
                     <input type="file" id="file" onChange={onChangeImagesHandler} className="hidden" multiple />
                 </div>
@@ -33,15 +39,19 @@ const Project = () => {
                 </div>
                 <div>
                     <label>프로젝트 기간: </label>
-                    <input type="date" /> ~ <input type="date" />
+                    <input type="date" value={startDate} onChange={onChangeStartDateHandler} /> ~{" "}
+                    <input type="date" value={endDate} onChange={onChangeEndDateHandler} />
                 </div>
                 <div>
-                    <label>블로그: </label>
-                    <input type="url" />
+                    <label>베포링크: </label>
+                    <input type="url" value={deployLink} onChange={onChangeDeployLinkHandler} />
                 </div>
                 <div>
                     <label>Github: </label>
-                    <input type="url" />
+                    <input type="url" value={githubLink} onChange={onChangeGithubLinkHandler} />
+                </div>
+                <div onClick={onClickInsertHandler} className="text-4xl cursor-pointer w-fit">
+                    +
                 </div>
             </div>
         </>
