@@ -35,12 +35,15 @@ const useUserInfo = () => {
         { value: "기타", name: "기타" },
     ];
 
+    // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     };
 
     const onChangeProfileHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setImage(e.target.files![0]);
+
+        // 이미지 미리보기
         const blob = new Blob([e.target.files![0]]);
         const url = URL.createObjectURL(blob);
         setPreview(url);
