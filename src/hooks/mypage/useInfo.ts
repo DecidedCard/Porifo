@@ -110,6 +110,7 @@ const useInfo = () => {
     };
 
     return {
+        basicInfo,
         selectList,
         preview,
         onChangeNameHandler,

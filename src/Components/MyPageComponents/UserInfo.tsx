@@ -8,6 +8,7 @@ import Image from "next/image";
 
 const UserInfo = () => {
     const {
+        basicInfo,
         selectList,
         preview,
         onChangeNameHandler,
@@ -24,7 +25,7 @@ const UserInfo = () => {
                 <div className="flex justify-evenly items-center">
                     <div>
                         <label>이름: </label>
-                        <input type="text" placeholder="이름" onChange={onChangeNameHandler} />
+                        <input type="text" placeholder="이름" value={basicInfo.name} onChange={onChangeNameHandler} />
                     </div>
                     <label htmlFor="profile" className="cursor-pointer">
                         프로필 이미지 등록하기
@@ -47,25 +48,40 @@ const UserInfo = () => {
                 <div className="flex">
                     <div>
                         <label>생년월일: </label>
-                        <input type="date" placeholder="생년월일" onChange={onChangeBirthdayHandler} />
+                        <input
+                            type="date"
+                            placeholder="생년월일"
+                            value={basicInfo.birthday}
+                            onChange={onChangeBirthdayHandler}
+                        />
                     </div>
                     <div>
                         <label>전화번호: </label>
-                        <input type="text" placeholder="전화번호" onChange={onChangeTelHandler} />
+                        <input type="tel" placeholder="전화번호" value={basicInfo.tel} onChange={onChangeTelHandler} />
                     </div>
                 </div>
                 <div>
                     <div className="flex">
                         <div>
                             <label>학교: </label>
-                            <input type="text" placeholder="학교" onChange={onChangeSchoolHandler} />
+                            <input
+                                type="text"
+                                placeholder="학교"
+                                value={basicInfo.school}
+                                onChange={onChangeSchoolHandler}
+                            />
                         </div>
                         <div>
                             <label>전공: </label>{" "}
-                            <input type="text" placeholder="전공" onChange={onChangeClassHandler} />
+                            <input
+                                type="text"
+                                placeholder="전공"
+                                value={basicInfo.class}
+                                onChange={onChangeClassHandler}
+                            />
                         </div>
                     </div>
-                    <select onChange={onChangeSelectHandler}>
+                    <select value={basicInfo.job} onChange={onChangeSelectHandler}>
                         {selectList.map((item) => {
                             return (
                                 <option key={item.value} value={item.value}>
