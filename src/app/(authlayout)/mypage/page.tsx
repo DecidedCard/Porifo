@@ -14,9 +14,9 @@ const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
 
     return (
-        <div className="flex gap-10 w-fit mx-auto">
+        <div className="flex justify-evenly max-w-7xl min-h-96 mx-auto mt-10">
             <Navigation setNav={setNav} />
-            <div className="w-fit">
+            <div className="w-[800px]">
                 {nav === "basicInfo" && <UserInfo />}
                 {nav === "introduce" && <Introduction />}
                 {nav === "project" && <Project />}
