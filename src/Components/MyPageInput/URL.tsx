@@ -1,3 +1,5 @@
+"use client";
+
 import useUserInfo from "@/hooks/mypage/useUserInfo";
 import React from "react";
 
