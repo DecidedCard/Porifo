@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
+import useInfo from "@/hooks/myPage/useInfo";
 
 import Image from "next/image";
 
@@ -17,7 +17,7 @@ const UserInfo = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeSelectHandler,
-    } = useUserInfo();
+    } = useInfo();
     return (
         <main>
             <div>

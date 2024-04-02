@@ -2,10 +2,10 @@
 
 import React from "react";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
+import useInfo from "@/hooks/myPage/useInfo";
 
 const URL = () => {
-    const { onChangeBlogHandler, onChangeGithubHandler } = useUserInfo();
+    const { onChangeBlogHandler, onChangeGithubHandler } = useInfo();
     return (
         <div>
             <label>Blog: </label>

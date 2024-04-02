@@ -2,10 +2,10 @@
 
 import React from "react";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
+import useInfo from "@/hooks/myPage/useInfo";
 
 const Buttons = () => {
-    const { onClickInsertHandler } = useUserInfo();
+    const { onClickInsertHandler } = useInfo();
     return (
         <>
             <button onClick={onClickInsertHandler}>저장하기</button>

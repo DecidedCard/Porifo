@@ -6,7 +6,7 @@ import useProjects from "@/store/projectStore";
 import { supabaseInsert } from "@/util/supabase/supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 
-const useUserInfo = () => {
+const useInfo = () => {
     const {
         basicInfo,
         setName,
@@ -126,4 +126,4 @@ const useUserInfo = () => {
     };
 };
 
-export default useUserInfo;
+export default useInfo;
