@@ -43,15 +43,6 @@ const Project = () => {
                     <label>Github: </label>
                     <input type="url" />
                 </div>
-                <select value={selected} onChange={onChangeSelectHandler}>
-                    {selectList.map((item) => {
-                        return (
-                            <option key={item.value} value={item.value}>
-                                {item.name}
-                            </option>
-                        );
-                    })}
-                </select>
             </div>
         </>
     );

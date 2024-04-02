@@ -1,14 +1,14 @@
 "use client";
 
+import useUserInfo from "@/hooks/mypage/useUserInfo";
 import React from "react";
-import useBasicInfo from "@/hooks/mypage/useBasicInfo";
 
 const Introduction = () => {
-    const { introduce, onChangeIntroduceHandler } = useBasicInfo();
+    const { onChangeIntroduceHandler } = useUserInfo();
     return (
         <div>
             <label>소개: </label>
-            <input type="text" value={introduce} onChange={onChangeIntroduceHandler} />
+            <input type="text" onChange={onChangeIntroduceHandler} />
         </div>
     );
 };

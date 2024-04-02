@@ -6,6 +6,7 @@ import React from "react";
 
 const UserInfo = () => {
     const {
+        selectList,
         preview,
         onChangeNameHandler,
         onChangeProfileHandler,
@@ -13,7 +14,7 @@ const UserInfo = () => {
         onChangeTelHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
-        onChangeJobHandler,
+        onChangeSelectHandler,
     } = useUserInfo();
     return (
         <main>
@@ -28,6 +29,15 @@ const UserInfo = () => {
                 <input type="text" placeholder="전화번호" onChange={onChangeTelHandler} />
                 <input type="text" placeholder="학교" onChange={onChangeSchoolHandler} />
                 <input type="text" placeholder="전공" onChange={onChangeClassHandler} />
+                <select onChange={onChangeSelectHandler}>
+                    {selectList.map((item) => {
+                        return (
+                            <option key={item.value} value={item.value}>
+                                {item.name}
+                            </option>
+                        );
+                    })}
+                </select>
             </div>
         </main>
     );
