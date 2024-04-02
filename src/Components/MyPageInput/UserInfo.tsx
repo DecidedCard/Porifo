@@ -1,11 +1,12 @@
 "use client";
 
 import useUserInfo from "@/hooks/mypage/useUserInfo";
+import Image from "next/image";
 import React from "react";
 
 const UserInfo = () => {
     const {
-        profile,
+        preview,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
@@ -21,7 +22,8 @@ const UserInfo = () => {
                 <label htmlFor="profile" className="cursor-pointer">
                     프로필 이미지 등록하기
                 </label>
-                <input type="file" id="profile" className="hidden" value={profile} onChange={onChangeProfileHandler} />
+                {preview && <Image src={preview} alt="프로필 사진 미리보기" width={100} height={100} />}
+                <input type="file" id="profile" className="hidden" onChange={onChangeProfileHandler} />
                 <input type="date" placeholder="생년월일" onChange={onChangeBirthdayHandler} />
                 <input type="text" placeholder="전화번호" onChange={onChangeTelHandler} />
                 <input type="text" placeholder="학교" onChange={onChangeSchoolHandler} />

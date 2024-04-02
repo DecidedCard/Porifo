@@ -1,13 +1,21 @@
 import useBasicInfo from "@/store/portBasicInfoStore";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import useInput from "../useInput";
 
 const useUserInfo = () => {
     const { basicInfo, setName, setProfile, setBirthday, setTel, setSchool, setClass, setJob } = useBasicInfo();
-    const [profile, onChangeProfileHandler] = useInput();
+    const [image, setImage] = useState<File>();
+    const [preview, setPreview] = useState("");
 
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
+    };
+
+    const onChangeProfileHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setImage(e.target.files![0]);
+        const blob = new Blob([e.target.files![0]]);
+        const url = URL.createObjectURL(blob);
+        setPreview(url);
     };
 
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +35,7 @@ const useUserInfo = () => {
     };
 
     return {
-        profile,
+        preview,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
