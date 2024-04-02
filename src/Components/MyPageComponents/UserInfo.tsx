@@ -20,7 +20,7 @@ const UserInfo = () => {
     } = useInfo();
     return (
         <main>
-            <div>
+            <div className="flex flex-col">
                 <input type="text" placeholder="이름" onChange={onChangeNameHandler} />
                 <label htmlFor="profile" className="cursor-pointer">
                     프로필 이미지 등록하기

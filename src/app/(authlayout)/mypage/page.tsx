@@ -1,19 +1,21 @@
 import React from "react";
 
-import UserInfo from "@/Components/MyPageInput/UserInfo";
-import URL from "@/Components/MyPageInput/URL";
-import Project from "@/Components/MyPageInput/Project";
-import Introduction from "@/Components/MyPageInput/Introduction";
-import Buttons from "@/Components/MyPageInput/Buttons";
+import UserInfo from "@/Components/MyPageComponents/UserInfo";
+import URL from "@/Components/MyPageComponents/URL";
+import Project from "@/Components/MyPageComponents/Project";
+import Introduction from "@/Components/MyPageComponents/Introduction";
+import Buttons from "@/Components/MyPageComponents/Buttons";
 
 const myPage = () => {
     return (
         <div>
-            <UserInfo />
-            <URL />
-            <Project />
-            <Introduction />
-            <Buttons />
+            <div className="mx-auto w-fit">
+                <UserInfo />
+                <URL />
+                <Project />
+                <Introduction />
+                <Buttons />
+            </div>
         </div>
     );
 };
