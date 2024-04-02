@@ -1,8 +1,10 @@
-import useBasicInfo from "@/store/portBasicInfoStore";
+import { ChangeEvent, useState } from "react";
+
+import usePortfolioInfo from "@/store/portfolioInfoStore";
 import useProjects from "@/store/projectStore";
+
 import { supabaseInsert } from "@/util/supabase/supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import { ChangeEvent, useState } from "react";
 
 const useUserInfo = () => {
     const {
@@ -17,7 +19,7 @@ const useUserInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-    } = useBasicInfo();
+    } = usePortfolioInfo();
     const { projects } = useProjects();
     const [preview, setPreview] = useState("");
 

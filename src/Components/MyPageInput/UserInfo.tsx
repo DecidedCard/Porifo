@@ -1,8 +1,10 @@
 "use client";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
-import Image from "next/image";
 import React from "react";
+
+import useUserInfo from "@/hooks/mypage/useUserInfo";
+
+import Image from "next/image";
 
 const UserInfo = () => {
     const {

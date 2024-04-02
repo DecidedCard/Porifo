@@ -1,7 +1,8 @@
 "use client";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
 import React from "react";
+
+import useUserInfo from "@/hooks/mypage/useUserInfo";
 
 const Buttons = () => {
     const { onClickInsertHandler } = useUserInfo();
