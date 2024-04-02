@@ -5,11 +5,13 @@ import URL from "@/Components/MyPageComponents/URL";
 import Project from "@/Components/MyPageComponents/Project";
 import Introduction from "@/Components/MyPageComponents/Introduction";
 import Buttons from "@/Components/MyPageComponents/Buttons";
+import Navigation from "@/Components/MyPageComponents/Navigation";
 
 const myPage = () => {
     return (
-        <div>
-            <div className="mx-auto w-fit">
+        <div className="flex gap-10 w-fit mx-auto">
+            <Navigation />
+            <div className="w-fit">
                 <UserInfo />
                 <URL />
                 <Project />
