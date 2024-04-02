@@ -36,3 +36,5 @@ const useBasicInfo = create<Store>()((set) => ({
     setIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, introduce: arg } })),
     setJob: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, job: arg } })),
 }));
+
+export default useBasicInfo;
