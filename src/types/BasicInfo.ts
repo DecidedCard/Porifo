@@ -7,4 +7,6 @@ export interface BasicInfo {
     class: string;
     introduce: string;
     job: string;
+    blog?: string;
+    github?: string;
 }

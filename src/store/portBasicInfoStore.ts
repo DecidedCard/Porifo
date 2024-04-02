@@ -12,6 +12,8 @@ type Store = {
     setClass: (arg: string) => void;
     setIntroduce: (arg: string) => void;
     setJob: (arg: string) => void;
+    setBlog: (arg: string) => void;
+    setGithub: (arg: string) => void;
 };
 
 const initial = {
@@ -23,6 +25,8 @@ const initial = {
     class: "",
     introduce: "",
     job: "",
+    blog: "",
+    github: "",
 };
 
 const useBasicInfo = create<Store>()((set) => ({
@@ -35,6 +39,8 @@ const useBasicInfo = create<Store>()((set) => ({
     setClass: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, class: arg } })),
     setIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, introduce: arg } })),
     setJob: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, job: arg } })),
+    setBlog: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, blog: arg } })),
+    setGithub: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, github: arg } })),
 }));
 
 export default useBasicInfo;

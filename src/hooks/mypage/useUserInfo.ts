@@ -2,8 +2,19 @@ import useBasicInfo from "@/store/portBasicInfoStore";
 import { ChangeEvent, useState } from "react";
 
 const useUserInfo = () => {
-    const { basicInfo, setName, setProfile, setBirthday, setTel, setSchool, setClass, setJob, setIntroduce } =
-        useBasicInfo();
+    const {
+        basicInfo,
+        setName,
+        setProfile,
+        setBirthday,
+        setTel,
+        setSchool,
+        setClass,
+        setJob,
+        setIntroduce,
+        setBlog,
+        setGithub,
+    } = useBasicInfo();
     const [image, setImage] = useState<File>();
     const [preview, setPreview] = useState("");
     const [selected, setSelected] = useState("직무 선택");
@@ -38,20 +49,33 @@ const useUserInfo = () => {
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setBirthday(e.target.value);
     };
+
     const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTel(e.target.value);
     };
+
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setSchool(e.target.value);
     };
+
     const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setClass(e.target.value);
     };
+
     const onChangeIntroduceHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setIntroduce(e.target.value);
     };
+
     const onChangeSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         setJob(e.target.value);
+    };
+
+    const onChangeBlogHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setBlog(e.target.value);
+    };
+
+    const onChangeGithubHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setGithub(e.target.value);
     };
 
     return {
@@ -65,6 +89,8 @@ const useUserInfo = () => {
         onChangeClassHandler,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
+        onChangeBlogHandler,
+        onChangeGithubHandler,
     };
 };
 
