@@ -6,10 +6,10 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getTodo } from "./api";
 
 const Cards = () => {
-    const { isLoading, data, fetchNextPage } = useInfiniteQuery({
+    const { isLoading, data, fetchNextPage, hasNextPage } = useInfiniteQuery({
         queryKey: ["todos"],
         queryFn: getTodo,
-        initialPageParam: 1,
+        initialPageParam: 19,
         getNextPageParam: (lastPage, allPages) => {
             return allPages.length + 1;
         },
@@ -30,9 +30,13 @@ const Cards = () => {
                     );
                 });
             })}
-            <button className="p-10 text-red-600  " onClick={() => fetchNextPage()}>
-                더 불러오기..
-            </button>
+            {hasNextPage ? (
+                <button className="p-10 text-red-600" onClick={() => fetchNextPage()}>
+                    더 불러오기..
+                </button>
+            ) : (
+                <div>마지막 페이지 입니다.</div>
+            )}
         </div>
     );
 };
