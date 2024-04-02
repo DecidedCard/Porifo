@@ -21,15 +21,15 @@ const useProject = () => {
 
     // 이미지 스토리지 저장 및 url 변환 images state에 저장
     const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>) => {
-        const projectStorage = {
+        const PROJECT_STORAGE = {
             bucket: "projectImage",
             path: `project/${crypto.randomUUID()}`,
         };
         const fileArray = Array.prototype.slice.call(e.target.files);
         const imagesUrl = fileArray.map(async (item) => {
             try {
-                const res = await storageInsert(projectStorage.bucket, `${projectStorage.path}/${item.name}`, item);
-                const url = imageUrl(projectStorage.bucket, res!.path);
+                const res = await storageInsert(PROJECT_STORAGE.bucket, `${PROJECT_STORAGE.path}/${item.name}`, item);
+                const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
                 setImages((state) => [...state, url]);
             } catch (error) {
                 console.log(error);
