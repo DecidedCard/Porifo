@@ -1,4 +1,7 @@
 import useBasicInfo from "@/store/portBasicInfoStore";
+import useProjects from "@/store/projectStore";
+import { supabaseInsert } from "@/util/supabase/supabase_DB";
+import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import { ChangeEvent, useState } from "react";
 
 const useUserInfo = () => {
@@ -15,9 +18,8 @@ const useUserInfo = () => {
         setBlog,
         setGithub,
     } = useBasicInfo();
-    const [image, setImage] = useState<File>();
+    const { projects } = useProjects();
     const [preview, setPreview] = useState("");
-    const [selected, setSelected] = useState("직무 선택");
 
     const selectList = [
         { value: "default", name: "직무 선택" },
@@ -40,13 +42,24 @@ const useUserInfo = () => {
         setName(e.target.value);
     };
 
-    const onChangeProfileHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setImage(e.target.files![0]);
-
+    const onChangeProfileHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+        const STORAGE = {
+            bucket: "portfolioProfile",
+            path: `profile/${crypto.randomUUID()}`,
+        };
+        const imageFile = e.target.files![0];
         // 이미지 미리보기
-        const blob = new Blob([e.target.files![0]]);
+        const blob = new Blob([imageFile]);
         const url = URL.createObjectURL(blob);
         setPreview(url);
+        try {
+            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/image.name`, imageFile);
+            const url = imageUrl(STORAGE.bucket, image!.path);
+            setProfile(url);
+        } catch (error) {
+            console.error(error);
+            return error;
+        }
     };
 
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -81,6 +94,19 @@ const useUserInfo = () => {
         setGithub(e.target.value);
     };
 
+    const supabaseTable = "portfolioInfo";
+
+    const onClickInsertHandler = async () => {
+        const newPortfolio = { ...basicInfo, project: projects };
+        console.log(basicInfo);
+        try {
+            await supabaseInsert(supabaseTable, newPortfolio);
+        } catch (error) {
+            console.error(error);
+            return error;
+        }
+    };
+
     return {
         selectList,
         preview,
@@ -94,6 +120,7 @@ const useUserInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onClickInsertHandler,
     };
 };
 

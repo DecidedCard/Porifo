@@ -17,15 +17,14 @@ const useProject = () => {
 
     const [images, setImages] = useState<string[]>([]);
 
-    const { projects, setProjects } = useProjects();
-
-    const projectStorage = {
-        bucket: "projectImage",
-        path: `project/${crypto.randomUUID()}`,
-    };
+    const { setProjects } = useProjects();
 
     // 이미지 스토리지 저장 및 url 변환 images state에 저장
     const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+        const projectStorage = {
+            bucket: "projectImage",
+            path: `project/${crypto.randomUUID()}`,
+        };
         const fileArray = Array.prototype.slice.call(e.target.files);
         const imagesUrl = fileArray.map(async (item) => {
             try {

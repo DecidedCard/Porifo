@@ -3,6 +3,7 @@ import UserInfo from "@/Components/MyPageInput/UserInfo";
 import URL from "@/Components/MyPageInput/URL";
 import Project from "@/Components/MyPageInput/Project";
 import Introduction from "@/Components/MyPageInput/Introduction";
+import Buttons from "@/Components/MyPageInput/Buttons";
 
 const myPage = () => {
     return (
@@ -11,6 +12,7 @@ const myPage = () => {
             <URL />
             <Project />
             <Introduction />
+            <Buttons />
         </div>
     );
 };
