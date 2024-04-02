@@ -26,10 +26,12 @@ const config: Config = {
       },
       colors: {
         'gray': '#f1f1f1',
-        'gray-black': '#202020',
-        "primary": {
-          500: "#0099ff"
-        },
+        'hihigray':'#FAFAFA',
+        'middlegray': '#bdbebd',
+        'deepgray': '#DCDDDF',
+        'grayblack': '#202020',
+        "primary": "#0099ff",
+        "secondary": "#00D0ED"
       },
     },
   },
