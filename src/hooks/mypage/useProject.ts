@@ -1,45 +1,72 @@
 import { ChangeEvent, useState } from "react";
+
 import useInput from "../useInput";
+import useProjects from "@/store/projectStore";
+
+import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+
+import type { Project } from "@/types/project";
 
 const useProject = () => {
-    const [images, setImages] = useState<FileList>();
     const [introduce, onChangeIntroduceHandler] = useInput();
-    const [selected, setSelected] = useState("직무 선택");
     const [projectName, onChangeProjectNameHandler] = useInput();
+    const [startDate, onChangeStartDateHandler] = useInput();
+    const [endDate, onChangeEndDateHandler] = useInput();
+    const [deployLink, onChangeDeployLinkHandler] = useInput();
+    const [githubLink, onChangeGithubLinkHandler] = useInput();
 
-    const selectList = [
-        { value: "default", name: "직무 선택" },
-        { value: "프론트앤드 개발자", name: "프론트앤드 개발자" },
-        { value: "서버/백앤드 개발자", name: "서버/백앤드 개발자" },
-        { value: "웹 풀스택 개발자", name: "웹 풀스택 개발자" },
-        { value: "앱 개발자 개발자", name: "앱 개발자 개발자" },
-        { value: "머신러닝/인공지능 개발자", name: "머신러닝/인공지능 개발자" },
-        { value: "데이터 엔지니어 개발자", name: "데이터 엔지니어 개발자" },
-        { value: "def게임 개발자ault", name: "게임 개발자" },
-        { value: "DevOps 개발자", name: "DevOps 개발자" },
-        { value: "SW/솔루션 엔지니어", name: "SW/솔루션 엔지니어" },
-        { value: "정보보안 엔지니어", name: "정보보안 엔지니어" },
-        { value: "QA 엔지니어", name: "QA 엔지니어" },
-        { value: "기타", name: "기타" },
-    ];
+    const [images, setImages] = useState<string[]>([]);
 
-    const onChangeImagesHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setImages(e.target.files!);
+    const { setProjects } = useProjects();
+
+    // 이미지 스토리지 저장 및 url 변환 images state에 저장
+    const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+        const PROJECT_STORAGE = {
+            bucket: "projectImage",
+            path: `project/${crypto.randomUUID()}`,
+        };
+        const fileArray = Array.prototype.slice.call(e.target.files);
+        const imagesUrl = fileArray.map(async (item) => {
+            try {
+                const res = await storageInsert(PROJECT_STORAGE.bucket, `${PROJECT_STORAGE.path}/${item.name}`, item);
+                const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                setImages((state) => [...state, url]);
+            } catch (error) {
+                console.log(error);
+                return error;
+            }
+        });
+        await Promise.all(imagesUrl);
     };
 
-    const onChangeSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        setSelected(e.target.value);
+    const onClickInsertHandler = async () => {
+        const newProject: Project = {
+            name: projectName,
+            image: images,
+            introduce,
+            date: `${startDate} ~ ${endDate}`,
+            deployLink: deployLink,
+            githubLink: githubLink,
+        };
+        setProjects(newProject);
     };
 
     return {
         introduce,
-        selected,
-        selectList,
         projectName,
+        startDate,
+        endDate,
+        deployLink,
+        githubLink,
         onChangeProjectNameHandler,
         onChangeImagesHandler,
         onChangeIntroduceHandler,
-        onChangeSelectHandler,
+        onChangeStartDateHandler,
+        onChangeEndDateHandler,
+        onChangeDeployLinkHandler,
+        onChangeGithubLinkHandler,
+
+        onClickInsertHandler,
     };
 };
 

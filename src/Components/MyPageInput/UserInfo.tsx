@@ -1,8 +1,10 @@
 "use client";
 
-import useUserInfo from "@/hooks/mypage/useUserInfo";
-import Image from "next/image";
 import React from "react";
+
+import useInfo from "@/hooks/myPage/useInfo";
+
+import Image from "next/image";
 
 const UserInfo = () => {
     const {
@@ -15,7 +17,7 @@ const UserInfo = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeSelectHandler,
-    } = useUserInfo();
+    } = useInfo();
     return (
         <main>
             <div>
