@@ -1,15 +1,5 @@
 import { supabase } from "@/util/supabase/clientSupabase";
 
-// export const getPortfolio = async (getFromAndTo: any) => {
-//     const { from, to } = getFromAndTo;
-//     console.log(from);
-//     const { data, error } = await supabase.from("portfolioInfo").select("*").range(from, to);
-//     if (error) {
-//         console.error(error);
-//     }
-//     return data;
-// };
-
 export const getPortfolio = async (payload: any) => {
     const { getFromAndTo, filter, page, setPage } = payload;
     const { from, to } = getFromAndTo();

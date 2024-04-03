@@ -83,7 +83,7 @@ const Cards = () => {
                     );
                 });
             })}
-            <div ref={ref}></div>
+            <div ref={ref} />
             {isFetchingNextPage && <h3>Loding...</h3>}
         </div>
     );
