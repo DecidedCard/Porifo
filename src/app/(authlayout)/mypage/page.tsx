@@ -1,21 +1,34 @@
-import React from "react";
+"use client";
 
-import UserInfo from "@/Components/MyPageInput/UserInfo";
-import URL from "@/Components/MyPageInput/URL";
-import Project from "@/Components/MyPageInput/Project";
-import Introduction from "@/Components/MyPageInput/Introduction";
-import Buttons from "@/Components/MyPageInput/Buttons";
+import React, { useState } from "react";
 
-const myPage = () => {
+import UserInfo from "@/Components/MyPageComponents/UserInfo";
+import URL from "@/Components/MyPageComponents/URL";
+import Project from "@/Components/MyPageComponents/Project";
+import Introduction from "@/Components/MyPageComponents/Introduction";
+import Buttons from "@/Components/MyPageComponents/Buttons";
+import Navigation from "@/Components/MyPageComponents/Navigation";
+import PdfButton from "@/Components/MyPageComponents/PdfButton";
+
+import { usePDF } from "react-to-pdf";
+
+const MyPage = () => {
+    const [nav, setNav] = useState("basicInfo");
+    const { targetRef, toPDF } = usePDF();
+
     return (
-        <div>
-            <UserInfo />
-            <URL />
-            <Project />
-            <Introduction />
+        <div ref={targetRef} className="flex justify-evenly max-w-7xl min-h-96 mx-auto mt-10">
+            <Navigation setNav={setNav} />
+            <div className="w-[800px]">
+                {nav === "basicInfo" && <UserInfo />}
+                {nav === "introduce" && <Introduction />}
+                {nav === "project" && <Project />}
+                {nav === "url" && <URL />}
+            </div>
+            <PdfButton toPDF={toPDF} />
             <Buttons />
         </div>
     );
 };
 
-export default myPage;
+export default MyPage;
