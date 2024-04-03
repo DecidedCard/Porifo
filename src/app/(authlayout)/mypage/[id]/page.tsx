@@ -1,11 +1,31 @@
 "use client";
 
+import usePortfolio from "@/hooks/myPage/usePortfolio";
 import React from "react";
 
 const Portfolio = ({ params }: { params: { id: string } }) => {
     const { id } = params;
-    console.log(id);
-    return <div>Portfolio</div>;
+    const { portfolio, isError, isFetching } = usePortfolio(id);
+
+    if (isFetching) {
+        return <div>로딩중입니다...</div>;
+    }
+
+    if (isError) {
+        return <div>에러!</div>;
+    }
+
+    console.log(portfolio);
+    return (
+        <div>
+            <div>
+                <h2>
+                    <label>이름: </label>
+                    {portfolio!.name}
+                </h2>
+            </div>
+        </div>
+    );
 };
 
 export default Portfolio;
