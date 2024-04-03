@@ -55,7 +55,7 @@ const useInfo = () => {
         const url = URL.createObjectURL(blob);
         setPreview(url);
         try {
-            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/image.name`, imageFile);
+            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/${imageFile.lastModified}`, imageFile);
             const url = imageUrl(STORAGE.bucket, image!.path);
             setProfile(url);
         } catch (error) {

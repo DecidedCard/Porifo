@@ -1,6 +1,5 @@
 "use client";
 
-import useMyPage from "@/hooks/myPage/useMyPage";
 import React from "react";
 
 const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<string>> }) => {
