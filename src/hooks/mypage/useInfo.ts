@@ -55,7 +55,7 @@ const useInfo = () => {
         const url = URL.createObjectURL(blob);
         setPreview(url);
         try {
-            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/image.name`, imageFile);
+            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/${imageFile.lastModified}`, imageFile);
             const url = imageUrl(STORAGE.bucket, image!.path);
             setProfile(url);
         } catch (error) {
@@ -96,13 +96,10 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
-    const supabaseTable = "portfolioInfo";
-
     const onClickInsertHandler = async () => {
         const newPortfolio = { ...basicInfo, project: projects };
-        console.log(basicInfo);
         try {
-            await supabaseInsert(supabaseTable, newPortfolio);
+            await supabaseInsert(newPortfolio);
         } catch (error) {
             console.error(error);
             return error;
@@ -110,6 +107,7 @@ const useInfo = () => {
     };
 
     return {
+        basicInfo,
         selectList,
         preview,
         onChangeNameHandler,
