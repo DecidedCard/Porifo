@@ -8,24 +8,24 @@ import { getPortfolio } from "./api";
 
 const Cards = () => {
     const [page, setPage] = useState(0);
-    const [filter, setFilter] = useState("기본");
+    const [filter, setFilter] = useState("기본순");
 
     const queryClient = useQueryClient();
     const { ref, inView } = useInView();
 
+    //supabase range vlaue
     const getFromAndTo = () => {
         const ITEM_PER_PAGE = 5;
 
-        let from = page * ITEM_PER_PAGE;
-        let to = from + ITEM_PER_PAGE;
+        let from = page * ITEM_PER_PAGE; //0
+        let to = from + ITEM_PER_PAGE; //6
 
         if (page > 0) {
             from += 1;
         }
-
         return { from, to };
     };
-
+    //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: ["portfolio"],
         queryFn: () => getPortfolio({ getFromAndTo, filter, page, setPage }),
@@ -38,27 +38,29 @@ const Cards = () => {
         },
         refetchOnWindowFocus: false,
     });
-
+    //inView && hasNextPage 둘다 true시 다음페이지 fetch
     useEffect(() => {
         if (inView && hasNextPage) {
             fetchNextPage();
         }
         return;
-    }, [inView, hasNextPage, fetchNextPage]);
+    }, [inView, hasNextPage]);
 
-    const refetch = (filter: string) => {
-        queryClient.removeQueries({ queryKey: ["portfolio"] });
-        setFilter(filter);
-        setPage(0);
-    };
-
+    //옵션 변경 핸들러
     const handleFilterOption = (filterValue: string) => {
         if (filterValue === "최신순") {
             refetch("최신순");
         }
-        if (filterValue === "기본") {
-            refetch("기본");
+        if (filterValue === "기본순") {
+            refetch("기본순");
         }
+    };
+
+    //필터 옵션 변경시 refetch 함수
+    const refetch = (filter: string) => {
+        queryClient.removeQueries({ queryKey: ["portfolio"] });
+        setFilter(filter);
+        setPage(0);
     };
 
     if (isLoading) {
@@ -68,10 +70,10 @@ const Cards = () => {
     return (
         <div>
             <select onChange={(e) => handleFilterOption(e.target.value)}>
-                <option value="정렬" hidden>
+                <option value="none" hidden>
                     {filter}
                 </option>
-                <option value="기본">기본</option>
+                <option value="기본순">기본순</option>
                 <option value="최신순">최신순</option>
             </select>
             {data?.pages.map((portfolio: any) => {
