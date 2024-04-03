@@ -1,11 +1,9 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 import useInput from "../useInput";
 import useProjects from "@/store/projectStore";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-
-import type { Project } from "@/types/project";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
@@ -72,8 +70,6 @@ const useProject = () => {
         setStartDate("");
         setEndDate("");
     };
-
-    console.log(projects);
 
     return {
         project,
