@@ -1,7 +1,7 @@
 export interface Project {
     name: string;
     images: string[];
-    imagesFile: File[];
+    imagesFile?: File[];
     introduce: string;
     date: string;
     deployLink?: string;

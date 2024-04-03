@@ -4,7 +4,7 @@ import type { Project } from "@/types/Project";
 
 type Store = {
     project: Project;
-    projects: Project[];
+    projects: Omit<Project, "imagesFile">[];
     setProjectName: (arg: string) => void;
     setProjectImages: (arg: string[]) => void;
     setProjectImagesFile: (arg: File[]) => void;

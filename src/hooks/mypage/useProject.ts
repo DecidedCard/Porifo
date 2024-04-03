@@ -56,7 +56,7 @@ const useProject = () => {
             return url;
         });
         setProjectImages([...project.images, ...url]);
-        setProjectImagesFile([...project.imagesFile, ...fileArray]);
+        setProjectImagesFile([...project.imagesFile!, ...fileArray]);
     };
 
     const onClickInsertHandler = async () => {
@@ -76,7 +76,8 @@ const useProject = () => {
             }
         });
         const res = (await Promise.all(imagesUrl)) as string[];
-        setProjects({ ...project, images: res });
+        const { imagesFile, ...info } = project;
+        setProjects({ ...info, images: res });
         setProjectDate("");
         setProjectDeployLink("");
         setProjectGithubLink("");

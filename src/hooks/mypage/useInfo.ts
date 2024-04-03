@@ -88,6 +88,7 @@ const useInfo = () => {
     };
 
     const onClickInsertHandler = async () => {
+        const { imageFile, ...info } = basicInfo;
         if (!basicInfo.imageFile) {
             alert("프로필 이미지를 선택해주시기 바랍니다.");
             return;
@@ -105,7 +106,7 @@ const useInfo = () => {
                 basicInfo.imageFile!,
             );
             const url = imageUrl(STORAGE.bucket, image!.path);
-            const newPortfolio = { ...basicInfo, profileImage: url, project: projects };
+            const newPortfolio = { ...info, profileImage: url, project: projects };
             await supabaseInsert(newPortfolio);
         } catch (error) {
             console.error(error);
