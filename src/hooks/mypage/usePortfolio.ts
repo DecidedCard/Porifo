@@ -1,5 +1,7 @@
-import { supabaseRead } from "@/util/supabase/supabase_DB";
+import { supabasePortfolioInfoRead } from "@/util/supabase/supabase_DB";
 import { useQuery } from "@tanstack/react-query";
+
+import type { Portfolio } from "@/types/Portfolio";
 
 const usePortfolio = (id: string) => {
     const queryKey = ["mypage/portfolio"];
@@ -9,7 +11,7 @@ const usePortfolio = (id: string) => {
         data: portfolio,
     } = useQuery({
         queryKey,
-        queryFn: () => supabaseRead("portfolioInfo", { id: "id", value: id }),
+        queryFn: () => supabasePortfolioInfoRead({ id: "id", value: id }),
         retry: 0,
         refetchOnWindowFocus: false,
     });

@@ -96,12 +96,10 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
-    const supabaseTable = "portfolioInfo";
-
     const onClickInsertHandler = async () => {
         const newPortfolio = { ...basicInfo, project: projects };
         try {
-            await supabaseInsert(supabaseTable, newPortfolio);
+            await supabaseInsert(newPortfolio);
         } catch (error) {
             console.error(error);
             return error;

@@ -15,13 +15,13 @@ const Portfolio = ({ params }: { params: { id: string } }) => {
         return <div>에러!</div>;
     }
 
-    console.log(portfolio);
+    console.log(portfolio![0].name);
+
     return (
         <div>
             <div>
                 <h2>
                     <label>이름: </label>
-                    {portfolio!.name}
                 </h2>
             </div>
         </div>
