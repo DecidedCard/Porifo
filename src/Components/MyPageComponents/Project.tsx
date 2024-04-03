@@ -25,6 +25,7 @@ const Project = () => {
                     <input type="text" value={project.name} onChange={onChangeProjectName} />
                 </div>
                 <div>
+                    {/* 사진 제한 5장 */}
                     <label htmlFor="file">
                         <div>사진 업로드하기</div>
                     </label>
