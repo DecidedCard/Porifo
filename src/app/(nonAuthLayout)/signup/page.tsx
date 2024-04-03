@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
+
 import useInput from "@/hooks/useInput";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
-    // const [name, onChangeNameHandler] = useInput();
+    const [name, onChangeNameHandler] = useInput();
     const [age, onChangeAgeHandler] = useInput();
     const [phoneNumber, onChangeNumberHandler] = useInput();
     const [sex, setSex] = useState("");
@@ -34,6 +35,7 @@ const SignUp = () => {
                     emailRedirectTo: "http://localhost:3000/signin",
                     data: {
                         age,
+                        name,
                         phoneNumber,
                         sex,
                     },
@@ -70,10 +72,10 @@ const SignUp = () => {
                     <label>비밀번호: </label>
                     <input placeholder="비밀번호를 작성해주세요" onChange={onChangePasswordHandler} />
                 </div>
-                {/* <div>
-                    이름:&nbsp;
+                <div>
+                    <label>이름: </label>
                     <input placeholder="이름을 작성해주세요" onChange={onChangeNameHandler} />
-                </div> */}
+                </div>
                 <div>
                     <label>나이: </label>
                     <input placeholder="나이를 입력해주세요" onChange={onChangeAgeHandler} />

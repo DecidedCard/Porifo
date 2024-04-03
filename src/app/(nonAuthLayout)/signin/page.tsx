@@ -10,52 +10,54 @@ const SignIn = () => {
     const router = useRouter();
 
     const signInWithGithub = async () => {
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { error } = await supabase.auth.signInWithOAuth({
             provider: "github",
+            options: {
+                redirectTo: "http://localhost:3000/social_setting",
+            },
         });
         try {
             if (error) {
                 throw new Error("깃 허브 로그인 오류가 발생하였습니다.");
             }
-            console.log(data);
-            return;
         } catch (error) {
             console.log(error);
         }
     };
 
     const signInWithKakao = async () => {
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { error } = await supabase.auth.signInWithOAuth({
             provider: "kakao",
+            options: {
+                redirectTo: "http://localhost:3000/social_setting",
+            },
         });
-        console.log(data);
+
         try {
             if (error) {
                 throw new Error("카카오 로그인 오류가 발생하였습니다.");
             }
-            console.log(data);
-            return;
         } catch (error) {
             console.log(error);
         }
     };
 
     const signInWithGoogle = async () => {
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
             options: {
+                redirectTo: "http://localhost:3000/social_setting",
                 queryParams: {
                     access_type: "offline",
                     prompt: "consent",
                 },
             },
         });
+
         try {
             if (error) {
                 throw new Error("구글 로그인 중 오류가 발생하였습니다.");
             }
-            console.log(data);
-            return;
         } catch (error) {
             console.log(error);
         }
@@ -72,9 +74,8 @@ const SignIn = () => {
                 console.error(error);
                 throw new Error("로그인에 실패했습니다.");
             }
-            console.log(data);
-            router.replace("/");
-            return data;
+
+            return router.replace("/social_setting");
         } catch (error) {
             return Promise.reject(error);
         }
