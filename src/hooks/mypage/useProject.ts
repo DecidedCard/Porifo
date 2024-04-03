@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 
 import useInput from "../useInput";
 import useProjects from "@/store/projectStore";
@@ -11,7 +11,6 @@ const useProject = () => {
 
     const {
         project,
-        projects,
         setProjectDate,
         setProjectDeployLink,
         setProjectGithubLink,
@@ -20,6 +19,10 @@ const useProject = () => {
         setProjectName,
         setProjects,
     } = useProjects();
+
+    useEffect(() => {
+        setProjectDate(`${startDate} ~ ${endDate}`);
+    }, [setProjectDate, startDate, endDate]);
 
     const onChangeProjectName = (e: ChangeEvent<HTMLInputElement>) => {
         setProjectName(e.target.value);
@@ -59,7 +62,6 @@ const useProject = () => {
     };
 
     const onClickInsertHandler = async () => {
-        setProjectDate(`${startDate} ~ ${endDate}`);
         setProjects(project);
         setProjectDate("");
         setProjectDeployLink("");

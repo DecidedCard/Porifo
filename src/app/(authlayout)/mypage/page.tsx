@@ -8,7 +8,7 @@ import Project from "@/Components/MyPageComponents/Project";
 import Introduction from "@/Components/MyPageComponents/Introduction";
 import Buttons from "@/Components/MyPageComponents/Buttons";
 import Navigation from "@/Components/MyPageComponents/Navigation";
-import PdfButton from "@/hooks/myPage/PdfButton";
+import PdfButton from "@/Components/MyPageComponents/PdfButton";
 
 import { usePDF } from "react-to-pdf";
 

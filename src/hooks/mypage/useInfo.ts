@@ -100,7 +100,6 @@ const useInfo = () => {
 
     const onClickInsertHandler = async () => {
         const newPortfolio = { ...basicInfo, project: projects };
-        console.log(basicInfo);
         try {
             await supabaseInsert(supabaseTable, newPortfolio);
         } catch (error) {
