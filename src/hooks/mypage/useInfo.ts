@@ -11,6 +11,7 @@ const useInfo = () => {
         basicInfo,
         setName,
         setProfile,
+        setImageFile,
         setBirthday,
         setTel,
         setSchool,
@@ -21,7 +22,6 @@ const useInfo = () => {
         setGithub,
     } = usePortfolioInfo();
     const { projects } = useProjects();
-    const [preview, setPreview] = useState("");
 
     const selectList = [
         { value: "default", name: "직무 선택" },
@@ -45,23 +45,13 @@ const useInfo = () => {
     };
 
     const onChangeProfileHandler = async (e: ChangeEvent<HTMLInputElement>) => {
-        const STORAGE = {
-            bucket: "portfolioProfile",
-            path: `profile/${crypto.randomUUID()}`,
-        };
         const imageFile = e.target.files![0];
         // 이미지 미리보기
         const blob = new Blob([imageFile]);
         const url = URL.createObjectURL(blob);
-        setPreview(url);
-        try {
-            const image = await storageInsert(STORAGE.bucket, `${STORAGE.path}/${imageFile.lastModified}`, imageFile);
-            const url = imageUrl(STORAGE.bucket, image!.path);
-            setProfile(url);
-        } catch (error) {
-            console.error(error);
-            return error;
-        }
+
+        setProfile(url);
+        setImageFile(e.target.files![0]);
     };
 
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -97,8 +87,24 @@ const useInfo = () => {
     };
 
     const onClickInsertHandler = async () => {
-        const newPortfolio = { ...basicInfo, project: projects };
+        if (!basicInfo.imageFile) {
+            alert("프로필 이미지를 선택해주시기 바랍니다.");
+            return;
+        }
+
+        const STORAGE = {
+            bucket: "portfolioProfile",
+            path: `profile/${crypto.randomUUID()}`,
+        };
+
         try {
+            const image = await storageInsert(
+                STORAGE.bucket,
+                `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
+                basicInfo.imageFile!,
+            );
+            const url = imageUrl(STORAGE.bucket, image!.path);
+            const newPortfolio = { ...basicInfo, profileImage: url, project: projects };
             await supabaseInsert(newPortfolio);
         } catch (error) {
             console.error(error);
@@ -109,7 +115,6 @@ const useInfo = () => {
     return {
         basicInfo,
         selectList,
-        preview,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,

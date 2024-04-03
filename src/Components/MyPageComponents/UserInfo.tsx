@@ -10,7 +10,6 @@ const UserInfo = () => {
     const {
         basicInfo,
         selectList,
-        preview,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
@@ -30,9 +29,9 @@ const UserInfo = () => {
                     <label htmlFor="profile" className="cursor-pointer">
                         프로필 이미지 등록하기
                     </label>
-                    {preview ? (
+                    {basicInfo.profileImage ? (
                         <Image
-                            src={preview}
+                            src={basicInfo.profileImage}
                             alt="프로필 사진 미리보기"
                             width={100}
                             height={100}

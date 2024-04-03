@@ -6,6 +6,7 @@ export interface PortfolioInfo {
     template: string;
     name: string;
     profileImage: string;
+    imageFile: File | null;
     birthday: string;
     tel: string;
     school: string;
