@@ -8,13 +8,34 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      backdropFilter: {
+      },
+      fontFamily: {
+        spoqaBold: ['SpoqaHanSansNeo-Bold', 'sans-serif'],
+        spoqaMedium: ['SpoqaHanSansNeo-Medium', 'sans-serif'],
+        spoqaRegular: ['SpoqaHanSansNeo-Regular', 'sans-serif'],
+        spoqaLight: ['SpoqaHanSanNeo-Light', 'sans-serif'],
+      },
+      fontSize: {
+      },
+      fontWeight: {
+        'bold': '700',
+        'medium': '500',
+      },
+      lineHeight: {
+      },
+      colors: {
+        'gray': '#f1f1f1',
+        'hihigray':'#FAFAFA',
+        'middlegray': '#bdbebd',
+        'deepgray': '#DCDDDF',
+        'grayblack': '#202020',
+        "primary": "#0099ff",
+        "secondary": "#00D0ED"
       },
     },
   },
   plugins: [],
 };
+
 export default config;
