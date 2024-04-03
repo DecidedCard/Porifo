@@ -11,7 +11,7 @@ const Header = () => {
           <Link className="absolute left-[100px]" href={"/"}>
             <img
               className="shrink-0 w-[80px] h-7 relative overflow-visible"
-              src="porifo.svg"
+              src="../porifo.svg"
               alt="Logo"
             />
           </Link>
@@ -42,9 +42,9 @@ const Header = () => {
                 로그인
               </Link>
             </div>
-            <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
+            <div className="bg-primary rounded-lg flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
               <Link 
-              className="text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
+              className="text-center font-spoqaRegular text-xs font-semibold relative flex items-center justify-center"
               href="/signup">
                 회원가입
               </Link>
