@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, { FormEvent } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import useInput from "@/hooks/useInput";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
+    const router = useRouter();
 
     const signInWithGithub = async () => {
         const { data, error } = await supabase.auth.signInWithOAuth({
@@ -38,13 +40,23 @@ const SignIn = () => {
         }
     };
 
-    const onSubmitLoginUser = async () => {
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-
-        console.log(user);
-        alert("gkdl");
+    const onSubmitLoginUser = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+            if (error) {
+                console.error(error);
+                throw new Error("로그인에 실패했습니다.");
+            }
+            console.log(data);
+            router.replace("/");
+            return data;
+        } catch (error) {
+            return Promise.reject(error);
+        }
     };
 
     return (
