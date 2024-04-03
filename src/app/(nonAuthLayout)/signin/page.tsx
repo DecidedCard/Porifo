@@ -38,6 +38,27 @@ const SignIn = () => {
         }
     };
 
+    const signInWithGoogle = async () => {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                queryParams: {
+                    access_type: "offline",
+                    prompt: "consent",
+                },
+            },
+        });
+        try {
+            if (error) {
+                throw new Error("구글 로그인 중 오류가 발생하였습니다.");
+            }
+            console.log(data);
+            return;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const onSubmitLoginUser = async () => {
         const {
             data: { user },
@@ -62,6 +83,7 @@ const SignIn = () => {
             </form>
             <button onClick={signInWithGithub}>깃허브 로그인 버튼&nbsp;</button>
             <button onClick={signInWithKakao}>카카오 로그인 버튼</button>
+            <button onClick={signInWithGoogle}>구글 로그인 버튼</button>
         </div>
     );
 };

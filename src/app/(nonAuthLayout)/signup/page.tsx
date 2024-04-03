@@ -63,11 +63,11 @@ const SignUp = () => {
         <div>
             <form onSubmit={signUpNewUser}>
                 <div>
-                    이메일:&nbsp;
+                    <label>이메일: </label>
                     <input placeholder="이메일을 작성해주세요" onChange={onChangeEmailHandler} />
                 </div>
                 <div>
-                    비밀번호:&nbsp;
+                    <label>비밀번호: </label>
                     <input placeholder="비밀번호를 작성해주세요" onChange={onChangePasswordHandler} />
                 </div>
                 {/* <div>
@@ -75,16 +75,16 @@ const SignUp = () => {
                     <input placeholder="이름을 작성해주세요" onChange={onChangeNameHandler} />
                 </div> */}
                 <div>
-                    나이:&nbsp;
+                    <label>나이: </label>
                     <input placeholder="나이를 입력해주세요" onChange={onChangeAgeHandler} />
                 </div>
                 <div>
-                    성별:&nbsp;
+                    <label>성별: </label>
                     <button onClick={onClickeMale}>남자</button>
                     <button onClick={onClickeFeMale}>여자</button>
                 </div>
                 <div>
-                    핸드폰 번호:&nbsp;
+                    <label>핸드폰 번호: </label>
                     <input onChange={onChangeNumberHandler} placeholder="핸드폰 번호를 작성해주세요" />
                 </div>
 
