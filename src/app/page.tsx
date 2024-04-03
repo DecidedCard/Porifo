@@ -3,6 +3,9 @@ import Cover from "@/Components/MainPage/Cover";
 import MiddleLeft from "@/Components/MainPage/MiddleLeft";
 import MiddleRight from "@/Components/MainPage/MiddleRight";
 import MiddleBottom from "@/Components/MainPage/MiddleBottom";
+import MiddleImage from "@/Components/MainPage/MiddleImage";
+import Recommendation from "@/Components/MainPage/Recommendation";
+import Bottom from "@/Components/MainPage/Bottom";
 
 export default function Home() {
     return (
@@ -24,6 +27,17 @@ export default function Home() {
                     <MiddleBottom />
                 </div>
 
+                <div className="mt-32">
+                    <MiddleImage />
+                </div>
+
+                <div className="flex justify-center mt-32">
+                    <Recommendation />
+                </div>
+
+                <div className="mt-20">
+                    <Bottom />
+                </div>
             </div>
         </main>
     );
