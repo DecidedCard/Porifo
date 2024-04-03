@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import type { Project } from "@/types/Projects";
+import type { Project } from "@/types/Project";
 
 type Store = {
     project: Project;

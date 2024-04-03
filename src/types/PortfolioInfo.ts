@@ -1,4 +1,4 @@
-import type { Project } from "./Projects";
+import type { Project } from "./Project";
 
 export interface PortfolioInfo {
     id?: number;
