@@ -16,6 +16,7 @@ const Project = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         onClickInsertHandler,
+        onClickDeleteImage,
     } = useProject();
 
     return (
@@ -32,6 +33,7 @@ const Project = () => {
                     </label>
                     <input type="file" id="file" onChange={onChangeImagesHandler} className="hidden" multiple />
                 </div>
+                <button onClick={onClickDeleteImage}>이미지 지우기</button>
                 <div>
                     {project.images &&
                         project.images.map((item, idx) => {

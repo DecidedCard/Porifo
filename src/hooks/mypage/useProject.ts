@@ -44,6 +44,7 @@ const useProject = () => {
     // 이미지 스토리지 저장 및 url 변환 images state에 저장
     const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>) => {
         const fileList = e.target.files;
+        console.log(project.images.length);
 
         if (fileList!.length + project.images.length > 5) {
             alert("사진은 최대 5장이 최대입니다.");
@@ -57,6 +58,11 @@ const useProject = () => {
         });
         setProjectImages([...project.images, ...url]);
         setProjectImagesFile([...project.imagesFile!, ...fileArray]);
+    };
+
+    const onClickDeleteImage = () => {
+        setProjectImages([]);
+        setProjectImagesFile([]);
     };
 
     const onClickInsertHandler = async () => {
@@ -100,6 +106,7 @@ const useProject = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         onClickInsertHandler,
+        onClickDeleteImage,
     };
 };
 
