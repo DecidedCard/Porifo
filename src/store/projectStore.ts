@@ -6,7 +6,8 @@ type Store = {
     project: Project;
     projects: Project[];
     setProjectName: (arg: string) => void;
-    setProjectImage: (arg: string[]) => void;
+    setProjectImages: (arg: string[]) => void;
+    setProjectImagesFile: (arg: File[]) => void;
     setProjectIntroduce: (arg: string) => void;
     setProjectDate: (arg: string) => void;
     setProjectDeployLink: (arg: string) => void;
@@ -16,10 +17,11 @@ type Store = {
 };
 
 const useProjects = create<Store>()((set) => ({
-    project: { name: "", image: [], introduce: "", date: "", githubLink: "", deployLink: "" },
+    project: { name: "", images: [], imagesFile: [], introduce: "", date: "", githubLink: "", deployLink: "" },
     projects: [],
     setProjectName: (arg) => set((item) => ({ project: { ...item.project, name: arg } })),
-    setProjectImage: (arg) => set((item) => ({ project: { ...item.project, image: arg } })),
+    setProjectImages: (arg) => set((item) => ({ project: { ...item.project, images: arg } })),
+    setProjectImagesFile: (arg) => set((item) => ({ project: { ...item.project, imagesFile: arg } })),
     setProjectIntroduce: (arg) => set((item) => ({ project: { ...item.project, introduce: arg } })),
     setProjectDate: (arg) => set((item) => ({ project: { ...item.project, date: arg } })),
     setProjectDeployLink: (arg) => set((item) => ({ project: { ...item.project, deployLink: arg } })),

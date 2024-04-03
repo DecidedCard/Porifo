@@ -51,6 +51,7 @@ const useInfo = () => {
         const url = URL.createObjectURL(blob);
 
         setProfile(url);
+
         setImageFile(e.target.files![0]);
     };
 

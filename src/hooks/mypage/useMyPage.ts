@@ -10,8 +10,6 @@ const useMyPage = async () => {
         alert("로그인 해주시기 바랍니다.");
         router.replace("/signin");
     }
-
-    console.log(user);
 };
 
 export default useMyPage;
