@@ -1,19 +1,19 @@
 import type { Project } from "./Project";
 
-export interface PortfolioInfo {
-    id?: number;
-    created_at?: Date;
+export interface Portfolio {
+    id: number;
+    created_at: Date;
     template: string;
     name: string;
     profileImage: string;
+    introduce: string;
     birthday: string;
     tel: string;
     school: string;
     class: string;
-    introduce: string;
     job: string;
     blogLink: string;
-    githubLink: string;
-    project?: Project[];
+    githubLinl: string;
+    project: Project[];
     share: boolean;
 }
