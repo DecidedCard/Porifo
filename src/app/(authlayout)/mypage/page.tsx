@@ -11,13 +11,14 @@ import Navigation from "@/Components/MyPageComponents/Navigation";
 import PdfButton from "@/Components/MyPageComponents/PdfButton";
 
 import { usePDF } from "react-to-pdf";
+import Portfolio from "@/Components/MyPageComponents/Portfolio";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
     const { targetRef, toPDF } = usePDF();
 
     return (
-        <div ref={targetRef} className="flex justify-evenly max-w-7xl min-h-96 mx-auto mt-10">
+        <div className="flex justify-evenly max-w-7xl min-h-96 mx-auto mt-10">
             <Navigation setNav={setNav} />
             <div className="w-[800px]">
                 {nav === "basicInfo" && <UserInfo />}
@@ -27,6 +28,9 @@ const MyPage = () => {
             </div>
             <PdfButton toPDF={toPDF} />
             <Buttons />
+            {/* <div ref={targetRef}>
+                <Portfolio />
+            </div> */}
         </div>
     );
 };
