@@ -1,4 +1,4 @@
-import { supabasePortfolioInfoRead } from "@/util/supabase/supabase_DB";
+import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { useQuery } from "@tanstack/react-query";
 
 import type { Portfolio } from "@/types/Portfolio";

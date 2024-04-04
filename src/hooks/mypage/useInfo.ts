@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import usePortfolioInfo from "@/store/portfolioInfoStore";
 import useProjects from "@/store/projectStore";
 
-import { supabaseInsert } from "@/util/supabase/supabase_DB";
+import { supabaseInsert } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 
 const useInfo = () => {
