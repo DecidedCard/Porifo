@@ -11,8 +11,10 @@ import Navigation from "@/Components/MyPageComponents/Navigation";
 import PdfButton from "@/Components/MyPageComponents/PdfButton";
 
 import { usePDF } from "react-to-pdf";
+import useMyPage from "@/hooks/myPage/useMyPage";
 
 const MyPage = () => {
+    const {} = useMyPage();
     const [nav, setNav] = useState("basicInfo");
     const { targetRef, toPDF } = usePDF();
 
