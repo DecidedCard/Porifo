@@ -17,6 +17,8 @@ const SocialSeting = () => {
     useEffect(() => {
         // const token = localStorage.getItem("sb-cyhvfqdzonehvongdtow-auth-token") as string;
         // console.log(JSON.parse(token).access_token);
+        supabase.auth.getSession();
+        console.log(supabase.auth.getSession());
     }, []);
 
     const onClickeMale = (e: React.MouseEvent<HTMLButtonElement>): void => {
