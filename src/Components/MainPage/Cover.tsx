@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Cover = () => {
     return (
-        <main className="min-h-screen w-full">
+        <main className="min-h-screen w-full animate-fadein">
             <div className="flex justify-center bg-gray h-auto md:h-[530px] relative">
                 <div className="flex flex-col items-center justify-center top-[170px] absolute">
                     <p className="text-gray-black text-center font-bold text-[65px] leading-[100px] font-spoqaBold">
