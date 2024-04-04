@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect } from "react";
 
 import usePortfolioInfo from "@/store/portfolioInfoStore";
 import useProjects from "@/store/projectStore";
@@ -31,7 +31,7 @@ const useInfo = () => {
         { value: "앱 개발자 개발자", name: "앱 개발자 개발자" },
         { value: "머신러닝/인공지능 개발자", name: "머신러닝/인공지능 개발자" },
         { value: "데이터 엔지니어 개발자", name: "데이터 엔지니어 개발자" },
-        { value: "def게임 개발자ault", name: "게임 개발자" },
+        { value: "게임 개발자", name: "게임 개발자" },
         { value: "DevOps 개발자", name: "DevOps 개발자" },
         { value: "SW/솔루션 엔지니어", name: "SW/솔루션 엔지니어" },
         { value: "정보보안 엔지니어", name: "정보보안 엔지니어" },

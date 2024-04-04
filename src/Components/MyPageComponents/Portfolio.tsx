@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 
 const Portfolio = () => {
-    const { portfolio, isError, isFetching } = usePortfolio("28");
+    const { portfolio, isError, isFetching } = usePortfolio("29");
 
     if (isFetching) {
         return <div>로딩중입니다...</div>;
@@ -72,7 +72,7 @@ const Portfolio = () => {
                                 <div key={idx}>
                                     {item.name}
                                     <div>
-                                        {item.image.map((item, idx) => {
+                                        {item.images.map((item, idx) => {
                                             return (
                                                 <div key={idx}>
                                                     <Image src={item} alt="프로젝트 이미지" width={100} height={100} />

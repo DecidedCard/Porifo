@@ -11,7 +11,6 @@ import Navigation from "@/Components/MyPageComponents/Navigation";
 import PdfButton from "@/Components/MyPageComponents/PdfButton";
 
 import { usePDF } from "react-to-pdf";
-import Portfolio from "@/Components/MyPageComponents/Portfolio";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
@@ -28,9 +27,6 @@ const MyPage = () => {
             </div>
             <PdfButton toPDF={toPDF} />
             <Buttons />
-            {/* <div ref={targetRef}>
-                <Portfolio />
-            </div> */}
         </div>
     );
 };
