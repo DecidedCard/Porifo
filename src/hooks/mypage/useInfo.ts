@@ -157,6 +157,7 @@ const useInfo = () => {
     };
 
     return {
+        user,
         basicInfo,
         selectList,
         onChangeNameHandler,

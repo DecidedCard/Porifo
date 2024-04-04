@@ -1,15 +1,19 @@
 "use client";
 
 import usePortfolio from "@/hooks/myPage/usePortfolio";
-import useUser from "@/store/userStore";
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { usePDF } from "react-to-pdf";
+import Button from "../Commen/Button";
+import useUser from "@/store/userStore";
 
-const Portfolio = () => {
+const Portfolio = ({ id }: { id: string }) => {
+    const { portfolio, isError, isFetching } = usePortfolio(id);
+    4;
     const { user } = useUser();
-    const { portfolio, isError, isFetching } = usePortfolio(user!.id);
+    const { targetRef, toPDF } = usePDF({ filename: user?.id });
 
     if (isFetching) {
         return <div>로딩중입니다...</div>;
@@ -20,12 +24,13 @@ const Portfolio = () => {
     }
 
     const info = portfolio![0];
+
     const project: Project[] = JSON.parse(JSON.stringify(info.project));
 
     return (
         <>
-            <button>pdf 다운로드</button>
-            <div className="px-5 w-96">
+            <Button text="pdf 다운로드" onClick={() => toPDF()} />
+            <div ref={targetRef} className="px-5 w-96">
                 <div>
                     <h2>
                         <label>이름: </label>
