@@ -24,7 +24,6 @@ const useInfo = () => {
     } = usePortfolioInfo();
     const { user, portfolio } = useUser();
     const { projects } = useProjects();
-    console.log(portfolio);
 
     const selectList = [
         { value: "default", name: "직무 선택" },
@@ -41,6 +40,33 @@ const useInfo = () => {
         { value: "QA 엔지니어", name: "QA 엔지니어" },
         { value: "기타", name: "기타" },
     ];
+
+    useEffect(() => {
+        if (portfolio) {
+            setName(portfolio.name!);
+            setProfile(portfolio.profileImage!);
+            setBirthday(portfolio.birthday!);
+            setTel(portfolio.tel!);
+            setSchool(portfolio.school!);
+            setClass(portfolio.class!);
+            setJob(portfolio.job!);
+            setIntroduce(portfolio.introduce!);
+            setBlog(portfolio.blogLink!);
+            setGithub(portfolio.githubLink!);
+        }
+    }, [
+        portfolio,
+        setName,
+        setProfile,
+        setBirthday,
+        setTel,
+        setSchool,
+        setClass,
+        setJob,
+        setIntroduce,
+        setBlog,
+        setGithub,
+    ]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
