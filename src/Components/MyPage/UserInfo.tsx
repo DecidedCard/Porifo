@@ -19,14 +19,22 @@ const UserInfo = () => {
         onChangeSelectHandler,
     } = useInfo();
     return (
-        <main>
+        <main className="bg-white rounded-2xl mt-10 ml-10 w-[700px]">
             <div className="flex flex-col">
+                <p className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</p>
+                <hr className="border border-neutral-100 my-6 mx-6" />
+                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
+                    내 정보
+                </p>
+                <div className="pl-6 pt-6 font-medium text-zinc-500 text-left relative w-[177px] flex items-center justify-start">
+                    프로필 사진
+                </div>
                 <div className="flex justify-evenly items-center">
                     <div>
                         <label>이름: </label>
                         <input type="text" placeholder="이름" value={basicInfo.name!} onChange={onChangeNameHandler} />
                     </div>
-                    <label htmlFor="profile" className="cursor-pointer">
+                    <label htmlFor="text" className="cursor-pointer">
                         프로필 이미지 등록하기
                     </label>
                     {basicInfo.profileImage ? (
@@ -42,7 +50,7 @@ const UserInfo = () => {
                             미리보기
                         </div>
                     )}
-                    <input type="file" id="profile" className="hidden" onChange={onChangeProfileHandler} />
+                    <input type="file" id="text" className="hidden" onChange={onChangeProfileHandler} />
                 </div>
                 <div className="flex">
                     <div>
