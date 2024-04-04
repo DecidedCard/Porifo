@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
@@ -8,6 +9,7 @@ import { getPortfolio } from "./api";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     const { getFromAndTo, filter, page, setPage, jobFilter } = filterData;
+    // const router = useRouter();
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
@@ -43,7 +45,12 @@ const Cards = ({ filterData }: { filterData: any }) => {
                 return portfolio.map((item: any) => {
                     return (
                         <div key={item.id}>
-                            <div className="border-2 border-solid p-20 flex justify-center">{item.name}</div>
+                            <Link
+                                href={`detail/${item.id}`}
+                                className="border-2 mt-10 border-solid p-20 flex justify-center"
+                            >
+                                {item.name}
+                            </Link>
                         </div>
                     );
                 });
