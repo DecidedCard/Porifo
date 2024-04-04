@@ -7,11 +7,13 @@ export const getPortfolio = async (payload: any) => {
     let query = supabase.from("portfolioInfo").select("*");
 
     if (filter === "최신순") {
+        console.log("filter 실행됨");
         query = query.order("id", { ascending: false });
     }
 
     if (jobFilter) {
-        query = query.eq("job", `${jobFilter}`);
+        console.log("jobFilter 실행됨");
+        query = query.order("id", { ascending: true }).eq("job", `${jobFilter}`);
     }
 
     const { data, error } = await query.range(from, to);
