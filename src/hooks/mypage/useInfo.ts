@@ -5,6 +5,7 @@ import useProjects from "@/store/projectStore";
 
 import { supabaseInsert } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import useUser from "@/store/userStore";
 
 const useInfo = () => {
     const {
@@ -21,6 +22,7 @@ const useInfo = () => {
         setBlog,
         setGithub,
     } = usePortfolioInfo();
+    const { user } = useUser();
     const { projects } = useProjects();
 
     const selectList = [
@@ -99,18 +101,20 @@ const useInfo = () => {
             path: `profile/${crypto.randomUUID()}`,
         };
 
-        try {
-            const image = await storageInsert(
-                STORAGE.bucket,
-                `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
-                basicInfo.imageFile!,
-            );
-            const url = imageUrl(STORAGE.bucket, image!.path);
-            const newPortfolio = { ...info, profileImage: url, project: projects };
-            await supabaseInsert(newPortfolio);
-        } catch (error) {
-            console.error(error);
-            return error;
+        if (user) {
+            try {
+                const image = await storageInsert(
+                    STORAGE.bucket,
+                    `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
+                    basicInfo.imageFile!,
+                );
+                const url = imageUrl(STORAGE.bucket, image!.path);
+                const newPortfolio = { ...info, profileImage: url, project: projects };
+                await supabaseInsert(newPortfolio);
+            } catch (error) {
+                console.error(error);
+                return error;
+            }
         }
     };
 
