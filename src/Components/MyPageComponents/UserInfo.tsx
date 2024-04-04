@@ -4,6 +4,7 @@ import React from "react";
 
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
+import Button from "../Commen/Button";
 
 const UserInfo = () => {
     const {
@@ -88,6 +89,7 @@ const UserInfo = () => {
                             );
                         })}
                     </select>
+                    <Button text="테스트" border="none" />
                 </div>
             </div>
         </main>

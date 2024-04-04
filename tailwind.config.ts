@@ -44,6 +44,7 @@ const config: Config = {
                 grayblack: "#202020",
                 primary: "#0099ff",
                 secondary: "#00D0ED",
+                black: "#101010",
             },
         },
     },
