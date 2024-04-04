@@ -9,8 +9,6 @@ import { getPortfolio } from "./api";
 const Cards = ({ filterData }: { filterData: any }) => {
     const { getFromAndTo, filter, page, setPage, jobFilter } = filterData;
 
-    const { ref, inView } = useInView();
-
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: ["portfolio"],
@@ -24,6 +22,8 @@ const Cards = ({ filterData }: { filterData: any }) => {
         },
         refetchOnWindowFocus: false,
     });
+
+    const { ref, inView } = useInView();
 
     //inView && hasNextPage 둘다 true시 다음페이지 fetch
     useEffect(() => {

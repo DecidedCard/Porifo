@@ -63,12 +63,7 @@ const Filter = () => {
             </select>
             {filterBtn.map((item) => {
                 return (
-                    <button
-                        key={item.value}
-                        className="m-2 border p-5"
-                        onClick={(e: any) => handleJobFilterBtn(e.target.value)}
-                        value={item.value}
-                    >
+                    <button key={item.value} className="m-2 border p-5" onClick={() => handleJobFilterBtn(item.value)}>
                         {item.name}
                     </button>
                 );
