@@ -89,7 +89,7 @@ const UserInfo = () => {
                             );
                         })}
                     </select>
-                    <Input />
+                    <Input type="Date" helperText="이렇게 작성해주시면 됩니다." width={300} />
                 </div>
             </div>
         </main>
