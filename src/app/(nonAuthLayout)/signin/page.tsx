@@ -75,7 +75,9 @@ const SignIn = () => {
                 throw new Error("로그인에 실패했습니다.");
             }
 
-            return router.replace("/social_setting");
+            console.log(data);
+
+            return router.replace("/");
         } catch (error) {
             return Promise.reject(error);
         }
@@ -86,11 +88,22 @@ const SignIn = () => {
             <form onSubmit={onSubmitLoginUser}>
                 <div>
                     이메일:&nbsp;
-                    <input value={email} placeholder="이메일을 작성해주세요" onChange={onChangeEmailHandler} />
+                    <input
+                        value={email}
+                        pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+                        placeholder="이메일을 작성해주세요"
+                        type="email"
+                        onChange={onChangeEmailHandler}
+                    />
                 </div>
                 <div>
                     비밀번호:&nbsp;
-                    <input value={password} placeholder="비밀번호를 작성해주세요" onChange={onChangePasswordHandler} />
+                    <input
+                        value={password}
+                        placeholder="비밀번호를 작성해주세요"
+                        type="password"
+                        onChange={onChangePasswordHandler}
+                    />
                 </div>
                 <button>로그인</button>
             </form>

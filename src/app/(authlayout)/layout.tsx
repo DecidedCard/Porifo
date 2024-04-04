@@ -1,6 +1,6 @@
 "use client";
 
-import useMyPage from "@/hooks/myPage/useMyPage";
+import useMyPage from "@/hooks/sign/useGetUser";
 import React, { PropsWithChildren } from "react";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
