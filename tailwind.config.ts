@@ -8,6 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        fadein: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideRight: { // 여기에 slideRight 애니메이션을 추가합니다.
+          'from': { transform: 'translateX(0)' },
+          'to': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        'fadein': 'fadein 2s ease-in-out',
+        'slide-right': 'slideRight 20s linear infinite', // 여기에 애니메이션 속성을 추가합니다.
+      },
       backdropFilter: {
       },
       fontFamily: {
