@@ -1,13 +1,15 @@
 "use client";
 
-import usePortfolio from "@/hooks/mypage/usePortfolio";
+import usePortfolio from "@/hooks/myPage/usePortfolio";
+import useUser from "@/store/userStore";
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Portfolio = () => {
-    const { portfolio, isError, isFetching } = usePortfolio("28");
+    const { user } = useUser();
+    const { portfolio, isError, isFetching } = usePortfolio(user!.id);
 
     if (isFetching) {
         return <div>로딩중입니다...</div>;
@@ -72,7 +74,7 @@ const Portfolio = () => {
                                 <div key={idx}>
                                     {item.name}
                                     <div>
-                                        {item.image.map((item, idx) => {
+                                        {item.images.map((item, idx) => {
                                             return (
                                                 <div key={idx}>
                                                     <Image src={item} alt="프로젝트 이미지" width={100} height={100} />

@@ -1,6 +1,7 @@
 "use client";
 
-import useProject from "@/hooks/mypage/useProject";
+import useProject from "@/hooks/myPage/useProject";
+import Image from "next/image";
 
 const Project = () => {
     const {
@@ -15,6 +16,7 @@ const Project = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         onClickInsertHandler,
+        onClickDeleteImage,
     } = useProject();
 
     return (
@@ -30,6 +32,13 @@ const Project = () => {
                         <div>사진 업로드하기</div>
                     </label>
                     <input type="file" id="file" onChange={onChangeImagesHandler} className="hidden" multiple />
+                </div>
+                <button onClick={onClickDeleteImage}>이미지 지우기</button>
+                <div>
+                    {project.images &&
+                        project.images.map((item, idx) => {
+                            return <Image key={idx} src={item} alt="프로젝트 미리보기" width={100} height={100} />;
+                        })}
                 </div>
                 <div>
                     <label>소개: </label>
