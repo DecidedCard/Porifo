@@ -33,7 +33,7 @@ const Cards = () => {
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: ["portfolio"],
-        queryFn: () => getPortfolio({ getFromAndTo, filter, page, setPage, jobFilter }),
+        queryFn: () => getPortfolio({ getFromAndTo, filter, page, setPage, jobFilter, setJobFilter }),
         initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {
@@ -88,10 +88,6 @@ const Cards = () => {
                 <option value="기본순">기본순</option>
                 <option value="최신순">최신순</option>
             </select>
-            {/* <select className="p-5" onChange={(e) => handleJobFilterOption(e.target.value)}>
-                <option value="none" hidden>
-                    {jobFilter}
-                </option> */}
             {filterBtn.map((item) => {
                 return (
                     <button

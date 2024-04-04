@@ -1,52 +1,25 @@
 import { supabase } from "@/util/supabase/clientSupabase";
 
 export const getPortfolio = async (payload: any) => {
-    const { getFromAndTo, filter, page, setPage, jobFilter } = payload;
+    const { getFromAndTo, filter, page, setPage, jobFilter, setJobFilter } = payload;
     const { from, to } = getFromAndTo();
 
-    if (filter === "기본순") {
-        const { data, error } = await supabase.from("portfolioInfo").select("*").range(from, to);
-        setPage(page + 1);
-        if (jobFilter) {
-            const { data, error } = await supabase
-                .from("portfolioInfo")
-                .select("*")
-                .eq("job", `${jobFilter}`)
-                .range(from, to);
-            setPage(page + 1);
-            if (error) {
-                console.error(error);
-            }
-            return data;
-        }
-        if (error) {
-            console.error(error);
-        }
-        return data;
-    }
+    let query = supabase.from("portfolioInfo").select("*");
+
     if (filter === "최신순") {
-        const { data, error } = await supabase
-            .from("portfolioInfo")
-            .select("*")
-            .order("id", { ascending: false })
-            .range(from, to);
-        setPage(page + 1);
-        if (jobFilter) {
-            const { data, error } = await supabase
-                .from("portfolioInfo")
-                .select("*")
-                .eq("job", `${jobFilter}`)
-                .order("id", { ascending: false })
-                .range(from, to);
-            setPage(page + 1);
-            if (error) {
-                console.error(error);
-            }
-            return data;
-        }
-        if (error) {
-            console.error(error);
-        }
-        return data;
+        query = query.order("id", { ascending: false });
     }
+
+    if (jobFilter) {
+        query = query.eq("job", `${jobFilter}`);
+    }
+
+    const { data, error } = await query.range(from, to);
+    setPage(page + 1);
+
+    if (error) {
+        console.error(error);
+        return null;
+    }
+    return data;
 };
