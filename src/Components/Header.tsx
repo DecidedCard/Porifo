@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "./Commen/Button";
 
 const Header = () => {
     return (
@@ -9,7 +10,7 @@ const Header = () => {
             >
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px]" href={"/"}>
-                    <img className="shrink-0 w-[80px] h-7 relative overflow-visible" src="porifo.svg" alt="Logo" />
+                    <img className="shrink-0 w-[80px] h-7 relative overflow-visible" src="../porifo.svg" alt="Logo" />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
