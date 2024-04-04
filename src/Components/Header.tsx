@@ -47,6 +47,14 @@ const Header = () => {
                             회원가입
                         </Link>
                     </div>
+                    <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
+                        <Link
+                            className="text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
+                            href="/"
+                        >
+                            로그아웃
+                        </Link>
+                    </div>
                 </div>
             </div>
         </main>
