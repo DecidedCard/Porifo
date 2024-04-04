@@ -1,6 +1,6 @@
 "use client";
 
-import useProject from "@/hooks/myPage/useProject";
+import useProject from "@/hooks/mypage/useProject";
 import Image from "next/image";
 
 const Project = () => {

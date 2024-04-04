@@ -149,6 +149,7 @@ const useInfo = () => {
             try {
                 const newPortfolio = { ...info, userId: user.id, profileImage: url, project: projects };
                 await supabaseInsert(newPortfolio);
+                alert("이력서가 저장되었습니다.");
                 return;
             } catch (error) {
                 console.error(error);
@@ -164,7 +165,7 @@ const useInfo = () => {
                     newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
-                alert("데이터가 업데이트 되었습니다.");
+                alert("이력서가 업데이트 되었습니다.");
                 return;
             } catch (error) {
                 alert("데이터를 업데이트 하지 못 했습니다.");

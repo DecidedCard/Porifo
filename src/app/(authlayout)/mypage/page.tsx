@@ -9,7 +9,7 @@ import Introduction from "@/Components/MyPageComponents/Introduction";
 import Buttons from "@/Components/MyPageComponents/Buttons";
 import Navigation from "@/Components/MyPageComponents/Navigation";
 
-import useMyPage from "@/hooks/myPage/useMyPage";
+import useMyPage from "@/hooks/mypage/useMyPage";
 
 const MyPage = () => {
     const {} = useMyPage();

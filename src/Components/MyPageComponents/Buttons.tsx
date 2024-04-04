@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import useInfo from "@/hooks/myPage/useInfo";
+import useInfo from "@/hooks/mypage/useInfo";
 import { useRouter } from "next/navigation";
 
 const Buttons = () => {
