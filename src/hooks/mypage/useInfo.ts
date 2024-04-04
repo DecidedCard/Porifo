@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect } from "react";
 import usePortfolioInfo from "@/store/portfolioInfoStore";
 import useProjects from "@/store/projectStore";
 
-import { supabaseInsert } from "@/util/supabase/portfolioInfo_supabase_DB";
+import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import useUser from "@/store/userStore";
 
@@ -120,29 +120,32 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        if (!basicInfo.imageFile) {
+        if (!basicInfo.profileImage) {
             alert("프로필 이미지를 선택해주시기 바랍니다.");
             return;
         }
 
-        const STORAGE = {
-            bucket: "portfolioProfile",
-            path: `profile/${crypto.randomUUID()}`,
-        };
+        // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
+        if (basicInfo.imageFile) {
+            const STORAGE = {
+                bucket: "portfolioProfile",
+                path: `profile/${crypto.randomUUID()}`,
+            };
 
-        try {
-            const image = await storageInsert(
-                STORAGE.bucket,
-                `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
-                basicInfo.imageFile!,
-            );
-            url = imageUrl(STORAGE.bucket, image!.path);
-        } catch (error) {
-            console.error(error);
-            return error;
+            try {
+                const image = await storageInsert(
+                    STORAGE.bucket,
+                    `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
+                    basicInfo.imageFile!,
+                );
+                url = imageUrl(STORAGE.bucket, image!.path);
+            } catch (error) {
+                console.error(error);
+                return error;
+            }
         }
 
-        if (user) {
+        if (user && !portfolio) {
             try {
                 const newPortfolio = { ...info, userId: user.id, profileImage: url, project: projects };
                 await supabaseInsert(newPortfolio);
@@ -152,12 +155,30 @@ const useInfo = () => {
                 return error;
             }
         }
+
+        if (portfolio) {
+            let newPortfolio = { ...info, userId: user!.id, project: projects };
+
+            try {
+                if (url) {
+                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects };
+                }
+                await supabasePortfolioUpdate(newPortfolio, user!.id);
+                alert("데이터가 업데이트 되었습니다.");
+                return;
+            } catch (error) {
+                alert("데이터를 업데이트 하지 못 했습니다.");
+                return error;
+            }
+        }
+
         const newPortfolio = { ...info, profileImage: url, project: projects };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
     return {
         user,
+        portfolio,
         basicInfo,
         selectList,
         onChangeNameHandler,

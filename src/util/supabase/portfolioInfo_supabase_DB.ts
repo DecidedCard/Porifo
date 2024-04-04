@@ -1,3 +1,4 @@
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { supabase } from "./clientSupabase";
 
 export const supabaseInsert = async (item: any) => {
@@ -24,5 +25,18 @@ export const supabasePortfolioInfoRead = async (col: { id: string; value: string
         return portfolioInfo;
     } catch (error) {
         return Promise.reject(error);
+    }
+};
+
+export const supabasePortfolioUpdate = async (arg: PortfolioInfo, value: string) => {
+    try {
+        const { project, ...info } = arg;
+        const { error } = await supabase.from("portfolioInfo").update(info).eq("userId", value);
+        if (error) {
+            console.error(error);
+            throw new Error("업데이트를 하지 못했습니다.");
+        }
+    } catch (error) {
+        Promise.reject(error);
     }
 };
