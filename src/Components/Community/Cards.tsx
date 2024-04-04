@@ -10,7 +10,7 @@ import useInfo from "@/hooks/mypage/useInfo";
 const Cards = () => {
     const [page, setPage] = useState(0);
     const [filter, setFilter] = useState("기본순");
-    const [jobFilter, setJobFilter] = useState("직무 선택");
+    const [jobFilter, setJobFilter] = useState("");
 
     const queryClient = useQueryClient();
     const { ref, inView } = useInView();
@@ -58,16 +58,7 @@ const Cards = () => {
         }
         if (filterValue === "기본순") {
             return refetch("기본순");
-        } else {
-            return refetch(filterValue);
         }
-    };
-    //직무 변경 버튼
-    const handleJobFilterBtn = (jobfilterValue: string) => {
-        console.log(jobfilterValue);
-        queryClient.removeQueries({ queryKey: ["portfolio"] });
-        setPage(0);
-        return setJobFilter(jobfilterValue);
     };
 
     //필터 옵션 변경시 refetch 함수
@@ -75,6 +66,13 @@ const Cards = () => {
         queryClient.removeQueries({ queryKey: ["portfolio"] });
         setPage(0);
         return setFilter(filter);
+    };
+
+    //직무 변경 버튼
+    const handleJobFilterBtn = (jobfilterValue: string) => {
+        queryClient.removeQueries({ queryKey: ["portfolio"] });
+        setPage(0);
+        return setJobFilter(jobfilterValue);
     };
 
     if (isLoading) {
@@ -98,8 +96,8 @@ const Cards = () => {
                 return (
                     <button
                         key={item.value}
-                        onClick={(e: any) => handleJobFilterBtn(e.target.value)}
                         className="m-2 border p-5"
+                        onClick={(e: any) => handleJobFilterBtn(e.target.value)}
                         value={item.value}
                     >
                         {item.name}
