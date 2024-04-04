@@ -33,7 +33,7 @@ const Header = () => {
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     <div className="rounded-lg border border-primary-500 pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative">
                         <Link
-                            className="text-primary text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
+                            className="text-primary text-center text-xs font-semibold relative flex items-center justify-center"
                             href="/signin"
                         >
                             로그인
@@ -41,7 +41,7 @@ const Header = () => {
                     </div>
                     <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
                         <Link
-                            className="text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
+                            className="text-center text-xs font-semibold relative flex items-center justify-center"
                             href="/signup"
                         >
                             회원가입

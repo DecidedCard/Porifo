@@ -6,6 +6,7 @@ type Store = {
     basicInfo: PortfolioInfo;
     setName: (arg: string) => void;
     setProfile: (arg: string) => void;
+    setImageFile: (arg: File) => void;
     setBirthday: (arg: string) => void;
     setTel: (arg: string) => void;
     setSchool: (arg: string) => void;
@@ -20,6 +21,7 @@ const initial = {
     template: "basic",
     name: "",
     profileImage: "",
+    imageFile: null,
     birthday: "",
     tel: "",
     school: "",
@@ -35,6 +37,7 @@ const usePortfolioInfo = create<Store>()((set) => ({
     basicInfo: initial,
     setName: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, name: arg } })),
     setProfile: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, profileImage: arg } })),
+    setImageFile: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, imageFile: arg } })),
     setBirthday: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, birthday: arg } })),
     setTel: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, tel: arg } })),
     setSchool: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, school: arg } })),
