@@ -4,7 +4,6 @@ import React from "react";
 
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
-import Input from "../Commen/Input";
 
 const UserInfo = () => {
     const {
@@ -97,7 +96,6 @@ const UserInfo = () => {
                             );
                         })}
                     </select>
-                    <Input />
                 </div>
             </div>
         </main>
