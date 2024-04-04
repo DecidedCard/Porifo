@@ -38,6 +38,7 @@ const config: Config = {
             lineHeight: {},
             colors: {
                 gray: "#f1f1f1",
+                gray2: "#DBDBDB",
                 hihigray: "#FAFAFA",
                 middlegray: "#bdbebd",
                 deepgray: "#DCDDDF",
