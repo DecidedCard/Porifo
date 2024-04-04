@@ -1,13 +1,15 @@
 "use client";
 
 import usePortfolio from "@/hooks/myPage/usePortfolio";
+import useUser from "@/store/userStore";
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Portfolio = () => {
-    const { portfolio, isError, isFetching } = usePortfolio("29");
+    const { user } = useUser();
+    const { portfolio, isError, isFetching } = usePortfolio(user!.id);
 
     if (isFetching) {
         return <div>로딩중입니다...</div>;

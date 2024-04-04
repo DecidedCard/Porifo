@@ -22,8 +22,9 @@ const useInfo = () => {
         setBlog,
         setGithub,
     } = usePortfolioInfo();
-    const { user } = useUser();
+    const { user, portfolio } = useUser();
     const { projects } = useProjects();
+    console.log(portfolio);
 
     const selectList = [
         { value: "default", name: "직무 선택" },
@@ -90,6 +91,8 @@ const useInfo = () => {
     };
 
     const onClickInsertHandler = async () => {
+        let url = "";
+
         const { imageFile, ...info } = basicInfo;
         if (!basicInfo.imageFile) {
             alert("프로필 이미지를 선택해주시기 바랍니다.");
@@ -101,21 +104,29 @@ const useInfo = () => {
             path: `profile/${crypto.randomUUID()}`,
         };
 
+        try {
+            const image = await storageInsert(
+                STORAGE.bucket,
+                `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
+                basicInfo.imageFile!,
+            );
+            url = imageUrl(STORAGE.bucket, image!.path);
+        } catch (error) {
+            console.error(error);
+            return error;
+        }
+
         if (user) {
             try {
-                const image = await storageInsert(
-                    STORAGE.bucket,
-                    `${STORAGE.path}/${basicInfo.imageFile.lastModified}`,
-                    basicInfo.imageFile!,
-                );
-                const url = imageUrl(STORAGE.bucket, image!.path);
-                const newPortfolio = { ...info, profileImage: url, project: projects };
+                const newPortfolio = { ...info, userId: user.id, profileImage: url, project: projects };
                 await supabaseInsert(newPortfolio);
             } catch (error) {
                 console.error(error);
                 return error;
             }
         }
+        const newPortfolio = { ...info, profileImage: url, project: projects };
+        localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
     return {
