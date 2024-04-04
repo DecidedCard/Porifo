@@ -146,6 +146,7 @@ const useInfo = () => {
             try {
                 const newPortfolio = { ...info, userId: user.id, profileImage: url, project: projects };
                 await supabaseInsert(newPortfolio);
+                return;
             } catch (error) {
                 console.error(error);
                 return error;
