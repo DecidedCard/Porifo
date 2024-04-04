@@ -3,9 +3,9 @@ import Button from "./Commen/Button";
 
 const Header = () => {
     return (
-        <main>
+        <main className="sticky top-0 z-50">
             <div
-                className="bg-hihigray px-[100px] flex flex-row items-center justify-center h-[50px] sticky top-0"
+                className="bg-hihigray bg-opacity-50 px-[100px] flex flex-row items-center justify-center h-[50px]"
                 style={{ backdropFilter: "blur(28px)" }}
             >
                 {/* Left Section: Logo */}
@@ -24,9 +24,6 @@ const Header = () => {
                     >
                         피드/커뮤니티
                     </Link>
-                    <button className="text-black text-center font-subhead-sh5 text-sm leading-subhead-sh5 font-semibold relative">
-                        이력서 작성
-                    </button>
                 </div>
 
                 {/* Right Section: Authentication Buttons */}
@@ -41,7 +38,7 @@ const Header = () => {
                     </div>
                     <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
                         <Link
-                            className="text-center text-xs font-semibold relative flex items-center justify-center"
+                            className="text-center text-xs leading-normal font-semibold relative flex items-center justify-center"
                             href="/signup"
                         >
                             회원가입

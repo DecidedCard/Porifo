@@ -5,7 +5,7 @@ import Introduction from "@/Components/MyPageComponents/Introduction";
 import Project from "@/Components/MyPageComponents/Project";
 import URL from "@/Components/MyPageComponents/URL";
 import UserInfo from "@/Components/MyPageComponents/UserInfo";
-import useInfo from "@/hooks/myPage/useInfo";
+import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
 
 const Guest = () => {

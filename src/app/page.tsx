@@ -13,7 +13,7 @@ export default function Home() {
             <div>
                 <Cover />
                 <div className="flex justify-center">
-                    <div className="flex max-w-4xl mx-auto">
+                    <div className="flex mx-auto">
                         <div className="sticky top-32 self-start">
                             <MiddleLeft />
                         </div>
