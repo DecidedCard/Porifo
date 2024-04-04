@@ -1,6 +1,6 @@
 "use client";
 
-import usePortfolio from "@/hooks/myPage/usePortfolio";
+import usePortfolio from "@/hooks/mypage/usePortfolio";
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";

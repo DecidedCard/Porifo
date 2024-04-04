@@ -2,9 +2,8 @@
 
 import React from "react";
 
-import useInfo from "@/hooks/myPage/useInfo";
-
 import Image from "next/image";
+import useInfo from "@/hooks/mypage/useInfo";
 
 const UserInfo = () => {
     const {

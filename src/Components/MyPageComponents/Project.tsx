@@ -1,6 +1,6 @@
 "use client";
 
-import useProject from "@/hooks/myPage/useProject";
+import useProject from "@/hooks/mypage/useProject";
 
 const Project = () => {
     const {
