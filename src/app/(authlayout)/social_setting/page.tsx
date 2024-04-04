@@ -13,7 +13,13 @@ const SocialSeting = () => {
     const [sex, setSex] = useState("");
     const router = useRouter();
     useGetUser();
-    useEffect(() => {}, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem("sb-cyhvfqdzonehvongdtow-auth-token") as string;
+
+        console.log(JSON.parse(token).access_token);
+    }, []);
+
     const onClickeMale = (e: React.MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
         setSex("남자");
