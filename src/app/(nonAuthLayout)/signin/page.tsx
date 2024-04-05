@@ -3,7 +3,7 @@ import React, { FormEvent } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-import usesignInWithSocial from "@/hooks/sign/useSocialLogin";
+import signInWithSocial from "@/hooks/sign/useSocialLogin";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -61,9 +61,9 @@ const SignIn = () => {
                 </div>
                 <button>로그인</button>
             </form>
-            <button onClick={() => usesignInWithSocial("github")}>깃허브 로그인 버튼&nbsp;</button>
-            <button onClick={() => usesignInWithSocial("kakao")}>카카오 로그인 버튼</button>
-            <button onClick={() => usesignInWithSocial("google", queryParams)}>구글 로그인 버튼</button>
+            <button onClick={() => signInWithSocial("github")}>깃허브 로그인 버튼&nbsp;</button>
+            <button onClick={() => signInWithSocial("kakao")}>카카오 로그인 버튼</button>
+            <button onClick={() => signInWithSocial("google", queryParams)}>구글 로그인 버튼</button>
         </div>
     );
 };

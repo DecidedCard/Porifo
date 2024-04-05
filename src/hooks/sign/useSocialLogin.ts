@@ -6,7 +6,7 @@ type QueryParams = {
     prompt: string;
 };
 
-const usesignInWithSocial = async (social: Provider, queryParams?: QueryParams) => {
+const signInWithSocial = async (social: Provider, queryParams?: QueryParams) => {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: social,
         options: {
@@ -22,4 +22,4 @@ const usesignInWithSocial = async (social: Provider, queryParams?: QueryParams) 
         console.log(error);
     }
 };
-export default usesignInWithSocial;
+export default signInWithSocial;
