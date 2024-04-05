@@ -4,6 +4,7 @@ import React from "react";
 
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
+import Button from "../Commen/Button";
 
 const UserInfo = () => {
     const {
@@ -22,9 +23,7 @@ const UserInfo = () => {
             <div className="flex flex-col">
                 <p className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</p>
                 <hr className="border border-neutral-100 my-6 mx-6" />
-                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                    내 정보
-                </p>
+                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">내 정보</p>
                 <div className="pl-6 pt-6 font-medium text-zinc-500 text-left relative w-[177px] flex items-center justify-start">
                     프로필 사진
                 </div>
