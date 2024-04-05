@@ -1,4 +1,4 @@
-import Detail from "@/Components/DetailPageComponents/Detail";
+import Detail from "@/Components/DetailPage/Detail";
 import React from "react";
 
 const DetailPage = ({ params }: { params: { id: string } }) => {

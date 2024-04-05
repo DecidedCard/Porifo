@@ -10,7 +10,7 @@ import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 
 const Cards = ({ filterData }: { filterData: any }) => {
-    const { getFromAndTo, filter, page, setPage, jobFilter } = filterData;
+    const { filter, page, setPage, jobFilter, getFromAndTo } = filterData;
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({

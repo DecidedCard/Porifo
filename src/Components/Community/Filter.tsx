@@ -17,7 +17,7 @@ const Filter = () => {
 
     const filterBtn = SELECT_LIST.slice(1, SELECT_LIST.length);
 
-    //supabase range vlaue
+    //supabase range value
     const getFromAndTo = () => {
         const ITEM_PER_PAGE = 5;
 
