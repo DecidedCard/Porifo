@@ -49,7 +49,7 @@ const Header = () => {
                             로그인
                         </Link>
                     </div>
-                    <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
+                    <div className="bg-primary rounded-lg pt-1 pr-2 pb-1 pl-2 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
                         <Link
                             className="text-center text-xs leading-normal font-semibold relative flex items-center justify-center"
                             href="/signup"

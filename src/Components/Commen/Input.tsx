@@ -8,6 +8,7 @@ const Input = ({
     type,
     value,
     onChange,
+    placeholder,
 }: {
     size?: string;
     helperText?: string;
@@ -16,6 +17,7 @@ const Input = ({
     type: string;
     value?: any;
     onChange?: any;
+    placeholder?: string;
 }) => {
     const height = size === "big" ? "h-14" : "h-9";
 
@@ -29,13 +31,15 @@ const Input = ({
 
     return (
         <div>
+            
             <input
                 type={type}
                 value={value}
                 onChange={onChange}
-                placeholder="Placeholder"
-                className={`border-2 border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 text-xl font-normal`}
+                placeholder={placeholder}
+                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 mt-10 text-sm font-normal`}
             />
+            
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}
         </div>
     );
