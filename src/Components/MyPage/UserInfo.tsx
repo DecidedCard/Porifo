@@ -4,6 +4,8 @@ import React from "react";
 
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
+import Input from "../Commen/Input";
+
 
 const UserInfo = () => {
     const {
@@ -18,85 +20,141 @@ const UserInfo = () => {
         onChangeSelectHandler,
     } = useInfo();
     return (
-        <main className="bg-white rounded-2xl mt-10 ml-10 w-[700px]">
+        <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
             <div className="flex flex-col">
                 <p className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</p>
                 <hr className="border border-neutral-100 my-6 mx-6" />
                 <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
                     내 정보
                 </p>
-                <div className="pl-6 pt-6 font-medium text-zinc-500 text-left relative w-[177px] flex items-center justify-start">
-                    프로필 사진
-                </div>
-                <div className="flex justify-evenly items-center">
-                    <div>
-                        <label>이름: </label>
-                        <input type="text" placeholder="이름" value={basicInfo.name!} onChange={onChangeNameHandler} />
-                    </div>
-                    <label htmlFor="text" className="cursor-pointer">
-                        프로필 이미지 등록하기
+
+                <div className="flex flex-row items-start">
+                    <p className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        프로필 사진
+                    </p>
+                    <label htmlFor="text" className="cursor-pointer pt-6">
+                        {basicInfo.profileImage ? (
+                            <Image
+                                src={basicInfo.profileImage}
+                                alt="프로필 사진 미리보기"
+                                width={100}
+                                height={100}
+                                className="w-[170px] h-[170px] rounded-2xl"
+                            />
+                        ) : (
+                            <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl">
+
+                            </div>
+                        )}
                     </label>
-                    {basicInfo.profileImage ? (
-                        <Image
-                            src={basicInfo.profileImage}
-                            alt="프로필 사진 미리보기"
-                            width={100}
-                            height={100}
-                            className="w-32 h-32 rounded-full"
+                </div>
+
+                <div className="items-center">
+                    <div className="flex">
+                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">이름</label>
+                        <Input
+                            type="text"
+                            placeholder="이름을 입력해 주세요."
+                            value={basicInfo.name!}
+                            onChange={onChangeNameHandler}
+                            width={500}
+                            size="big"
                         />
-                    ) : (
-                        <div className="flex justify-center items-center bg-slate-600 w-20 h-20 rounded-full">
-                            미리보기
-                        </div>
-                    )}
+                    </div>
+
                     <input type="file" id="text" className="hidden" onChange={onChangeProfileHandler} />
                 </div>
-                <div className="flex">
-                    <div>
-                        <label>생년월일: </label>
-                        <input
-                            type="date"
-                            placeholder="생년월일"
-                            value={basicInfo.birthday!}
-                            onChange={onChangeBirthdayHandler}
+
+                <div className="items-center">
+                    <div className="flex">
+                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">영문이름</label>
+                        <Input
+                            type="text"
+                            placeholder="영문 이름을 입력해 주세요."
+                            width={500}
+                            size="big"
                         />
                     </div>
-                    <div>
-                        <label>전화번호: </label>
-                        <input type="tel" placeholder="전화번호" value={basicInfo.tel!} onChange={onChangeTelHandler} />
-                    </div>
+
+                    <input type="file" id="text" className="hidden" />
                 </div>
-                <div>
-                    <div className="flex">
-                        <div>
-                            <label>학교: </label>
-                            <input
-                                type="text"
-                                placeholder="학교"
-                                value={basicInfo.school!}
-                                onChange={onChangeSchoolHandler}
-                            />
-                        </div>
-                        <div>
-                            <label>전공: </label>{" "}
-                            <input
-                                type="text"
-                                placeholder="전공"
-                                value={basicInfo.class!}
-                                onChange={onChangeClassHandler}
-                            />
-                        </div>
-                    </div>
-                    <select value={basicInfo.job!} onChange={onChangeSelectHandler}>
-                        {selectList.map((item) => {
-                            return (
-                                <option key={item.value} value={item.value}>
-                                    {item.name}
-                                </option>
-                            );
-                        })}
-                    </select>
+
+                <div className="flex">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">생년월일</label>
+                    <Input
+                        type="date"
+                        placeholder=""
+                        value={basicInfo.birthday!}
+                        onChange={onChangeBirthdayHandler}
+                        width={500}
+                        size="big"
+                    />
                 </div>
+
+
+                <div className="flex">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">연락처</label>
+                    <Input
+                        type="tel"
+                        placeholder="연락처를 입력해 주세요."
+                        value={basicInfo.tel!}
+                        onChange={onChangeTelHandler}
+                        width={500}
+                        size="big"
+                    />
+                </div>
+
+                <div className="flex">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">e-mail</label>
+                    <Input
+                        type="tel"
+                        placeholder="e-mail을 입력해 주세요."
+                        width={500}
+                        size="big"
+                    />
+                </div>
+
+                <hr className="border border-neutral-100 my-6 mx-6 mt-7" />
+                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
+                    학력
+                </p>
+
+                <div className="flex">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">학교</label>
+                    <Input
+                        type="text"
+                        placeholder="학교를 입력해 주세요."
+                        value={basicInfo.school!}
+                        onChange={onChangeSchoolHandler}
+                        width={500}
+                        size="big"
+                    />
+                </div>
+
+                <div className="flex">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">전공</label>{" "}
+                    <Input
+                        type="text"
+                        placeholder="전공을 입력해 주세요."
+                        value={basicInfo.class!}
+                        onChange={onChangeClassHandler}
+                        width={500}
+                        size="big"
+                    />
+                </div>
+
+                <select 
+                className="flex pl-6 pt-6 mb-2 mt-5 mt-2 font-medium text-zinc-500 relative w-[190px] flex items-center justify-start"
+                value={basicInfo.job!} onChange={onChangeSelectHandler}>
+                    {selectList.map((item) => {
+                        return (
+                            <option key={item.value} value={item.value}>
+                                {item.name}
+                            </option>
+                        );
+                    })}
+                </select>
+
             </div>
         </main>
     );
