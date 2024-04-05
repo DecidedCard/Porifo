@@ -12,7 +12,7 @@ import Navigation from "@/Components/MyPage/Navigation";
 import useMyPage from "@/hooks/mypage/useMyPage";
 
 const MyPage = () => {
-    // const {} = useMyPage();
+    const {} = useMyPage();
     const [nav, setNav] = useState("basicInfo");
 
     return (
