@@ -3,7 +3,7 @@ import React, { FormEvent } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-import signInWithSocial from "@/hooks/sign/useSocialLogin";
+import signInWithSocial from "@/util/sign/socialLogin";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();

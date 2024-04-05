@@ -45,7 +45,6 @@ const SignUp = () => {
                     },
                 },
             });
-            alert(error);
 
             if (error) {
                 throw new Error();
