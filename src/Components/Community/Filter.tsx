@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import useInfo from "@/hooks/mypage/useInfo";
+
 import Cards from "./Cards";
+
 import { SELECT_LIST } from "@/util/select_list";
 import { QUERY_KEY } from "@/util/query_key";
 

@@ -5,12 +5,12 @@ import Link from "next/link";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import { getPortfolio } from "./api";
+
+import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     const { getFromAndTo, filter, page, setPage, jobFilter } = filterData;
-    // const router = useRouter();
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
