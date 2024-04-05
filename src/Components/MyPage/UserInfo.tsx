@@ -5,11 +5,11 @@ import React from "react";
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
+import { SELECT_LIST } from "@/util/select_list";
 
 const UserInfo = () => {
     const {
         basicInfo,
-        selectList,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
@@ -87,7 +87,7 @@ const UserInfo = () => {
                         </div>
                     </div>
                     <select value={basicInfo.job!} onChange={onChangeSelectHandler}>
-                        {selectList.map((item) => {
+                        {SELECT_LIST.map((item) => {
                             return (
                                 <option key={item.value} value={item.value}>
                                     {item.name}
