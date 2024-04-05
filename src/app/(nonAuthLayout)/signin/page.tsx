@@ -3,70 +3,26 @@ import React, { FormEvent } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
+import signInWithSocial from "@/util/sign/socialLogin";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
     const router = useRouter();
 
-    const signInWithGithub = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "github",
-            options: {
-                redirectTo: "http://localhost:3000/social_setting",
-            },
-        });
-        try {
-            if (error) {
-                throw new Error("깃 허브 로그인 오류가 발생하였습니다.");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const signInWithKakao = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "kakao",
-            options: {
-                redirectTo: "http://localhost:3000/social_setting",
-            },
-        });
-
-        try {
-            if (error) {
-                throw new Error("카카오 로그인 오류가 발생하였습니다.");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const signInWithGoogle = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: "http://localhost:3000/social_setting",
-                queryParams: {
-                    access_type: "offline",
-                    prompt: "consent",
-                },
-            },
-        });
-
-        try {
-            if (error) {
-                throw new Error("구글 로그인 중 오류가 발생하였습니다.");
-            }
-        } catch (error) {
-            console.log(error);
-        }
+    const queryParams = {
+        access_type: "offline",
+        prompt: "consent",
     };
 
     const onSubmitLoginUser = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const hasAllInput = email.trim() !== "" && password.trim() !== "";
         try {
-            const { data, error } = await supabase.auth.signInWithPassword({
+            if (hasAllInput) {
+                alert("값이 입력 되었습니다.");
+            }
+            const { error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
@@ -74,8 +30,6 @@ const SignIn = () => {
                 console.error(error);
                 throw new Error("로그인에 실패했습니다.");
             }
-
-            console.log(data);
 
             return router.replace("/");
         } catch (error) {
@@ -107,9 +61,9 @@ const SignIn = () => {
                 </div>
                 <button>로그인</button>
             </form>
-            <button onClick={signInWithGithub}>깃허브 로그인 버튼&nbsp;</button>
-            <button onClick={signInWithKakao}>카카오 로그인 버튼</button>
-            <button onClick={signInWithGoogle}>구글 로그인 버튼</button>
+            <button onClick={() => signInWithSocial("github")}>깃허브 로그인 버튼&nbsp;</button>
+            <button onClick={() => signInWithSocial("kakao")}>카카오 로그인 버튼</button>
+            <button onClick={() => signInWithSocial("google", queryParams)}>구글 로그인 버튼</button>
         </div>
     );
 };
