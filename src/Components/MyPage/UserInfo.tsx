@@ -114,7 +114,7 @@ const UserInfo = () => {
                     />
                 </div>
 
-                <hr className="border border-neutral-100 my-6 mx-6 mt-7" />
+                <hr className="border border-neutral-100 my-6 mx-6" />
                 <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
                     학력
                 </p>

@@ -5,15 +5,15 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 
 import useGetUser from "@/hooks/sign/useGetUser";
-
 import useInput from "@/hooks/useInput";
+import { signSettingValidation } from "@/util/sign/sign_validation";
 const SocialSeting = () => {
     const [age, onChangeAgeHandler] = useInput();
     const [phoneNumber, onChangeNumberHandler] = useInput();
     const [sex, setSex] = useState("");
     const router = useRouter();
     useGetUser();
-    useEffect(() => {}, []);
+
     const onClickeMale = (e: React.MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
         setSex("남자");
@@ -26,31 +26,14 @@ const SocialSeting = () => {
 
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
-        const { data, error } = await supabase.auth.updateUser({
-            data: { age, phoneNumber, sex },
-        });
 
         try {
-            if (phoneNumber.length !== 11) {
-                alert("핸드폰 번호를 정확히 입력해 주세요");
-                return;
-            }
+            signSettingValidation({ phoneNumber, age, sex });
 
-            if (Number.isNaN(age) && Number.isNaN(phoneNumber)) {
-                alert("숫자를 넣어주세요");
-                return;
-            }
+            await supabase.auth.updateUser({
+                data: { age, phoneNumber, sex },
+            });
 
-            if (sex !== "" && age.trim() !== "" && phoneNumber.trim() !== "") {
-                alert("값이 모두 입력되었습니다.");
-            } else {
-                alert("모두 입력이 되었습니다.");
-                return;
-            }
-            console.log(data);
-            if (error) {
-                throw new Error();
-            }
             return router.replace("/");
         } catch (error) {
             console.log(error);
