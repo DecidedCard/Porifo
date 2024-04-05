@@ -95,7 +95,6 @@ const UserInfo = () => {
                             );
                         })}
                     </select>
-                    <Button text="테스트" size="l" border="none" />
                 </div>
             </div>
         </main>
