@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const useMyPage = async () => {
-    const { user, setPortfolio, setUser } = useUser();
+    const { setPortfolio, setUser } = useUser();
     const router = useRouter();
     const { isFetching, isError, data } = useQuery({
         queryKey: [QUERY_KEY.myPageUser],
