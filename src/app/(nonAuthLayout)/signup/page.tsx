@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-
+import { signUpValidation } from "@/util/sign/sign_validation";
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
@@ -31,6 +31,7 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
+            signUpValidation({ phoneNumber, age, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
@@ -44,22 +45,6 @@ const SignUp = () => {
                     },
                 },
             });
-            if (phoneNumber.length !== 11) {
-                alert("핸드폰 번호를 정확히 입력해 주세요");
-                return;
-            }
-            if (Number.isNaN(age) && Number.isNaN(phoneNumber)) {
-                alert("숫자를 넣어주세요");
-                return;
-            }
-            if (email.trim() !== "" && password !== "" && age.trim() !== "") {
-                alert("값이 입력 되었습니다.");
-            } else {
-                alert("값이 정확히 압력되지 않았습니다.");
-                return;
-            }
-
-            alert(error);
 
             if (error) {
                 throw new Error();
@@ -83,7 +68,7 @@ const SignUp = () => {
                 </div>
                 <div>
                     <label>비밀번호: </label>
-                    <input placeholder="비밀번호를 작성해주세요" type="password" onChange={onChangePasswordHandler} />
+                    <input placeholder="6자 이상 작성해주세요" type="password" onChange={onChangePasswordHandler} />
                 </div>
                 <div>
                     <label>이름: </label>

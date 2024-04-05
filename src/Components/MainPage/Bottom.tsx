@@ -60,7 +60,7 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <Link href={"/community"} className="flex items-center justify-center mt-20">
+            <Link href={"/community"} className="flex items-center justify-center mt-20 mb-20">
                 <div className="bg-primary rounded-lg flex gap-2 items-center justify-center shrink-0 w-[200px] h-[45px] relative">
                     <button className="text-white text-center text-xs leading-[32px] flex items-center justify-center">
                         더 많은 피드를 커뮤니티에서 보기

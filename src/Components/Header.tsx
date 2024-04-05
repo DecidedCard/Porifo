@@ -1,7 +1,20 @@
+"use client";
 import Link from "next/link";
 import Button from "./Commen/Button";
+import { supabase } from "@/util/supabase/clientSupabase";
 
 const Header = () => {
+    const signOutFunc = async () => {
+        const { error } = await supabase.auth.signOut();
+        try {
+            if (!true) {
+                console.log(error);
+            }
+        } catch (error) {
+            throw new Error();
+        }
+    };
+
     return (
         <main className="sticky top-0 z-50">
             <div
@@ -36,12 +49,23 @@ const Header = () => {
                             로그인
                         </Link>
                     </div>
-                    <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
+                    <div className="bg-primary rounded-lg pt-1 pr-2 pb-1 pl-2 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
                         <Link
                             className="text-center text-xs leading-normal font-semibold relative flex items-center justify-center"
                             href="/signup"
                         >
                             회원가입
+                        </Link>
+                    </div>
+                    <div
+                        onClick={signOutFunc}
+                        className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white"
+                    >
+                        <Link
+                            className="text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
+                            href="/"
+                        >
+                            로그아웃
                         </Link>
                     </div>
                 </div>
