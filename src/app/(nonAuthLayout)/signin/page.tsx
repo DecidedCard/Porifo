@@ -3,19 +3,25 @@ import React, { FormEvent } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-import useSocialLogin from "@/hooks/sign/useSocialLogin";
+import usesignInWithSocial from "@/hooks/sign/useSocialLogin";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
     const router = useRouter();
 
-    const { signInWithGithub, signInWithKakao, signInWithGoogle } = useSocialLogin();
+    const queryParams = {
+        access_type: "offline",
+        prompt: "consent",
+    };
 
     const onSubmitLoginUser = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const { data, error } = await supabase.auth.signInWithPassword({
+            if (email.trim() !== "" && password.trim() !== "") {
+                alert("값이 입력 되었습니다.");
+            }
+            const { error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
@@ -23,8 +29,6 @@ const SignIn = () => {
                 console.error(error);
                 throw new Error("로그인에 실패했습니다.");
             }
-
-            console.log(data);
 
             return router.replace("/");
         } catch (error) {
@@ -56,9 +60,9 @@ const SignIn = () => {
                 </div>
                 <button>로그인</button>
             </form>
-            <button onClick={signInWithGithub}>깃허브 로그인 버튼&nbsp;</button>
-            <button onClick={signInWithKakao}>카카오 로그인 버튼</button>
-            <button onClick={signInWithGoogle}>구글 로그인 버튼</button>
+            <button onClick={() => usesignInWithSocial("github")}>깃허브 로그인 버튼&nbsp;</button>
+            <button onClick={() => usesignInWithSocial("kakao")}>카카오 로그인 버튼</button>
+            <button onClick={() => usesignInWithSocial("google", queryParams)}>구글 로그인 버튼</button>
         </div>
     );
 };
