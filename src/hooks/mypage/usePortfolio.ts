@@ -1,4 +1,4 @@
-import { QUERY_KEY } from "@/util/queryKey";
+import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { useQuery } from "@tanstack/react-query";
 
