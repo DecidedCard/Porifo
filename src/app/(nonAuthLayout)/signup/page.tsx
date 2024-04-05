@@ -5,7 +5,7 @@ import { supabase } from "@/util/supabase/clientSupabase";
 
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-
+import { signUpValidation } from "@/util/sign/sign_validation";
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, onChangePasswordHandler] = useInput();
@@ -31,20 +31,7 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            if (phoneNumber.length !== 11) {
-                alert("핸드폰 번호를 정확히 입력해 주세요");
-                return;
-            }
-            if (Number.isNaN(age) && Number.isNaN(phoneNumber)) {
-                alert("숫자를 넣어주세요");
-                return;
-            }
-            if (email.trim() !== "" && password.trim() !== "" && age.trim() !== "") {
-                alert("값이 입력 되었습니다.");
-            } else {
-                alert("값이 정확히 압력되지 않았습니다.");
-                return;
-            }
+            signUpValidation({ phoneNumber, age, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,

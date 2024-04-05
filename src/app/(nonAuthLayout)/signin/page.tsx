@@ -17,8 +17,9 @@ const SignIn = () => {
 
     const onSubmitLoginUser = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const hasAllInput = email.trim() !== "" && password.trim() !== "";
         try {
-            if (email.trim() !== "" && password.trim() !== "") {
+            if (hasAllInput) {
                 alert("값이 입력 되었습니다.");
             }
             const { error } = await supabase.auth.signInWithPassword({

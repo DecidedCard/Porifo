@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import useGetUser from "@/hooks/sign/useGetUser";
 import useInput from "@/hooks/useInput";
+import { signSettingValidation } from "@/util/sign/sign_validation";
 const SocialSeting = () => {
     const [age, onChangeAgeHandler] = useInput();
     const [phoneNumber, onChangeNumberHandler] = useInput();
@@ -27,22 +28,7 @@ const SocialSeting = () => {
         e.preventDefault();
 
         try {
-            if (phoneNumber.length !== 11) {
-                alert("핸드폰 번호를 정확히 입력해 주세요");
-                return;
-            }
-
-            if (Number.isNaN(age) && Number.isNaN(phoneNumber)) {
-                alert("숫자를 넣어주세요");
-                return;
-            }
-
-            const hasAllInput = sex == "" || age.trim() !== "" || phoneNumber.trim() !== "";
-
-            if (hasAllInput) {
-                alert("입력해 주세요");
-                return;
-            }
+            signSettingValidation({ phoneNumber, age, sex });
 
             await supabase.auth.updateUser({
                 data: { age, phoneNumber, sex },
