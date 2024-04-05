@@ -16,7 +16,7 @@ const Guest = () => {
             <Introduction />
             <URL />
             <Project />
-            <Button text={"저장하기"} onClick={onClickInsertHandler} />
+            <Button text={"저장하기"} onClick={onClickInsertHandler} width={200} />
         </div>
     );
 };
