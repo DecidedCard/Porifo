@@ -23,6 +23,7 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
+        setProject,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects } = useProjectsStore();
@@ -30,28 +31,34 @@ const useInfo = () => {
     useEffect(() => {
         if (portfolio) {
             setName(portfolio.name!);
+            setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
             setBirthday(portfolio.birthday!);
             setTel(portfolio.tel!);
+            setEmail(portfolio.email!);
             setSchool(portfolio.school!);
             setClass(portfolio.class!);
             setJob(portfolio.job!);
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
+            setProject(JSON.parse(JSON.stringify(portfolio.project!)));
         }
     }, [
         portfolio,
         setName,
+        setEngName,
         setProfile,
         setBirthday,
         setTel,
+        setEmail,
         setSchool,
         setClass,
         setJob,
         setIntroduce,
         setBlog,
         setGithub,
+        setProject,
     ]);
 
     // 스토어 적용 onChangeHandler

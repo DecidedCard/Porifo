@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
+import { Project } from "@/types/Project";
 
 type Store = {
     basicInfo: PortfolioInfo;
@@ -17,6 +18,7 @@ type Store = {
     setJob: (arg: string) => void;
     setBlog: (arg: string) => void;
     setGithub: (arg: string) => void;
+    setProject: (arg: Project[]) => void;
 };
 
 const initial = {
@@ -52,6 +54,7 @@ const usePortfolioInfoStore = create<Store>()((set) => ({
     setJob: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, job: arg } })),
     setBlog: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, blogLink: arg } })),
     setGithub: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, githubLink: arg } })),
+    setProject: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, project: arg } })),
 }));
 
 export default usePortfolioInfoStore;
