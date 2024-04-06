@@ -6,10 +6,12 @@ export interface PortfolioInfo {
     created_at?: string;
     template: string | null;
     name: string | null;
+    englishName: string | null;
     profileImage: string | null;
     imageFile?: File | null;
     birthday: string | null;
     tel: string | null;
+    email: string | null;
     school: string | null;
     class: string | null;
     introduce: string | null;
