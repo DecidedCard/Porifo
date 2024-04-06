@@ -1,4 +1,4 @@
-import useUser from "@/store/userStore";
+import useUserStore from "@/store/userStore";
 import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { userData } from "@/util/supabase/supabase_user";
@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const useMyPage = async () => {
-    const { setPortfolio, setUser } = useUser();
+    const { setPortfolio, setUser } = useUserStore();
     const router = useRouter();
     const { isFetching, isError, data } = useQuery({
         queryKey: [QUERY_KEY.myPageUser],
