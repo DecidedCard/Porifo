@@ -11,10 +11,12 @@ const useInfo = () => {
     const {
         basicInfo,
         setName,
+        setEngName,
         setProfile,
         setImageFile,
         setBirthday,
         setTel,
+        setEmail,
         setSchool,
         setClass,
         setJob,
@@ -57,6 +59,10 @@ const useInfo = () => {
         setName(e.target.value);
     };
 
+    const onChangeEngNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setEngName(e.target.value);
+    };
+
     const onChangeProfileHandler = async (e: ChangeEvent<HTMLInputElement>) => {
         const imageFile = e.target.files![0];
         // 이미지 미리보기
@@ -74,6 +80,10 @@ const useInfo = () => {
 
     const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTel(e.target.value);
+    };
+
+    const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
     };
 
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -164,9 +174,11 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         onChangeNameHandler,
+        onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeTelHandler,
+        onChangeEmailHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeIntroduceHandler,

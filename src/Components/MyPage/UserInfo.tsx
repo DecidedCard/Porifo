@@ -11,9 +11,11 @@ const UserInfo = () => {
     const {
         basicInfo,
         onChangeNameHandler,
+        onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeTelHandler,
+        onChangeEmailHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeSelectHandler,
@@ -66,7 +68,14 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             영문이름
                         </label>
-                        <Input type="text" placeholder="영문 이름을 입력해 주세요." width={500} size="big" />
+                        <Input
+                            type="text"
+                            placeholder="영문 이름을 입력해 주세요."
+                            value={basicInfo.englishName}
+                            onChange={onChangeEngNameHandler}
+                            width={500}
+                            size="big"
+                        />
                     </div>
 
                     <input type="file" id="text" className="hidden" />
@@ -104,7 +113,14 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         e-mail
                     </label>
-                    <Input type="tel" placeholder="e-mail을 입력해 주세요." width={500} size="big" />
+                    <Input
+                        type="tel"
+                        placeholder="e-mail을 입력해 주세요."
+                        value={basicInfo.email}
+                        onChange={onChangeEmailHandler}
+                        width={500}
+                        size="big"
+                    />
                 </div>
 
                 <hr className="border border-neutral-100 my-6 mx-6" />
