@@ -1,76 +1,73 @@
 import { ChangeEvent, useEffect } from "react";
 
-import usePortfolioInfo from "@/store/portfolioInfoStore";
-import useProjects from "@/store/projectStore";
-
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import useUser from "@/store/userStore";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useUserStore from "@/store/userStore";
+import useProjectsStore from "@/store/projectStore";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const useInfo = () => {
     const {
         basicInfo,
         setName,
+        setEngName,
         setProfile,
         setImageFile,
         setBirthday,
         setTel,
+        setEmail,
         setSchool,
         setClass,
         setJob,
         setIntroduce,
         setBlog,
         setGithub,
-    } = usePortfolioInfo();
-    const { user, portfolio } = useUser();
-    const { projects } = useProjects();
-
-    const selectList = [
-        { value: "default", name: "직무 선택" },
-        { value: "프론트앤드 개발자", name: "프론트앤드 개발자" },
-        { value: "서버/백앤드 개발자", name: "서버/백앤드 개발자" },
-        { value: "웹 풀스택 개발자", name: "웹 풀스택 개발자" },
-        { value: "앱 개발자 개발자", name: "앱 개발자 개발자" },
-        { value: "머신러닝/인공지능 개발자", name: "머신러닝/인공지능 개발자" },
-        { value: "데이터 엔지니어 개발자", name: "데이터 엔지니어 개발자" },
-        { value: "게임 개발자", name: "게임 개발자" },
-        { value: "DevOps 개발자", name: "DevOps 개발자" },
-        { value: "SW/솔루션 엔지니어", name: "SW/솔루션 엔지니어" },
-        { value: "정보보안 엔지니어", name: "정보보안 엔지니어" },
-        { value: "QA 엔지니어", name: "QA 엔지니어" },
-        { value: "기타", name: "기타" },
-    ];
+        setProject,
+    } = usePortfolioInfoStore();
+    const { user, portfolio } = useUserStore();
+    const { projects } = useProjectsStore();
 
     useEffect(() => {
         if (portfolio) {
             setName(portfolio.name!);
+            setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
             setBirthday(portfolio.birthday!);
             setTel(portfolio.tel!);
+            setEmail(portfolio.email!);
             setSchool(portfolio.school!);
             setClass(portfolio.class!);
             setJob(portfolio.job!);
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
+            setProject(JSON.parse(JSON.stringify(portfolio.project!)));
         }
     }, [
         portfolio,
         setName,
+        setEngName,
         setProfile,
         setBirthday,
         setTel,
+        setEmail,
         setSchool,
         setClass,
         setJob,
         setIntroduce,
         setBlog,
         setGithub,
+        setProject,
     ]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
+    };
+
+    const onChangeEngNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setEngName(e.target.value);
     };
 
     const onChangeProfileHandler = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -90,6 +87,10 @@ const useInfo = () => {
 
     const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTel(e.target.value);
+    };
+
+    const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
     };
 
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -120,13 +121,11 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        if (!basicInfo.profileImage) {
-            alert("프로필 이미지를 선택해주시기 바랍니다.");
-            return;
-        }
 
-        // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
+        if (portfolioInputFormValidation(info)) return;
+
         if (basicInfo.imageFile) {
+            // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
             const STORAGE = {
                 bucket: "portfolioProfile",
                 path: `profile/${crypto.randomUUID()}`,
@@ -181,11 +180,12 @@ const useInfo = () => {
         user,
         portfolio,
         basicInfo,
-        selectList,
         onChangeNameHandler,
+        onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeTelHandler,
+        onChangeEmailHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeIntroduceHandler,

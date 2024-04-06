@@ -1,9 +1,10 @@
 import { ChangeEvent, useEffect } from "react";
 
 import useInput from "../useInput";
-import useProjects from "@/store/projectStore";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import useProjectsStore from "@/store/projectStore";
+import { projectInputFormValidation } from "@/util/input_form_validation";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
@@ -18,8 +19,9 @@ const useProject = () => {
         setProjectImagesFile,
         setProjectIntroduce,
         setProjectName,
+        setReset,
         setProjects,
-    } = useProjects();
+    } = useProjectsStore();
 
     useEffect(() => {
         setProjectDate(`${startDate} ~ ${endDate}`);
@@ -66,6 +68,10 @@ const useProject = () => {
     };
 
     const onClickInsertHandler = async () => {
+        const { imagesFile, ...info } = project;
+
+        if (projectInputFormValidation(info)) return;
+
         const PROJECT_STORAGE = {
             bucket: "projectImage",
             path: `project/${crypto.randomUUID()}`,
@@ -82,16 +88,8 @@ const useProject = () => {
             }
         });
         const res = (await Promise.all(imagesUrl)) as string[];
-        const { imagesFile, ...info } = project;
         setProjects({ ...info, images: res });
-        setProjectDate("");
-        setProjectDeployLink("");
-        setProjectGithubLink("");
-        setProjectImages([]);
-        setProjectIntroduce("");
-        setProjectName("");
-        setStartDate("");
-        setEndDate("");
+        setReset();
     };
 
     return {
