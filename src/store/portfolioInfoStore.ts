@@ -33,7 +33,7 @@ const initial = {
     share: false,
 };
 
-const usePortfolioInfo = create<Store>()((set) => ({
+const usePortfolioInfoStore = create<Store>()((set) => ({
     basicInfo: initial,
     setName: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, name: arg } })),
     setProfile: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, profileImage: arg } })),
@@ -48,4 +48,4 @@ const usePortfolioInfo = create<Store>()((set) => ({
     setGithub: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, githubLink: arg } })),
 }));
 
-export default usePortfolioInfo;
+export default usePortfolioInfoStore;

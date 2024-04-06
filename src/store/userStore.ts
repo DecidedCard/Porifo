@@ -26,11 +26,11 @@ type Store = {
     setPortfolio: (arg: PortfolioInfo) => void;
 };
 
-const useUser = create<Store>()((set) => ({
+const useUserStore = create<Store>()((set) => ({
     user: null,
     portfolio: null,
     setUser: (arg) => set({ user: arg }),
     setPortfolio: (arg) => set({ portfolio: arg }),
 }));
 
-export default useUser;
+export default useUserStore;

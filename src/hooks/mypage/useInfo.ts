@@ -1,12 +1,11 @@
 import { ChangeEvent, useEffect } from "react";
 
-import usePortfolioInfo from "@/store/portfolioInfoStore";
-import useProjects from "@/store/projectStore";
-
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import useUser from "@/store/userStore";
 import { inputFormValidation } from "@/util/input_form_ validation";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useUserStore from "@/store/userStore";
+import useProjectsStore from "@/store/projectStore";
 
 const useInfo = () => {
     const {
@@ -22,9 +21,9 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-    } = usePortfolioInfo();
-    const { user, portfolio } = useUser();
-    const { projects } = useProjects();
+    } = usePortfolioInfoStore();
+    const { user, portfolio } = useUserStore();
+    const { projects } = useProjectsStore();
 
     useEffect(() => {
         if (portfolio) {

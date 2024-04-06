@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect } from "react";
 
 import useInput from "../useInput";
-import useProjects from "@/store/projectStore";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import useProjectsStore from "@/store/projectStore";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
@@ -19,7 +19,7 @@ const useProject = () => {
         setProjectIntroduce,
         setProjectName,
         setProjects,
-    } = useProjects();
+    } = useProjectsStore();
 
     useEffect(() => {
         setProjectDate(`${startDate} ~ ${endDate}`);

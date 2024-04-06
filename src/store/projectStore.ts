@@ -16,7 +16,7 @@ type Store = {
     setProjects: (arg: Project) => void;
 };
 
-const useProjects = create<Store>()((set) => ({
+const useProjectsStore = create<Store>()((set) => ({
     project: { name: "", images: [], imagesFile: [], introduce: "", date: "", githubLink: "", deployLink: "" },
     projects: [],
     setProjectName: (arg) => set((item) => ({ project: { ...item.project, name: arg } })),
@@ -29,4 +29,4 @@ const useProjects = create<Store>()((set) => ({
     setProjects: (arg) => set((item) => ({ projects: [...item.projects, arg] })),
 }));
 
-export default useProjects;
+export default useProjectsStore;
