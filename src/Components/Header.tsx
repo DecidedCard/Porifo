@@ -28,11 +28,11 @@ const Header = () => {
 
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[124px] items-center justify-center shrink-0 relative font-spoqaLight">
-                    <button className="text-black text-center font-subhead-sh5 text-sm leading-subhead-sh5 font-semibold relative">
+                    <button className="text-black text-center text-sm font-semibold relative">
                         서비스 소개
                     </button>
                     <Link
-                        className="text-black text-center font-subhead-sh5 text-sm leading-subhead-sh5 font-semibold relative"
+                        className="text-black text-center text-sm font-semibold relative"
                         href={"/community"}
                     >
                         피드/커뮤니티

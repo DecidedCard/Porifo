@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "../Commen/Button";
 
 const Cover = () => {
     return (
@@ -12,10 +13,16 @@ const Cover = () => {
                         포리포에서 당신의 커리어를 넓혀보세요.
                     </p>
                     <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
-                        <div className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center w-[150px] h-[50px]">
-                            <button className="text-white text-center font-medium text-[14px] leading-[32px] flex items-center justify-center">
-                                이력서 등록하기
-                            </button>
+                        <div>
+
+                            <Button 
+                            text="이력서 등록하기"
+                            size="m"
+                            width={100}
+                            fontSize="m"
+                            color="primary"
+                            border="none"
+                            />
                         </div>
                     </div>
                 </div>
