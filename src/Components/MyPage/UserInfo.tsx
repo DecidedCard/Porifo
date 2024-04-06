@@ -29,7 +29,7 @@ const UserInfo = () => {
                     <p className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         프로필 사진
                     </p>
-                    <label htmlFor="text" className="cursor-pointer pt-6">
+                    <label htmlFor="profile" className="cursor-pointer pt-6">
                         {basicInfo.profileImage ? (
                             <Image
                                 src={basicInfo.profileImage}
@@ -42,6 +42,7 @@ const UserInfo = () => {
                             <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl"></div>
                         )}
                     </label>
+                    <input type="file" id="profile" className="hidden" onChange={onChangeProfileHandler} />
                 </div>
 
                 <div className="items-center">
@@ -58,8 +59,6 @@ const UserInfo = () => {
                             size="big"
                         />
                     </div>
-
-                    <input type="file" id="text" className="hidden" onChange={onChangeProfileHandler} />
                 </div>
 
                 <div className="items-center">
