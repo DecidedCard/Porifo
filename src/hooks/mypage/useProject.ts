@@ -18,6 +18,7 @@ const useProject = () => {
         setProjectImagesFile,
         setProjectIntroduce,
         setProjectName,
+        setReset,
         setProjects,
     } = useProjectsStore();
 
@@ -84,14 +85,7 @@ const useProject = () => {
         const res = (await Promise.all(imagesUrl)) as string[];
         const { imagesFile, ...info } = project;
         setProjects({ ...info, images: res });
-        setProjectDate("");
-        setProjectDeployLink("");
-        setProjectGithubLink("");
-        setProjectImages([]);
-        setProjectIntroduce("");
-        setProjectName("");
-        setStartDate("");
-        setEndDate("");
+        setReset();
     };
 
     return {

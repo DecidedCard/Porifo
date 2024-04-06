@@ -12,12 +12,15 @@ type Store = {
     setProjectDate: (arg: string) => void;
     setProjectDeployLink: (arg: string) => void;
     setProjectGithubLink: (arg: string) => void;
+    setReset: () => void;
 
     setProjects: (arg: Project) => void;
 };
 
+const initial = { name: "", images: [], imagesFile: [], introduce: "", date: "", githubLink: "", deployLink: "" };
+
 const useProjectsStore = create<Store>()((set) => ({
-    project: { name: "", images: [], imagesFile: [], introduce: "", date: "", githubLink: "", deployLink: "" },
+    project: initial,
     projects: [],
     setProjectName: (arg) => set((item) => ({ project: { ...item.project, name: arg } })),
     setProjectImages: (arg) => set((item) => ({ project: { ...item.project, images: arg } })),
@@ -26,6 +29,7 @@ const useProjectsStore = create<Store>()((set) => ({
     setProjectDate: (arg) => set((item) => ({ project: { ...item.project, date: arg } })),
     setProjectDeployLink: (arg) => set((item) => ({ project: { ...item.project, deployLink: arg } })),
     setProjectGithubLink: (arg) => set((item) => ({ project: { ...item.project, githubLink: arg } })),
+    setReset: () => set({ project: initial }),
     setProjects: (arg) => set((item) => ({ projects: [...item.projects, arg] })),
 }));
 
