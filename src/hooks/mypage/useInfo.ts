@@ -6,6 +6,7 @@ import useProjects from "@/store/projectStore";
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import useUser from "@/store/userStore";
+import { inputFormValidation } from "@/util/input_form_ validation";
 
 const useInfo = () => {
     const {
@@ -104,13 +105,11 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        if (!basicInfo.profileImage) {
-            alert("프로필 이미지를 선택해주시기 바랍니다.");
-            return;
-        }
 
-        // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
+        if (inputFormValidation(info)) return;
+
         if (basicInfo.imageFile) {
+            // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
             const STORAGE = {
                 bucket: "portfolioProfile",
                 path: `profile/${crypto.randomUUID()}`,

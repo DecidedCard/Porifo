@@ -140,7 +140,7 @@ const UserInfo = () => {
                 </div>
 
                 <select
-                    className="flex pl-6 pt-6 mb-2 mt-5 mt-2 font-medium text-zinc-500 relative w-[190px] flex items-center justify-start"
+                    className="flex pl-6 pt-6 mb-2 mt-5 font-medium text-zinc-500 relative w-[190px] items-center justify-start"
                     value={basicInfo.job!}
                     onChange={onChangeSelectHandler}
                 >
