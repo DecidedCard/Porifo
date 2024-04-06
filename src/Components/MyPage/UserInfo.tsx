@@ -5,12 +5,11 @@ import React from "react";
 import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
 import Input from "../Commen/Input";
-
+import { SELECT_LIST } from "@/util/select_list";
 
 const UserInfo = () => {
     const {
         basicInfo,
-        selectList,
         onChangeNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
@@ -24,9 +23,7 @@ const UserInfo = () => {
             <div className="flex flex-col">
                 <p className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</p>
                 <hr className="border border-neutral-100 my-6 mx-6" />
-                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                    내 정보
-                </p>
+                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">내 정보</p>
 
                 <div className="flex flex-row items-start">
                     <p className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
@@ -42,16 +39,16 @@ const UserInfo = () => {
                                 className="w-[170px] h-[170px] rounded-2xl"
                             />
                         ) : (
-                            <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl">
-
-                            </div>
+                            <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl"></div>
                         )}
                     </label>
                 </div>
 
                 <div className="items-center">
                     <div className="flex">
-                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">이름</label>
+                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                            이름
+                        </label>
                         <Input
                             type="text"
                             placeholder="이름을 입력해 주세요."
@@ -67,20 +64,19 @@ const UserInfo = () => {
 
                 <div className="items-center">
                     <div className="flex">
-                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">영문이름</label>
-                        <Input
-                            type="text"
-                            placeholder="영문 이름을 입력해 주세요."
-                            width={500}
-                            size="big"
-                        />
+                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                            영문이름
+                        </label>
+                        <Input type="text" placeholder="영문 이름을 입력해 주세요." width={500} size="big" />
                     </div>
 
                     <input type="file" id="text" className="hidden" />
                 </div>
 
                 <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">생년월일</label>
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        생년월일
+                    </label>
                     <Input
                         type="date"
                         placeholder=""
@@ -91,9 +87,10 @@ const UserInfo = () => {
                     />
                 </div>
 
-
                 <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">연락처</label>
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        연락처
+                    </label>
                     <Input
                         type="tel"
                         placeholder="연락처를 입력해 주세요."
@@ -105,22 +102,19 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">e-mail</label>
-                    <Input
-                        type="tel"
-                        placeholder="e-mail을 입력해 주세요."
-                        width={500}
-                        size="big"
-                    />
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        e-mail
+                    </label>
+                    <Input type="tel" placeholder="e-mail을 입력해 주세요." width={500} size="big" />
                 </div>
 
                 <hr className="border border-neutral-100 my-6 mx-6" />
-                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                    학력
-                </p>
+                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">학력</p>
 
                 <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">학교</label>
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        학교
+                    </label>
                     <Input
                         type="text"
                         placeholder="학교를 입력해 주세요."
@@ -132,7 +126,9 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">전공</label>{" "}
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        전공
+                    </label>{" "}
                     <Input
                         type="text"
                         placeholder="전공을 입력해 주세요."
@@ -143,10 +139,12 @@ const UserInfo = () => {
                     />
                 </div>
 
-                <select 
-                className="flex pl-6 pt-6 mb-2 mt-5 mt-2 font-medium text-zinc-500 relative w-[190px] flex items-center justify-start"
-                value={basicInfo.job!} onChange={onChangeSelectHandler}>
-                    {selectList.map((item) => {
+                <select
+                    className="flex pl-6 pt-6 mb-2 mt-5 mt-2 font-medium text-zinc-500 relative w-[190px] flex items-center justify-start"
+                    value={basicInfo.job!}
+                    onChange={onChangeSelectHandler}
+                >
+                    {SELECT_LIST.map((item) => {
                         return (
                             <option key={item.value} value={item.value}>
                                 {item.name}
@@ -154,7 +152,6 @@ const UserInfo = () => {
                         );
                     })}
                 </select>
-
             </div>
         </main>
     );
