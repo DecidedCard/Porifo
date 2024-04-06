@@ -5,7 +5,7 @@ import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useUserStore from "@/store/userStore";
 import useProjectsStore from "@/store/projectStore";
-import { portfolioInputFormValidation } from "@/util/input_form_ validation";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const useInfo = () => {
     const {

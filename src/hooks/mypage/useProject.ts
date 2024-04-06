@@ -4,7 +4,7 @@ import useInput from "../useInput";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import useProjectsStore from "@/store/projectStore";
-import { projectInputFormValidation } from "@/util/input_form_ validation";
+import { projectInputFormValidation } from "@/util/input_form_validation";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
