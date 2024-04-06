@@ -2,10 +2,10 @@ import { ChangeEvent, useEffect } from "react";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import { inputFormValidation } from "@/util/input_form_ validation";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useUserStore from "@/store/userStore";
 import useProjectsStore from "@/store/projectStore";
+import { portfolioInputFormValidation } from "@/util/input_form_ validation";
 
 const useInfo = () => {
     const {
@@ -115,7 +115,7 @@ const useInfo = () => {
 
         const { imageFile, ...info } = basicInfo;
 
-        if (inputFormValidation(info)) return;
+        if (portfolioInputFormValidation(info)) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장

@@ -4,6 +4,7 @@ import useInput from "../useInput";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import useProjectsStore from "@/store/projectStore";
+import { projectInputFormValidation } from "@/util/input_form_ validation";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
@@ -67,6 +68,10 @@ const useProject = () => {
     };
 
     const onClickInsertHandler = async () => {
+        const { imagesFile, ...info } = project;
+
+        if (projectInputFormValidation(info)) return;
+
         const PROJECT_STORAGE = {
             bucket: "projectImage",
             path: `project/${crypto.randomUUID()}`,
@@ -83,7 +88,6 @@ const useProject = () => {
             }
         });
         const res = (await Promise.all(imagesUrl)) as string[];
-        const { imagesFile, ...info } = project;
         setProjects({ ...info, images: res });
         setReset();
     };
