@@ -11,6 +11,11 @@ export const inputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
+    if (!info.englishName) {
+        alert("영문이름을 작성해주시기 바랍니다.");
+        return true;
+    }
+
     if (!info.birthday) {
         alert("생년월일을 작성해주시기 바랍니다.");
         return true;
@@ -21,10 +26,10 @@ export const inputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
-    // if (!info.) {
-    //     alert("이메일을 입력해주시기 바랍니다.");
-    //     return true;
-    // }
+    if (!info.email) {
+        alert("이메일을 작성해주시기 바랍니다.");
+        return true;
+    }
 
     if (!info.school) {
         alert("학교를 작성해주시기 바랍니다.");
