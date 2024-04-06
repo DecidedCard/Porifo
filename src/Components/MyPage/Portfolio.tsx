@@ -7,12 +7,12 @@ import Link from "next/link";
 import React from "react";
 import { usePDF } from "react-to-pdf";
 import Button from "../Commen/Button";
-import useUser from "@/store/userStore";
+import useUserStore from "@/store/userStore";
 
 const Portfolio = ({ id }: { id: string }) => {
     const { portfolio, isError, isFetching } = usePortfolio(id);
     4;
-    const { user } = useUser();
+    const { user } = useUserStore();
     const { targetRef, toPDF } = usePDF({ filename: user?.id });
 
     if (isFetching) {
