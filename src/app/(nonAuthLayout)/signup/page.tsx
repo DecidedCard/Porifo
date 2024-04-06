@@ -58,7 +58,7 @@ const SignUp = () => {
         <div>
             <form onSubmit={signUpNewUser}>
                 <div>
-                    <label>이메일: </label>
+                    <label>이메일</label>
                     <input
                         placeholder="이메일을 작성해주세요"
                         pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
@@ -67,24 +67,24 @@ const SignUp = () => {
                     />
                 </div>
                 <div>
-                    <label>비밀번호: </label>
+                    <label>비밀번호</label>
                     <input placeholder="6자 이상 작성해주세요" type="password" onChange={onChangePasswordHandler} />
                 </div>
                 <div>
-                    <label>이름: </label>
+                    <label>이름</label>
                     <input placeholder="이름을 작성해주세요" type="text" onChange={onChangeNameHandler} />
                 </div>
                 <div>
-                    <label>나이: </label>
+                    <label>나이</label>
                     <input placeholder="나이를 입력해주세요" maxLength={2} onChange={onChangeAgeHandler} />
                 </div>
                 <div>
-                    <label>성별: </label>
+                    <label>성별</label>
                     <button onClick={onClickeMale}>남자</button>
                     <button onClick={onClickeFeMale}>여자</button>
                 </div>
                 <div>
-                    <label>핸드폰 번호: </label>
+                    <label>핸드폰 번호</label>
                     <input onChange={onChangeNumberHandler} maxLength={11} placeholder="-없이 작성해주세요" />
                 </div>
 

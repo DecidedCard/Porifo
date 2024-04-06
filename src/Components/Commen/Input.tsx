@@ -5,6 +5,7 @@ const Input = ({
     helperText,
     color,
     width,
+    pattern,
     type,
     value,
     onChange,
@@ -14,6 +15,7 @@ const Input = ({
     helperText?: string;
     color?: string;
     width: number;
+    pattern?: string;
     type: string;
     value?: any;
     onChange?: any;
@@ -31,15 +33,15 @@ const Input = ({
 
     return (
         <div>
-            
             <input
                 type={type}
                 value={value}
+                pattern={pattern}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 mt-10 text-sm font-normal`}
+                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2  text-sm font-normal`}
             />
-            
+
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}
         </div>
     );
