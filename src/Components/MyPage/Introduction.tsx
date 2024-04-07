@@ -24,7 +24,7 @@ const Introduction = () => {
                         자기소개
                     </label>
                     <textarea
-                        className="h-[334px] w-[500px] resize-none p-2 border border-solid border-zinc-300"
+                        className="h-[334px] w-[500px] resize-none p-2 border border-solid border-zinc-300 rounded-lg"
                         placeholder="본인만의 소개글을 작성해 보세요"
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}

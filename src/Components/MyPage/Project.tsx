@@ -47,7 +47,7 @@ const Project = () => {
                     {/* 사진 제한 3장 */}
                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
                     <label htmlFor="file">
-                        <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] cursor-pointer">
+                        <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] cursor-pointer rounded-lg">
                             {project.images.length !== 0 ? (
                                 project.images.map((item, idx) => {
                                     return (
