@@ -6,6 +6,7 @@ import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useUserStore from "@/store/userStore";
 import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
+import { Project } from "@/types/Project";
 
 const useInfo = () => {
     const {
@@ -23,13 +24,13 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-        setProject,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects } = useProjectsStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
 
     useEffect(() => {
         if (portfolio) {
+            const project = portfolio.project as Project[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
@@ -42,7 +43,7 @@ const useInfo = () => {
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
-            setProject(JSON.parse(JSON.stringify(portfolio.project!)));
+            setProjectsInitial(project);
         }
     }, [
         portfolio,
@@ -58,7 +59,7 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-        setProject,
+        setProjectsInitial,
     ]);
 
     // 스토어 적용 onChangeHandler
