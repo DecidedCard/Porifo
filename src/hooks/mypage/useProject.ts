@@ -49,8 +49,8 @@ const useProject = () => {
         const fileList = e.target.files;
         console.log(project.images.length);
 
-        if (fileList!.length + project.images.length > 5) {
-            alert("사진은 최대 5장이 최대입니다.");
+        if (fileList!.length + project.images.length > 3) {
+            alert("사진은 최대 3장이 최대입니다.");
             return;
         }
         const fileArray: File[] = Array.prototype.slice.call(fileList);
