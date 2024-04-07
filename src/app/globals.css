@@ -110,6 +110,16 @@ body {
     line-height: 1;
     font-family: "Spoqa Han Sans Neo", "sans-serif";
     box-sizing: border-box;
+
+    input[type="date"]:not(.has-value):before {
+        color: lightgray;
+        content: attr(placeholder);
+    }
+
+    input[type="month"]:not(.has-value):before {
+        color: lightgray;
+        content: attr(placeholder);
+    }
 }
 ol,
 ul {

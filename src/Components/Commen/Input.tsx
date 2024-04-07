@@ -31,7 +31,6 @@ const Input = ({
 
     return (
         <div>
-            
             <input
                 type={type}
                 value={value}
@@ -39,7 +38,7 @@ const Input = ({
                 placeholder={placeholder}
                 className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 text-sm font-normal`}
             />
-            
+
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}
         </div>
     );
