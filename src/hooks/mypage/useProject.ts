@@ -1,13 +1,15 @@
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, LegacyRef, RefAttributes, useEffect, useRef } from "react";
 
 import useInput from "../useInput";
-import useProjects from "@/store/projectStore";
 
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import useProjectsStore from "@/store/projectStore";
+import { projectInputFormValidation } from "@/util/input_form_validation";
 
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
     const [endDate, onChangeEndDateHandler, setEndDate] = useInput();
+    const fileRef = useRef<HTMLInputElement>(null);
 
     const {
         project,
@@ -18,8 +20,9 @@ const useProject = () => {
         setProjectImagesFile,
         setProjectIntroduce,
         setProjectName,
+        setReset,
         setProjects,
-    } = useProjects();
+    } = useProjectsStore();
 
     useEffect(() => {
         setProjectDate(`${startDate} ~ ${endDate}`);
@@ -46,8 +49,8 @@ const useProject = () => {
         const fileList = e.target.files;
         console.log(project.images.length);
 
-        if (fileList!.length + project.images.length > 5) {
-            alert("사진은 최대 5장이 최대입니다.");
+        if (fileList!.length + project.images.length > 3) {
+            alert("사진은 최대 3장이 최대입니다.");
             return;
         }
         const fileArray: File[] = Array.prototype.slice.call(fileList);
@@ -63,9 +66,14 @@ const useProject = () => {
     const onClickDeleteImage = () => {
         setProjectImages([]);
         setProjectImagesFile([]);
+        fileRef.current!.value = "";
     };
 
     const onClickInsertHandler = async () => {
+        const { imagesFile, ...info } = project;
+
+        if (projectInputFormValidation(info)) return;
+
         const PROJECT_STORAGE = {
             bucket: "projectImage",
             path: `project/${crypto.randomUUID()}`,
@@ -82,20 +90,13 @@ const useProject = () => {
             }
         });
         const res = (await Promise.all(imagesUrl)) as string[];
-        const { imagesFile, ...info } = project;
         setProjects({ ...info, images: res });
-        setProjectDate("");
-        setProjectDeployLink("");
-        setProjectGithubLink("");
-        setProjectImages([]);
-        setProjectIntroduce("");
-        setProjectName("");
-        setStartDate("");
-        setEndDate("");
+        setReset();
     };
 
     return {
         project,
+        fileRef,
         startDate,
         endDate,
         onChangeProjectName,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "../Commen/Button";
 
 const MiddleLeft = () => {
     return (
@@ -13,9 +14,13 @@ const MiddleLeft = () => {
                     </p>
                     <div>
                     <Link href={"/community"}>
-                        <button className="text-xs rounded-lg border border-primary px-2 py-1 flex items-center justify-center w-44 h-12 text-primary font-medium text-base leading-snug">
-                        더 많은 포트폴리오 확인하기
-                        </button>
+                        <Button 
+                        text="더 많은 포트폴리오 확인하기"
+                        size="l"
+                        width={150}
+                        fontSize="s"
+                        color="primary"
+                        />
                         </Link>
                     </div>
                 </div>
