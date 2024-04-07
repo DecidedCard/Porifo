@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, LegacyRef, RefAttributes, useEffect, useRef } from "react";
 
 import useInput from "../useInput";
 
@@ -9,6 +9,7 @@ import { projectInputFormValidation } from "@/util/input_form_validation";
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
     const [endDate, onChangeEndDateHandler, setEndDate] = useInput();
+    const fileRef = useRef<HTMLInputElement>(null);
 
     const {
         project,
@@ -65,6 +66,7 @@ const useProject = () => {
     const onClickDeleteImage = () => {
         setProjectImages([]);
         setProjectImagesFile([]);
+        fileRef.current!.value = "";
     };
 
     const onClickInsertHandler = async () => {
@@ -94,6 +96,7 @@ const useProject = () => {
 
     return {
         project,
+        fileRef,
         startDate,
         endDate,
         onChangeProjectName,
