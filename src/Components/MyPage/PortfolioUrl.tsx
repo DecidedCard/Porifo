@@ -3,7 +3,7 @@
 import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
 
-const URL = () => {
+const PortfolioUrl = () => {
     const { basicInfo, onChangeBlogHandler, onChangeGithubHandler } = useInfo();
     return (
         <div>
@@ -15,4 +15,4 @@ const URL = () => {
     );
 };
 
-export default URL;
+export default PortfolioUrl;
