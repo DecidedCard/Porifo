@@ -101,7 +101,7 @@ const useInfo = () => {
         setClass(e.target.value);
     };
 
-    const onChangeIntroduceHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setIntroduce(e.target.value);
     };
 

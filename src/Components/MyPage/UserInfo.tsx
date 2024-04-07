@@ -68,7 +68,6 @@ const UserInfo = () => {
 
                 <div className="items-center">
                     <div className="flex">
-
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             영문이름
                         </label>
@@ -94,7 +93,7 @@ const UserInfo = () => {
                     <div className="mt-10">
                         <Input
                             type="date"
-                            placeholder=""
+                            placeholder="생년월일을 입력해 주세요"
                             value={basicInfo.birthday!}
                             onChange={onChangeBirthdayHandler}
                             width={500}
@@ -134,6 +133,24 @@ const UserInfo = () => {
                         />
                     </div>
                 </div>
+                <div className="flex items-center">
+                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        직군:
+                    </label>
+                    <select
+                        className="flex font-medium text-zinc-500 relative w-[190px] items-center justify-start mt-6"
+                        value={basicInfo.job!}
+                        onChange={onChangeSelectHandler}
+                    >
+                        {SELECT_LIST.map((item) => {
+                            return (
+                                <option key={item.value} value={item.value}>
+                                    {item.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                </div>
 
                 <hr className="border border-neutral-100 my-6 mx-6" />
                 <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">학력</p>
@@ -170,19 +187,49 @@ const UserInfo = () => {
                     </div>
                 </div>
 
-                <select
-                    className="flex pl-6 pt-6 mb-2 mt-5 font-medium text-zinc-500 relative w-[190px] items-center justify-start"
-                    value={basicInfo.job!}
-                    onChange={onChangeSelectHandler}
-                >
-                    {SELECT_LIST.map((item) => {
-                        return (
-                            <option key={item.value} value={item.value}>
-                                {item.name}
-                            </option>
-                        );
-                    })}
-                </select>
+                <hr className="border border-neutral-100 my-6 mx-6" />
+
+                <div className="flex flex-col gap-10">
+                    <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
+                        업무 경력
+                    </p>
+
+                    <div className="flex items-start">
+                        <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                            회사이름
+                        </label>
+                        <div className="flex flex-col gap-4">
+                            <Input type="text" placeholder="회사이름을 입력해주세요." width={500} size="big" />
+                            <div className="flex justify-between">
+                                <Input type="text" width={250} size="big" placeholder="부서" />
+                                <Input type="text" width={250} size="big" placeholder="직책" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start">
+                        <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                            기간
+                        </label>
+                        <div className="w-[500px]">
+                            <div className="flex justify-between">
+                                <Input type="month" placeholder="YYYY.MM" width={250} size="big" />
+                                <Input type="month" placeholder="YYYY.MM" width={250} size="big" />
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Input type="checkbox" width={10} />
+                                <label>재직 중</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start">
+                        <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                            내용
+                        </label>
+                        <Input type="text" placeholder="전공을 입력해 주세요." width={500} size="big" />
+                    </div>
+                </div>
             </div>
         </main>
     );
