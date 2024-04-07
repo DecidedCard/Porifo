@@ -39,6 +39,7 @@ const UserInfo = () => {
                                 width={100}
                                 height={100}
                                 className="w-[170px] h-[170px] rounded-2xl"
+                                
                             />
                         ) : (
                             <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl"></div>
