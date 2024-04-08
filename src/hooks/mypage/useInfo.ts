@@ -29,7 +29,18 @@ const useInfo = () => {
     const { projects, setProjectsInitial } = useProjectsStore();
 
     useEffect(() => {
-        if (portfolio) {
+        if (
+            !basicInfo.name &&
+            !basicInfo.birthday &&
+            !basicInfo.email &&
+            !basicInfo.englishName &&
+            !basicInfo.profileImage &&
+            !basicInfo.tel &&
+            !basicInfo.school &&
+            !basicInfo.job &&
+            !basicInfo.project &&
+            portfolio
+        ) {
             const project = portfolio.project as Project[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
@@ -46,6 +57,7 @@ const useInfo = () => {
             setProjectsInitial(project);
         }
     }, [
+        basicInfo,
         portfolio,
         setName,
         setEngName,
