@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
-
+import Input from "@/Components/Commen/Input";
 import useGetUser from "@/hooks/sign/useGetUser";
 import useInput from "@/hooks/useInput";
 import { signSettingValidation } from "@/util/sign/sign_validation";
@@ -45,15 +45,15 @@ const SocialSeting = () => {
             <h1>추가 정보를 입력해 주세요.</h1>
 
             <div>
-                <label>나이: </label>
+                <label>나이</label>
                 <input placeholder="나이를 입력해주세요" maxLength={2} onChange={onChangeAgeHandler} />
             </div>
             <div>
-                <label>핸드폰 번호: </label>
+                <label>핸드폰 번호</label>
                 <input onChange={onChangeNumberHandler} maxLength={11} placeholder="-없이 작성해주세요" />
             </div>
             <div>
-                <label>성별: </label>
+                <label>성별</label>
                 <button onClick={onClickeMale}>남자</button>
                 <button onClick={onClickeFeMale}>여자</button>
             </div>

@@ -31,7 +31,11 @@ export const supabasePortfolioInfoRead = async (col: { id: string; value: string
 export const supabasePortfolioUpdate = async (arg: PortfolioInfo, value: string) => {
     try {
         const { project, ...info } = arg;
-        const { error } = await supabase.from("portfolioInfo").update(info).eq("userId", value);
+
+        const { error } = await supabase
+            .from("portfolioInfo")
+            .update({ ...info, project: JSON.parse(JSON.stringify(project)) })
+            .eq("userId", value);
         if (error) {
             console.error(error);
             throw new Error("업데이트를 하지 못했습니다.");

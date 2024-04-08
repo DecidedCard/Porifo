@@ -13,6 +13,7 @@ const useProject = () => {
 
     const {
         project,
+        projects,
         setProjectDate,
         setProjectDeployLink,
         setProjectGithubLink,
@@ -63,10 +64,14 @@ const useProject = () => {
         setProjectImagesFile([...project.imagesFile!, ...fileArray]);
     };
 
-    const onClickDeleteImage = () => {
-        setProjectImages([]);
-        setProjectImagesFile([]);
-        fileRef.current!.value = "";
+    const onClickDeleteImage = (arg: number) => {
+        const removeImages = [...project.images];
+        const removeImagesFile = [...project.imagesFile!];
+        removeImages.splice(arg, 1);
+        removeImagesFile.splice(arg, 1);
+
+        setProjectImages(removeImages);
+        setProjectImagesFile(removeImagesFile);
     };
 
     const onClickInsertHandler = async () => {
@@ -92,10 +97,13 @@ const useProject = () => {
         const res = (await Promise.all(imagesUrl)) as string[];
         setProjects({ ...info, images: res });
         setReset();
+        setStartDate("");
+        setEndDate("");
     };
 
     return {
         project,
+        projects,
         fileRef,
         startDate,
         endDate,

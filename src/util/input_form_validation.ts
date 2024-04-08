@@ -43,6 +43,11 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
+    if (!info.introduce) {
+        alert("직무를 선택해주시기 바랍니다.");
+        return true;
+    }
+
     if (!info.project) {
         alert("project를 작성해주시기를 바랍니다.");
         return true;
