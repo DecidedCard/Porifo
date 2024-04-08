@@ -42,6 +42,7 @@ export type Database = {
                 Row: {
                     birthday: string | null;
                     blogLink: string | null;
+                    career: string[] | null;
                     class: string | null;
                     created_at: string;
                     email: string | null;
@@ -62,6 +63,7 @@ export type Database = {
                 Insert: {
                     birthday?: string | null;
                     blogLink?: string | null;
+                    career?: string[] | null;
                     class?: string | null;
                     created_at?: string;
                     email?: string | null;
@@ -82,6 +84,7 @@ export type Database = {
                 Update: {
                     birthday?: string | null;
                     blogLink?: string | null;
+                    career?: string[] | null;
                     class?: string | null;
                     created_at?: string;
                     email?: string | null;
