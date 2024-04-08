@@ -13,6 +13,7 @@ const useProject = () => {
 
     const {
         project,
+        projects,
         setProjectDate,
         setProjectDeployLink,
         setProjectGithubLink,
@@ -96,6 +97,7 @@ const useProject = () => {
 
     return {
         project,
+        projects,
         fileRef,
         startDate,
         endDate,
