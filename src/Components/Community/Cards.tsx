@@ -1,17 +1,20 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import { getPortfolio } from "./api";
+
+import { getPortfolio } from "../../util/supabase/community_filter_DB";
+import { QUERY_KEY } from "@/util/query_key";
 
 const Cards = ({ filterData }: { filterData: any }) => {
-    const { getFromAndTo, filter, page, setPage, jobFilter } = filterData;
+    const { filter, page, setPage, jobFilter, getFromAndTo } = filterData;
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
-        queryKey: ["portfolio"],
+        queryKey: [QUERY_KEY.communityPortfolio],
         queryFn: () => getPortfolio({ getFromAndTo, filter, page, setPage, jobFilter }),
         initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) => {
@@ -43,7 +46,12 @@ const Cards = ({ filterData }: { filterData: any }) => {
                 return portfolio.map((item: any) => {
                     return (
                         <div key={item.id}>
-                            <div className="border-2 border-solid p-20 flex justify-center">{item.name}</div>
+                            <Link
+                                href={`detail/${item.id}`}
+                                className="border-2 mt-10 border-solid p-20 flex justify-center"
+                            >
+                                {item.name}
+                            </Link>
                         </div>
                     );
                 });
