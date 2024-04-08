@@ -89,10 +89,24 @@ const Project = () => {
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                        프로젝트 기간:{" "}
+                        프로젝트 기간
                     </label>
-                    <Input type="date" width={250} size="big" value={startDate} onChange={onChangeStartDateHandler} />{" "}
-                    <Input type="date" width={250} size="big" value={endDate} onChange={onChangeEndDateHandler} />
+                    <Input
+                        type="date"
+                        width={250}
+                        size="big"
+                        placeholder="YYYY.MM"
+                        value={startDate}
+                        onChange={onChangeStartDateHandler}
+                    />{" "}
+                    <Input
+                        type="date"
+                        width={250}
+                        size="big"
+                        placeholder="YYYY.MM"
+                        value={endDate}
+                        onChange={onChangeEndDateHandler}
+                    />
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">

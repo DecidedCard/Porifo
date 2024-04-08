@@ -9,6 +9,7 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { Project } from "@/types/Project";
 import useCareerStore from "@/store/careerStore";
 import useInput from "../useInput";
+import { Career } from "@/types/Career";
 
 const useInfo = () => {
     const {
@@ -29,13 +30,24 @@ const useInfo = () => {
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
-    const { career, careers, setCompany, setComment, setDate, setDepartment, setPosition, setCareers, setResetCareer } =
-        useCareerStore();
+    const {
+        career,
+        careers,
+        setCompany,
+        setComment,
+        setDate,
+        setDepartment,
+        setPosition,
+        setCareers,
+        setResetCareer,
+        setInitialCareers,
+    } = useCareerStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
+        const career = basicInfo.career as Career[];
         if (
             !basicInfo.name &&
             !basicInfo.birthday &&
@@ -46,9 +58,11 @@ const useInfo = () => {
             !basicInfo.school &&
             !basicInfo.job &&
             !basicInfo.project &&
+            career.length === 0 &&
             portfolio
         ) {
             const project = portfolio.project as Project[];
+            const career = portfolio.career as Career[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
@@ -62,6 +76,7 @@ const useInfo = () => {
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
             setProjectsInitial(project);
+            setInitialCareers(career);
         }
     }, [
         basicInfo,
@@ -79,6 +94,7 @@ const useInfo = () => {
         setBlog,
         setGithub,
         setProjectsInitial,
+        setInitialCareers,
     ]);
 
     // career 기간
@@ -234,6 +250,7 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         career,
+        careers,
         careerStartDate,
         careerEndDate,
         onChangeNameHandler,

@@ -11,6 +11,7 @@ type Store = {
     setComment: (arg: string) => void;
     setCareers: (arg: Career) => void;
     setResetCareer: () => void;
+    setInitialCareers: (arg: Career[]) => void;
 };
 
 const initial: Career = {
@@ -31,6 +32,7 @@ const useCareerStore = create<Store>()((set) => ({
     setComment: (arg) => set((state) => ({ career: { ...state.career, comment: arg } })),
     setCareers: (arg) => set((state) => ({ careers: [...state.careers, arg] })),
     setResetCareer: () => set({ career: initial }),
+    setInitialCareers: (arg) => set({ careers: arg }),
 }));
 
 export default useCareerStore;

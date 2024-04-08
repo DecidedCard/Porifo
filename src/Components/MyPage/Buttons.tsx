@@ -13,8 +13,8 @@ const Buttons = () => {
     const router = useRouter();
     return (
         <main className="flex flex-col items-center">
-            <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
-                <div className="flex flex-row">
+            <div className="relative pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
+                <div className="absolute right-[350px] w-20 flex flex-row">
                     <Button
                         text="미리보기"
                         size="s"
@@ -28,7 +28,7 @@ const Buttons = () => {
                     className="w-[220px] min-h-[200px] rounded-2xl"
                 />
 
-                <div className="mt-3">
+                <div className="mt-3 w-52">
                     <Button text="템플릿 선택하기" size="s" color="primary" fontSize="s" />
                 </div>
 
