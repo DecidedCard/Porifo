@@ -29,7 +29,7 @@ const Portfolio = ({ id }: { id: string }) => {
 
     return (
         <>
-            <Button text="pdf 다운로드" onClick={() => toPDF()} width={200} />
+            <Button text="pdf 다운로드" onClick={() => toPDF()} />
             <div ref={targetRef} className="px-5 w-96">
                 <div>
                     <h2>

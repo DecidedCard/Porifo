@@ -122,7 +122,7 @@ const SignUp = () => {
                         <input onChange={onChangeNumberHandler} maxLength={11} placeholder="-없이 작성해주세요" />
                     </div>
                     <div className="w-fit mt-8 mb-6 mx-auto">
-                        <Button text="가입하기" border="none" color="primary" size="m" width={350} />
+                        <Button text="가입하기" border="none" color="primary" size="m" />
                     </div>
                 </form>
             </div>
