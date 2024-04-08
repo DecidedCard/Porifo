@@ -28,7 +28,7 @@ const Carousel = () => {
                                     style={{ objectFit: "cover" }}
                                     src="rectangle0.png"
                                 />
-                                <div className="font-spoqaMedium text-black font-bold text-center   leading-subhead-sh5-line-height relative flex items-center justify-center">
+                                <div className="font-spoqaMedium text-black font-bold text-center relative flex items-center justify-center">
                                     사용자의 이름
                                 </div>
                             </div>

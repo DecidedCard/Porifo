@@ -51,6 +51,7 @@ const config: Config = {
                 middlegray: "#bdbebd",
                 deepgray: "#DCDDDF",
                 grayblack: "#202020",
+                nonegray: "#9A9A9A",
                 black: "#101010",
                 blue: "#F1F9FF",
                 sky_blue: "#E1FFFF",
