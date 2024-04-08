@@ -11,9 +11,10 @@ const signInWithSocial = async (social: Provider, queryParams?: QueryParams) => 
         provider: social,
         options: {
             redirectTo: "http://localhost:3000/social_setting",
-            queryParams: queryParams,
+            queryParams,
         },
     });
+
     try {
         if (error) {
             throw new Error("소셜 로그인 오류가 발생하였습니다.");
