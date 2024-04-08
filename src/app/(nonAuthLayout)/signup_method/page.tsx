@@ -17,7 +17,7 @@ const SignUp_Method = () => {
                         <img src="formLogo.svg" />
                     </div>
                     <SocialSign />
-                    <h1 className={`${baseClass} ${afterClass} ${beforeClass}`}> 또는</h1>
+                    <h1 className={`${baseClass} ${afterClass} ${beforeClass}`}>또는</h1>
                     <div className="w-fit mt-8 mb-6 mx-auto">
                         <Button onClick={emailSignUp} text="이메일로 회원가입" size="m" width={350} />
                     </div>

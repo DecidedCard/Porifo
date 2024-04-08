@@ -7,6 +7,7 @@ import useInput from "@/hooks/useInput";
 import Input from "@/Components/Commen/Input";
 import Button from "@/Components/Commen/Button";
 import SocialSign from "@/Components/Sign/SocialSign";
+import Image from "next/image";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -40,28 +41,26 @@ const SignIn = () => {
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 <div className="rounded p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
                     <div className="flex justify-center">
-                        <img src="formLogo.svg" />
+                        <Image width={160} height={140} src="formLogo.svg" alt="" />
                     </div>
                     <form onSubmit={onSubmitLoginUser}>
-                        <div className="flex mx-auto w-fit h-fit flex-col">
+                        <div className="w-[350px] flex mx-auto h-fit flex-col">
                             <label className="my-4">이메일</label>
                             <Input
                                 type="email"
                                 pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                                 placeholder="이메일을 작성해주세요"
                                 onChange={onChangeEmailHandler}
-                                width={350}
                                 color="black"
                                 size="big"
                             />
                         </div>
-                        <div className="mx-auto w-fit h-fit flex flex-col">
+                        <div className="mx-auto w-[350px] h-fit flex flex-col">
                             <label className="mt-8 mb-4">비밀번호</label>
                             <Input
                                 type="password"
                                 placeholder="비밀번호를 작성해주세요"
                                 onChange={onChangePasswordHandler}
-                                width={350}
                                 color="black"
                                 size="big"
                             />
