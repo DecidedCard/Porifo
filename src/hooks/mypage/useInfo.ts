@@ -29,7 +29,7 @@ const useInfo = () => {
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
-    const { career, setCompany, setComment, setDate, setDepartment, setPosition, setCareers, setResetCareer } =
+    const { career, careers, setCompany, setComment, setDate, setDepartment, setPosition, setCareers, setResetCareer } =
         useCareerStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
@@ -192,7 +192,13 @@ const useInfo = () => {
 
         if (user && !portfolio) {
             try {
-                const newPortfolio = { ...info, userId: user.id, profileImage: url, project: projects };
+                const newPortfolio = {
+                    ...info,
+                    userId: user.id,
+                    profileImage: url,
+                    project: projects,
+                    career: careers,
+                };
                 await supabaseInsert(newPortfolio);
                 alert("이력서가 저장되었습니다.");
                 return;
@@ -203,11 +209,11 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            let newPortfolio = { ...info, userId: user!.id, project: projects };
+            let newPortfolio = { ...info, userId: user!.id, project: projects, career: careers };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects };
+                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects, career: careers };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
@@ -218,7 +224,7 @@ const useInfo = () => {
             }
         }
 
-        const newPortfolio = { ...info, profileImage: url, project: projects };
+        const newPortfolio = { ...info, profileImage: url, project: projects, career: careers };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
