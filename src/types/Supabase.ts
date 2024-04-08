@@ -3,12 +3,49 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
     public: {
         Tables: {
+            comments: {
+                Row: {
+                    comment: string | null;
+                    created_at: string;
+                    id: number;
+                    portfolio_id: number | null;
+                    user_email: string | null;
+                    user_name: string | null;
+                };
+                Insert: {
+                    comment?: string | null;
+                    created_at?: string;
+                    id?: number;
+                    portfolio_id?: number | null;
+                    user_email?: string | null;
+                    user_name?: string | null;
+                };
+                Update: {
+                    comment?: string | null;
+                    created_at?: string;
+                    id?: number;
+                    portfolio_id?: number | null;
+                    user_email?: string | null;
+                    user_name?: string | null;
+                };
+                Relationships: [
+                    {
+                        foreignKeyName: "public_comments_portfolio_id_fkey";
+                        columns: ["portfolio_id"];
+                        isOneToOne: false;
+                        referencedRelation: "portfolioInfo";
+                        referencedColumns: ["id"];
+                    },
+                ];
+            };
             portfolioInfo: {
                 Row: {
                     birthday: string | null;
                     blogLink: string | null;
                     class: string | null;
                     created_at: string;
+                    email: string | null;
+                    englishName: string | null;
                     githubLink: string | null;
                     id: number;
                     introduce: string | null;
@@ -20,12 +57,15 @@ export type Database = {
                     share: boolean | null;
                     tel: string | null;
                     template: string | null;
+                    userId: string | null;
                 };
                 Insert: {
                     birthday?: string | null;
                     blogLink?: string | null;
                     class?: string | null;
                     created_at?: string;
+                    email?: string | null;
+                    englishName?: string | null;
                     githubLink?: string | null;
                     id?: number;
                     introduce?: string | null;
@@ -37,12 +77,15 @@ export type Database = {
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;
+                    userId?: string | null;
                 };
                 Update: {
                     birthday?: string | null;
                     blogLink?: string | null;
                     class?: string | null;
                     created_at?: string;
+                    email?: string | null;
+                    englishName?: string | null;
                     githubLink?: string | null;
                     id?: number;
                     introduce?: string | null;
@@ -54,6 +97,7 @@ export type Database = {
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;
+                    userId?: string | null;
                 };
                 Relationships: [];
             };

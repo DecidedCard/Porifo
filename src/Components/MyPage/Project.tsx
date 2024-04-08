@@ -8,6 +8,7 @@ import Button from "../Commen/Button";
 const Project = () => {
     const {
         project,
+        projects,
         fileRef,
         startDate,
         endDate,
@@ -21,6 +22,8 @@ const Project = () => {
         onClickInsertHandler,
         onClickDeleteImage,
     } = useProject();
+
+    console.log(projects);
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -47,7 +50,7 @@ const Project = () => {
                     {/* 사진 제한 3장 */}
                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
                     <label htmlFor="file">
-                        <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] cursor-pointer">
+                        <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] cursor-pointer rounded-lg">
                             {project.images.length !== 0 ? (
                                 project.images.map((item, idx) => {
                                     return (
@@ -121,6 +124,20 @@ const Project = () => {
                 <div onClick={onClickInsertHandler} className="text-4xl cursor-pointer w-fit mx-auto">
                     +
                 </div>
+            </div>
+            <hr className="border border-neutral-100 my-6 mx-6" />
+            <div>
+                <p>작성한 프로젝트 미리보기</p>
+                {projects.length !== 0 &&
+                    projects.map((item, idx) => {
+                        return (
+                            <div key={idx}>
+                                <div>{item.name}</div>
+                                <div>{item.introduce}</div>
+                                <Image src={item.images[0]} alt="프로젝트 이미지" width={100} height={100} />
+                            </div>
+                        );
+                    })}
             </div>
         </main>
     );
