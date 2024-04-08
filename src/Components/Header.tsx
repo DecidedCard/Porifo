@@ -28,11 +28,11 @@ const Header = () => {
 
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[124px] items-center justify-center shrink-0 relative font-spoqaLight">
-                    <button className="text-black text-center font-subhead-sh5 text-sm leading-subhead-sh5 font-semibold relative">
+                    <button className="text-black text-center text-sm font-semibold relative">
                         서비스 소개
                     </button>
                     <Link
-                        className="text-black text-center font-subhead-sh5 text-sm leading-subhead-sh5 font-semibold relative"
+                        className="text-black text-center text-sm font-semibold relative"
                         href={"/community"}
                     >
                         피드/커뮤니티
@@ -41,31 +41,41 @@ const Header = () => {
 
                 {/* Right Section: Authentication Buttons */}
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
-                    <div className="rounded-lg border border-primary-500 pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative">
-                        <Link
-                            className="text-primary text-center text-xs font-semibold relative flex items-center justify-center"
-                            href="/signin"
-                        >
-                            로그인
+                    <div>
+                        <Link href="/signin">
+                            <Button
+                                text="로그인"
+                                width={50}
+                                size="s"
+                                color="primarynone"
+                                fontSize="xs"
+                            />
                         </Link>
                     </div>
-                    <div className="bg-primary rounded-lg pt-1 pr-2 pb-1 pl-2 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white">
-                        <Link
-                            className="text-center text-xs leading-normal font-semibold relative flex items-center justify-center"
-                            href="/signup"
-                        >
-                            회원가입
+
+                    <div className="">
+                        <Link href="/signup">
+                            <Button
+                                text="회원가입"
+                                width={50}
+                                size="s"
+                                color="primary"
+                                border="none"
+                                fontSize="xs"
+                            />
                         </Link>
+
                     </div>
-                    <div
-                        onClick={signOutFunc}
-                        className="bg-primary rounded-lg pt-1 pr-3 pb-1 pl-3 flex flex-row gap-2 items-center justify-center shrink-0 w-[70px] h-[34px] relative text-white"
-                    >
-                        <Link
-                            className="text-center font-body-p8m text-xs leading-body-p8m font-semibold relative flex items-center justify-center"
-                            href="/"
-                        >
-                            로그아웃
+                    <div onClick={signOutFunc}>
+                        <Link href="/">
+                            <Button
+                                text="로그아웃"
+                                width={50}
+                                size="s"
+                                color="primary"
+                                border="none"
+                                fontSize="xs"
+                            />
                         </Link>
                     </div>
                 </div>

@@ -39,7 +39,7 @@ const Input = ({
                 pattern={pattern}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2  text-sm font-normal`}
+                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 text-sm font-normal`}
             />
 
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}

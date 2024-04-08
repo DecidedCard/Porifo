@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, LegacyRef, RefAttributes, useEffect, useRef } from "react";
 
 import useInput from "../useInput";
 
@@ -9,9 +9,11 @@ import { projectInputFormValidation } from "@/util/input_form_validation";
 const useProject = () => {
     const [startDate, onChangeStartDateHandler, setStartDate] = useInput();
     const [endDate, onChangeEndDateHandler, setEndDate] = useInput();
+    const fileRef = useRef<HTMLInputElement>(null);
 
     const {
         project,
+        projects,
         setProjectDate,
         setProjectDeployLink,
         setProjectGithubLink,
@@ -48,8 +50,8 @@ const useProject = () => {
         const fileList = e.target.files;
         console.log(project.images.length);
 
-        if (fileList!.length + project.images.length > 5) {
-            alert("사진은 최대 5장이 최대입니다.");
+        if (fileList!.length + project.images.length > 3) {
+            alert("사진은 최대 3장이 최대입니다.");
             return;
         }
         const fileArray: File[] = Array.prototype.slice.call(fileList);
@@ -65,6 +67,7 @@ const useProject = () => {
     const onClickDeleteImage = () => {
         setProjectImages([]);
         setProjectImagesFile([]);
+        fileRef.current!.value = "";
     };
 
     const onClickInsertHandler = async () => {
@@ -94,6 +97,8 @@ const useProject = () => {
 
     return {
         project,
+        projects,
+        fileRef,
         startDate,
         endDate,
         onChangeProjectName,

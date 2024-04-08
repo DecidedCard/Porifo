@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import useInfo from "@/hooks/mypage/useInfo";
 import Cards from "./Cards";
+import { SELECT_LIST } from "@/util/select_list";
 
 const Filter = () => {
     const [page, setPage] = useState(0);
@@ -12,8 +12,7 @@ const Filter = () => {
 
     const queryClient = useQueryClient();
 
-    const { selectList } = useInfo();
-    const filterBtn = selectList.slice(1, selectList.length);
+    const filterBtn = SELECT_LIST.slice(1, SELECT_LIST.length);
 
     //supabase range vlaue
     const getFromAndTo = () => {

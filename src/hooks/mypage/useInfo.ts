@@ -6,6 +6,7 @@ import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useUserStore from "@/store/userStore";
 import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
+import { Project } from "@/types/Project";
 
 const useInfo = () => {
     const {
@@ -23,13 +24,24 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-        setProject,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects } = useProjectsStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
 
     useEffect(() => {
-        if (portfolio) {
+        if (
+            !basicInfo.name &&
+            !basicInfo.birthday &&
+            !basicInfo.email &&
+            !basicInfo.englishName &&
+            !basicInfo.profileImage &&
+            !basicInfo.tel &&
+            !basicInfo.school &&
+            !basicInfo.job &&
+            !basicInfo.project &&
+            portfolio
+        ) {
+            const project = portfolio.project as Project[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
@@ -42,9 +54,10 @@ const useInfo = () => {
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
-            setProject(JSON.parse(JSON.stringify(portfolio.project!)));
+            setProjectsInitial(project);
         }
     }, [
+        basicInfo,
         portfolio,
         setName,
         setEngName,
@@ -58,7 +71,7 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-        setProject,
+        setProjectsInitial,
     ]);
 
     // 스토어 적용 onChangeHandler
@@ -101,7 +114,7 @@ const useInfo = () => {
         setClass(e.target.value);
     };
 
-    const onChangeIntroduceHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setIntroduce(e.target.value);
     };
 
