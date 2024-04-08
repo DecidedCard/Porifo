@@ -36,7 +36,7 @@ const Buttons = () => {
                 <div className="flex flex-row mt-5 mb-5">
                     <button
                         className="flex items-center py-2 px-4 rounded-xl text-zinc-500"
-                        onClick={() => onClickCopyClipBoardHandler("https://google.com")}
+                        onClick={() => onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`)}
                     >
                         <RiLinkM className="mr-2" /> URL 복사
                     </button>
