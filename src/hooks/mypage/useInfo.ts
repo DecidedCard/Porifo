@@ -34,6 +34,8 @@ const useInfo = () => {
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
+    console.log(careers);
+
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
         if (
@@ -168,7 +170,7 @@ const useInfo = () => {
 
         const { imageFile, ...info } = basicInfo;
 
-        if (portfolioInputFormValidation(info)) return;
+        if (portfolioInputFormValidation({ ...info, project: projects })) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
