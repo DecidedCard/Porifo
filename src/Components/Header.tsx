@@ -38,18 +38,18 @@ const Header = () => {
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     <div>
                         <Link href="/signin">
-                            <Button text="로그인" width={60} size="s" color="primarynone" fontSize="xs" />
+                            <Button text="로그인" size="s" color="primarynone" fontSize="xs" />
                         </Link>
                     </div>
 
                     <div className="">
                         <Link href="/signup">
-                            <Button text="회원가입" width={60} size="s" color="primary" border="none" fontSize="xs" />
+                            <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
                         </Link>
                     </div>
                     <div onClick={signOutFunc}>
                         <Link href="/">
-                            <Button text="로그아웃" width={60} size="s" color="primary" border="none" fontSize="xs" />
+                            <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
                         </Link>
                     </div>
                 </div>

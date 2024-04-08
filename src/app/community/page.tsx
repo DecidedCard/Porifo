@@ -1,5 +1,6 @@
 import Carousel from "@/Components/Community/Carousel";
 import Filter from "@/Components/Community/Filter";
+
 import React from "react";
 
 const ComuunityPage = () => {

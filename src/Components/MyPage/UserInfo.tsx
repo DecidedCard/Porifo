@@ -11,6 +11,7 @@ const UserInfo = () => {
     const {
         basicInfo,
         career,
+        careers,
         careerStartDate,
         careerEndDate,
         onChangeNameHandler,
@@ -49,8 +50,7 @@ const UserInfo = () => {
                                 alt="프로필 사진 미리보기"
                                 width={100}
                                 height={100}
-                                className="w-[170px] h-[170px] rounded-2xl"
-                                
+                                className="w-[200px] h-[200px] rounded-2xl"
                             />
                         ) : (
                             <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl"></div>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+
 import Cards from "./Cards";
 
 export const SELECT_LIST = [
@@ -23,7 +24,9 @@ const Filter = () => {
 
     const queryClient = useQueryClient();
 
-    //supabase range vlaue
+    const filterBtn = SELECT_LIST.slice(1, SELECT_LIST.length);
+
+    //supabase range value
     const getFromAndTo = () => {
         const ITEM_PER_PAGE = 5;
 
@@ -48,14 +51,14 @@ const Filter = () => {
 
     //필터 옵션 변경시 refetch 함수
     const refetch = (filter: string) => {
-        queryClient.removeQueries({ queryKey: ["portfolio"] });
+        queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
         setPage(0);
         return setFilter(filter);
     };
 
     //직무 변경 버튼
     const handleJobFilterBtn = (jobfilterValue: string) => {
-        queryClient.removeQueries({ queryKey: ["portfolio"] });
+        queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
         setPage(0);
         return setJobFilter(jobfilterValue);
     };

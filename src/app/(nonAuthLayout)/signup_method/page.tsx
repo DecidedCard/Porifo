@@ -18,24 +18,16 @@ const SignUp_Method = () => {
                     </div>
                     <SocialSign />
 
-                    <div
-                        className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
+                    <div className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
+                        <div className="bg-gray2 w-[150px] h-[1px]"></div>
 
-                        <div className="bg-gray2 w-[150px] h-[1px]">
-                        </div>
+                        <div className="text-graytext-5 text-left relative flex items-center justify-start">또는</div>
 
-                        <div
-                            className="text-graytext-5 text-left relative flex items-center justify-start">
-                            또는
-                        </div>
-
-                        <div className="bg-gray2 w-[150px] h-[1px]">
-                        </div>
-                        
+                        <div className="bg-gray2 w-[150px] h-[1px]"></div>
                     </div>
 
                     <div className="w-fit mt-8 mb-6 mx-auto">
-                        <Button onClick={emailSignUp} text="이메일로 회원가입" size="m" width={350} />
+                        <Button onClick={emailSignUp} text="이메일로 회원가입" size="m" />
                     </div>
                 </div>
             </div>
