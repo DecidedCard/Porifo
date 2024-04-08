@@ -24,7 +24,7 @@ const UserInfo = () => {
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
             <div className="flex flex-col">
                 <p className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</p>
-                <hr className="border border-neutral-100 my-6 mx-6" />
+                <hr className="border border-neutral-100 m-6" />
                 <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">내 정보</p>
 
                 <div className="flex flex-row items-start">
@@ -39,6 +39,7 @@ const UserInfo = () => {
                                 width={100}
                                 height={100}
                                 className="w-[170px] h-[170px] rounded-2xl"
+                                
                             />
                         ) : (
                             <div className="flex justify-center items-center bg-zinc-500 w-[170px] h-[170px] rounded-2xl"></div>
