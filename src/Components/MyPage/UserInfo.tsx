@@ -11,6 +11,8 @@ const UserInfo = () => {
     const {
         basicInfo,
         career,
+        careerStartDate,
+        careerEndDate,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -24,6 +26,8 @@ const UserInfo = () => {
         onChangeDepartmentHandler,
         onChangePositionHandler,
         onChangeCommentHandler,
+        onChangeCareerStartDate,
+        onChangeCareerEndDate,
     } = useInfo();
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -239,8 +243,22 @@ const UserInfo = () => {
                         </label>
                         <div className="w-[500px]">
                             <div className="flex justify-between">
-                                <Input type="month" placeholder="YYYY.MM" width={250} size="big" />
-                                <Input type="month" placeholder="YYYY.MM" width={250} size="big" />
+                                <Input
+                                    type="month"
+                                    placeholder="YYYY.MM"
+                                    width={250}
+                                    size="big"
+                                    value={careerStartDate}
+                                    onChange={onChangeCareerStartDate}
+                                />
+                                <Input
+                                    type="month"
+                                    placeholder="YYYY.MM"
+                                    width={250}
+                                    size="big"
+                                    value={careerEndDate}
+                                    onChange={onChangeCareerEndDate}
+                                />
                             </div>
                             <div className="flex items-center gap-2">
                                 <Input type="checkbox" width={10} />
@@ -262,6 +280,7 @@ const UserInfo = () => {
                             onChange={onChangeCommentHandler}
                         />
                     </div>
+                    <div className="text-3xl mx-auto">+</div>
                 </div>
             </div>
         </main>

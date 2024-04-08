@@ -8,6 +8,7 @@ import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { Project } from "@/types/Project";
 import useCareerStore from "@/store/careerStore";
+import useInput from "../useInput";
 
 const useInfo = () => {
     const {
@@ -28,8 +29,12 @@ const useInfo = () => {
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
-    const { career, setCompany, setComment, setDate, setDepartment, setPosition } = useCareerStore();
+    const { career, setCompany, setComment, setDate, setDepartment, setPosition, setCareers, setResetCareer } =
+        useCareerStore();
+    const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
+    const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
+    // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
         if (
             !basicInfo.name &&
@@ -75,6 +80,11 @@ const useInfo = () => {
         setGithub,
         setProjectsInitial,
     ]);
+
+    // career 기간
+    useEffect(() => {
+        setDate(`${careerStartDate} ~ ${careerEndDate}`);
+    }, [setDate, careerStartDate, careerEndDate]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -148,6 +158,11 @@ const useInfo = () => {
         setComment(e.target.value);
     };
 
+    const onClickInsertCareersHandler = () => {
+        setCareers(career);
+        setResetCareer();
+    };
+
     const onClickInsertHandler = async () => {
         let url = "";
 
@@ -212,6 +227,8 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         career,
+        careerStartDate,
+        careerEndDate,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -228,7 +245,10 @@ const useInfo = () => {
         onChangeDepartmentHandler,
         onChangePositionHandler,
         onChangeCommentHandler,
+        onChangeCareerStartDate,
+        onChangeCareerEndDate,
         onClickInsertHandler,
+        onClickInsertCareersHandler,
     };
 };
 
