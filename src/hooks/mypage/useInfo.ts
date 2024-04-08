@@ -231,7 +231,6 @@ const useInfo = () => {
                 if (url) {
                     newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects, career: careers };
                 }
-                console.log(newPortfolio);
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
                 return;
