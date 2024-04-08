@@ -10,6 +10,7 @@ import { SELECT_LIST } from "@/util/select_list";
 const UserInfo = () => {
     const {
         basicInfo,
+        career,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -19,6 +20,10 @@ const UserInfo = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeSelectHandler,
+        onChangeCompanyHandler,
+        onChangeDepartmentHandler,
+        onChangePositionHandler,
+        onChangeCommentHandler,
     } = useInfo();
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -199,10 +204,31 @@ const UserInfo = () => {
                             회사이름
                         </label>
                         <div className="flex flex-col gap-4">
-                            <Input type="text" placeholder="회사이름을 입력해주세요." width={500} size="big" />
+                            <Input
+                                type="text"
+                                placeholder="회사이름을 입력해주세요."
+                                width={500}
+                                size="big"
+                                value={career.company}
+                                onChange={onChangeCompanyHandler}
+                            />
                             <div className="flex justify-between">
-                                <Input type="text" width={250} size="big" placeholder="부서" />
-                                <Input type="text" width={250} size="big" placeholder="직책" />
+                                <Input
+                                    type="text"
+                                    width={250}
+                                    size="big"
+                                    placeholder="부서"
+                                    value={career.department}
+                                    onChange={onChangeDepartmentHandler}
+                                />
+                                <Input
+                                    type="text"
+                                    width={250}
+                                    size="big"
+                                    placeholder="직급/직책"
+                                    value={career.position}
+                                    onChange={onChangePositionHandler}
+                                />
                             </div>
                         </div>
                     </div>
@@ -227,7 +253,14 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             내용
                         </label>
-                        <Input type="text" placeholder="전공을 입력해 주세요." width={500} size="big" />
+                        <Input
+                            type="text"
+                            placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
+                            width={500}
+                            size="big"
+                            value={career.comment}
+                            onChange={onChangeCommentHandler}
+                        />
                     </div>
                 </div>
             </div>

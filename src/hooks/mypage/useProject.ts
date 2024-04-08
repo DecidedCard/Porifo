@@ -93,6 +93,8 @@ const useProject = () => {
         const res = (await Promise.all(imagesUrl)) as string[];
         setProjects({ ...info, images: res });
         setReset();
+        setStartDate("");
+        setEndDate("");
     };
 
     return {

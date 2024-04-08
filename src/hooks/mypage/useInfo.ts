@@ -7,6 +7,7 @@ import useUserStore from "@/store/userStore";
 import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { Project } from "@/types/Project";
+import useCareerStore from "@/store/careerStore";
 
 const useInfo = () => {
     const {
@@ -27,6 +28,7 @@ const useInfo = () => {
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
+    const { career, setCompany, setComment, setDate, setDepartment, setPosition } = useCareerStore();
 
     useEffect(() => {
         if (
@@ -130,6 +132,22 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
+    const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setCompany(e.target.value);
+    };
+
+    const onChangeDepartmentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setDepartment(e.target.value);
+    };
+
+    const onChangePositionHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setPosition(e.target.value);
+    };
+
+    const onChangeCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setComment(e.target.value);
+    };
+
     const onClickInsertHandler = async () => {
         let url = "";
 
@@ -193,6 +211,7 @@ const useInfo = () => {
         user,
         portfolio,
         basicInfo,
+        career,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -205,6 +224,10 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onChangeCompanyHandler,
+        onChangeDepartmentHandler,
+        onChangePositionHandler,
+        onChangeCommentHandler,
         onClickInsertHandler,
     };
 };
