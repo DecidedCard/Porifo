@@ -69,8 +69,6 @@ const useProject = () => {
         const removeImagesFile = [...project.imagesFile!];
         removeImages.splice(arg, 1);
         removeImagesFile.splice(arg, 1);
-        console.log(removeImages);
-        console.log(removeImagesFile);
 
         setProjectImages(removeImages);
         setProjectImagesFile(removeImagesFile);
