@@ -69,7 +69,7 @@ const SignIn = () => {
                             비밀번호 찾기 ►
                         </div>
                         <div className="w-fit mt-8 mb-6 mx-auto">
-                            <Button text="로그인" border="none" color="primary" size="m" width={350} />
+                            <Button text="로그인" border="none" color="primary" size="m" />
                         </div>
                     </form>
                     <SocialSign />
