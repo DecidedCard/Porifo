@@ -14,14 +14,7 @@ const Cover = () => {
                     </p>
                     <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
                         <div>
-                            <Button 
-                            text="이력서 등록하기"
-                            size="m"
-                            width={190}
-                            fontSize="m"
-                            color="primary"
-                            border="none"
-                            />
+                            <Button text="이력서 등록하기" size="m" fontSize="m" color="primary" border="none" />
                         </div>
                     </div>
                 </div>

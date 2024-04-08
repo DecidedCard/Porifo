@@ -15,16 +15,13 @@ const Buttons = () => {
         <main className="flex flex-col items-center">
             <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
                 <div className="flex flex-row">
-
                     <Button
                         text="미리보기"
-                        width={120}
                         size="s"
                         color="black"
                         onClick={() => router.push(`/mypage/${user!.id}`)}
                         fontSize="xs"
                     />
-
                 </div>
                 <img
                     src="https://windowsforum.kr/files/attach/images/2966154/176/607/019/c83f9e8d412e31ae30d172b1b1d48f01.png"
@@ -32,13 +29,7 @@ const Buttons = () => {
                 />
 
                 <div className="mt-3">
-                    <Button
-                        text="템플릿 선택하기"
-                        width={220}
-                        size="s"
-                        color="primary"
-                        fontSize="s"
-                    />
+                    <Button text="템플릿 선택하기" size="s" color="primary" fontSize="s" />
                 </div>
 
                 <div className="flex flex-row mt-5 mb-5">
@@ -48,7 +39,6 @@ const Buttons = () => {
                     <button className="flex items-center py-2 px-4 rounded-xl text-zinc-500">
                         <GrDownload className="mr-2" /> PDF로 저장
                     </button>
-
                 </div>
             </div>
 

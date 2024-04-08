@@ -21,5 +21,5 @@ export interface PortfolioInfo {
     githubLink: string | null;
     project?: Project[] | Json;
     share: boolean | null;
-    career: Career[] | null;
+    career: Career[] | Json;
 }
