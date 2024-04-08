@@ -7,6 +7,7 @@ import Button from "../Commen/Button";
 import { useRouter } from "next/navigation";
 import { RiLinkM } from "react-icons/ri";
 import { GrDownload } from "react-icons/gr";
+import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 
 const Buttons = () => {
     const { user, portfolio, onClickInsertHandler } = useInfo();
@@ -33,7 +34,10 @@ const Buttons = () => {
                 </div>
 
                 <div className="flex flex-row mt-5 mb-5">
-                    <button className="flex items-center py-2 px-4 rounded-xl text-zinc-500">
+                    <button
+                        className="flex items-center py-2 px-4 rounded-xl text-zinc-500"
+                        onClick={() => onClickCopyClipBoardHandler("https://google.com")}
+                    >
                         <RiLinkM className="mr-2" /> URL 복사
                     </button>
                     <button className="flex items-center py-2 px-4 rounded-xl text-zinc-500">
