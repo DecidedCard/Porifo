@@ -77,7 +77,7 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 8자 이상 작성해주세요"
-                        onChangeHandler={onChangePasswordHandler}
+                        onChangeHandler={onChangeNameHandler}
                     />
 
                     <div className="mx-auto my-8 h-fit flex flex-col w-[350px]">
@@ -155,7 +155,7 @@ const SignUp = () => {
                             </div>{" "}
                         </div>
                     </div>
-                    <div className="w-fit mt-8 mb-6 mx-auto">
+                    <div className="w-350 mt-8 mb-6 mx-auto">
                         <Button text="가입하기" border="none" color="primary" size="m" />
                     </div>
                 </form>
