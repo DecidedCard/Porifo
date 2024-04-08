@@ -64,10 +64,16 @@ const useProject = () => {
         setProjectImagesFile([...project.imagesFile!, ...fileArray]);
     };
 
-    const onClickDeleteImage = () => {
-        setProjectImages([]);
-        setProjectImagesFile([]);
-        fileRef.current!.value = "";
+    const onClickDeleteImage = (arg: number) => {
+        const removeImages = [...project.images];
+        const removeImagesFile = [...project.imagesFile!];
+        removeImages.splice(arg, 1);
+        removeImagesFile.splice(arg, 1);
+        console.log(removeImages);
+        console.log(removeImagesFile);
+
+        setProjectImages(removeImages);
+        setProjectImagesFile(removeImagesFile);
     };
 
     const onClickInsertHandler = async () => {

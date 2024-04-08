@@ -48,21 +48,26 @@ const Project = () => {
                 <div className="flex">
                     {/* 사진 제한 3장 */}
                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
-                    <label htmlFor="file">
-                        <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] cursor-pointer rounded-lg">
-                            {project.images.length !== 0 ? (
-                                project.images.map((item, idx) => {
-                                    return (
-                                        <Image key={idx} src={item} alt="프로젝트 미리보기" width={100} height={100} />
-                                    );
-                                })
-                            ) : (
+                    <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] rounded-lg">
+                        {project.images.length !== 0 ? (
+                            project.images.map((item, idx) => {
+                                return (
+                                    <div key={idx}>
+                                        <Image src={item} alt="프로젝트 미리보기" width={100} height={100} />
+                                        <p className="cursor-pointer" onClick={() => onClickDeleteImage(idx)}>
+                                            X
+                                        </p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <label htmlFor="file">
                                 <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300">
                                     +
                                 </div>
-                            )}
-                        </div>
-                    </label>
+                            </label>
+                        )}
+                    </div>
                     <input
                         ref={fileRef}
                         type="file"
@@ -72,7 +77,6 @@ const Project = () => {
                         multiple
                     />
                 </div>
-                {/* <Button color="primary" width={200} text="이미지 지우기" onClick={onClickDeleteImage} /> */}
 
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
