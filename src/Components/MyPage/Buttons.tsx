@@ -12,9 +12,9 @@ const Buttons = () => {
     const { user, portfolio, onClickInsertHandler } = useInfo();
     const router = useRouter();
     return (
-        <main className="flex flex-col items-center">
-            <div className="relative pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
-                <div className="absolute right-[350px] w-20 flex flex-row">
+        <main className="relative flex flex-col items-center">
+            <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
+                <div className="absolute -left-2/4 w-20 flex flex-row">
                     <Button
                         text="미리보기"
                         size="s"
