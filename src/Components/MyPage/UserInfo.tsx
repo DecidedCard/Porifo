@@ -6,7 +6,6 @@ import Image from "next/image";
 import useInfo from "@/hooks/mypage/useInfo";
 import Input from "../Commen/Input";
 import { SELECT_LIST } from "@/util/select_list";
-import Preview from "./Preview";
 
 const UserInfo = () => {
     const {
@@ -286,18 +285,6 @@ const UserInfo = () => {
                     </div>
                     <div className="text-3xl mx-auto cursor-pointer" onClick={onClickInsertCareersHandler}>
                         +
-                    </div>
-
-                    <div className="flex flex-col gap-10">
-                        <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                            업무경력 미리보기
-                        </h2>
-                        <div className="flex flex-wrap justify-evenly pl-6">
-                            {careers.length !== 0 &&
-                                careers.map((item, idx) => {
-                                    return <Preview key={idx} career={item} />;
-                                })}
-                        </div>
                     </div>
                 </div>
             </div>

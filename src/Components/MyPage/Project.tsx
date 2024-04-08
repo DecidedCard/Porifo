@@ -4,7 +4,6 @@ import useProject from "@/hooks/mypage/useProject";
 import Image from "next/image";
 import Input from "../Commen/Input";
 import Button from "../Commen/Button";
-import Preview from "./Preview";
 
 const Project = () => {
     const {
@@ -140,18 +139,6 @@ const Project = () => {
                 </div>
                 <div onClick={onClickInsertHandler} className="text-4xl cursor-pointer w-fit mx-auto">
                     +
-                </div>
-            </div>
-            <hr className="border border-neutral-100 my-6 mx-6" />
-            <div className="flex flex-col gap-10">
-                <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                    프로젝트 미리보기
-                </h2>
-                <div className="flex flex-wrap justify-evenly pl-6">
-                    {projects.length !== 0 &&
-                        projects.map((item, idx) => {
-                            return <Preview key={idx} project={item} />;
-                        })}
                 </div>
             </div>
         </main>
