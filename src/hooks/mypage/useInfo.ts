@@ -34,8 +34,6 @@ const useInfo = () => {
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
-    console.log(careers);
-
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
         if (

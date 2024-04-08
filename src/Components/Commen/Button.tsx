@@ -12,7 +12,12 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, color, width }) => {
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
-    const fontsize = (!fontSize && "text-base") || (fontSize === "xs" && "text-xs") ||(fontSize === "s" && "text-sm") || (fontSize === "m" && "text-base") || (fontSize === "l" && "text-lg");
+    const fontsize =
+        (!fontSize && "text-base") ||
+        (fontSize === "xs" && "text-xs") ||
+        (fontSize === "s" && "text-sm") ||
+        (fontSize === "m" && "text-base") ||
+        (fontSize === "l" && "text-lg");
     const col =
         (!color && border === "none" && "bg-gray2 text-white") ||
         (color === "black" && border === "none" && "bg-black text-white") ||
@@ -22,12 +27,12 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, 
         (color === "black" && "border border-solid border-black text-black") ||
         (color === "primary" && "border border-solid border-primary text-primary") ||
         (color === "secondary" && "border border-solid border-secondary text-secondary") ||
-        (color === "primarynone" && "text-primary")
+        (color === "primarynone" && "text-primary");
 
     return (
         <button
             onClick={onClick}
-            className={`flex items-center justify-center px-3 rounded-lg w-[${width}px] ${height} ${fontsize} ${col}`}
+            className={`flex items-center justify-center px-3 rounded-lg w-fit ${height} ${fontsize} ${col}`}
         >
             {text}
         </button>

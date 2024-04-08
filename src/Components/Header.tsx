@@ -28,13 +28,8 @@ const Header = () => {
 
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[124px] items-center justify-center shrink-0 relative font-spoqaLight">
-                    <button className="text-black text-center text-sm font-semibold relative">
-                        서비스 소개
-                    </button>
-                    <Link
-                        className="text-black text-center text-sm font-semibold relative"
-                        href={"/community"}
-                    >
+                    <button className="text-black text-center text-sm font-semibold relative">서비스 소개</button>
+                    <Link className="text-black text-center text-sm font-semibold relative" href={"/community"}>
                         피드/커뮤니티
                     </Link>
                 </div>
@@ -43,39 +38,18 @@ const Header = () => {
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     <div>
                         <Link href="/signin">
-                            <Button
-                                text="로그인"
-                                width={50}
-                                size="s"
-                                color="primarynone"
-                                fontSize="xs"
-                            />
+                            <Button text="로그인" width={60} size="s" color="primarynone" fontSize="xs" />
                         </Link>
                     </div>
 
                     <div className="">
                         <Link href="/signup">
-                            <Button
-                                text="회원가입"
-                                width={50}
-                                size="s"
-                                color="primary"
-                                border="none"
-                                fontSize="xs"
-                            />
+                            <Button text="회원가입" width={60} size="s" color="primary" border="none" fontSize="xs" />
                         </Link>
-
                     </div>
                     <div onClick={signOutFunc}>
                         <Link href="/">
-                            <Button
-                                text="로그아웃"
-                                width={50}
-                                size="s"
-                                color="primary"
-                                border="none"
-                                fontSize="xs"
-                            />
+                            <Button text="로그아웃" width={60} size="s" color="primary" border="none" fontSize="xs" />
                         </Link>
                     </div>
                 </div>
