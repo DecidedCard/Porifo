@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
 import Cards from "./Cards";
+import { QUERY_KEY } from "@/util/query_key";
 
 export const SELECT_LIST = [
     { value: "*", name: "전체" },
@@ -23,8 +24,6 @@ const Filter = () => {
     const [jobFilter, setJobFilter] = useState("");
 
     const queryClient = useQueryClient();
-
-    const filterBtn = SELECT_LIST.slice(1, SELECT_LIST.length);
 
     //supabase range value
     const getFromAndTo = () => {
