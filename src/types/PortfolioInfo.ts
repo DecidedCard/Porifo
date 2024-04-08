@@ -1,3 +1,4 @@
+import type { Career } from "./Career";
 import type { Project } from "./Project";
 import { Json } from "./Supabase";
 
@@ -20,4 +21,5 @@ export interface PortfolioInfo {
     githubLink: string | null;
     project?: Project[] | Json;
     share: boolean | null;
+    career: Career[] | null;
 }

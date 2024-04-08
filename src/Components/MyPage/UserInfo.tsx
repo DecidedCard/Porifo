@@ -28,7 +28,9 @@ const UserInfo = () => {
         onChangeCommentHandler,
         onChangeCareerStartDate,
         onChangeCareerEndDate,
+        onClickInsertCareersHandler,
     } = useInfo();
+
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
             <div className="flex flex-col">
@@ -280,7 +282,9 @@ const UserInfo = () => {
                             onChange={onChangeCommentHandler}
                         />
                     </div>
-                    <div className="text-3xl mx-auto">+</div>
+                    <div className="text-3xl mx-auto cursor-pointer" onClick={onClickInsertCareersHandler}>
+                        +
+                    </div>
                 </div>
             </div>
         </main>
