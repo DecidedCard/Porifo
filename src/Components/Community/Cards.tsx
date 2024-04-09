@@ -42,7 +42,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 items-start justify-start shrink-0 relative pl-96 w-[1500px] ">
+            <div className="mt-8 flex flex-wrap gap-6 items-start justify-start shrink-0 relative w-[1280px] ">
                 {data?.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (

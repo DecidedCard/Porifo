@@ -64,7 +64,7 @@ const Filter = () => {
 
     return (
         <>
-            <div className="flex flex-row gap-10 items-start justify-start relative pl-96">
+            <div className="flex flex-row gap-10 items-start justify-start relative">
                 {SELECT_LIST.map((item) => {
                     return (
                         <button
