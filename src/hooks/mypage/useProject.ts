@@ -72,6 +72,7 @@ const useProject = () => {
         }
         setProjectImagesFile([...projects[index].imagesFile!, ...fileArray], index);
     };
+    console.log(projects[0].images);
 
     const onClickDeleteImage = (arg: number, index: number) => {
         const removeImages = [...projects[index].images];
@@ -89,21 +90,21 @@ const useProject = () => {
 
     //     if (projectInputFormValidation(info)) return;
 
-    //     const PROJECT_STORAGE = {
-    //         bucket: "projectImage",
-    //         path: `project/${crypto.randomUUID()}`,
-    //     };
+    // const PROJECT_STORAGE = {
+    //     bucket: "projectImage",
+    //     path: `project/${crypto.randomUUID()}`,
+    // };
 
-    //     const imagesUrl = project.imagesFile!.map(async (item) => {
-    //         try {
-    //             const res = await storageInsert(PROJECT_STORAGE.bucket, `${PROJECT_STORAGE.path}/${item.name}`, item);
-    //             const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
-    //             return url;
-    //         } catch (error) {
-    //             console.log(error);
-    //             return error;
-    //         }
-    //     });
+    // const imagesUrl = project.imagesFile!.map(async (item) => {
+    //     try {
+    //         const res = await storageInsert(PROJECT_STORAGE.bucket, `${PROJECT_STORAGE.path}/${item.name}`, item);
+    //         const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+    //         return url;
+    //     } catch (error) {
+    //         console.log(error);
+    //         return error;
+    //     }
+    // });
     //     const res = (await Promise.all(imagesUrl)) as string[];
     //     setProjects({ ...info, images: res });
     //     setStartDate("");

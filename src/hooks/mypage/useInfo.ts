@@ -29,7 +29,7 @@ const useInfo = () => {
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects, setProjectsInitial } = useProjectsStore();
+    const { projects, setProjectsInitial, setProjectImages } = useProjectsStore();
     const {
         career,
         careers,
@@ -207,14 +207,51 @@ const useInfo = () => {
         }
 
         if (user && !portfolio) {
+            let newPortfolio = {
+                ...info,
+                userId: user.id,
+                profileImage: url,
+                project: projects,
+                career: careers,
+            };
+            const projectImagesSetting = projects.map(async (item, idx) => {
+                if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
+                    const PROJECT_STORAGE = {
+                        bucket: "projectImage",
+                        path: `project/${crypto.randomUUID()}`,
+                    };
+                    const imagesUrl = item.imagesFile?.map(async (file) => {
+                        try {
+                            const res = await storageInsert(
+                                PROJECT_STORAGE.bucket,
+                                `${PROJECT_STORAGE.path}/${file.lastModified}`,
+                                file,
+                            );
+                            const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                            return url;
+                        } catch (error) {
+                            return error;
+                        }
+                    });
+                    const res = (await Promise.all(imagesUrl!)) as string[];
+                    newPortfolio = {
+                        ...newPortfolio,
+                        project: [
+                            ...projects.map((item, index) => {
+                                if (index === idx) {
+                                    return { ...item, images: res };
+                                } else {
+                                    return { ...item };
+                                }
+                            }),
+                        ],
+                    };
+                }
+            });
+
+            await Promise.all(projectImagesSetting);
+
             try {
-                const newPortfolio = {
-                    ...info,
-                    userId: user.id,
-                    profileImage: url,
-                    project: projects,
-                    career: careers,
-                };
                 await supabaseInsert(newPortfolio);
                 alert("이력서가 저장되었습니다.");
                 return;
@@ -226,6 +263,49 @@ const useInfo = () => {
 
         if (portfolio) {
             let newPortfolio = { ...info, userId: user!.id, project: projects, career: careers };
+
+            const imagesSetting = projects.map(async (item, idx) => {
+                if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
+                    const PROJECT_STORAGE = {
+                        bucket: "projectImage",
+                        path: `project/${crypto.randomUUID()}/${idx}`,
+                    };
+
+                    const imagesUrl = item.imagesFile?.map(async (file) => {
+                        try {
+                            const res = await storageInsert(
+                                PROJECT_STORAGE.bucket,
+                                `${PROJECT_STORAGE.path}/${file.lastModified}`,
+                                file,
+                            );
+                            const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                            return url;
+                        } catch (error) {
+                            return error;
+                        }
+                    });
+                    const res = (await Promise.all(imagesUrl!)) as string[];
+                    newPortfolio = {
+                        ...newPortfolio,
+                        project: [
+                            ...projects.map((port, index) => {
+                                if (index === idx) {
+                                    return {
+                                        ...port,
+                                        images: item.images.splice(item.images.length - res.length, res.length, ...res),
+                                    };
+                                } else {
+                                    return { ...item };
+                                }
+                            }),
+                        ],
+                    };
+                } else {
+                    false;
+                }
+                item.imagesFile?.length !== undefined;
+            });
+            await Promise.all(imagesSetting);
 
             try {
                 if (url) {
