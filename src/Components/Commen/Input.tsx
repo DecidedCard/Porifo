@@ -4,7 +4,8 @@ const Input = ({
     size,
     helperText,
     color,
-    width,
+    maxLength,
+
     pattern,
     type,
     value,
@@ -14,7 +15,8 @@ const Input = ({
     size?: string;
     helperText?: string;
     color?: string;
-    width: number;
+    maxLength?: number;
+
     pattern?: string;
     type: string;
     value?: any;
@@ -38,8 +40,9 @@ const Input = ({
                 value={value}
                 pattern={pattern}
                 onChange={onChange}
+                maxLength={maxLength}
                 placeholder={placeholder}
-                className={`border border-solid border-${borderColor} rounded-lg ${height} w-[${width}px] p-2 text-sm font-normal`}
+                className={`border border-solid border-${borderColor} rounded-lg ${height} w-full p-2 text-sm font-normal`}
             />
 
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}
