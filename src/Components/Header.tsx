@@ -19,7 +19,7 @@ const Header = () => {
         <main className="sticky top-0 z-50">
             <div
                 className="bg-hihigray bg-opacity-50 px-[100px] flex flex-row items-center justify-center h-[50px]"
-                style={{ backdropFilter: "blur(28px)" }}
+                style={{ backdropFilter: "blur(56px)" }}
             >
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px]" href={"/"}>
@@ -45,7 +45,6 @@ const Header = () => {
                         <Link href="/signin">
                             <Button
                                 text="로그인"
-                                width={50}
                                 size="s"
                                 color="primarynone"
                                 fontSize="xs"
@@ -57,7 +56,6 @@ const Header = () => {
                         <Link href="/signup">
                             <Button
                                 text="회원가입"
-                                width={50}
                                 size="s"
                                 color="primary"
                                 border="none"
@@ -70,7 +68,6 @@ const Header = () => {
                         <Link href="/">
                             <Button
                                 text="로그아웃"
-                                width={50}
                                 size="s"
                                 color="primary"
                                 border="none"

@@ -62,16 +62,17 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <Link href={"/community"} className="flex items-center justify-center my-20">
-                    <Button 
-                    text="더 많은 피드를 커뮤니티에서 보기"
-                    color="primary"
-                    border="none"
-                    width={230}
-                    size="m"
-                    fontSize="s"
-                    />
-            </Link>
+            <div className="flex justify-center my-20 w-60 items-center">
+                <Link href="/community">
+                        <Button 
+                            text="더 많은 피드를 커뮤니티에서 보기"
+                            color="primary"
+                            border="none"
+                            size="m"
+                            fontSize="s"
+                        />
+                </Link>
+            </div>
 
         </main>
     );

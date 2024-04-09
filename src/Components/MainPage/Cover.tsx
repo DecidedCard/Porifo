@@ -13,11 +13,10 @@ const Cover = () => {
                         포리포에서 당신의 커리어를 넓혀보세요.
                     </p>
                     <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
-                        <div>
+                        <div className="w-[180px]">
                             <Button 
-                            text="이력서 등록하기"
-                            size="m"
-                            width={190}
+                            text="포트폴리오 등록하기"
+                            size="l"
                             fontSize="m"
                             color="primary"
                             border="none"
