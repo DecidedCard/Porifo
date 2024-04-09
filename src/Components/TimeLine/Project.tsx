@@ -32,7 +32,7 @@ const Project = () => {
             details: [
                 "프로젝트 세부 내용 1",
                 "프로젝트 세부 내용 2",
-                "프로젝트 세부 내용 3",
+                "프로젝트 세부 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈ내용 3",
             ],
             link: "http://spartacodingclub.kr"
         },
@@ -43,7 +43,7 @@ const Project = () => {
         <div className="flex flex-col items-start justify-start">
             <h2 className="text-[22px] font-bold">프로젝트</h2>
             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-            <ol className="relative border-s  border-solid border-secondary ">
+            <ol className="relative border-s border-solid border-secondary ">
                 {projects.map((project, index) => (
                     <ProjectTimelineItem key={index} date={project.date} title={project.title} role={project.role} details={project.details} link={project.link}/>
                 ))}
