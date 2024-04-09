@@ -52,7 +52,7 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <Link href={"/community"} className="flex items-center justify-center my-20">
+            <Link href={"/community"} className="flex items-center justify-center my-20 w-[240px] relative">
                 <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
             </Link>
         </main>

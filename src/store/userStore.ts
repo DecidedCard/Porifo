@@ -1,23 +1,7 @@
-import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { create } from "zustand";
 
-type User = {
-    app_metadata: { provider: string; providers: string[] };
-    aud: string;
-    confirmed_at: string;
-    created_at: string;
-    email: string;
-    email_confirmed_at: string;
-    id: string;
-    updated_at: string;
-    user_metadata: {
-        age: string;
-        email: string;
-        phoneNumber: string;
-        sex: string;
-        sub: string;
-    };
-};
+import type { User } from "@/types/User";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 type Store = {
     user: User | null;
