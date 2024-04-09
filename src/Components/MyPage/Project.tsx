@@ -35,19 +35,20 @@ const Project = () => {
 
                 <div className="flex">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">기본정보</label>
-                    <Input
-                        type="text"
-                        width={500}
-                        size="big"
-                        placeholder="프로젝트명"
-                        value={project.name}
-                        onChange={onChangeProjectName}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="text"
+                            size="big"
+                            placeholder="프로젝트명"
+                            value={project.name}
+                            onChange={onChangeProjectName}
+                        />
+                    </div>
                 </div>
                 <div className="flex">
                     {/* 사진 제한 3장 */}
                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
-                    <div className="flex items-center justify-center border border-solid border-zinc-300 w-[500px] h-[200px] rounded-lg">
+                    <div className="flex items-center justify-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg">
                         {project.images.length !== 0 ? (
                             project.images.map((item, idx) => {
                                 return (
@@ -81,61 +82,69 @@ const Project = () => {
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         내용
                     </label>
-                    <Input
-                        type="text"
-                        width={500}
-                        size="big"
-                        placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
-                        value={project.introduce}
-                        onChange={onChangeProjectIntroduce}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="text"
+                            size="big"
+                            placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
+                            value={project.introduce}
+                            onChange={onChangeProjectIntroduce}
+                        />
+                    </div>
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         프로젝트 기간
                     </label>
-                    <Input
-                        type="date"
-                        width={250}
-                        size="big"
-                        placeholder="YYYY.MM"
-                        value={startDate}
-                        onChange={onChangeStartDateHandler}
-                    />{" "}
-                    <Input
-                        type="date"
-                        width={250}
-                        size="big"
-                        placeholder="YYYY.MM"
-                        value={endDate}
-                        onChange={onChangeEndDateHandler}
-                    />
+                    <div className="flex justify-between w-[460px]">
+                        <div className="w-[224px]">
+                            <Input
+                                type="date"
+                                size="big"
+                                placeholder="YYYY.MM"
+                                value={startDate}
+                                onChange={onChangeStartDateHandler}
+                            />
+                        </div>
+
+                        <div className="w-[224px]">
+                            <Input
+                                type="date"
+                                size="big"
+                                placeholder="YYYY.MM"
+                                value={endDate}
+                                onChange={onChangeEndDateHandler}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         베포링크
                     </label>
-                    <Input
-                        type="url"
-                        width={500}
-                        size="big"
-                        placeholder="http://"
-                        value={project.deployLink}
-                        onChange={onChangeProjectDeployLink}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="url"
+                            size="big"
+                            placeholder="http://"
+                            value={project.deployLink}
+                            onChange={onChangeProjectDeployLink}
+                        />
+                    </div>
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         Github
                     </label>
-                    <Input
-                        type="url"
-                        width={500}
-                        size="big"
-                        placeholder="http://"
-                        value={project.githubLink}
-                        onChange={onChangeProjectGithubLink}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="url"
+                            size="big"
+                            placeholder="http://"
+                            value={project.githubLink}
+                            onChange={onChangeProjectGithubLink}
+                        />
+                    </div>
                 </div>
                 <div onClick={onClickInsertHandler} className="text-4xl cursor-pointer w-fit mx-auto">
                     +

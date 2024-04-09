@@ -16,7 +16,9 @@ const Introduction = () => {
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         한줄 소개
                     </label>
-                    <Input placeholder="본인만의 소개글을 작성해 보세요" width={500} size="big" type="text" />
+                    <div className="w-[460px]">
+                        <Input placeholder="본인만의 소개글을 작성해 보세요" size="big" type="text" />
+                    </div>
                 </div>
 
                 <div className="flex items-start">
@@ -24,7 +26,7 @@ const Introduction = () => {
                         자기소개
                     </label>
                     <textarea
-                        className="h-[334px] w-[500px] resize-none p-2 border border-solid border-zinc-300 rounded-lg"
+                        className="h-[334px] w-[460px] resize-none p-2 border border-solid border-zinc-300 rounded-lg"
                         placeholder="본인만의 소개글을 작성해 보세요"
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}

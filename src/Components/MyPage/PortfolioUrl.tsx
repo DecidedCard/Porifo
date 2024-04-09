@@ -15,27 +15,29 @@ const PortfolioUrl = () => {
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         Blog
                     </label>
-                    <Input
-                        type="url"
-                        width={500}
-                        size="big"
-                        placeholder="http://"
-                        value={basicInfo.blogLink!}
-                        onChange={onChangeBlogHandler}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="url"
+                            size="big"
+                            placeholder="http://"
+                            value={basicInfo.blogLink!}
+                            onChange={onChangeBlogHandler}
+                        />
+                    </div>
                 </div>
                 <div className="flex items-start">
                     <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         Github
                     </label>
-                    <Input
-                        type="url"
-                        width={500}
-                        size="big"
-                        placeholder="http://"
-                        value={basicInfo.githubLink!}
-                        onChange={onChangeGithubHandler}
-                    />
+                    <div className="w-[460px]">
+                        <Input
+                            type="url"
+                            size="big"
+                            placeholder="http://"
+                            value={basicInfo.githubLink!}
+                            onChange={onChangeGithubHandler}
+                        />
+                    </div>
                 </div>
             </div>
         </main>
