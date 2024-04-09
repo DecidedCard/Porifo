@@ -10,13 +10,19 @@ import Input from "@/Components/Commen/Input";
 import Button from "@/Components/Commen/Button";
 import Image from "next/image";
 const clickSex = ["남자", "여자"];
-
+import { passwordValidate } from "@/util/sign/password_validate";
+import SignValidate from "@/Components/Sign/SignValidate";
 const clickNumber = ["010", "011"];
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-    const [passowrdValid, setVassowrdValid] = useState(false);
+
+    const [wordRegValid, setWordRegValid] = useState(false);
+    const [specialRegValid, setSpecialRegValid] = useState(false);
+    const [numberRegValid, setNumberRegValid] = useState(false);
+    const [lengthRegValid, setLengthRegValid] = useState(false);
+
     const [name, onChangeNameHandler] = useInput();
     const [age, onChangeAgeHandler] = useInput();
     const [firstNumber, setFirstNumber] = useState("010");
@@ -25,16 +31,11 @@ const SignUp = () => {
     const [sex, setSex] = useState("");
 
     const router = useRouter();
-    console.log(passowrdValid);
+
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
-        const regex =
-            /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-        if (regex.test(e.target.value)) {
-            setVassowrdValid(true);
-        } else {
-            setVassowrdValid(false);
-        }
+
+        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
     };
 
     const onClickFindSex = (sex: string) => setSex(sex);
@@ -42,7 +43,7 @@ const SignUp = () => {
 
     const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
-    const signUpNewUser = async (e: React.FormEvent) => {
+    const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             signUpValidation({ phoneNumber, age, email, password });
@@ -100,12 +101,12 @@ const SignUp = () => {
                         eye="eye.svg"
                         eyeClose="eye_close.svg"
                     />
-                    {!passowrdValid && password.length > 0 && (
-                        <p className="text-slate-400 text-center text-[11px]">
-                            영문, 숫자, 특수문자를 포함하여 비밀번호를 8자 이상 작성해주세요
-                        </p>
-                    )}
-
+                    <SignValidate
+                        lengthRegValid={lengthRegValid}
+                        numberRegValid={numberRegValid}
+                        wordRegValid={wordRegValid}
+                        specialRegValid={specialRegValid}
+                    />
                     <SignUpItem
                         setLabel="이름"
                         type="text"
