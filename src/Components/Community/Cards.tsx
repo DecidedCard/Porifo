@@ -8,14 +8,16 @@ import { useInView } from "react-intersection-observer";
 
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
+import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 const Cards = ({ filterData }: { filterData: any }) => {
-    const { filter, page, setPage, jobFilter, getFromAndTo } = filterData;
+    const { jobFilter } = filterData;
+    const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
-        queryFn: () => getPortfolio({ getFromAndTo, filter, page, setPage, jobFilter }),
+        queryFn: () => getPortfolio({ filter, jobFilter, getFromAndTo, page, setPage }),
         initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {

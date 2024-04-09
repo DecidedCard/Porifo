@@ -16,7 +16,7 @@ const ComuunityPage = () => {
             <div className="flex gap-32">
                 <JobFilter />
                 <div>
-                    <Filter />;
+                    <Filter />
                 </div>
             </div>
         </>
