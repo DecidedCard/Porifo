@@ -3,7 +3,7 @@ import { AiOutlineMail } from "react-icons/ai";
 
 const Top = () => {
     return (
-        <main>
+        <main className="mt-10">
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0 relative">
                 <div className="flex flex-row items-start justify-center self-stretch shrink-0 relative">
                     

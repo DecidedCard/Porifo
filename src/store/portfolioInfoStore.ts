@@ -35,6 +35,7 @@ const initial = {
     blogLink: "",
     githubLink: "",
     share: false,
+    career: [],
 };
 
 const usePortfolioInfoStore = create<Store>()((set) => ({

@@ -18,7 +18,7 @@ const TimelineItem: React.FC<WorkTimelineItemProps> = ({ date, title, descriptio
                 </div>
 
                 {/* 설명과 상세 정보를 포함하는 영역 */}
-                <div className="flex flex-col w-1/2 ml-10">
+                <div className="flex flex-col w-[480px] ml-10">
                     <p className="text-[14px] font-normal mb-2 text-neutral-600">{description}</p>
                     <div className="flex flex-col">
                         {details.map((detail, index) => (

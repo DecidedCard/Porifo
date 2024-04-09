@@ -13,14 +13,8 @@ const MiddleLeft = () => {
                         우리는 누구나 쉽게 나만의 포트폴리오를 만들고 <br /> 공유할 수 있게 합니다.
                     </p>
                     <div>
-                    <Link href={"/community"}>
-                        <Button 
-                        text="더 많은 포트폴리오 확인하기"
-                        size="l"
-                        width={150}
-                        fontSize="s"
-                        color="primary"
-                        />
+                        <Link href={"/community"}>
+                            <Button text="더 많은 포트폴리오 확인하기" size="l" fontSize="s" color="primary" />
                         </Link>
                     </div>
                 </div>

@@ -4,12 +4,8 @@ import Button from "../Commen/Button";
 const Bottom = () => {
     return (
         <main className="">
-            
             <div className="flex flex-col items-center justify-center gap-2.5 shrink-0 relative">
-                <img
-                    className="rounded-2xl shrink-0 w-[700px] h-[388px] relative"
-                    src="33.png"
-                />
+                <img className="rounded-2xl shrink-0 w-[700px] h-[388px] relative" src="33.png" />
                 <div className="flex flex-col items-start justify-start gap-2 p-6 shrink-0 relative">
                     <div className="flex flex-col items-start justify-start gap-2  mr-80 shrink-0 relative">
                         <p className="flex items-center justify-start text-secondary text-left font-spoqaBold font-semibold leading-normal relative">
@@ -25,10 +21,7 @@ const Bottom = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2.5 mt-20 shrink-0 relative">
-                <img
-                    className="rounded-2xl shrink-0 w-[600px] h-[320px] relative"
-                    src="22.png"
-                />
+                <img className="rounded-2xl shrink-0 w-[600px] h-[320px] relative" src="22.png" />
                 <div className="flex flex-col items-start justify-start p-6 mr-52 gap-2 shrink-0 relative">
                     <div className="flex flex-col items-start justify-start gap-2 shrink-0 relative">
                         <p className="text-secondary text-left font-spoqaBold font-semibold leading-normal relative flex items-center justify-start">
@@ -44,10 +37,7 @@ const Bottom = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2.5 mt-20 shrink-0 relative">
-                <img
-                    className="rounded-2xl shrink-0 w-[500px] h-[300px] relative"
-                    src="11.png"
-                />
+                <img className="rounded-2xl shrink-0 w-[500px] h-[300px] relative" src="11.png" />
                 <div className="p-6 mr-20 flex flex-col gap-2 items-start justify-start shrink-0 relative">
                     <div className="flex flex-col items-start justify-start gap-2 shrink-0 relative">
                         <p className="flex items-center justify-start text-secondary text-left font-spoqaBold font-semibold leading-normal relative">
@@ -62,18 +52,9 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <div className="flex justify-center my-20 w-60 items-center">
-                <Link href="/community">
-                        <Button 
-                            text="더 많은 피드를 커뮤니티에서 보기"
-                            color="primary"
-                            border="none"
-                            size="m"
-                            fontSize="s"
-                        />
-                </Link>
-            </div>
-
+            <Link href={"/community"} className="flex items-center justify-center my-20 w-[240px] relative">
+                <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
+            </Link>
         </main>
     );
 };
