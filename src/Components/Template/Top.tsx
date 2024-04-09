@@ -34,8 +34,8 @@ const Top = ({id}: {id: string}) => {
 
     return (
         <main className="mt-10">
-            <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0 relative">
-                <div className="flex flex-row items-start justify-center self-stretch shrink-0 relative">
+            <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
+                <div className="flex flex-row items-start justify-center self-stretch shrink-0">
                     
                     <img
                         className="rounded-full shrink-0 mr-5 w-36 h-36 relative"
@@ -43,9 +43,9 @@ const Top = ({id}: {id: string}) => {
                         alt="프로필 사진"
                     />
 
-                    <div className="flex flex-col gap-5 items-start justify-center shrink-0 w-80 min-w-[320px] max-w-xs relative">
+                    <div className="flex flex-col gap-5 items-start justify-center shrink-0 w-80 min-w-[320px] max-w-xs">
                         
-                        <h1 className="leading-normal text-[30px] text-left font-bold relative flex items-center justify-start">
+                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start">
                             안녕하세요.
                             <br />
                             게임개발자 홍길동입니다.
