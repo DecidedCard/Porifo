@@ -18,7 +18,7 @@ const Buttons = () => {
     const router = useRouter();
     return (
         <div className="flex flex-col">
-            <main className="relative flex flex-col items-center">
+            <main className="relative flex flex-col items-center ">
                 <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
                     <div className="absolute right-[450px] w-20 flex flex-row">
                         <Button
@@ -65,7 +65,9 @@ const Buttons = () => {
                     <label className="">공유하기</label>
                 </div>
             </main>
-            <div className="opacity-0">{portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}</div>
+            <div className="absolute top-0 left-0 opacity-0 -z-50">
+                {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
+            </div>
         </div>
     );
 };
