@@ -1,10 +1,12 @@
 "use client";
+
 import React, { useState } from "react";
+
 import Dropdown from "./Dropdown";
+
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 const JobFilter = () => {
-    // const [filter, setFilter] = useState("기본순");
     const { filter } = useSupabaseRange();
     const [view, setView] = useState(false);
 

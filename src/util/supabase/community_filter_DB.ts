@@ -5,7 +5,6 @@ export const getPortfolio = async (payload: any) => {
     const { from, to } = getFromAndTo();
 
     let query = supabase.from("portfolioInfo").select("*");
-    console.log(jobFilter);
     if (filter === "최신순") {
         query = query.order("id", { ascending: false });
     }
