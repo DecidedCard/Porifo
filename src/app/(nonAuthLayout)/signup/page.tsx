@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import useInput from "@/hooks/useInput";
@@ -10,11 +10,13 @@ import Input from "@/Components/Commen/Input";
 import Button from "@/Components/Commen/Button";
 import Image from "next/image";
 const clickSex = ["남자", "여자"];
+
 const clickNumber = ["010", "011"];
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
-    const [password, onChangePasswordHandler] = useInput();
+    const [password, setPassword] = useState("");
+    const [passowrdValid, setVassowrdValid] = useState(false);
     const [name, onChangeNameHandler] = useInput();
     const [age, onChangeAgeHandler] = useInput();
     const [firstNumber, setFirstNumber] = useState("010");
@@ -23,6 +25,17 @@ const SignUp = () => {
     const [sex, setSex] = useState("");
 
     const router = useRouter();
+    console.log(passowrdValid);
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+        const regex =
+            /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+        if (regex.test(e.target.value)) {
+            setVassowrdValid(true);
+        } else {
+            setVassowrdValid(false);
+        }
+    };
 
     const onClickFindSex = (sex: string) => setSex(sex);
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
@@ -61,46 +74,51 @@ const SignUp = () => {
             <div className="rounded p-10 w-[500px] h-[860px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
-                        <Image width={160} height={140} src="formLogo.svg" alt="" />
+                        <Image
+                            className="w-[160px] h-auto"
+                            width={0}
+                            height={0}
+                            src="formLogo.svg"
+                            priority
+                            alt="회원가입의 form 로고"
+                        />
                     </div>
                     <SignUpItem
                         setLabel="이메일"
+                        type="email"
                         placeholder="이메일을 입력해주세요"
                         pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                         onChangeHandler={onChangeEmailHandler}
                     />
                     <SignUpItem
                         setLabel="비밀번호"
-                        placeholder="비밀번호를 8자 이상 작성해주세요"
-                        onChangeHandler={onChangePasswordHandler}
+                        placeholder="비밀번호를 작성해주세요"
+                        pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+                        "
+                        onChangeHandler={onChangePassword}
+                        relative="relative"
+                        eye="eye.svg"
+                        eyeClose="eye_close.svg"
                     />
+                    {!passowrdValid && password.length > 0 && (
+                        <p className="text-slate-400 text-center text-[11px]">
+                            영문, 숫자, 특수문자를 포함하여 비밀번호를 8자 이상 작성해주세요
+                        </p>
+                    )}
+
                     <SignUpItem
-                        setLabel="비밀번호"
-                        placeholder="비밀번호를 8자 이상 작성해주세요"
+                        setLabel="이름"
+                        type="text"
+                        placeholder="이름을 입력해주세요"
                         onChangeHandler={onChangeNameHandler}
                     />
-
-                    <div className="mx-auto my-8 h-fit flex flex-col w-[350px]">
-                        <label className="mb-2">이름</label>
-                        <Input
-                            type="text"
-                            placeholder="이름을 입력해주세요"
-                            onChange={onChangeNameHandler}
-                            color="black"
-                            size="big"
-                        />
-                    </div>
-                    <div className="mx-auto my-8 w-[350px] h-fit flex flex-col">
-                        <label className="mb-2">나이</label>
-
-                        <Input
-                            type="text"
-                            placeholder="나이를 입력해주세요"
-                            onChange={onChangeAgeHandler}
-                            color="black"
-                            size="big"
-                        />
-                    </div>
+                    <SignUpItem
+                        setLabel="나이"
+                        type="text"
+                        pattern="[0-9]{2}"
+                        placeholder="나이를 입력해주세요"
+                        onChangeHandler={onChangeAgeHandler}
+                    />
                     <p className="mx-9">성별</p>
                     <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
                         {clickSex.map((item: string, idx: number) => {
@@ -127,7 +145,6 @@ const SignUp = () => {
                                 onChange={onClickPhoneNumber}
                             >
                                 {clickNumber.map((item, idx) => {
-                                    console.log(item);
                                     return (
                                         <option key={idx} className="text-zinc-300 mt-2 text-sm">
                                             {item}
@@ -143,7 +160,7 @@ const SignUp = () => {
                                     size="big"
                                     onChange={onChangeMiddleNumberHandler}
                                 />
-                            </div>{" "}
+                            </div>
                             <div className="w-[110px]">
                                 <Input
                                     type="text"
@@ -152,10 +169,10 @@ const SignUp = () => {
                                     maxLength={4}
                                     onChange={onChangeLastNumberHandler}
                                 />
-                            </div>{" "}
+                            </div>
                         </div>
                     </div>
-                    <div className="w-350 mt-8 mb-6 mx-auto">
+                    <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button text="가입하기" border="none" color="primary" size="m" />
                     </div>
                 </form>
