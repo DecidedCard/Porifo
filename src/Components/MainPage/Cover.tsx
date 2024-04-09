@@ -3,24 +3,38 @@ import Button from "../Commen/Button";
 
 const Cover = () => {
     return (
-        <main className="min-h-screen w-full animate-fadein">
-            <div className="flex justify-center bg-gray h-auto md:h-[530px] relative">
-                <div className="flex flex-col items-center justify-center top-[170px] absolute">
-                    <p className="text-gray-black text-center font-bold text-[65px] leading-[100px] font-spoqaBold">
-                        For Your Career, PORIFO
-                    </p>
-                    <p className="text-gray-black text-center font-bold text-[30px] font-spoqaMedium-bold">
-                        포리포에서 당신의 커리어를 넓혀보세요.
-                    </p>
-                    <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
-                        <div>
-                            <Button text="이력서 등록하기" size="m" fontSize="m" color="primary" border="none" />
-                        </div>
+        <main className="h-[732px] w-full animate-fadein relative overflow-hidden">
+            <video
+                className="w-full h-full absolute top-0 left-0 object-cover"
+                autoPlay // 페이지가 로드 될 때 재생
+                muted // 비디오 음소거
+                loop // 비디오가 재생이 끝나면 다시 재생
+            >
+                <source src="mainVideo.mp4" type="video/mp4" />
+            </video>
+            <div className="w-full h-full absolute top-0 left-0 bg-black opacity-50"></div>
+            <div className="flex flex-col items-center justify-center mt-10 absolute top-[170px] w-full">
+                <p className="text-white text-center font-bold text-[80px] leading-[100px] font-spoqaBold">
+                    For Your Career, PORIFO
+                </p>
+                <p className="text-white text-center font-bold text-[40px] font-spoqaMedium-bold">
+                    포리포에서 당신의 커리어를 넓혀보세요.
+                </p>
+                <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
+                    <div className="w-[180px]">
+                        <Button
+                            text="포트폴리오 등록하기"
+                            size="l"
+                            fontSize="m"
+                            color="primary"
+                            border="none"
+                        />
                     </div>
                 </div>
             </div>
         </main>
     );
 };
+
 
 export default Cover;
