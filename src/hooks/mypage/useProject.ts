@@ -51,12 +51,14 @@ const useProject = () => {
 
     // 이미지 blob url 변환 및 파일 저장
     const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        const fileList = e.target.files;
+        const fileList = [...e.target.files!];
+        fileRef.current!.value = "";
 
         if (fileList!.length + projects[index].images.length > 5) {
             alert("사진은 최대 5장이 최대입니다.");
             return;
         }
+
         const fileArray: File[] = Array.prototype.slice.call(fileList);
         const url = fileArray.map((item: File) => {
             const blob = new Blob([item]);

@@ -75,7 +75,7 @@ const Project = () => {
                                                     </div>
                                                 );
                                             })}
-                                        <label htmlFor="file">
+                                        <label htmlFor={`file${projectsIndex}`}>
                                             <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
                                                 +
                                             </div>
@@ -84,10 +84,11 @@ const Project = () => {
                                     <input
                                         ref={fileRef}
                                         type="file"
-                                        id="file"
-                                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                            onChangeImagesHandler(e, projectsIndex)
-                                        }
+                                        name={`file${projectsIndex}`}
+                                        id={`file${projectsIndex}`}
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                            onChangeImagesHandler(e, projectsIndex);
+                                        }}
                                         className="hidden"
                                         multiple
                                     />
