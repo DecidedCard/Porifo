@@ -3,16 +3,14 @@ import { create } from "zustand";
 import type { Project } from "@/types/Project";
 
 type Store = {
-    project: Project;
-    projects: Omit<Project, "imagesFile">[];
-    setProjectName: (arg: string) => void;
-    setProjectImages: (arg: string[]) => void;
-    setProjectImagesFile: (arg: File[]) => void;
-    setProjectIntroduce: (arg: string) => void;
-    setProjectDate: (arg: string) => void;
-    setProjectDeployLink: (arg: string) => void;
-    setProjectGithubLink: (arg: string) => void;
-    setReset: () => void;
+    projects: Project[];
+    setProjectName: (arg: string, index: number) => void;
+    setProjectImages: (arg: string[], index: number) => void;
+    setProjectImagesFile: (arg: File[], index: number) => void;
+    setProjectIntroduce: (arg: string, index: number) => void;
+    setProjectDate: (arg: string, index: number) => void;
+    setProjectDeployLink: (arg: string, index: number) => void;
+    setProjectGithubLink: (arg: string, index: number) => void;
     setProjects: (arg: Project) => void;
     setProjectsInitial: (arg: Project[]) => void;
 };
@@ -20,16 +18,92 @@ type Store = {
 const initial = { name: "", images: [], imagesFile: [], introduce: "", date: "", githubLink: "", deployLink: "" };
 
 const useProjectsStore = create<Store>()((set) => ({
-    project: initial,
-    projects: [],
-    setProjectName: (arg) => set((item) => ({ project: { ...item.project, name: arg } })),
-    setProjectImages: (arg) => set((item) => ({ project: { ...item.project, images: arg } })),
-    setProjectImagesFile: (arg) => set((item) => ({ project: { ...item.project, imagesFile: arg } })),
-    setProjectIntroduce: (arg) => set((item) => ({ project: { ...item.project, introduce: arg } })),
-    setProjectDate: (arg) => set((item) => ({ project: { ...item.project, date: arg } })),
-    setProjectDeployLink: (arg) => set((item) => ({ project: { ...item.project, deployLink: arg } })),
-    setProjectGithubLink: (arg) => set((item) => ({ project: { ...item.project, githubLink: arg } })),
-    setReset: () => set({ project: initial }),
+    projects: [initial],
+    setProjectName: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, name: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+
+    setProjectImages: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, images: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+    setProjectImagesFile: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, imagesFile: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+    setProjectIntroduce: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, introduce: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+    setProjectDate: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, date: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+    setProjectDeployLink: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, deployLink: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
+    setProjectGithubLink: (arg, index) =>
+        set((item) => ({
+            projects: [
+                ...item.projects.map((project, idx) => {
+                    if (idx === index) {
+                        return { ...project, githubLink: arg };
+                    } else {
+                        return { ...project };
+                    }
+                }),
+            ],
+        })),
     setProjects: (arg) => set((item) => ({ projects: [...item.projects, arg] })),
     setProjectsInitial: (arg) => set({ projects: [...arg] }),
 }));
