@@ -20,8 +20,6 @@ const Project = () => {
         onClickDeleteImage,
     } = useProject();
 
-    console.log(projects);
-
     return (
         <>
             <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -51,39 +49,37 @@ const Project = () => {
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    {/* 사진 제한 3장 */}
                                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
-                                    <div className="flex flex-col items-center justify-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg overflow-scroll p-4">
-                                        {item.images.length !== 0 ? (
+                                    <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg overflow-scroll">
+                                        {item.images.length !== 0 &&
                                             item.images.map((item, idx) => {
                                                 return (
-                                                    <div key={idx} className="group flex">
-                                                        <div className="relative w-[435px] h-[70px] overflow-hidden mt-4">
+                                                    <div key={idx} className="relative group">
+                                                        <div className="w-[435px] h-[70px] overflow-hidden">
                                                             <Image
                                                                 src={item}
                                                                 alt="프로젝트 미리보기"
-                                                                width={100}
+                                                                width={600}
                                                                 height={100}
-                                                                className="absolute w-full"
                                                             />
                                                         </div>
 
-                                                        <p
-                                                            className="cursor-pointer invisible group-hover:visible"
-                                                            onClick={() => onClickDeleteImage(idx, projectsIndex)}
-                                                        >
-                                                            X
-                                                        </p>
+                                                        <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[70px] pr-2 bg-black bg-opacity-20 invisible group-hover:visible">
+                                                            <p
+                                                                className="cursor-pointer text-white"
+                                                                onClick={() => onClickDeleteImage(idx, projectsIndex)}
+                                                            >
+                                                                X
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 );
-                                            })
-                                        ) : (
-                                            <label htmlFor="file">
-                                                <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300">
-                                                    +
-                                                </div>
-                                            </label>
-                                        )}
+                                            })}
+                                        <label htmlFor="file">
+                                            <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
+                                                +
+                                            </div>
+                                        </label>
                                     </div>
                                     <input
                                         ref={fileRef}

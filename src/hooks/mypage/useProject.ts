@@ -49,12 +49,12 @@ const useProject = () => {
         setProjectGithubLink(e.target.value, index);
     };
 
-    // 이미지 스토리지 저장 및 url 변환 images state에 저장
+    // 이미지 blob url 변환 및 파일 저장
     const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const fileList = e.target.files;
 
-        if (fileList!.length + projects[index].images.length > 3) {
-            alert("사진은 최대 3장이 최대입니다.");
+        if (fileList!.length + projects[index].images.length > 5) {
+            alert("사진은 최대 5장이 최대입니다.");
             return;
         }
         const fileArray: File[] = Array.prototype.slice.call(fileList);
@@ -64,6 +64,10 @@ const useProject = () => {
             return url;
         });
         setProjectImages([...projects[index].images, ...url], index);
+        if (!projects[index].imagesFile!) {
+            setProjectImagesFile([...fileArray], index);
+            return;
+        }
         setProjectImagesFile([...projects[index].imagesFile!, ...fileArray], index);
     };
 
