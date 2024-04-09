@@ -1,6 +1,6 @@
 import Carousel from "@/Components/Community/Carousel";
-import Filter from "@/Components/Community/Filter";
-import JobFilter from "@/Components/Community/JobFilter";
+import JobFilter from "@/Components/Community/Filter";
+import Filter from "@/Components/Community/JobFilter";
 
 import React from "react";
 
@@ -14,9 +14,9 @@ const ComuunityPage = () => {
                 <Carousel />
             </div>
             <div className="flex gap-32">
-                <JobFilter />
+                <Filter />
                 <div>
-                    <Filter />
+                    <JobFilter />
                 </div>
             </div>
         </>

@@ -6,7 +6,7 @@ import Dropdown from "./Dropdown";
 
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 
-const JobFilter = () => {
+const Filter = () => {
     const { filter } = useSupabaseRange();
     const [view, setView] = useState(false);
 
@@ -28,4 +28,4 @@ const JobFilter = () => {
     );
 };
 
-export default JobFilter;
+export default Filter;

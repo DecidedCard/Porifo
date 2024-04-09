@@ -20,7 +20,7 @@ export const SELECT_LIST = [
     // { value: "기타", name: "기타" },
 ];
 
-const Filter = () => {
+const JobFilter = () => {
     const { setPage } = useSupabaseRange();
     const [jobFilter, setJobFilter] = useState("");
 
@@ -55,4 +55,4 @@ const Filter = () => {
     );
 };
 
-export default Filter;
+export default JobFilter;
