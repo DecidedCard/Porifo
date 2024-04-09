@@ -170,7 +170,7 @@ const useInfo = () => {
         setPosition(e.target.value);
     };
 
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setComment(e.target.value);
     };
 

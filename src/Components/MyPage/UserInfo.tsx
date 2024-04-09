@@ -64,13 +64,12 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             이름
                         </label>
-                        <div className="mt-10">
+                        <div className="mt-10 w-[460px]">
                             <Input
                                 type="text"
                                 placeholder="이름을 입력해 주세요."
                                 value={basicInfo.name!}
                                 onChange={onChangeNameHandler}
-                                width={500}
                                 size="big"
                                 color=""
                             />
@@ -83,13 +82,12 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             영문이름
                         </label>
-                        <div className="mt-10">
+                        <div className="mt-10 w-[460px]">
                             <Input
                                 type="text"
                                 placeholder="영문 이름을 입력해 주세요."
                                 value={basicInfo.englishName}
                                 onChange={onChangeEngNameHandler}
-                                width={500}
                                 size="big"
                             />
                         </div>
@@ -102,13 +100,12 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         생년월일
                     </label>
-                    <div className="mt-10">
+                    <div className="mt-10 w-[460px]">
                         <Input
                             type="date"
                             placeholder="생년월일을 입력해 주세요"
                             value={basicInfo.birthday!}
                             onChange={onChangeBirthdayHandler}
-                            width={500}
                             size="big"
                         />
                     </div>
@@ -118,13 +115,12 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         연락처
                     </label>
-                    <div className="mt-10">
+                    <div className="mt-10 w-[460px]">
                         <Input
                             type="tel"
                             placeholder="연락처를 입력해 주세요."
                             value={basicInfo.tel!}
                             onChange={onChangeTelHandler}
-                            width={500}
                             size="big"
                         />
                     </div>
@@ -134,13 +130,12 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         e-mail
                     </label>
-                    <div className="mt-10">
+                    <div className="mt-10 w-[460px]">
                         <Input
                             type="tel"
                             placeholder="e-mail을 입력해 주세요."
                             value={basicInfo.email}
                             onChange={onChangeEmailHandler}
-                            width={500}
                             size="big"
                         />
                     </div>
@@ -171,13 +166,12 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         학교
                     </label>
-                    <div className="mt-10">
+                    <div className="mt-10 w-[460px]">
                         <Input
                             type="text"
                             placeholder="학교를 입력해 주세요."
                             value={basicInfo.school!}
                             onChange={onChangeSchoolHandler}
-                            width={500}
                             size="big"
                         />
                     </div>
@@ -187,13 +181,12 @@ const UserInfo = () => {
                     <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                         전공
                     </label>{" "}
-                    <div className="mt-10">
+                    <div className="mt-10 w-[460px]">
                         <Input
                             type="text"
                             placeholder="전공을 입력해 주세요."
                             value={basicInfo.class!}
                             onChange={onChangeClassHandler}
-                            width={500}
                             size="big"
                         />
                     </div>
@@ -210,32 +203,33 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             회사이름
                         </label>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4 w-[460px]">
                             <Input
                                 type="text"
                                 placeholder="회사이름을 입력해주세요."
-                                width={500}
                                 size="big"
                                 value={career.company}
                                 onChange={onChangeCompanyHandler}
                             />
                             <div className="flex justify-between">
-                                <Input
-                                    type="text"
-                                    width={250}
-                                    size="big"
-                                    placeholder="부서"
-                                    value={career.department}
-                                    onChange={onChangeDepartmentHandler}
-                                />
-                                <Input
-                                    type="text"
-                                    width={250}
-                                    size="big"
-                                    placeholder="직급/직책"
-                                    value={career.position}
-                                    onChange={onChangePositionHandler}
-                                />
+                                <div className="w-[224px]">
+                                    <Input
+                                        type="text"
+                                        size="big"
+                                        placeholder="부서"
+                                        value={career.department}
+                                        onChange={onChangeDepartmentHandler}
+                                    />
+                                </div>
+                                <div className="w-[224px]">
+                                    <Input
+                                        type="text"
+                                        size="big"
+                                        placeholder="직급/직책"
+                                        value={career.position}
+                                        onChange={onChangePositionHandler}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,27 +238,30 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             기간
                         </label>
-                        <div className="w-[500px]">
+                        <div className="w-[460px]">
                             <div className="flex justify-between">
-                                <Input
-                                    type="month"
-                                    placeholder="YYYY.MM"
-                                    width={250}
-                                    size="big"
-                                    value={careerStartDate}
-                                    onChange={onChangeCareerStartDate}
-                                />
-                                <Input
-                                    type="month"
-                                    placeholder="YYYY.MM"
-                                    width={250}
-                                    size="big"
-                                    value={careerEndDate}
-                                    onChange={onChangeCareerEndDate}
-                                />
+                                <div className="w-[224px]">
+                                    <Input
+                                        type="month"
+                                        placeholder="YYYY.MM"
+                                        size="big"
+                                        value={careerStartDate}
+                                        onChange={onChangeCareerStartDate}
+                                    />
+                                </div>
+
+                                <div className="w-[224px]">
+                                    <Input
+                                        type="month"
+                                        placeholder="YYYY.MM"
+                                        size="big"
+                                        value={careerEndDate}
+                                        onChange={onChangeCareerEndDate}
+                                    />
+                                </div>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Input type="checkbox" width={10} />
+                                <Input type="checkbox" />
                                 <label>재직 중</label>
                             </div>
                         </div>
@@ -274,13 +271,11 @@ const UserInfo = () => {
                         <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                             내용
                         </label>
-                        <Input
-                            type="text"
+                        <textarea
                             placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
-                            width={500}
-                            size="big"
                             value={career.comment}
                             onChange={onChangeCommentHandler}
+                            className="w-[460px] h-[140px] resize-none rounded-lg p-2 border border-solid border-zinc-300"
                         />
                     </div>
                     <div className="text-3xl mx-auto cursor-pointer" onClick={onClickInsertCareersHandler}>
