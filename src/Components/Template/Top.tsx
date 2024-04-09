@@ -1,7 +1,37 @@
+"use client"
+
+import { useState, useEffect } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
+import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 
-const Top = () => {
+const Top = ({id}: {id: string}) => {
+    
+    const [userInfo, setUserInfo] = useState({
+        name: '',
+        tel: '',
+        email: '',
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await supabasePortfolioInfoRead({ id: 'userId', value: id });
+
+                    setUserInfo({
+                        name: data[0].name || '',
+                        tel: data[0].tel || '',
+                        email: data[0].email || '',
+                    });
+
+            } catch (error) {
+                console.error("사용자 정보를 가져오는 데 실패했습니다.", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <main className="mt-10">
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0 relative">
@@ -24,7 +54,7 @@ const Top = () => {
                         <div className="flex flex-col gap-4 items-start justify-start shrink-0 relative">
                             <div className="flex flex-col gap-0 items-start justify-start shrink-0 relative">
                                 <h2 className="text-[22px] font-bold text-center relative flex items-center justify-center">
-                                    홍길동
+                                    {userInfo.name}
                                 </h2>
                                 <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
                                 <p className="text-[14px] text-center relative flex items-center justify-center">
@@ -35,13 +65,13 @@ const Top = () => {
                             <address className="text-[14px] text-grayblack flex flex-col items-start justify-start self-stretch shrink-0 relative">
                                 <div className="flex flex-row items-center justify-start shrink-0 relative">
                                     <p className="text-center relative flex items-center justify-center mb-2">
-                                       <IoCallOutline className="mr-2"/> 010-1234-5678
+                                       <IoCallOutline className="mr-2"/> {userInfo.tel}
                                     </p>
                                 </div>
 
                                 <div className="flex flex-row items-center justify-start shrink-0 relative">
                                     <p className="text-center relative flex items-center justify-center">
-                                        <AiOutlineMail className="mr-2"/> honggildong@gmail.com
+                                        <AiOutlineMail className="mr-2"/> {userInfo.email}
                                     </p>
                                 </div>
                             </address>
