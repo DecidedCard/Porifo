@@ -1,25 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
-import { ReactComponent as DownArrow } from "@/assets/arrow-down.svg";
 
 const JobFilter = () => {
+    const [filter, setFilter] = useState("기본순");
     const [view, setView] = useState(false);
     return (
-        <div className=" border-solid border-2 border-slate-950 w-64 p-4 ml-20 mt-20">
-            <span>정렬</span>
-            <DownArrow />
-            <ul
-                onClick={() => {
-                    setView(!view);
-                }}
-                className="border-solid border-2 border-rose-600"
-            >
-                반가워요, nickname 님! {view ? "⌃" : "⌄"}
-                {/* view가 true면 올리는 아이콘, false면 내리는 아이콘 보여줌 */}
-                {view && <Dropdown />}
-                {/* view가 true일 때만 Dropdown 컴포넌트 렌더링 */}
-            </ul>
+        <div className="w-68 p-4 ml-20 mt-20 flex flex-col ">
+            <span className="font-spoqaMedium text-black font-bold text-lg">정렬</span>
+            <button className="font-spoqaMedium font-bold border-solid border-2 border-gray2 rounded-xl p-3 mt-2 w-58 ">
+                <ul
+                    className="flex gap-[125px]"
+                    onClick={() => {
+                        setView(!view);
+                    }}
+                >
+                    {filter} {view ? <img src="arrow-up.svg" /> : <img src="arrow-down.svg" />}
+                </ul>
+            </button>
+            {view && <Dropdown props={{ setFilter, setView }} />}
         </div>
     );
 };

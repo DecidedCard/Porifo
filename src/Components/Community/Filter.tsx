@@ -72,7 +72,7 @@ const Filter = () => {
                             onClick={() => handleJobFilterBtn(item.value)}
                             className="p-2 flex flex-col gap-2 items-center justify-start shrink-0 h-12 relative "
                         >
-                            <div className="text-center font-spoqaMedium text-black font-bold text-center leading-subhead-sh5-line-height relative min-w-[40px] flex items-center justify-center">
+                            <div className="text-center font-spoqaMedium text-black font-bold text-xl leading-subhead-sh5-line-height relative min-w-[40px] flex items-center justify-center">
                                 {item.name}
                             </div>
                         </button>
