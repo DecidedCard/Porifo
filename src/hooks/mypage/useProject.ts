@@ -67,15 +67,16 @@ const useProject = () => {
         setProjectImagesFile([...projects[index].imagesFile!, ...fileArray], index);
     };
 
-    // const onClickDeleteImage = (arg: number) => {
-    //     const removeImages = [...project.images];
-    //     const removeImagesFile = [...project.imagesFile!];
-    //     removeImages.splice(arg, 1);
-    //     removeImagesFile.splice(arg, 1);
-
-    //     setProjectImages(removeImages);
-    //     setProjectImagesFile(removeImagesFile);
-    // };
+    const onClickDeleteImage = (arg: number, index: number) => {
+        const removeImages = [...projects[index].images];
+        removeImages.splice(arg, 1);
+        setProjectImages(removeImages, index);
+        if (projects[index].imagesFile) {
+            const removeImagesFile = [...projects[index].imagesFile!];
+            removeImagesFile.splice(arg, 1);
+            setProjectImagesFile(removeImagesFile, index);
+        }
+    };
 
     // const onClickInsertHandler = async () => {
     //     const { imagesFile, ...info } = project;
@@ -113,7 +114,7 @@ const useProject = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         // onClickInsertHandler,
-        // onClickDeleteImage,
+        onClickDeleteImage,
     };
 };
 

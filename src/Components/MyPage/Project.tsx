@@ -17,7 +17,7 @@ const Project = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         // onClickInsertHandler,
-        // onClickDeleteImage,
+        onClickDeleteImage,
     } = useProject();
 
     console.log(projects);
@@ -29,9 +29,9 @@ const Project = () => {
                     프로젝트
                 </h1>
                 {projects &&
-                    projects.map((item, idx) => {
+                    projects.map((item, projectsIndex) => {
                         return (
-                            <div key={idx} className="flex flex-col gap-10">
+                            <div key={projectsIndex} className="flex flex-col gap-10">
                                 <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
                                     프로젝트 정보
                                 </h2>
@@ -44,25 +44,36 @@ const Project = () => {
                                             size="big"
                                             placeholder="프로젝트명"
                                             value={item.name}
-                                            onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeProjectName(e, idx)}
+                                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                                onChangeProjectName(e, projectsIndex)
+                                            }
                                         />
                                     </div>
                                 </div>
                                 <div className="flex">
                                     {/* 사진 제한 3장 */}
                                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
-                                    <div className="flex items-center justify-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg">
+                                    <div className="flex flex-col items-center justify-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg overflow-scroll p-4">
                                         {item.images.length !== 0 ? (
                                             item.images.map((item, idx) => {
                                                 return (
-                                                    <div key={idx}>
-                                                        <Image
-                                                            src={item}
-                                                            alt="프로젝트 미리보기"
-                                                            width={100}
-                                                            height={100}
-                                                        />
-                                                        <p className="cursor-pointer">X</p>
+                                                    <div key={idx} className="group flex">
+                                                        <div className="relative w-[435px] h-[70px] overflow-hidden mt-4">
+                                                            <Image
+                                                                src={item}
+                                                                alt="프로젝트 미리보기"
+                                                                width={100}
+                                                                height={100}
+                                                                className="absolute w-full"
+                                                            />
+                                                        </div>
+
+                                                        <p
+                                                            className="cursor-pointer invisible group-hover:visible"
+                                                            onClick={() => onClickDeleteImage(idx, projectsIndex)}
+                                                        >
+                                                            X
+                                                        </p>
                                                     </div>
                                                 );
                                             })
@@ -78,7 +89,9 @@ const Project = () => {
                                         ref={fileRef}
                                         type="file"
                                         id="file"
-                                        onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeImagesHandler(e, idx)}
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                            onChangeImagesHandler(e, projectsIndex)
+                                        }
                                         className="hidden"
                                         multiple
                                     />
@@ -93,9 +106,9 @@ const Project = () => {
                                             type="text"
                                             size="big"
                                             placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
-                                            value={projects[idx].introduce}
+                                            value={projects[projectsIndex].introduce}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                onChangeProjectIntroduce(e, idx)
+                                                onChangeProjectIntroduce(e, projectsIndex)
                                             }
                                         />
                                     </div>
@@ -113,7 +126,7 @@ const Project = () => {
                                                 placeholder="YYYY.MM"
                                                 value={item.date.slice(0, 10)}
                                                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                    onChangeProjectDate(e, idx)
+                                                    onChangeProjectDate(e, projectsIndex)
                                                 }
                                             />
                                         </div>
@@ -126,7 +139,7 @@ const Project = () => {
                                                 placeholder="YYYY.MM"
                                                 value={item.date.slice(13)}
                                                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                    onChangeProjectDate(e, idx)
+                                                    onChangeProjectDate(e, projectsIndex)
                                                 }
                                             />
                                         </div>
@@ -141,9 +154,9 @@ const Project = () => {
                                             type="url"
                                             size="big"
                                             placeholder="http://"
-                                            value={projects[idx].deployLink}
+                                            value={projects[projectsIndex].deployLink}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                onChangeProjectDeployLink(e, idx)
+                                                onChangeProjectDeployLink(e, projectsIndex)
                                             }
                                         />
                                     </div>
@@ -157,9 +170,9 @@ const Project = () => {
                                             type="url"
                                             size="big"
                                             placeholder="http://"
-                                            value={projects[idx].githubLink}
+                                            value={projects[projectsIndex].githubLink}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                onChangeProjectGithubLink(e, idx)
+                                                onChangeProjectGithubLink(e, projectsIndex)
                                             }
                                         />
                                     </div>
