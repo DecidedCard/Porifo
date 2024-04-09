@@ -7,12 +7,11 @@ const Recommendation = () => {
                         포리포 추천, HOT 개발자
                     </p>
                 </div>
-
                 <div className="flex flex-row gap-6 items-start justify-start shrink-0 relative">
-                    <div
-                        className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray border flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
-                        <div
-                            className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
+
+                    {/* 1번 */}
+                    <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray border flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
+                        {/* <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
                             <img
                                 className="rounded-[50%] shrink-0 w-10 h-10 relative"
                                 src="4.png"
@@ -30,8 +29,10 @@ const Recommendation = () => {
                                 className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
                                 src="22.png"
                             />
-                        </div>
+                        </div> */}
                     </div>
+
+                    {/* 2번 */}
                     <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
                         <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
                             <img
@@ -53,6 +54,8 @@ const Recommendation = () => {
                             />
                         </div>
                     </div>
+
+                    {/* 3번 */}
                     <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
                         <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
                             <img
@@ -75,6 +78,8 @@ const Recommendation = () => {
                             />
                         </div>
                     </div>
+
+                    {/* 4번 */}
                     <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
                         <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
                             <img
@@ -96,6 +101,7 @@ const Recommendation = () => {
                             />
                         </div>
                     </div>
+
                 </div>
             </div>
 
