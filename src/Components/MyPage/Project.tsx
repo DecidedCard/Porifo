@@ -5,6 +5,7 @@ import Image from "next/image";
 import Input from "../Commen/Input";
 import Button from "../Commen/Button";
 import { ChangeEvent } from "react";
+import { MdClose } from "react-icons/md";
 
 const Project = () => {
     const {
@@ -27,17 +28,16 @@ const Project = () => {
                 <h1 className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">
                     프로젝트
                 </h1>
+                <h2 className="flex items-center justify-center text-xl font-medium relative">프로젝트 정보</h2>
                 {projects &&
                     projects.map((item, projectsIndex) => {
                         return (
-                            <div key={projectsIndex} className="flex flex-col gap-10">
-                                <div className="flex justify-between items-center">
-                                    <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                                        프로젝트 정보
-                                    </h2>
-                                    <div onClick={() => onClickMinusHandler(projectsIndex)}>X</div>
-                                </div>
-
+                            <div key={projectsIndex} className="flex flex-col gap-3 mt-4">
+                                {projects.length >= 2 && (
+                                    <div className="w-[637px]" onClick={() => onClickMinusHandler(projectsIndex)}>
+                                        <MdClose className="w-6 h-6 ml-auto text-grayblack" />
+                                    </div>
+                                )}
                                 <div className="flex">
                                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">기본정보</label>
                                     <div className="w-[460px]">
@@ -55,35 +55,48 @@ const Project = () => {
                                 <div className="flex">
                                     <p className="pl-6 font-medium text-zinc-500 w-[177px]">사진 업로드 하기</p>
                                     <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg overflow-scroll">
-                                        {item.images.length !== 0 &&
-                                            item.images.map((item, idx) => {
-                                                return (
-                                                    <div key={idx} className="relative group">
-                                                        <div className="w-[435px] h-[70px] overflow-hidden">
-                                                            <Image
-                                                                src={item}
-                                                                alt="프로젝트 미리보기"
-                                                                width={600}
-                                                                height={100}
-                                                            />
-                                                        </div>
+                                        {item.images.length !== 0 ? (
+                                            <div>
+                                                {item.images.map((item, idx) => {
+                                                    return (
+                                                        <div key={idx} className="relative group">
+                                                            <div className="w-[435px] h-[70px] overflow-hidden">
+                                                                <Image
+                                                                    src={item}
+                                                                    alt="프로젝트 미리보기"
+                                                                    width={600}
+                                                                    height={100}
+                                                                />
+                                                            </div>
 
-                                                        <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[70px] pr-2 bg-black bg-opacity-20 invisible group-hover:visible">
-                                                            <p
-                                                                className="cursor-pointer text-white"
-                                                                onClick={() => onClickDeleteImage(idx, projectsIndex)}
-                                                            >
-                                                                X
-                                                            </p>
+                                                            <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[70px] pr-2 bg-black bg-opacity-20 invisible group-hover:visible">
+                                                                <p
+                                                                    className="cursor-pointer text-white"
+                                                                    onClick={() =>
+                                                                        onClickDeleteImage(idx, projectsIndex)
+                                                                    }
+                                                                >
+                                                                    X
+                                                                </p>
+                                                            </div>
                                                         </div>
+                                                    );
+                                                })}
+                                                <label htmlFor={`file${projectsIndex}`}>
+                                                    <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer mx-auto">
+                                                        +
                                                     </div>
-                                                );
-                                            })}
-                                        <label htmlFor={`file${projectsIndex}`}>
-                                            <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
-                                                +
+                                                </label>
                                             </div>
-                                        </label>
+                                        ) : (
+                                            <div className="flex items-center justify-center w-full h-full">
+                                                <label htmlFor={`file${projectsIndex}`}>
+                                                    <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
+                                                        +
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        )}
                                     </div>
                                     <input
                                         ref={fileRef}
