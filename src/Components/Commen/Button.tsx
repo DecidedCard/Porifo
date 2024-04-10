@@ -7,9 +7,10 @@ interface ButtonProps {
     fontSize?: string;
     border?: string;
     color?: string;
+    disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, color }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, color, disabled }) => {
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
     const fontsize =
         (!fontSize && "text-base") ||
@@ -32,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, 
         <button
             onClick={onClick}
             className={`flex items-center justify-center px-3 rounded-lg w-full ${height} ${fontsize} ${col}`}
+            disabled={disabled}
         >
             {text}
         </button>

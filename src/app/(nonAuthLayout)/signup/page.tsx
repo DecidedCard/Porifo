@@ -102,17 +102,20 @@ const SignUp = () => {
                         eyeClose="eye_close.svg"
                     />
                     <SignValidate
+                        password={password}
                         lengthRegValid={lengthRegValid}
                         numberRegValid={numberRegValid}
                         wordRegValid={wordRegValid}
                         specialRegValid={specialRegValid}
                     />
-                    <SignUpItem
-                        setLabel="이름"
-                        type="text"
-                        placeholder="이름을 입력해주세요"
-                        onChangeHandler={onChangeNameHandler}
-                    />
+                    <div className="-mt-3">
+                        <SignUpItem
+                            setLabel="이름"
+                            type="text"
+                            placeholder="이름을 입력해주세요"
+                            onChangeHandler={onChangeNameHandler}
+                        />
+                    </div>
                     <SignUpItem
                         setLabel="나이"
                         type="text"
@@ -173,9 +176,15 @@ const SignUp = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[350px] mt-8 mb-6 mx-auto">
-                        <Button text="가입하기" border="none" color="primary" size="m" />
-                    </div>
+                    {email && password && name && age && firstNumber && middlePhoneNumber && lastPhoneNumber && sex ? (
+                        <div className="w-[350px] mt-8 mb-6 mx-auto">
+                            <Button text="가입하기" border="none" color="primary" size="m" />
+                        </div>
+                    ) : (
+                        <div className="w-[350px] mt-8 mb-6 mx-auto">
+                            <Button text="가입하기" border="none" size="m" disabled />
+                        </div>
+                    )}
                 </form>
             </div>
         </div>

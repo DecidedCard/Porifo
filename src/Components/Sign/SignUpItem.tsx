@@ -5,6 +5,7 @@ import Input from "@/Components/Commen/Input";
 import Image from "next/image";
 type SignUpItemType = {
     setLabel: string;
+    value?: string;
     type?: string;
     eyeClose?: string;
     eye?: string;
@@ -17,6 +18,7 @@ type SignUpItemType = {
 
 const SignUpItem = ({
     setLabel,
+    value,
     type,
     eyeClose,
     eye,
@@ -38,6 +40,7 @@ const SignUpItem = ({
             <label className="mb-2">{setLabel}</label>
             <Input
                 type={type || showPassword.type}
+                value={value}
                 pattern={pattern}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
