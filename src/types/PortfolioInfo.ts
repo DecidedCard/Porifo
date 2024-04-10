@@ -15,6 +15,7 @@ export interface PortfolioInfo {
     email: string | null;
     school: string | null;
     class: string | null;
+    oneLineIntroduce: string | null;
     introduce: string | null;
     job: string | null;
     blogLink: string | null;

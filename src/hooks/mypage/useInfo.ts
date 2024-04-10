@@ -1,15 +1,18 @@
 import { ChangeEvent, useEffect } from "react";
 
+import useUserStore from "@/store/userStore";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useProjectsStore from "@/store/projectStore";
+import useCareerStore from "@/store/careerStore";
+
+import useInput from "../useInput";
+
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import usePortfolioInfoStore from "@/store/portfolioInfoStore";
-import useUserStore from "@/store/userStore";
-import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import { Project } from "@/types/Project";
-import useCareerStore from "@/store/careerStore";
-import useInput from "../useInput";
-import { Career } from "@/types/Career";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
 
 const useInfo = () => {
     const {
@@ -24,12 +27,13 @@ const useInfo = () => {
         setSchool,
         setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects, setProjectsInitial } = useProjectsStore();
+    const { projects, setProjectsInitial, setProjectImages, setProjectImagesFile } = useProjectsStore();
     const {
         career,
         careers,
@@ -72,6 +76,7 @@ const useInfo = () => {
             setSchool(portfolio.school!);
             setClass(portfolio.class!);
             setJob(portfolio.job!);
+            setOneLineIntroduce(portfolio.oneLineIntroduce!);
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
@@ -90,6 +95,7 @@ const useInfo = () => {
         setSchool,
         setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
@@ -142,6 +148,10 @@ const useInfo = () => {
         setClass(e.target.value);
     };
 
+    const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
+        setOneLineIntroduce(e.target.value);
+    };
+
     const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setIntroduce(e.target.value);
     };
@@ -170,7 +180,7 @@ const useInfo = () => {
         setPosition(e.target.value);
     };
 
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setComment(e.target.value);
     };
 
@@ -179,6 +189,7 @@ const useInfo = () => {
         setResetCareer();
     };
 
+    // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         let url = "";
 
@@ -206,15 +217,59 @@ const useInfo = () => {
             }
         }
 
-        if (user && !portfolio) {
-            try {
-                const newPortfolio = {
-                    ...info,
-                    userId: user.id,
-                    profileImage: url,
-                    project: projects,
-                    career: careers,
+        // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
+        const imagesSetting = projects.map(async (item, idx) => {
+            if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
+                const PROJECT_STORAGE = {
+                    bucket: "projectImage",
+                    path: `project/${crypto.randomUUID()}/${idx}`,
                 };
+
+                const imagesUrl = item.imagesFile?.map(async (file) => {
+                    try {
+                        const res = await storageInsert(
+                            PROJECT_STORAGE.bucket,
+                            `${PROJECT_STORAGE.path}/${file.lastModified}`,
+                            file,
+                        );
+                        const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                        return url;
+                    } catch (error) {
+                        return error;
+                    }
+                });
+                const res = (await Promise.all(imagesUrl!)) as string[];
+
+                projects.map((port, index) => {
+                    if (index === idx) {
+                        return {
+                            ...port,
+                            images: port.images.splice(port.images.length - res.length, res.length, ...res),
+                        };
+                    } else {
+                        return { ...port };
+                    }
+                });
+            }
+        });
+
+        await Promise.all(imagesSetting);
+
+        if (user && !portfolio) {
+            const project = projects.map((item) => {
+                const { imagesFile, ...projectInfo } = item;
+                return projectInfo;
+            });
+
+            let newPortfolio = {
+                ...info,
+                userId: user.id,
+                profileImage: url,
+                project,
+                career: careers,
+            };
+
+            try {
                 await supabaseInsert(newPortfolio);
                 alert("이력서가 저장되었습니다.");
                 return;
@@ -225,11 +280,16 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            let newPortfolio = { ...info, userId: user!.id, project: projects, career: careers };
+            const project = projects.map((item) => {
+                const { imagesFile, ...projectInfo } = item;
+                return projectInfo;
+            });
+
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects, career: careers };
+                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project, career: careers };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
@@ -260,6 +320,7 @@ const useInfo = () => {
         onChangeEmailHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
+        onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
         onChangeBlogHandler,
