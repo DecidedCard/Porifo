@@ -46,9 +46,7 @@ const Top = ({id}: {id: string}) => {
                     <div className="flex flex-col gap-5 items-start justify-center shrink-0 w-80 min-w-[320px] max-w-xs">
                         
                         <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start">
-                            안녕하세요.
-                            <br />
-                            게임개발자 홍길동입니다.
+                            한 줄 소개
                         </h1>
 
                         <div className="flex flex-col gap-4 items-start justify-start shrink-0 relative">
@@ -58,7 +56,7 @@ const Top = ({id}: {id: string}) => {
                                 </h2>
                                 <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
                                 <p className="text-[14px] text-center relative flex items-center justify-center">
-                                    게임개발자
+                                    직업
                                 </p>
                             </div>
 

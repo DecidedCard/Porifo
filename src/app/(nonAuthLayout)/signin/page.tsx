@@ -1,21 +1,27 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+
+import React, { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import useInput from "@/hooks/useInput";
-
+import { passwordValidate } from "@/util/sign/password_validate";
 import Button from "@/Components/Commen/Button";
 import SocialSign from "@/Components/Sign/SocialSign";
 import Image from "next/image";
-
+import SignValidate from "@/Components/Sign/SignValidate";
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-    const [passowrdValid, setVassowrdValid] = useState(false);
+
+    const [wordRegValid, setWordRegValid] = useState(false);
+    const [specialRegValid, setSpecialRegValid] = useState(false);
+    const [numberRegValid, setNumberRegValid] = useState(false);
+    const [lengthRegValid, setLengthRegValid] = useState(false);
+
     const router = useRouter();
-    const findPassword = () => router.replace("/password_change");
-    const onSubmitLoginUser = async (e: FormEvent<HTMLFormElement>) => {
+    const findPassword = () => router.replace("/find_email");
+    const onSubmitLoginUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const hasAllInput = email.trim() !== "" && password.trim() !== "";
         try {
@@ -36,15 +42,10 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
+
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
-        const regex =
-            /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-        if (regex.test(e.target.value)) {
-            setVassowrdValid(true);
-        } else {
-            setVassowrdValid(false);
-        }
+        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
     };
     return (
         <main>
@@ -72,16 +73,19 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="비밀번호"
                             placeholder="비밀번호를 작성해주세요"
-                            pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+                            pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                             onChangeHandler={onChangePassword}
                             relative="relative"
                             eye="eye.svg"
                             eyeClose="eye_close.svg"
                         />
-                        {!passowrdValid && password.length > 0 && (
-                            <p className="text-slate-400 text-center text-[11px]">다시 입력해 주세요</p>
-                        )}
+                        <SignValidate
+                            lengthRegValid={lengthRegValid}
+                            numberRegValid={numberRegValid}
+                            wordRegValid={wordRegValid}
+                            specialRegValid={specialRegValid}
+                        />
                         <div
                             className="mx-9 mb-8 text-slate-400 float-right flex flex-row cursor-pointer"
                             onClick={findPassword}

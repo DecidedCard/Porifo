@@ -4,8 +4,8 @@ import ProjectTimelineItem from './ProjectTimelineItem';
 const Project = () => {
     const projects = [
         {
-            date: "2023.01 ~ 2024.03",
             title: "스파르타 게임 제작 프로젝트",
+            date: "2023.01 ~ 2024.03",
             role: "게임 개발",
             details: [
                 "프로젝트 세부 내용 1",
@@ -25,18 +25,8 @@ const Project = () => {
             ],
             link: "http://spartacodingclub.kr"
         },
-        {
-            date: "2023.01 ~ 2024.03",
-            title: "스파르타 게임 제작 프로젝트 홓호호",
-            role: "게임 개발",
-            details: [
-                "프로젝트 세부 내용 1",
-                "프로젝트 세부 내용 2",
-                "프로젝트 세부 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈ내용 3",
-            ],
-            link: "http://spartacodingclub.kr"
-        },
-        // 다른 경험 추가 가능
+        
+        // 다른 프로젝트 추가 가능
     ];
 
     return (
@@ -45,7 +35,13 @@ const Project = () => {
             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
             <ol className="relative border-s border-solid border-secondary ">
                 {projects.map((project, index) => (
-                    <ProjectTimelineItem key={index} date={project.date} title={project.title} role={project.role} details={project.details} link={project.link}/>
+                    <ProjectTimelineItem 
+                    key={index} 
+                    title={project.title} 
+                    date={project.date} 
+                    role={project.role} 
+                    details={project.details} 
+                    link={project.link}/>
                 ))}
             </ol>
         </div>
