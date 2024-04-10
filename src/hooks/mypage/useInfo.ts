@@ -33,19 +33,8 @@ const useInfo = () => {
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects, setProjectsInitial, setProjectImages, setProjectImagesFile } = useProjectsStore();
-    const {
-        career,
-        careers,
-        setCompany,
-        setComment,
-        setDate,
-        setDepartment,
-        setPosition,
-        setCareers,
-        setResetCareer,
-        setInitialCareers,
-    } = useCareerStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
+    const { careers, setInitialCareers } = useCareerStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
@@ -102,11 +91,6 @@ const useInfo = () => {
         setProjectsInitial,
         setInitialCareers,
     ]);
-
-    // career 기간
-    useEffect(() => {
-        setDate(`${careerStartDate} ~ ${careerEndDate}`);
-    }, [setDate, careerStartDate, careerEndDate]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -166,27 +150,6 @@ const useInfo = () => {
 
     const onChangeGithubHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setGithub(e.target.value);
-    };
-
-    const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setCompany(e.target.value);
-    };
-
-    const onChangeDepartmentHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setDepartment(e.target.value);
-    };
-
-    const onChangePositionHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setPosition(e.target.value);
-    };
-
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setComment(e.target.value);
-    };
-
-    const onClickInsertCareersHandler = () => {
-        setCareers(career);
-        setResetCareer();
     };
 
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
@@ -308,7 +271,6 @@ const useInfo = () => {
         user,
         portfolio,
         basicInfo,
-        career,
         careers,
         careerStartDate,
         careerEndDate,
@@ -325,14 +287,9 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
-        onChangeCompanyHandler,
-        onChangeDepartmentHandler,
-        onChangePositionHandler,
-        onChangeCommentHandler,
         onChangeCareerStartDate,
         onChangeCareerEndDate,
         onClickInsertHandler,
-        onClickInsertCareersHandler,
     };
 };
 

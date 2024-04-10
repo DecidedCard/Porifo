@@ -13,9 +13,6 @@ import Careers from "./Careers";
 const UserInfo = () => {
     const {
         basicInfo,
-        career,
-        careerStartDate,
-        careerEndDate,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -25,13 +22,6 @@ const UserInfo = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeSelectHandler,
-        onChangeCompanyHandler,
-        onChangeDepartmentHandler,
-        onChangePositionHandler,
-        onChangeCommentHandler,
-        onChangeCareerStartDate,
-        onChangeCareerEndDate,
-        onClickInsertCareersHandler,
     } = useInfo();
 
     return (
