@@ -1,15 +1,18 @@
-import { ChangeEvent, HTMLInputTypeAttribute, useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
+
+import useUserStore from "@/store/userStore";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useProjectsStore from "@/store/projectStore";
+import useCareerStore from "@/store/careerStore";
+
+import useInput from "../useInput";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import usePortfolioInfoStore from "@/store/portfolioInfoStore";
-import useUserStore from "@/store/userStore";
-import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import { Project } from "@/types/Project";
-import useCareerStore from "@/store/careerStore";
-import useInput from "../useInput";
-import { Career } from "@/types/Career";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
 
 const useInfo = () => {
     const {

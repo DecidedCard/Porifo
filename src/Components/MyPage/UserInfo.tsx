@@ -2,16 +2,17 @@
 
 import React from "react";
 
-import Image from "next/image";
-import useInfo from "@/hooks/mypage/useInfo";
 import Input from "../Commen/Input";
+
+import useInfo from "@/hooks/mypage/useInfo";
 import { SELECT_LIST } from "@/util/select_list";
+
+import Image from "next/image";
 
 const UserInfo = () => {
     const {
         basicInfo,
         career,
-        careers,
         careerStartDate,
         careerEndDate,
         onChangeNameHandler,

@@ -1,10 +1,6 @@
-import { ChangeEvent, LegacyRef, RefAttributes, useEffect, useRef } from "react";
+import { ChangeEvent, useRef } from "react";
 
-import useInput from "../useInput";
-
-import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import useProjectsStore from "@/store/projectStore";
-import { projectInputFormValidation } from "@/util/input_form_validation";
 
 const useProject = () => {
     const fileRef = useRef<HTMLInputElement>(null);
@@ -21,8 +17,6 @@ const useProject = () => {
         setAddProjects,
         setMinusProjects,
     } = useProjectsStore();
-
-    // console.log(projects[0].imagesFile);
 
     const onChangeProjectName = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setProjectName(e.target.value, index);
