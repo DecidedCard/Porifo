@@ -179,6 +179,7 @@ const useInfo = () => {
         setResetCareer();
     };
 
+    // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         let url = "";
 

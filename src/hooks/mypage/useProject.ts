@@ -19,6 +19,7 @@ const useProject = () => {
         setProjectIntroduce,
         setProjectName,
         setAddProjects,
+        setMinusProjects,
     } = useProjectsStore();
 
     // console.log(projects[0].imagesFile);
@@ -85,8 +86,12 @@ const useProject = () => {
         }
     };
 
-    const onClickAddHandler = async () => {
+    const onClickAddHandler = () => {
         setAddProjects();
+    };
+
+    const onClickMinusHandler = (arg: number) => {
+        setMinusProjects(arg);
     };
 
     return {
@@ -99,6 +104,7 @@ const useProject = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         onClickAddHandler,
+        onClickMinusHandler,
         onClickDeleteImage,
     };
 };

@@ -17,6 +17,7 @@ const Project = () => {
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
         onClickAddHandler,
+        onClickMinusHandler,
         onClickDeleteImage,
     } = useProject();
 
@@ -30,9 +31,12 @@ const Project = () => {
                     projects.map((item, projectsIndex) => {
                         return (
                             <div key={projectsIndex} className="flex flex-col gap-10">
-                                <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
-                                    프로젝트 정보
-                                </h2>
+                                <div className="flex justify-between items-center">
+                                    <h2 className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">
+                                        프로젝트 정보
+                                    </h2>
+                                    <div onClick={() => onClickMinusHandler(projectsIndex)}>X</div>
+                                </div>
 
                                 <div className="flex">
                                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">기본정보</label>
@@ -177,7 +181,10 @@ const Project = () => {
                             </div>
                         );
                     })}
-                <div onClick={onClickAddHandler} className="text-4xl cursor-pointer w-fit mx-auto">
+                <div
+                    onClick={onClickAddHandler}
+                    className="flex justify-center items-center text-2xl text-nonegray cursor-pointer w-8 h-8 mx-auto mt-10 border border-solid border-zinc-300 rounded-full"
+                >
                     +
                 </div>
             </main>

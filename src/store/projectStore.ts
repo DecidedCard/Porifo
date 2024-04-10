@@ -12,6 +12,7 @@ type Store = {
     setProjectDeployLink: (arg: string, index: number) => void;
     setProjectGithubLink: (arg: string, index: number) => void;
     setAddProjects: () => void;
+    setMinusProjects: (arg: number) => void;
     setProjectsInitial: (arg: Project[]) => void;
 };
 
@@ -105,6 +106,10 @@ const useProjectsStore = create<Store>()((set) => ({
             ],
         })),
     setAddProjects: () => set((item) => ({ projects: [...item.projects, initial] })),
+    setMinusProjects: (arg) =>
+        set((item) => ({
+            projects: [...item.projects.filter((project, idx) => idx !== arg)],
+        })),
     setProjectsInitial: (arg) => set({ projects: [...arg] }),
 }));
 
