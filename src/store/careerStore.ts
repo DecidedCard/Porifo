@@ -9,7 +9,8 @@ type Store = {
     setPosition: (arg: string, index: number) => void;
     setDate: (arg: string, index: number) => void;
     setComment: (arg: string, index: number) => void;
-    setAddCareers: () => void;
+    setAddCareer: () => void;
+    setMinusCareer: (arg: number) => void;
     setInitialCareers: (arg: Career[]) => void;
 };
 
@@ -83,7 +84,8 @@ const useCareerStore = create<Store>()((set) => ({
                 }),
             ],
         })),
-    setAddCareers: () => set((item) => ({ careers: [...item.careers, initial] })),
+    setAddCareer: () => set((item) => ({ careers: [...item.careers, initial] })),
+    setMinusCareer: (arg) => set((item) => ({ careers: [...item.careers.filter((_, idx) => idx !== arg)] })),
     setInitialCareers: (arg) => set({ careers: arg }),
 }));
 

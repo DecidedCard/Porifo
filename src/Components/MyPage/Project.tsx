@@ -65,7 +65,7 @@ const Project = () => {
                                                             <div className="w-[435px] h-[70px] overflow-hidden">
                                                                 <Image
                                                                     src={item}
-                                                                    alt="프로젝트 미리보기"
+                                                                    alt="프로젝트 이미지"
                                                                     width={600}
                                                                     height={100}
                                                                 />

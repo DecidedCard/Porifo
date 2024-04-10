@@ -3,6 +3,7 @@
 import React, { ChangeEvent } from "react";
 import Input from "../Commen/Input";
 import useCareer from "@/hooks/mypage/useCareer";
+import { MdClose } from "react-icons/md";
 
 const Careers = () => {
     const {
@@ -13,13 +14,19 @@ const Careers = () => {
         onChangeDateHandler,
         onChangeCommentHandler,
         onClickAddHandler,
+        onClickMinusHandler,
     } = useCareer();
     return (
         <div className="flex flex-col gap-10">
             <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
-                    <>
+                    <div key={careerIndex}>
+                        {careers.length >= 2 && (
+                            <div className="w-[637px]" onClick={() => onClickMinusHandler(careerIndex)}>
+                                <MdClose className="w-6 h-6 ml-auto mb-5 text-grayblack" />
+                            </div>
+                        )}
                         <div className="flex items-start">
                             <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                                 회사이름
@@ -111,7 +118,7 @@ const Careers = () => {
                                 className="w-[460px] h-[140px] resize-none rounded-lg p-2 border border-solid border-zinc-300"
                             />
                         </div>
-                    </>
+                    </div>
                 );
             })}
             <div className="text-3xl mx-auto cursor-pointer" onClick={onClickAddHandler}>
