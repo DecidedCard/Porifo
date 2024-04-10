@@ -3,15 +3,13 @@ import { create } from "zustand";
 import type { Career } from "@/types/Career";
 
 type Store = {
-    career: Career;
     careers: Career[];
-    setCompany: (arg: string) => void;
-    setDepartment: (arg: string) => void;
-    setPosition: (arg: string) => void;
-    setDate: (arg: string) => void;
-    setComment: (arg: string) => void;
+    setCompany: (arg: string, index: number) => void;
+    setDepartment: (arg: string, index: number) => void;
+    setPosition: (arg: string, index: number) => void;
+    setDate: (arg: string, index: number) => void;
+    setComment: (arg: string, index: number) => void;
     setCareers: (arg: Career) => void;
-    setResetCareer: () => void;
     setInitialCareers: (arg: Career[]) => void;
 };
 
@@ -24,15 +22,68 @@ const initial: Career = {
 };
 
 const useCareerStore = create<Store>()((set) => ({
-    career: initial,
-    careers: [],
-    setCompany: (arg) => set((state) => ({ career: { ...state.career, company: arg } })),
-    setDepartment: (arg) => set((state) => ({ career: { ...state.career, department: arg } })),
-    setPosition: (arg) => set((state) => ({ career: { ...state.career, position: arg } })),
-    setDate: (arg) => set((state) => ({ career: { ...state.career, date: arg } })),
-    setComment: (arg) => set((state) => ({ career: { ...state.career, comment: arg } })),
+    careers: [initial],
+    setCompany: (arg, index) =>
+        set((item) => ({
+            careers: [
+                ...item.careers.map((career, careerIndex) => {
+                    if (careerIndex === index) {
+                        return { ...career, company: arg };
+                    } else {
+                        return { ...career };
+                    }
+                }),
+            ],
+        })),
+    setDepartment: (arg, index) =>
+        set((item) => ({
+            careers: [
+                ...item.careers.map((career, careerIndex) => {
+                    if (careerIndex === index) {
+                        return { ...career, department: arg };
+                    } else {
+                        return { ...career };
+                    }
+                }),
+            ],
+        })),
+    setPosition: (arg, index) =>
+        set((item) => ({
+            careers: [
+                ...item.careers.map((career, careerIndex) => {
+                    if (careerIndex === index) {
+                        return { ...career, position: arg };
+                    } else {
+                        return { ...career };
+                    }
+                }),
+            ],
+        })),
+    setDate: (arg, index) =>
+        set((item) => ({
+            careers: [
+                ...item.careers.map((career, careerIndex) => {
+                    if (careerIndex === index) {
+                        return { ...career, date: arg };
+                    } else {
+                        return { ...career };
+                    }
+                }),
+            ],
+        })),
+    setComment: (arg, index) =>
+        set((item) => ({
+            careers: [
+                ...item.careers.map((career, careerIndex) => {
+                    if (careerIndex === index) {
+                        return { ...career, comment: arg };
+                    } else {
+                        return { ...career };
+                    }
+                }),
+            ],
+        })),
     setCareers: (arg) => set((state) => ({ careers: [...state.careers, arg] })),
-    setResetCareer: () => set({ career: initial }),
     setInitialCareers: (arg) => set({ careers: arg }),
 }));
 
