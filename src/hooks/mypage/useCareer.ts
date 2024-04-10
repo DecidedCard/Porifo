@@ -28,8 +28,6 @@ const useCareer = () => {
 
         if (name === "endDate") {
             const endDate = name === "endDate" && value;
-            console.log(endDate);
-
             setDate(`${careers[index].date.slice(0, 7)} ~ ${endDate}`, index);
             return;
         }
@@ -46,8 +44,6 @@ const useCareer = () => {
     const onClickMinusHandler = (arg: number) => {
         setMinusCareer(arg);
     };
-
-    console.log(careers[0].date);
 
     return {
         careers,
