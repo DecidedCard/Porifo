@@ -2,7 +2,7 @@ import useCareerStore from "@/store/careerStore";
 import { ChangeEvent } from "react";
 
 const useCareer = () => {
-    const { careers, setCompany, setDepartment, setPosition, setDate, setComment } = useCareerStore();
+    const { careers, setCompany, setDepartment, setPosition, setDate, setComment, setAddCareers } = useCareerStore();
 
     const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setCompany(e.target.value, index);
@@ -32,6 +32,10 @@ const useCareer = () => {
         setComment(e.target.value, index);
     };
 
+    const onClickAddHandler = () => {
+        setAddCareers();
+    };
+
     return {
         careers,
         onChangeCompanyHandler,
@@ -39,6 +43,7 @@ const useCareer = () => {
         onChangePositionHandler,
         onChangeDateHandler,
         onChangeCommentHandler,
+        onClickAddHandler,
     };
 };
 

@@ -12,6 +12,7 @@ const Careers = () => {
         onChangePositionHandler,
         onChangeDateHandler,
         onChangeCommentHandler,
+        onClickAddHandler,
     } = useCareer();
     return (
         <div className="flex flex-col gap-10">
@@ -110,12 +111,12 @@ const Careers = () => {
                                 className="w-[460px] h-[140px] resize-none rounded-lg p-2 border border-solid border-zinc-300"
                             />
                         </div>
-                        {/* <div className="text-3xl mx-auto cursor-pointer" onClick={onClickInsertCareersHandler}>
-                            +
-                        </div> */}
                     </>
                 );
             })}
+            <div className="text-3xl mx-auto cursor-pointer" onClick={onClickAddHandler}>
+                +
+            </div>
         </div>
     );
 };

@@ -9,7 +9,7 @@ type Store = {
     setPosition: (arg: string, index: number) => void;
     setDate: (arg: string, index: number) => void;
     setComment: (arg: string, index: number) => void;
-    setCareers: (arg: Career) => void;
+    setAddCareers: () => void;
     setInitialCareers: (arg: Career[]) => void;
 };
 
@@ -83,7 +83,7 @@ const useCareerStore = create<Store>()((set) => ({
                 }),
             ],
         })),
-    setCareers: (arg) => set((state) => ({ careers: [...state.careers, arg] })),
+    setAddCareers: () => set((item) => ({ careers: [...item.careers, initial] })),
     setInitialCareers: (arg) => set({ careers: arg }),
 }));
 
