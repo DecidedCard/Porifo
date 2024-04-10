@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, HTMLInputTypeAttribute, useEffect } from "react";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
@@ -24,6 +24,7 @@ const useInfo = () => {
         setSchool,
         setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
@@ -72,6 +73,7 @@ const useInfo = () => {
             setSchool(portfolio.school!);
             setClass(portfolio.class!);
             setJob(portfolio.job!);
+            setOneLineIntroduce(portfolio.oneLineIntroduce!);
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
@@ -90,6 +92,7 @@ const useInfo = () => {
         setSchool,
         setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
@@ -140,6 +143,10 @@ const useInfo = () => {
 
     const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setClass(e.target.value);
+    };
+
+    const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
+        setOneLineIntroduce(e.target.value);
     };
 
     const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -310,6 +317,7 @@ const useInfo = () => {
         onChangeEmailHandler,
         onChangeSchoolHandler,
         onChangeClassHandler,
+        onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
         onChangeBlogHandler,
