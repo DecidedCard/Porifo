@@ -7,12 +7,12 @@ import Project from "@/Components/MyPage/Project";
 import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
-
-import useMyPage from "@/hooks/mypage/useMyPage";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 
+import useMyPage from "@/hooks/mypage/useMyPage";
+
 const MyPage = () => {
-    const {} = useMyPage();
+    useMyPage();
     const [nav, setNav] = useState("basicInfo");
 
     return (

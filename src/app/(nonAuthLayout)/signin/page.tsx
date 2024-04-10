@@ -75,12 +75,14 @@ const SignIn = () => {
                             placeholder="비밀번호를 작성해주세요"
                             pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
+                            value={password}
                             onChangeHandler={onChangePassword}
                             relative="relative"
                             eye="eye.svg"
                             eyeClose="eye_close.svg"
                         />
                         <SignValidate
+                            password={password}
                             lengthRegValid={lengthRegValid}
                             numberRegValid={numberRegValid}
                             wordRegValid={wordRegValid}

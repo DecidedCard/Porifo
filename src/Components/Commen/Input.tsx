@@ -5,7 +5,7 @@ const Input = ({
     helperText,
     color,
     maxLength,
-
+    name,
     pattern,
     type,
     value,
@@ -16,7 +16,7 @@ const Input = ({
     helperText?: string;
     color?: string;
     maxLength?: number;
-
+    name?: string;
     pattern?: string;
     type: string;
     value?: any;
@@ -38,6 +38,7 @@ const Input = ({
             <input
                 type={type}
                 value={value}
+                name={name}
                 pattern={pattern}
                 onChange={onChange}
                 maxLength={maxLength}
