@@ -18,11 +18,12 @@ const useProject = () => {
         setProjectImagesFile,
         setProjectIntroduce,
         setProjectName,
-        setProjects,
+        setAddProjects,
     } = useProjectsStore();
 
+    // console.log(projects[0].imagesFile);
+
     const onChangeProjectName = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        console.log(e);
         setProjectName(e.target.value, index);
     };
 
@@ -72,7 +73,6 @@ const useProject = () => {
         }
         setProjectImagesFile([...projects[index].imagesFile!, ...fileArray], index);
     };
-    console.log(projects[0].images);
 
     const onClickDeleteImage = (arg: number, index: number) => {
         const removeImages = [...projects[index].images];
@@ -85,31 +85,9 @@ const useProject = () => {
         }
     };
 
-    // const onClickInsertHandler = async () => {
-    //     const { imagesFile, ...info } = project;
-
-    //     if (projectInputFormValidation(info)) return;
-
-    // const PROJECT_STORAGE = {
-    //     bucket: "projectImage",
-    //     path: `project/${crypto.randomUUID()}`,
-    // };
-
-    // const imagesUrl = project.imagesFile!.map(async (item) => {
-    //     try {
-    //         const res = await storageInsert(PROJECT_STORAGE.bucket, `${PROJECT_STORAGE.path}/${item.name}`, item);
-    //         const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
-    //         return url;
-    //     } catch (error) {
-    //         console.log(error);
-    //         return error;
-    //     }
-    // });
-    //     const res = (await Promise.all(imagesUrl)) as string[];
-    //     setProjects({ ...info, images: res });
-    //     setStartDate("");
-    //     setEndDate("");
-    // };
+    const onClickAddHandler = async () => {
+        setAddProjects();
+    };
 
     return {
         projects,
@@ -120,7 +98,7 @@ const useProject = () => {
         onChangeProjectDate,
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
-        // onClickInsertHandler,
+        onClickAddHandler,
         onClickDeleteImage,
     };
 };

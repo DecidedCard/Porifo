@@ -16,7 +16,7 @@ const Project = () => {
         onChangeProjectDate,
         onChangeProjectDeployLink,
         onChangeProjectGithubLink,
-        // onClickInsertHandler,
+        onClickAddHandler,
         onClickDeleteImage,
     } = useProject();
 
@@ -177,9 +177,9 @@ const Project = () => {
                             </div>
                         );
                     })}
-                {/* <div onClick={onClickInsertHandler} className="text-4xl cursor-pointer w-fit mx-auto">
-                            +
-                        </div> */}
+                <div onClick={onClickAddHandler} className="text-4xl cursor-pointer w-fit mx-auto">
+                    +
+                </div>
             </main>
         </>
     );

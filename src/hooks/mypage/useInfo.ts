@@ -29,7 +29,7 @@ const useInfo = () => {
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects, setProjectsInitial, setProjectImages } = useProjectsStore();
+    const { projects, setProjectsInitial, setProjectImages, setProjectImagesFile } = useProjectsStore();
     const {
         career,
         careers,
@@ -206,50 +206,57 @@ const useInfo = () => {
             }
         }
 
+        // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
+        const imagesSetting = projects.map(async (item, idx) => {
+            if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
+                const PROJECT_STORAGE = {
+                    bucket: "projectImage",
+                    path: `project/${crypto.randomUUID()}/${idx}`,
+                };
+
+                const imagesUrl = item.imagesFile?.map(async (file) => {
+                    try {
+                        const res = await storageInsert(
+                            PROJECT_STORAGE.bucket,
+                            `${PROJECT_STORAGE.path}/${file.lastModified}`,
+                            file,
+                        );
+                        const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                        return url;
+                    } catch (error) {
+                        return error;
+                    }
+                });
+                const res = (await Promise.all(imagesUrl!)) as string[];
+
+                projects.map((port, index) => {
+                    if (index === idx) {
+                        return {
+                            ...port,
+                            images: port.images.splice(port.images.length - res.length, res.length, ...res),
+                        };
+                    } else {
+                        return { ...port };
+                    }
+                });
+            }
+        });
+
+        await Promise.all(imagesSetting);
+
         if (user && !portfolio) {
+            const project = projects.map((item) => {
+                const { imagesFile, ...projectInfo } = item;
+                return projectInfo;
+            });
+
             let newPortfolio = {
                 ...info,
                 userId: user.id,
                 profileImage: url,
-                project: projects,
+                project,
                 career: careers,
             };
-            const projectImagesSetting = projects.map(async (item, idx) => {
-                if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
-                    const PROJECT_STORAGE = {
-                        bucket: "projectImage",
-                        path: `project/${crypto.randomUUID()}`,
-                    };
-                    const imagesUrl = item.imagesFile?.map(async (file) => {
-                        try {
-                            const res = await storageInsert(
-                                PROJECT_STORAGE.bucket,
-                                `${PROJECT_STORAGE.path}/${file.lastModified}`,
-                                file,
-                            );
-                            const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
-                            return url;
-                        } catch (error) {
-                            return error;
-                        }
-                    });
-                    const res = (await Promise.all(imagesUrl!)) as string[];
-                    newPortfolio = {
-                        ...newPortfolio,
-                        project: [
-                            ...projects.map((item, index) => {
-                                if (index === idx) {
-                                    return { ...item, images: res };
-                                } else {
-                                    return { ...item };
-                                }
-                            }),
-                        ],
-                    };
-                }
-            });
-
-            await Promise.all(projectImagesSetting);
 
             try {
                 await supabaseInsert(newPortfolio);
@@ -262,54 +269,16 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            let newPortfolio = { ...info, userId: user!.id, project: projects, career: careers };
-
-            const imagesSetting = projects.map(async (item, idx) => {
-                if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
-                    const PROJECT_STORAGE = {
-                        bucket: "projectImage",
-                        path: `project/${crypto.randomUUID()}/${idx}`,
-                    };
-
-                    const imagesUrl = item.imagesFile?.map(async (file) => {
-                        try {
-                            const res = await storageInsert(
-                                PROJECT_STORAGE.bucket,
-                                `${PROJECT_STORAGE.path}/${file.lastModified}`,
-                                file,
-                            );
-                            const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
-                            return url;
-                        } catch (error) {
-                            return error;
-                        }
-                    });
-                    const res = (await Promise.all(imagesUrl!)) as string[];
-                    newPortfolio = {
-                        ...newPortfolio,
-                        project: [
-                            ...projects.map((port, index) => {
-                                if (index === idx) {
-                                    return {
-                                        ...port,
-                                        images: item.images.splice(item.images.length - res.length, res.length, ...res),
-                                    };
-                                } else {
-                                    return { ...item };
-                                }
-                            }),
-                        ],
-                    };
-                } else {
-                    false;
-                }
-                item.imagesFile?.length !== undefined;
+            const project = projects.map((item) => {
+                const { imagesFile, ...projectInfo } = item;
+                return projectInfo;
             });
-            await Promise.all(imagesSetting);
+
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects, career: careers };
+                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project, career: careers };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
