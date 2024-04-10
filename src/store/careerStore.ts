@@ -1,5 +1,6 @@
-import { Career } from "@/types/Career";
 import { create } from "zustand";
+
+import type { Career } from "@/types/Career";
 
 type Store = {
     career: Career;
