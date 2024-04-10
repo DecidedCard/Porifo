@@ -3,10 +3,11 @@ import React from "react";
 import { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import Input from "@/Components/Commen/Input";
-
+import SignButton from "@/Components/Sign/SignButton";
+import SignUpItem from "@/Components/Sign/SignUpItem";
 const Find_Email = () => {
     const [userEmail, setUserEmail] = useState("");
-
+    const [inputDisabled, setInputDisabled] = useState(false);
     const changePassword = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -25,12 +26,21 @@ const Find_Email = () => {
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded p-10 w-[500px] h-[750px] bg-white flex justify-center flex-col">
+                <div className="rounded p-10 w-[500px] h-[250px] bg-white flex justify-center flex-col">
                     <form onSubmit={changePassword}>
-                        <label className="my-5">이메일</label>
-                        <Input type="text" onChange={handleEmail} placeholder="이메일을 입력해 주세요" />
-
-                        <button>확인</button>
+                        <SignUpItem
+                            type="email"
+                            setLabel="이메일"
+                            pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+                            onChangeHandler={handleEmail}
+                            placeholder="이메일을 입력해 주세요"
+                        />
+                        <SignButton
+                            text="이메일 확인"
+                            email={userEmail}
+                            inputDisabled={inputDisabled}
+                            setInputDisabled={setInputDisabled}
+                        />
                     </form>
                 </div>
             </div>

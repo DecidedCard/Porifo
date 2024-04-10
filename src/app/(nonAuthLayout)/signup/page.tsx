@@ -7,27 +7,30 @@ import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
 import { signUpValidation } from "@/util/sign/sign_validation";
 import Input from "@/Components/Commen/Input";
-import Button from "@/Components/Commen/Button";
-import Image from "next/image";
-const clickSex = ["남자", "여자"];
 import { passwordValidate } from "@/util/sign/password_validate";
 import SignValidate from "@/Components/Sign/SignValidate";
+import SignButton from "@/Components/Sign/SignButton";
+import Image from "next/image";
+import { onlyUseNumber } from "@/util/sign/onlyNumber";
+const clickSex = ["남자", "여자"];
 const clickNumber = ["010", "011"];
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-
+    const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
     const [lengthRegValid, setLengthRegValid] = useState(false);
-
     const [name, onChangeNameHandler] = useInput();
-    const [age, onChangeAgeHandler] = useInput();
+
+    const [age, setage] = useState("");
+
     const [firstNumber, setFirstNumber] = useState("010");
-    const [middlePhoneNumber, onChangeMiddleNumberHandler] = useInput();
-    const [lastPhoneNumber, onChangeLastNumberHandler] = useInput();
+    const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
+
+    const [lastPhoneNumber, setLastPhoneNumber] = useState("");
     const [sex, setSex] = useState("");
 
     const router = useRouter();
@@ -40,6 +43,24 @@ const SignUp = () => {
 
     const onClickFindSex = (sex: string) => setSex(sex);
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
+
+    const onChangeAge = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        const onlyNumber = value.replace(/[^0-9]/g, "");
+        setage(onlyNumber);
+    };
+
+    const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        const onlyNumber = value.replace(/[^0-9]/g, "");
+        setMiddlePhoneNumber(onlyNumber);
+    };
+
+    const onChangeLastPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        const onlyNumber = value.replace(/[^0-9]/g, "");
+        setLastPhoneNumber(onlyNumber);
+    };
 
     const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
@@ -119,9 +140,11 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="나이"
                         type="text"
+                        value={age}
                         pattern="[0-9]{2}"
+                        maxLength={2}
                         placeholder="나이를 입력해주세요"
-                        onChangeHandler={onChangeAgeHandler}
+                        onChangeHandler={onChangeAge}
                     />
                     <p className="mx-9">성별</p>
                     <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
@@ -162,7 +185,8 @@ const SignUp = () => {
                                     pattern="[0-9]{4}"
                                     maxLength={4}
                                     size="big"
-                                    onChange={onChangeMiddleNumberHandler}
+                                    value={middlePhoneNumber}
+                                    onChange={onChangeMiddlePhoneNumber}
                                 />
                             </div>
                             <div className="w-[110px]">
@@ -171,20 +195,25 @@ const SignUp = () => {
                                     pattern="[0-9]{4}"
                                     size="big"
                                     maxLength={4}
-                                    onChange={onChangeLastNumberHandler}
+                                    value={lastPhoneNumber}
+                                    onChange={onChangeLastPhoneNumber}
                                 />
                             </div>
                         </div>
                     </div>
-                    {email && password && name && age && firstNumber && middlePhoneNumber && lastPhoneNumber && sex ? (
-                        <div className="w-[350px] mt-8 mb-6 mx-auto">
-                            <Button text="가입하기" border="none" color="primary" size="m" />
-                        </div>
-                    ) : (
-                        <div className="w-[350px] mt-8 mb-6 mx-auto">
-                            <Button text="가입하기" border="none" size="m" disabled />
-                        </div>
-                    )}
+                    <SignButton
+                        text="회원가입"
+                        inputDisabled={inputDisabled}
+                        setInputDisabled={setInputDisabled}
+                        email={email}
+                        password={password}
+                        name={name}
+                        age={age}
+                        firstNumber={firstNumber}
+                        middlePhoneNumber={middlePhoneNumber}
+                        lastPhoneNumber={lastPhoneNumber}
+                        sex={sex}
+                    />
                 </form>
             </div>
         </div>

@@ -9,11 +9,12 @@ import { passwordValidate } from "@/util/sign/password_validate";
 import Button from "@/Components/Commen/Button";
 import SocialSign from "@/Components/Sign/SocialSign";
 import Image from "next/image";
+import SignButton from "@/Components/Sign/SignButton";
 import SignValidate from "@/Components/Sign/SignValidate";
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-
+    const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
@@ -101,9 +102,13 @@ const SignIn = () => {
                                 alt="페이지 이동 화살표"
                             />
                         </div>
-                        <div className="w-[350px] mt-8 mb-6 mx-auto">
-                            <Button text="로그인" border="none" color="primary" size="m" />
-                        </div>
+                        <SignButton
+                            text="로그인"
+                            inputDisabled={inputDisabled}
+                            setInputDisabled={setInputDisabled}
+                            email={email}
+                            password={password}
+                        />
                     </form>
                     <SocialSign />
                     <div className="mx-auto">

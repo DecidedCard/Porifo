@@ -9,7 +9,7 @@ type SignUpItemType = {
     type?: string;
     eyeClose?: string;
     eye?: string;
-    bgImage?: string;
+    maxLength?: number;
     placeholder?: string;
     pattern?: string;
     relative?: string;
@@ -22,6 +22,7 @@ const SignUpItem = ({
     type,
     eyeClose,
     eye,
+    maxLength,
     placeholder,
     pattern,
     relative,
@@ -42,6 +43,7 @@ const SignUpItem = ({
                 type={type || showPassword.type}
                 value={value}
                 pattern={pattern}
+                maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
                 color="black"
