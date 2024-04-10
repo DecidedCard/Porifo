@@ -52,6 +52,7 @@ export type Database = {
                     introduce: string | null;
                     job: string | null;
                     name: string | null;
+                    oneLineIntroduce: string | null;
                     profileImage: string | null;
                     project: Json | null;
                     school: string | null;
@@ -73,6 +74,7 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     name?: string | null;
+                    oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
                     school?: string | null;
@@ -94,6 +96,7 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     name?: string | null;
+                    oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
                     school?: string | null;
@@ -101,36 +104,6 @@ export type Database = {
                     tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
-                };
-                Relationships: [];
-            };
-            users: {
-                Row: {
-                    age: string | null;
-                    created_at: string;
-                    email: string;
-                    id: number;
-                    password: string | null;
-                    phoneNumber: string | null;
-                    sex: string | null;
-                };
-                Insert: {
-                    age?: string | null;
-                    created_at?: string;
-                    email?: string;
-                    id?: number;
-                    password?: string | null;
-                    phoneNumber?: string | null;
-                    sex?: string | null;
-                };
-                Update: {
-                    age?: string | null;
-                    created_at?: string;
-                    email?: string;
-                    id?: number;
-                    password?: string | null;
-                    phoneNumber?: string | null;
-                    sex?: string | null;
                 };
                 Relationships: [];
             };
