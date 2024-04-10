@@ -7,7 +7,7 @@ const Template2 = ({ params }: { params: { id: string } }) => {
     const { id } = params;
 
     return (
-        <main className="bg-blue w-[932px] flex flex-col items-center bg-sl">
+        <main className="bg-blue w-[932px] flex flex-col items-center">
             <Top id={id}/>
             <Middle />
             <Bottom />
