@@ -21,7 +21,7 @@ const Careers = () => {
             <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
-                    <div key={careerIndex}>
+                    <div key={careerIndex} className="flex flex-col gap-5">
                         {careers.length >= 2 && (
                             <div className="w-[637px]" onClick={() => onClickMinusHandler(careerIndex)}>
                                 <MdClose className="w-6 h-6 ml-auto mb-5 text-grayblack" />
@@ -79,6 +79,7 @@ const Careers = () => {
                                             type="month"
                                             placeholder="YYYY.MM"
                                             size="big"
+                                            name="startDate"
                                             value={career.date.slice(0, 7)}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                                 onChangeDateHandler(e, careerIndex)
@@ -91,16 +92,13 @@ const Careers = () => {
                                             type="month"
                                             placeholder="YYYY.MM"
                                             size="big"
+                                            name="endDate"
                                             value={career.date.slice(10)}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                                 onChangeDateHandler(e, careerIndex)
                                             }
                                         />
                                     </div>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Input type="checkbox" />
-                                    <label>재직 중</label>
                                 </div>
                             </div>
                         </div>

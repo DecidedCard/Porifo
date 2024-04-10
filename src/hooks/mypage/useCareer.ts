@@ -1,5 +1,5 @@
 import useCareerStore from "@/store/careerStore";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 const useCareer = () => {
     const { careers, setCompany, setDepartment, setPosition, setDate, setComment, setAddCareer, setMinusCareer } =
@@ -19,14 +19,20 @@ const useCareer = () => {
 
     const onChangeDateHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const { name, value } = e.target;
+
         if (name === "startDate") {
             const startDate = name === "startDate" && value;
             setDate(`${startDate} ~ ${careers[index].date.slice(10)}`, index);
             return;
         }
-        const endDate = name === "endDate" && value;
-        setDate(`${careers[index].date.slice(0, 7)} ~ ${endDate}`, index);
-        e.target.value, index;
+
+        if (name === "endDate") {
+            const endDate = name === "endDate" && value;
+            console.log(endDate);
+
+            setDate(`${careers[index].date.slice(0, 7)} ~ ${endDate}`, index);
+            return;
+        }
     };
 
     const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>, index: number) => {
@@ -40,6 +46,8 @@ const useCareer = () => {
     const onClickMinusHandler = (arg: number) => {
         setMinusCareer(arg);
     };
+
+    console.log(careers[0].date);
 
     return {
         careers,
