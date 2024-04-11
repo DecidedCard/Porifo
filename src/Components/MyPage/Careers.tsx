@@ -18,20 +18,18 @@ const Careers = () => {
     } = useCareer();
     return (
         <div className="flex flex-col gap-5">
-            <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">업무 경력</p>
+            <p className="pl-6 text-xl font-medium text-left">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
                     <div key={careerIndex} className="flex flex-col gap-5">
                         {careers.length >= 2 && (
                             <div className="w-[637px]" onClick={() => onClickMinusHandler(careerIndex)}>
-                                <MdClose className="w-6 h-6 ml-auto mb-5 text-grayblack" />
+                                <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                             </div>
                         )}
-                        <div className="flex items-start">
-                            <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                회사이름
-                            </label>
-                            <div className="flex flex-col gap-4 w-[460px]">
+                        <div className="flex">
+                            <label className="pl-6 font-medium text-zinc-500 w-[177px]">회사이름</label>
+                            <div className="flex flex-col gap-5 w-[460px]">
                                 <Input
                                     type="text"
                                     placeholder="회사이름을 입력해주세요."
@@ -68,8 +66,8 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-start">
-                            <label className="pl-6 pt-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        <div className="flex">
+                            <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
                                 기간
                             </label>
                             <div className="w-[460px]">

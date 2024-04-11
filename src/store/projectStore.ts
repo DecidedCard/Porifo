@@ -110,7 +110,7 @@ const useProjectsStore = create<Store>()((set) => ({
         set((item) => ({
             projects: [...item.projects.filter((_, idx) => idx !== arg)],
         })),
-    setProjectsInitial: (arg) => set({ projects: [...arg] }),
+    setProjectsInitial: (arg) => set({ projects: [...(arg || initial)] }),
 }));
 
 export default useProjectsStore;
