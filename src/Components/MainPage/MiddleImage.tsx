@@ -1,45 +1,45 @@
 const MiddleImage = () => {
     return (
         <main className="overflow-hidden w-full">
-            <div className="flex flex-row gap-8 items-start justify-start shrink-0 relative animate-slide-right">
+            <div className="flex flex-row gap-8 items-start justify-start animate-slide-right">
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="임시.png"
                 />
                 <img
-                    className="rounded-2xl shrink-0 w-[350px] h-[360px] relative"
+                    className="rounded-2xl w-[370px] h-[400px]"
                     src="1.png"
                 />
             </div>
