@@ -29,10 +29,10 @@ const useInfo = () => {
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
-    const { user, portfolio, setPortfolio } = useUserStore();
-    const { projects, setProjectsInitial } = useProjectsStore();
-    const { careers, setInitialCareers } = useCareerStore();
-    const { education, setInitialEducation } = useEducationStore();
+    const { user, portfolio } = useUserStore();
+    const { projects } = useProjectsStore();
+    const { careers } = useCareerStore();
+    const { education } = useEducationStore();
     const [disabled, setDisabled] = useState(true);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);

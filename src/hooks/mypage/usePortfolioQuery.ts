@@ -12,7 +12,7 @@ import useEducationStore from "@/store/educationStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 
 const usePortfolioQuery = (id: string) => {
-    const { setPortfolio } = useUserStore();
+    const { setPortfolio, portfolio } = useUserStore();
     const { setInitialBasicInfo } = usePortfolioInfoStore();
     const { setProjectsInitial } = useProjectsStore();
     const { setInitialCareers } = useCareerStore();
@@ -20,7 +20,7 @@ const usePortfolioQuery = (id: string) => {
     const {
         isError,
         isFetching,
-        data: portfolio,
+        data: portfolioData,
     } = useQuery({
         queryKey: [QUERY_KEY.myPagePortfolio],
         queryFn: () => supabasePortfolioInfoRead({ id: "userId", value: id }),
@@ -30,30 +30,30 @@ const usePortfolioQuery = (id: string) => {
     });
 
     useEffect(() => {
-        if (portfolio) {
-            setPortfolio(portfolio[0]);
+        if (portfolioData) {
+            setPortfolio(portfolioData[0]);
         }
-    }, [portfolio, setPortfolio]);
+    }, [setPortfolio, portfolioData]);
 
     useEffect(() => {
-        if (portfolio?.length !== 0 && portfolio) {
-            const project = portfolio[0].project as unknown as Project[];
+        if (portfolio) {
+            const project = portfolio.project as Project[];
             if (project) {
                 setProjectsInitial(project);
             }
 
-            const career = portfolio[0].career as Career[];
+            const career = portfolio.career as Career[];
 
             if (career) {
                 setInitialCareers(career);
             }
-            const education = portfolio[0].education as Education[];
+            const education = portfolio.education as Education[];
 
             if (education) {
                 setInitialEducation(education);
             }
 
-            setInitialBasicInfo(portfolio[0]);
+            setInitialBasicInfo(portfolio);
         }
     }, [portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers, setInitialEducation]);
 
