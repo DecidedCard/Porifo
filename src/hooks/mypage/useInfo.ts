@@ -15,8 +15,10 @@ import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
 import useEducationStore from "@/store/educationStore";
 import { Education } from "@/types/education";
-import useSetMutation from "../useSetMutation";
 import usePortfolioQuery from "./usePortfolioQuery";
+import useSetMutation from "../useSetMutation";
+import { QUERY_KEY } from "@/util/query_key";
+import useLoginCheck from "./useLoginCheck";
 
 const useInfo = () => {
     const {
@@ -35,11 +37,14 @@ const useInfo = () => {
         setGithub,
         setInitialBasicInfo,
     } = usePortfolioInfoStore();
-    const { user, portfolio } = useUserStore();
+    const { user, portfolio, setPortfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
     const { education, setInitialEducation } = useEducationStore();
     const [disabled, setDisabled] = useState(true);
+    const { portfolio: portfolioData, isFetching } = usePortfolioQuery(user?.id!);
+    const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
+    const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
@@ -72,6 +77,12 @@ const useInfo = () => {
             setInitialBasicInfo(portfolio);
         }
     }, [basicInfo, portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers, setInitialEducation]);
+
+    useEffect(() => {
+        if (portfolioData?.length) {
+            setPortfolio(portfolioData[0]);
+        }
+    }, [portfolioData, setPortfolio]);
 
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
@@ -215,37 +226,27 @@ const useInfo = () => {
                 education,
             };
 
-            try {
-                await supabaseInsert(newPortfolio);
-                alert("이력서가 저장되었습니다.");
-                return;
-            } catch (error) {
-                console.error(error);
-                return error;
-            }
+            insert(newPortfolio);
+            alert("이력서가 저장되었습니다.");
+            return;
         }
 
         if (portfolio) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers, education };
 
-            try {
-                if (url) {
-                    newPortfolio = {
-                        ...info,
-                        userId: user!.id,
-                        profileImage: url,
-                        project,
-                        career: careers,
-                        education,
-                    };
-                }
-                await supabasePortfolioUpdate(newPortfolio, user!.id);
-                alert("이력서가 업데이트 되었습니다.");
-                return;
-            } catch (error) {
-                alert("데이터를 업데이트 하지 못 했습니다.");
-                return error;
+            if (url) {
+                newPortfolio = {
+                    ...info,
+                    userId: user!.id,
+                    profileImage: url,
+                    project,
+                    career: careers,
+                    education,
+                };
             }
+            update({ arg: newPortfolio, value: user!.id });
+            alert("이력서가 업데이트 되었습니다.");
+            return;
         }
 
         const newPortfolio = { ...info, profileImage: url, project, career: careers, education };
@@ -255,15 +256,11 @@ const useInfo = () => {
     const onClickShareToggle = async () => {
         const { imageFile, ...info } = portfolio!;
         const share = { ...info, share: !basicInfo.share };
-        try {
-            await supabasePortfolioUpdate(share, user!.id);
-            if (!basicInfo.share) {
-                alert("피드에 공유 되었습니다.");
-            } else {
-                alert("피드에 공유를 중지했습니다.");
-            }
-        } catch (error) {
-            return error;
+        update({ arg: share, value: user!.id });
+        if (!basicInfo.share) {
+            alert("피드에 공유 되었습니다.");
+        } else {
+            alert("피드에 공유를 중지했습니다.");
         }
     };
 
@@ -273,6 +270,7 @@ const useInfo = () => {
         basicInfo,
         careers,
         disabled,
+        isFetching,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
