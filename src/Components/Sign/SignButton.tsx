@@ -11,6 +11,7 @@ type InputValue = {
     lastPhoneNumber?: string;
     sex?: string;
     inputDisabled: boolean;
+    onClick?: () => void;
     setInputDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -22,6 +23,7 @@ const SignButton = ({
     password,
     name,
     age,
+    onClick,
     firstNumber,
     middlePhoneNumber,
     lastPhoneNumber,
@@ -43,6 +45,7 @@ const SignButton = ({
                     text={text}
                     border="none"
                     size="m"
+                    onClick={onClick}
                     color={inputDisabled ? "primary" : ""}
                     disabled={!inputDisabled}
                 />

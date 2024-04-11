@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
@@ -13,6 +14,7 @@ const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
     const [confirmUserPassword, setConfirmUserPassword] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
+
     const [isRecovery, setRecovery] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
@@ -20,16 +22,8 @@ const Password_Change = () => {
     const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
-    const handleSigninBtn = () => router.replace("/signin");
 
     const confirmHandler = async () => {
-        passwordValidate({
-            password: userPassword,
-            setWordRegValid,
-            setNumberRegValid,
-            setSpecialRegValid,
-            setLengthRegValid,
-        });
         if (userPassword !== confirmUserPassword) {
             setUserPassword("");
             setConfirmUserPassword("");
@@ -39,70 +33,117 @@ const Password_Change = () => {
         await supabase.auth.updateUser({ password: userPassword });
     };
 
+    const finishChangePassword = () => router.push("/signin");
+
     useEffect(() => {
-        supabase.auth.onAuthStateChange(async (event, session) => {
+        supabase.auth.onAuthStateChange(async (event) => {
             if (event == "PASSWORD_RECOVERY") {
                 setRecovery(true);
             }
         });
     }, []);
 
-    const handleUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => setUserPassword(e.target.value);
-    const handleConfirmUserPassword = (e: React.ChangeEvent<HTMLInputElement>) =>
+    const handleUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        passwordValidate({
+            password: userPassword,
+            setWordRegValid,
+            setNumberRegValid,
+            setSpecialRegValid,
+            setLengthRegValid,
+        });
+        setUserPassword(e.target.value);
+    };
+    const handleConfirmUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        passwordValidate({
+            password: confirmUserPassword,
+            setWordRegValid,
+            setNumberRegValid,
+            setSpecialRegValid,
+            setLengthRegValid,
+        });
         setConfirmUserPassword(e.target.value);
+    };
 
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded p-10 w-[500px] h-[400px] bg-white flex justify-center flex-col">
-                    <form onSubmit={confirmHandler}>
-                        {isRecovery ? (
-                            <>
-                                <SignUpItem
-                                    setLabel="비밀번호"
-                                    placeholder="비밀번호를 작성해주세요"
-                                    pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
+                {isRecovery ? (
+                    <div className="rounded p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
+                        <form onSubmit={confirmHandler}>
+                            <div className="flex justify-center">
+                                <Image
+                                    width={0}
+                                    height={0}
+                                    className="w-[160px] h-[140px]"
+                                    src="formLogo.svg"
+                                    alt="로그인의 form 로고"
+                                    priority
+                                />
+                            </div>
+                            <SignUpItem
+                                setLabel="비밀번호"
+                                placeholder="비밀번호를 작성해주세요"
+                                pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
-                                    onChangeHandler={handleUserPassword}
-                                    relative="relative"
-                                    eye="eye.svg"
-                                    eyeClose="eye_close.svg"
-                                />
-                                <SignValidate
-                                    password={userPassword}
-                                    lengthRegValid={lengthRegValid}
-                                    numberRegValid={numberRegValid}
-                                    wordRegValid={wordRegValid}
-                                    specialRegValid={specialRegValid}
-                                />
-                                <SignUpItem
-                                    setLabel="비밀번호 확인"
-                                    placeholder="비밀번호를 확인해 주세요"
-                                    pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
-                        "
-                                    onChangeHandler={handleConfirmUserPassword}
-                                    relative="relative"
-                                    eye="eye.svg"
-                                    eyeClose="eye_close.svg"
-                                />
-                                <SignButton
-                                    text="비밀번호"
-                                    password={userPassword}
-                                    inputDisabled={inputDisabled}
-                                    setInputDisabled={setInputDisabled}
-                                />
-                            </>
-                        ) : (
-                            <Button
-                                size="m"
-                                text="로그인 페이지로 이동하기"
-                                fontSize="l"
-                                color="secondary"
-                                onClick={handleSigninBtn}
+                                onChangeHandler={handleUserPassword}
+                                relative="relative"
+                                eye="eye.svg"
+                                eyeClose="eye_close.svg"
                             />
-                        )}
-                    </form>
-                </div>
+                            <SignValidate
+                                password={userPassword}
+                                lengthRegValid={lengthRegValid}
+                                numberRegValid={numberRegValid}
+                                wordRegValid={wordRegValid}
+                                specialRegValid={specialRegValid}
+                            />
+                            <SignUpItem
+                                setLabel="비밀번호 확인"
+                                placeholder="비밀번호를 확인해 주세요"
+                                pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
+                        "
+                                onChangeHandler={handleConfirmUserPassword}
+                                relative="relative"
+                                eye="eye.svg"
+                                eyeClose="eye_close.svg"
+                            />
+                            <SignValidate
+                                password={confirmUserPassword}
+                                lengthRegValid={lengthRegValid}
+                                numberRegValid={numberRegValid}
+                                wordRegValid={wordRegValid}
+                                specialRegValid={specialRegValid}
+                            />
+                            <SignButton
+                                text="비밀번호"
+                                password={confirmUserPassword}
+                                inputDisabled={inputDisabled}
+                                setInputDisabled={setInputDisabled}
+                            />
+                        </form>
+                    </div>
+                ) : (
+                    <div className="rounded p-10 w-[500px] h-[380px] bg-white flex justify-center flex-col">
+                        <div className="flex justify-center">
+                            <Image
+                                width={0}
+                                height={0}
+                                className="w-[160px] h-[140px]"
+                                src="formLogo.svg"
+                                alt="로그인의 form 로고"
+                                priority
+                            />
+                        </div>
+                        <p className="text-center mb-[40px] flex-row text-[108px]">👏</p>
+                        <SignButton
+                            text="로그인 페이지로 이동"
+                            password={confirmUserPassword}
+                            inputDisabled={!inputDisabled}
+                            setInputDisabled={setInputDisabled}
+                            onClick={finishChangePassword}
+                        />
+                    </div>
+                )}
             </div>
         </main>
     );

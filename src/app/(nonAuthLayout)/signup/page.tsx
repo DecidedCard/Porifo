@@ -18,6 +18,8 @@ const clickNumber = ["010", "011"];
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
+    const [errorSign, setErrorSign] = useState(false);
+
     const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
