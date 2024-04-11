@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -39,6 +39,7 @@ const SignIn = () => {
             });
             if (error) {
                 console.error(error);
+                alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
 
@@ -47,11 +48,11 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
-
-    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
+    useEffect(() => {
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-    };
+    }, [password]);
+
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
     return (
         <main>
@@ -88,7 +89,6 @@ const SignIn = () => {
                             eyeClose="eye_close.svg"
                         />
                         <SignValidate
-                            password={password}
                             lengthRegValid={lengthRegValid}
                             numberRegValid={numberRegValid}
                             wordRegValid={wordRegValid}
@@ -112,7 +112,7 @@ const SignIn = () => {
                             inputDisabled={inputDisabled}
                             setInputDisabled={setInputDisabled}
                             email={email}
-                            password={password}
+                            loginPassword={password}
                         />
                     </form>
                     <SocialSign />

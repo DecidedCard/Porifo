@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
-import Input from "@/Components/Commen/Input";
+
 import SignButton from "@/Components/Sign/SignButton";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 const Find_Email = () => {
@@ -37,7 +37,7 @@ const Find_Email = () => {
                         />
                         <SignButton
                             text="이메일 확인"
-                            email={userEmail}
+                            findEmail={userEmail}
                             inputDisabled={inputDisabled}
                             setInputDisabled={setInputDisabled}
                         />

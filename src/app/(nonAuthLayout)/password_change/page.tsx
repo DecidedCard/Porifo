@@ -8,7 +8,6 @@ import { passwordValidate } from "@/util/sign/password_validate";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignValidate from "@/Components/Sign/SignValidate";
-import Button from "@/Components/Commen/Button";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
@@ -20,6 +19,11 @@ const Password_Change = () => {
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
     const [lengthRegValid, setLengthRegValid] = useState(false);
+
+    const [wordConfirmRegValid, setWordRegConfirmValid] = useState(false);
+    const [specialConfirmRegValid, setSpecialConfirmRegValid] = useState(false);
+    const [numberConfirmRegValid, setNumberConfirmRegValid] = useState(false);
+    const [lengthConfirmRegValid, setLengthConfirmRegValid] = useState(false);
 
     const router = useRouter();
 
@@ -43,7 +47,7 @@ const Password_Change = () => {
         });
     }, []);
 
-    const handleUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    useEffect(() => {
         passwordValidate({
             password: userPassword,
             setWordRegValid,
@@ -51,18 +55,24 @@ const Password_Change = () => {
             setSpecialRegValid,
             setLengthRegValid,
         });
-        setUserPassword(e.target.value);
-    };
-    const handleConfirmUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         passwordValidate({
             password: confirmUserPassword,
-            setWordRegValid,
-            setNumberRegValid,
-            setSpecialRegValid,
-            setLengthRegValid,
+            setWordRegValid: setWordRegConfirmValid,
+            setNumberRegValid: setNumberConfirmRegValid,
+            setSpecialRegValid: setSpecialConfirmRegValid,
+            setLengthRegValid: setLengthConfirmRegValid,
         });
+        if (userPassword && confirmUserPassword) {
+            setInputDisabled(true);
+        } else {
+            setInputDisabled(false);
+        }
+    }, [userPassword, confirmUserPassword]);
+
+    const handleUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => setUserPassword(e.target.value);
+
+    const handleConfirmUserPassword = (e: React.ChangeEvent<HTMLInputElement>) =>
         setConfirmUserPassword(e.target.value);
-    };
 
     return (
         <main>
@@ -91,7 +101,6 @@ const Password_Change = () => {
                                 eyeClose="eye_close.svg"
                             />
                             <SignValidate
-                                password={userPassword}
                                 lengthRegValid={lengthRegValid}
                                 numberRegValid={numberRegValid}
                                 wordRegValid={wordRegValid}
@@ -107,16 +116,18 @@ const Password_Change = () => {
                                 eye="eye.svg"
                                 eyeClose="eye_close.svg"
                             />
+
                             <SignValidate
-                                password={confirmUserPassword}
-                                lengthRegValid={lengthRegValid}
-                                numberRegValid={numberRegValid}
-                                wordRegValid={wordRegValid}
-                                specialRegValid={specialRegValid}
+                                lengthRegValid={lengthConfirmRegValid}
+                                numberRegValid={numberConfirmRegValid}
+                                wordRegValid={wordConfirmRegValid}
+                                specialRegValid={specialConfirmRegValid}
                             />
+
                             <SignButton
                                 text="비밀번호"
-                                password={confirmUserPassword}
+                                password={userPassword}
+                                confirmUserPassword={confirmUserPassword}
                                 inputDisabled={inputDisabled}
                                 setInputDisabled={setInputDisabled}
                             />
@@ -137,7 +148,7 @@ const Password_Change = () => {
                         <p className="text-center mb-[40px] flex-row text-[108px]">👏</p>
                         <SignButton
                             text="로그인 페이지로 이동"
-                            password={confirmUserPassword}
+                            password={userPassword}
                             inputDisabled={!inputDisabled}
                             setInputDisabled={setInputDisabled}
                             onClick={finishChangePassword}

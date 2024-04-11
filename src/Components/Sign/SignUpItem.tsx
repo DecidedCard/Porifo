@@ -13,6 +13,7 @@ type SignUpItemType = {
     placeholder?: string;
     pattern?: string;
     relative?: string;
+    color?: string;
     onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -26,6 +27,7 @@ const SignUpItem = ({
     placeholder,
     pattern,
     relative,
+    color,
     onChangeHandler,
 }: SignUpItemType) => {
     const [showPassword, setShowPassword] = useState({ type: "password", visible: false });
@@ -46,7 +48,7 @@ const SignUpItem = ({
                 maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
-                color="black"
+                color={`error`}
                 size="big"
             />
             {eyeClose ? (

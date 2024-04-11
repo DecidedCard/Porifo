@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import useInput from "@/hooks/useInput";
@@ -11,7 +11,6 @@ import { passwordValidate } from "@/util/sign/password_validate";
 import SignValidate from "@/Components/Sign/SignValidate";
 import SignButton from "@/Components/Sign/SignButton";
 import Image from "next/image";
-import { onlyUseNumber } from "@/util/sign/onlyNumber";
 const clickSex = ["남자", "여자"];
 const clickNumber = ["010", "011"];
 
@@ -28,19 +27,19 @@ const SignUp = () => {
     const [name, onChangeNameHandler] = useInput();
 
     const [age, setage] = useState("");
-
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
-
     const [lastPhoneNumber, setLastPhoneNumber] = useState("");
     const [sex, setSex] = useState("");
 
     const router = useRouter();
 
+    useEffect(() => {
+        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
+    }, [password]);
+
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
-
-        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
     };
 
     const onClickFindSex = (sex: string) => setSex(sex);
@@ -125,7 +124,6 @@ const SignUp = () => {
                         eyeClose="eye_close.svg"
                     />
                     <SignValidate
-                        password={password}
                         lengthRegValid={lengthRegValid}
                         numberRegValid={numberRegValid}
                         wordRegValid={wordRegValid}

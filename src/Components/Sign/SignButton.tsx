@@ -1,9 +1,13 @@
 import Button from "@/Components/Commen/Button";
+import { useEffect } from "react";
 
 type InputValue = {
     email?: string;
+    findEmail?: string;
     text: string;
     password?: string;
+    loginPassword?: string;
+    confirmUserPassword?: string;
     name?: string;
     age?: string;
     firstNumber?: string;
@@ -17,10 +21,13 @@ type InputValue = {
 
 const SignButton = ({
     email,
+    findEmail,
     text,
     inputDisabled,
     setInputDisabled,
     password,
+    loginPassword,
+    confirmUserPassword,
     name,
     age,
     onClick,
@@ -30,27 +37,49 @@ const SignButton = ({
     sex,
 }: InputValue) => {
     const signUp = email && password && name && age && firstNumber && middlePhoneNumber && lastPhoneNumber && sex;
-    const siginIn = email && password;
-    const confirmEmail = email;
-    const confirmPassword = password;
+    const siginIn = email !== "" && loginPassword;
+    const confirmEmail = findEmail && password === undefined;
+    const confirmPassword = password && confirmUserPassword;
 
-    if (signUp) setInputDisabled(true);
-    if (siginIn && name === undefined) setInputDisabled(true);
-    if (confirmEmail && password === undefined) setInputDisabled(true);
-    if (confirmPassword && email === undefined) setInputDisabled(true);
+    useEffect(() => {
+        {
+            /*로그인*/
+        }
+        siginIn ? setInputDisabled(true) : setInputDisabled(false);
+    }, [siginIn, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*회원가입*/
+        }
+        signUp ? setInputDisabled(true) : setInputDisabled(false);
+    }, [signUp, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*이메일 확인*/
+        }
+        confirmEmail ? setInputDisabled(true) : setInputDisabled(false);
+    }, [confirmEmail, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*비밀번호 확인*/
+        }
+        confirmPassword ? setInputDisabled(true) : setInputDisabled(false);
+    }, [confirmPassword, setInputDisabled]);
+
     return (
-        <>
-            <div className="w-[350px] mt-8 mb-6 mx-auto">
-                <Button
-                    text={text}
-                    border="none"
-                    size="m"
-                    onClick={onClick}
-                    color={inputDisabled ? "primary" : ""}
-                    disabled={!inputDisabled}
-                />
-            </div>
-        </>
+        <div className="w-[350px] mt-8 mb-6 mx-auto">
+            <Button
+                text={text}
+                border="none"
+                size="m"
+                onClick={onClick}
+                color={inputDisabled ? "primary" : ""}
+                disabled={!inputDisabled}
+            />
+        </div>
     );
 };
 
