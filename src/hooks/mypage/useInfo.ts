@@ -31,6 +31,7 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
+        setInitialBasicInfo,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
@@ -40,7 +41,6 @@ const useInfo = () => {
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
-        const career = basicInfo.career as Career[];
         if (
             !basicInfo.name &&
             !basicInfo.birthday &&
@@ -49,8 +49,6 @@ const useInfo = () => {
             !basicInfo.profileImage &&
             !basicInfo.tel &&
             !basicInfo.job &&
-            !basicInfo.project &&
-            career.length === 0 &&
             portfolio
         ) {
             const project = portfolio.project as Project[];
@@ -69,36 +67,9 @@ const useInfo = () => {
                 setInitialEducation(education);
             }
 
-            setName(portfolio.name!);
-            setEngName(portfolio.englishName!);
-            setProfile(portfolio.profileImage!);
-            setBirthday(portfolio.birthday!);
-            setTel(portfolio.tel!);
-            setEmail(portfolio.email!);
-            setJob(portfolio.job!);
-            setOneLineIntroduce(portfolio.oneLineIntroduce!);
-            setIntroduce(portfolio.introduce!);
-            setBlog(portfolio.blogLink!);
-            setGithub(portfolio.githubLink!);
+            setInitialBasicInfo(portfolio);
         }
-    }, [
-        basicInfo,
-        portfolio,
-        setName,
-        setEngName,
-        setProfile,
-        setBirthday,
-        setTel,
-        setEmail,
-        setJob,
-        setOneLineIntroduce,
-        setIntroduce,
-        setBlog,
-        setGithub,
-        setProjectsInitial,
-        setInitialCareers,
-        setInitialEducation,
-    ]);
+    }, [basicInfo, portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers, setInitialEducation]);
 
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
@@ -279,6 +250,21 @@ const useInfo = () => {
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
+    const onClickShareToggle = async () => {
+        const { imageFile, ...info } = portfolio!;
+        const share = { ...info, share: !basicInfo.share };
+        try {
+            await supabasePortfolioUpdate(share, user!.id);
+            if (!basicInfo.share) {
+                alert("피드에 공유 되었습니다.");
+            } else {
+                alert("피드에 공유를 중지했습니다.");
+            }
+        } catch (error) {
+            return error;
+        }
+    };
+
     return {
         user,
         portfolio,
@@ -297,6 +283,7 @@ const useInfo = () => {
         onChangeBlogHandler,
         onChangeGithubHandler,
         onClickInsertHandler,
+        onClickShareToggle,
     };
 };
 
