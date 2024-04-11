@@ -11,7 +11,7 @@ const Template2 = ({ params }: { params: { id: string } }) => {
             <Top id={id}/>
             <Middle id={id}/>
             <Bottom />
-            <URL />
+            <URL id={id}/>
         </main>
     );
 };
