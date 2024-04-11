@@ -15,6 +15,8 @@ import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
 import useEducationStore from "@/store/educationStore";
 import { Education } from "@/types/education";
+import useSetMutation from "../useSetMutation";
+import usePortfolioQuery from "./usePortfolioQuery";
 
 const useInfo = () => {
     const {

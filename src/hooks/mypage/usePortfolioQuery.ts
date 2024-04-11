@@ -2,7 +2,7 @@ import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { useQuery } from "@tanstack/react-query";
 
-const usePortfolio = (id: string) => {
+const usePortfolioQuery = (id: string) => {
     const {
         isError,
         isFetching,
@@ -17,4 +17,4 @@ const usePortfolio = (id: string) => {
     return { portfolio, isFetching, isError };
 };
 
-export default usePortfolio;
+export default usePortfolioQuery;

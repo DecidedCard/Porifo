@@ -15,7 +15,7 @@ import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, disabled, onClickInsertHandler } = useInfo();
+    const { user, portfolio, basicInfo, disabled, onClickInsertHandler, onClickShareToggle } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
@@ -71,36 +71,40 @@ const Buttons = () => {
                         </button>
                     </div>
                 </div>
+                <div className="flex flex-col gap-3">
+                    <div className="w-[250px]">
+                        {disabled ? (
+                            <Button text={portfolio ? "수정하기" : "저장하기"} size="l" border="none" disabled />
+                        ) : (
+                            <Button
+                                text={portfolio ? "수정하기" : "저장하기"}
+                                size="l"
+                                border="none"
+                                color="primary"
+                                onClick={onClickInsertHandler}
+                            />
+                        )}
+                    </div>
 
-                <div className="w-[250px]">
-                    {disabled ? (
-                        <Button
-                            text={portfolio ? "수정하기" : "저장하기"}
-                            size="l"
-                            border="none"
-                            onClick={onClickInsertHandler}
-                            disabled
-                        />
-                    ) : (
-                        <Button
-                            text={portfolio ? "수정하기" : "저장하기"}
-                            size="l"
-                            border="none"
-                            color="primary"
-                            onClick={onClickInsertHandler}
-                        />
-                    )}
+                    <div className="w-[250px]">
+                        {portfolio ? (
+                            <Button
+                                text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                                size="l"
+                                border="none"
+                                color="primary"
+                                onClick={onClickShareToggle}
+                            />
+                        ) : (
+                            <Button text="포리포 피드에 올리기" size="l" border="none" disabled />
+                        )}
+                    </div>
                 </div>
-
-                <div className="text-white mt-3 bg-primary rounded-lg flex flex-row gap-2 items-center justify-center shrink-0 w-[250px] h-[50px] relative">
-                    <input className="" type="checkbox" />
-                    <label className="">공유하기</label>
-                </div>
+                {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
             </div>
-            {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
         </div>
     );
 };
