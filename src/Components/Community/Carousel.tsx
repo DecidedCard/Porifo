@@ -11,27 +11,35 @@ const Carousel = () => {
         queryFn: getHotDevelopers,
     });
 
-    const handleImagePrevBtn = () => {
-        const trans = 200;
-        setTranslateX((prevTranslateX) => prevTranslateX + trans);
-    };
-    const handleImageNextBtn = () => {
-        const trans = 200;
-        setTranslateX((prevTranslateX) => prevTranslateX - trans);
-    };
     if (isPending) {
         return <div>로딩 중 ... !!</div>;
     }
 
+    const handleImagePrevBtn = () => {
+        const trans = 200;
+        console.log(translateX);
+        if (translateX > 20 * data!.length) {
+            return;
+        }
+        setTranslateX((prevTranslateX) => prevTranslateX + trans);
+    };
+    const handleImageNextBtn = () => {
+        const trans = 200;
+        if (translateX < -20 * data!.length) {
+            return;
+        }
+        setTranslateX((prevTranslateX) => prevTranslateX - trans);
+    };
+
     return (
         <>
-            <div className="flex flex-row border-2 border-solid border-black w-screen overflow-hidden gap-5 items-center justify-center relative mb-20">
+            <div className="flex flex-row border-2 border-solid border-black w-[100%] bg-slate-600 overflow-hidden gap-5 items-center justify-center relative mb-20">
                 {/* 카드 */}
                 {data!.map((item, idx) => {
                     return (
                         <div
                             key={item.id}
-                            className="flex flex-col gap-2 items-center justify-center shrink-0 relative"
+                            className="flex flex-col gap-2  items-center justify-center shrink-0 relative"
                             style={{
                                 transform: `translateX(${translateX}px)`,
                                 transition: "transform 0.5s ease-in-out",
@@ -91,6 +99,7 @@ const Carousel = () => {
                         </div>
                     );
                 })}
+                <div>안녕</div>
 
                 {/* 이미지 넘기기 버튼 */}
                 <button
