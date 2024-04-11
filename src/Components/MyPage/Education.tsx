@@ -14,7 +14,7 @@ const Education = () => {
     } = useEducation();
     return (
         <div className="flex flex-col gap-5">
-            {education.map((educationItem, educationIndex) => {
+            {education?.map((educationItem, educationIndex) => {
                 return (
                     <div key={educationIndex} className="flex flex-col gap-5">
                         {education.length >= 2 && (

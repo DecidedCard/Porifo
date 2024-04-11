@@ -43,7 +43,7 @@ const Bottom = () => {
                         <p className="flex items-center justify-start text-secondary text-left font-spoqaBold font-semibold leading-normal relative">
                             나의 포트폴리오를 공유하고
                         </p>
-                        <p className="flex items-center justify-start text-left font-spoqaBold font-bold leading-normal text-xl relative">
+                        <p className="flex items-center justify-start font-spoqaBold font-bold leading-normal text-xl relative">
                             디자인 경험이 없어도
                             <br />
                             감각적인 포트폴리오 사이트가 만들어져요
@@ -52,7 +52,7 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <Link href={"/community"} className="flex items-center justify-center my-20 w-[240px] relative">
+            <Link href={"/community"} className="flex items-center justify-center mx-auto my-20 w-[240px] relative">
                 <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
             </Link>
         </main>
