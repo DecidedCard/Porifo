@@ -106,7 +106,14 @@ const Buttons = () => {
                 {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
-                {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
+                {portfolio && (
+                    <Preview
+                        template={basicInfo.template!}
+                        id={user!.id}
+                        setPreviewModal={setPreviewModal}
+                        targetRef={targetRef}
+                    />
+                )}
             </div>
             {previewModal && <Preview template={basicInfo.template!} id={user!.id} setPreviewModal={setPreviewModal} />}
         </div>
