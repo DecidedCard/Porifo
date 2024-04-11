@@ -6,25 +6,30 @@ import Image from "next/image";
 type SignUpItemType = {
     setLabel: string;
     value?: string;
+    name?: string;
     type?: string;
     eyeClose?: string;
     eye?: string;
-    bgImage?: string;
+    maxLength?: number;
     placeholder?: string;
     pattern?: string;
     relative?: string;
+    color?: string;
     onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const SignUpItem = ({
     setLabel,
     value,
+    name,
     type,
     eyeClose,
     eye,
+    maxLength,
     placeholder,
     pattern,
     relative,
+    color,
     onChangeHandler,
 }: SignUpItemType) => {
     const [showPassword, setShowPassword] = useState({ type: "password", visible: false });
@@ -41,7 +46,9 @@ const SignUpItem = ({
             <Input
                 type={type || showPassword.type}
                 value={value}
+                name={name}
                 pattern={pattern}
+                maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
                 color="black"
