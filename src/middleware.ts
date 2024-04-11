@@ -1,24 +1,38 @@
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
-import { supabase } from "@/util/supabase/clientSupabase";
-// import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse, NextRequest } from "next/server";
+
+const supabaseURL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
 
 export const middleware = async (request: NextRequest) => {
-    const res = NextResponse.next();
+    const response = NextResponse.next();
 
-    const user = await supabase.auth.getUser();
-    console.log("user", user);
+    // const supabase = createMiddlewareClient({ req: request, res: response });
+
+    // const {
+    //     data: { session },
+    // } = await supabase.auth.getSession();
+
     const { pathname } = request.nextUrl;
 
-    if (pathname === "mypage" && !user) {
-        return NextResponse.redirect(new URL("/sigin", request.url));
-    }
-    return res;
+    // if (!session && pathname.startsWith("/mypage")) {
+    //     console.log("세션이 없는데 mypage에 들어옴");
+    //     return NextResponse.redirect(new URL("/signin", request.nextUrl.basePath));
+    // }
+
+    // if (session && (pathname.startsWith("/signin") || pathname.startsWith("/signup"))) {
+    //     console.log("세션은 있는데 signin singup 페이지에 들어옴");
+    //     return NextResponse.redirect(new URL("/", request.nextUrl.basePath));
+    // }
+
+    // if (pathname === "mypage" && !user) {
+    //     return NextResponse.redirect(new URL("/sigin", request.url));
+    // }
+
     // Create a Supabase client configured to use cookies
-    // const supabase = createMiddlewareClient({ req, res });
 
     // Refresh session if expired - required for Server Components
+    // return response;
 };
 
 export const config = {
