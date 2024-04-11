@@ -1,14 +1,16 @@
 import { supabase } from "@/util/supabase/clientSupabase";
 
-let query = supabase.from("portfolioInfo").select("*");
-
 export const getPortfolio = async (payload: any) => {
     const { filter, jobFilter, getFromAndTo, page, setPage } = payload;
     const { from, to } = getFromAndTo();
 
+    let query = supabase.from("portfolioInfo").select("*");
     if (filter === "최신순") {
         query = query.order("id", { ascending: false });
     }
+    // if (filter === "오래된 순") {
+    //     query = query.order("id", { ascending: true });
+    // }
     if (jobFilter === "*") {
         const { data } = await query.range(from, to);
         setPage(page + 1);
@@ -30,6 +32,7 @@ export const getPortfolio = async (payload: any) => {
 };
 
 export const getHotDevelopers = async () => {
+    let query = supabase.from("portfolioInfo").select("*");
     const { data, error } = await query.order("id", { ascending: false }).range(0, 6);
     if (error) {
         console.error(error);

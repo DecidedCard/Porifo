@@ -74,7 +74,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                                 <div className="shrink-0 w-6 h-6 relative">
                                                     <img
                                                         className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
-                                                        src="frame-13740.svg"
+                                                        src="grayHeart.svg"
                                                     />
                                                 </div>
                                                 <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
@@ -84,7 +84,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                             <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
                                                 <img
                                                     className="shrink-0 w-6 h-6 relative overflow-visible"
-                                                    src="icon-set1.svg"
+                                                    src="grayEye.svg"
                                                 />
                                                 <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
                                                     1523

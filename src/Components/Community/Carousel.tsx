@@ -1,8 +1,9 @@
 "use client";
 
+import React, { useState } from "react";
+
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
 
 const Carousel = () => {
     const [translateX, setTranslateX] = useState(0);
@@ -58,7 +59,7 @@ const Carousel = () => {
                                 style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                             >
                                 <div className=" text-center w-[500px] h-[50px]  border-2 border-solid border-rose-700  font-spoqaMedium text-white font-bold text-2xl relative flex items-center ">
-                                    <p className="truncate ...">{item.introduce}</p>
+                                    <p className="truncate ...">{item.oneLineIntroduce}</p>
                                 </div>
                                 <div className="flex flex-row items-center justify-between self-stretch shrink-0 relative">
                                     <div className="flex flex-row gap-2 items-center justify-start flex-1 relative">
@@ -77,7 +78,7 @@ const Carousel = () => {
                                             <div className="shrink-0 w-6 h-6 relative">
                                                 <img
                                                     className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
-                                                    src="frame-13740.svg"
+                                                    src="grayHeart.svg"
                                                 />
                                             </div>
                                             <div className="text-gray">210</div>
@@ -85,7 +86,7 @@ const Carousel = () => {
                                         <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
                                             <img
                                                 className="shrink-0 w-6 h-6 relative overflow-visible"
-                                                src="icon-set1.svg"
+                                                src="grayEye.svg"
                                             />
                                             <div className="text-gray">1523</div>
                                         </div>
