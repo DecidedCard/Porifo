@@ -1,42 +1,37 @@
-import WorkTimelineItem from "../TimeLine/WorkTimelineItem";
+"use client"
+
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { useState, useEffect } from "react";
 
 const Middle = ({ id }: { id: string }) => {
 
-    // const [userCareer, setUserCareer] = useState({
-    //     company: '',
-    //     department: '',
-    //     position: '',
-    //     comment: '',
-    //     date: '',
-    // });
+    const [userInfo, setUserInfo] = useState({
+        introduce: '',
+    });
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await supabasePortfolioInfoRead({ id: 'userId', value: id });
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await supabasePortfolioInfoRead({ id: 'userId', value: id });
 
-    //             setUserCareer({
-    //                 company: data[0].company || '',
-    //                 department: data[0].department || '',
-    //                 position: data[0].position || '',
-    //             });
+                setUserInfo({
+                    introduce: data[0].introduce || '',
+                });
 
-    //         } catch (error) {
-    //             console.error("사용자 정보를 가져오는 데 실패했습니다.", error);
-    //         }
-    //     };
+            } catch (error) {
+                console.error("사용자 정보를 가져오는 데 실패했습니다.", error);
+            }
+        };
 
-    //     fetchData();
-    // }, []);
+        fetchData();
+    }, []);
 
     return (
         <main>
 
             <div className="my-10 gap-16 flex flex-col items-start justify-start self-stretch shrink-0">
 
-            <div className="flex flex-col items-start justify-start self-stretch shrink-0" >
+                <div className="flex flex-col items-start justify-start self-stretch shrink-0" >
                     <p className="font-bold text-[22px] w-[] h-[]">
                         프로젝트
                     </p>
@@ -56,10 +51,11 @@ const Middle = ({ id }: { id: string }) => {
                 </div>
 
                 <div className="flex flex-col items-start justify-start">
-                    <p className="font-bold text-[22px] w-[] h-[] text-left">
+                    <p className="font-bold text-[22px]">
                         자기소개
                     </p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                    <p className="text-[14px] w-[804px] tracking-wide leading-normal">{userInfo.introduce}</p>
                     <div className="flex flex-row gap-2 items-start justify-start self-stretch shrink-0">
 
                     </div>
