@@ -9,7 +9,6 @@ import { SELECT_LIST } from "@/util/select_list";
 
 import Image from "next/image";
 import Careers from "./Careers";
-import Education from "./Education";
 
 const UserInfo = () => {
     const {
@@ -128,11 +127,6 @@ const UserInfo = () => {
                         })}
                     </select>
                 </div>
-
-                <hr className="border border-neutral-100" />
-                <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">학력</p>
-
-                <Education />
 
                 <hr className="border border-neutral-100" />
 
