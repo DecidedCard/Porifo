@@ -11,9 +11,23 @@ import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 
 import useMyPage from "@/hooks/mypage/useMyPage";
 
+import Image from "next/image";
+
 const MyPage = () => {
-    useMyPage();
+    const { isFetching, isError } = useMyPage();
     const [nav, setNav] = useState("basicInfo");
+
+    if (isFetching) {
+        return (
+            <div className="flex justify-center items-center w-screen h-screen">
+                <Image src={"../porifo.svg"} alt="로딩 이미지" width={100} height={100} className="animate-bounce" />
+            </div>
+        );
+    }
+
+    if (isError) {
+        return <div>404 Not Found</div>;
+    }
 
     return (
         <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto">
