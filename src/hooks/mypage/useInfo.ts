@@ -55,8 +55,21 @@ const useInfo = () => {
             portfolio
         ) {
             const project = portfolio.project as Project[];
+            if (project) {
+                setProjectsInitial(project);
+            }
+
             const career = portfolio.career as Career[];
+
+            if (career) {
+                setInitialCareers(career);
+            }
             const education = portfolio.education as Education[];
+
+            if (education) {
+                setInitialEducation(education);
+            }
+
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
@@ -68,9 +81,6 @@ const useInfo = () => {
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
-            setProjectsInitial(project);
-            setInitialCareers(career);
-            setInitialEducation(education);
         }
     }, [
         basicInfo,
