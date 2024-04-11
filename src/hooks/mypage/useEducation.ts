@@ -4,8 +4,6 @@ import { ChangeEvent } from "react";
 const useEducation = () => {
     const { education, setAddEducation, setClass, setDate, setMinusEducation, setSchool } = useEducationStore();
 
-    console.log(education[0].date);
-
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setSchool(e.target.value, index);
     };

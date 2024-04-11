@@ -1,5 +1,7 @@
+import { Career } from "@/types/Career";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import type { Project } from "@/types/Project";
+import { Education } from "@/types/education";
 
 // portfolio input form validation
 export const portfolioInputFormValidation = (info: PortfolioInfo) => {
@@ -34,47 +36,95 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
     }
 
     if (!info.job) {
-        alert("직무를 선택해주시기 바랍니다.");
+        alert("직군를 선택해주시기 바랍니다.");
         return true;
     }
 
     if (!info.introduce) {
-        alert("직무를 선택해주시기 바랍니다.");
+        alert("소개를 작성해주시기를 바랍니다.");
         return true;
     }
 
-    if (!info.project) {
-        alert("project를 작성해주시기를 바랍니다.");
+    const education = info.education as Education[];
+
+    const educationCheck = education.map((educationItem) => {
+        if (!educationItem.school) {
+            return true;
+        }
+
+        if (!educationItem.class) {
+            return true;
+        }
+
+        if (!educationItem.date) {
+            return true;
+        }
+
+        return false;
+    });
+
+    if (educationCheck.find((item) => item === true)) {
+        alert("학력을 작성해주시기를 바랍니다.");
         return true;
     }
 
-    return false;
-};
+    const career = info.career as Career[];
 
-// project input form validation
-export const projectInputFormValidation = (info: Project) => {
-    if (!info.name) {
-        alert("프로젝트 이름을 작성해주시기를 바랍니다.");
+    const careerCheck = career.map((careerItem) => {
+        if (!careerItem.company) {
+            return true;
+        }
+
+        if (!careerItem.department) {
+            return true;
+        }
+
+        if (!careerItem.position) {
+            return true;
+        }
+
+        if (!careerItem.date) {
+            return true;
+        }
+
+        if (!careerItem.comment) {
+            return true;
+        }
+
+        return false;
+    });
+
+    if (careerCheck.find((item) => item === true)) {
+        alert("경력을 작성해주시기를 바랍니다");
         return true;
     }
 
-    if (!info.date) {
-        alert("프로젝트 기간을 작성해주시기를 바랍니다.");
-        return true;
-    }
+    const project = info.project as Project[];
 
-    if (!info.introduce) {
-        alert("프로젝트 소개를 작성해주시기를 바랍니다.");
-        return true;
-    }
+    const projectCheck = project.map((projectItem) => {
+        if (!projectItem.name) {
+            return true;
+        }
 
-    if (!info.images) {
-        alert("프로젝트 사진을 추가해 주시기를 바랍니다.");
-        return true;
-    }
+        if (!projectItem.images) {
+            return true;
+        }
 
-    if (!info.deployLink && !info.githubLink) {
-        alert("프로젝트 배포링크 또는 Github링크를 작성해주시기를 바랍니다.");
+        if (!projectItem.introduce) {
+            return true;
+        }
+
+        if (!projectItem.date) {
+            return true;
+        }
+
+        if (!projectItem.githubLink) {
+            return true;
+        }
+    });
+
+    if (projectCheck.find((item) => item === true)) {
+        alert("프로젝트를 작성해주시기 바랍니다.");
         return true;
     }
 

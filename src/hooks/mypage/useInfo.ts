@@ -14,6 +14,7 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
 import useEducationStore from "@/store/educationStore";
+import { Education } from "@/types/education";
 
 const useInfo = () => {
     const {
@@ -55,6 +56,7 @@ const useInfo = () => {
         ) {
             const project = portfolio.project as Project[];
             const career = portfolio.career as Career[];
+            const education = portfolio.education as Education[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
@@ -68,6 +70,7 @@ const useInfo = () => {
             setGithub(portfolio.githubLink!);
             setProjectsInitial(project);
             setInitialCareers(career);
+            setInitialEducation(education);
         }
     }, [
         basicInfo,
@@ -85,6 +88,7 @@ const useInfo = () => {
         setGithub,
         setProjectsInitial,
         setInitialCareers,
+        setInitialEducation,
     ]);
 
     // 스토어 적용 onChangeHandler
@@ -145,7 +149,7 @@ const useInfo = () => {
 
         const { imageFile, ...info } = basicInfo;
 
-        if (portfolioInputFormValidation({ ...info, project: projects })) return;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
