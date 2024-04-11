@@ -112,10 +112,18 @@ const Buttons = () => {
                         id={user!.id}
                         setPreviewModal={setPreviewModal}
                         targetRef={targetRef}
+                        portfolio={portfolio!}
                     />
                 )}
             </div>
-            {previewModal && <Preview template={basicInfo.template!} id={user!.id} setPreviewModal={setPreviewModal} />}
+            {previewModal && (
+                <Preview
+                    template={basicInfo.template!}
+                    id={user!.id}
+                    setPreviewModal={setPreviewModal}
+                    portfolio={portfolio!}
+                />
+            )}
         </div>
     );
 };
