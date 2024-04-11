@@ -108,7 +108,7 @@ const useProjectsStore = create<Store>()((set) => ({
     setAddProjects: () => set((item) => ({ projects: [...item.projects, initial] })),
     setMinusProjects: (arg) =>
         set((item) => ({
-            projects: [...item.projects.filter((project, idx) => idx !== arg)],
+            projects: [...item.projects.filter((_, idx) => idx !== arg)],
         })),
     setProjectsInitial: (arg) => set({ projects: [...arg] }),
 }));

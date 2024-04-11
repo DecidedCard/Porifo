@@ -13,6 +13,8 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
+import useEducationStore from "@/store/educationStore";
+import { Education } from "@/types/education";
 
 const useInfo = () => {
     const {
@@ -24,8 +26,6 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -33,19 +33,9 @@ const useInfo = () => {
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
-    const { projects, setProjectsInitial, setProjectImages, setProjectImagesFile } = useProjectsStore();
-    const {
-        career,
-        careers,
-        setCompany,
-        setComment,
-        setDate,
-        setDepartment,
-        setPosition,
-        setCareers,
-        setResetCareer,
-        setInitialCareers,
-    } = useCareerStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
+    const { careers, setInitialCareers } = useCareerStore();
+    const { education, setInitialEducation } = useEducationStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
@@ -59,7 +49,6 @@ const useInfo = () => {
             !basicInfo.englishName &&
             !basicInfo.profileImage &&
             !basicInfo.tel &&
-            !basicInfo.school &&
             !basicInfo.job &&
             !basicInfo.project &&
             career.length === 0 &&
@@ -67,14 +56,13 @@ const useInfo = () => {
         ) {
             const project = portfolio.project as Project[];
             const career = portfolio.career as Career[];
+            const education = portfolio.education as Education[];
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
             setBirthday(portfolio.birthday!);
             setTel(portfolio.tel!);
             setEmail(portfolio.email!);
-            setSchool(portfolio.school!);
-            setClass(portfolio.class!);
             setJob(portfolio.job!);
             setOneLineIntroduce(portfolio.oneLineIntroduce!);
             setIntroduce(portfolio.introduce!);
@@ -82,6 +70,7 @@ const useInfo = () => {
             setGithub(portfolio.githubLink!);
             setProjectsInitial(project);
             setInitialCareers(career);
+            setInitialEducation(education);
         }
     }, [
         basicInfo,
@@ -92,8 +81,6 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -101,12 +88,8 @@ const useInfo = () => {
         setGithub,
         setProjectsInitial,
         setInitialCareers,
+        setInitialEducation,
     ]);
-
-    // career 기간
-    useEffect(() => {
-        setDate(`${careerStartDate} ~ ${careerEndDate}`);
-    }, [setDate, careerStartDate, careerEndDate]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -140,14 +123,6 @@ const useInfo = () => {
         setEmail(e.target.value);
     };
 
-    const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool(e.target.value);
-    };
-
-    const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setClass(e.target.value);
-    };
-
     const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
         setOneLineIntroduce(e.target.value);
     };
@@ -168,34 +143,13 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
-    const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setCompany(e.target.value);
-    };
-
-    const onChangeDepartmentHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setDepartment(e.target.value);
-    };
-
-    const onChangePositionHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setPosition(e.target.value);
-    };
-
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setComment(e.target.value);
-    };
-
-    const onClickInsertCareersHandler = () => {
-        setCareers(career);
-        setResetCareer();
-    };
-
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
 
-        if (portfolioInputFormValidation({ ...info, project: projects })) return;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
@@ -255,18 +209,19 @@ const useInfo = () => {
 
         await Promise.all(imagesSetting);
 
-        if (user && !portfolio) {
-            const project = projects.map((item) => {
-                const { imagesFile, ...projectInfo } = item;
-                return projectInfo;
-            });
+        const project = projects.map((item) => {
+            const { imagesFile, ...projectInfo } = item;
+            return projectInfo;
+        });
 
+        if (user && !portfolio) {
             let newPortfolio = {
                 ...info,
                 userId: user.id,
                 profileImage: url,
                 project,
                 career: careers,
+                education,
             };
 
             try {
@@ -280,16 +235,18 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            const project = projects.map((item) => {
-                const { imagesFile, ...projectInfo } = item;
-                return projectInfo;
-            });
-
-            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers, education };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project, career: careers };
+                    newPortfolio = {
+                        ...info,
+                        userId: user!.id,
+                        profileImage: url,
+                        project,
+                        career: careers,
+                        education,
+                    };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
@@ -300,7 +257,7 @@ const useInfo = () => {
             }
         }
 
-        const newPortfolio = { ...info, profileImage: url, project: projects, career: careers };
+        const newPortfolio = { ...info, profileImage: url, project, career: careers, education };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
@@ -308,7 +265,6 @@ const useInfo = () => {
         user,
         portfolio,
         basicInfo,
-        career,
         careers,
         careerStartDate,
         careerEndDate,
@@ -318,21 +274,14 @@ const useInfo = () => {
         onChangeBirthdayHandler,
         onChangeTelHandler,
         onChangeEmailHandler,
-        onChangeSchoolHandler,
-        onChangeClassHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
-        onChangeCompanyHandler,
-        onChangeDepartmentHandler,
-        onChangePositionHandler,
-        onChangeCommentHandler,
         onChangeCareerStartDate,
         onChangeCareerEndDate,
         onClickInsertHandler,
-        onClickInsertCareersHandler,
     };
 };
 

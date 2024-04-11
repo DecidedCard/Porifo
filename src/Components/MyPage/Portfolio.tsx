@@ -38,14 +38,6 @@ const Portfolio = ({ item, targetRef }: { item: PortfolioInfo; targetRef: Mutabl
                         {item.tel}
                     </div>
                     <div>
-                        <label>학교: </label>
-                        {item.school}
-                    </div>
-                    <div>
-                        <label>전공: </label>
-                        {item.class}
-                    </div>
-                    <div>
                         <label>직군: </label>
                         {item.job}
                     </div>

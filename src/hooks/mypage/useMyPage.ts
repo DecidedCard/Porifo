@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const useMyPage = async () => {
+const useMyPage = () => {
     const { setPortfolio, setUser } = useUserStore();
     const router = useRouter();
     const { isFetching, isError, data } = useQuery({
@@ -36,6 +36,8 @@ const useMyPage = async () => {
             set();
         }
     }, [setUser, setPortfolio, data, isFetching, router, isError]);
+
+    return { isFetching, isError };
 };
 
 export default useMyPage;
