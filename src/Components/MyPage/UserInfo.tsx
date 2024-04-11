@@ -14,7 +14,6 @@ import Education from "./Education";
 const UserInfo = () => {
     const {
         basicInfo,
-        isFetching,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -23,10 +22,6 @@ const UserInfo = () => {
         onChangeEmailHandler,
         onChangeSelectHandler,
     } = useInfo();
-
-    if (isFetching) {
-        return <div>로딩중입니다.</div>;
-    }
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">

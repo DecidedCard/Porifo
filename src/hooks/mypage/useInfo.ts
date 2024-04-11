@@ -42,7 +42,6 @@ const useInfo = () => {
     const { careers, setInitialCareers } = useCareerStore();
     const { education, setInitialEducation } = useEducationStore();
     const [disabled, setDisabled] = useState(true);
-    const { portfolio: portfolioData, isFetching } = usePortfolioQuery(user?.id!);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
@@ -77,12 +76,6 @@ const useInfo = () => {
             setInitialBasicInfo(portfolio);
         }
     }, [basicInfo, portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers, setInitialEducation]);
-
-    useEffect(() => {
-        if (portfolioData?.length) {
-            setPortfolio(portfolioData[0]);
-        }
-    }, [portfolioData, setPortfolio]);
 
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
@@ -253,7 +246,7 @@ const useInfo = () => {
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
-    const onClickShareToggle = async () => {
+    const onClickShareToggle = () => {
         const { imageFile, ...info } = portfolio!;
         const share = { ...info, share: !basicInfo.share };
         update({ arg: share, value: user!.id });
@@ -270,7 +263,6 @@ const useInfo = () => {
         basicInfo,
         careers,
         disabled,
-        isFetching,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
