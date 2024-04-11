@@ -40,54 +40,58 @@ const Carousel = () => {
                     return (
                         <div
                             key={item.id}
-                            className="flex flex-col gap-2  items-center justify-center shrink-0 relative"
+                            className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0"
                             style={{
                                 transform: `translateX(${translateX}px)`,
                                 transition: "transform 0.3s ease-in-out",
                             }}
                         >
+                            {/* 카드 이미지 */}
                             <img
-                                className="rounded-2xl shrink-0 w-[550px] h-[364px] relative "
+                                className="rounded-2xl "
                                 style={{
-                                    background: "liner-gradient(to left, #d9d9d9,#d9d9d9)",
                                     objectFit: "cover",
                                 }}
                                 src="rectangle-1150.png"
                             />
+                            {/* 블러박스 */}
                             <div
-                                className="bg-[rgba(0,0,0,0.56)] border-2 border-solid border-sky-500 rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 items-start justify-start w-[550px] absolute left-0 top-[234px]"
+                                className="border-2 border-solid border-sky-500 bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[234px]"
                                 style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                             >
-                                <div className=" text-center w-[500px] h-[50px]  border-2 border-solid border-rose-700  font-spoqaMedium text-white font-bold text-2xl relative flex items-center ">
+                                {/* 한줄소개 */}
+                                <div className="border-2 border-solid border-rose-700 w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
                                     <p className="truncate ...">{item.oneLineIntroduce}</p>
                                 </div>
-                                <div className="flex flex-row items-center justify-between self-stretch shrink-0 relative">
-                                    <div className="flex flex-row gap-2 items-center justify-start flex-1 relative">
+                                {/* 유저정보,좋아요,조회수 박스 */}
+                                <div className="flex justify-between">
+                                    <div className="flex gap-2">
+                                        {/* 유저아바타 */}
                                         <img
-                                            className="rounded-[50px] shrink-0 w-8 h-8 relative"
+                                            className="rounded-[50px] w-8 h-8"
                                             style={{ objectFit: "cover" }}
                                             alt={`hotDeveloper-img-${idx}`}
                                             src="rectangle0.png"
                                         />
-                                        <div className="font-spoqaMedium  text-white font-bold text-center relative flex items-center justify-center">
+                                        {/* 유저이름 */}
+                                        <div className="font-spoqaMedium text-white font-bold flex items-center justify-center">
                                             {item.name}
                                         </div>
                                     </div>
-                                    <div className="flex flex-row gap-4 items-center justify-end shrink-0 relative">
-                                        <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
+                                    {/* 좋아요, 조회수 박스 */}
+                                    <div className="flex gap-4">
+                                        <div className="flex gap-1 items-center">
                                             <div className="shrink-0 w-6 h-6 relative">
-                                                <img
-                                                    className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
-                                                    src="grayHeart.svg"
-                                                />
+                                                {/* 좋아요 */}
+                                                <img src="grayHeart.svg" />
                                             </div>
                                             <div className="text-gray">210</div>
                                         </div>
-                                        <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                                            <img
-                                                className="shrink-0 w-6 h-6 relative overflow-visible"
-                                                src="grayEye.svg"
-                                            />
+                                        <div className="flex gap-1 items-center">
+                                            <div className="shrink-0 w-6 h-6 relative">
+                                                {/* 조회수 */}
+                                                <img src="grayEye.svg" />
+                                            </div>
                                             <div className="text-gray">1523</div>
                                         </div>
                                     </div>

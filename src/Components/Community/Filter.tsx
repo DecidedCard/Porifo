@@ -23,7 +23,6 @@ export const SELECT_LIST = [
 const JobFilter = () => {
     const { setPage } = useSupabaseRange();
     const [jobFilter, setJobFilter] = useState("");
-
     const [activeMenu, setActiveMenu] = useState("*");
 
     const queryClient = useQueryClient();
@@ -36,18 +35,16 @@ const JobFilter = () => {
         return setJobFilter(jobfilterValue);
     };
 
-    console.log(activeMenu);
-
     return (
         <>
-            <div className="flex flex-row gap-10 items-start justify-start relative">
+            <div className="flex flex-row gap-10 ">
                 {SELECT_LIST.map((item) => {
                     return (
                         <div className="flex flex-col ">
                             <button
                                 key={item.value}
                                 onClick={() => handleJobFilterBtn(item.value)}
-                                className={`h-9  ${
+                                className={`h-9 ${
                                     activeMenu === item.value ? "border-b-[3px] border-solid border-black" : ""
                                 } `}
                             >
@@ -59,7 +56,6 @@ const JobFilter = () => {
                                     {item.name}
                                 </div>
                             </button>
-                            {/* <img src="blackMinus.svg" className="w-54 h-10" /> */}
                         </div>
                     );
                 })}
