@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { supabase } from "@/util/supabase/clientSupabase";
-import { passwordValidate } from "@/util/sign/password_validate";
+import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
 
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-import SignValidate from "@/Components/Sign/SignValidate";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import useInput from "@/hooks/useInput";
 
@@ -18,7 +18,10 @@ const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
 
+    const [errorSign, setErrorSign] = useState(false);
+
     const [inputDisabled, setInputDisabled] = useState(false);
+    const [emailRegValid, setEmailRegValid] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
@@ -49,8 +52,9 @@ const SignIn = () => {
         }
     };
     useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-    }, [password]);
+    }, [email, password]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
@@ -88,7 +92,7 @@ const SignIn = () => {
                             eye="eye.svg"
                             eyeClose="eye_close.svg"
                         />
-                        <SignValidate
+                        <SignPasswordValidate
                             lengthRegValid={lengthRegValid}
                             numberRegValid={numberRegValid}
                             wordRegValid={wordRegValid}

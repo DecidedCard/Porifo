@@ -5,10 +5,10 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
-import { signUpValidation } from "@/util/sign/sign_validation";
+import { signUpValidation } from "@/util/sign/signNumber_validation";
 import Input from "@/Components/Commen/Input";
-import { passwordValidate } from "@/util/sign/password_validate";
-import SignValidate from "@/Components/Sign/SignValidate";
+import { passwordValidate } from "@/util/sign/sign_validate";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import SignButton from "@/Components/Sign/SignButton";
 import Image from "next/image";
 const clickSex = ["남자", "여자"];
@@ -17,7 +17,6 @@ const clickNumber = ["010", "011"];
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-    const [errorSign, setErrorSign] = useState(false);
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
@@ -38,9 +37,7 @@ const SignUp = () => {
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
     }, [password]);
 
-    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
     const onClickFindSex = (sex: string) => setSex(sex);
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
@@ -123,7 +120,7 @@ const SignUp = () => {
                         eye="eye.svg"
                         eyeClose="eye_close.svg"
                     />
-                    <SignValidate
+                    <SignPasswordValidate
                         lengthRegValid={lengthRegValid}
                         numberRegValid={numberRegValid}
                         wordRegValid={wordRegValid}

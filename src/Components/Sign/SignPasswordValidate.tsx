@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-type PropsType = {
+type PasswordPatternType = {
     wordRegValid: boolean;
     numberRegValid: boolean;
     specialRegValid: boolean;
     lengthRegValid: boolean;
 };
 
-const SignValidate = ({ lengthRegValid, numberRegValid, wordRegValid, specialRegValid }: PropsType) => {
-    const [regValidate, setRegValidate] = useState(false);
-
-    useEffect(() => {
-        setRegValidate(lengthRegValid && numberRegValid && wordRegValid && specialRegValid);
-    }, []);
+const SignPasswordValidate = ({
+    lengthRegValid,
+    numberRegValid,
+    wordRegValid,
+    specialRegValid,
+}: PasswordPatternType) => {
+    const regValidate = lengthRegValid && numberRegValid && wordRegValid && specialRegValid;
 
     return (
         <div className=" flex justify-start ml-9 mb-1 -mt-5">
@@ -51,4 +52,4 @@ const SignValidate = ({ lengthRegValid, numberRegValid, wordRegValid, specialReg
     );
 };
 
-export default SignValidate;
+export default SignPasswordValidate;

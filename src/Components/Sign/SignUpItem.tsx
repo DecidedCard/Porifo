@@ -6,6 +6,7 @@ import Image from "next/image";
 type SignUpItemType = {
     setLabel: string;
     value?: string;
+    name?: string;
     type?: string;
     eyeClose?: string;
     eye?: string;
@@ -20,6 +21,7 @@ type SignUpItemType = {
 const SignUpItem = ({
     setLabel,
     value,
+    name,
     type,
     eyeClose,
     eye,
@@ -44,11 +46,12 @@ const SignUpItem = ({
             <Input
                 type={type || showPassword.type}
                 value={value}
+                name={name}
                 pattern={pattern}
                 maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
-                color={`error`}
+                color="black"
                 size="big"
             />
             {eyeClose ? (

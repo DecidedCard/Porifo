@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
-import { passwordValidate } from "@/util/sign/password_validate";
+import { passwordValidate } from "@/util/sign/sign_validate";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SignButton from "@/Components/Sign/SignButton";
-import SignValidate from "@/Components/Sign/SignValidate";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
@@ -100,7 +100,7 @@ const Password_Change = () => {
                                 eye="eye.svg"
                                 eyeClose="eye_close.svg"
                             />
-                            <SignValidate
+                            <SignPasswordValidate
                                 lengthRegValid={lengthRegValid}
                                 numberRegValid={numberRegValid}
                                 wordRegValid={wordRegValid}
@@ -117,7 +117,7 @@ const Password_Change = () => {
                                 eyeClose="eye_close.svg"
                             />
 
-                            <SignValidate
+                            <SignPasswordValidate
                                 lengthRegValid={lengthConfirmRegValid}
                                 numberRegValid={numberConfirmRegValid}
                                 wordRegValid={wordConfirmRegValid}
