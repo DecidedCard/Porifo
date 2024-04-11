@@ -86,7 +86,7 @@ const useCareerStore = create<Store>()((set) => ({
         })),
     setAddCareer: () => set((item) => ({ careers: [...item.careers, initial] })),
     setMinusCareer: (arg) => set((item) => ({ careers: [...item.careers.filter((_, idx) => idx !== arg)] })),
-    setInitialCareers: (arg) => set({ careers: [...(arg || initial)] }),
+    setInitialCareers: (arg) => set({ careers: [...arg] }),
 }));
 
 export default useCareerStore;
