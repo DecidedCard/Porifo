@@ -19,14 +19,14 @@ const Carousel = () => {
 
     const handleImagePrevBtn = () => {
         const trans = 275;
-        if (translateX > 550) {
+        if (translateX > 825) {
             return;
         }
         setTranslateX((prevTranslateX) => prevTranslateX + trans);
     };
     const handleImageNextBtn = () => {
         const trans = 275;
-        if (translateX < -550) {
+        if (translateX < -825) {
             return;
         }
         setTranslateX((prevTranslateX) => prevTranslateX - trans);
