@@ -5,20 +5,13 @@ import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
 import useCareerStore from "@/store/careerStore";
 
-import useInput from "../useInput";
-
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
-import type { Career } from "@/types/Career";
-import type { Project } from "@/types/Project";
 import useEducationStore from "@/store/educationStore";
-import { Education } from "@/types/education";
-import usePortfolioQuery from "./usePortfolioQuery";
 import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
-import useLoginCheck from "./useLoginCheck";
 
 const useInfo = () => {
     const {
@@ -35,7 +28,6 @@ const useInfo = () => {
         setIntroduce,
         setBlog,
         setGithub,
-        setInitialBasicInfo,
     } = usePortfolioInfoStore();
     const { user, portfolio, setPortfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
@@ -46,36 +38,6 @@ const useInfo = () => {
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
-    useEffect(() => {
-        if (
-            !basicInfo.name &&
-            !basicInfo.birthday &&
-            !basicInfo.email &&
-            !basicInfo.englishName &&
-            !basicInfo.profileImage &&
-            !basicInfo.tel &&
-            !basicInfo.job &&
-            portfolio
-        ) {
-            const project = portfolio.project as Project[];
-            if (project) {
-                setProjectsInitial(project);
-            }
-
-            const career = portfolio.career as Career[];
-
-            if (career) {
-                setInitialCareers(career);
-            }
-            const education = portfolio.education as Education[];
-
-            if (education) {
-                setInitialEducation(education);
-            }
-
-            setInitialBasicInfo(portfolio);
-        }
-    }, [basicInfo, portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers, setInitialEducation]);
 
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
