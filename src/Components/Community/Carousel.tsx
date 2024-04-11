@@ -2,32 +2,40 @@
 
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 const Carousel = () => {
+    const [translateX, setTranslateX] = useState(0);
     const { isPending, data } = useQuery({
         queryKey: ["hotDevelopers"],
         queryFn: getHotDevelopers,
     });
-    const SliderRef = useRef(null);
 
+    const handleImagePrevBtn = () => {
+        const trans = 200;
+        setTranslateX((prevTranslateX) => prevTranslateX + trans);
+    };
+    const handleImageNextBtn = () => {
+        const trans = 200;
+        setTranslateX((prevTranslateX) => prevTranslateX - trans);
+    };
     if (isPending) {
         return <div>로딩 중 ... !!</div>;
     }
 
     return (
         <>
-            <div
-                id="slider"
-                className="flex flex-row border-2 border-solid border-black w-screen overflow-hidden gap-5 items-center justify-center relative mb-20"
-            >
+            <div className="flex flex-row border-2 border-solid border-black w-screen overflow-hidden gap-5 items-center justify-center relative mb-20">
                 {/* 카드 */}
                 {data!.map((item, idx) => {
                     return (
                         <div
-                            ref={SliderRef}
                             key={item.id}
                             className="flex flex-col gap-2 items-center justify-center shrink-0 relative"
+                            style={{
+                                transform: `translateX(${translateX}px)`,
+                                transition: "transform 0.5s ease-in-out",
+                            }}
                         >
                             <img
                                 className="rounded-2xl shrink-0 w-[550px] h-[364px] relative "
@@ -85,20 +93,20 @@ const Carousel = () => {
                 })}
 
                 {/* 이미지 넘기기 버튼 */}
-                <div
-                    onClick={() => {}}
+                <button
+                    onClick={handleImageNextBtn}
                     className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[1450px] top-[162px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set8.svg" />
-                </div>
-                <div
-                    // onClick={handleImagePrevBtn}
+                </button>
+                <button
+                    onClick={handleImagePrevBtn}
                     className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[430px] top-[162px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set9.svg" />
-                </div>
+                </button>
             </div>
         </>
     );
