@@ -28,14 +28,14 @@ export const supabasePortfolioInfoRead = async (col: { id: string; value: string
     }
 };
 
-export const supabasePortfolioUpdate = async (arg: PortfolioInfo, value: string) => {
+export const supabasePortfolioUpdate = async (col: { arg: PortfolioInfo; value: string }) => {
     try {
-        const { project, ...info } = arg;
+        const { project, ...info } = col.arg;
 
         const { error } = await supabase
             .from("portfolioInfo")
             .update({ ...info, project: JSON.parse(JSON.stringify(project)) })
-            .eq("userId", value);
+            .eq("userId", col.value);
         if (error) {
             console.error(error);
             throw new Error("업데이트를 하지 못했습니다.");
