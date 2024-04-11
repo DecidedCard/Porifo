@@ -19,13 +19,11 @@ const Education = () => {
                     <div key={educationIndex} className="flex flex-col gap-5">
                         {education.length >= 2 && (
                             <div className="w-[637px]" onClick={() => onClickMinusHandler(educationIndex)}>
-                                <MdClose className="w-6 h-6 ml-auto mb-5 text-grayblack" />
+                                <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                             </div>
                         )}
                         <div className="flex">
-                            <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                학교
-                            </label>
+                            <label className="pl-6 font-medium text-zinc-500 w-[177px]">학교</label>
                             <div className="w-[460px]">
                                 <Input
                                     type="text"
@@ -39,9 +37,7 @@ const Education = () => {
                             </div>
                         </div>
                         <div className="flex">
-                            <label className="pl-6  font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                전공
-                            </label>
+                            <label className="pl-6 font-medium text-zinc-500 w-[177px]">전공</label>
                             <div className=" w-[460px]">
                                 <Input
                                     type="text"
@@ -54,10 +50,8 @@ const Education = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex items-start ">
-                            <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                기간
-                            </label>
+                        <div className="flex">
+                            <label className="pl-6 font-medium text-zinc-500 w-[177px]">기간</label>
                             <div className="w-[460px]">
                                 <div className="flex justify-between">
                                     <div className="w-[224px]">
