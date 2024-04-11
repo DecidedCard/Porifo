@@ -4,7 +4,7 @@ const Recommendation = () => {
             <div className="pt-[60px] pr-[190px] pb-[60px] pl-[190px] flex flex-col justify-center h-96 w-full bg-hihigray">
                 <div className="flex flex-col gap-6 items-start justify-start shrink-0 relative">
                     <p className="text-left font-spoqaBold leading-normal font-bold text-2xl relative flex items-center justify-start mb-5">
-                        포리포 추천, HOT 개발자
+                        포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
                 <div className="flex flex-row gap-6 items-start justify-start shrink-0 relative">
