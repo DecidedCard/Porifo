@@ -59,3 +59,5 @@ const useEducationStore = create<Store>()((set) => ({
     setMinusEducation: (arg) => set((item) => ({ education: [...item.education.filter((_, idx) => idx !== arg)] })),
     setInitialEducation: (arg) => set({ education: arg }),
 }));
+
+export default useEducationStore;

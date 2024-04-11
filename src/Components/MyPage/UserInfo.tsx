@@ -9,6 +9,7 @@ import { SELECT_LIST } from "@/util/select_list";
 
 import Image from "next/image";
 import Careers from "./Careers";
+import Education from "./Education";
 
 const UserInfo = () => {
     const {
@@ -19,8 +20,6 @@ const UserInfo = () => {
         onChangeBirthdayHandler,
         onChangeTelHandler,
         onChangeEmailHandler,
-        onChangeSchoolHandler,
-        onChangeClassHandler,
         onChangeSelectHandler,
     } = useInfo();
 
@@ -154,35 +153,7 @@ const UserInfo = () => {
                 <hr className="border border-neutral-100 my-6 mx-6" />
                 <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">학력</p>
 
-                <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                        학교
-                    </label>
-                    <div className="mt-10 w-[460px]">
-                        <Input
-                            type="text"
-                            placeholder="학교를 입력해 주세요."
-                            value={basicInfo.school!}
-                            onChange={onChangeSchoolHandler}
-                            size="big"
-                        />
-                    </div>
-                </div>
-
-                <div className="flex">
-                    <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                        전공
-                    </label>{" "}
-                    <div className="mt-10 w-[460px]">
-                        <Input
-                            type="text"
-                            placeholder="전공을 입력해 주세요."
-                            value={basicInfo.class!}
-                            onChange={onChangeClassHandler}
-                            size="big"
-                        />
-                    </div>
-                </div>
+                <Education />
 
                 <hr className="border border-neutral-100 my-6 mx-6" />
 

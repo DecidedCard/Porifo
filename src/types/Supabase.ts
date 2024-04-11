@@ -43,8 +43,8 @@ export type Database = {
                     birthday: string | null;
                     blogLink: string | null;
                     career: Json | null;
-                    class: string | null;
                     created_at: string;
+                    education: Json | null;
                     email: string | null;
                     englishName: string | null;
                     githubLink: string | null;
@@ -55,7 +55,6 @@ export type Database = {
                     oneLineIntroduce: string | null;
                     profileImage: string | null;
                     project: Json | null;
-                    school: string | null;
                     share: boolean | null;
                     tel: string | null;
                     template: string | null;
@@ -65,8 +64,8 @@ export type Database = {
                     birthday?: string | null;
                     blogLink?: string | null;
                     career?: Json | null;
-                    class?: string | null;
                     created_at?: string;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
@@ -77,7 +76,6 @@ export type Database = {
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
-                    school?: string | null;
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;
@@ -87,8 +85,8 @@ export type Database = {
                     birthday?: string | null;
                     blogLink?: string | null;
                     career?: Json | null;
-                    class?: string | null;
                     created_at?: string;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
@@ -99,7 +97,6 @@ export type Database = {
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
-                    school?: string | null;
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;

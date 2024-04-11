@@ -17,7 +17,7 @@ const Careers = () => {
         onClickMinusHandler,
     } = useCareer();
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-5">
             <p className="pl-6 text-xl font-medium text-left relative flex items-center justify-start">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (

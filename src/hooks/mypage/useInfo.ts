@@ -13,6 +13,7 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
+import useEducationStore from "@/store/educationStore";
 
 const useInfo = () => {
     const {
@@ -24,8 +25,6 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -35,6 +34,7 @@ const useInfo = () => {
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
+    const { education, setInitialEducation } = useEducationStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
@@ -48,7 +48,6 @@ const useInfo = () => {
             !basicInfo.englishName &&
             !basicInfo.profileImage &&
             !basicInfo.tel &&
-            !basicInfo.school &&
             !basicInfo.job &&
             !basicInfo.project &&
             career.length === 0 &&
@@ -62,8 +61,6 @@ const useInfo = () => {
             setBirthday(portfolio.birthday!);
             setTel(portfolio.tel!);
             setEmail(portfolio.email!);
-            setSchool(portfolio.school!);
-            setClass(portfolio.class!);
             setJob(portfolio.job!);
             setOneLineIntroduce(portfolio.oneLineIntroduce!);
             setIntroduce(portfolio.introduce!);
@@ -81,8 +78,6 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -122,14 +117,6 @@ const useInfo = () => {
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
-    };
-
-    const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool(e.target.value);
-    };
-
-    const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setClass(e.target.value);
     };
 
     const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
@@ -218,18 +205,19 @@ const useInfo = () => {
 
         await Promise.all(imagesSetting);
 
-        if (user && !portfolio) {
-            const project = projects.map((item) => {
-                const { imagesFile, ...projectInfo } = item;
-                return projectInfo;
-            });
+        const project = projects.map((item) => {
+            const { imagesFile, ...projectInfo } = item;
+            return projectInfo;
+        });
 
+        if (user && !portfolio) {
             let newPortfolio = {
                 ...info,
                 userId: user.id,
                 profileImage: url,
                 project,
                 career: careers,
+                education,
             };
 
             try {
@@ -243,16 +231,18 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            const project = projects.map((item) => {
-                const { imagesFile, ...projectInfo } = item;
-                return projectInfo;
-            });
-
-            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers, education };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project, career: careers };
+                    newPortfolio = {
+                        ...info,
+                        userId: user!.id,
+                        profileImage: url,
+                        project,
+                        career: careers,
+                        education,
+                    };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
@@ -263,7 +253,7 @@ const useInfo = () => {
             }
         }
 
-        const newPortfolio = { ...info, profileImage: url, project: projects, career: careers };
+        const newPortfolio = { ...info, profileImage: url, project, career: careers, education };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
@@ -280,8 +270,6 @@ const useInfo = () => {
         onChangeBirthdayHandler,
         onChangeTelHandler,
         onChangeEmailHandler,
-        onChangeSchoolHandler,
-        onChangeClassHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
