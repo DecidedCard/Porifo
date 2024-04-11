@@ -36,7 +36,7 @@ const usePortfolioQuery = (id: string) => {
     }, [portfolio, setPortfolio]);
 
     useEffect(() => {
-        if (portfolio) {
+        if (portfolio?.length !== 0 && portfolio) {
             const project = portfolio[0].project as unknown as Project[];
             if (project) {
                 setProjectsInitial(project);
