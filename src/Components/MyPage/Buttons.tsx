@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
@@ -13,12 +13,15 @@ import Portfolio from "./Portfolio";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
+import Preview from "./Preview";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, disabled, onClickInsertHandler, onClickShareToggle } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
+
+    const [previewModal, setPreviewModal] = useState(false);
 
     const router = useRouter();
     return (
@@ -30,7 +33,7 @@ const Buttons = () => {
                             text="미리보기"
                             size="s"
                             color="black"
-                            onClick={() => router.push(`/mypage/${user!.id}`)}
+                            onClick={() => setPreviewModal(true)}
                             fontSize="xs"
                         />
                     </div>
@@ -105,6 +108,7 @@ const Buttons = () => {
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
             </div>
+            {previewModal && <Preview template={basicInfo.template!} id={user!.id} setPreviewModal={setPreviewModal} />}
         </div>
     );
 };
