@@ -9,6 +9,7 @@ const Carousel = () => {
     const { isPending, data } = useQuery({
         queryKey: ["hotDevelopers"],
         queryFn: getHotDevelopers,
+        refetchOnWindowFocus: false,
     });
 
     if (isPending) {
@@ -16,16 +17,15 @@ const Carousel = () => {
     }
 
     const handleImagePrevBtn = () => {
-        const trans = 200;
-        console.log(translateX);
-        if (translateX > 20 * data!.length) {
+        const trans = 275;
+        if (translateX > 550) {
             return;
         }
         setTranslateX((prevTranslateX) => prevTranslateX + trans);
     };
     const handleImageNextBtn = () => {
-        const trans = 200;
-        if (translateX < -20 * data!.length) {
+        const trans = 275;
+        if (translateX < -550) {
             return;
         }
         setTranslateX((prevTranslateX) => prevTranslateX - trans);
@@ -33,7 +33,7 @@ const Carousel = () => {
 
     return (
         <>
-            <div className="flex flex-row border-2 border-solid border-black w-[100%] bg-slate-600 overflow-hidden gap-5 items-center justify-center relative mb-20">
+            <div className="flex flex-row w-screen overflow-hidden gap-5 items-center justify-center relative mb-20">
                 {/* 카드 */}
                 {data!.map((item, idx) => {
                     return (

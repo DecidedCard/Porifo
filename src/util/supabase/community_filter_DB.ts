@@ -30,7 +30,7 @@ export const getPortfolio = async (payload: any) => {
 };
 
 export const getHotDevelopers = async () => {
-    const { data, error } = await query.order("id", { ascending: false }).range(0, 3);
+    const { data, error } = await query.order("id", { ascending: false }).range(0, 6);
     if (error) {
         console.error(error);
         return null;
