@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
@@ -36,8 +36,7 @@ const useInfo = () => {
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
     const { education, setInitialEducation } = useEducationStore();
-    const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
-    const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
+    const [disabled, setDisabled] = useState(true);
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
     useEffect(() => {
@@ -100,6 +99,15 @@ const useInfo = () => {
         setInitialCareers,
         setInitialEducation,
     ]);
+
+    useEffect(() => {
+        const { imageFile, ...info } = basicInfo;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) {
+            setDisabled(true);
+        } else {
+            setDisabled(false);
+        }
+    }, [basicInfo, careers, education, projects]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -276,8 +284,7 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         careers,
-        careerStartDate,
-        careerEndDate,
+        disabled,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -289,8 +296,6 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
-        onChangeCareerStartDate,
-        onChangeCareerEndDate,
         onClickInsertHandler,
     };
 };

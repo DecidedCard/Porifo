@@ -12,9 +12,10 @@ import { usePDF } from "react-to-pdf";
 import Portfolio from "./Portfolio";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import TemplateSelect from "./TemplateSelect";
+import Image from "next/image";
 
 const Buttons = () => {
-    const { user, portfolio, onClickInsertHandler } = useInfo();
+    const { user, portfolio, basicInfo, disabled, onClickInsertHandler } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
@@ -33,10 +34,17 @@ const Buttons = () => {
                             fontSize="xs"
                         />
                     </div>
-                    <img
-                        src="https://windowsforum.kr/files/attach/images/2966154/176/607/019/c83f9e8d412e31ae30d172b1b1d48f01.png"
-                        className="w-[220px] min-h-[200px] rounded-2xl"
-                    />
+                    <div className="w-52 h-[186px] bg-blue overflow-hidden">
+                        <div className="w-[168px] mx-auto">
+                            <p className="text-xs font-medium">{basicInfo.template}</p>
+                            <Image
+                                src={`/${basicInfo.template}_template.png`}
+                                alt="템플릿 미리보기"
+                                width={200}
+                                height={100}
+                            />
+                        </div>
+                    </div>
 
                     <div className="mt-3 w-52">
                         <Button
@@ -64,10 +72,24 @@ const Buttons = () => {
                     </div>
                 </div>
 
-                <div className="text-white mt-5 bg-primary rounded-lg flex gap-2 items-center justify-center shrink-0 w-[250px] h-[50px] relative">
-                    <button className="" onClick={onClickInsertHandler}>
-                        {portfolio ? "수정하기" : "저장하기"}
-                    </button>
+                <div className="w-[250px]">
+                    {disabled ? (
+                        <Button
+                            text={portfolio ? "수정하기" : "저장하기"}
+                            size="l"
+                            border="none"
+                            onClick={onClickInsertHandler}
+                            disabled
+                        />
+                    ) : (
+                        <Button
+                            text={portfolio ? "수정하기" : "저장하기"}
+                            size="l"
+                            border="none"
+                            color="primary"
+                            onClick={onClickInsertHandler}
+                        />
+                    )}
                 </div>
 
                 <div className="text-white mt-3 bg-primary rounded-lg flex flex-row gap-2 items-center justify-center shrink-0 w-[250px] h-[50px] relative">
