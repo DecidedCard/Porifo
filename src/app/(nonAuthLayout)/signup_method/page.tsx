@@ -4,7 +4,7 @@ import React from "react";
 import SocialSign from "@/Components/Sign/SocialSign";
 import Button from "@/Components/Commen/Button";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 const SignUp_Method = () => {
     const router = useRouter();
     const emailSignUp = () => router.push("/signup");
@@ -14,7 +14,13 @@ const SignUp_Method = () => {
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 <div className="rounded w-[500px] h-[400px] bg-white flex justify-center flex-col">
                     <div className="flex justify-center ">
-                        <img src="formLogo.svg" />
+                        <Image
+                            className="w-[160px] h-[140px]"
+                            width={0}
+                            height={0}
+                            src="formLogo.svg"
+                            alt="form 로고 사진"
+                        />
                     </div>
                     <SocialSign />
 
