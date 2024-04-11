@@ -76,31 +76,25 @@ const Buttons = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                     <div className="w-[250px]">
-                        {disabled ? (
-                            <Button text={portfolio ? "수정하기" : "저장하기"} size="l" border="none" disabled />
-                        ) : (
-                            <Button
-                                text={portfolio ? "수정하기" : "저장하기"}
-                                size="l"
-                                border="none"
-                                color="primary"
-                                onClick={onClickInsertHandler}
-                            />
-                        )}
+                        <Button
+                            text={portfolio ? "수정하기" : "저장하기"}
+                            size="l"
+                            border="none"
+                            color={disabled ? "" : "primary"}
+                            onClick={onClickInsertHandler}
+                            disabled={disabled}
+                        />
                     </div>
 
                     <div className="w-[250px]">
-                        {portfolio ? (
-                            <Button
-                                text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
-                                size="l"
-                                border="none"
-                                color="primary"
-                                onClick={onClickShareToggle}
-                            />
-                        ) : (
-                            <Button text="포리포 피드에 올리기" size="l" border="none" disabled />
-                        )}
+                        <Button
+                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            size="l"
+                            border="none"
+                            color={portfolio ? "primary" : ""}
+                            onClick={onClickShareToggle}
+                            disabled={!portfolio}
+                        />
                     </div>
                 </div>
                 {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
