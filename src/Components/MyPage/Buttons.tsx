@@ -10,9 +10,13 @@ import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
 import Portfolio from "./Portfolio";
+import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
+import TemplateSelect from "./TemplateSelect";
 
 const Buttons = () => {
     const { user, portfolio, onClickInsertHandler } = useInfo();
+    const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
+        useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
 
     const router = useRouter();
@@ -35,7 +39,13 @@ const Buttons = () => {
                     />
 
                     <div className="mt-3 w-52">
-                        <Button text="템플릿 선택하기" size="s" color="primary" fontSize="s" />
+                        <Button
+                            text="템플릿 선택하기"
+                            size="s"
+                            color="primary"
+                            fontSize="s"
+                            onClick={onClickTemplateModalToggleHandler}
+                        />
                     </div>
 
                     <div className="flex flex-row mt-5 mb-5">
@@ -68,6 +78,7 @@ const Buttons = () => {
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
             </div>
+            {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
         </div>
     );
 };

@@ -4,6 +4,7 @@ import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 type Store = {
     basicInfo: PortfolioInfo;
+    setTemplate: (arg: string) => void;
     setName: (arg: string) => void;
     setEngName: (arg: string) => void;
     setProfile: (arg: string) => void;
@@ -19,7 +20,7 @@ type Store = {
 };
 
 const initial = {
-    template: "basic",
+    template: "standard",
     name: "",
     englishName: "",
     profileImage: "",
@@ -39,6 +40,7 @@ const initial = {
 
 const usePortfolioInfoStore = create<Store>()((set) => ({
     basicInfo: initial,
+    setTemplate: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, template: arg } })),
     setName: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, name: arg } })),
     setEngName: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, englishName: arg } })),
     setProfile: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, profileImage: arg } })),
