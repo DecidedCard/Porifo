@@ -1,7 +1,6 @@
 import { Career } from "@/types/Career";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import type { Project } from "@/types/Project";
-import { Education } from "@/types/education";
 
 // portfolio input form validation
 export const portfolioInputFormValidation = (info: PortfolioInfo) => {
@@ -34,28 +33,6 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
     }
 
     if (!info.introduce) {
-        return true;
-    }
-
-    const education = info.education as Education[];
-
-    const educationCheck = education.map((educationItem) => {
-        if (!educationItem.school) {
-            return true;
-        }
-
-        if (!educationItem.class) {
-            return true;
-        }
-
-        if (!educationItem.date) {
-            return true;
-        }
-
-        return false;
-    });
-
-    if (educationCheck.find((item) => item === true)) {
         return true;
     }
 

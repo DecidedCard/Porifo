@@ -9,7 +9,6 @@ import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfol
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
-import useEducationStore from "@/store/educationStore";
 import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
 
@@ -32,7 +31,6 @@ const useInfo = () => {
     const { user, portfolio } = useUserStore();
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
-    const { education } = useEducationStore();
     const [disabled, setDisabled] = useState(true);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
@@ -41,12 +39,12 @@ const useInfo = () => {
 
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
-        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) {
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
             setDisabled(true);
         } else {
             setDisabled(false);
         }
-    }, [basicInfo, careers, education, projects]);
+    }, [basicInfo, careers, projects]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +104,7 @@ const useInfo = () => {
 
         const { imageFile, ...info } = basicInfo;
 
-        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) return;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
@@ -178,7 +176,6 @@ const useInfo = () => {
                 profileImage: url,
                 project,
                 career: careers,
-                education,
             };
 
             insert(newPortfolio);
@@ -187,7 +184,7 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            let newPortfolio = { ...info, userId: user!.id, project, career: careers, education };
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
 
             if (url) {
                 newPortfolio = {
@@ -196,7 +193,6 @@ const useInfo = () => {
                     profileImage: url,
                     project,
                     career: careers,
-                    education,
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
@@ -204,7 +200,7 @@ const useInfo = () => {
             return;
         }
 
-        const newPortfolio = { ...info, profileImage: url, project, career: careers, education };
+        const newPortfolio = { ...info, profileImage: url, project, career: careers };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
