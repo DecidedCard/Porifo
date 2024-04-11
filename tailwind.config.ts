@@ -47,6 +47,7 @@ const config: Config = {
                 disabled: "#D9D9D9",
                 gray: "#f1f1f1",
                 gray2: "#DBDBDB",
+                gray3: "#9A9A9A",
                 hihigray: "#FAFAFA",
                 middlegray: "#bdbebd",
                 deepgray: "#DCDDDF",
