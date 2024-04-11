@@ -43,8 +43,8 @@ export type Database = {
                     birthday: string | null;
                     blogLink: string | null;
                     career: Json | null;
-                    class: string | null;
                     created_at: string;
+                    education: Json | null;
                     email: string | null;
                     englishName: string | null;
                     githubLink: string | null;
@@ -52,9 +52,9 @@ export type Database = {
                     introduce: string | null;
                     job: string | null;
                     name: string | null;
+                    oneLineIntroduce: string | null;
                     profileImage: string | null;
                     project: Json | null;
-                    school: string | null;
                     share: boolean | null;
                     tel: string | null;
                     template: string | null;
@@ -64,8 +64,8 @@ export type Database = {
                     birthday?: string | null;
                     blogLink?: string | null;
                     career?: Json | null;
-                    class?: string | null;
                     created_at?: string;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
@@ -73,9 +73,9 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     name?: string | null;
+                    oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
-                    school?: string | null;
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;
@@ -85,8 +85,8 @@ export type Database = {
                     birthday?: string | null;
                     blogLink?: string | null;
                     career?: Json | null;
-                    class?: string | null;
                     created_at?: string;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
@@ -94,43 +94,13 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     name?: string | null;
+                    oneLineIntroduce?: string | null;
                     profileImage?: string | null;
                     project?: Json | null;
-                    school?: string | null;
                     share?: boolean | null;
                     tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
-                };
-                Relationships: [];
-            };
-            users: {
-                Row: {
-                    age: string | null;
-                    created_at: string;
-                    email: string;
-                    id: number;
-                    password: string | null;
-                    phoneNumber: string | null;
-                    sex: string | null;
-                };
-                Insert: {
-                    age?: string | null;
-                    created_at?: string;
-                    email?: string;
-                    id?: number;
-                    password?: string | null;
-                    phoneNumber?: string | null;
-                    sex?: string | null;
-                };
-                Update: {
-                    age?: string | null;
-                    created_at?: string;
-                    email?: string;
-                    id?: number;
-                    password?: string | null;
-                    phoneNumber?: string | null;
-                    sex?: string | null;
                 };
                 Relationships: [];
             };

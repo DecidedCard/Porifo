@@ -11,8 +11,7 @@ type Store = {
     setBirthday: (arg: string) => void;
     setTel: (arg: string) => void;
     setEmail: (arg: string) => void;
-    setSchool: (arg: string) => void;
-    setClass: (arg: string) => void;
+    setOneLineIntroduce: (arg: string) => void;
     setIntroduce: (arg: string) => void;
     setJob: (arg: string) => void;
     setBlog: (arg: string) => void;
@@ -28,8 +27,8 @@ const initial = {
     birthday: "",
     tel: "",
     email: "",
-    school: "",
-    class: "",
+    education: [],
+    oneLineIntroduce: "",
     introduce: "",
     job: "",
     blogLink: "",
@@ -47,8 +46,7 @@ const usePortfolioInfoStore = create<Store>()((set) => ({
     setBirthday: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, birthday: arg } })),
     setTel: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, tel: arg } })),
     setEmail: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, email: arg } })),
-    setSchool: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, school: arg } })),
-    setClass: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, class: arg } })),
+    setOneLineIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, oneLineIntroduce: arg } })),
     setIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, introduce: arg } })),
     setJob: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, job: arg } })),
     setBlog: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, blogLink: arg } })),

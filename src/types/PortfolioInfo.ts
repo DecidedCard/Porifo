@@ -1,6 +1,7 @@
 import type { Career } from "./Career";
 import type { Project } from "./Project";
 import { Json } from "./Supabase";
+import { Education } from "./education";
 
 export interface PortfolioInfo {
     id?: number;
@@ -13,8 +14,8 @@ export interface PortfolioInfo {
     birthday: string | null;
     tel: string | null;
     email: string | null;
-    school: string | null;
-    class: string | null;
+    education: Education[] | Json;
+    oneLineIntroduce: string | null;
     introduce: string | null;
     job: string | null;
     blogLink: string | null;

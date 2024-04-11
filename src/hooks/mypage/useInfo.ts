@@ -1,15 +1,20 @@
 import { ChangeEvent, useEffect } from "react";
 
+import useUserStore from "@/store/userStore";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useProjectsStore from "@/store/projectStore";
+import useCareerStore from "@/store/careerStore";
+
+import useInput from "../useInput";
+
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
-import usePortfolioInfoStore from "@/store/portfolioInfoStore";
-import useUserStore from "@/store/userStore";
-import useProjectsStore from "@/store/projectStore";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import { Project } from "@/types/Project";
-import useCareerStore from "@/store/careerStore";
-import useInput from "../useInput";
-import { Career } from "@/types/Career";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
+import useEducationStore from "@/store/educationStore";
+import { Education } from "@/types/education";
 
 const useInfo = () => {
     const {
@@ -21,27 +26,16 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
     const { user, portfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
-    const {
-        career,
-        careers,
-        setCompany,
-        setComment,
-        setDate,
-        setDepartment,
-        setPosition,
-        setCareers,
-        setResetCareer,
-        setInitialCareers,
-    } = useCareerStore();
+    const { careers, setInitialCareers } = useCareerStore();
+    const { education, setInitialEducation } = useEducationStore();
     const [careerStartDate, onChangeCareerStartDate, setCareerStartDate] = useInput();
     const [careerEndDate, onChangeCareerEndDate, setCareerEndDate] = useInput();
 
@@ -55,28 +49,38 @@ const useInfo = () => {
             !basicInfo.englishName &&
             !basicInfo.profileImage &&
             !basicInfo.tel &&
-            !basicInfo.school &&
             !basicInfo.job &&
             !basicInfo.project &&
             career.length === 0 &&
             portfolio
         ) {
             const project = portfolio.project as Project[];
+            if (project) {
+                setProjectsInitial(project);
+            }
+
             const career = portfolio.career as Career[];
+
+            if (career) {
+                setInitialCareers(career);
+            }
+            const education = portfolio.education as Education[];
+
+            if (education) {
+                setInitialEducation(education);
+            }
+
             setName(portfolio.name!);
             setEngName(portfolio.englishName!);
             setProfile(portfolio.profileImage!);
             setBirthday(portfolio.birthday!);
             setTel(portfolio.tel!);
             setEmail(portfolio.email!);
-            setSchool(portfolio.school!);
-            setClass(portfolio.class!);
             setJob(portfolio.job!);
+            setOneLineIntroduce(portfolio.oneLineIntroduce!);
             setIntroduce(portfolio.introduce!);
             setBlog(portfolio.blogLink!);
             setGithub(portfolio.githubLink!);
-            setProjectsInitial(project);
-            setInitialCareers(career);
         }
     }, [
         basicInfo,
@@ -87,20 +91,15 @@ const useInfo = () => {
         setBirthday,
         setTel,
         setEmail,
-        setSchool,
-        setClass,
         setJob,
+        setOneLineIntroduce,
         setIntroduce,
         setBlog,
         setGithub,
         setProjectsInitial,
         setInitialCareers,
+        setInitialEducation,
     ]);
-
-    // career 기간
-    useEffect(() => {
-        setDate(`${careerStartDate} ~ ${careerEndDate}`);
-    }, [setDate, careerStartDate, careerEndDate]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -134,12 +133,8 @@ const useInfo = () => {
         setEmail(e.target.value);
     };
 
-    const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setSchool(e.target.value);
-    };
-
-    const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setClass(e.target.value);
+    const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
+        setOneLineIntroduce(e.target.value);
     };
 
     const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -158,33 +153,13 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
-    const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setCompany(e.target.value);
-    };
-
-    const onChangeDepartmentHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setDepartment(e.target.value);
-    };
-
-    const onChangePositionHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setPosition(e.target.value);
-    };
-
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setComment(e.target.value);
-    };
-
-    const onClickInsertCareersHandler = () => {
-        setCareers(career);
-        setResetCareer();
-    };
-
+    // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
 
-        if (portfolioInputFormValidation({ ...info, project: projects })) return;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers, education })) return;
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
@@ -206,15 +181,60 @@ const useInfo = () => {
             }
         }
 
-        if (user && !portfolio) {
-            try {
-                const newPortfolio = {
-                    ...info,
-                    userId: user.id,
-                    profileImage: url,
-                    project: projects,
-                    career: careers,
+        // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
+        const imagesSetting = projects.map(async (item, idx) => {
+            if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
+                const PROJECT_STORAGE = {
+                    bucket: "projectImage",
+                    path: `project/${crypto.randomUUID()}/${idx}`,
                 };
+
+                const imagesUrl = item.imagesFile?.map(async (file) => {
+                    try {
+                        const res = await storageInsert(
+                            PROJECT_STORAGE.bucket,
+                            `${PROJECT_STORAGE.path}/${file.lastModified}`,
+                            file,
+                        );
+                        const url = imageUrl(PROJECT_STORAGE.bucket, res!.path);
+                        return url;
+                    } catch (error) {
+                        return error;
+                    }
+                });
+                const res = (await Promise.all(imagesUrl!)) as string[];
+
+                projects.map((port, index) => {
+                    if (index === idx) {
+                        return {
+                            ...port,
+                            images: port.images.splice(port.images.length - res.length, res.length, ...res),
+                        };
+                    } else {
+                        return { ...port };
+                    }
+                });
+            }
+        });
+
+        await Promise.all(imagesSetting);
+
+        const project = projects.map((item) => {
+            const { imagesFile, ...projectInfo } = item;
+            return projectInfo;
+        });
+
+        if (user && !portfolio) {
+            let newPortfolio = {
+                ...info,
+                userId: user.id,
+                profileImage: url,
+                project,
+                career: careers,
+                education,
+            };
+
+            try {
                 await supabaseInsert(newPortfolio);
                 alert("이력서가 저장되었습니다.");
                 return;
@@ -225,11 +245,18 @@ const useInfo = () => {
         }
 
         if (portfolio) {
-            let newPortfolio = { ...info, userId: user!.id, project: projects, career: careers };
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers, education };
 
             try {
                 if (url) {
-                    newPortfolio = { ...info, userId: user!.id, profileImage: url, project: projects, career: careers };
+                    newPortfolio = {
+                        ...info,
+                        userId: user!.id,
+                        profileImage: url,
+                        project,
+                        career: careers,
+                        education,
+                    };
                 }
                 await supabasePortfolioUpdate(newPortfolio, user!.id);
                 alert("이력서가 업데이트 되었습니다.");
@@ -240,7 +267,7 @@ const useInfo = () => {
             }
         }
 
-        const newPortfolio = { ...info, profileImage: url, project: projects, career: careers };
+        const newPortfolio = { ...info, profileImage: url, project, career: careers, education };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
@@ -248,7 +275,6 @@ const useInfo = () => {
         user,
         portfolio,
         basicInfo,
-        career,
         careers,
         careerStartDate,
         careerEndDate,
@@ -258,20 +284,14 @@ const useInfo = () => {
         onChangeBirthdayHandler,
         onChangeTelHandler,
         onChangeEmailHandler,
-        onChangeSchoolHandler,
-        onChangeClassHandler,
+        onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
-        onChangeCompanyHandler,
-        onChangeDepartmentHandler,
-        onChangePositionHandler,
-        onChangeCommentHandler,
         onChangeCareerStartDate,
         onChangeCareerEndDate,
         onClickInsertHandler,
-        onClickInsertCareersHandler,
     };
 };
 

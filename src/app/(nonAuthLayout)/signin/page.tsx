@@ -1,19 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { supabase } from "@/util/supabase/clientSupabase";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import SignUpItem from "@/Components/Sign/SignUpItem";
-import useInput from "@/hooks/useInput";
-import { passwordValidate } from "@/util/sign/password_validate";
-import Button from "@/Components/Commen/Button";
-import SocialSign from "@/Components/Sign/SocialSign";
 import Image from "next/image";
-import SignValidate from "@/Components/Sign/SignValidate";
+
+import { supabase } from "@/util/supabase/clientSupabase";
+import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
+
+import SignUpItem from "@/Components/Sign/SignUpItem";
+import SocialSign from "@/Components/Sign/SocialSign";
+import SignButton from "@/Components/Sign/SignButton";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
+
+import useInput from "@/hooks/useInput";
+
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
 
+    const [errorSign, setErrorSign] = useState(false);
+
+    const [inputDisabled, setInputDisabled] = useState(false);
+    const [emailRegValid, setEmailRegValid] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
@@ -34,6 +42,7 @@ const SignIn = () => {
             });
             if (error) {
                 console.error(error);
+                alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
 
@@ -42,11 +51,13 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
-
-    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
+    useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-    };
+    }, [email, password]);
+
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
@@ -81,8 +92,7 @@ const SignIn = () => {
                             eye="eye.svg"
                             eyeClose="eye_close.svg"
                         />
-                        <SignValidate
-                            password={password}
+                        <SignPasswordValidate
                             lengthRegValid={lengthRegValid}
                             numberRegValid={numberRegValid}
                             wordRegValid={wordRegValid}
@@ -101,9 +111,13 @@ const SignIn = () => {
                                 alt="페이지 이동 화살표"
                             />
                         </div>
-                        <div className="w-[350px] mt-8 mb-6 mx-auto">
-                            <Button text="로그인" border="none" color="primary" size="m" />
-                        </div>
+                        <SignButton
+                            text="로그인"
+                            inputDisabled={inputDisabled}
+                            setInputDisabled={setInputDisabled}
+                            email={email}
+                            loginPassword={password}
+                        />
                     </form>
                     <SocialSign />
                     <div className="mx-auto">

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/Components/Commen/Input";
 import useGetUser from "@/hooks/sign/useGetUser";
 import useInput from "@/hooks/useInput";
-import { signSettingValidation } from "@/util/sign/sign_validation";
+import { signSettingValidation } from "@/util/sign/signNumber_validation";
 const SocialSeting = () => {
     const [age, onChangeAgeHandler] = useInput();
     const [phoneNumber, onChangeNumberHandler] = useInput();
