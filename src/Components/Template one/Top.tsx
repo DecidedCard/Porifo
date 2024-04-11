@@ -1,11 +1,36 @@
+"use client"
+
 import { useState, useEffect } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 
-const Top = () => {
+const Top = ({ id }: { id: string }) => {
 
+    const [userInfo, setUserInfo] = useState({
+        name: '',
+        tel: '',
+        email: '',
+    });
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await supabasePortfolioInfoRead({ id: 'userId', value: id });
+
+                setUserInfo({
+                    name: data[0].name || '',
+                    tel: data[0].tel || '',
+                    email: data[0].email || '',
+                });
+
+            } catch (error) {
+                console.error("사용자 정보를 가져오는 데 실패했습니다.", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <main className="mt-10">

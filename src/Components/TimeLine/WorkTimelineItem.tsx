@@ -5,7 +5,7 @@ interface WorkTimelineItemProps {
     details: string[],
 }
 
-const TimelineItem: React.FC<WorkTimelineItemProps> = ({ date, title, description, details }) => {
+const WorkTimelineItem: React.FC<WorkTimelineItemProps> = ({ date, title, description, details }) => {
     return (
         <li className="mb-10 pl-10 flex relative">
             <div className="absolute w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white"></div>
@@ -33,4 +33,4 @@ const TimelineItem: React.FC<WorkTimelineItemProps> = ({ date, title, descriptio
     );
 };
 
-export default TimelineItem;
+export default WorkTimelineItem;

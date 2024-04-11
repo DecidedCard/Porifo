@@ -1,6 +1,9 @@
 import { RiLinkM } from "react-icons/ri";
 
-const URL = () => {
+const URL = ({id}: {id: string}) => {
+
+
+    
     return (
         <main className="flex my-10">
             <div className="flex flex-row items-start justify-start self-stretch shrink-0 relative">
