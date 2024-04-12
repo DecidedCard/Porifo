@@ -29,7 +29,6 @@ const initial = {
     birthday: "",
     tel: "",
     email: "",
-    education: [],
     oneLineIntroduce: "",
     introduce: "",
     job: "",

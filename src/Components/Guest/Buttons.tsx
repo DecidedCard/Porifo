@@ -1,36 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
-
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
-import { useRouter } from "next/navigation";
 import { RiLinkM } from "react-icons/ri";
 import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
-import Portfolio from "./Portfolio";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
-import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
-import Preview from "./Preview";
-import { portfolioInputFormValidation } from "@/util/input_form_validation";
+import TemplateSelect from "../MyPage/TemplateSelect";
+import Preview from "../MyPage/Preview";
+import useGuestButton from "@/hooks/guest/useGuestButton";
+import { useRouter } from "next/navigation";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, portfolioPreview, disabled, onClickInsertHandler, onClickShareToggle } =
-        useInfo();
+    const { user, portfolio, basicInfo, disabled, onClickInsertHandler } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
-    const { targetRef, toPDF } = usePDF({ filename: "test" });
+    const { previewModal, portfolioPreview, setPreviewModal, onClickPreviewModal } = useGuestButton();
 
-    const [previewModal, setPreviewModal] = useState(false);
+    const { targetRef, toPDF } = usePDF({ filename: "Porifo_Portfolio" });
+    const router = useRouter();
 
-    const onClickPreviewModal = () => {
-        if (portfolioInputFormValidation(portfolioPreview)) {
-            alert("정보를 전부다 입력해주시기 바랍니다.");
-            return;
-        }
-        setPreviewModal(true);
+    const onCliCkHandler = async () => {
+        await onClickInsertHandler();
+        router.push("/guest/result");
     };
 
     return (
@@ -84,19 +78,8 @@ const Buttons = () => {
                             size="l"
                             border="none"
                             color={disabled ? "" : "primary"}
-                            onClick={onClickInsertHandler}
+                            onClick={onCliCkHandler}
                             disabled={disabled}
-                        />
-                    </div>
-
-                    <div className="w-[250px]">
-                        <Button
-                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
-                            size="l"
-                            border="none"
-                            color={portfolio ? "primary" : ""}
-                            onClick={onClickShareToggle}
-                            disabled={!portfolio}
                         />
                     </div>
                 </div>

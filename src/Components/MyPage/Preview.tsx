@@ -5,13 +5,11 @@ import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({
     template,
-    id,
     setPreviewModal,
     targetRef,
     portfolio,
 }: {
     template: string;
-    id: string;
     setPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
     targetRef?: React.MutableRefObject<any>;
     portfolio: PortfolioInfo;
