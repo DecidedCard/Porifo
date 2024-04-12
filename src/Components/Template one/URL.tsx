@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { RiLinkM } from "react-icons/ri";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
