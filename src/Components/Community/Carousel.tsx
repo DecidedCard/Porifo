@@ -56,11 +56,11 @@ const Carousel = () => {
                             />
                             {/* 블러박스 */}
                             <div
-                                className="border-2 border-solid border-sky-500 bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[234px]"
+                                className="bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[238px]"
                                 style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                             >
                                 {/* 한줄소개 */}
-                                <div className="border-2 border-solid border-rose-700 w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
+                                <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
                                     <p className="truncate ...">{item.oneLineIntroduce}</p>
                                 </div>
                                 {/* 유저정보,좋아요,조회수 박스 */}
@@ -100,7 +100,6 @@ const Carousel = () => {
                         </div>
                     );
                 })}
-                <div>안녕</div>
 
                 {/* 이미지 넘기기 버튼 */}
                 <button
