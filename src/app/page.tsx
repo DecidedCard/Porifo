@@ -11,7 +11,9 @@ import Bottom from "@/Components/MainPage/Bottom";
 import useInput from "@/hooks/useInput";
 
 export default function Home() {
-    useInput();
+    if (useInput()) {
+        console.log("유저 존재");
+    }
 
     return (
         <main>
