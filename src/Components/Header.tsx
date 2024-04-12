@@ -17,9 +17,7 @@ const Header = () => {
 
     return (
         <main className="sticky top-0 z-50">
-            <div
-                className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl"
-            >
+            <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px]" href={"/"}>
                     <img className="w-[84.42px] h-7 overflow-visible" src="../porifo.svg" alt="Logo" />

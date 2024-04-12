@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
-import Input from "@/Components/Commen/Input";
+
 import useGetUser from "@/hooks/sign/useGetUser";
 import useInput from "@/hooks/useInput";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
+
 const SocialSeting = () => {
     const [age, onChangeAgeHandler] = useInput();
     const [phoneNumber, onChangeNumberHandler] = useInput();

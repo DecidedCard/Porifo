@@ -38,16 +38,17 @@ const SignButton = ({
 }: InputValue) => {
     const signUp =
         email && password && name && age && firstNumber && middlePhoneNumber && lastPhoneNumber && sex !== "";
-    const siginIn = email && loginPassword;
-    const confirmEmail = findEmail && password === undefined;
+
+    const confirmEmail = findEmail && password === undefined && age === undefined;
     const confirmPassword = password && confirmUserPassword;
 
     useEffect(() => {
         {
             /*로그인*/
         }
+        const siginIn = email && loginPassword;
         siginIn ? setInputDisabled(true) : setInputDisabled(false);
-    }, [siginIn, setInputDisabled]);
+    }, [email, loginPassword, setInputDisabled]);
 
     useEffect(() => {
         {

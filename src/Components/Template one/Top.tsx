@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {

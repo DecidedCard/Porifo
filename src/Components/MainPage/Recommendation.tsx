@@ -7,99 +7,68 @@ const Recommendation = () => {
                         포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
-                <div className="flex flex-row gap-6 items-start justify-start shrink-0 relative">
+                <div className="flex flex-row gap-6 items-start justify-start">
 
                     {/* 1번 */}
-                    <div className="flex pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray w-[270px] h-[180px]">
-                        {/* <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
+                    <div className="flex bg-white rounded-2xl border-solid border border-gray w-[302px] h-[210px]">
+                        <div className="flex flex-col gap-2 items-start justify-start flex-1 relative">
                             <img
-                                className="rounded-[50%] shrink-0 w-10 h-10 relative"
-                                src="4.png"
+                                className="rounded-2xl  w-[302px] h-[210px]"
+                                style={{
+                                    background: "linear-gradient(to left, #d9d9d9, #d9d9d9)",
+                                    objectFit: "cover",
+                                }}
+                                src="rectangle-1153.png"
                             />
-                            <p className="text-left font-spoqaMedium leading-normal relative flex items-center justify-start">
-                                이재상
-                            </p>
+                            <div className="flex flex-row items-center justify-between self-stretch">
+                                <div className="flex flex-row gap-2 items-center justify-start flex-1">
+                                    <img
+                                        className="rounded-pull w-8 h-8"
+                                        src="rectangle0.png"
+                                    />
+                                    <div className="text-centerflex items-center justify-center">
+                                        이재상
+                                    </div>
+                                </div>
+                                <div className="flex flex-row gap-4 items-center justify-end">
+                                    <div className="flex flex-row gap-1 items-center justify-start">
+                                        <div className="shrink-0 w-6 h-6 relative">
+                                            <img
+                                                className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
+                                                src="frame-13740.svg"
+                                            />
+                                        </div>
+                                        <div className="text-center flex items-center justify-center">
+                                            210
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
+                                        <img
+                                            className="shrink-0 w-6 h-6 relative overflow-visible"
+                                            src="icon-set1.svg"
+                                        />
+                                        <div className="text-center flex items-center justify-center">
+                                            1523
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex flex-row gap-2.5 items-start justify-start self-stretch shrink-0 relative">
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                        </div> */}
                     </div>
 
                     {/* 2번 */}
-                    <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
-                        <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
-                            <img
-                                className="rounded-[50%] shrink-0 w-10 h-10 relative"
-                                src="5.png"
-                            />
-                            <p className="text-left font-spoqaMedium leading-normal relative flex items-center justify-start">
-                                윤창식
-                            </p>
-                        </div>
-                        <div className="flex flex-row gap-2.5 items-start justify-start self-stretch shrink-0 relative">
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                        </div>
+                    <div className="flex pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray w-[302px] h-[210px]">
+
                     </div>
 
                     {/* 3번 */}
-                    <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
-                        <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
-                            <img
-                                className="rounded-[50%] shrink-0 w-10 h-10 relative"
-                                src="6.png"
-                            />
-                            <p className="text-left font-spoqaMedium leading-normal relative flex items-center justify-start">
-                                최원장
-                            </p>
-                        </div>
-                        <div
-                            className="flex flex-row gap-2.5 items-start justify-start self-stretch shrink-0 relative">
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                        </div>
+                    <div className="flex pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray w-[302px] h-[210px]">
+
                     </div>
 
                     {/* 4번 */}
-                    <div className="pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray flex flex-col gap-4 items-start justify-start shrink-0 w-[270px] h-[180px] relative">
-                        <div className="flex flex-row gap-2 items-center justify-center shrink-0 relative">
-                            <img
-                                className="rounded-[50%] shrink-0 w-10 h-10 relative"
-                                src="7.png"
-                            />
-                            <p className="text-left font-spoqaMedium leading-normal relative flex items-center justify-start">
-                                권혁우
-                            </p>
-                        </div>
-                        <div className="flex flex-row gap-2.5 items-start justify-start self-stretch shrink-0 relative">
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                            <img
-                                className="w-[100px] h-[45px] rounded-lg flex-1 h-[82px] relative"
-                                src="22.png"
-                            />
-                        </div>
+                    <div className="flex pl-6 pr-6 pt-4 bg-white rounded-2xl border-solid border border-gray w-[302px] h-[210px]">
+
                     </div>
 
                 </div>
