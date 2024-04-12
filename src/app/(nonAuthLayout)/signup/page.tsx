@@ -24,7 +24,7 @@ const SignUp = () => {
     const [numberRegValid, setNumberRegValid] = useState(false);
     const [lengthRegValid, setLengthRegValid] = useState(false);
     const [name, onChangeNameHandler] = useInput();
-
+    const [errorSign, setErrorSign] = useState(false);
     const [age, setage] = useState("");
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
@@ -106,6 +106,8 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="이메일"
                         type="email"
+                        helperText={errorSign ? "" : "이메일 형식에 맞춰 입력해 주세요."}
+                        color={errorSign ? "black" : "error"}
                         placeholder="이메일을 입력해주세요"
                         pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                         onChangeHandler={onChangeEmailHandler}
@@ -113,6 +115,7 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 작성해주세요"
+                        color={errorSign ? "black" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
                         "
                         onChangeHandler={onChangePassword}
