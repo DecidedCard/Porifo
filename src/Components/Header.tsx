@@ -18,17 +18,19 @@ const Header = () => {
     return (
         <main className="sticky top-0 z-50">
             <div
-                className="bg-hihigray bg-opacity-50 px-[100px] flex flex-row items-center justify-center h-[50px] backdrop-blur-3xl"
+                className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl"
             >
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px]" href={"/"}>
-                    <img className="shrink-0 w-[80px] h-7 relative overflow-visible" src="../porifo.svg" alt="Logo" />
+                    <img className="w-[84.42px] h-7 overflow-visible" src="../porifo.svg" alt="Logo" />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
-                <div className="flex flex-row gap-[124px] items-center justify-center shrink-0 relative font-spoqaLight">
-                    <button className="text-black text-center text-sm font-semibold relative">서비스 소개</button>
-                    <Link className="text-black text-center text-sm font-semibold relative" href={"/community"}>
+                <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight">
+                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/"}>
+                        서비스 소개
+                    </Link>
+                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/community"}>
                         피드/커뮤니티
                     </Link>
                 </div>
@@ -42,7 +44,6 @@ const Header = () => {
                     </div>
 
                     <div className="">
-
                         <Link href="/signup_method">
                             <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
                         </Link>

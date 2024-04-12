@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import UserInfo from "@/Components/MyPage/UserInfo";
 import Project from "@/Components/MyPage/Project";
@@ -9,12 +9,11 @@ import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 
-import useMyPage from "@/hooks/mypage/useMyPage";
-
 import Image from "next/image";
+import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const MyPage = () => {
-    const { isFetching, isError } = useMyPage();
+    const { isFetching, isError } = useLoginCheck();
     const [nav, setNav] = useState("basicInfo");
 
     if (isFetching) {

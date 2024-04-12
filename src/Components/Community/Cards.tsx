@@ -44,51 +44,47 @@ const Cards = ({ filterData }: { filterData: any }) => {
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 items-start justify-start shrink-0 relative w-[1280px] ">
+            <div className="mt-8 flex flex-wrap gap-6 w-[1280px]">
                 {data?.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
-                            <div key={item.id} className=" w-[350px]">
-                                <div className="flex flex-col gap-2 items-start justify-start flex-1 relative">
+                            <div key={item.id} className="w-[350px]">
+                                <div className="flex flex-col gap-2">
+                                    {/* 대표이미지 */}
                                     <img
-                                        className="rounded-2xl self-stretch shrink-0 h-60 relative"
+                                        className="rounded-2xl"
                                         style={{
-                                            background: "linear-gradient(to left, #d9d9d9, #d9d9d9)",
                                             objectFit: "cover",
                                         }}
                                         src="rectangle-1153.png"
                                     />
-                                    <div className="flex flex-row items-center justify-between self-stretch shrink-0 relative">
-                                        <div className="flex flex-row gap-2 items-center justify-start flex-1 relative">
+                                    <div className="flex flex-row items-center justify-between">
+                                        <div className="flex flex-row gap-2">
+                                            {/* 유저아바타 */}
                                             <img
-                                                className="rounded-[50px] shrink-0 w-8 h-8 relative"
+                                                className="rounded-[50px] w-8 h-8"
                                                 style={{ objectFit: "cover" }}
                                                 src="rectangle0.png"
                                             />
-                                            <div className="text-graytext-black text-center font-body-p7m-font-family text-body-p7m-font-size leading-body-p7m-line-height font-body-p7m-font-weight relative flex items-center justify-center">
+                                            {/* 유저닉네임 */}
+                                            <div className="text-graytext-black flex items-center justify-center">
                                                 {item.name}
                                             </div>
                                         </div>
-                                        <div className="flex flex-row gap-4 items-center justify-end shrink-0 relative">
-                                            <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                                                <div className="shrink-0 w-6 h-6 relative">
-                                                    <img
-                                                        className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
-                                                        src="frame-13740.svg"
-                                                    />
+                                        <div className="flex gap-4">
+                                            <div className="flex gap-1 items-center ">
+                                                {/* 좋아요 하트 */}
+                                                <div className="w-6 h-6 ">
+                                                    <img src="grayHeart.svg" />
                                                 </div>
-                                                <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                                                    210
-                                                </div>
+                                                <span>210</span>
                                             </div>
-                                            <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                                                <img
-                                                    className="shrink-0 w-6 h-6 relative overflow-visible"
-                                                    src="icon-set1.svg"
-                                                />
-                                                <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                                                    1523
+                                            <div className="flex gap-1 items-center ">
+                                                {/* 조회수 눈 */}
+                                                <div className="w-6 h-6 ">
+                                                    <img src="grayEye.svg" />
                                                 </div>
+                                                <span>1523</span>
                                             </div>
                                         </div>
                                     </div>

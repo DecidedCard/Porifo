@@ -1,48 +1,25 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 
-const Top = ({ id }: { id: string }) => {
-
+const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo, setUserInfo] = useState({
-        name: '',
-        tel: '',
-        job: '',
-        email: '',
-        profileImage: '',
-        oneLineIntroduce: '',
+        name: portfolio.name,
+        tel: portfolio.tel,
+        job: portfolio.job,
+        email: portfolio.email,
+        profileImage: portfolio.profileImage || "",
+        oneLineIntroduce: portfolio.oneLineIntroduce,
     });
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await supabasePortfolioInfoRead({ id: 'userId', value: id });
-
-                setUserInfo({
-                    name: data[0].name || '',
-                    tel: data[0].tel || '',
-                    job: data[0].job || '',
-                    email: data[0].email || '',
-                    profileImage: data[0].profileImage || '',
-                    oneLineIntroduce: data[0].oneLineIntroduce || '',
-                });
-
-            } catch (error) {
-                console.error("사용자 정보를 가져오는 데 실패했습니다.", error);
-            }
-        };
-
-        fetchData();
-    }, []);
 
     return (
         <main className="mt-10">
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
                 <div className="flex flex-row items-start justify-center self-stretch shrink-0">
-
                     <img
                         className="rounded-full shrink-0 mr-5 w-36 h-36 relative"
                         src={userInfo.profileImage}
@@ -50,7 +27,6 @@ const Top = ({ id }: { id: string }) => {
                     />
 
                     <div className="flex flex-col gap-5 items-start justify-center shrink-0 w-80 min-w-[320px] max-w-xs">
-
                         <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start">
                             {userInfo.oneLineIntroduce}
                         </h1>

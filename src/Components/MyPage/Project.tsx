@@ -30,11 +30,14 @@ const Project = () => {
                 <h1 className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">
                     프로젝트
                 </h1>
-                <h2 className="flex items-center justify-center text-xl font-medium relative">프로젝트 정보</h2>
+
+                <hr className="border border-neutral-100" />
+
+                <h2 className="flex justify-center text-xl font-medium">프로젝트 정보</h2>
                 {projects &&
                     projects.map((item, projectsIndex) => {
                         return (
-                            <div key={projectsIndex} className="flex flex-col gap-3 mt-4">
+                            <div key={projectsIndex} className="flex flex-col gap-5 mt-4">
                                 {projects.length >= 2 && (
                                     <div className="w-[637px]" onClick={() => onClickMinusHandler(projectsIndex)}>
                                         <MdClose className="w-6 h-6 ml-auto text-grayblack" />
@@ -62,16 +65,17 @@ const Project = () => {
                                                 {item.images.map((item, idx) => {
                                                     return (
                                                         <div key={idx} className="relative group">
-                                                            <div className="w-[435px] h-[70px] overflow-hidden">
+                                                            <div className="relative w-[435px] h-[100px] overflow-hidden">
                                                                 <Image
                                                                     src={item}
                                                                     alt="프로젝트 이미지"
                                                                     width={600}
                                                                     height={100}
+                                                                    className="absolute bottom-0"
                                                                 />
                                                             </div>
 
-                                                            <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[70px] pr-2 bg-black bg-opacity-20 invisible group-hover:visible">
+                                                            <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[100px] pr-2 bg-black bg-opacity-20 invisible opacity-0 ease-in-out duration-300  group-hover:visible group-hover:opacity-100">
                                                                 <p
                                                                     className="cursor-pointer text-white"
                                                                     onClick={() =>
@@ -113,10 +117,8 @@ const Project = () => {
                                     />
                                 </div>
 
-                                <div className="flex items-start">
-                                    <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                        내용
-                                    </label>
+                                <div className="flex">
+                                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">내용</label>
                                     <div className="w-[460px]">
                                         <Input
                                             type="text"
@@ -129,10 +131,8 @@ const Project = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="flex items-start">
-                                    <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                        프로젝트 기간
-                                    </label>
+                                <div className="flex">
+                                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">프로젝트 기간</label>
                                     <div className="flex justify-between w-[460px]">
                                         <div className="w-[224px]">
                                             <Input
@@ -161,10 +161,8 @@ const Project = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-start">
-                                    <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                        베포링크
-                                    </label>
+                                <div className="flex">
+                                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">베포링크</label>
                                     <div className="w-[460px]">
                                         <Input
                                             type="url"
@@ -177,10 +175,8 @@ const Project = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="flex items-start">
-                                    <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
-                                        Github
-                                    </label>
+                                <div className="flex">
+                                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">Github</label>
                                     <div className="w-[460px]">
                                         <Input
                                             type="url"

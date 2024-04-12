@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
@@ -10,10 +10,18 @@ import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
 import Portfolio from "./Portfolio";
+import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
+import TemplateSelect from "./TemplateSelect";
+import Image from "next/image";
+import Preview from "./Preview";
 
 const Buttons = () => {
-    const { user, portfolio, onClickInsertHandler } = useInfo();
+    const { user, portfolio, basicInfo, disabled, onClickInsertHandler, onClickShareToggle } = useInfo();
+    const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
+        useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
+
+    const [previewModal, setPreviewModal] = useState(false);
 
     const router = useRouter();
     return (
@@ -25,17 +33,30 @@ const Buttons = () => {
                             text="미리보기"
                             size="s"
                             color="black"
-                            onClick={() => router.push(`/mypage/${user!.id}`)}
+                            onClick={() => setPreviewModal(true)}
                             fontSize="xs"
                         />
                     </div>
-                    <img
-                        src="https://windowsforum.kr/files/attach/images/2966154/176/607/019/c83f9e8d412e31ae30d172b1b1d48f01.png"
-                        className="w-[220px] min-h-[200px] rounded-2xl"
-                    />
+                    <div className="w-52 h-[186px] bg-blue overflow-hidden">
+                        <div className="w-[168px] mx-auto">
+                            <p className="text-xs font-medium">{basicInfo.template}</p>
+                            <Image
+                                src={`/${basicInfo.template}_template.png`}
+                                alt="템플릿 미리보기"
+                                width={200}
+                                height={100}
+                            />
+                        </div>
+                    </div>
 
                     <div className="mt-3 w-52">
-                        <Button text="템플릿 선택하기" size="s" color="primary" fontSize="s" />
+                        <Button
+                            text="템플릿 선택하기"
+                            size="s"
+                            color="primary"
+                            fontSize="s"
+                            onClick={onClickTemplateModalToggleHandler}
+                        />
                     </div>
 
                     <div className="flex flex-row mt-5 mb-5">
@@ -53,21 +74,50 @@ const Buttons = () => {
                         </button>
                     </div>
                 </div>
+                <div className="flex flex-col gap-3">
+                    <div className="w-[250px]">
+                        <Button
+                            text={portfolio ? "수정하기" : "저장하기"}
+                            size="l"
+                            border="none"
+                            color={disabled ? "" : "primary"}
+                            onClick={onClickInsertHandler}
+                            disabled={disabled}
+                        />
+                    </div>
 
-                <div className="text-white mt-5 bg-primary rounded-lg flex gap-2 items-center justify-center shrink-0 w-[250px] h-[50px] relative">
-                    <button className="" onClick={onClickInsertHandler}>
-                        {portfolio ? "수정하기" : "저장하기"}
-                    </button>
+                    <div className="w-[250px]">
+                        <Button
+                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            size="l"
+                            border="none"
+                            color={portfolio ? "primary" : ""}
+                            onClick={onClickShareToggle}
+                            disabled={!portfolio}
+                        />
+                    </div>
                 </div>
-
-                <div className="text-white mt-3 bg-primary rounded-lg flex flex-row gap-2 items-center justify-center shrink-0 w-[250px] h-[50px] relative">
-                    <input className="" type="checkbox" />
-                    <label className="">공유하기</label>
-                </div>
+                {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
-                {portfolio && <Portfolio item={portfolio!} targetRef={targetRef} />}
+                {portfolio && (
+                    <Preview
+                        template={basicInfo.template!}
+                        id={user!.id}
+                        setPreviewModal={setPreviewModal}
+                        targetRef={targetRef}
+                        portfolio={portfolio!}
+                    />
+                )}
             </div>
+            {previewModal && (
+                <Preview
+                    template={basicInfo.template!}
+                    id={user!.id}
+                    setPreviewModal={setPreviewModal}
+                    portfolio={portfolio!}
+                />
+            )}
         </div>
     );
 };
