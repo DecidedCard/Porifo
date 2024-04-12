@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.41.1",
     "@tanstack/react-query": "^5.28.9",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "react-intersection-observer": "^9.8.1",
     "react-to-pdf": "^1.0.1",
     "zustand": "^4.5.2"
   },

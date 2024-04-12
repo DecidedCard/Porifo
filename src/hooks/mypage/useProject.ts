@@ -1,45 +1,105 @@
-import { ChangeEvent, useState } from "react";
-import useInput from "../useInput";
+import { ChangeEvent, useRef } from "react";
+
+import useProjectsStore from "@/store/projectStore";
 
 const useProject = () => {
-    const [images, setImages] = useState<FileList>();
-    const [introduce, onChangeIntroduceHandler] = useInput();
-    const [selected, setSelected] = useState("직무 선택");
-    const [projectName, onChangeProjectNameHandler] = useInput();
+    const fileRef = useRef<HTMLInputElement>(null);
 
-    const selectList = [
-        { value: "default", name: "직무 선택" },
-        { value: "프론트앤드 개발자", name: "프론트앤드 개발자" },
-        { value: "서버/백앤드 개발자", name: "서버/백앤드 개발자" },
-        { value: "웹 풀스택 개발자", name: "웹 풀스택 개발자" },
-        { value: "앱 개발자 개발자", name: "앱 개발자 개발자" },
-        { value: "머신러닝/인공지능 개발자", name: "머신러닝/인공지능 개발자" },
-        { value: "데이터 엔지니어 개발자", name: "데이터 엔지니어 개발자" },
-        { value: "def게임 개발자ault", name: "게임 개발자" },
-        { value: "DevOps 개발자", name: "DevOps 개발자" },
-        { value: "SW/솔루션 엔지니어", name: "SW/솔루션 엔지니어" },
-        { value: "정보보안 엔지니어", name: "정보보안 엔지니어" },
-        { value: "QA 엔지니어", name: "QA 엔지니어" },
-        { value: "기타", name: "기타" },
-    ];
+    const {
+        projects,
+        setProjectDate,
+        setProjectDeployLink,
+        setProjectGithubLink,
+        setProjectImages,
+        setProjectImagesFile,
+        setProjectIntroduce,
+        setProjectName,
+        setAddProjects,
+        setMinusProjects,
+    } = useProjectsStore();
 
-    const onChangeImagesHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setImages(e.target.files!);
+    const onChangeProjectName = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setProjectName(e.target.value, index);
     };
 
-    const onChangeSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        setSelected(e.target.value);
+    const onChangeProjectIntroduce = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setProjectIntroduce(e.target.value, index);
+    };
+
+    const onChangeProjectDate = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        const { name, value } = e.target;
+        if (name === "startDate") {
+            const startDate = name === "startDate" && value;
+            setProjectDate(`${startDate} ~ ${projects[index].date.slice(13)}`, index);
+            return;
+        }
+        const endDate = name === "endDate" && value;
+        setProjectDate(`${projects[index].date.slice(0, 10)} ~ ${endDate}`, index);
+    };
+
+    const onChangeProjectDeployLink = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setProjectDeployLink(e.target.value, index);
+    };
+
+    const onChangeProjectGithubLink = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setProjectGithubLink(e.target.value, index);
+    };
+
+    // 이미지 blob url 변환 및 파일 저장
+    const onChangeImagesHandler = async (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        const fileList = [...e.target.files!];
+        fileRef.current!.value = "";
+
+        if (fileList!.length + projects[index].images.length > 5) {
+            alert("사진은 최대 5장이 최대입니다.");
+            return;
+        }
+
+        const fileArray: File[] = Array.prototype.slice.call(fileList);
+        const url = fileArray.map((item: File) => {
+            const blob = new Blob([item]);
+            const url = URL.createObjectURL(blob);
+            return url;
+        });
+        setProjectImages([...projects[index].images, ...url], index);
+        if (!projects[index].imagesFile!) {
+            setProjectImagesFile([...fileArray], index);
+            return;
+        }
+        setProjectImagesFile([...projects[index].imagesFile!, ...fileArray], index);
+    };
+
+    const onClickDeleteImage = (arg: number, index: number) => {
+        const removeImages = [...projects[index].images];
+        removeImages.splice(arg, 1);
+        setProjectImages(removeImages, index);
+        if (projects[index].imagesFile) {
+            const removeImagesFile = [...projects[index].imagesFile!];
+            removeImagesFile.splice(arg, 1);
+            setProjectImagesFile(removeImagesFile, index);
+        }
+    };
+
+    const onClickAddHandler = () => {
+        setAddProjects();
+    };
+
+    const onClickMinusHandler = (arg: number) => {
+        setMinusProjects(arg);
     };
 
     return {
-        introduce,
-        selected,
-        selectList,
-        projectName,
-        onChangeProjectNameHandler,
+        projects,
+        fileRef,
+        onChangeProjectName,
         onChangeImagesHandler,
-        onChangeIntroduceHandler,
-        onChangeSelectHandler,
+        onChangeProjectIntroduce,
+        onChangeProjectDate,
+        onChangeProjectDeployLink,
+        onChangeProjectGithubLink,
+        onClickAddHandler,
+        onClickMinusHandler,
+        onClickDeleteImage,
     };
 };
 
