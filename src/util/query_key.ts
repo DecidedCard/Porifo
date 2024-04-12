@@ -3,4 +3,5 @@ export const QUERY_KEY = {
     myPagePortfolio: "myPage/portfolio",
     communityPortfolio: "community/portfolio",
     detailPortfolio: "detail/portfolio",
+    portfolidComments: "detail/comments",
 };
