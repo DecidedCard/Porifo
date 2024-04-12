@@ -5,12 +5,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { supabase } from "@/util/supabase/clientSupabase";
-import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
+import { emailValidate } from "@/util/sign/sign_validate";
 
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import useInput from "@/hooks/useInput";
 
@@ -22,26 +21,18 @@ const SignIn = () => {
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [emailRegValid, setEmailRegValid] = useState(false);
-    const [wordRegValid, setWordRegValid] = useState(false);
-    const [specialRegValid, setSpecialRegValid] = useState(false);
-    const [numberRegValid, setNumberRegValid] = useState(false);
-    const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
     const findPassword = () => router.replace("/find_email");
-    const onSubmitLoginUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const hasAllInput = email.trim() !== "" && password.trim() !== "";
         try {
-            if (hasAllInput) {
-                alert("값이 입력 되었습니다.");
-            }
             const { error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
+
             if (error) {
-                console.error(error);
                 alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
@@ -51,10 +42,11 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
+
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
-        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-    }, [email, password]);
+        if (emailRegValid === true) setErrorSign(true);
+    }, [email, password, emailRegValid]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
@@ -62,7 +54,7 @@ const SignIn = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 <div className="rounded p-10 w-[500px] h-[750px] bg-white flex justify-center flex-col">
-                    <form onSubmit={onSubmitLoginUser}>
+                    <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center">
                             <Image
                                 width={0}
@@ -76,6 +68,8 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="이메일"
                             type="email"
+                            helperText="이메일 형식에 맞춰주세요"
+                            color={errorSign ? "black" : "success"}
                             placeholder="이메일을 입력해주세요"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                             onChangeHandler={onChangeEmailHandler}
@@ -92,12 +86,7 @@ const SignIn = () => {
                             eye="eye.svg"
                             eyeClose="eye_close.svg"
                         />
-                        <SignPasswordValidate
-                            lengthRegValid={lengthRegValid}
-                            numberRegValid={numberRegValid}
-                            wordRegValid={wordRegValid}
-                            specialRegValid={specialRegValid}
-                        />
+
                         <div
                             className="mx-9 mb-8 text-slate-400 float-right flex flex-row cursor-pointer"
                             onClick={findPassword}

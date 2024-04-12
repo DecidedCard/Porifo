@@ -8,6 +8,7 @@ type SignUpItemType = {
     value?: string;
     name?: string;
     type?: string;
+    helperText?: string;
     eyeClose?: string;
     eye?: string;
     maxLength?: number;
@@ -23,6 +24,7 @@ const SignUpItem = ({
     value,
     name,
     type,
+    helperText,
     eyeClose,
     eye,
     maxLength,
@@ -48,10 +50,11 @@ const SignUpItem = ({
                 value={value}
                 name={name}
                 pattern={pattern}
+                helperText={helperText}
                 maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
-                color="black"
+                color={color ? color : "black"}
                 size="big"
             />
             {eyeClose ? (
