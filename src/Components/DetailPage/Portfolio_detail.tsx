@@ -18,8 +18,10 @@ const Portfolio_detail = () => {
     }
 
     const portfolioInfo = data![0];
+    console.log(portfolioInfo.template);
 
     return (
+        // 포트폴리오 영역
         <>
             <div>{portfolioInfo.id}</div>
             <Comments />
