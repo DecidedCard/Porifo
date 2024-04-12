@@ -15,7 +15,7 @@ const Modal = ({ isVisible, onClose, children }: any) => {
                 <button className="text-white text-xl place-self-end" onClick={onClose}>
                     X
                 </button>
-                <div className="bg-PurpleLight p-2 rounded rounded-lg border-2">{children}</div>
+                <div className="bg-PurpleLight p-2">{children}</div>
             </div>
         </div>
     );
