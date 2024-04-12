@@ -6,7 +6,7 @@ import useProjectsStore from "@/store/projectStore";
 import useCareerStore from "@/store/careerStore";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import useSetMutation from "../useSetMutation";
@@ -205,7 +205,6 @@ const useInfo = () => {
 
         const newPortfolio = { ...info, profileImage: url, project, career: careers };
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
-        console.log("로컬스톨지 저장");
     };
 
     const onClickShareToggle = () => {
