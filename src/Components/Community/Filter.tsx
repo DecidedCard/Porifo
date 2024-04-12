@@ -38,9 +38,9 @@ const JobFilter = () => {
     return (
         <>
             <div className="flex flex-row gap-10 ">
-                {SELECT_LIST.map((item) => {
+                {SELECT_LIST.map((item, idx) => {
                     return (
-                        <div className="flex flex-col ">
+                        <div className="flex flex-col" key={idx}>
                             <button
                                 key={item.value}
                                 onClick={() => handleJobFilterBtn(item.value)}

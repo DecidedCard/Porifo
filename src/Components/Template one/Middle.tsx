@@ -1,7 +1,6 @@
 "use client";
 
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
 import { RiLinkM } from "react-icons/ri";
@@ -16,8 +15,17 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const project = portfolio.project as Project[];
 
     const experiences = [...career];
-
     const projects = [...project];
+
+    const [imagePage, setImagePage] = useState(0);
+
+    const handleNextImage = () => {
+        setImagePage((prevPage) => prevPage + 1);
+    }
+
+    const handlePrevImage = () => {
+        setImagePage((prevPage) => prevPage - 1);
+    };
 
     return (
         <main>
@@ -32,7 +40,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             <div className="flex flex-col w-[804px]">
                                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                                 <div className="flex w-full">
-                                    {project.images.map((image, index) => (
+                                    {project.images.slice(imagePage * 3, imagePage * 3 + 3).map((image, index) => (
                                         <img
                                             key={index}
                                             src={image}
@@ -40,6 +48,16 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
                                         />
                                     ))}
+                                </div>
+                                <div className="flex justify-between">
+                                    {/* 이전 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
+                                    {imagePage > 0 && (
+                                        <button onClick={handlePrevImage}>◁</button>
+                                    )}
+                                    {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
+                                    {project.images.length > (imagePage + 1) * 3 && (
+                                        <button onClick={handleNextImage}>▷</button>
+                                    )}
                                 </div>
 
                                 {/* 제목과 날짜를 포함하는 영역 */}
