@@ -201,7 +201,8 @@ const useInfo = () => {
         }
 
         const newPortfolio = { ...info, profileImage: url, project, career: careers };
-        localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
+        localStorage.setItem("portfolioTest", JSON.stringify(newPortfolio));
+        console.log("로컬스톨지 저장");
     };
 
     const onClickShareToggle = () => {
