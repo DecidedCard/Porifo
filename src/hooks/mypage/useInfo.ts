@@ -11,6 +11,7 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
+import Project from "@/Components/MyPage/Project";
 
 const useInfo = () => {
     const {
@@ -34,6 +35,8 @@ const useInfo = () => {
     const [disabled, setDisabled] = useState(true);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
+
+    const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
 
@@ -201,7 +204,7 @@ const useInfo = () => {
         }
 
         const newPortfolio = { ...info, profileImage: url, project, career: careers };
-        localStorage.setItem("portfolioTest", JSON.stringify(newPortfolio));
+        localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
         console.log("로컬스톨지 저장");
     };
 
@@ -221,6 +224,7 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         careers,
+        portfolioPreview,
         disabled,
         onChangeNameHandler,
         onChangeEngNameHandler,

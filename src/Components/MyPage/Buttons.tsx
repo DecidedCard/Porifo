@@ -14,28 +14,31 @@ import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
 import Preview from "./Preview";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, disabled, onClickInsertHandler, onClickShareToggle } = useInfo();
+    const { user, portfolio, basicInfo, portfolioPreview, disabled, onClickInsertHandler, onClickShareToggle } =
+        useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "test" });
 
     const [previewModal, setPreviewModal] = useState(false);
 
-    const router = useRouter();
+    const onClickPreviewModal = () => {
+        if (portfolioInputFormValidation(portfolioPreview)) {
+            alert("정보를 전부다 입력해주시기 바랍니다.");
+            return;
+        }
+        setPreviewModal(true);
+    };
+
     return (
         <div className="flex flex-col">
             <main className="relative flex flex-col items-center ">
                 <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
                     <div className="absolute right-[120%] w-20 flex flex-row">
-                        <Button
-                            text="미리보기"
-                            size="s"
-                            color="black"
-                            onClick={() => setPreviewModal(true)}
-                            fontSize="xs"
-                        />
+                        <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
                     <div className="w-52 h-[186px] bg-blue overflow-hidden">
                         <div className="w-[168px] mx-auto">
@@ -100,22 +103,20 @@ const Buttons = () => {
                 {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
-                {portfolio && (
+                {portfolioPreview && (
                     <Preview
                         template={basicInfo.template!}
-                        id={user!.id}
                         setPreviewModal={setPreviewModal}
                         targetRef={targetRef}
-                        portfolio={portfolio!}
+                        portfolio={portfolioPreview}
                     />
                 )}
             </div>
             {previewModal && (
                 <Preview
                     template={basicInfo.template!}
-                    id={user!.id}
                     setPreviewModal={setPreviewModal}
-                    portfolio={portfolio!}
+                    portfolio={portfolioPreview}
                 />
             )}
         </div>
