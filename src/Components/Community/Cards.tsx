@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
@@ -9,8 +8,15 @@ import { useInView } from "react-intersection-observer";
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
+import Modal from "../DetailPage/Modal";
+import Portfolio_detail from "../DetailPage/Portfolio_detail";
+import useCardIdStore from "@/store/detailStore";
 
 const Cards = ({ filterData }: { filterData: any }) => {
+    //모달 상태
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const { setCardId } = useCardIdStore();
+
     const { jobFilter } = filterData;
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
@@ -48,7 +54,13 @@ const Cards = ({ filterData }: { filterData: any }) => {
                 {data?.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
-                            <div key={item.id} className="w-[350px]">
+                            <div
+                                key={item.id}
+                                className="w-[350px] cursor-pointer "
+                                onClick={() => {
+                                    setIsOpenModal(true), setCardId(item.id);
+                                }}
+                            >
                                 <div className="flex flex-col gap-2">
                                     {/* 대표이미지 */}
                                     <img
@@ -93,6 +105,11 @@ const Cards = ({ filterData }: { filterData: any }) => {
                         );
                     });
                 })}
+                {/* //모달섹션 */}
+                <Modal isVisible={isOpenModal} onClose={() => setIsOpenModal(false)}>
+                    <Portfolio_detail />
+                </Modal>
+
                 <div ref={ref} />
                 {isFetchingNextPage && <h3>Loding...</h3>}
             </div>
