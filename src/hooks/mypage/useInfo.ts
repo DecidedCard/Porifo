@@ -6,11 +6,12 @@ import useProjectsStore from "@/store/projectStore";
 import useCareerStore from "@/store/careerStore";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { imageUrl, storageInsert } from "@/util/supabase/supabse_storage";
+import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
+import Project from "@/Components/MyPage/Project";
 
 const useInfo = () => {
     const {
@@ -34,6 +35,8 @@ const useInfo = () => {
     const [disabled, setDisabled] = useState(true);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
+
+    const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
 
@@ -220,6 +223,7 @@ const useInfo = () => {
         portfolio,
         basicInfo,
         careers,
+        portfolioPreview,
         disabled,
         onChangeNameHandler,
         onChangeEngNameHandler,
