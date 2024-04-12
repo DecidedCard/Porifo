@@ -24,6 +24,7 @@ const SignIn = () => {
 
     const router = useRouter();
     const findPassword = () => router.replace("/find_email");
+
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -42,6 +43,16 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
+
+    useEffect(() => {
+        const signUser = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            return user;
+        };
+        signUser();
+    }, []);
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
@@ -68,8 +79,8 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="이메일"
                             type="email"
-                            helperText="이메일 형식에 맞춰주세요"
-                            color={errorSign ? "black" : "success"}
+                            helperText={errorSign ? "" : "이메일 형식에 맞춰 입력해 주세요."}
+                            color={errorSign ? "black" : "error"}
                             placeholder="이메일을 입력해주세요"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                             onChangeHandler={onChangeEmailHandler}
@@ -78,6 +89,8 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="비밀번호"
                             placeholder="비밀번호를 작성해주세요"
+                            helperText={errorSign ? "" : "비밀번호가 일치하지 않습니다."}
+                            color={errorSign ? "black" : "error"}
                             pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                             value={password}

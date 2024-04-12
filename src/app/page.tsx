@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+
 import Cover from "@/Components/MainPage/Cover";
 import MiddleLeft from "@/Components/MainPage/MiddleLeft";
 import MiddleRight from "@/Components/MainPage/MiddleRight";
@@ -7,7 +8,11 @@ import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
 
+import useInput from "@/hooks/useInput";
+
 export default function Home() {
+    useInput();
+
     return (
         <main>
             <div>

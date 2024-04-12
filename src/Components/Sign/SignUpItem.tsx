@@ -54,7 +54,7 @@ const SignUpItem = ({
                 maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
-                color={color ? color : "black"}
+                color={color !== undefined ? color : "black"}
                 size="big"
             />
             {eyeClose ? (
