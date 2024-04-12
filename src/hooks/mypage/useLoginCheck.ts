@@ -5,6 +5,7 @@ import { userData } from "@/util/supabase/supabase_user";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import usePortfolioQuery from "./usePortfolioQuery";
 
 const useMyPage = () => {
     const { setPortfolio, setUser } = useUserStore();
@@ -16,6 +17,8 @@ const useMyPage = () => {
         refetchOnWindowFocus: false,
     });
 
+    usePortfolioQuery(data?.id!);
+
     useEffect(() => {
         if (!isFetching && isError) {
             alert("로그인을 해주시기 바랍니다.");
@@ -23,19 +26,9 @@ const useMyPage = () => {
         }
 
         if (data) {
-            const set = async () => {
-                try {
-                    setUser(data);
-
-                    const portfolio = await supabasePortfolioInfoRead({ id: "userId", value: data.id });
-                    setPortfolio(portfolio[0]);
-                } catch (error) {
-                    return error;
-                }
-            };
-            set();
+            setUser(data);
         }
-    }, [setUser, setPortfolio, data, isFetching, router, isError]);
+    }, [setUser, data, isFetching, router, isError]);
 
     return { isFetching, isError };
 };

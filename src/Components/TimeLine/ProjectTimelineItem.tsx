@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react";
 import { RiLinkM } from "react-icons/ri";
 
 interface TimelineItemProps {
@@ -10,6 +13,17 @@ interface TimelineItemProps {
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink }) => {
+
+    const [imagePage, setImagePage] = useState(0);
+
+    const handleNextImage = () => {
+        setImagePage((prevPage) => prevPage + 1);
+    }
+
+    const handlePrevImage = () => {
+        setImagePage((prevPage) => prevPage - 1);
+    };
+
     return (
         <li className="mb-10 pl-10 flex flex-col items-center justify-center relative">
             <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
@@ -17,7 +31,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
             <div className="flex flex-col w-[804px]">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                 <div className="flex flex-row">
-                    {images.map((image, index) => (
+                    {images.slice(imagePage * 3, imagePage * 3 + 2).map((image, index) => (
                         <img
                             key={index}
                             src={image}
@@ -25,6 +39,16 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                             className="flex flex-row w-[385px] h-[220px] rounded-2xl mr-2"
                         />
                     ))}
+                </div>
+                <div className="flex justify-between">
+                    {/* 이전 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
+                    {imagePage > 0 && (
+                        <button onClick={handlePrevImage}>◁</button>
+                    )}
+                    {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
+                    {images.length > (imagePage + 1) * 3 && (
+                        <button onClick={handleNextImage}>▷</button>
+                    )}
                 </div>
 
                 {/* 제목과 날짜를 포함하는 영역 */}

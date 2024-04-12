@@ -1,13 +1,9 @@
 "use client";
 
-import usePortfolio from "@/hooks/mypage/usePortfolio";
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
 import React, { MutableRefObject } from "react";
-import { usePDF } from "react-to-pdf";
-import Button from "../Commen/Button";
-import useUserStore from "@/store/userStore";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Portfolio = ({ item, targetRef }: { item: PortfolioInfo; targetRef: MutableRefObject<any> }) => {

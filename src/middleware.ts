@@ -1,4 +1,3 @@
-import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse, NextRequest } from "next/server";
 
 const supabaseURL = process.env.NEXT_PUBLIC_SUPABASE_URL;
