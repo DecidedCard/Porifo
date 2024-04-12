@@ -20,9 +20,10 @@ export const SELECT_LIST = [
     // { value: "기타", name: "기타" },
 ];
 
-const Filter = () => {
+const JobFilter = () => {
     const { setPage } = useSupabaseRange();
     const [jobFilter, setJobFilter] = useState("");
+    const [activeMenu, setActiveMenu] = useState("*");
 
     const queryClient = useQueryClient();
 
@@ -30,23 +31,32 @@ const Filter = () => {
     const handleJobFilterBtn = (jobfilterValue: string) => {
         queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
         setPage(0);
+        setActiveMenu(jobfilterValue);
         return setJobFilter(jobfilterValue);
     };
 
     return (
         <>
-            <div className="flex flex-row gap-10 items-start justify-start relative">
+            <div className="flex flex-row gap-10 ">
                 {SELECT_LIST.map((item) => {
                     return (
-                        <button
-                            key={item.value}
-                            onClick={() => handleJobFilterBtn(item.value)}
-                            className="p-2 flex flex-col gap-2 items-center justify-start shrink-0 h-12 relative "
-                        >
-                            <div className="text-center font-spoqaMedium text-black font-bold text-xl leading-subhead-sh5-line-height relative min-w-[40px] flex items-center justify-center">
-                                {item.name}
-                            </div>
-                        </button>
+                        <div className="flex flex-col ">
+                            <button
+                                key={item.value}
+                                onClick={() => handleJobFilterBtn(item.value)}
+                                className={`h-9 ${
+                                    activeMenu === item.value ? "border-b-[3px] border-solid border-black" : ""
+                                } `}
+                            >
+                                <div
+                                    className={`font-spoqaMedium font-bold text-xl ${
+                                        activeMenu === item.value ? " text-black" : "text-gray3"
+                                    }`}
+                                >
+                                    {item.name}
+                                </div>
+                            </button>
+                        </div>
                     );
                 })}
             </div>
@@ -55,4 +65,4 @@ const Filter = () => {
     );
 };
 
-export default Filter;
+export default JobFilter;

@@ -6,8 +6,9 @@ export const getPortfolio = async (payload: any) => {
 
     let query = supabase.from("portfolioInfo").select("*");
     if (filter === "최신순") {
-        query = query.order("id", { ascending: false });
+        query = query.order("created_at", { ascending: false });
     }
+
     if (jobFilter === "*") {
         const { data } = await query.range(from, to);
         setPage(page + 1);
@@ -15,12 +16,22 @@ export const getPortfolio = async (payload: any) => {
     }
 
     if (jobFilter) {
-        query = query.order("id", { ascending: true }).eq("job", `${jobFilter}`);
+        query = query.order("created_at", { ascending: true }).eq("job", `${jobFilter}`);
     }
 
     const { data, error } = await query.range(from, to);
     setPage(page + 1);
 
+    if (error) {
+        console.error(error);
+        return null;
+    }
+    return data;
+};
+
+export const getHotDevelopers = async () => {
+    let query = supabase.from("portfolioInfo").select("*");
+    const { data, error } = await query.order("id", { ascending: false }).range(0, 6);
     if (error) {
         console.error(error);
         return null;
