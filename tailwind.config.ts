@@ -6,6 +6,7 @@ const config: Config = {
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
+    safelist: ["border-red-400"],
     theme: {
         extend: {
             keyframes: {
@@ -57,7 +58,6 @@ const config: Config = {
                 blue: "#F1F9FF",
                 sky_blue: "#E1FFFF",
                 green: "#E0FFEC",
-                red: "#FFF1F1",
             },
         },
     },

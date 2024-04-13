@@ -5,6 +5,7 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
+import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import Input from "@/Components/Commen/Input";
 import { passwordValidate } from "@/util/sign/sign_validate";
@@ -13,18 +14,25 @@ import SignButton from "@/Components/Sign/SignButton";
 import Image from "next/image";
 const clickSex = ["남자", "여자"];
 const clickNumber = ["010", "011"];
+import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
+
+    const [emailError, setEmailError] = useState(true);
+    const [passwordError, setPasswordError] = useState(true);
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
     const [lengthRegValid, setLengthRegValid] = useState(false);
+
+    const [emailRegValid, setEmailRegValid] = useState(false);
+
     const [name, onChangeNameHandler] = useInput();
-    const [errorSign, setErrorSign] = useState(false);
+
     const [age, setage] = useState("");
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
@@ -32,6 +40,13 @@ const SignUp = () => {
     const [sex, setSex] = useState("");
 
     const router = useRouter();
+    useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
+        email.length >= 1 ? setEmailError(false) : setEmailError(true);
+        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
+        if (emailRegValid === true) setEmailError(true);
+        if (password.length >= 8) setPasswordError(true);
+    }, [email, password, emailRegValid]);
 
     useEffect(() => {
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
@@ -83,7 +98,7 @@ const SignUp = () => {
             if (error) {
                 throw new Error();
             }
-            return router.push("/signin");
+            return router.push("/welcome");
         } catch (error) {
             console.log(error);
         }
@@ -106,8 +121,8 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="이메일"
                         type="email"
-                        helperText={errorSign ? "" : "이메일 형식에 맞춰 입력해 주세요."}
-                        color={errorSign ? "black" : "error"}
+                        helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
+                        color={emailError ? "black" : "error"}
                         placeholder="이메일을 입력해주세요"
                         pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                         onChangeHandler={onChangeEmailHandler}
@@ -115,7 +130,7 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 작성해주세요"
-                        color={errorSign ? "black" : "error"}
+                        color={passwordError ? "black" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
                         "
                         onChangeHandler={onChangePassword}
@@ -163,44 +178,14 @@ const SignUp = () => {
                             );
                         })}
                     </div>
-                    <div className="mx-auto w-fit h-fit flex flex-col">
-                        <label className="mb-5">핸드폰 번호</label>
-                        <div className="flex flex-row gap-2">
-                            <select
-                                id="number"
-                                className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
-                                onChange={onClickPhoneNumber}
-                            >
-                                {clickNumber.map((item, idx) => {
-                                    return (
-                                        <option key={idx} className="text-zinc-300 mt-2 text-sm">
-                                            {item}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <div className="w-[110px]">
-                                <Input
-                                    type="text"
-                                    pattern="[0-9]{4}"
-                                    maxLength={4}
-                                    size="big"
-                                    value={middlePhoneNumber}
-                                    onChange={onChangeMiddlePhoneNumber}
-                                />
-                            </div>
-                            <div className="w-[110px]">
-                                <Input
-                                    type="text"
-                                    pattern="[0-9]{4}"
-                                    size="big"
-                                    maxLength={4}
-                                    value={lastPhoneNumber}
-                                    onChange={onChangeLastPhoneNumber}
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <SignPhoneNumber
+                        onClickPhoneNumber={onClickPhoneNumber}
+                        onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
+                        onChangeLastPhoneNumber={onChangeLastPhoneNumber}
+                        middlePhoneNumber={middlePhoneNumber}
+                        lastPhoneNumber={lastPhoneNumber}
+                    />
+
                     <SignButton
                         text="회원가입"
                         inputDisabled={inputDisabled}
