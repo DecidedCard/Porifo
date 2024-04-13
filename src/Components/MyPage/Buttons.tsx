@@ -25,6 +25,14 @@ const Buttons = () => {
 
     const [previewModal, setPreviewModal] = useState(false);
 
+    const onClickUrlCopyHandler = () => {
+        if (!portfolio?.id) {
+            alert("저장을 해야 url을 제공해드릴 수 있습니다.");
+            return;
+        }
+        onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`);
+    };
+
     const onClickPreviewModal = () => {
         if (portfolioInputFormValidation(portfolioPreview)) {
             alert("정보를 전부다 입력해주시기 바랍니다.");
@@ -65,7 +73,7 @@ const Buttons = () => {
                     <div className="flex flex-row mt-5 mb-5">
                         <button
                             className="flex items-center py-2 px-4 rounded-xl text-zinc-500"
-                            onClick={() => onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`)}
+                            onClick={onClickUrlCopyHandler}
                         >
                             <RiLinkM className="mr-2" /> URL 복사
                         </button>
