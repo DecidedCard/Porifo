@@ -3,15 +3,17 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { userData } from "@/util/supabase/supabase_user";
 
-import { supabase } from "@/util/supabase/clientSupabase";
-import { emailValidate } from "@/util/sign/sign_validate";
-import useUserStore from "@/store/userStore";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
+
+import { supabase } from "@/util/supabase/clientSupabase";
+import { emailValidate } from "@/util/sign/sign_validate";
+
 import useInput from "@/hooks/useInput";
+
+import useUserStore from "@/store/userStore";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -26,6 +28,14 @@ const SignIn = () => {
     const router = useRouter();
     const findPassword = () => router.replace("/find_email");
 
+    useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
+        email.length >= 1 ? setEmailError(false) : setEmailError(true);
+        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
+        if (emailRegValid === true) setEmailError(true);
+        if (password.length >= 8) setPasswordError(true);
+    }, [email, password, emailRegValid]);
+
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -36,18 +46,16 @@ const SignIn = () => {
 
             const { data: userId } = await supabase.from("portfolioInfo").select("userId");
 
-            const realData = userId
-                ?.map((item) => {
-                    if (item.userId !== null) {
-                        return item.userId;
-                    }
-                })
-                .filter((item) => item === undefined);
-
             let confirmPortfolio;
 
             if (data.user !== null) {
-                confirmPortfolio = realData?.find((item) => (item === data.user.id ? true : false));
+                confirmPortfolio = userId
+                    ?.map((item) => {
+                        if (item.userId !== null) {
+                            return item.userId;
+                        }
+                    })
+                    .find((item) => (item === data.user.id ? true : false));
             }
 
             if (error) {
@@ -62,14 +70,6 @@ const SignIn = () => {
             return Promise.reject(error);
         }
     };
-
-    useEffect(() => {
-        emailValidate({ email, setEmailRegValid });
-        email.length >= 1 ? setEmailError(false) : setEmailError(true);
-        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
-        if (emailRegValid === true) setEmailError(true);
-        if (password.length >= 8) setPasswordError(true);
-    }, [email, password, emailRegValid]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 

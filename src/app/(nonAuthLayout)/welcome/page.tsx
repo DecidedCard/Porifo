@@ -1,8 +1,11 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
-import Button from "@/Components/Commen/Button";
 import { useRouter } from "next/navigation";
+
+import Button from "@/Components/Commen/Button";
+
 const Welcome = () => {
     const router = useRouter();
     const onClickLogin = () => router.replace("/signin");

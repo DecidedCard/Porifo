@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 import SocialSign from "@/Components/Sign/SocialSign";
 import Button from "@/Components/Commen/Button";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+
 const SignUp_Method = () => {
     const router = useRouter();
     const emailSignUp = () => router.push("/signup");

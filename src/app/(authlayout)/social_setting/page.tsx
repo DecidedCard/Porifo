@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
-
 import Image from "next/image";
+
+import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
-import { signSettingValidation } from "@/util/sign/signNumber_validation";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import Button from "@/Components/Commen/Button";
-const clickSex = ["남자", "여자"];
+
+import { supabase } from "@/util/supabase/clientSupabase";
+import { signSettingValidation } from "@/util/sign/signNumber_validation";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");
@@ -21,12 +22,16 @@ const SocialSeting = () => {
     const [birthDay, setBirthDay] = useState("");
 
     const [sex, setSex] = useState("");
-    const router = useRouter();
-    const thisYear = new Date();
 
-    const onClickFindSex = (sex: string) => setSex(sex);
+    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    const birthDate = birthYear + birthMonth + birthDay;
+
+    const router = useRouter();
+
+    const onClickSelectSex = (sex: string) => setSex(sex);
 
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
+
     const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
         const onlyNumber = value.replace(/[^0-9]/g, "");
@@ -38,14 +43,12 @@ const SocialSeting = () => {
         const onlyNumber = value.replace(/[^0-9]/g, "");
         setLastPhoneNumber(onlyNumber);
     };
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
     const onClickBirthYear = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthYear(e.target.value);
 
     const onClickBirthMonth = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthMonth(e.target.value);
 
     const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
-    const birthDate = birthYear + birthMonth + birthDay;
 
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -63,9 +66,6 @@ const SocialSeting = () => {
         }
     };
 
-    const BIRTHDAY_YEAR_LIST = Array.from({ length: 30 }, (_, i) => `${thisYear.getFullYear() - 20 - i}년`);
-    const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
-    const BIRTHDAY_DAY_LIST = Array.from({ length: 31 }, (_, i) => `${i + 1}일`);
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
             <div className="rounded p-10 w-[500px] h-[500px] bg-white flex justify-center flex-col">
@@ -94,23 +94,7 @@ const SocialSeting = () => {
                         lastPhoneNumber={lastPhoneNumber}
                     />
 
-                    <p className="mt-5 mx-9">성별</p>
-                    <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
-                        {clickSex.map((item: string, idx: number) => {
-                            return (
-                                <div key={idx} className="flex flex-row my-auto mr-4">
-                                    <label className="mr-1">{item}</label>
-                                    <input
-                                        type="radio"
-                                        name="sex"
-                                        value={item}
-                                        id={item}
-                                        onClick={() => onClickFindSex(item)}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <SignSelectSex onClickSelectSex={onClickSelectSex} />
                     <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button text="모두 입력해 주세요" border="none" size="m" color="primary" />
                     </div>
