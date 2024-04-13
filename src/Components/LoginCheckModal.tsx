@@ -2,8 +2,21 @@ import React from "react";
 import Button from "./Commen/Button";
 import { useRouter } from "next/navigation";
 
-const LoginCheckModal = () => {
+const LoginCheckModal = ({
+    route,
+    setLoginCheckModal,
+}: {
+    route: string;
+    setLoginCheckModal?: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
     const router = useRouter();
+
+    const onClickCancelHandler = () => {
+        if (setLoginCheckModal) {
+            setLoginCheckModal(false);
+        }
+        router.replace(`${route}`);
+    };
 
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50">
@@ -13,7 +26,7 @@ const LoginCheckModal = () => {
                     <p>로그인 하시겠습니까?</p>
                 </div>
                 <div className="flex gap-2 w-[376px]">
-                    <Button text="취소" size="m" border="none" onClick={() => router.replace("/")} />
+                    <Button text="취소" size="m" border="none" onClick={onClickCancelHandler} />
                     <Button
                         text="로그인"
                         size="m"

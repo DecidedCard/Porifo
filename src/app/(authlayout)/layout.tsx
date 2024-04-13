@@ -19,7 +19,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
     if (isError) {
         return (
             <div>
-                <LoginCheckModal />
+                <LoginCheckModal route="/" />
             </div>
         );
     }
