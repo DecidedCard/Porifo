@@ -1,6 +1,5 @@
 import useUserStore from "@/store/userStore";
 import { QUERY_KEY } from "@/util/query_key";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { userData } from "@/util/supabase/supabase_user";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";

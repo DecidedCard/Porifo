@@ -1,19 +1,38 @@
 "use client";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
 
+import { useRouter } from "next/navigation";
+import useUserStore from "@/store/userStore";
+import { userData } from "@/util/supabase/supabase_user";
 const Header = () => {
+    const router = useRouter();
+
+    const { user, setUser } = useUserStore();
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
         try {
+            setUser(null);
             if (!true) {
                 console.log(error);
             }
         } catch (error) {
             throw new Error();
         }
+        router.replace("/");
     };
+
+    useEffect(() => {
+        const userLoginFunc = async () => {
+            try {
+                const userLoginData = await userData();
+                setUser(userLoginData);
+            } catch (error) {}
+        };
+        userLoginFunc();
+    }, []);
 
     return (
         <main className="sticky top-0 z-50">
@@ -35,22 +54,27 @@ const Header = () => {
 
                 {/* Right Section: Authentication Buttons */}
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
-                    <div>
-                        <Link href="/signin">
-                            <Button text="로그인" size="s" color="primarynone" fontSize="xs" />
-                        </Link>
-                    </div>
+                    {user ? (
+                        <div onClick={signOutFunc}>
+                            <Link href="/">
+                                <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
+                            </Link>
+                        </div>
+                    ) : (
+                        <>
+                            <div>
+                                <Link href="/signin">
+                                    <Button text="로그인" size="s" color="primarynone" fontSize="xs" />
+                                </Link>
+                            </div>
 
-                    <div className="">
-                        <Link href="/signup_method">
-                            <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
-                        </Link>
-                    </div>
-                    <div onClick={signOutFunc}>
-                        <Link href="/">
-                            <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
-                        </Link>
-                    </div>
+                            <div className="">
+                                <Link href="/signup_method">
+                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </main>
