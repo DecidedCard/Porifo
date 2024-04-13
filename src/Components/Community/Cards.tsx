@@ -20,6 +20,11 @@ const Cards = ({ filterData }: { filterData: any }) => {
     const { jobFilter } = filterData;
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
+    if (isOpenModal) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
