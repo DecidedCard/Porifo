@@ -8,9 +8,7 @@ import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
-
-import Image from "next/image";
-import useLoginCheck from "@/hooks/mypage/useLoginCheck";
+import useUserStore from "@/store/userStore";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");

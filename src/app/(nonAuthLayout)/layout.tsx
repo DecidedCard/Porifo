@@ -11,7 +11,6 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
         return <>로딩중입니다...</>;
     }
     if (!isFetching && !isError) {
-        alert("로그인후 이용은 불가능합니다.");
         router.replace("/mypage");
     }
 

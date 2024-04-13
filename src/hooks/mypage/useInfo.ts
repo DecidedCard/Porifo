@@ -11,7 +11,6 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
-import Project from "@/Components/MyPage/Project";
 
 const useInfo = () => {
     const {

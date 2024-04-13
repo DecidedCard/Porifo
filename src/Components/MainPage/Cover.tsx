@@ -22,19 +22,14 @@ const Cover = () => {
                 </p>
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
                     <div className="w-[180px]">
-                        <Button
-                            text="포트폴리오 등록하기"
-                            size="l"
-                            fontSize="m"
-                            color="primary"
-                            border="none"
-                        />
+                        <Link href={"/guest"}>
+                            <Button text="포트폴리오 등록하기" size="l" fontSize="m" color="primary" border="none" />
+                        </Link>
                     </div>
                 </div>
             </div>
         </main>
     );
 };
-
 
 export default Cover;
