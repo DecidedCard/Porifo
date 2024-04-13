@@ -20,6 +20,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
     const { jobFilter } = filterData;
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
+    //모달 open일때 body스크롤 방지
     if (isOpenModal) {
         document.body.style.overflow = "hidden";
     } else {

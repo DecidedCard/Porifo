@@ -7,6 +7,7 @@ import Comments from "./Comments";
 import useCardIdStore from "@/store/detailStore";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
+import LikeShare from "./LikeShare";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -24,11 +25,18 @@ const Portfolio_detail = () => {
     return (
         // 포트폴리오 영역
         <div className="h-[820px] w-[100%] overflow-auto ">
-            <div className="border-2 border-solid border-rose-500 flex flex-col">
+            <div className="flex flex-col">
                 {portfolioInfo.template === "standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "grid" && <Grid portfolio={portfolioInfo} />}
             </div>
-            <Comments />
+            <div className="flex flex-col items-center gap-20  bg-gray">
+                <div>
+                    <LikeShare />
+                </div>
+                <div>
+                    <Comments />
+                </div>
+            </div>
         </div>
     );
 };
