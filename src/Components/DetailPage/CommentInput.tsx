@@ -2,6 +2,8 @@
 import React from "react";
 
 const CommentInput = () => {
+    // 현재 로그인한 유저의 아바타를 가지고 와야함
+    //추가 할때 user_name,comment,user_email,profileImage
     return (
         <div className="flex w-[100%] pt-10">
             <img className="rounded-[50px] w-10 h-10 object-cover mr-3" src="rectangle0.png" />
