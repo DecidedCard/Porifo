@@ -80,7 +80,7 @@ const Buttons = () => {
                 <div className="flex flex-col gap-3">
                     <div className="w-[250px]">
                         <Button
-                            text={portfolio ? "수정하기" : "저장하기"}
+                            text={portfolio?.id ? "수정하기" : "저장하기"}
                             size="l"
                             border="none"
                             color={disabled ? "" : "primary"}

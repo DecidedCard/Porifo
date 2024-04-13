@@ -15,8 +15,6 @@ const useLoginCheck = () => {
         refetchOnWindowFocus: false,
     });
 
-    usePortfolioQuery(data?.id!);
-
     useEffect(() => {
         if (data) {
             setUser(data);
