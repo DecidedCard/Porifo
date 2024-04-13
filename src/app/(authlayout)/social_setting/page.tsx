@@ -5,19 +5,19 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 
 import SignUpItem from "@/Components/Sign/SignUpItem";
-import useGetUser from "@/hooks/sign/useGetUser";
-import useInput from "@/hooks/useInput";
+
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
-import Input from "@/Components/Commen/Input";
+import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import Button from "@/Components/Commen/Button";
 const clickSex = ["남자", "여자"];
 
 const SocialSeting = () => {
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [firstNumber, setFirstNumber] = useState("010");
+    const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
+    const [lastPhoneNumber, setLastPhoneNumber] = useState("");
     const [age, setage] = useState("");
     const [sex, setSex] = useState("");
     const router = useRouter();
-    useGetUser();
 
     const onClickFindSex = (sex: string) => setSex(sex);
 
@@ -26,12 +26,19 @@ const SocialSeting = () => {
         const onlyNumber = value.replace(/[^0-9]/g, "");
         setage(onlyNumber);
     };
-    const onChangePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
+    const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
         const onlyNumber = value.replace(/[^0-9]/g, "");
-        setPhoneNumber(onlyNumber);
+        setMiddlePhoneNumber(onlyNumber);
     };
 
+    const onChangeLastPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        const onlyNumber = value.replace(/[^0-9]/g, "");
+        setLastPhoneNumber(onlyNumber);
+    };
+    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -62,14 +69,16 @@ const SocialSeting = () => {
                         placeholder="나이를 입력해주세요"
                         onChangeHandler={onChangeAge}
                     />
-                    <SignUpItem
-                        setLabel="핸드폰 번호"
-                        type="text"
-                        placeholder="비밀번호를 작성해주세요"
-                        onChangeHandler={onChangePhoneNumber}
+
+                    <SignPhoneNumber
+                        onClickPhoneNumber={onClickPhoneNumber}
+                        onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
+                        onChangeLastPhoneNumber={onChangeLastPhoneNumber}
+                        middlePhoneNumber={middlePhoneNumber}
+                        lastPhoneNumber={lastPhoneNumber}
                     />
 
-                    <p className="mx-9">성별</p>
+                    <p className="mt-5 mx-9">성별</p>
                     <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
                         {clickSex.map((item: string, idx: number) => {
                             return (

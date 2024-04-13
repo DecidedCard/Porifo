@@ -7,14 +7,11 @@ import MiddleBottom from "@/Components/MainPage/MiddleBottom";
 import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
-
-import useInput from "@/hooks/useInput";
+// import useGetUser from "@/hooks/sign/useGetUser";
 
 export default function Home() {
-    if (useInput()) {
-        console.log("유저 존재");
-    }
-
+    // useGetUser();
+    // console.log(useGetUser());
     return (
         <main>
             <div>
