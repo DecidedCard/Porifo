@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { userData } from "@/util/supabase/supabase_user";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
@@ -33,12 +34,29 @@ const SignIn = () => {
                 password,
             });
 
+            const { data: userId } = await supabase.from("portfolioInfo").select("userId");
+
+            const realData = userId
+                ?.map((item) => {
+                    if (item.userId !== null) {
+                        return item.userId;
+                    }
+                })
+                .filter((item) => item === undefined);
+
+            let confirmPortfolio;
+
+            if (data.user !== null) {
+                confirmPortfolio = realData?.find((item) => (item === data.user.id ? true : false));
+            }
+
             if (error) {
                 alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
             setUser(data);
-            router.replace("/");
+
+            confirmPortfolio !== undefined ? router.replace("/community") : router.replace("/mypage");
             router.refresh();
         } catch (error) {
             return Promise.reject(error);

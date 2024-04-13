@@ -17,10 +17,11 @@ const signInWithSocial = async (social: Provider, queryParams?: QueryParams) => 
 
     try {
         if (error) {
-            throw new Error("소셜 로그인 오류가 발생하였습니다.");
+            throw new Error("SNS 로그인 중 오류가 발생하였습니다.");
         }
     } catch (error) {
         console.log(error);
     }
 };
+
 export default signInWithSocial;

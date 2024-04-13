@@ -5,7 +5,7 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
-
+import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import Button from "@/Components/Commen/Button";
@@ -23,7 +23,7 @@ const SocialSeting = () => {
     const [sex, setSex] = useState("");
     const router = useRouter();
     const thisYear = new Date();
-    thisYear.getFullYear();
+
     const onClickFindSex = (sex: string) => setSex(sex);
 
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
@@ -80,39 +80,11 @@ const SocialSeting = () => {
                             priority
                         />
                     </div>
-
-                    <div className="mb-5 mx-auto w-fit h-fit flex flex-col">
-                        <label className="mb-5">생년월일</label>
-
-                        <div className="flex flex-row gap-2">
-                            <select
-                                onChange={onClickBirthYear}
-                                className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
-                            >
-                                {BIRTHDAY_YEAR_LIST.map((year, index) => (
-                                    <option value={year} key={index}>
-                                        {year}
-                                    </option>
-                                ))}
-                            </select>
-                            <select
-                                onChange={onClickBirthMonth}
-                                className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
-                            >
-                                {BIRTHDAY_MONTH_LIST.map((month, index) => (
-                                    <option key={index}>{month}</option>
-                                ))}
-                            </select>
-                            <select
-                                onChange={onClickBirthDay}
-                                className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
-                            >
-                                {BIRTHDAY_DAY_LIST.map((day, index) => (
-                                    <option key={index}>{day}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
+                    <SignUploadBitrthDay
+                        onClickBirthYear={onClickBirthYear}
+                        onClickBirthMonth={onClickBirthMonth}
+                        onClickBirthDay={onClickBirthDay}
+                    />
 
                     <SignPhoneNumber
                         onClickPhoneNumber={onClickPhoneNumber}

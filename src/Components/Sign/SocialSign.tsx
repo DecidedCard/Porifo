@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import signInWithSocial from "@/util/sign/socialLogin";
 import Image from "next/image";

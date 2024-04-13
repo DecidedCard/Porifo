@@ -7,14 +7,14 @@ import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
-import Input from "@/Components/Commen/Input";
+
 import { passwordValidate } from "@/util/sign/sign_validate";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import SignButton from "@/Components/Sign/SignButton";
 import Image from "next/image";
-const clickSex = ["남자", "여자"];
-const clickNumber = ["010", "011"];
+import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
+const clickSex = ["남자", "여자"];
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -22,6 +22,10 @@ const SignUp = () => {
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
+
+    const [birthYear, setBirthYear] = useState("");
+    const [birthMonth, setBirthMonth] = useState("");
+    const [birthDay, setBirthDay] = useState("");
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
@@ -33,7 +37,6 @@ const SignUp = () => {
 
     const [name, onChangeNameHandler] = useInput();
 
-    const [age, setage] = useState("");
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
     const [lastPhoneNumber, setLastPhoneNumber] = useState("");
@@ -57,11 +60,12 @@ const SignUp = () => {
     const onClickFindSex = (sex: string) => setSex(sex);
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
 
-    const onChangeAge = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setage(onlyNumber);
-    };
+    const onClickBirthYear = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthYear(e.target.value);
+
+    const onClickBirthMonth = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthMonth(e.target.value);
+
+    const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
+    const birthDate = birthYear + birthMonth + birthDay;
 
     const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
@@ -76,18 +80,18 @@ const SignUp = () => {
     };
 
     const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
-
+    console.log(birthDate.length);
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ phoneNumber, age, email, password });
+            signUpValidation({ phoneNumber, birthDate, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
                     emailRedirectTo: "http://localhost:3000/signin",
                     data: {
-                        age,
+                        birthDate,
                         user_name: name,
                         phoneNumber,
                         sex,
@@ -152,15 +156,12 @@ const SignUp = () => {
                             onChangeHandler={onChangeNameHandler}
                         />
                     </div>
-                    <SignUpItem
-                        setLabel="나이"
-                        type="text"
-                        value={age}
-                        pattern="[0-9]{2}"
-                        maxLength={2}
-                        placeholder="나이를 입력해주세요"
-                        onChangeHandler={onChangeAge}
+                    <SignUploadBitrthDay
+                        onClickBirthYear={onClickBirthYear}
+                        onClickBirthMonth={onClickBirthMonth}
+                        onClickBirthDay={onClickBirthDay}
                     />
+
                     <p className="mx-9">성별</p>
                     <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
                         {clickSex.map((item: string, idx: number) => {
@@ -193,7 +194,7 @@ const SignUp = () => {
                         email={email}
                         password={password}
                         name={name}
-                        age={age}
+                        birthDate={birthDate}
                         firstNumber={firstNumber}
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
