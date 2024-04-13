@@ -46,7 +46,7 @@ const LikeShare = () => {
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 items-center justify-end shrink-0 relative">
-                        <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set4.svg" />
+                        <img className="shrink-0 w-6 h-6 relative overflow-visible" src="grayComment.svg" />
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
                             36
                         </div>
