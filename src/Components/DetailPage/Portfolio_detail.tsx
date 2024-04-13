@@ -5,6 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Comments from "./Comments";
 import useCardIdStore from "@/store/detailStore";
+import Standard from "../Template one/Standard";
+import Grid from "../Template two/Grid";
+import LikeShare from "./LikeShare";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -18,14 +21,23 @@ const Portfolio_detail = () => {
     }
 
     const portfolioInfo = data![0];
-    console.log(portfolioInfo.template);
 
     return (
         // 포트폴리오 영역
-        <>
-            <div>{portfolioInfo.id}</div>
-            <Comments />
-        </>
+        <div className="h-[820px] w-[100%] overflow-auto ">
+            <div className="flex flex-col">
+                {portfolioInfo.template === "standard" && <Standard portfolio={portfolioInfo} />}
+                {portfolioInfo.template === "grid" && <Grid portfolio={portfolioInfo} />}
+            </div>
+            <div className="flex flex-col items-center gap-[30px] bg-gray">
+                <div>
+                    <LikeShare />
+                </div>
+                <div className="w-[80%] flex justify-center rounded-2xl bg-hihigray">
+                    <Comments />
+                </div>
+            </div>
+        </div>
     );
 };
 

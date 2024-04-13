@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const Modal = ({ isVisible, onClose, children }: any) => {
@@ -5,17 +7,18 @@ const Modal = ({ isVisible, onClose, children }: any) => {
     const handleClose = (e: any) => {
         if (e.target.id === "wrapper") onClose();
     };
+
     return (
         <div
-            className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
+            className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
             id="wrapper"
             onClick={handleClose}
         >
-            <div className="w-[600px] flex flex-col">
-                <button className="text-white text-xl place-self-end" onClick={onClose}>
+            <div className="flex mt-[70px]">
+                <button className="text-white text-xl place-self-start mr-3 mt-2" onClick={onClose}>
                     X
                 </button>
-                <div className="bg-PurpleLight p-2">{children}</div>
+                <div className="p-2">{children}</div>
             </div>
         </div>
     );
