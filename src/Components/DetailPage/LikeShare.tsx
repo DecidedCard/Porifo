@@ -5,11 +5,11 @@ import React from "react";
 const LikeShare = () => {
     return (
         <>
-            <div className="border-2 border-solid border-rose-500 flex flex-col gap-4 items-center justify-center relative">
+            <div className="border-2 border-solid mt-10 border-rose-500 flex flex-col gap-4 items-center justify-center relative">
                 <div className="flex flex-row gap-4 items-center justify-center shrink-0 relative">
-                    <div className="bg-gray-2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
-                        <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-10 h-10 relative">
-                            <div className="shrink-0 w-8 h-8 relative">
+                    <div className="bg-gray2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
+                        <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-20 h-10 relative">
+                            <div className="shrink-0 w-8 h-8 relative overflow-visible">
                                 {/* 좋아요 이미지 */}
                                 <img src="redHeart.svg" />
                             </div>
@@ -18,7 +18,7 @@ const LikeShare = () => {
                             좋아요
                         </div>
                     </div>
-                    <div className="bg-gray-2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
+                    <div className="bg-gray2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
                         <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-10 h-10 relative">
                             <img className="shrink-0 w-8 h-8 relative overflow-visible" src="share.svg" />
                         </div>
