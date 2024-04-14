@@ -24,9 +24,9 @@ const UserInfo = () => {
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
                 <h2 className="pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</h2>
-                <hr className="border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
                 <p className="pl-6 text-xl font-medium text-left relative">내 정보</p>
 
                 <div className="flex">
@@ -128,7 +128,7 @@ const UserInfo = () => {
                     </select>
                 </div>
 
-                <hr className="border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
 
                 <Careers />
             </div>

@@ -26,10 +26,10 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex flex-col gap-6 bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
+            <main className="flex flex-col gap-4 bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
                 <h1 className="pl-6 pt-6 text-2xl font-bold tracking-wider">프로젝트</h1>
 
-                <hr className="border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
 
                 <p className="flex justify-center text-xl font-medium">프로젝트 정보</p>
                 {projects &&
