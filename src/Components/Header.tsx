@@ -29,7 +29,7 @@ const Header = () => {
             try {
                 const userLoginData = await userData();
                 setUser(userLoginData);
-            } catch (error) { }
+            } catch (error) {}
         };
         userLoginFunc();
     }, []);
@@ -55,19 +55,11 @@ const Header = () => {
                 {/* Right Section: Authentication Buttons */}
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     {user ? (
-                        <>
-                            <div>
-                                <Link href="/mypage">
-                                    <Button text="마이페이지" size="s" color="primary" border="none" fontSize="xs" />
-                                </Link>
-                            </div>
-
-                            <div onClick={signOutFunc}>
-                                <Link href="/">
-                                    <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
-                                </Link>
-                            </div>
-                        </>
+                        <div onClick={signOutFunc}>
+                            <Link href="/">
+                                <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
+                            </Link>
+                        </div>
                     ) : (
                         <>
                             <div>
@@ -76,7 +68,7 @@ const Header = () => {
                                 </Link>
                             </div>
 
-                            <div>
+                            <div className="">
                                 <Link href="/signup_method">
                                     <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
                                 </Link>
