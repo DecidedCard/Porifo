@@ -71,7 +71,7 @@ const Header = () => {
                             <div className="relative flex flex-row gap-5">
                                 <button onClick={toggleMenu}>
                                     <Image
-                                        src="profile.svg"
+                                        src="/assets/image/profile.svg"
                                         width="28"
                                         height="28"
                                         alt="로그인 프로필"
@@ -91,7 +91,7 @@ const Header = () => {
                                                 href="/mypage"
                                                 className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]"
                                             >
-                                                <Image src="headerwrite.svg" alt="=" width="16" height="18" />
+                                                <Image src="/assets/image/headerwrite.svg" alt="=" width="16" height="18" />
                                                 <p className="text-[12px]">이력서 작성</p>
                                             </Link>
                                         </div>
@@ -100,7 +100,7 @@ const Header = () => {
                                                 href="/"
                                                 className="flex flex-row items-center justify-center gap-3 mr-[13.5px] w-[146px] h-[32px]"
                                             >
-                                                <Image src="headerlogout.svg" alt="X" width="15" height="15" />
+                                                <Image src="/assets/image/headerlogout.svg" alt="X" width="15" height="15" />
                                                 <p className="text-[12px]">로그아웃</p>
                                             </Link>
                                         </div>
