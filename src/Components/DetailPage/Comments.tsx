@@ -19,6 +19,7 @@ const Comments = () => {
     if (isPending) {
         return <div>로딩중</div>;
     }
+
     return (
         <>
             <div className="bg-gray-1 w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
@@ -30,7 +31,7 @@ const Comments = () => {
                 ) : (
                     data?.map((item) => {
                         return (
-                            <div className="flex gap-3">
+                            <div key={item.id} className="flex gap-3">
                                 {/* profileImage */}
                                 <img
                                     className="rounded-[50px] w-10 h-10 object-cover"
@@ -55,7 +56,9 @@ const Comments = () => {
                                     </div>
                                 </div>
                                 {/* 삭제버튼 */}
-                                <img className="cursor-pointer" src="grayClose.svg" />
+                                {item.user_email === user?.email ? (
+                                    <img className="cursor-pointer" src="grayClose.svg" />
+                                ) : null}
                             </div>
                         );
                     })
