@@ -114,7 +114,7 @@ const UserInfo = () => {
                 <div className="flex items-center">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">직군:</label>
                     <select
-                        className="font-medium text-zinc-500 relative w-[460px] h-14 border border-solid border-zinc-300"
+                        className="font-medium text-zinc-500 relative w-[460px] h-14 rounded-lg px-3 border border-solid border-zinc-300"
                         value={basicInfo.job!}
                         onChange={onChangeSelectHandler}
                     >

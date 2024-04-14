@@ -32,7 +32,7 @@ const Introduction = () => {
                 <div className="flex">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">자기소개</label>
                     <textarea
-                        className="h-[334px] w-[460px] resize-none p-2 border border-solid border-zinc-300 rounded-lg"
+                        className="h-[334px] w-[460px] resize-none py-2 px-3 border border-solid border-zinc-300 rounded-lg"
                         placeholder="본인만의 소개글을 작성해 보세요"
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}
