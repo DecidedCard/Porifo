@@ -1,5 +1,3 @@
-import React from "react";
-
 type SeletSexType = { onClickSelectSex: (sex: string) => void };
 
 const clickSex = ["남자", "여자"];
