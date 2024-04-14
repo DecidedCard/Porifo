@@ -26,14 +26,12 @@ const Project = () => {
 
     return (
         <>
-            <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
-                <h1 className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">
-                    프로젝트
-                </h1>
+            <main className="flex flex-col gap-6 bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
+                <h1 className="pl-6 pt-6 text-2xl font-bold tracking-wider">프로젝트</h1>
 
                 <hr className="border border-neutral-100" />
 
-                <h2 className="flex justify-center text-xl font-medium">프로젝트 정보</h2>
+                <p className="flex justify-center text-xl font-medium">프로젝트 정보</p>
                 {projects &&
                     projects.map((item, projectsIndex) => {
                         return (

@@ -120,6 +120,12 @@ body {
         color: lightgray;
         content: attr(placeholder);
     }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 ol,
 ul {

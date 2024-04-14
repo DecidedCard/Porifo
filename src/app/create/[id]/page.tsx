@@ -1,3 +1,5 @@
+"use client";
+
 import Loading from "@/Components/Loading";
 import Standard from "@/Components/Template one/Standard";
 import Grid from "@/Components/Template two/Grid";
@@ -19,6 +21,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     if (isError) {
         return <div>에러!@!!!</div>;
     }
+
     return (
         <div>
             {portfolio?.template === "standard" && <Standard portfolio={portfolio} />}

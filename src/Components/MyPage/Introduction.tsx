@@ -10,7 +10,7 @@ const Introduction = () => {
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
             <div className="flex flex-col gap-6">
-                <h1 className="pl-6 text-2xl font-bold tracking-wider">소개</h1>
+                <h1 className="pl-6 pt-6 text-2xl font-bold tracking-wider">소개</h1>
 
                 <hr className="border border-neutral-100" />
 
