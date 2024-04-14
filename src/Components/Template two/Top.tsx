@@ -9,7 +9,6 @@ import { PortfolioInfo } from "@/types/PortfolioInfo";
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo, setUserInfo] = useState({
         name: portfolio.name,
-        tel: portfolio.tel,
         job: portfolio.job,
         email: portfolio.email,
         profileImage: portfolio.profileImage || "",
@@ -43,12 +42,6 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             </div>
 
                             <address className="text-[14px] text-grayblack flex flex-col items-start justify-start self-stretch shrink-0 relative">
-                                <div className="flex flex-row items-center justify-start shrink-0 relative">
-                                    <p className="text-center relative flex items-center justify-center mb-2">
-                                        <IoCallOutline className="mr-2" /> {userInfo.tel}
-                                    </p>
-                                </div>
-
                                 <div className="flex flex-row items-center justify-start shrink-0 relative">
                                     <p className="text-center relative flex items-center justify-center">
                                         <AiOutlineMail className="mr-2" /> {userInfo.email}

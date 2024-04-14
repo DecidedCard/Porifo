@@ -87,19 +87,6 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex">
-                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">연락처</label>
-                    <div className="w-[460px]">
-                        <Input
-                            type="tel"
-                            placeholder="연락처를 입력해 주세요."
-                            value={basicInfo.tel!}
-                            onChange={onChangeTelHandler}
-                            size="big"
-                        />
-                    </div>
-                </div>
-
-                <div className="flex">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">e-mail</label>
                     <div className="w-[460px]">
                         <Input

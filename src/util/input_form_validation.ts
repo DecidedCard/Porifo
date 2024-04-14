@@ -20,10 +20,6 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
-    if (!info.tel) {
-        return true;
-    }
-
     if (!info.email) {
         return true;
     }
