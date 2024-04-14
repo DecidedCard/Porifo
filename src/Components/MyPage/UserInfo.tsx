@@ -17,7 +17,6 @@ const UserInfo = () => {
         onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
-        onChangeTelHandler,
         onChangeEmailHandler,
         onChangeSelectHandler,
     } = useInfo();
