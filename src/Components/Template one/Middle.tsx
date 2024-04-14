@@ -49,16 +49,29 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         />
                                     ))}
                                 </div>
-                                <div className="flex justify-between">
+                                <div className="flex justify-between my-4">
                                     {/* 이전 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
                                     {imagePage > 0 && (
-                                        <button onClick={handlePrevImage}>◁</button>
+                                        <button
+                                            onClick={handlePrevImage}
+                                            className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-center justify-center shrink-0"
+                                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
+                                        >
+                                            <img className="shrink-0 w-6 h-6" src="icon-set9.svg" alt="이전" />
+                                        </button>
                                     )}
                                     {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
                                     {project.images.length > (imagePage + 1) * 3 && (
-                                        <button onClick={handleNextImage}>▷</button>
+                                        <button
+                                            onClick={handleNextImage}
+                                            className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-center justify-center shrink-0"
+                                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
+                                        >
+                                            <img className="shrink-0 w-6 h-6" src="icon-set8.svg" alt="다음" />
+                                        </button>
                                     )}
                                 </div>
+
 
                                 {/* 제목과 날짜를 포함하는 영역 */}
                                 <div className="flex w-full flex-col">

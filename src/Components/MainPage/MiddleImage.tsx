@@ -1,46 +1,113 @@
+import Image from "next/image";
+
 const MiddleImage = () => {
     return (
         <main className="overflow-hidden w-full">
             <div className="flex flex-row gap-8 items-start justify-start animate-slide-right">
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="임시.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
-                <img
-                    className="rounded-2xl w-[370px] h-[400px]"
-                    src="1.png"
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
+                />
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
+                />
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
+                />
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
+                />
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
+                />
+                <Image
+                    className="rounded-2xl"
+                    src="mainImage1.svg"
+                    alt="슬라이드 이미지"
+                    width={370}
+                    height={400}
                 />
             </div>
         </main>
