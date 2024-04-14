@@ -11,8 +11,6 @@ import useSupabaseRange from "@/hooks/useSupabaseRange";
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import useCardIdStore from "@/store/detailStore";
-import useUserStore from "@/store/userStore";
-import { userData } from "@/util/supabase/supabase_user";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     //모달 상태
@@ -23,11 +21,11 @@ const Cards = ({ filterData }: { filterData: any }) => {
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
     // 모달 open일때 body스크롤 방지
-    // if (isOpenModal) {
-    //     document.body.style.overflow = "hidden";
-    // } else {
-    //     document.body.style.overflow = "auto";
-    // }
+    if (isOpenModal) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
 
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
@@ -95,17 +93,13 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                         <div className="flex gap-4">
                                             <div className="flex gap-1 items-center ">
                                                 {/* 좋아요 하트 */}
-                                                <div className="w-6 h-6 ">
-                                                    <img src="grayHeart.svg" />
-                                                </div>
-                                                <span>210</span>
+                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
+                                                {/* <span>210</span> */}
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
-                                                <div className="w-6 h-6 ">
-                                                    <img src="grayEye.svg" />
-                                                </div>
-                                                <span>1523</span>
+                                                <div className="w-6 h-6 ">{/* <img src="grayEye.svg" /> */}</div>
+                                                {/* <span>1523</span> */}
                                             </div>
                                         </div>
                                     </div>

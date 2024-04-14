@@ -30,9 +30,7 @@ const Portfolio_detail = () => {
                 {portfolioInfo.template === "grid" && <Grid portfolio={portfolioInfo} />}
             </div>
             <div className="flex flex-col items-center gap-[30px] bg-gray">
-                <div>
-                    <LikeShare />
-                </div>
+                <div>{/* <LikeShare /> */}</div>
                 <div className="w-[80%] flex justify-center rounded-2xl bg-hihigray">
                     <Comments />
                 </div>

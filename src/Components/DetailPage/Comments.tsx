@@ -3,12 +3,13 @@ import useCardIdStore from "@/store/detailStore";
 import { QUERY_KEY } from "@/util/query_key";
 import { deleteComment, getComments } from "@/util/supabase/supabase_comments";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import CommentInput from "./CommentInput";
 import useUserStore from "@/store/userStore";
 
 const Comments = () => {
     const { cardId: id } = useCardIdStore();
+
     const { user } = useUserStore();
 
     const queryClient = useQueryClient();
