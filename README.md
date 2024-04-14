@@ -38,7 +38,7 @@ porifo.vercel.app
 | <a href="https://github.com/monkeyhurray"><img src="https://github.com/monkeyhurray.png" alt="monkeyhurray" width="250" height="250" border="0"></a> | <a href="https://github.com/DecidedCard"><img src="https://github.com/DecidedCard.png" alt="DecidedCard" width="250" height="250" border="0" /></a> | <a href="https://github.com/CodHan"><img src="https://github.com/CodHan.png" alt="CodHan" width="250" height="250" border="0"></a> |<a href="https://github.com/leejieun2023"><img src="https://github.com/leejieun2023.png" alt="leejieun2023" width="250" height="250" border="0"></a> |
 | [@monkeyhurray](https://github.com/monkeyhurray) | [@DecidedCard](https://github.com/DecidedCard) | [@CodHan](https://github.com/CodHan) | [@leejieun2023](https://github.com/leejieun2023)|
 |                     **팀장**                     |                **팀원**                |                    **팀장**                    |                  **팀원**                  |
-|                   로그인, 회원가입 페이지                   |              마이 페이지            |                  커뮤니티, 상세 페이지                 |                메인, 소개 페이지,<br>Readme 작성                |
+|                   로그인, 회원가입 페이지                   |              마이 페이지            |                  커뮤니티, 상세 페이지                 |                메인 페이지, 템플릿 제작                |
 
 
 <br>
@@ -54,7 +54,7 @@ porifo.vercel.app
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=plastic&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=plastic&logo=notion&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-4A154B?style=plastic&logo=slack&logoColor=white)
 
 ### 📂 Packages & Libraries
-![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=plastic&logo=yarn&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=plastic&logo=tailwind-css&logoColor=white) ![React Query](https://img.shields.io/badge/React_Query-FF4154?style=plastic&logo=react-query&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=plastic&logo=next.js&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=plastic&logo=supabase&logoColor=white) ![Zustand](https://img.shields.io/badge/Zustand-764ABC?style=plastic&logo=react&logoColor=white)
+![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=plastic&logo=yarn&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=plastic&logo=tailwind-css&logoColor=white) ![React Query](https://img.shields.io/badge/React_Query-FF4154?style=plastic&logo=react-query&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=plastic&logo=next.js&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=plastic&logo=supabase&logoColor=white) ![Zustand](https://img.shields.io/badge/Zustand-764ABC?style=plastic&logo=react&logoColor=white) ![React-to-PDF](https://img.shields.io/badge/style=plastic&logo=react&logoColor=white)
 
 <br>
 
