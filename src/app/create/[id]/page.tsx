@@ -19,7 +19,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     }
 
     if (isError) {
-        return <div>에러!@!!!</div>;
+        return <div>에러!!!!</div>;
     }
 
     return (
