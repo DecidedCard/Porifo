@@ -123,7 +123,7 @@ const Header = () => {
                             </div>
 
                             <div className="">
-                                <Link href="/signup_method">
+                                <Link href="/signupMethod">
                                     <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
                                 </Link>
                             </div>

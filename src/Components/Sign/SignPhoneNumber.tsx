@@ -1,10 +1,9 @@
-import React from "react";
 import Input from "@/Components/Commen/Input";
 
 type PhoneNumber = {
     onClickPhoneNumber: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    onChangeMiddlePhoneNumber: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    onChangeLastPhoneNumber: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    onChangeMiddlePhoneNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeLastPhoneNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
     middlePhoneNumber: string;
     lastPhoneNumber: string;
 };

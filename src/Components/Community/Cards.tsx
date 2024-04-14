@@ -11,6 +11,8 @@ import useSupabaseRange from "@/hooks/useSupabaseRange";
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import useCardIdStore from "@/store/detailStore";
+import useUserStore from "@/store/userStore";
+import { userData } from "@/util/supabase/supabase_user";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     //모달 상태
