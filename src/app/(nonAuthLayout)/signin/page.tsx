@@ -6,29 +6,29 @@ import Image from "next/image";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
-
+import useUserStore from "@/store/userStore";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-
 import useInput from "@/hooks/useInput";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
 
-    const [errorSign, setErrorSign] = useState(false);
+    const [emailError, setEmailError] = useState(true);
+    const [passwordError, setPasswordError] = useState(true);
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [emailRegValid, setEmailRegValid] = useState(false);
-
+    const { user, setUser } = useUserStore();
     const router = useRouter();
     const findPassword = () => router.replace("/find_email");
 
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const { error } = await supabase.auth.signInWithPassword({
+            const { data, error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             });
@@ -37,26 +37,20 @@ const SignIn = () => {
                 alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
-
-            return router.replace("/");
+            setUser(data);
+            router.replace("/");
+            router.refresh();
         } catch (error) {
             return Promise.reject(error);
         }
     };
 
     useEffect(() => {
-        const signUser = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
-            return user;
-        };
-        signUser();
-    }, []);
-
-    useEffect(() => {
         emailValidate({ email, setEmailRegValid });
-        if (emailRegValid === true) setErrorSign(true);
+        email.length >= 1 ? setEmailError(false) : setEmailError(true);
+        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
+        if (emailRegValid === true) setEmailError(true);
+        if (password.length >= 8) setPasswordError(true);
     }, [email, password, emailRegValid]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
@@ -79,8 +73,8 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="이메일"
                             type="email"
-                            helperText={errorSign ? "" : "이메일 형식에 맞춰 입력해 주세요."}
-                            color={errorSign ? "black" : "error"}
+                            helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
+                            color={emailError ? "black" : "error"}
                             placeholder="이메일을 입력해주세요"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                             onChangeHandler={onChangeEmailHandler}
@@ -89,8 +83,8 @@ const SignIn = () => {
                         <SignUpItem
                             setLabel="비밀번호"
                             placeholder="비밀번호를 작성해주세요"
-                            helperText={errorSign ? "" : "비밀번호가 일치하지 않습니다."}
-                            color={errorSign ? "black" : "error"}
+                            helperText={passwordError ? "" : "비밀번호가 일치하지 않습니다."}
+                            color={passwordError ? "black" : "error"}
                             pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                             value={password}

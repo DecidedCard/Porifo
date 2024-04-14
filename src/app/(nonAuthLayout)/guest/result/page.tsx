@@ -18,7 +18,7 @@ const ResultPage = () => {
     }, []);
     return (
         <>
-            <div className="flex justify-center" ref={targetRef}>
+            <div className="flex justify-center w-fit mx-auto" ref={targetRef}>
                 {portfolio?.template === "standard" && <Standard portfolio={portfolio} />}
                 {portfolio?.template === "grid" && <Grid portfolio={portfolio} />}
             </div>
