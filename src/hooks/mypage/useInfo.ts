@@ -110,7 +110,6 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) return;
 
         if (basicInfo.imageFile) {
@@ -190,6 +189,7 @@ const useInfo = () => {
             }
 
             insert(newPortfolio);
+            localStorage.removeItem("portfolio");
             alert("이력서가 저장되었습니다.");
             return;
         }

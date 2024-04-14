@@ -26,18 +26,18 @@ const usePortfolioQuery = (id: string) => {
         refetchOnWindowFocus: false,
     });
 
-    console.log(portfolioData);
     useEffect(() => {
-        if (portfolioData && !portfolio) {
+        if (portfolioData) {
             setPortfolio(portfolioData[0]);
         }
     }, [setPortfolio, portfolioData, portfolio]);
+    console.log(portfolio);
 
     useEffect(() => {
         if (
             portfolio &&
             !basicInfo.name &&
-            basicInfo.birthday &&
+            !basicInfo.birthday &&
             !basicInfo.email &&
             !basicInfo.oneLineIntroduce &&
             !basicInfo.introduce
