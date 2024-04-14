@@ -1,7 +1,6 @@
 const Footer = () => {
     return (
-        <main className="">
-            <div className="bg-hihigray pt-[60px] pb-[60px] pl-[100px] flex flex-row gap-5 items-start justify-start shrink-0 h-[280px] relative">
+            <div className="bg-hihigray -z-10 pt-[60px] pb-[60px] pl-[100px] flex flex-row gap-5 items-start justify-start shrink-0 h-[280px] relative">
                 <img
                     className="flex flex-col gap-2 items-start justify-start shrink-0 w-[80px] h-[auto] relative overflow-visible"
                     src="../porifo.svg"
@@ -12,7 +11,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </main>
     );
 };
 
