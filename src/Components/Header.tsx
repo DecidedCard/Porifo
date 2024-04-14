@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
 import { userData } from "@/util/supabase/supabase_user";
+import { metadata } from "@/app/layout";
 
 const Header = () => {
     const [loginToggle, setLoginToggle] = useState(false);
@@ -110,7 +111,7 @@ const Header = () => {
                                     </div>
                                 )}
                             </div>
-                            <p className="flex items-center justify-center text-[16px]">닉네임</p>
+                            <p className="flex items-center justify-center text-[16px] text-black">{user?.user_metadata.user_name}</p>
                         </div>
 
                     ) : (
