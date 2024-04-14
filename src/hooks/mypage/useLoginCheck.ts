@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import usePortfolioQuery from "./usePortfolioQuery";
 
 const useLoginCheck = () => {
-    const { setUser } = useUserStore();
+    const { user, setUser } = useUserStore();
     const { isFetching, isError, data } = useQuery({
         queryKey: [QUERY_KEY.myPageUser],
         queryFn: userData,
@@ -19,6 +19,8 @@ const useLoginCheck = () => {
             setUser(data);
         }
     }, [setUser, data]);
+
+    console.log(user);
 
     return { isFetching, isError };
 };
