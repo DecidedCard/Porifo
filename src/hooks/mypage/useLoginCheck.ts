@@ -20,8 +20,6 @@ const useLoginCheck = () => {
         }
     }, [setUser, data]);
 
-    console.log(user);
-
     return { isFetching, isError };
 };
 

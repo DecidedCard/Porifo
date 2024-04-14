@@ -19,10 +19,10 @@ const Header = () => {
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
         try {
-            setUser(null);
-            if (!true) {
+            if (!error) {
                 console.log(error);
             }
+            setUser(null);
         } catch (error) {
             throw new Error();
         }
