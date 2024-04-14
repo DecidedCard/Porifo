@@ -4,26 +4,46 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import { supabase } from "@/util/supabase/clientSupabase";
-import { emailValidate } from "@/util/sign/sign_validate";
-import useUserStore from "@/store/userStore";
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
+
+import { supabase } from "@/util/supabase/clientSupabase";
+import { emailValidate } from "@/util/sign/sign_validate";
+import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
+
 import useInput from "@/hooks/useInput";
+
+import useUserStore from "@/store/userStore";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
+
+    const [redirectTo, setRedirecTo] = useState("");
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [emailRegValid, setEmailRegValid] = useState(false);
+
     const { user, setUser } = useUserStore();
+
     const router = useRouter();
-    const findPassword = () => router.replace("/find_email");
+    const findPassword = () => router.replace("/findEmail");
+
+    useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
+        email.length >= 1 ? setEmailError(false) : setEmailError(true);
+        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
+        if (emailRegValid === true) setEmailError(true);
+        if (password.length >= 8) setPasswordError(true);
+    }, [email, password, emailRegValid]);
+
+    useEffect(() => {
+        signCheckUserPortfolio({ setRedirecTo });
+    }, []);
 
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,25 +53,26 @@ const SignIn = () => {
                 password,
             });
 
+            const { data: userId } = await supabase.from("portfolioInfo").select("userId");
+
+            let confirmPortfolio;
+
+            if (data.user !== null) {
+                confirmPortfolio = userId?.find((item) => (item.userId === data.user.id ? true : false));
+            }
+
             if (error) {
                 alert("로그인에 실패했습니다.");
                 throw new Error("로그인에 실패했습니다.");
             }
             setUser(data);
-            router.replace("/");
+
+            confirmPortfolio !== undefined ? router.replace("/community") : router.replace("/mypage");
             router.refresh();
         } catch (error) {
             return Promise.reject(error);
         }
     };
-
-    useEffect(() => {
-        emailValidate({ email, setEmailRegValid });
-        email.length >= 1 ? setEmailError(false) : setEmailError(true);
-        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
-        if (emailRegValid === true) setEmailError(true);
-        if (password.length >= 8) setPasswordError(true);
-    }, [email, password, emailRegValid]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
@@ -115,10 +136,12 @@ const SignIn = () => {
                             loginPassword={password}
                         />
                     </form>
-                    <SocialSign />
+
+                    <SocialSign redirectTo={redirectTo} />
+
                     <div className="mx-auto">
                         아직 포리포의 회원이 아니신가요?{" "}
-                        <a href="/signup_method" className=" ml-3 underline">
+                        <a href="/signupMethod" className=" ml-3 underline">
                             회원가입
                         </a>
                     </div>

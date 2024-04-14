@@ -1,13 +1,17 @@
 "use client";
 
-import React from "react";
-import SocialSign from "@/Components/Sign/SocialSign";
-import Button from "@/Components/Commen/Button";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Image from "next/image";
-const SignUp_Method = () => {
-    const router = useRouter();
-    const emailSignUp = () => router.push("/signup");
+
+import SocialSign from "@/Components/Sign/SocialSign";
+import SignRouterButton from "@/Components/Sign/SignRouterButton";
+
+import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
+
+const SignUpMethod = () => {
+    const [redirectTo, setRedirecTo] = useState("");
+
+    signCheckUserPortfolio({ setRedirecTo });
 
     return (
         <main>
@@ -22,7 +26,7 @@ const SignUp_Method = () => {
                             alt="form 로고 사진"
                         />
                     </div>
-                    <SocialSign />
+                    <SocialSign redirectTo={redirectTo} />
 
                     <div className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
                         <div className="bg-gray2 w-[150px] h-[1px]"></div>
@@ -32,13 +36,11 @@ const SignUp_Method = () => {
                         <div className="bg-gray2 w-[150px] h-[1px]"></div>
                     </div>
 
-                    <div className="w-fit mt-8 mb-6 mx-auto">
-                        <Button onClick={emailSignUp} text="이메일로 회원가입" size="m" />
-                    </div>
+                    <SignRouterButton />
                 </div>
             </div>
         </main>
     );
 };
 
-export default SignUp_Method;
+export default SignUpMethod;

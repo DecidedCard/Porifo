@@ -7,11 +7,8 @@ import MiddleBottom from "@/Components/MainPage/MiddleBottom";
 import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
-// import useGetUser from "@/hooks/sign/useGetUser";
 
 export default function Home() {
-    // useGetUser();
-    // console.log(useGetUser());
     return (
         <main>
             <div>

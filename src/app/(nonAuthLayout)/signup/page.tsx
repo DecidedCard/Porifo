@@ -1,20 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/util/supabase/clientSupabase";
-import SignUpItem from "@/Components/Sign/SignUpItem";
-import useInput from "@/hooks/useInput";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignSelectSex from "@/Components/Sign/SignSelectSex";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
+import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
+import SignButton from "@/Components/Sign/SignButton";
+import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
+
+import useInput from "@/hooks/useInput";
+
+import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
-import Input from "@/Components/Commen/Input";
 import { passwordValidate } from "@/util/sign/sign_validate";
-import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
-import SignButton from "@/Components/Sign/SignButton";
-import Image from "next/image";
-const clickSex = ["남자", "여자"];
-const clickNumber = ["010", "011"];
-import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -22,6 +24,10 @@ const SignUp = () => {
 
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
+
+    const [birthYear, setBirthYear] = useState("");
+    const [birthMonth, setBirthMonth] = useState("");
+    const [birthDay, setBirthDay] = useState("");
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
@@ -33,13 +39,15 @@ const SignUp = () => {
 
     const [name, onChangeNameHandler] = useInput();
 
-    const [age, setage] = useState("");
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
     const [lastPhoneNumber, setLastPhoneNumber] = useState("");
     const [sex, setSex] = useState("");
 
     const router = useRouter();
+    const birthDate = birthYear + birthMonth + birthDay;
+    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
@@ -54,14 +62,15 @@ const SignUp = () => {
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
-    const onClickFindSex = (sex: string) => setSex(sex);
+    const onClickSelectSex = (sex: string) => setSex(sex);
+
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
 
-    const onChangeAge = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setage(onlyNumber);
-    };
+    const onClickBirthYear = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthYear(e.target.value);
+
+    const onClickBirthMonth = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthMonth(e.target.value);
+
+    const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
 
     const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
@@ -75,19 +84,17 @@ const SignUp = () => {
         setLastPhoneNumber(onlyNumber);
     };
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
-
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ phoneNumber, age, email, password });
+            signUpValidation({ phoneNumber, birthDate, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
                     emailRedirectTo: "http://localhost:3000/signin",
                     data: {
-                        age,
+                        birthDate,
                         user_name: name,
                         phoneNumber,
                         sex,
@@ -152,32 +159,13 @@ const SignUp = () => {
                             onChangeHandler={onChangeNameHandler}
                         />
                     </div>
-                    <SignUpItem
-                        setLabel="나이"
-                        type="text"
-                        value={age}
-                        pattern="[0-9]{2}"
-                        maxLength={2}
-                        placeholder="나이를 입력해주세요"
-                        onChangeHandler={onChangeAge}
+                    <SignUploadBitrthDay
+                        onClickBirthYear={onClickBirthYear}
+                        onClickBirthMonth={onClickBirthMonth}
+                        onClickBirthDay={onClickBirthDay}
                     />
-                    <p className="mx-9">성별</p>
-                    <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
-                        {clickSex.map((item: string, idx: number) => {
-                            return (
-                                <div key={idx} className="flex flex-row my-auto mr-4">
-                                    <label className="mr-1">{item}</label>
-                                    <input
-                                        type="radio"
-                                        name="sex"
-                                        value={item}
-                                        id={item}
-                                        onClick={() => onClickFindSex(item)}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <SignSelectSex onClickSelectSex={onClickSelectSex} />
+
                     <SignPhoneNumber
                         onClickPhoneNumber={onClickPhoneNumber}
                         onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
@@ -193,7 +181,7 @@ const SignUp = () => {
                         email={email}
                         password={password}
                         name={name}
-                        age={age}
+                        birthDate={birthDate}
                         firstNumber={firstNumber}
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}

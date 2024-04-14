@@ -1,4 +1,3 @@
-import React from "react";
 import Input from "@/Components/Commen/Input";
 
 type PhoneNumber = {
