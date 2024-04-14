@@ -1,20 +1,33 @@
 "use client";
 import useCardIdStore from "@/store/detailStore";
 import { QUERY_KEY } from "@/util/query_key";
-import { getComments } from "@/util/supabase/supabase_comments";
-import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { deleteComment, getComments } from "@/util/supabase/supabase_comments";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import React from "react";
 import CommentInput from "./CommentInput";
 import useUserStore from "@/store/userStore";
-import { userData } from "@/util/supabase/supabase_user";
 
 const Comments = () => {
     const { cardId: id } = useCardIdStore();
     const { user } = useUserStore();
+
+    const queryClient = useQueryClient();
+
+    const deleteMutate = useMutation({
+        mutationFn: deleteComment,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolidComments] });
+        },
+    });
+
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
         queryFn: () => getComments({ id }),
     });
+
+    const handleDeleteBtn = (id: number) => {
+        deleteMutate.mutate(id);
+    };
 
     if (isPending) {
         return <div>로딩중</div>;
@@ -23,7 +36,7 @@ const Comments = () => {
     return (
         <>
             <div className="bg-gray-1 w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
-                <CommentInput user={user} id={id} />
+                <CommentInput user={user} id={id} queryClient={queryClient} />
                 <div className="border-[1px] border-solid border-gray2" />
                 {/* 댓글리스트 */}
                 {data?.length === 0 ? (
@@ -57,7 +70,11 @@ const Comments = () => {
                                 </div>
                                 {/* 삭제버튼 */}
                                 {item.user_email === user?.email ? (
-                                    <img className="cursor-pointer" src="grayClose.svg" />
+                                    <img
+                                        onClick={() => handleDeleteBtn(item.id)}
+                                        className="cursor-pointer"
+                                        src="grayClose.svg"
+                                    />
                                 ) : null}
                             </div>
                         );

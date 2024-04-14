@@ -1,15 +1,14 @@
 "use client";
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import React, { useState } from "react";
 
-const CommentInput = ({ user, id }: any) => {
+const CommentInput = ({ user, id, queryClient }: any) => {
     const [comment, setComment] = useState("");
     // 현재 로그인한 유저의 아바타를 가지고 와야함
     //추가 할때 user_name,comment,user_email,profileImage
     //로그인 상태인가? user로 판별
-    const queryClient = useQueryClient();
 
     const addMutate = useMutation({
         mutationFn: addComment,
