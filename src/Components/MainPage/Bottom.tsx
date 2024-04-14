@@ -1,14 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import Button from "../Commen/Button";
 
 const Bottom = () => {
     return (
-        <main className="">
+        <main>
             <div className="flex flex-col items-center justify-center gap-2.5">
-                <img className="rounded-2xl w-[1020px] h-[518px]" src="33.png" />
+                <Image className="rounded-2xl" 
+                src="mainImage8.svg"
+                alt="메인 이미지"
+                width={1020}
+                height={702}
+                />
                 <div className="flex flex-col items-start justify-start gap-2 p-6">
                     <div className="flex flex-col items-start justify-start gap-2 mr-[590px]">
-                        <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-semibold leading-normal">
+                        <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-semibold leading-normal left-[320px]">
                             포토샵을 몰라도
                         </p>
                         <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal">
@@ -21,7 +27,13 @@ const Bottom = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2.5 mt-20">
-                <img className="rounded-2xl w-[630px] h-[400px]" src="22.png" />
+                <Image
+                className="rounded-2xl"
+                src="mainImage9.svg"
+                alt="메인 이미지"
+                width={630}
+                height={400}
+                />
                 <div className="flex flex-col items-start justify-start p-6 mr-48 gap-2">
                     <div className="flex flex-col items-start justify-start gap-2">
                         <p className="text-secondary text-[20px] font-spoqaBold font-semibold leading-normal flex items-center justify-start">
@@ -37,7 +49,13 @@ const Bottom = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2.5 mt-16">
-                <img className="rounded-2xl shrink-0 w-[500px] h-[342px] relative" src="11.png" />
+                <Image
+                className="rounded-2xl"
+                src="mainImage10.svg"
+                alt="메인 이미지"
+                width={500}
+                height={342}
+                />
                 <div className="p-6 mr-20 flex flex-col gap-2 items-start justify-start">
                     <div className="flex flex-col items-start justify-start gap-2">
                         <p className="flex items-center justify-start text-secondary text-[20px] font-spoqaBold font-semibold leading-normal">

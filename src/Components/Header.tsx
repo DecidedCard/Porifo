@@ -1,13 +1,17 @@
 "use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
-
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
 import { userData } from "@/util/supabase/supabase_user";
+
 const Header = () => {
+    const [loginToggle, setLoginToggle] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
     const router = useRouter();
 
     const { user, setUser } = useUserStore();
@@ -24,15 +28,20 @@ const Header = () => {
         router.replace("/");
     };
 
+    const onClickLoginProfile = () => (loginToggle ? setLoginToggle(false) : setLoginToggle(true));
     useEffect(() => {
         const userLoginFunc = async () => {
             try {
                 const userLoginData = await userData();
                 setUser(userLoginData);
-            } catch (error) {}
+            } catch (error) { }
         };
         userLoginFunc();
     }, []);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
 
     return (
         <main className="sticky top-0 z-50">
@@ -53,13 +62,51 @@ const Header = () => {
                 </div>
 
                 {/* Right Section: Authentication Buttons */}
+
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     {user ? (
-                        <div onClick={signOutFunc}>
-                            <Link href="/">
-                                <Button text="로그아웃" size="s" color="primary" border="none" fontSize="xs" />
-                            </Link>
+                        <div className="flex flex-row gap-3">
+                            <div className="relative flex flex-row gap-5">
+                                <button onClick={toggleMenu}>
+                                    <Image
+                                        src="profile.svg"
+                                        width="28"
+                                        height="28"
+                                        alt="로그인 프로필"
+                                        aria-hidden="true"
+                                    />
+                                </button>
+
+                                {showMenu && (
+                                    <div className={`absolute flex flex-col items-center justify-center top-full mt-4 w-[170px] h-[96px] bg-white rounded-[16px] p-3 transform -translate-x-1/2 left-1/2 ${bubbleAfter}`}>
+                                        <div>
+                                            <Link href="/mypage" className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]">
+                                                <Image
+                                                    src="headerwrite.svg"
+                                                    alt="="
+                                                    width="16"
+                                                    height="18"
+                                                />
+                                                <p className="text-[12px]">이력서 작성</p>
+                                            </Link>
+                                        </div>
+                                        <div onClick={signOutFunc}>
+                                            <Link href="/" className="flex flex-row items-center justify-center gap-3 mr-[13.5px] w-[146px] h-[32px]">
+                                                <Image
+                                                    src="headerlogout.svg"
+                                                    alt="X"
+                                                    width="15"
+                                                    height="15"
+                                                />
+                                                <p className="text-[12px]">로그아웃</p>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <p className="flex items-center justify-center text-[16px]">닉네임</p>
                         </div>
+
                     ) : (
                         <>
                             <div>
@@ -82,3 +129,6 @@ const Header = () => {
 };
 
 export default Header;
+
+const bubbleAfter =
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
