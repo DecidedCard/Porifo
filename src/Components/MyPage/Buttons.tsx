@@ -4,12 +4,10 @@ import React, { useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
-import { useRouter } from "next/navigation";
 import { RiLinkM } from "react-icons/ri";
 import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
-import Portfolio from "./Portfolio";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
@@ -21,7 +19,7 @@ const Buttons = () => {
         useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
-    const { targetRef, toPDF } = usePDF({ filename: "test" });
+    const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio" });
 
     const [previewModal, setPreviewModal] = useState(false);
 
