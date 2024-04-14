@@ -32,36 +32,6 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
-    const career = info.career as Career[];
-
-    const careerCheck = career.map((careerItem) => {
-        if (!careerItem.company) {
-            return true;
-        }
-
-        if (!careerItem.department) {
-            return true;
-        }
-
-        if (!careerItem.position) {
-            return true;
-        }
-
-        if (!careerItem.date) {
-            return true;
-        }
-
-        if (!careerItem.comment) {
-            return true;
-        }
-
-        return false;
-    });
-
-    if (careerCheck.find((item) => item === true)) {
-        return true;
-    }
-
     const project = info.project as Project[];
 
     const projectCheck = project.map((projectItem) => {
