@@ -26,14 +26,12 @@ const Project = () => {
 
     return (
         <>
-            <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
-                <h1 className="flex items-center justify-start pl-6 pt-6 text-2xl font-bold tracking-wider">
-                    프로젝트
-                </h1>
+            <main className="flex flex-col gap-4 bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
+                <h1 className="pl-6 pt-6 text-2xl font-bold tracking-wider">프로젝트</h1>
 
-                <hr className="border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
 
-                <h2 className="flex justify-center text-xl font-medium">프로젝트 정보</h2>
+                <p className="flex justify-center text-xl font-medium">프로젝트 정보</p>
                 {projects &&
                     projects.map((item, projectsIndex) => {
                         return (
@@ -97,7 +95,7 @@ const Project = () => {
                                         ) : (
                                             <div className="flex items-center justify-center w-full h-full">
                                                 <label htmlFor={`file${projectsIndex}`}>
-                                                    <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
+                                                    <div className="flex items-center justify-center w-8 h-8 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
                                                         +
                                                     </div>
                                                 </label>
@@ -120,14 +118,13 @@ const Project = () => {
                                 <div className="flex">
                                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">내용</label>
                                     <div className="w-[460px]">
-                                        <Input
-                                            type="text"
-                                            size="big"
+                                        <textarea
                                             placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
                                             value={projects[projectsIndex].introduce}
-                                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                            onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                                 onChangeProjectIntroduce(e, projectsIndex)
                                             }
+                                            className="w-[460px] h-[140px] resize-none rounded-lg py-2 px-3 border border-solid border-zinc-300"
                                         />
                                     </div>
                                 </div>

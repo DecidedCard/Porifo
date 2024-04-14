@@ -22,7 +22,7 @@ const useProject = () => {
         setProjectName(e.target.value, index);
     };
 
-    const onChangeProjectIntroduce = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const onChangeProjectIntroduce = (e: ChangeEvent<HTMLTextAreaElement>, index: number) => {
         setProjectIntroduce(e.target.value, index);
     };
 

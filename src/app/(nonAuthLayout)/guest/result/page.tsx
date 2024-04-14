@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/Components/Commen/Button";
+import LoginCheckModal from "@/Components/LoginCheckModal";
 import Standard from "@/Components/Template one/Standard";
 import Grid from "@/Components/Template two/Grid";
 import useGuestButton from "@/hooks/guest/useGuestButton";
@@ -9,6 +10,7 @@ import React, { useEffect, useState } from "react";
 
 const ResultPage = () => {
     const [portfolio, setPortfolio] = useState<PortfolioInfo>();
+    const [loginCheckModal, setLoginCheckModal] = useState(false);
     const { targetRef, toPDF } = useGuestButton();
     useEffect(() => {
         const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!);
@@ -23,9 +25,10 @@ const ResultPage = () => {
                 {portfolio?.template === "grid" && <Grid portfolio={portfolio} />}
             </div>
             <div className="flex gap-5 w-96 mx-auto mt-10">
-                <Button text="url 복사" color="secondary" size="l" />
+                <Button text="url 복사" color="secondary" size="l" onClick={() => setLoginCheckModal(true)} />
                 <Button text="pdf 다운로드" color="primary" size="l" onClick={() => toPDF()} />
             </div>
+            {loginCheckModal && <LoginCheckModal route="/guest/result" setLoginCheckModal={setLoginCheckModal} />}
         </>
     );
 };

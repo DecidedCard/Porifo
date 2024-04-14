@@ -47,7 +47,7 @@ const SignUp = () => {
 
     const router = useRouter();
     const birthDate = birthYear + birthMonth + birthDay;
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    // const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
@@ -82,7 +82,7 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ phoneNumber, birthDate, email, password });
+            signUpValidation({ birthDate, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
@@ -91,7 +91,6 @@ const SignUp = () => {
                     data: {
                         birthDate,
                         user_name: name,
-                        phoneNumber,
                         sex,
                     },
                 },
@@ -161,13 +160,13 @@ const SignUp = () => {
                     />
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
 
-                    <SignPhoneNumber
+                    {/* <SignPhoneNumber
                         onClickPhoneNumber={onClickPhoneNumber}
                         onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
                         onChangeLastPhoneNumber={onChangeLastPhoneNumber}
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
-                    />
+                    /> */}
 
                     <SignButton
                         text="회원가입"

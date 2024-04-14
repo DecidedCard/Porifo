@@ -6,105 +6,105 @@ const MiddleImage = () => {
             <div className="flex flex-row gap-8 items-start justify-start animate-slide-right">
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
                     className="rounded-2xl"
-                    src="mainImage1.svg"
+                    src="/assets/image/mainImage1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}

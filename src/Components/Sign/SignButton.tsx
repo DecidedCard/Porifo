@@ -36,8 +36,7 @@ const SignButton = ({
     lastPhoneNumber,
     sex,
 }: InputValue) => {
-    const signUp =
-        email && password && birthDate && name && firstNumber && middlePhoneNumber && lastPhoneNumber && sex !== "";
+    const signUp = email && password && birthDate && name && sex !== "";
 
     const confirmEmail = findEmail && password === undefined && birthDate === undefined;
     const confirmPassword = password && confirmUserPassword;

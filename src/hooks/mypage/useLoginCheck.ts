@@ -6,15 +6,13 @@ import { useEffect } from "react";
 import usePortfolioQuery from "./usePortfolioQuery";
 
 const useLoginCheck = () => {
-    const { setUser } = useUserStore();
+    const { user, setUser } = useUserStore();
     const { isFetching, isError, data } = useQuery({
         queryKey: [QUERY_KEY.myPageUser],
         queryFn: userData,
         retry: 0,
         refetchOnWindowFocus: false,
     });
-
-    usePortfolioQuery(data?.id!);
 
     useEffect(() => {
         if (data) {
