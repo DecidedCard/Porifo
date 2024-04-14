@@ -10,6 +10,7 @@ import SignButton from "@/Components/Sign/SignButton";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
+import { userData } from "@/util/supabase/supabase_user";
 
 import useInput from "@/hooks/useInput";
 
@@ -18,13 +19,15 @@ import useUserStore from "@/store/userStore";
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
     const [password, setPassword] = useState("");
-
+    const [redirect, setRedirect] = useState("");
     const [emailError, setEmailError] = useState(true);
     const [passwordError, setPasswordError] = useState(true);
 
     const [inputDisabled, setInputDisabled] = useState(false);
     const [emailRegValid, setEmailRegValid] = useState(false);
+
     const { user, setUser } = useUserStore();
+
     const router = useRouter();
     const findPassword = () => router.replace("/find_email");
 
@@ -35,6 +38,20 @@ const SignIn = () => {
         if (emailRegValid === true) setEmailError(true);
         if (password.length >= 8) setPasswordError(true);
     }, [email, password, emailRegValid]);
+
+    useEffect(() => {
+        userMetadataCondition();
+    }, []);
+
+    const userMetadataCondition = async () => {
+        const user = await userData();
+
+        let redirectTo: string;
+        user?.user_metadata.birthDate !== "" && user?.user_metadata.phoneNumber !== "" && user?.user_metadata.sex !== ""
+            ? (redirectTo = `${process.env.NEXT_PUBLIC_MYPAGE_PATH}`)
+            : (redirectTo = `${process.env.NEXT_PUBLIC_SOCIAL_SETTING_PATH}`);
+        setRedirect(redirectTo);
+    };
 
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -133,7 +150,9 @@ const SignIn = () => {
                             loginPassword={password}
                         />
                     </form>
-                    <SocialSign />
+
+                    <SocialSign redirectTo={redirect} />
+
                     <div className="mx-auto">
                         아직 포리포의 회원이 아니신가요?{" "}
                         <a href="/signup_method" className=" ml-3 underline">

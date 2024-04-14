@@ -8,7 +8,9 @@ import Button from "@/Components/Commen/Button";
 
 const Welcome = () => {
     const router = useRouter();
+
     const onClickLogin = () => router.replace("/signin");
+
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
