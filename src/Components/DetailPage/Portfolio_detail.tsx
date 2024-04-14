@@ -1,10 +1,13 @@
 "use client";
+
+import { useQuery } from "@tanstack/react-query";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import Comments from "./Comments";
+
 import useCardIdStore from "@/store/detailStore";
+
+import Comments from "./Comments";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
@@ -30,9 +33,7 @@ const Portfolio_detail = () => {
                 {portfolioInfo.template === "grid" && <Grid portfolio={portfolioInfo} />}
             </div>
             <div className="flex flex-col items-center gap-[30px] bg-gray">
-                <div>
-                    <LikeShare />
-                </div>
+                <div>{/* <LikeShare /> */}</div>
                 <div className="w-[80%] flex justify-center rounded-2xl bg-hihigray">
                     <Comments />
                 </div>

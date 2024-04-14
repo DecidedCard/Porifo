@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-
-import Dropdown from "./Dropdown";
+import { useState } from "react";
 
 import useSupabaseRange from "@/hooks/useSupabaseRange";
+
+import Dropdown from "./Dropdown";
 
 const Filter = () => {
     const { filter } = useSupabaseRange();

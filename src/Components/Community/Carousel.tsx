@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
-import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEY } from "@/util/query_key";
+
+import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
     const [translateX, setTranslateX] = useState(0);
+
+    const { setCardId, setIsOpenModal } = useCardIdStore();
+
+    const queryClient = useQueryClient();
+
     const { isPending, data } = useQuery({
         queryKey: ["hotDevelopers"],
         queryFn: getHotDevelopers,
@@ -36,23 +45,28 @@ const Carousel = () => {
         <>
             <div className="flex flex-row w-screen overflow-hidden gap-5 items-center justify-center relative mb-20">
                 {/* 카드 */}
-                {data!.map((item, idx) => {
+                {data!.map((item: any, idx) => {
                     return (
                         <div
                             key={item.id}
-                            className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0"
+                            className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer"
                             style={{
                                 transform: `translateX(${translateX}px)`,
                                 transition: "transform 0.3s ease-in-out",
                             }}
+                            onClick={() => {
+                                setIsOpenModal(true),
+                                    setCardId(item.id),
+                                    queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
+                            }}
                         >
                             {/* 카드 이미지 */}
                             <img
-                                className="rounded-2xl "
+                                className="rounded-2xl w-[100%] h-[100%] "
                                 style={{
                                     objectFit: "cover",
                                 }}
-                                src="rectangle-1150.png"
+                                src={item.profileImage}
                             />
                             {/* 블러박스 */}
                             <div
@@ -71,7 +85,7 @@ const Carousel = () => {
                                             className="rounded-[50px] w-8 h-8"
                                             style={{ objectFit: "cover" }}
                                             alt={`hotDeveloper-img-${idx}`}
-                                            src="rectangle0.png"
+                                            src={item.profileImage}
                                         />
                                         {/* 유저이름 */}
                                         <div className="font-spoqaMedium text-white font-bold flex items-center justify-center">
@@ -83,16 +97,16 @@ const Carousel = () => {
                                         <div className="flex gap-1 items-center">
                                             <div className="shrink-0 w-6 h-6 relative">
                                                 {/* 좋아요 */}
-                                                <img src="grayHeart.svg" />
+                                                {/* <img src="grayHeart.svg" /> */}
                                             </div>
-                                            <div className="text-gray">210</div>
+                                            {/* <div className="text-gray">210</div> */}
                                         </div>
                                         <div className="flex gap-1 items-center">
                                             <div className="shrink-0 w-6 h-6 relative">
                                                 {/* 조회수 */}
-                                                <img src="grayEye.svg" />
+                                                {/* <img src="grayEye.svg" /> */}
                                             </div>
-                                            <div className="text-gray">1523</div>
+                                            {/* <div className="text-gray">1523</div> */}
                                         </div>
                                     </div>
                                 </div>

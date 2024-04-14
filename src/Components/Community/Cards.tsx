@@ -1,26 +1,27 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
+
+import useCardIdStore from "@/store/detailStore";
+
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
-import useCardIdStore from "@/store/detailStore";
-import useUserStore from "@/store/userStore";
-import { userData } from "@/util/supabase/supabase_user";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     //모달 상태
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const { setCardId } = useCardIdStore();
+    const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
     const { jobFilter } = filterData;
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
+
+    const queryClient = useQueryClient();
 
     // 모달 open일때 body스크롤 방지
     // if (isOpenModal) {
@@ -65,19 +66,21 @@ const Cards = ({ filterData }: { filterData: any }) => {
                         return (
                             <div
                                 key={item.id}
-                                className="w-[350px] cursor-pointer "
+                                className="cursor-pointer "
                                 onClick={() => {
-                                    setIsOpenModal(true), setCardId(item.id);
+                                    setIsOpenModal(true),
+                                        setCardId(item.id),
+                                        queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
                                 <div className="flex flex-col gap-2">
                                     {/* 대표이미지 */}
                                     <img
-                                        className="rounded-2xl"
+                                        className="rounded-2xl w-[350px] h-[220px]"
                                         style={{
                                             objectFit: "cover",
                                         }}
-                                        src="rectangle-1153.png"
+                                        src={item.profileImage}
                                     />
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
@@ -85,7 +88,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                             <img
                                                 className="rounded-[50px] w-8 h-8"
                                                 style={{ objectFit: "cover" }}
-                                                src="rectangle0.png"
+                                                src={item.profileImage}
                                             />
                                             {/* 유저닉네임 */}
                                             <div className="text-graytext-black flex items-center justify-center">
@@ -95,17 +98,13 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                         <div className="flex gap-4">
                                             <div className="flex gap-1 items-center ">
                                                 {/* 좋아요 하트 */}
-                                                <div className="w-6 h-6 ">
-                                                    <img src="grayHeart.svg" />
-                                                </div>
-                                                <span>210</span>
+                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
+                                                {/* <span>210</span> */}
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
-                                                <div className="w-6 h-6 ">
-                                                    <img src="grayEye.svg" />
-                                                </div>
-                                                <span>1523</span>
+                                                <div className="w-6 h-6 ">{/* <img src="grayEye.svg" /> */}</div>
+                                                {/* <span>1523</span> */}
                                             </div>
                                         </div>
                                     </div>
