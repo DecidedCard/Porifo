@@ -11,6 +11,8 @@ import useSupabaseRange from "@/hooks/useSupabaseRange";
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import useCardIdStore from "@/store/detailStore";
+import useUserStore from "@/store/userStore";
+import { userData } from "@/util/supabase/supabase_user";
 
 const Cards = ({ filterData }: { filterData: any }) => {
     //모달 상태
@@ -21,12 +23,29 @@ const Cards = ({ filterData }: { filterData: any }) => {
     const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
 
     // 모달 open일때 body스크롤 방지
-    // if (isOpenModal) {
-    //     document.body.style.overflow = "hidden";
-    // } else {
-    //     document.body.style.overflow = "auto";
-    // }
+    if (isOpenModal) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
 
+    const { user, setUser } = useUserStore();
+
+    useEffect(() => {
+        const userLoginFunc = async () => {
+            try {
+                const userLoginData = await userData();
+                setUser(userLoginData);
+            } catch (error) {}
+        };
+        userLoginFunc();
+    }, []);
+
+    if (user === null) {
+        console.log("로그인 유저 없음");
+    } else {
+        console.log(user.user_metadata.user_name);
+    }
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
