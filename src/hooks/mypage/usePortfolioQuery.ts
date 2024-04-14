@@ -11,7 +11,7 @@ import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 
 const usePortfolioQuery = (id: string) => {
     const { setPortfolio, portfolio } = useUserStore();
-    const { setInitialBasicInfo } = usePortfolioInfoStore();
+    const { setInitialBasicInfo, basicInfo } = usePortfolioInfoStore();
     const { setProjectsInitial } = useProjectsStore();
     const { setInitialCareers } = useCareerStore();
     const {
@@ -26,11 +26,36 @@ const usePortfolioQuery = (id: string) => {
         refetchOnWindowFocus: false,
     });
 
+    console.log(portfolioData);
     useEffect(() => {
         if (portfolioData && !portfolio) {
             setPortfolio(portfolioData[0]);
         }
     }, [setPortfolio, portfolioData, portfolio]);
+
+    useEffect(() => {
+        if (
+            portfolio &&
+            !basicInfo.name &&
+            basicInfo.birthday &&
+            !basicInfo.email &&
+            !basicInfo.oneLineIntroduce &&
+            !basicInfo.introduce
+        ) {
+            const project = portfolio.project as Project[];
+            if (project) {
+                setProjectsInitial(project);
+            }
+
+            const career = portfolio.career as Career[];
+
+            if (career) {
+                setInitialCareers(career);
+            }
+
+            setInitialBasicInfo(portfolio);
+        }
+    }, [portfolio, basicInfo, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
 
     return { portfolio, isFetching, isError };
 };
