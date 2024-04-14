@@ -29,23 +29,6 @@ const Cards = ({ filterData }: { filterData: any }) => {
         document.body.style.overflow = "auto";
     }
 
-    const { user, setUser } = useUserStore();
-
-    useEffect(() => {
-        const userLoginFunc = async () => {
-            try {
-                const userLoginData = await userData();
-                setUser(userLoginData);
-            } catch (error) {}
-        };
-        userLoginFunc();
-    }, []);
-
-    if (user === null) {
-        console.log("로그인 유저 없음");
-    } else {
-        console.log(user.user_metadata.user_name);
-    }
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
