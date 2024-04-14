@@ -20,7 +20,7 @@ const SocialSign = ({ redirectTo }: { redirectTo: string }) => {
                     className="w-[40px] h-[40px] cursor-pointer rounded-2xl shrink-0 w-156 h-136 relative"
                     width={0}
                     height={0}
-                    src="google.svg"
+                    src="/assets/image/google.svg"
                     alt="구글 로그인"
                 />
 
@@ -30,7 +30,7 @@ const SocialSign = ({ redirectTo }: { redirectTo: string }) => {
                     width={0}
                     height={0}
                     alt="카카오 로그인"
-                    src="kakao.svg"
+                    src="/assets/image/kakao.svg"
                 />
                 <Image
                     onClick={() => signInWithSocial("github", redirectTo)}
@@ -38,7 +38,7 @@ const SocialSign = ({ redirectTo }: { redirectTo: string }) => {
                     width={0}
                     height={0}
                     alt="깃허브 로그인"
-                    src="github.svg"
+                    src="/assets/image/github.svg"
                 />
             </div>
         </div>

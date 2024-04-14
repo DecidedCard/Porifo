@@ -26,6 +26,7 @@ const Header = () => {
         } catch (error) {
             throw new Error();
         }
+        setUser(null);
         router.replace("/");
     };
 

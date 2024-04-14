@@ -15,7 +15,6 @@ export const getComments = async ({ id }: { id: number }) => {
         console.error(error);
         return null;
     }
-    console.log(data);
     return data;
 };
 

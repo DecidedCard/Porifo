@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const Modal = ({ isVisible, onClose, children }: any) => {
     if (!isVisible) return null;
     const handleClose = (e: any) => {

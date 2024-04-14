@@ -10,7 +10,7 @@ const Cover = () => {
                 muted // 비디오 음소거
                 loop // 비디오가 재생이 끝나면 다시 재생
             >
-                <source src="mainVideo.mp4" type="video/mp4" />
+                <source src="/assets/video/mainVideo.mp4" type="video/mp4" />
             </video>
             <div className="w-full h-full absolute top-0 left-0 bg-black opacity-50"></div>
             <div className="flex flex-col items-center justify-center mt-10 absolute top-[170px] w-full">

@@ -1,11 +1,14 @@
 "use client";
-import useCardIdStore from "@/store/detailStore";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { deleteComment, getComments } from "@/util/supabase/supabase_comments";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
-import CommentInput from "./CommentInput";
+
 import useUserStore from "@/store/userStore";
+import useCardIdStore from "@/store/detailStore";
+
+import CommentInput from "./CommentInput";
 
 const Comments = () => {
     const { cardId: id } = useCardIdStore();
@@ -58,7 +61,7 @@ const Comments = () => {
                                         </span>
                                         <span>
                                             {/* 몇일됬는지 */}
-                                            {item.created_at}
+                                            {/* {item.created_at} */}
                                         </span>
                                     </div>
                                     <div className="flex gap-2">

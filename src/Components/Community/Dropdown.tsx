@@ -2,8 +2,9 @@
 
 import { useQueryClient } from "@tanstack/react-query";
 
-import useSupabaseRange from "@/hooks/useSupabaseRange";
 import { QUERY_KEY } from "@/util/query_key";
+
+import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 const Dropdown = ({ props }: any) => {
     const { setView } = props;
