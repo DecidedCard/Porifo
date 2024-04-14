@@ -22,14 +22,6 @@ const SocialSeting = () => {
     const [birthDay, setBirthDay] = useState("");
 
     const [sex, setSex] = useState("");
-    const confirm = async () => {
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-        console.log(user);
-        console.log(user?.user_metadata);
-    };
-    confirm();
 
     const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const birthDate = birthYear + birthMonth + birthDay;

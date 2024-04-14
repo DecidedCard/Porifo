@@ -10,7 +10,9 @@ const SignUp_Method = async () => {
 
     let redirectTo: string;
 
-    user?.user_metadata.birthDate !== "" && user?.user_metadata.phoneNumber !== "" && user?.user_metadata.sex !== ""
+    user?.user_metadata.birthDate !== undefined &&
+    user?.user_metadata.phoneNumber !== undefined &&
+    user?.user_metadata.sex !== undefined
         ? (redirectTo = `${process.env.NEXT_PUBLIC_MYPAGE_PATH}`)
         : (redirectTo = `${process.env.NEXT_PUBLIC_SOCIAL_SETTING_PATH}`);
 
