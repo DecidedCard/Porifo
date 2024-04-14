@@ -21,7 +21,6 @@ const useInfo = () => {
         setProfile,
         setImageFile,
         setBirthday,
-        setTel,
         setEmail,
         setJob,
         setOneLineIntroduce,
@@ -80,10 +79,6 @@ const useInfo = () => {
 
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setBirthday(e.target.value);
-    };
-
-    const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTel(e.target.value);
     };
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -242,7 +237,6 @@ const useInfo = () => {
         onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
-        onChangeTelHandler,
         onChangeEmailHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
