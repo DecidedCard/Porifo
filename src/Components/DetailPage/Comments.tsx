@@ -12,7 +12,6 @@ import CommentInput from "./CommentInput";
 
 const Comments = () => {
     const { cardId: id } = useCardIdStore();
-
     const { user } = useUserStore();
 
     const queryClient = useQueryClient();
