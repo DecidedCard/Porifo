@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
-import Cards from "./Cards";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
+
+import Cards from "./Cards";
 
 export const SELECT_LIST = [
     { value: "*", name: "전체" },
