@@ -199,7 +199,7 @@ const Recommendation = () => {
                 {/* </div>
             </div> */} 
 
-            <div className="flex flex-col items-center justify-center mt-20 gap-4">
+            <div className="flex flex-col items-start justify-start mr-[450px] mt-20 gap-4">
                 <p className="flex items-center justify-center font-bold text-[40px] leading-normal">
                     동료들이 올린 양질의 정보를
                     <br />

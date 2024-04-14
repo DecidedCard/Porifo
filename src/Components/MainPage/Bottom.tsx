@@ -4,13 +4,13 @@ import Button from "../Commen/Button";
 
 const Bottom = () => {
     return (
-        <main>
-            <div className="flex flex-col items-center justify-center gap-2.5">
-                <Image className="rounded-2xl" 
-                src="mainImage8.svg"
-                alt="메인 이미지"
-                width={1020}
-                height={702}
+        <main className="mb-44">
+            <div className="flex flex-col items-start justify-start ml-[320px] gap-2.5">
+                <Image className="rounded-2xl"
+                    src="mainImage8.svg"
+                    alt="메인 이미지"
+                    width={1020}
+                    height={702}
                 />
                 <div className="flex flex-col items-start justify-start gap-2 p-6">
                     <div className="flex flex-col items-start justify-start gap-2 mr-[590px]">
@@ -26,13 +26,13 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2.5 mt-20">
+            <div className="flex flex-col items-start justify-start ml-[970px] gap-2.5 mt-20">
                 <Image
-                className="rounded-2xl"
-                src="mainImage9.svg"
-                alt="메인 이미지"
-                width={630}
-                height={400}
+                    className="rounded-2xl"
+                    src="mainImage9.svg"
+                    alt="메인 이미지"
+                    width={630}
+                    height={400}
                 />
                 <div className="flex flex-col items-start justify-start p-6 mr-48 gap-2">
                     <div className="flex flex-col items-start justify-start gap-2">
@@ -48,13 +48,13 @@ const Bottom = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2.5 mt-16">
+            <div className="flex flex-col items-start justify-start ml-[450px] gap-2.5 mt-16">
                 <Image
-                className="rounded-2xl"
-                src="mainImage10.svg"
-                alt="메인 이미지"
-                width={500}
-                height={342}
+                    className="rounded-2xl"
+                    src="mainImage10.svg"
+                    alt="메인 이미지"
+                    width={500}
+                    height={342}
                 />
                 <div className="p-6 mr-20 flex flex-col gap-2 items-start justify-start">
                     <div className="flex flex-col items-start justify-start gap-2">
@@ -68,11 +68,10 @@ const Bottom = () => {
                         </p>
                     </div>
                 </div>
+                <Link href={"/community"} className="flex items-start justify-start ml-5 w-[240px]">
+                    <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
+                </Link>
             </div>
-
-            <Link href={"/community"} className="flex items-center justify-center mx-auto my-20 w-[240px] relative">
-                <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
-            </Link>
         </main>
     );
 };
