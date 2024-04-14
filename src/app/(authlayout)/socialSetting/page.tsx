@@ -8,7 +8,7 @@ import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import Button from "@/Components/Commen/Button";
-
+import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
 
@@ -32,17 +32,11 @@ const SocialSeting = () => {
 
     const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
 
-    const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setMiddlePhoneNumber(onlyNumber);
-    };
+    const onChangeMiddlePhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
+        signPhoneNumber({ event, setPhoneNumber: setMiddlePhoneNumber });
 
-    const onChangeLastPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setLastPhoneNumber(onlyNumber);
-    };
+    const onChangeLastPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
+        signPhoneNumber({ event, setPhoneNumber: setLastPhoneNumber });
 
     const onClickBirthYear = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthYear(e.target.value);
 
