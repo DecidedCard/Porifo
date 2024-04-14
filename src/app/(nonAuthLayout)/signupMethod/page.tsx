@@ -1,20 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignRouterButton from "@/Components/Sign/SignRouterButton";
 
-import { userData } from "@/util/supabase/supabase_user";
+import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
 
-const SignUp_Method = async () => {
-    const user = await userData();
+const SignUpMethod = () => {
+    const [redirectTo, setRedirecTo] = useState("");
 
-    let redirectTo: string;
-
-    user?.user_metadata.birthDate !== undefined &&
-    user?.user_metadata.phoneNumber !== undefined &&
-    user?.user_metadata.sex !== undefined
-        ? (redirectTo = `${process.env.NEXT_PUBLIC_MYPAGE_PATH}`)
-        : (redirectTo = `${process.env.NEXT_PUBLIC_SOCIAL_SETTING_PATH}`);
+    signCheckUserPortfolio({ setRedirecTo });
 
     return (
         <main>
@@ -46,4 +43,4 @@ const SignUp_Method = async () => {
     );
 };
 
-export default SignUp_Method;
+export default SignUpMethod;

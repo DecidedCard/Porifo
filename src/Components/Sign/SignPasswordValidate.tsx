@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 type PasswordPatternType = {
     wordRegValid: boolean;
     numberRegValid: boolean;

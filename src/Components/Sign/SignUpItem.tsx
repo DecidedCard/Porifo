@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Input from "@/Components/Commen/Input";
 import Image from "next/image";
+
+import Input from "@/Components/Commen/Input";
+
 type SignUpItemType = {
     setLabel: string;
     value?: string;
