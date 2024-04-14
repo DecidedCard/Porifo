@@ -1,8 +1,8 @@
 const MiddleBottom = () => {
     return (
         <main>
-            <div className="flex flex-col gap-6 items-center justify-start shrink-0">
-                <div className="flex items-center justify-cneter tracking-wider leading-normal font-spoqaMedium text-black text-center font-bold text-[40px]">
+            <div className="flex flex-col gap-4 items-center justify-start">
+                <div className="flex items-center justify-center tracking-wider leading-normal font-spoqaMedium text-black text-center font-bold text-[40px]">
                     포리포로 제작된
                     <br />
                     개발자들의 포트폴리오를 확인해 보세요
