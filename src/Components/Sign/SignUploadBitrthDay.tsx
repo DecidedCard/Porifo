@@ -1,4 +1,3 @@
-import React from "react";
 type BirthDayType = {
     onClickBirthYear: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     onClickBirthMonth: (e: React.ChangeEvent<HTMLSelectElement>) => void;

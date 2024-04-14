@@ -16,10 +16,6 @@ export const signUpValidation = ({ phoneNumber, birthDate, email, password }: Si
         alert("핸드폰 번호를 정확히 입력해 주세요.");
         return;
     }
-    if (birthDate?.length !== 9 || 10 || 11) {
-        alert("생년월일을 정확히 입력해 주세요.");
-        return;
-    }
 
     if (email.trim() === "" && password.trim() === "" && birthDate === "") {
         alert("정확한 값이 입력되지 않았습니다.");
@@ -30,11 +26,6 @@ export const signUpValidation = ({ phoneNumber, birthDate, email, password }: Si
 export const signSettingValidation = ({ phoneNumber, birthDate, sex }: SignSettingValidationType) => {
     if (phoneNumber.length !== 11) {
         alert("핸드폰 번호를 정확히 입력해 주세요.");
-        return;
-    }
-
-    if (birthDate?.length !== 9 || 10 || 11) {
-        alert("생년월일을 정확히 입력해 주세요.");
         return;
     }
 
