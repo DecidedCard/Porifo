@@ -1,13 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
-import { passwordValidate } from "@/util/sign/sign_validate";
+import Image from "next/image";
+
 import SignUpItem from "@/Components/Sign/SignUpItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
+
+import { supabase } from "@/util/supabase/clientSupabase";
+import { passwordValidate } from "@/util/sign/sign_validate";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");

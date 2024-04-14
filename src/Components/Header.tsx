@@ -1,13 +1,16 @@
 "use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
-
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
 import { userData } from "@/util/supabase/supabase_user";
+
 const Header = () => {
+    const [loginToggle, setLoginToggle] = useState(false);
     const router = useRouter();
 
     const { user, setUser } = useUserStore();
@@ -24,6 +27,7 @@ const Header = () => {
         router.replace("/");
     };
 
+    const onClickLoginProfile = () => (loginToggle ? setLoginToggle(false) : setLoginToggle(true));
     useEffect(() => {
         const userLoginFunc = async () => {
             try {
@@ -53,6 +57,20 @@ const Header = () => {
                 </div>
 
                 {/* Right Section: Authentication Buttons */}
+
+                <Image
+                    className="w-[28px] h-[28px] cursor-pointer"
+                    src="profile.svg"
+                    width={0}
+                    height={0}
+                    alt="로그인 프로필"
+                    aria-hidden="true"
+                />
+
+                <div className={`mt-20 w-[120px] h-[60px] relative bg-hihigray rounded-[14px] ${bubbleAfter}`}>
+                    <p>이력서 작성</p>
+                    <p>로그 아웃</p>
+                </div>
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center">
                     {user ? (
                         <div onClick={signOutFunc}>
@@ -82,3 +100,6 @@ const Header = () => {
 };
 
 export default Header;
+
+const bubbleAfter =
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px]  after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
