@@ -10,6 +10,7 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
+import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 
 import useInput from "@/hooks/useInput";
 
@@ -72,17 +73,11 @@ const SignUp = () => {
 
     const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
 
-    const onChangeMiddlePhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setMiddlePhoneNumber(onlyNumber);
-    };
+    const onChangeMiddlePhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
+        signPhoneNumber({ event, setPhoneNumber: setMiddlePhoneNumber });
 
-    const onChangeLastPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
-        const onlyNumber = value.replace(/[^0-9]/g, "");
-        setLastPhoneNumber(onlyNumber);
-    };
+    const onChangeLastPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
+        signPhoneNumber({ event, setPhoneNumber: setLastPhoneNumber });
 
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
