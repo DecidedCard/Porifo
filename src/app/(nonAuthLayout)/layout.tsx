@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/Components/Loading";
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 import { useRouter } from "next/navigation";
 import React, { PropsWithChildren } from "react";
@@ -7,11 +8,16 @@ import React, { PropsWithChildren } from "react";
 const NonAuthLayout = ({ children }: PropsWithChildren) => {
     const { isFetching, isError } = useLoginCheck();
     const router = useRouter();
+
     if (isFetching) {
-        return <>로딩중입니다...</>;
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
     }
+
     if (!isFetching && !isError) {
-        alert("로그인후 이용은 불가능합니다.");
         router.replace("/mypage");
     }
 

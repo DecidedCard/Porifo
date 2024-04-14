@@ -9,6 +9,7 @@ export type Database = {
                     created_at: string;
                     id: number;
                     portfolio_id: number | null;
+                    profileImage: string | null;
                     user_email: string | null;
                     user_name: string | null;
                 };
@@ -17,6 +18,7 @@ export type Database = {
                     created_at?: string;
                     id?: number;
                     portfolio_id?: number | null;
+                    profileImage?: string | null;
                     user_email?: string | null;
                     user_name?: string | null;
                 };
@@ -25,18 +27,11 @@ export type Database = {
                     created_at?: string;
                     id?: number;
                     portfolio_id?: number | null;
+                    profileImage?: string | null;
                     user_email?: string | null;
                     user_name?: string | null;
                 };
-                Relationships: [
-                    {
-                        foreignKeyName: "public_comments_portfolio_id_fkey";
-                        columns: ["portfolio_id"];
-                        isOneToOne: false;
-                        referencedRelation: "portfolioInfo";
-                        referencedColumns: ["id"];
-                    },
-                ];
+                Relationships: [];
             };
             portfolioInfo: {
                 Row: {
@@ -55,7 +50,6 @@ export type Database = {
                     profileImage: string | null;
                     project: Json | null;
                     share: boolean | null;
-                    tel: string | null;
                     template: string | null;
                     userId: string | null;
                 };
@@ -75,7 +69,6 @@ export type Database = {
                     profileImage?: string | null;
                     project?: Json | null;
                     share?: boolean | null;
-                    tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
                 };
@@ -95,7 +88,6 @@ export type Database = {
                     profileImage?: string | null;
                     project?: Json | null;
                     share?: boolean | null;
-                    tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
                 };

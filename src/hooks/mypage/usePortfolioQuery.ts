@@ -27,27 +27,10 @@ const usePortfolioQuery = (id: string) => {
     });
 
     useEffect(() => {
-        if (portfolioData) {
+        if (portfolioData && !portfolio) {
             setPortfolio(portfolioData[0]);
         }
-    }, [setPortfolio, portfolioData]);
-
-    useEffect(() => {
-        if (portfolio) {
-            const project = portfolio.project as Project[];
-            if (project) {
-                setProjectsInitial(project);
-            }
-
-            const career = portfolio.career as Career[];
-
-            if (career) {
-                setInitialCareers(career);
-            }
-
-            setInitialBasicInfo(portfolio);
-        }
-    }, [portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [setPortfolio, portfolioData, portfolio]);
 
     return { portfolio, isFetching, isError };
 };

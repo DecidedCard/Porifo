@@ -24,9 +24,9 @@ const UserInfo = () => {
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
-            <div className="flex flex-col gap-6">
-                <h2 className="pl-6 text-2xl font-bold tracking-wider">기본 정보</h2>
-                <hr className="border border-neutral-100" />
+            <div className="flex flex-col gap-4">
+                <h2 className="pl-6 pt-6 text-2xl font-bold tracking-wider">기본 정보</h2>
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
                 <p className="pl-6 text-xl font-medium text-left relative">내 정보</p>
 
                 <div className="flex">
@@ -87,19 +87,6 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex">
-                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">연락처</label>
-                    <div className="w-[460px]">
-                        <Input
-                            type="tel"
-                            placeholder="연락처를 입력해 주세요."
-                            value={basicInfo.tel!}
-                            onChange={onChangeTelHandler}
-                            size="big"
-                        />
-                    </div>
-                </div>
-
-                <div className="flex">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">e-mail</label>
                     <div className="w-[460px]">
                         <Input
@@ -114,7 +101,7 @@ const UserInfo = () => {
                 <div className="flex items-center">
                     <label className="pl-6 font-medium text-zinc-500 w-[177px]">직군:</label>
                     <select
-                        className="font-medium text-zinc-500 relative w-[460px] h-14 border border-solid border-zinc-300"
+                        className="font-medium text-zinc-500 relative w-[460px] h-14 rounded-lg px-3 border border-solid border-zinc-300"
                         value={basicInfo.job!}
                         onChange={onChangeSelectHandler}
                     >
@@ -128,7 +115,7 @@ const UserInfo = () => {
                     </select>
                 </div>
 
-                <hr className="border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
 
                 <Careers />
             </div>

@@ -7,7 +7,7 @@ type Store = {
     user: User | null;
     portfolio: PortfolioInfo | null;
     setUser: (arg: any) => void;
-    setPortfolio: (arg: PortfolioInfo) => void;
+    setPortfolio: (arg: PortfolioInfo | null) => void;
 };
 
 const useUserStore = create<Store>()((set) => ({

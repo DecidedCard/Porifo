@@ -23,7 +23,7 @@ const SocialSeting = () => {
 
     const [sex, setSex] = useState("");
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    // const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const birthDate = birthYear + birthMonth + birthDay;
 
     const router = useRouter();
@@ -48,10 +48,10 @@ const SocialSeting = () => {
         e.preventDefault();
 
         try {
-            signSettingValidation({ phoneNumber, birthDate, sex });
+            signSettingValidation({ birthDate, sex });
 
             await supabase.auth.updateUser({
-                data: { phoneNumber, birthDate, sex },
+                data: { birthDate, sex },
             });
 
             return router.replace("/");

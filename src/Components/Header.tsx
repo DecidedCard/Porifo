@@ -22,6 +22,7 @@ const Header = () => {
             if (!error) {
                 console.log(error);
             }
+            setUser(null);
         } catch (error) {
             throw new Error();
         }
@@ -38,7 +39,7 @@ const Header = () => {
             } catch (error) {}
         };
         userLoginFunc();
-    }, []);
+    }, [setUser]);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -83,7 +84,7 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
-                                        className={`absolute flex flex-col items-center justify-center top-full mt-4 w-[170px] h-[96px] bg-white rounded-[16px] p-3 transform -translate-x-1/2 left-[15%] ${bubbleAfter}`}
+                                        className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-[96px] bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>
                                             <Link
