@@ -7,7 +7,7 @@ const MiddleRight = () => {
                 <div className="flex flex-col gap-6 items-start justify-start">
                     <Image
                         className="rounded-2xl"
-                        src="mainImage1.svg"
+                        src="/assets/image/mainImage1.svg"
                         alt="이미지"
                         width={630}
                         height={550}
@@ -21,7 +21,7 @@ const MiddleRight = () => {
                                 <div className="w-12 h-12 absolute left-0 top-0 overflow-hidden">
                                     <Image
                                         className="absolute left-[calc(50%_-_24px)] top-[calc(50%_-_24px)] overflow-visible"
-                                        src="/mainpeple1.png"
+                                        src="/assets/image/mainpeple1.png"
                                         alt="이미지"
                                         width={48}
                                         height={48}
@@ -41,7 +41,7 @@ const MiddleRight = () => {
                 <div className="flex flex-col gap-6 items-start justify-start shrink-0 relative">
                     <Image
                         className="rounded-2xl shrink-0 w-[630px] h-[550px]"
-                        src="mainImage2.svg"
+                        src="/assets/image/mainImage2.svg"
                         alt="이미지"
                         width={630}
                         height={550}
@@ -55,7 +55,7 @@ const MiddleRight = () => {
                                 <div className="w-12 h-12 absolute left-0 top-0 overflow-hidden">
                                     <Image
                                         className="w-12 h-12 absolute left-[calc(50%_-_24px)] top-[calc(50%_-_24px)] overflow-visible"
-                                        src="/mainpeple2.png"
+                                        src="/assets/image/mainpeple2.png"
                                         alt="이미지"
                                         width={48}
                                         height={48}
@@ -75,7 +75,7 @@ const MiddleRight = () => {
                 <div className="flex flex-col gap-6 items-start justify-start shrink-0">
                     <Image
                         className="rounded-2xl shrink-0 w-[630px] h-[550px]"
-                        src="mainImage3.svg"
+                        src="/assets/image/mainImage3.svg"
                         alt="이미지"
                         width={630}
                         height={550}
@@ -89,7 +89,7 @@ const MiddleRight = () => {
                                 <div className="w-12 h-12 absolute left-0 top-0 overflow-hidden">
                                     <Image
                                         className="w-12 h-12 absolute left-[calc(50%_-_24px)] top-[calc(50%_-_24px)] overflow-visible"
-                                        src="/mainpeple3.png"
+                                        src="/assets/image/mainpeple3.png"
                                         alt="이미지"
                                         width={48}
                                         height={48}
