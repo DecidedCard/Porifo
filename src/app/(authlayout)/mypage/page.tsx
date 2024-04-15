@@ -7,8 +7,6 @@ import Project from "@/Components/MyPage/Project";
 import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
-import Buttons from "@/Components/MyPage/Buttons";
-import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 
 const MyPage = () => {
