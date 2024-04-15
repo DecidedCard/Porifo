@@ -7,7 +7,7 @@ import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Grid = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
-        <div className="w-[932px] flex flex-col items-center bg-gray">
+        <div className="w-[932px] flex flex-col items-center bg-white">
             <Top portfolio={portfolio} />
             <Middle portfolio={portfolio} />
             <Bottom portfolio={portfolio} />

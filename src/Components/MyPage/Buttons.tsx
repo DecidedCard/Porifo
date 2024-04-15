@@ -4,12 +4,10 @@ import React, { useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
-import { useRouter } from "next/navigation";
 import { RiLinkM } from "react-icons/ri";
 import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
-import Portfolio from "./Portfolio";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
@@ -21,13 +19,21 @@ const Buttons = () => {
         useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
-    const { targetRef, toPDF } = usePDF({ filename: "test" });
+    const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio" });
 
     const [previewModal, setPreviewModal] = useState(false);
 
+    const onClickUrlCopyHandler = () => {
+        if (!portfolio?.id) {
+            alert("저장을 해야 url을 제공해드릴 수 있습니다.");
+            return;
+        }
+        onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`);
+    };
+
     const onClickPreviewModal = () => {
         if (portfolioInputFormValidation(portfolioPreview)) {
-            alert("정보를 전부다 입력해주시기 바랍니다.");
+            alert("정보를 입력해주시기 바랍니다.");
             return;
         }
         setPreviewModal(true);
@@ -35,7 +41,7 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
-            <main className="relative flex flex-col items-center ">
+            <main className="relative flex flex-col items-center gap-5">
                 <div className="pt-5 pl-3 pr-3 flex flex-col mt-10 items-center border-slate-800 bg-white rounded-2xl h-[350px]">
                     <div className="absolute right-[120%] w-20 flex flex-row">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
@@ -65,7 +71,7 @@ const Buttons = () => {
                     <div className="flex flex-row mt-5 mb-5">
                         <button
                             className="flex items-center py-2 px-4 rounded-xl text-zinc-500"
-                            onClick={() => onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`)}
+                            onClick={onClickUrlCopyHandler}
                         >
                             <RiLinkM className="mr-2" /> URL 복사
                         </button>
@@ -77,10 +83,10 @@ const Buttons = () => {
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 bg-white p-4 rounded-2xl">
                     <div className="w-[250px]">
                         <Button
-                            text={portfolio ? "수정하기" : "저장하기"}
+                            text={portfolio?.id ? "수정하기" : "저장하기"}
                             size="l"
                             border="none"
                             color={disabled ? "" : "primary"}
@@ -91,7 +97,7 @@ const Buttons = () => {
 
                     <div className="w-[250px]">
                         <Button
-                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            text={`${portfolio?.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
                             size="l"
                             border="none"
                             color={portfolio ? "primary" : ""}

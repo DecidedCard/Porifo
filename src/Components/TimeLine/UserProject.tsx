@@ -1,11 +1,11 @@
-import React from 'react';
-import ProjectTimelineItem from './ProjectTimelineItem';
-import { Project } from '@/types/Project';
+import React from "react";
+
+import ProjectTimelineItem from "./ProjectTimelineItem";
+
+import type { Project } from "@/types/Project";
 
 const UserProject = ({ project }: { project: Project[] }) => {
-    const projects = [
-        ...project
-    ];
+    const projects = [...project];
 
     return (
         <div className="flex flex-col items-start justify-start">

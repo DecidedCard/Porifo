@@ -43,7 +43,7 @@ const Input = ({
                 onChange={onChange}
                 maxLength={maxLength}
                 placeholder={placeholder}
-                className={`border border-solid border-${borderColor} rounded-lg ${height} w-full p-2 text-sm font-normal`}
+                className={`border border-solid border-${borderColor} rounded-lg ${height} w-full p-2 px-3 text-sm font-normal`}
             />
 
             {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}

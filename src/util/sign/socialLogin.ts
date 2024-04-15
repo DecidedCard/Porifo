@@ -6,21 +6,22 @@ type QueryParams = {
     prompt: string;
 };
 
-const signInWithSocial = async (social: Provider, queryParams?: QueryParams) => {
-    const { error } = await supabase.auth.signInWithOAuth({
-        provider: social,
-        options: {
-            redirectTo: "http://localhost:3000/social_setting",
-            queryParams,
-        },
-    });
-
+const signInWithSocial = async (social: Provider, redirectTo: string, queryParams?: QueryParams) => {
     try {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: social,
+            options: {
+                redirectTo,
+                queryParams,
+            },
+        });
+
         if (error) {
-            throw new Error("소셜 로그인 오류가 발생하였습니다.");
+            throw new Error("SNS 로그인 중 오류가 발생하였습니다.");
         }
     } catch (error) {
         console.log(error);
     }
 };
+
 export default signInWithSocial;

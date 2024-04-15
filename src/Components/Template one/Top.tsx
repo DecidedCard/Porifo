@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { IoCallOutline } from "react-icons/io5";
+import { useState } from "react";
+import Image from "next/image";
+
 import { AiOutlineMail } from "react-icons/ai";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo] = useState({
         name: portfolio.name,
-        tel: portfolio.tel,
         job: portfolio.job,
         email: portfolio.email,
         profileImage: portfolio.profileImage,
@@ -19,10 +20,12 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         <main className="mt-10">
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
                 <div className="flex flex-col items-center justify-center self-stretch shrink-0">
-                    <img
+                    <Image
                         className="rounded-full shrink-0 mr-5 w-[200px] h-[200px] relative"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
+                        width={200}
+                        height={200}
                     />
 
                     <div className="flex flex-col gap-5 items-center justify-center shrink-0 w-80 min-w-[320px] max-w-xs">
@@ -42,12 +45,6 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             </div>
 
                             <address className="text-[14px] text-grayblack flex flex-row items-center justify-center self-stretch shrink-0 gap-5 relative">
-                                <div className="flex flex-row items-center justify-start shrink-0 relative">
-                                    <p className="text-center relative flex items-center justify-center">
-                                        <IoCallOutline className="mr-2" /> {userInfo.tel}
-                                    </p>
-                                </div>
-
                                 <div className="flex flex-row items-center justify-start shrink-0 relative">
                                     <p className="text-center relative flex items-center justify-center">
                                         <AiOutlineMail className="mr-2" /> {userInfo.email}

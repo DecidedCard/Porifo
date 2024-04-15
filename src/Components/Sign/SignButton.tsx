@@ -1,5 +1,5 @@
-import Button from "@/Components/Commen/Button";
 import { useEffect } from "react";
+import Button from "@/Components/Commen/Button";
 
 type InputValue = {
     email?: string;
@@ -9,7 +9,7 @@ type InputValue = {
     loginPassword?: string;
     confirmUserPassword?: string;
     name?: string;
-    age?: string;
+    birthDate?: string;
     firstNumber?: string;
     middlePhoneNumber?: string;
     lastPhoneNumber?: string;
@@ -29,17 +29,16 @@ const SignButton = ({
     loginPassword,
     confirmUserPassword,
     name,
-    age,
+    birthDate,
     onClick,
     firstNumber,
     middlePhoneNumber,
     lastPhoneNumber,
     sex,
 }: InputValue) => {
-    const signUp =
-        email && password && name && age && firstNumber && middlePhoneNumber && lastPhoneNumber && sex !== "";
+    const signUp = email && password && birthDate && name && sex !== "";
 
-    const confirmEmail = findEmail && password === undefined && age === undefined;
+    const confirmEmail = findEmail && password === undefined && birthDate === undefined;
     const confirmPassword = password && confirmUserPassword;
 
     useEffect(() => {

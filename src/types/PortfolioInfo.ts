@@ -11,7 +11,6 @@ export interface PortfolioInfo {
     profileImage: string | null;
     imageFile?: File | null;
     birthday: string | null;
-    tel: string | null;
     email: string | null;
     oneLineIntroduce: string | null;
     introduce: string | null;

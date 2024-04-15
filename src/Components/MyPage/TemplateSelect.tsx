@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../Commen/Button";
 import Image from "next/image";
-import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 
 const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelectHandler: (arg: string) => void }) => {
     return (

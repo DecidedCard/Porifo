@@ -1,6 +1,6 @@
-import useCareerStore from "@/store/careerStore";
 import { ChangeEvent } from "react";
 
+import useCareerStore from "@/store/careerStore";
 const useCareer = () => {
     const { careers, setCompany, setDepartment, setPosition, setDate, setComment, setAddCareer, setMinusCareer } =
         useCareerStore();

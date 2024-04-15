@@ -1,17 +1,21 @@
+import { useEffect } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
 import useCareerStore from "@/store/careerStore";
 import useProjectsStore from "@/store/projectStore";
 import useUserStore from "@/store/userStore";
-import { Career } from "@/types/Career";
-import { Project } from "@/types/Project";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
 
 const usePortfolioQuery = (id: string) => {
     const { setPortfolio, portfolio } = useUserStore();
-    const { setInitialBasicInfo } = usePortfolioInfoStore();
+    const { setInitialBasicInfo, basicInfo } = usePortfolioInfoStore();
     const { setProjectsInitial } = useProjectsStore();
     const { setInitialCareers } = useCareerStore();
     const {
@@ -30,10 +34,17 @@ const usePortfolioQuery = (id: string) => {
         if (portfolioData) {
             setPortfolio(portfolioData[0]);
         }
-    }, [setPortfolio, portfolioData]);
+    }, [setPortfolio, portfolioData, portfolio]);
 
     useEffect(() => {
-        if (portfolio) {
+        if (
+            portfolio &&
+            !basicInfo.name &&
+            !basicInfo.birthday &&
+            !basicInfo.email &&
+            !basicInfo.oneLineIntroduce &&
+            !basicInfo.introduce
+        ) {
             const project = portfolio.project as Project[];
             if (project) {
                 setProjectsInitial(project);
@@ -47,7 +58,7 @@ const usePortfolioQuery = (id: string) => {
 
             setInitialBasicInfo(portfolio);
         }
-    }, [portfolio, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [portfolio, basicInfo, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
 
     return { portfolio, isFetching, isError };
 };

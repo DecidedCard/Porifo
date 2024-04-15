@@ -1,5 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
+import useSetMutation from "../useSetMutation";
+import usePortfolioQuery from "./usePortfolioQuery";
+
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
@@ -8,10 +11,7 @@ import useCareerStore from "@/store/careerStore";
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-
-import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
-import Project from "@/Components/MyPage/Project";
 
 const useInfo = () => {
     const {
@@ -21,7 +21,6 @@ const useInfo = () => {
         setProfile,
         setImageFile,
         setBirthday,
-        setTel,
         setEmail,
         setJob,
         setOneLineIntroduce,
@@ -29,12 +28,14 @@ const useInfo = () => {
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
-    const { user, portfolio } = useUserStore();
+    const { user, portfolio, setPortfolio } = useUserStore();
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
+
+    usePortfolioQuery(user?.id!);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -48,6 +49,13 @@ const useInfo = () => {
             setDisabled(false);
         }
     }, [basicInfo, careers, projects]);
+
+    useEffect(() => {
+        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!);
+        if (user && !portfolio && localStorageItem) {
+            setPortfolio(localStorageItem);
+        }
+    }, [portfolio, setPortfolio, user]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,10 +79,6 @@ const useInfo = () => {
 
     const onChangeBirthdayHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setBirthday(e.target.value);
-    };
-
-    const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTel(e.target.value);
     };
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +110,6 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) return;
 
         if (basicInfo.imageFile) {
@@ -172,21 +175,26 @@ const useInfo = () => {
             return projectInfo;
         });
 
-        if (user && !portfolio) {
-            let newPortfolio = {
-                ...info,
-                userId: user.id,
-                profileImage: url,
-                project,
-                career: careers,
-            };
+        if (user && !portfolio?.id) {
+            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+
+            if (url) {
+                newPortfolio = {
+                    ...info,
+                    userId: user!.id,
+                    profileImage: url,
+                    project,
+                    career: careers,
+                };
+            }
 
             insert(newPortfolio);
+            localStorage.removeItem("portfolio");
             alert("이력서가 저장되었습니다.");
             return;
         }
 
-        if (portfolio) {
+        if (portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
 
             if (url) {
@@ -229,7 +237,6 @@ const useInfo = () => {
         onChangeEngNameHandler,
         onChangeProfileHandler,
         onChangeBirthdayHandler,
-        onChangeTelHandler,
         onChangeEmailHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,

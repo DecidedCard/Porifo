@@ -1,10 +1,13 @@
 "use client";
+
 import React from "react";
 import { useState } from "react";
-import { supabase } from "@/util/supabase/clientSupabase";
 
 import SignButton from "@/Components/Sign/SignButton";
 import SignUpItem from "@/Components/Sign/SignUpItem";
+
+import { supabase } from "@/util/supabase/clientSupabase";
+
 const Find_Email = () => {
     const [userEmail, setUserEmail] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
@@ -12,7 +15,7 @@ const Find_Email = () => {
         e.preventDefault();
         try {
             await supabase.auth.resetPasswordForEmail(userEmail, {
-                redirectTo: "http://localhost:3000/password_change",
+                redirectTo: "http://localhost:3000/passwordChange",
             });
             alert("이메일을 확인해 주세요.");
             setUserEmail("");

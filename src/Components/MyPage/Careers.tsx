@@ -111,7 +111,7 @@ const Careers = () => {
                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                     onChangeCommentHandler(e, careerIndex)
                                 }
-                                className="w-[460px] h-[140px] resize-none rounded-lg p-2 border border-solid border-zinc-300"
+                                className="w-[460px] h-[140px] resize-none rounded-lg py-2 px-3 border border-solid border-zinc-300"
                             />
                         </div>
                     </div>
