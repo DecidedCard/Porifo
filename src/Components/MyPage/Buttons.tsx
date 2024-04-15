@@ -51,7 +51,7 @@ const Buttons = () => {
                             <p className="text-xs font-medium text-gray4 pt-4">{basicInfo.template}</p>
                             <div className="pt-3">
                                 <Image
-                                    src={`/${basicInfo.template}_template.png`}
+                                    src={`/templateImage/${basicInfo.template}_template.png`}
                                     alt="템플릿 미리보기"
                                     width={208}
                                     height={186}
@@ -75,25 +75,19 @@ const Buttons = () => {
                             className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter"
                             onClick={onClickUrlCopyHandler}
                         >
-                            <Image 
-                            src="assets/image/link.svg"
-                            alt="link"
-                            width={24}
-                            height={24}
-                            className="mr-1"
-                            /> 
+                            <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
                             URL 복사
                         </button>
                         <button
                             className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter"
                             onClick={() => toPDF()}
                         >
-                            <Image 
-                            src="assets/image/download.svg"
-                            alt="download"
-                            width={24}
-                            height={24}
-                            className="mr-1"
+                            <Image
+                                src="assets/image/download.svg"
+                                alt="download"
+                                width={24}
+                                height={24}
+                                className="mr-1"
                             />
                             PDF로 저장
                         </button>
