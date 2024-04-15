@@ -31,7 +31,7 @@ const usePortfolioQuery = (id: string) => {
     });
 
     useEffect(() => {
-        if (portfolioData) {
+        if (portfolioData && portfolioData?.length !== 0) {
             setPortfolio(portfolioData[0]);
         }
     }, [setPortfolio, portfolioData, portfolio]);
