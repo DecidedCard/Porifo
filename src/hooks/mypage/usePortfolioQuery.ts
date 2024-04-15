@@ -37,7 +37,7 @@ const usePortfolioQuery = (id: string) => {
         if (
             portfolio &&
             !basicInfo.name &&
-            basicInfo.birthday &&
+            !basicInfo.birthday &&
             !basicInfo.email &&
             !basicInfo.oneLineIntroduce &&
             !basicInfo.introduce
