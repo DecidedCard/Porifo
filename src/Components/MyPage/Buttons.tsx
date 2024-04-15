@@ -33,7 +33,7 @@ const Buttons = () => {
 
     const onClickPreviewModal = () => {
         if (portfolioInputFormValidation(portfolioPreview)) {
-            alert("정보를 전부다 입력해주시기 바랍니다.");
+            alert("정보를 입력해주시기 바랍니다.");
             return;
         }
         setPreviewModal(true);
@@ -97,7 +97,7 @@ const Buttons = () => {
 
                     <div className="w-[250px]">
                         <Button
-                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            text={`${portfolio?.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
                             size="l"
                             border="none"
                             color={portfolio ? "primary" : ""}

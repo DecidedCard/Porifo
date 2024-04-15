@@ -3,7 +3,6 @@ import { QUERY_KEY } from "@/util/query_key";
 import { userData } from "@/util/supabase/supabase_user";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import usePortfolioQuery from "./usePortfolioQuery";
 
 const useLoginCheck = () => {
     const { user, setUser } = useUserStore();

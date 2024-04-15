@@ -1,6 +1,7 @@
 import React from "react";
-import Button from "./Commen/Button";
 import { useRouter } from "next/navigation";
+
+import Button from "./Commen/Button";
 
 const LoginCheckModal = ({
     route,

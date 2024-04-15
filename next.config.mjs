@@ -7,6 +7,11 @@ const nextConfig = {
                 hostname: "cyhvfqdzonehvongdtow.supabase.co",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "heurm-tutorial.vlpt.us",
+                pathname: "/**",
+            },
         ],
     },
 };

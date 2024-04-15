@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import UserInfo from "@/Components/MyPage/UserInfo";
 import Project from "@/Components/MyPage/Project";
@@ -8,7 +8,6 @@ import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
-import useUserStore from "@/store/userStore";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");

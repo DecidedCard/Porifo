@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import { RiLinkM } from "react-icons/ri";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo] = useState({

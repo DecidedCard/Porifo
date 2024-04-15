@@ -1,10 +1,11 @@
 "use client";
 
+import React from "react";
+
 import Loading from "@/Components/Loading";
 import Standard from "@/Components/Template one/Standard";
 import Grid from "@/Components/Template two/Grid";
 import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
-import React from "react";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
     const { id } = params;
