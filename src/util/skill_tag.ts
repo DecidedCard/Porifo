@@ -1,4 +1,4 @@
-const SKILL_TAG = [
+export const SKILL_TAG = [
     "HTML5",
     "CSS3",
     "JavaScript",

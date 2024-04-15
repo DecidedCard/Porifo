@@ -3,6 +3,7 @@
 import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
 import Input from "../Commen/Input";
+import { SKILL_TAG } from "@/util/skill_tag";
 
 const Introduction = () => {
     const { basicInfo, onChangeOneLineIntroduce, onChangeIntroduceHandler } = useInfo();
@@ -37,6 +38,24 @@ const Introduction = () => {
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}
                     />
+                </div>
+
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
+
+                <div className="flex gap-6">
+                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">기술 스택</label>
+                    <div className="flex flex-wrap justify-between gap-2 w-[460px]">
+                        {SKILL_TAG.map((item, idx) => {
+                            return (
+                                <div
+                                    key={idx}
+                                    className="py-[2px] px-3 h-[22px] text-xs font-medium border border-solid border-nonegray rounded cursor-pointer"
+                                >
+                                    {item}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </main>
