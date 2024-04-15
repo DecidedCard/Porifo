@@ -24,8 +24,8 @@ const ResultPage = () => {
     return (
         <>
             <div className="flex justify-center w-fit mx-auto" ref={targetRef}>
-                {portfolio?.template === "standard" && <Standard portfolio={portfolio} />}
-                {portfolio?.template === "grid" && <Grid portfolio={portfolio} />}
+                {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
+                {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
             </div>
             <div className="flex gap-5 w-96 mx-auto mt-10">
                 <Button text="url 복사" color="secondary" size="l" onClick={() => setLoginCheckModal(true)} />

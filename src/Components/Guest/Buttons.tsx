@@ -2,9 +2,6 @@
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
-import { RiLinkM } from "react-icons/ri";
-import { GrDownload } from "react-icons/gr";
-import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import Image from "next/image";
@@ -14,12 +11,12 @@ import useGuestButton from "@/hooks/guest/useGuestButton";
 import { useRouter } from "next/navigation";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, disabled, onClickInsertHandler } = useInfo();
+    const { basicInfo, disabled, onClickInsertHandler } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { previewModal, portfolioPreview, setPreviewModal, onClickPreviewModal } = useGuestButton();
 
-    const { targetRef, toPDF } = usePDF({ filename: "Porifo_Portfolio" });
+    const { targetRef } = usePDF({ filename: "Porifo_Portfolio" });
     const router = useRouter();
 
     const onCliCkHandler = async () => {
@@ -38,7 +35,7 @@ const Buttons = () => {
                         <div className="w-[168px] mx-auto">
                             <p className="text-xs font-medium">{basicInfo.template}</p>
                             <Image
-                                src={`/${basicInfo.template}_template.png`}
+                                src={`/templateImage/${basicInfo.template}_template.png`}
                                 alt="템플릿 미리보기"
                                 width={200}
                                 height={100}

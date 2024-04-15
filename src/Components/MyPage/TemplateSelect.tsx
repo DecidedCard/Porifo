@@ -13,7 +13,12 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                         <h3 className="text-lg font-medium text-gray4">Standard</h3>
                         <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-blue rounded-2xl">
                             <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
-                                <Image src={"/standard_template.png"} alt="스탠다드 템플릿" width={400} height={100} />
+                                <Image
+                                    src={"/templateImage/Standard_template.png"}
+                                    alt="스탠다드 템플릿"
+                                    width={400}
+                                    height={100}
+                                />
                             </div>
                             <div className="flex gap-2">
                                 <div className="w-[100px] mt-2">
@@ -32,7 +37,12 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                         <h3 className="text-lg font-medium text-gray4">Grid</h3>
                         <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-sky_blue rounded-2xl">
                             <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
-                                <Image src={"/grid_template.png"} alt="스탠다드 템플릿" width={400} height={100} />
+                                <Image
+                                    src={"/templateImage/Grid_template.png"}
+                                    alt="스탠다드 템플릿"
+                                    width={400}
+                                    height={100}
+                                />
                             </div>
                             <div className="flex gap-2">
                                 <div className="w-[100px] mt-2">
