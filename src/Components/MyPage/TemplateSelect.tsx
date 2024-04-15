@@ -22,7 +22,7 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                                         size="m"
                                         border="none"
                                         color="primary"
-                                        onClick={() => onClickTemplateSelectHandler("standard")}
+                                        onClick={() => onClickTemplateSelectHandler("Standard")}
                                     />
                                 </div>
                             </div>
@@ -41,7 +41,7 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                                         size="m"
                                         border="none"
                                         color="primary"
-                                        onClick={() => onClickTemplateSelectHandler("grid")}
+                                        onClick={() => onClickTemplateSelectHandler("Grid")}
                                     />
                                 </div>
                             </div>

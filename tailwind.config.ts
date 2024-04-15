@@ -49,6 +49,7 @@ const config: Config = {
                 gray: "#f1f1f1",
                 gray2: "#DBDBDB",
                 gray3: "#9A9A9A",
+                gray4: "#565656",
                 hihigray: "#FAFAFA",
                 middlegray: "#bdbebd",
                 deepgray: "#DCDDDF",
