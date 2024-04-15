@@ -13,6 +13,7 @@ type Store = {
     setEmail: (arg: string) => void;
     setOneLineIntroduce: (arg: string) => void;
     setIntroduce: (arg: string) => void;
+    setSkillTag: (arg: string[]) => void;
     setJob: (arg: string) => void;
     setBlog: (arg: string) => void;
     setGithub: (arg: string) => void;
@@ -29,6 +30,7 @@ const initial = {
     email: "",
     oneLineIntroduce: "",
     introduce: "",
+    skillTag: [],
     job: "",
     blogLink: "",
     githubLink: "",
@@ -47,6 +49,7 @@ const usePortfolioInfoStore = create<Store>()((set) => ({
     setEmail: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, email: arg } })),
     setOneLineIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, oneLineIntroduce: arg } })),
     setIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, introduce: arg } })),
+    setSkillTag: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, skillTag: arg } })),
     setJob: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, job: arg } })),
     setBlog: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, blogLink: arg } })),
     setGithub: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, githubLink: arg } })),
