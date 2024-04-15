@@ -3,9 +3,16 @@
 import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
 import Input from "../Commen/Input";
+import { SKILL_TAG } from "@/util/skill_tag";
 
 const Introduction = () => {
-    const { basicInfo, onChangeOneLineIntroduce, onChangeIntroduceHandler } = useInfo();
+    const {
+        basicInfo,
+        onChangeOneLineIntroduce,
+        onClickSkillTagDeleteHandler,
+        onChangeIntroduceHandler,
+        onClickSkillTagHandler,
+    } = useInfo();
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -37,6 +44,38 @@ const Introduction = () => {
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}
                     />
+                </div>
+
+                <hr className="w-[657px] mx-auto border border-neutral-100" />
+
+                <div className="flex gap-6">
+                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">기술 스택</label>
+                    <div className="flex flex-wrap justify-between gap-2 w-[460px]">
+                        {SKILL_TAG.map((item, idx) => {
+                            return (
+                                <div key={idx}>
+                                    {JSON.parse(JSON.stringify(basicInfo.skillTag)).find(
+                                        (tag: string) => tag === item,
+                                    ) ? (
+                                        <div
+                                            key={idx}
+                                            className="py-[2px] px-3 h-[22px] text-xs font-medium text-white border border-solid border-primary bg-primary rounded cursor-pointer"
+                                            onClick={() => onClickSkillTagDeleteHandler(item)}
+                                        >
+                                            {item}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="py-[2px] px-3 h-[22px] text-xs font-medium border border-solid border-nonegray rounded cursor-pointer"
+                                            onClick={() => onClickSkillTagHandler(item)}
+                                        >
+                                            {item}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </main>

@@ -14,6 +14,7 @@ export interface PortfolioInfo {
     email: string | null;
     oneLineIntroduce: string | null;
     introduce: string | null;
+    skillTag: string[] | Json;
     job: string | null;
     blogLink: string | null;
     githubLink: string | null;
