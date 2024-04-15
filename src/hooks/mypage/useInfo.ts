@@ -33,6 +33,7 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [skillTag, setSkillTag] = useState<string[]>([]);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
@@ -104,6 +105,17 @@ const useInfo = () => {
 
     const onChangeGithubHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setGithub(e.target.value);
+    };
+
+    const onClickSkillTagHandler = (item: string) => {
+        setSkillTag((state) => [...state, item]);
+    };
+
+    const onClickSkillTagDeleteHandler = (item: string) => {
+        const idx = skillTag.indexOf(item);
+        const skillTagCopy = [...skillTag];
+        skillTagCopy.splice(idx, 1);
+        setSkillTag(skillTagCopy);
     };
 
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
@@ -234,6 +246,7 @@ const useInfo = () => {
         basicInfo,
         careers,
         portfolioPreview,
+        skillTag,
         disabled,
         onChangeNameHandler,
         onChangeEngNameHandler,
@@ -245,6 +258,8 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onClickSkillTagHandler,
+        onClickSkillTagDeleteHandler,
         onClickInsertHandler,
         onClickShareToggle,
     };
