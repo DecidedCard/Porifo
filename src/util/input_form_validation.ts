@@ -1,4 +1,3 @@
-import { Career } from "@/types/Career";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import type { Project } from "@/types/Project";
 

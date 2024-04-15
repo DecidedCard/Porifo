@@ -1,12 +1,14 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+
 import Introduction from "@/Components/MyPage/Introduction";
 import Project from "@/Components/MyPage/Project";
 import UserInfo from "@/Components/MyPage/UserInfo";
-import React, { useEffect, useState } from "react";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 import Navigation from "@/Components/MyPage/Navigation";
 import Buttons from "@/Components/Guest/Buttons";
+
 import useUserStore from "@/store/userStore";
 
 const Guest = () => {

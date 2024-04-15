@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import { useState } from "react";
+
 import WorkExperience from "../TimeLine/WorkExperience";
 import UserProject from "../TimeLine/UserProject";
-import { useState, useEffect } from "react";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { Career } from "@/types/Career";
-import { Project } from "@/types/Project";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const career = portfolio.career as Career[];

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { IoCallOutline } from "react-icons/io5";
+import { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
+import Image from "next/image";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo, setUserInfo] = useState({
@@ -19,10 +18,12 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         <main className="mt-10">
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
                 <div className="flex flex-row items-start justify-center self-stretch shrink-0">
-                    <img
+                    <Image
                         className="rounded-full shrink-0 mr-5 w-36 h-36 relative"
                         src={userInfo.profileImage}
                         alt="프로필 사진"
+                        width={150}
+                        height={150}
                     />
 
                     <div className="flex flex-col gap-5 items-start justify-center shrink-0 w-80 min-w-[320px] max-w-xs">
