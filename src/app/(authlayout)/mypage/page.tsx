@@ -2,12 +2,15 @@
 
 import React, { useState } from "react";
 
-import UserInfo from "@/Components/MyPage/UserInfo";
-import Project from "@/Components/MyPage/Project";
-import Introduction from "@/Components/MyPage/Introduction";
+import dynamic from "next/dynamic";
+
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
-import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
+
+const UserInfo = dynamic(import("@/Components/MyPage/UserInfo"), { ssr: false });
+const Introduction = dynamic(import("@/Components/MyPage/Introduction"), { ssr: false });
+const Project = dynamic(import("@/Components/MyPage/Project"), { ssr: false });
+const PortfolioUrl = dynamic(import("@/Components/MyPage/PortfolioUrl"), { ssr: false });
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
