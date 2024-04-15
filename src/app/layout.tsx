@@ -22,7 +22,8 @@ export default async function RootLayout({
             <body className={inter.className}>
                 <Header />
                 <Provider>{children}</Provider>
-                <Footer />
+                {/* 내용을 정하지 않아서 비활성화 */}
+                {/* <Footer /> */}
             </body>
         </html>
     );
