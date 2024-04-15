@@ -19,10 +19,11 @@ export default async function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`${inter.className} bg-hihigray`}>
                 <Header />
                 <Provider>{children}</Provider>
-                <Footer />
+                {/* 내용을 정하지 않아서 비활성화 */}
+                {/* <Footer /> */}
             </body>
         </html>
     );

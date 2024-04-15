@@ -62,9 +62,19 @@ porifo.vercel.app
 
 ### 🏷️ 회원가입 페이지
 
+|사진|설명|
+|:-:|-|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/b94a018b-cf6e-4204-bb4e-613b9d34e350)|회원가입 페이지에서는 사용자에게 소셜 회원가입과 이메일 회원가입 선택지를 줍니다.<br><br>사용자가 소셜 로그인을 택하면, 추가정보를 입력합니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/c436cf91-d1be-4e65-b7db-338ddae0aabb)|이메일로 회원가입을 할 시, 사용자에게 정보를 받습니다.<br><br>비밀번호는 8자리 이상, 영문, 숫자, 특수문자 유효성 검사를 체크합니다.|
+
 <br>
 
 ### 🏷️ 로그인 페이지
+
+|사진|설명|
+|:-:|-|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/e4205f53-1037-4410-8040-b485030ad5d9)|로그인 페이지에서는 다양한 로그인 방식을 접할 수 있습니다.<br><br>가입된 계정이 있다면 로그인 할 수 있으며, 비밀번호 찾기가 가능합니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/3f70e4eb-43fb-4c43-a3de-0aa6f94ade7b)|만약, 이메일로 가입된 회원인데 비밀번호를 잊어버렸다면 이메일을 입력하여 해당 이메일로 비밀번호 재설정할 수 있는 메일이 전송됩니다.<br><br>사용자는 비밀번호를 변경할 수 있습니다.|
 
 <br>
 
@@ -85,11 +95,23 @@ porifo.vercel.app
 |![](https://github.com/DecidedCard/Porifo/assets/154851474/e99e3f1d-6020-45ea-946c-b961d281386a)|오직 로그인한 사용자만 마이 페이지에 접근이 가능합니다.<br><br>마이 페이지에서 이력서 작성을 할 수 있습니다.|
 |![](https://github.com/DecidedCard/Porifo/assets/154851474/35d51c8a-1231-4186-a8a6-60e97c7eb547)|왼편에는 이력서에 필요한 내용을 채울 수 있는 버튼이 존재합니다.<br><br>각 버튼을 눌렀을 때, 그에 맞는 inputForm컴포넌트가 보여집니다.|
 |![](https://github.com/DecidedCard/Porifo/assets/154851474/86202f04-e78a-4b1f-89a7-c2b64587d8d3)|기본정보버튼을 눌렀을 때 나타나는 컴포넌트입니다.<br><br>프로필 사진, 이름, 영문이름, 생년월일, 이메일, 직군, 업무경력을 기입할 수 있습니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/c96a0979-f0a8-49e1-b859-49f3a6e9e2e3)|소개버튼을 눌렀을 때 나타나는 컴포넌트입니다.<br><br>한 줄 소개와 자기소개를 입력할 수 있습니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/3fa91dfa-c502-4d86-ab93-07f6574bb520)|프로젝트버튼을 눌렀을 때 나타나는 컴포넌트입니다.<br><br>프로젝트 이미지, 이름, 내용, 기간, 링크를 작성할 수 있습니다.<br><br>프로젝트 이미지는 최대 5장씩 업로드가 가능하고, 프로젝트를 더 추가할 수 있습니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/5db23c1d-fcec-43aa-a41e-ef10ae542a2b)|URL버튼을 눌렀을 때 나타나는 컴포넌트입니다.<br><br>자신의 깃허브와 블로그 링크를 올려둘 수 있습니다.|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/3dd9b5b9-e36a-44f5-94a3-a2e56b95c3df)|이력서를 다 작성했으면 이력서를 저장하여 커뮤니티 페이지에 게시할 수 있습니다.<br><br>템플릿을 선택할 수 있고, 이력서 URL과 PDF를 다운할 수 있습니다.|
+
 
 <br>
 
 ### 🏷️ 커뮤니티 페이지
+|사진|설명|
+|:-:|-|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/94c8c361-8da2-470a-b574-818f8c3eb905)|여러 사용자의 이력서를 볼 수 있는 커뮤니티 페이지입니다.<br><br>최신순, 오래된순, 인기순으로 정렬하여 이력서를 볼 수 있습니다.|
 
 <br>
 
 ### 🏷️ 커뮤니티 상세 페이지
+
+|사진|설명|
+|:-:|-|
+|![](https://github.com/DecidedCard/Porifo/assets/154851474/d236123d-d324-43dc-b6f0-7796319b24a1)|이력서를 클릭하면 나타나는 커뮤니티 상세 페이지입니다..<br><br>다른 사용자의 이력서를 상세히 볼 수 있으며 댓글을 달 수 있습니다.|
