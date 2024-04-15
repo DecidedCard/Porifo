@@ -50,6 +50,7 @@ export type Database = {
                     profileImage: string | null;
                     project: Json | null;
                     share: boolean | null;
+                    skillTag: Json;
                     template: string | null;
                     userId: string | null;
                 };
@@ -69,6 +70,7 @@ export type Database = {
                     profileImage?: string | null;
                     project?: Json | null;
                     share?: boolean | null;
+                    skillTag: Json;
                     template?: string | null;
                     userId?: string | null;
                 };
@@ -88,6 +90,7 @@ export type Database = {
                     profileImage?: string | null;
                     project?: Json | null;
                     share?: boolean | null;
+                    skillTag?: Json;
                     template?: string | null;
                     userId?: string | null;
                 };

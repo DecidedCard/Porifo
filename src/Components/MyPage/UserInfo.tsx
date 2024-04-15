@@ -10,11 +10,9 @@ import useInfo from "@/hooks/mypage/useInfo";
 import { SELECT_LIST } from "@/util/select_list";
 
 import Careers from "./Careers";
-import Loading from "../Loading";
 
 const UserInfo = () => {
     const {
-        isFetching,
         basicInfo,
         onChangeNameHandler,
         onChangeEngNameHandler,
@@ -23,14 +21,6 @@ const UserInfo = () => {
         onChangeEmailHandler,
         onChangeSelectHandler,
     } = useInfo();
-
-    if (isFetching) {
-        return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
-                <Loading />
-            </div>
-        );
-    }
 
     return (
         <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[1128px] pb-5">
