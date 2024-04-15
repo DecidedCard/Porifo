@@ -28,7 +28,7 @@ const Buttons = () => {
             alert("저장을 해야 url을 제공해드릴 수 있습니다.");
             return;
         }
-        onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`);
+        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/create/${user?.id}`);
     };
 
     const onClickPreviewModal = () => {
