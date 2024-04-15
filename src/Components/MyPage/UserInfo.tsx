@@ -2,16 +2,19 @@
 
 import React from "react";
 
+import Image from "next/image";
+
 import Input from "../Commen/Input";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import { SELECT_LIST } from "@/util/select_list";
 
-import Image from "next/image";
 import Careers from "./Careers";
+import Loading from "../Loading";
 
 const UserInfo = () => {
     const {
+        isFetching,
         basicInfo,
         onChangeNameHandler,
         onChangeEngNameHandler,
@@ -20,6 +23,14 @@ const UserInfo = () => {
         onChangeEmailHandler,
         onChangeSelectHandler,
     } = useInfo();
+
+    if (isFetching) {
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
+    }
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">

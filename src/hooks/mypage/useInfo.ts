@@ -12,6 +12,7 @@ import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfol
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
+import dynamic from "next/dynamic";
 
 const useInfo = () => {
     const {
@@ -35,7 +36,7 @@ const useInfo = () => {
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
-    usePortfolioQuery(user?.id!);
+    const { isFetching } = usePortfolioQuery(user?.id!);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -227,6 +228,7 @@ const useInfo = () => {
     };
 
     return {
+        isFetching,
         user,
         portfolio,
         basicInfo,
