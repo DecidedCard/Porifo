@@ -36,7 +36,7 @@ const useInfo = () => {
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
-    const { isFetching } = usePortfolioQuery(user?.id!);
+    const { isFetching, isError } = usePortfolioQuery(user?.id!);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
