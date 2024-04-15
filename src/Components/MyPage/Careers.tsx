@@ -18,7 +18,7 @@ const Careers = () => {
     } = useCareer();
     return (
         <div className="flex flex-col gap-5">
-            <p className="pl-6 text-xl font-medium text-left">업무 경력</p>
+            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
                     <div key={careerIndex} className="flex flex-col gap-5">
@@ -27,9 +27,9 @@ const Careers = () => {
                                 <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                             </div>
                         )}
-                        <div className="flex">
-                            <label className="pl-6 font-medium text-zinc-500 w-[177px]">회사이름</label>
-                            <div className="flex flex-col gap-5 w-[460px]">
+                        <div className="flex mt-1">
+                            <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
+                            <div className="flex flex-col gap-5 w-[460px] ml-3">
                                 <Input
                                     type="text"
                                     placeholder="회사이름을 입력해주세요."
@@ -66,11 +66,11 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex">
-                            <label className="pl-6 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        <div className="flex mt-1">
+                            <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                 기간
                             </label>
-                            <div className="w-[460px]">
+                            <div className="w-[460px] ml-3">
                                 <div className="flex justify-between">
                                     <div className="w-[224px]">
                                         <Input
@@ -101,8 +101,8 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-start">
-                            <label className="pl-6 pt-6 mb-2 font-medium text-zinc-500 relative w-[177px] flex items-center justify-start">
+                        <div className="flex items-start mt-1">
+                            <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
                                 내용
                             </label>
                             <textarea
@@ -111,13 +111,13 @@ const Careers = () => {
                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                     onChangeCommentHandler(e, careerIndex)
                                 }
-                                className="w-[460px] h-[140px] resize-none rounded-lg py-2 px-3 border border-solid border-zinc-300"
+                                className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300"
                             />
                         </div>
                     </div>
                 );
             })}
-            <div className="text-3xl mx-auto cursor-pointer" onClick={onClickAddHandler}>
+            <div className="flex items-center justify-center rounded-full border-2 border-solid border-gray2 text-gray3 w-[32px] h-[32px] font-extralight pb-1 mt-1 text-3xl mx-auto cursor-pointer" onClick={onClickAddHandler}>
                 +
             </div>
         </div>

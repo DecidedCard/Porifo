@@ -46,7 +46,7 @@ const Input = ({
                 className={`border border-solid border-${borderColor} rounded-lg ${height} w-full p-2 px-3 text-sm font-normal`}
             />
 
-            {helperText && <p className={`${helperTextColor} mt-2 text-sm`}>{helperText}</p>}
+            {helperText && <p className={`${helperTextColor} text-sm`}>{helperText}</p>}
         </div>
     );
 };

@@ -24,8 +24,8 @@ const Preview = ({
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto">
                 <div ref={targetRef} className="">
-                    {template === "standard" && <Standard portfolio={portfolio} />}
-                    {template === "grid" && <Grid portfolio={portfolio} />}
+                    {template === "Standard" && <Standard portfolio={portfolio} />}
+                    {template === "Grid" && <Grid portfolio={portfolio} />}
                 </div>
             </div>
         </div>

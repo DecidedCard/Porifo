@@ -15,15 +15,13 @@ const Introduction = () => {
     } = useInfo();
 
     return (
-        <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[1128px] pb-5">
             <div className="flex flex-col gap-4">
-                <h1 className="pl-6 pt-6 text-2xl font-bold tracking-wider">소개</h1>
-
-                <hr className="w-[657px] mx-auto border border-neutral-100" />
-
+                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">소개</h1>
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
                 <div className="flex h-[82px]">
-                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">한줄 소개</label>
-                    <div className="w-[460px]">
+                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">한 줄 소개</label>
+                    <div className="w-[460px] ml-3">
                         <Input
                             placeholder="본인만의 소개글을 작성해 보세요"
                             size="big"
@@ -34,13 +32,13 @@ const Introduction = () => {
                     </div>
                 </div>
 
-                <hr className="w-[657px] mx-auto border border-neutral-100" />
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
 
                 <div className="flex">
-                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">자기소개</label>
+                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">자기소개</label>
                     <textarea
-                        className="h-[334px] w-[460px] resize-none py-2 px-3 border border-solid border-zinc-300 rounded-lg"
-                        placeholder="본인만의 소개글을 작성해 보세요"
+                        className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg"
+                        placeholder="직무 경험과 핵심 역량 등을 구체적으로 작성해 주세요"
                         value={basicInfo.introduce!}
                         onChange={onChangeIntroduceHandler}
                     />
@@ -48,8 +46,8 @@ const Introduction = () => {
 
                 <hr className="w-[657px] mx-auto border border-neutral-100" />
 
-                <div className="flex gap-6">
-                    <label className="pl-6 font-medium text-zinc-500 w-[177px]">기술 스택</label>
+                <div className="flex gap-3">
+                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기술 스택</label>
                     <div className="flex flex-wrap justify-between gap-2 w-[460px]">
                         {SKILL_TAG.map((item, idx) => {
                             return (
