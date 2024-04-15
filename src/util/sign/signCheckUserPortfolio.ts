@@ -18,9 +18,9 @@ const signCheckUserPortfolio = async ({
     // user?.user_metadata.sex !== undefined
     //     ?
     havePortfolio
-        ? (redirectTo = `${process.env.NEXT_PUBLIC_COMMUITY_PATH}`)
-        : (redirectTo = `${process.env.NEXT_PUBLIC_MYPAGE_PATH}`);
-    // : (redirectTo = `${process.env.NEXT_PUBLIC_SOCIAL_SETTING_PATH}`);
+        ? (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/community`)
+        : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/mypage`);
+    // : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/socialSetting`);
     setRedirecTo(redirectTo);
 };
 
