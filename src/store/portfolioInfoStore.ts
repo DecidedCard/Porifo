@@ -21,7 +21,7 @@ type Store = {
 };
 
 const initial = {
-    template: "standard",
+    template: "Standard",
     name: "",
     englishName: "",
     profileImage: "",
