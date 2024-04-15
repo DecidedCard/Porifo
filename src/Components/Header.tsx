@@ -30,7 +30,6 @@ const Header = () => {
         router.replace("/");
     };
 
-    const onClickLoginProfile = () => (loginToggle ? setLoginToggle(false) : setLoginToggle(true));
     useEffect(() => {
         const userLoginFunc = async () => {
             try {
@@ -91,7 +90,12 @@ const Header = () => {
                                                 href="/mypage"
                                                 className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]"
                                             >
-                                                <Image src="/assets/image/headerwrite.svg" alt="=" width="16" height="18" />
+                                                <Image
+                                                    src="/assets/image/headerwrite.svg"
+                                                    alt="="
+                                                    width="16"
+                                                    height="18"
+                                                />
                                                 <p className="text-[12px]">이력서 작성</p>
                                             </Link>
                                         </div>
@@ -100,7 +104,12 @@ const Header = () => {
                                                 href="/"
                                                 className="flex flex-row items-center justify-center gap-3 mr-[13.5px] w-[146px] h-[32px]"
                                             >
-                                                <Image src="/assets/image/headerlogout.svg" alt="X" width="15" height="15" />
+                                                <Image
+                                                    src="/assets/image/headerlogout.svg"
+                                                    alt="X"
+                                                    width="15"
+                                                    height="15"
+                                                />
                                                 <p className="text-[12px]">로그아웃</p>
                                             </Link>
                                         </div>

@@ -1,6 +1,8 @@
 import React from "react";
-import LoadingLottie from "../../public/poripo_loading.json";
+
 import Lottie from "react-lottie";
+
+import LoadingLottie from "../../public/poripo_loading.json";
 
 const defaultOptions = {
     loop: true,

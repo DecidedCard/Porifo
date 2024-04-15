@@ -12,7 +12,6 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
 
 const Password_Change = () => {
-    console.log("되는지 체크");
     const [userPassword, setUserPassword] = useState("");
     const [confirmUserPassword, setConfirmUserPassword] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);

@@ -28,12 +28,12 @@ const Buttons = () => {
             alert("저장을 해야 url을 제공해드릴 수 있습니다.");
             return;
         }
-        onClickCopyClipBoardHandler(`http://localhost:3000/create/${user?.id}`);
+        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/create/${user?.id}`);
     };
 
     const onClickPreviewModal = () => {
         if (portfolioInputFormValidation(portfolioPreview)) {
-            alert("정보를 전부다 입력해주시기 바랍니다.");
+            alert("정보를 입력해주시기 바랍니다.");
             return;
         }
         setPreviewModal(true);
@@ -97,7 +97,7 @@ const Buttons = () => {
 
                     <div className="w-[250px]">
                         <Button
-                            text={`${basicInfo.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            text={`${portfolio?.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
                             size="l"
                             border="none"
                             color={portfolio ? "primary" : ""}

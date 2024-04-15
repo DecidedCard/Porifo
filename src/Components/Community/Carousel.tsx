@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+
+import Loading from "../Loading";
 
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
@@ -23,7 +26,11 @@ const Carousel = () => {
     });
 
     if (isPending) {
-        return <div>로딩 중 ... !!</div>;
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
     }
 
     const handleImagePrevBtn = () => {
@@ -61,12 +68,15 @@ const Carousel = () => {
                             }}
                         >
                             {/* 카드 이미지 */}
-                            <img
+                            <Image
                                 className="rounded-2xl w-[100%] h-[100%] "
                                 style={{
                                     objectFit: "cover",
                                 }}
                                 src={item.profileImage}
+                                alt="카드 프로필"
+                                width={500}
+                                height={300}
                             />
                             {/* 블러박스 */}
                             <div
@@ -81,11 +91,13 @@ const Carousel = () => {
                                 <div className="flex justify-between">
                                     <div className="flex gap-2">
                                         {/* 유저아바타 */}
-                                        <img
+                                        <Image
                                             className="rounded-[50px] w-8 h-8"
                                             style={{ objectFit: "cover" }}
                                             alt={`hotDeveloper-img-${idx}`}
                                             src={item.profileImage}
+                                            width={500}
+                                            height={300}
                                         />
                                         {/* 유저이름 */}
                                         <div className="font-spoqaMedium text-white font-bold flex items-center justify-center">
@@ -121,14 +133,26 @@ const Carousel = () => {
                     className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[1450px] top-[162px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
-                    <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set8.svg" />
+                    <Image
+                        className="shrink-0 w-6 h-6 relative overflow-visible"
+                        src="icon-set8.svg"
+                        alt="아이콘"
+                        width={30}
+                        height={30}
+                    />
                 </button>
                 <button
                     onClick={handleImagePrevBtn}
                     className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[430px] top-[162px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
-                    <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set9.svg" />
+                    <Image
+                        className="shrink-0 w-6 h-6 relative overflow-visible"
+                        src="icon-set9.svg"
+                        alt="아이콘"
+                        width={30}
+                        height={30}
+                    />
                 </button>
             </div>
         </>
