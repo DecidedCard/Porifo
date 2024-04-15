@@ -8,14 +8,11 @@ import { SKILL_TAG } from "@/util/skill_tag";
 const Introduction = () => {
     const {
         basicInfo,
-        skillTag,
         onChangeOneLineIntroduce,
         onClickSkillTagDeleteHandler,
         onChangeIntroduceHandler,
         onClickSkillTagHandler,
     } = useInfo();
-
-    console.log(skillTag);
 
     return (
         <main className="bg-white rounded-2xl mt-10 ml-9 w-[720px] pb-20">
@@ -56,8 +53,10 @@ const Introduction = () => {
                     <div className="flex flex-wrap justify-between gap-2 w-[460px]">
                         {SKILL_TAG.map((item, idx) => {
                             return (
-                                <>
-                                    {skillTag.find((tag) => tag === item) ? (
+                                <div key={idx}>
+                                    {JSON.parse(JSON.stringify(basicInfo.skillTag)).find(
+                                        (tag: string) => tag === item,
+                                    ) ? (
                                         <div
                                             key={idx}
                                             className="py-[2px] px-3 h-[22px] text-xs font-medium text-white border border-solid border-primary bg-primary rounded cursor-pointer"
@@ -67,14 +66,13 @@ const Introduction = () => {
                                         </div>
                                     ) : (
                                         <div
-                                            key={idx}
                                             className="py-[2px] px-3 h-[22px] text-xs font-medium border border-solid border-nonegray rounded cursor-pointer"
                                             onClick={() => onClickSkillTagHandler(item)}
                                         >
                                             {item}
                                         </div>
                                     )}
-                                </>
+                                </div>
                             );
                         })}
                     </div>

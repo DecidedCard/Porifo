@@ -12,7 +12,6 @@ import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfol
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
-import dynamic from "next/dynamic";
 
 const useInfo = () => {
     const {
@@ -26,6 +25,7 @@ const useInfo = () => {
         setJob,
         setOneLineIntroduce,
         setIntroduce,
+        setSkillTag,
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
@@ -33,7 +33,6 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
-    const [skillTag, setSkillTag] = useState<string[]>([]);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
@@ -106,10 +105,13 @@ const useInfo = () => {
     };
 
     const onClickSkillTagHandler = (item: string) => {
-        setSkillTag((state) => [...state, item]);
+        const skillTag = basicInfo.skillTag as string[];
+        setSkillTag([...skillTag, item]);
     };
 
     const onClickSkillTagDeleteHandler = (item: string) => {
+        const skillTag = basicInfo.skillTag as string[];
+
         const idx = skillTag.indexOf(item);
         const skillTagCopy = [...skillTag];
         skillTagCopy.splice(idx, 1);
@@ -218,6 +220,7 @@ const useInfo = () => {
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
+            localStorage.removeItem("portfolio");
             alert("이력서가 업데이트 되었습니다.");
             return;
         }
@@ -243,7 +246,6 @@ const useInfo = () => {
         basicInfo,
         careers,
         portfolioPreview,
-        skillTag,
         disabled,
         onChangeNameHandler,
         onChangeEngNameHandler,
