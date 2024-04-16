@@ -22,8 +22,7 @@ export default async function RootLayout({
             <body className={`${inter.className} bg-hihigray`}>
                 <Header />
                 <Provider>{children}</Provider>
-                {/* 내용을 정하지 않아서 비활성화 */}
-                {/* <Footer /> */}
+                <Footer />
             </body>
         </html>
     );

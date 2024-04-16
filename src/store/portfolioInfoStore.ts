@@ -18,6 +18,7 @@ type Store = {
     setBlog: (arg: string) => void;
     setGithub: (arg: string) => void;
     setInitialBasicInfo: (arg: PortfolioInfo) => void;
+    setReset: () => void;
 };
 
 const initial = {
@@ -54,6 +55,7 @@ const usePortfolioInfoStore = create<Store>()((set) => ({
     setBlog: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, blogLink: arg } })),
     setGithub: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, githubLink: arg } })),
     setInitialBasicInfo: (arg) => set({ basicInfo: arg }),
+    setReset: () => set({ basicInfo: initial }),
 }));
 
 export default usePortfolioInfoStore;

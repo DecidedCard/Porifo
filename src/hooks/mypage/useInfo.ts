@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 import useSetMutation from "../useSetMutation";
-import usePortfolioQuery from "./usePortfolioQuery";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
@@ -33,6 +32,7 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
@@ -81,6 +81,12 @@ const useInfo = () => {
     };
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const regex = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
+        if (regex.test(e.target.value)) {
+            setEmailCheck(null);
+        } else {
+            setEmailCheck({ color: "error", helperText: "이메일을 정확하게 입력해주시기 바랍니다." });
+        }
         setEmail(e.target.value);
     };
 
@@ -190,14 +196,23 @@ const useInfo = () => {
 
         if (user && !portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                careers.length === 0 ||
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
 
@@ -209,23 +224,46 @@ const useInfo = () => {
 
         if (portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                careers.length === 0 ||
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position ||
+                !careers
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
-            localStorage.removeItem("portfolio");
             alert("이력서가 업데이트 되었습니다.");
+            localStorage.removeItem("portfolio");
+
             return;
         }
 
-        const newPortfolio = { ...info, profileImage: url, project, career: careers };
+        let newPortfolio = { ...info, profileImage: url, project, career: careers };
+        const { ...newPortfolioInfo } = newPortfolio;
+        if (
+            careers.length === 0 ||
+            !careers[0].comment ||
+            !careers[0].company ||
+            !careers[0].date ||
+            !careers[0].department ||
+            !careers[0].position ||
+            !careers
+        ) {
+            newPortfolio = { ...newPortfolioInfo, career: [] };
+        }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
@@ -247,6 +285,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        emailCheck,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,

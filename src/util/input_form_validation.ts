@@ -11,19 +11,21 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
-    if (!info.englishName) {
-        return true;
-    }
-
-    if (!info.birthday) {
-        return true;
-    }
-
     if (!info.email) {
         return true;
+    } else {
+        const regex = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
+
+        if (!regex.test(info.email)) {
+            return true;
+        }
     }
 
     if (!info.job) {
+        return true;
+    }
+
+    if (!info.oneLineIntroduce) {
         return true;
     }
 
