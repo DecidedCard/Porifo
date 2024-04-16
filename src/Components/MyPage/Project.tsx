@@ -124,7 +124,7 @@ const Project = () => {
                                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                                     onChangeProjectIntroduce(e, projectsIndex)
                                                 }
-                                                className="w-[460px] h-[140px] resize-none rounded-lg py-2 px-3 border border-solid border-zinc-300"
+                                                className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-zinc-300"
                                             />
                                         </div>
                                     </div>
