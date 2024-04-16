@@ -6,7 +6,7 @@ import { RiLinkM } from "react-icons/ri";
 
 const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<string>> }) => {
 
-    const [selectedNav, setSelectedNav] = useState("");
+    const [selectedNav, setSelectedNav] = useState("basicInfo");
 
     const handleClick = (navItem: string) => {
         setNav(navItem);
