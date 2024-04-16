@@ -27,7 +27,8 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, 
         (color === "black" && "border border-solid border-black text-black") ||
         (color === "primary" && "border border-solid border-primary text-primary") ||
         (color === "secondary" && "border border-solid border-secondary text-secondary") ||
-        (color === "primarynone" && "text-primary");
+        (color === "primarynone" && "text-primary") ||
+        (color === "success" && "border-success border border-solid text-black");
 
     return (
         <button

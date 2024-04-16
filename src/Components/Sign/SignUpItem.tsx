@@ -43,7 +43,7 @@ const SignUpItem = ({
             showPassword.visible ? { type: "password", visible: false } : { type: "text", visible: true },
         );
     };
-
+    console.log(color);
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
             <label className="mb-2 flex">
