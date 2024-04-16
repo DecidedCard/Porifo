@@ -13,7 +13,9 @@ const BIRTHDAY_DAY_LIST = Array.from({ length: 31 }, (_, i) => `${i + 1}일`);
 const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirthDay }: BirthDayType) => {
     return (
         <div className="mb-5 mx-auto w-fit h-fit flex flex-col">
-            <label className="mb-5">생년월일</label>
+            <label className="mb-5  flex">
+                생년월일 <p className="ml-1 text-[10px] text-red-500">★</p>
+            </label>
 
             <div className="flex flex-row gap-2">
                 <select

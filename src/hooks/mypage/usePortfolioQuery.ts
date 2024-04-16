@@ -33,32 +33,16 @@ const usePortfolioQuery = (id: string) => {
     useEffect(() => {
         if (portfolioData && portfolioData?.length !== 0) {
             setPortfolio(portfolioData[0]);
+
+            const project = portfolioData[0].project as unknown as Project[];
+            setProjectsInitial(project);
+
+            const career = portfolioData[0].career as Career[];
+            setInitialCareers(career);
+
+            setInitialBasicInfo(portfolioData[0]);
         }
-    }, [setPortfolio, portfolioData, portfolio]);
-
-    useEffect(() => {
-        if (
-            portfolio &&
-            !basicInfo.name &&
-            !basicInfo.birthday &&
-            !basicInfo.email &&
-            !basicInfo.oneLineIntroduce &&
-            !basicInfo.introduce
-        ) {
-            const project = portfolio.project as Project[];
-            if (project) {
-                setProjectsInitial(project);
-            }
-
-            const career = portfolio.career as Career[];
-
-            if (career) {
-                setInitialCareers(career);
-            }
-
-            setInitialBasicInfo(portfolio);
-        }
-    }, [portfolio, basicInfo, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [setPortfolio, portfolioData, setInitialCareers, setInitialBasicInfo, setProjectsInitial]);
 
     return { portfolio, isFetching, isError };
 };

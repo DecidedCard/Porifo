@@ -19,6 +19,7 @@ const PortfolioUrl = () => {
                             type="url"
                             size="big"
                             placeholder="http://"
+                            maxLength={200}
                             value={basicInfo.blogLink!}
                             onChange={onChangeBlogHandler}
                         />
@@ -31,6 +32,7 @@ const PortfolioUrl = () => {
                             type="url"
                             size="big"
                             placeholder="http://"
+                            maxLength={200}
                             value={basicInfo.githubLink!}
                             onChange={onChangeGithubHandler}
                         />

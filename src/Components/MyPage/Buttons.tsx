@@ -4,8 +4,6 @@ import React, { useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
-import { RiLinkM } from "react-icons/ri";
-import { GrDownload } from "react-icons/gr";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { usePDF } from "react-to-pdf";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
