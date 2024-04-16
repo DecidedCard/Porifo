@@ -13,14 +13,13 @@ const signCheckUserPortfolio = async ({
 
     let redirectTo: string;
 
-    // user?.user_metadata.birthDate !== undefined &&
-    // user?.user_metadata.phoneNumber !== undefined &&
-    // user?.user_metadata.sex !== undefined
-    //     ?
-    havePortfolio
-        ? (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/community`)
-        : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/mypage`);
-    // : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/socialSetting`);
+    user?.user_metadata.birthDate !== undefined &&
+    user?.user_metadata.phoneNumber !== undefined &&
+    user?.user_metadata.sex !== undefined
+        ? havePortfolio
+            ? (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/community`)
+            : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/mypage`)
+        : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/socialSetting`);
     setRedirecTo(redirectTo);
 };
 
