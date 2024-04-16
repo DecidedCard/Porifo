@@ -11,26 +11,20 @@ export const getPortfolio = async (payload: any) => {
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
     if (filter === "최신순") {
         query = query.order("created_at", { ascending: false });
-        // console.log("실행됨");
     }
 
     if (jobFilter === "*") {
         query = query.order("created_at", { ascending: false });
         const { data } = await query.range(from, to);
 
-        console.log("from, to", from, to);
-        console.log("pageParam", pageParam);
         return data;
     }
 
     if (jobFilter === jobFilter) {
         query = query.order("created_at", { ascending: true }).eq("job", `${jobFilter}`);
-        console.log("실행됨");
     }
 
     const { data, error } = await query.range(from, to);
-
-    console.log("실행됨");
 
     if (error) {
         console.error(error);

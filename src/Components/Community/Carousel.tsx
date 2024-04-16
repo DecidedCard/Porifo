@@ -10,11 +10,10 @@ import { QUERY_KEY } from "@/util/query_key";
 import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
-    const [translateX, setTranslateX] = useState(0);
-
-    const [currCarousel, setCurrCarousel] = useState(0);
+    const [currCarousel, setCurrCarousel] = useState(1);
+    const [pixel, setPixel] = useState(488);
+    // const [pixel, setPixel] = useState(488);
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
-    const carouselRef = useRef(null);
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
 
@@ -31,31 +30,32 @@ const Carousel = () => {
     }
 
     const dataStart = data?.[0];
+    const dataSecond = data?.[1];
+    const dataThird = data?.[2];
     const dataEnd = data?.[data.length - 1];
-    const modifiedArray = [dataEnd, ...data!, dataStart];
+    const data2 = data?.[data.length - 2];
+    const data3 = data?.[data.length - 3];
+
+    const modifiedArray = [data3, data2, dataEnd, ...data!, dataStart, dataSecond, dataThird];
 
     const handleImageNextBtn = () => {
-        // const trans = 275;
-        // if (translateX < -825) {
-        //     return;
-        // }
-        // setTranslateX((prevTranslateX) => prevTranslateX - trans);
-
-        const SliderLength = 5;
+        const SliderLength = data!.length;
         const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
         setCurrCarousel(newCurr);
+        setPixel(488);
 
-        if (newCurr === SliderLength + 1) {
-            moveToNthSlide(0);
+        if (newCurr === SliderLength + 2) {
+            moveToNthSlide(1);
         }
 
         setCarouselTransition("transform 500ms ease-in-out");
     };
 
     const handleImagePrevBtn = () => {
-        const SliderLength = 5;
-        const newCurr = currCarousel - 1; //현재 보고있는 index를 1씩 증가.
+        const SliderLength = data!.length;
+        const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
+        setPixel(570);
 
         if (newCurr === 0) {
             moveToNthSlide(SliderLength);
@@ -75,14 +75,14 @@ const Carousel = () => {
         <>
             <div className="items-center justify-center relative mb-20">
                 {/* 카드 */}
-                <div className="flex w-screen overflow-hidden" ref={carouselRef}>
+                <div className="flex w-screen gap-5 overflow-hidden">
                     {modifiedArray!.map((item: any, idx) => {
                         return (
                             <div
-                                key={item.id}
-                                className="flex flex-col gap-2 w-screen h-[364px] items-center justify-center shrink-0 cursor-pointer"
+                                key={idx + 1}
+                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer"
                                 style={{
-                                    transform: `translateX(-${currCarousel * 100}%)`,
+                                    transform: `translateX(-${currCarousel * pixel}px)`,
                                     transition: carouselTransition,
                                 }}
                                 onClick={() => {
@@ -150,14 +150,14 @@ const Carousel = () => {
                 {/* 이미지 넘기기 버튼 */}
                 <button
                     onClick={handleImageNextBtn}
-                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[1450px] top-[162px]"
+                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[1450px] top-[162px] lg:left-[1150px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set8.svg" />
                 </button>
                 <button
                     onClick={handleImagePrevBtn}
-                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[430px] top-[162px]"
+                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[430px] top-[162px] lg:left-[150px]"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <img className="shrink-0 w-6 h-6 relative overflow-visible" src="icon-set9.svg" />

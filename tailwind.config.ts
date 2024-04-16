@@ -59,6 +59,11 @@ const config: Config = {
                 sky_blue: "#E1FFFF",
                 green: "#E0FFEC",
             },
+            screens: {
+                sm: { min: "390px", max: "819px" },
+                md: { min: "820px", max: "1023px" },
+                lg: { min: "1440px" },
+            },
         },
     },
     plugins: [],

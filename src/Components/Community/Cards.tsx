@@ -32,7 +32,7 @@ const Cards = () => {
     // }
 
     //useInfiniteQuery
-    const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
         queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, from, to, pageParam }),
         initialPageParam: 0,
@@ -55,14 +55,14 @@ const Cards = () => {
         return;
     }, [inView, hasNextPage]);
 
-    if (isLoading) {
+    if (isPending) {
         return <div>로딩중 .. !</div>;
     }
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 w-[1280px]">
-                {data?.pages.map((portfolio: any) => {
+            <div className="mt-8 flex flex-wrap gap-6 w-[1280px] lg:w-[730px]">
+                {data!.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
                             <div
