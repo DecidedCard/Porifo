@@ -242,8 +242,9 @@ const useInfo = () => {
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
-            localStorage.removeItem("portfolio");
             alert("이력서가 업데이트 되었습니다.");
+            localStorage.removeItem("portfolio");
+
             return;
         }
 
