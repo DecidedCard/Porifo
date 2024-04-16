@@ -8,11 +8,11 @@ const Modal = ({ isVisible, onClose, children }: any) => {
 
     return (
         <div
-            className="fixed inset-0 z-20 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
+            className="fixed inset-0 z-20 bg-realblack bg-opacity-25 backdrop-blur-xl flex items-center justify-center"
             id="wrapper"
             onClick={handleClose}
         >
-            <div className="flex mt-[70px]">
+            <div className="flex">
                 <button className="text-white text-xl place-self-start mr-3 mt-2" onClick={onClose}>
                     X
                 </button>
