@@ -73,7 +73,13 @@ const Buttons = () => {
                             className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter"
                             onClick={onClickUrlCopyHandler}
                         >
-                            <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
+                            <Image
+                                src="assets/image/link.svg"
+                                alt="link"
+                                width={24}
+                                height={24}
+                                className="mr-1"
+                            />
                             URL 복사
                         </button>
                         <button

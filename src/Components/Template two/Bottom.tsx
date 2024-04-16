@@ -17,7 +17,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const project = portfolio.project as Project[];
     const [userProject] = useState<Project[]>([...project]);
     return (
-        <main className="flex items-start justify-start ml-10">
+        <main className="flex items-start justify-start">
             <section className="flex flex-col justify-center items-start self-stretch shrink-0 gap-10">
                 <UserProject project={userProject} />
                 <WorkExperience career={userCareer} />
