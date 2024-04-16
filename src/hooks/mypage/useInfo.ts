@@ -196,14 +196,22 @@ const useInfo = () => {
 
         if (user && !portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
 
@@ -215,14 +223,22 @@ const useInfo = () => {
 
         if (portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
@@ -231,7 +247,17 @@ const useInfo = () => {
             return;
         }
 
-        const newPortfolio = { ...info, profileImage: url, project, career: careers };
+        let newPortfolio = { ...info, profileImage: url, project, career: careers };
+        const { ...newPortfolioInfo } = newPortfolio;
+        if (
+            !careers[0].comment ||
+            !careers[0].company ||
+            !careers[0].date ||
+            !careers[0].department ||
+            !careers[0].position
+        ) {
+            newPortfolio = { ...newPortfolioInfo, career: [] };
+        }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 

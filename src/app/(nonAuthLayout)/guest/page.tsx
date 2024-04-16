@@ -10,19 +10,21 @@ import Navigation from "@/Components/MyPage/Navigation";
 import Buttons from "@/Components/Guest/Buttons";
 
 import useUserStore from "@/store/userStore";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 
 const Guest = () => {
     const { setPortfolio } = useUserStore();
+    const { setReset } = usePortfolioInfoStore();
     const [nav, setNav] = useState("basicInfo");
-
     useEffect(() => {
         setPortfolio(null);
-    }, [setPortfolio]);
+        setReset();
+    }, [setPortfolio, setReset]);
 
     return (
         <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto">
             <Navigation setNav={setNav} />
-            <div className="w-[800px]">
+            <div className="w-[800px] min-h-[750px]">
                 {nav === "basicInfo" && <UserInfo />}
                 {nav === "introduce" && <Introduction />}
                 {nav === "project" && <Project />}
