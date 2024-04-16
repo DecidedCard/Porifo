@@ -8,10 +8,14 @@ const UserProject = ({ project }: { project: Project[] }) => {
     const projects = [...project];
 
     return (
-        <div className="flex flex-col items-start justify-start">
+        <div className="flex flex-col items-start justify-start relative">
             <h2 className="text-[22px] font-bold">프로젝트</h2>
-            <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-            <ol className="relative border-s border-solid border-secondary ">
+            <div className=" bg-deepgray w-[804px] h-[1px] my-5"></div>
+            {projects.length > 1 && (
+                <div className="absolute border-s border-solid border-secondary h-[46%] mt-[230px]">
+                </div>
+            )}
+            <div>
                 {projects.map((project, index) => (
                     <ProjectTimelineItem
                         key={index}
@@ -23,7 +27,7 @@ const UserProject = ({ project }: { project: Project[] }) => {
                         githubLink={project.githubLink}
                     />
                 ))}
-            </ol>
+            </div>
         </div>
     );
 };

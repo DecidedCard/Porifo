@@ -83,6 +83,8 @@ const Comments = () => {
                                         className="cursor-pointer"
                                         src="grayClose.svg"
                                         alt="삭제 아이콘"
+                                        width={40}
+                                        height={40}
                                     />
                                 ) : null}
                             </div>

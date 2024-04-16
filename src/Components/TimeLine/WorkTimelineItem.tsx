@@ -21,11 +21,12 @@ const WorkTimelineItem: React.FC<WorkTimelineItemProps> = ({ date, company, desc
                 {/* 설명과 상세 정보를 포함하는 영역 */}
                 <div className="flex flex-col w-[480px] ml-10">
                     <p className="text-[14px] font-normal mb-2 text-neutral-600">{description} / {position}</p>
-                    <div className="flex flex-col">
-                        <p className="font-normal text-neutral-500 leading-6 text-[12px]">
-                            ㅤ• {comments}
-                        </p>
-                    </div>
+                        <div className="flex flex-col">
+                            <p className="font-normal text-neutral-500 leading-6 text-[12px]">
+                                {comments}
+                            </p>
+
+                        </div>
                 </div>
             </div>
         </li>

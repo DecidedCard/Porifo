@@ -12,8 +12,6 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         introduce: portfolio.introduce,
     });
 
-    const [skillTag, setSkillTag] = useState("")
-
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
@@ -87,7 +85,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                 {/* 제목과 날짜를 포함하는 영역 */}
                                 <div className="flex w-full flex-col">
-                                    <div className="flex justify-between w-[804px] mt-5">
+                                    <div className="flex justify-between w-[804px] mt-2">
                                         <h3 className="text-[20px] font-semibold text-gray-900 mb-3">{project.name}</h3>
                                         <time className="text-middlegray text-[12px] font-normal leading-none">
                                             {project.date}
@@ -116,48 +114,54 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     ))}
                 </ol>
 
-                <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
-                    <p className="font-bold text-[22px] w-[804px]">기술스택</p>
-                    <div className="flex flex-wrap text-primary text-[12px]">
-                        {userSkillTags.map((tag, index) => (
-                            <span key={index} className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
-                        ))}
+                {userSkillTag.length > 0 && (
+                    <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
+                        <p className="font-bold text-[22px] w-[804px]">기술스택</p>
+                        <div className="flex flex-wrap text-primary text-[12px]">
+                            {userSkillTags.map((tag, index) => (
+                                <span key={index} className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
 
-                <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
-                    <p className="font-bold text-[22px]">업무경험</p>
-                    <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-                    <ol>
-                        {experiences.map((experience, index) => (
-                            <li key={index} className="flex relative">
-                                <div className="flex w-full flex-col">
-                                    {/* 제목과 날짜를 포함하는 영역 */}
-                                    <div className="flex justify-between w-[804px]">
-                                        <h3 className="text-[20px] font-semibold text-gray-900 mb-3">
-                                            {experience.company}
-                                        </h3>
-                                        <time className="text-middlegray text-[12px] font-normal leading-none">
-                                            {experience.date}
-                                        </time>
-                                    </div>
-
-                                    {/* 설명과 상세 정보를 포함하는 영역 */}
-                                    <div className="flex flex-col w-[480px]">
-                                        <p className="text-[14px] font-normal mb-2 text-neutral-600">
-                                            {experience.department} / {experience.position}
-                                        </p>
-                                        <div className="flex flex-col">
-                                            <p className="font-normal text-neutral-500 leading-6 text-[12px]">
-                                                ㅤ• {experience.comment}
-                                            </p>
+                {career.length > 0 && (
+                    <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
+                        <p className="font-bold text-[22px]">업무경험</p>
+                        <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                        <ol>
+                            {experiences.map((experience, index) => (
+                                <li key={index} className="flex relative mb-5">
+                                    <div className="flex w-full flex-col">
+                                        {/* 제목과 날짜를 포함하는 영역 */}
+                                        <div className="flex justify-between w-[804px]">
+                                            <h3 className="text-[20px] font-semibold text-gray-900 mb-3">
+                                                {experience.company}
+                                            </h3>
+                                            <time className="text-middlegray text-[12px] font-normal leading-none">
+                                                {experience.date}
+                                            </time>
                                         </div>
+
+                                        {/* 설명과 상세 정보를 포함하는 영역 */}
+                                        <div className="flex flex-col w-[480px]">
+                                            <p className="text-[14px] font-normal mb-2 text-neutral-600">
+                                                {experience.department} / {experience.position}
+                                            </p>
+                                            <div className="flex flex-col">
+                                                <p className="font-normal text-neutral-500 leading-6 text-[12px]">
+                                                    • {experience.comment}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                )}
+
 
                 <div className="flex flex-col items-start justify-start mt-12">
                     <p className="font-bold text-[22px]">자기소개</p>
