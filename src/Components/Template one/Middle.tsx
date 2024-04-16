@@ -12,11 +12,15 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         introduce: portfolio.introduce,
     });
 
+    const [skillTag, setSkillTag] = useState("")
+
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
+    const userSkillTag = portfolio.skillTag as string[];
 
     const experiences = [...career];
     const projects = [...project];
+    const userSkillTags = [...userSkillTag];
 
     const [imagePage, setImagePage] = useState(0);
 
@@ -113,7 +117,12 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 </ol>
 
                 <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
-                    <p className="font-bold text-[22px] w-[804px] h-[]">기술스택</p>
+                    <p className="font-bold text-[22px] w-[804px]">기술스택</p>
+                    <div className="flex flex-wrap text-primary text-[12px]">
+                        {userSkillTags.map((tag, index) => (
+                            <span key={index} className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
