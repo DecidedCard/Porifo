@@ -23,7 +23,9 @@ const SocialSeting = () => {
 
     const [sex, setSex] = useState("");
 
-    // const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
+
+    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const birthDate = birthYear + birthMonth + birthDay;
 
     const router = useRouter();
@@ -44,14 +46,17 @@ const SocialSeting = () => {
 
     const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
 
+    const checkRequiredPersonalInfo = () =>
+        personalInfoCheck ? setPersonalInfoCheck(false) : setPersonalInfoCheck(true);
+
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            signSettingValidation({ birthDate, sex });
+            signSettingValidation({ birthDate, phoneNumber, sex });
 
             await supabase.auth.updateUser({
-                data: { birthDate, sex },
+                data: { birthDate, phoneNumber, sex },
             });
 
             return router.replace("/");
@@ -62,7 +67,7 @@ const SocialSeting = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded p-10 w-[500px] h-[500px] bg-white flex justify-center flex-col">
+            <div className="rounded p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
@@ -87,8 +92,19 @@ const SocialSeting = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                     />
-
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
+                    <div className="flex mx-8 cursor-pointer" onClick={checkRequiredPersonalInfo}>
+                        <Image
+                            className="w-6 h-6 mr-1"
+                            src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
+                            width={0}
+                            height={0}
+                            alt="check"
+                        />
+                        <span className="mt-1 flex">
+                            개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                        </span>
+                    </div>
                     <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button text="모두 입력해 주세요" border="none" size="m" color="primary" />
                     </div>

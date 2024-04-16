@@ -18,6 +18,7 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { passwordValidate } from "@/util/sign/sign_validate";
+import { Resend } from "resend";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -47,7 +48,8 @@ const SignUp = () => {
 
     const router = useRouter();
     const birthDate = birthYear + birthMonth + birthDay;
-    // const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+
+    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
@@ -82,16 +84,17 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, email, password });
+            signUpValidation({ birthDate, phoneNumber, email, password });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
-                    emailRedirectTo: "http://localhost:3000/signin",
+                    emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
                     data: {
                         birthDate,
                         user_name: name,
                         sex,
+                        phoneNumber,
                     },
                 },
             });
@@ -99,6 +102,7 @@ const SignUp = () => {
             if (error) {
                 throw new Error();
             }
+
             return router.push("/welcome");
         } catch (error) {
             console.log(error);
@@ -160,14 +164,25 @@ const SignUp = () => {
                     />
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
 
-                    {/* <SignPhoneNumber
+                    <SignPhoneNumber
                         onClickPhoneNumber={onClickPhoneNumber}
                         onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
                         onChangeLastPhoneNumber={onChangeLastPhoneNumber}
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
-                    /> */}
-
+                    />
+                    <div className="mt-6 mx-9 flex gap-x-[142.5px]">
+                        <span className="flex">
+                            개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                        </span>
+                        <Image
+                            width={0}
+                            height={0}
+                            className="w-[20px] h-[20px]"
+                            src="find_password_arrow.svg"
+                            alt="페이지 이동 화살표"
+                        />
+                    </div>
                     <SignButton
                         text="회원가입"
                         inputDisabled={inputDisabled}
