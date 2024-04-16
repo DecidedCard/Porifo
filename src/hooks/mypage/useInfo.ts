@@ -199,6 +199,7 @@ const useInfo = () => {
             const { ...newPortfolioInfo } = newPortfolio;
 
             if (
+                careers.length === 0 ||
                 !careers[0].comment ||
                 !careers[0].company ||
                 !careers[0].date ||
@@ -226,11 +227,13 @@ const useInfo = () => {
             const { ...newPortfolioInfo } = newPortfolio;
 
             if (
+                careers.length === 0 ||
                 !careers[0].comment ||
                 !careers[0].company ||
                 !careers[0].date ||
                 !careers[0].department ||
-                !careers[0].position
+                !careers[0].position ||
+                !careers
             ) {
                 newPortfolio = { ...newPortfolioInfo, career: [] };
             }
@@ -251,11 +254,13 @@ const useInfo = () => {
         let newPortfolio = { ...info, profileImage: url, project, career: careers };
         const { ...newPortfolioInfo } = newPortfolio;
         if (
+            careers.length === 0 ||
             !careers[0].comment ||
             !careers[0].company ||
             !careers[0].date ||
             !careers[0].department ||
-            !careers[0].position
+            !careers[0].position ||
+            !careers
         ) {
             newPortfolio = { ...newPortfolioInfo, career: [] };
         }
