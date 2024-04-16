@@ -39,7 +39,7 @@ const JobFilter = () => {
     };
 
     return (
-        <div className="flex flex-row gap-10 ">
+        <div className="flex flex-row gap-10 lg:ml-2 ">
             {SELECT_LIST.map((item, idx) => {
                 return (
                     <div className="flex flex-col" key={idx}>

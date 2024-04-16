@@ -99,11 +99,14 @@ const Carousel = () => {
                                 }}
                             >
                                 {/* 카드 이미지 */}
-                                <img
+                                <Image
                                     className="rounded-2xl w-[100%] h-[100%] "
                                     style={{
                                         objectFit: "cover",
                                     }}
+                                    width={500}
+                                    height={300}
+                                    alt="카드 프로필"
                                     src={item.profileImage}
                                 />
                                 {/* 블러박스 */}
@@ -119,10 +122,12 @@ const Carousel = () => {
                                     <div className="flex justify-between">
                                         <div className="flex gap-2">
                                             {/* 유저아바타 */}
-                                            <img
+                                            <Image
+                                                width={500}
+                                                height={300}
+                                                alt={`hotDeveloper-img-${idx}`}
                                                 className="rounded-[50px] w-8 h-8"
                                                 style={{ objectFit: "cover" }}
-                                                alt={`hotDeveloper-img-${idx}`}
                                                 src={item.profileImage}
                                             />
                                             {/* 유저이름 */}
@@ -153,81 +158,6 @@ const Carousel = () => {
                         );
                     })}
                 </div>
-                {data!.map((item: any, idx) => {
-                    return (
-                        <div
-                            key={item.id}
-                            className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer"
-                            style={{
-                                transform: `translateX(${translateX}px)`,
-                                transition: "transform 0.3s ease-in-out",
-                            }}
-                            onClick={() => {
-                                setIsOpenModal(true),
-                                    setCardId(item.id),
-                                    queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
-                            }}
-                        >
-                            {/* 카드 이미지 */}
-                            <Image
-                                className="rounded-2xl w-[100%] h-[100%] "
-                                style={{
-                                    objectFit: "cover",
-                                }}
-                                src={item.profileImage}
-                                alt="카드 프로필"
-                                width={500}
-                                height={300}
-                            />
-                            {/* 블러박스 */}
-                            <div
-                                className="bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[238px]"
-                                style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
-                            >
-                                {/* 한줄소개 */}
-                                <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
-                                    <p className="truncate ...">{item.oneLineIntroduce}</p>
-                                </div>
-                                {/* 유저정보,좋아요,조회수 박스 */}
-                                <div className="flex justify-between">
-                                    <div className="flex gap-2">
-                                        {/* 유저아바타 */}
-                                        <Image
-                                            className="rounded-[50px] w-8 h-8"
-                                            style={{ objectFit: "cover" }}
-                                            alt={`hotDeveloper-img-${idx}`}
-                                            src={item.profileImage}
-                                            width={500}
-                                            height={300}
-                                        />
-                                        {/* 유저이름 */}
-                                        <div className="font-spoqaMedium text-white font-bold flex items-center justify-center">
-                                            {item.name}
-                                        </div>
-                                    </div>
-                                    {/* 좋아요, 조회수 박스 */}
-                                    <div className="flex gap-4">
-                                        <div className="flex gap-1 items-center">
-                                            <div className="shrink-0 w-6 h-6 relative">
-                                                {/* 좋아요 */}
-                                                {/* <img src="grayHeart.svg" /> */}
-                                            </div>
-                                            {/* <div className="text-gray">210</div> */}
-                                        </div>
-                                        <div className="flex gap-1 items-center">
-                                            <div className="shrink-0 w-6 h-6 relative">
-                                                {/* 조회수 */}
-                                                {/* <img src="grayEye.svg" /> */}
-                                            </div>
-                                            {/* <div className="text-gray">1523</div> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-
                 {/* 이미지 넘기기 버튼 */}
                 <button
                     onClick={handleImageNextBtn}
