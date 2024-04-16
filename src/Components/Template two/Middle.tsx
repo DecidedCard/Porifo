@@ -14,14 +14,14 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <main>
-            <div className="my-10 gap-16 flex flex-row items-start justify-start self-stretch shrink-0">
+            <div className="my-10 gap-16 flex flex-row items-start justify-start">
 
                 <div className="flex flex-col items-start justify-start self-stretch shrink-0">
                     <p className="font-bold text-[22px]">기술스택</p>
                     <div className="bg-deepgray w-[370px] h-[1px] my-5"></div>
-                    <div className="flex flex-row flex-wrap text-primary text-[12px] w-[382px] h-fit">
+                    <div className="flex flex-row flex-wrap text-primary text-[12px] w-[382px] h-fit gap-4 ">
                         {userSkillTags.map((tag, index) => (
-                            <span key={index} className="mr-2 mb-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
+                            <span key={index} className="flex items-center justify-center py-1 px-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
                         ))}
                     </div>
                 </div>

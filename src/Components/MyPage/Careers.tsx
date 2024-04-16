@@ -22,11 +22,9 @@ const Careers = () => {
             {careers.map((career, careerIndex) => {
                 return (
                     <div key={careerIndex} className="flex flex-col gap-5">
-                        {careers.length >= 2 && (
-                            <div className="w-[637px]" onClick={() => onClickMinusHandler(careerIndex)}>
-                                <MdClose className="w-6 h-6 ml-auto text-grayblack" />
-                            </div>
-                        )}
+                        <div className="w-[637px] cursor-pointer" onClick={() => onClickMinusHandler(careerIndex)}>
+                            <MdClose className="w-6 h-6 ml-auto text-grayblack" />
+                        </div>
                         <div className="flex mt-1">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
                             <div className="flex flex-col gap-5 w-[460px] ml-3">

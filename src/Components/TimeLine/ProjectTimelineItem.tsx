@@ -25,7 +25,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
     };
 
     return (
-        <li className="mb-10 pl-10 flex flex-col items-center justify-center relative">
+        <li className="mb-10 pl-5 flex flex-col items-center justify-center relative">
             <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
 
             <div className="flex flex-col w-[804px]">
