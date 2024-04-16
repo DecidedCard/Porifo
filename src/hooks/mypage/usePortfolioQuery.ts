@@ -52,7 +52,7 @@ const usePortfolioQuery = (id: string) => {
 
             const career = portfolio.career as Career[];
 
-            if (career) {
+            if (career.length > 0) {
                 setInitialCareers(career);
             }
 

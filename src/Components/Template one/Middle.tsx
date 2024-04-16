@@ -125,7 +125,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </div>
                 )}
 
-                {career.length > 0 && (
+                {experiences.length > 0 && (
                     <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
                         <p className="font-bold text-[22px]">업무경험</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>

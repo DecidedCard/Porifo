@@ -25,8 +25,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
 
     return (
         <div>
-            {portfolio?.template === "standard" && <Standard portfolio={portfolio} />}
-            {portfolio?.template === "grid" && <Grid portfolio={portfolio} />}
+            {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
+            {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
         </div>
     );
 };

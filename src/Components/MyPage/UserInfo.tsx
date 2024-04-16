@@ -14,6 +14,7 @@ import Careers from "./Careers";
 const UserInfo = () => {
     const {
         basicInfo,
+        emailCheck,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -25,7 +26,9 @@ const UserInfo = () => {
     return (
         <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[1128px] pb-5">
             <div className="flex flex-col gap-4">
-                <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">기본 정보</h2>
+                <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">
+                    기본 정보
+                </h2>
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
                 <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">내 정보</p>
 
@@ -41,12 +44,12 @@ const UserInfo = () => {
                                 className="ml-3 w-[200px] h-[200px] rounded-2xl"
                             />
                         ) : (
-                            <Image 
-                            src="assets/image/mypagedefault.svg"
-                            alt="기본 이미지"
-                            width={200}
-                            height={200}
-                            className="ml-3 w-[200px] h-[200px] rounded-2xl"
+                            <Image
+                                src="assets/image/mypagedefault.svg"
+                                alt="기본 이미지"
+                                width={200}
+                                height={200}
+                                className="ml-3 w-[200px] h-[200px] rounded-2xl"
                             />
                         )}
                     </label>
@@ -59,6 +62,7 @@ const UserInfo = () => {
                         <Input
                             type="text"
                             placeholder="이름을 입력해 주세요."
+                            maxLength={50}
                             value={basicInfo.name!}
                             onChange={onChangeNameHandler}
                             size="big"
@@ -72,6 +76,7 @@ const UserInfo = () => {
                         <Input
                             type="text"
                             placeholder="영문 이름을 입력해 주세요."
+                            maxLength={100}
                             value={basicInfo.englishName}
                             onChange={onChangeEngNameHandler}
                             size="big"
@@ -100,6 +105,8 @@ const UserInfo = () => {
                             placeholder="E-mail을 입력해 주세요."
                             value={basicInfo.email}
                             onChange={onChangeEmailHandler}
+                            color={`${emailCheck?.color ? emailCheck?.color : ""}`}
+                            helperText={`${emailCheck?.helperText ? emailCheck?.helperText : ""}`}
                             size="big"
                         />
                     </div>

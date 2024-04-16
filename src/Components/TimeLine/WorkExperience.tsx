@@ -8,12 +8,14 @@ import type { Career } from "@/types/Career";
 
 const WorkExperience = ({ career }: { career: Career[] }) => {
     const experiences = [...career];
+    console.log(career)
 
     return (
         <div className="flex flex-col items-start justify-start relative">
             <h2 className="text-[22px] font-bold">업무경력</h2>
             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-            {experiences.length > 1 && (
+
+            {career.length > 2 && (
                 <div className="absolute border-s border-solid border-secondary h-[40%] mt-[64px]">
                 </div>
             )}
