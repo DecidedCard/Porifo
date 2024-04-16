@@ -32,8 +32,8 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <main>
-            <div className="my-12 flex flex-col items-start justify-start self-stretch shrink-0">
-                <div className="flex flex-col items-start justify-start self-stretch shrink-0">
+            <div className="my-12 flex flex-col items-start justify-start">
+                <div className="flex flex-col items-start justify-start">
                     <p className="font-bold text-[22px] mb-2">프로젝트</p>
                 </div>
                 <ol>

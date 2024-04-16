@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
-import { RiLinkM } from "react-icons/ri";
+import { useState } from "react";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
+import Image from "next/image";
 
 const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo, setUserInfo] = useState({
@@ -21,10 +20,24 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                             <div className="flex flex-col gap-5 items-center justify-start shrink-0 relative">
                                 <div className="flex items-center justify-start text-[14px] text-neutral-500">
-                                    <RiLinkM className="mr-2" /> {userInfo.blogLink}
+                                    <Image
+                                        src="assets/image/link.svg"
+                                        alt="link"
+                                        width={24}
+                                        height={24}
+                                        className="mr-1"
+                                    />
+                                    {userInfo.blogLink}
                                 </div>
                                 <div className="flex items-center justify-start text-[14px] text-neutral-500">
-                                    <RiLinkM className="mr-2" /> {userInfo.githubLink}
+                                    <Image
+                                        src="assets/image/link.svg"
+                                        alt="link"
+                                        width={24}
+                                        height={24}
+                                        className="mr-1"
+                                    />
+                                    {userInfo.githubLink}
                                 </div>
                             </div>
                         </div>
