@@ -11,6 +11,7 @@ import Comments from "./Comments";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
+import Loading from "../Loading";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -20,7 +21,11 @@ const Portfolio_detail = () => {
     });
 
     if (isPending) {
-        return <div>로딩중</div>;
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
     }
 
     const portfolioInfo = data![0];

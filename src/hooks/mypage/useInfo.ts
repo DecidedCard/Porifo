@@ -1,5 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
+import useSetMutation from "../useSetMutation";
+
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
@@ -8,10 +10,7 @@ import useCareerStore from "@/store/careerStore";
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-
-import useSetMutation from "../useSetMutation";
 import { QUERY_KEY } from "@/util/query_key";
-import usePortfolioQuery from "./usePortfolioQuery";
 
 const useInfo = () => {
     const {
@@ -25,6 +24,7 @@ const useInfo = () => {
         setJob,
         setOneLineIntroduce,
         setIntroduce,
+        setSkillTag,
         setBlog,
         setGithub,
     } = usePortfolioInfoStore();
@@ -32,10 +32,9 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
-
-    usePortfolioQuery(user?.id!);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -82,6 +81,12 @@ const useInfo = () => {
     };
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const regex = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
+        if (regex.test(e.target.value)) {
+            setEmailCheck(null);
+        } else {
+            setEmailCheck({ color: "error", helperText: "이메일을 정확하게 입력해주시기 바랍니다." });
+        }
         setEmail(e.target.value);
     };
 
@@ -105,12 +110,25 @@ const useInfo = () => {
         setGithub(e.target.value);
     };
 
+    const onClickSkillTagHandler = (item: string) => {
+        const skillTag = basicInfo.skillTag as string[];
+        setSkillTag([...skillTag, item]);
+    };
+
+    const onClickSkillTagDeleteHandler = (item: string) => {
+        const skillTag = basicInfo.skillTag as string[];
+
+        const idx = skillTag.indexOf(item);
+        const skillTagCopy = [...skillTag];
+        skillTagCopy.splice(idx, 1);
+        setSkillTag(skillTagCopy);
+    };
+
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) return;
 
         if (basicInfo.imageFile) {
@@ -178,40 +196,74 @@ const useInfo = () => {
 
         if (user && !portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                careers.length === 0 ||
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
 
             insert(newPortfolio);
+            localStorage.removeItem("portfolio");
             alert("이력서가 저장되었습니다.");
             return;
         }
 
         if (portfolio?.id) {
             let newPortfolio = { ...info, userId: user!.id, project, career: careers };
+            const { ...newPortfolioInfo } = newPortfolio;
+
+            if (
+                careers.length === 0 ||
+                !careers[0].comment ||
+                !careers[0].company ||
+                !careers[0].date ||
+                !careers[0].department ||
+                !careers[0].position ||
+                !careers
+            ) {
+                newPortfolio = { ...newPortfolioInfo, career: [] };
+            }
 
             if (url) {
                 newPortfolio = {
-                    ...info,
-                    userId: user!.id,
+                    ...newPortfolioInfo,
                     profileImage: url,
-                    project,
-                    career: careers,
                 };
             }
             update({ arg: newPortfolio, value: user!.id });
             alert("이력서가 업데이트 되었습니다.");
+            localStorage.removeItem("portfolio");
+
             return;
         }
 
-        const newPortfolio = { ...info, profileImage: url, project, career: careers };
+        let newPortfolio = { ...info, profileImage: url, project, career: careers };
+        const { ...newPortfolioInfo } = newPortfolio;
+        if (
+            careers.length === 0 ||
+            !careers[0].comment ||
+            !careers[0].company ||
+            !careers[0].date ||
+            !careers[0].department ||
+            !careers[0].position ||
+            !careers
+        ) {
+            newPortfolio = { ...newPortfolioInfo, career: [] };
+        }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
     };
 
@@ -233,6 +285,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        emailCheck,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -243,6 +296,8 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onClickSkillTagHandler,
+        onClickSkillTagDeleteHandler,
         onClickInsertHandler,
         onClickShareToggle,
     };

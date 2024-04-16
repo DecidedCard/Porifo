@@ -46,7 +46,9 @@ const SignUpItem = ({
 
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2">{setLabel}</label>
+            <label className="mb-2 flex">
+                {setLabel} <p className="ml-1 text-[10px] text-red-500">★</p>
+            </label>
             <Input
                 type={type || showPassword.type}
                 value={value}

@@ -5,8 +5,9 @@ import URL from "./URL";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Standard = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+    console.log(portfolio)
     return (
-        <div className="w-[932px] flex flex-col items-center bg-gray">
+        <div className="w-[932px] flex flex-col items-center bg-white pb-10">
             <Top portfolio={portfolio} />
             <Middle portfolio={portfolio} />
             <URL portfolio={portfolio} />

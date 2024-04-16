@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
@@ -10,10 +11,11 @@ import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import useCardIdStore from "@/store/detailStore";
+import useJobFilterStore from "@/store/jobFilterStore";
 
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
-import useJobFilterStore from "@/store/jobFilterStore";
+import Loading from "../Loading";
 
 const Cards = () => {
     //모달 상태
@@ -53,10 +55,14 @@ const Cards = () => {
             fetchNextPage();
         }
         return;
-    }, [inView, hasNextPage]);
+    }, [inView, hasNextPage, fetchNextPage]);
 
     if (isPending) {
-        return <div>로딩중 .. !</div>;
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
     }
 
     return (
@@ -76,20 +82,26 @@ const Cards = () => {
                             >
                                 <div className="flex flex-col gap-2">
                                     {/* 대표이미지 */}
-                                    <img
+                                    <Image
                                         className="rounded-2xl w-[350px] h-[220px]"
                                         style={{
                                             objectFit: "cover",
                                         }}
                                         src={item.profileImage}
+                                        alt="포트폴리오 프로필"
+                                        width={300}
+                                        height={300}
                                     />
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저아바타 */}
-                                            <img
+                                            <Image
                                                 className="rounded-[50px] w-8 h-8"
                                                 style={{ objectFit: "cover" }}
                                                 src={item.profileImage}
+                                                alt="포트폴리오 프로필"
+                                                width={300}
+                                                height={300}
                                             />
                                             {/* 유저닉네임 */}
                                             <div className="text-graytext-black flex items-center justify-center">

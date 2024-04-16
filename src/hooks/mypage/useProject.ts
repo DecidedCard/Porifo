@@ -81,6 +81,10 @@ const useProject = () => {
     };
 
     const onClickAddHandler = () => {
+        if (projects.length >= 10) {
+            alert("프로젝트는 10개까지 작성할 수 있습니다.");
+            return;
+        }
         setAddProjects();
     };
 

@@ -1,9 +1,11 @@
 "use client";
 
+import React, { PropsWithChildren } from "react";
+
 import Loading from "@/Components/Loading";
 import LoginCheckModal from "@/Components/LoginCheckModal";
+
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
-import React, { PropsWithChildren } from "react";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
     const { isFetching, isError } = useLoginCheck();

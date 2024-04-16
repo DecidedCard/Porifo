@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
@@ -38,7 +40,7 @@ const Comments = () => {
 
     return (
         <>
-            <div className="bg-gray-1 w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
+            <div className="w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
                 <CommentInput user={user} id={id} queryClient={queryClient} />
                 <div className="border-[1px] border-solid border-gray2" />
                 {/* 댓글리스트 */}
@@ -49,9 +51,12 @@ const Comments = () => {
                         return (
                             <div key={item.id} className="flex gap-3">
                                 {/* profileImage */}
-                                <img
+                                <Image
                                     className="rounded-[50px] w-10 h-10 object-cover"
                                     src="https://heurm-tutorial.vlpt.us/images/default_thumbnail.png"
+                                    alt="프로필"
+                                    width={40}
+                                    height={40}
                                 />
                                 <div className="flex flex-col gap-1 flex-1 ">
                                     <div className="flex flex-row gap-2 items-center">
@@ -73,10 +78,13 @@ const Comments = () => {
                                 </div>
                                 {/* 삭제버튼 */}
                                 {item.user_email === user?.email ? (
-                                    <img
+                                    <Image
                                         onClick={() => handleDeleteBtn(item.id)}
                                         className="cursor-pointer"
                                         src="grayClose.svg"
+                                        alt="삭제 아이콘"
+                                        width={40}
+                                        height={40}
                                     />
                                 ) : null}
                             </div>
