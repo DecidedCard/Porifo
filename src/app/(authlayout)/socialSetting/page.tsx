@@ -23,6 +23,7 @@ const SocialSeting = () => {
 
     const [sex, setSex] = useState("");
 
+    const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
 
     const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
@@ -46,8 +47,8 @@ const SocialSeting = () => {
 
     const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
 
-    const checkRequiredPersonalInfo = () =>
-        personalInfoCheck ? setPersonalInfoCheck(false) : setPersonalInfoCheck(true);
+    const checkRequiredPersonalInfoModal = () =>
+        personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
 
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -93,18 +94,29 @@ const SocialSeting = () => {
                         lastPhoneNumber={lastPhoneNumber}
                     />
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
-                    <div className="flex mx-8 cursor-pointer" onClick={checkRequiredPersonalInfo}>
+
+                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px]">
+                        <span className="flex">
+                            <Image
+                                className="w-6 h-6 mr-1"
+                                src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
+                                width={0}
+                                height={0}
+                                alt="check"
+                            />
+                            <span className="flex mt-1">
+                                개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                            </span>
+                        </span>
                         <Image
-                            className="w-6 h-6 mr-1"
-                            src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
                             width={0}
                             height={0}
-                            alt="check"
+                            className="w-[20px] h-[20px]"
+                            src="find_password_arrow.svg"
+                            alt="페이지 이동 화살표"
                         />
-                        <span className="mt-1 flex">
-                            개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
-                        </span>
                     </div>
+
                     <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button text="모두 입력해 주세요" border="none" size="m" color="primary" />
                     </div>

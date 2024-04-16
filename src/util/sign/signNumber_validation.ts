@@ -3,6 +3,7 @@ type SignUpValidationType = {
     email: string;
     phoneNumber: string;
     password: string;
+    personalInfoAgree: boolean;
 };
 
 type SignSettingValidationType = {
@@ -11,9 +12,19 @@ type SignSettingValidationType = {
     birthDate: string;
 };
 
-export const signUpValidation = ({ birthDate, email, phoneNumber, password }: SignUpValidationType) => {
+export const signUpValidation = ({
+    birthDate,
+    email,
+    phoneNumber,
+    password,
+    personalInfoAgree,
+}: SignUpValidationType) => {
     if (email.trim() === "" && password.trim() === "" && phoneNumber === "" && birthDate === "") {
         alert("정확한 값이 입력되지 않았습니다.");
+        return;
+    }
+    if (!personalInfoAgree) {
+        alert("개인정보 수집 및 이용에 동의해 주셔야 합니다!");
         return;
     }
 };

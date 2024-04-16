@@ -40,7 +40,10 @@ const SignUp = () => {
     const [emailRegValid, setEmailRegValid] = useState(false);
 
     const [name, onChangeNameHandler] = useInput();
+
+    const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
+
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
     const [lastPhoneNumber, setLastPhoneNumber] = useState("");
@@ -81,13 +84,13 @@ const SignUp = () => {
     const onChangeLastPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
         signPhoneNumber({ event, setPhoneNumber: setLastPhoneNumber });
 
-    const checkRequiredPersonalInfo = () =>
-        personalInfoCheck ? setPersonalInfoCheck(false) : setPersonalInfoCheck(true);
+    const checkRequiredPersonalInfoModal = () =>
+        personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
 
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, phoneNumber, email, password });
+            signUpValidation({ birthDate, phoneNumber, email, password, personalInfoAgree: personalInfoCheck });
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
@@ -98,6 +101,7 @@ const SignUp = () => {
                         user_name: name,
                         sex,
                         phoneNumber,
+                        personalInfoAgree: personalInfoCheck,
                     },
                 },
             });
@@ -174,7 +178,7 @@ const SignUp = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                     />
-                    <div onClick={checkRequiredPersonalInfo} className="mt-6 mx-9 flex gap-x-[113px]">
+                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px]">
                         <span className="flex">
                             <Image
                                 className="w-6 h-6 mr-1"
@@ -195,7 +199,14 @@ const SignUp = () => {
                             alt="페이지 이동 화살표"
                         />
                     </div>
-                    {personalInfoCheck ? <SignPersonalInfoCheck setPersonalInfoCheck={setPersonalInfoCheck} /> : null}
+
+                    {personalInfoModal ? (
+                        <SignPersonalInfoCheck
+                            setPersonalInfoModal={setPersonalInfoModal}
+                            setPersonalInfoCheck={setPersonalInfoCheck}
+                        />
+                    ) : null}
+
                     <SignButton
                         text="회원가입"
                         inputDisabled={inputDisabled}
