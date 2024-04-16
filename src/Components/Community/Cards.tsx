@@ -13,13 +13,14 @@ import useCardIdStore from "@/store/detailStore";
 
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
+import useJobFilterStore from "@/store/jobFilterStore";
 
-const Cards = ({ filterData }: { filterData: any }) => {
+const Cards = () => {
     //모달 상태
     const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
-    const { jobFilter } = filterData;
-    const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
+    const { jobFilter } = useJobFilterStore();
+    const { page, setPage, from, to, filter } = useSupabaseRange();
 
     const queryClient = useQueryClient();
 
@@ -33,13 +34,13 @@ const Cards = ({ filterData }: { filterData: any }) => {
     //useInfiniteQuery
     const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
-        queryFn: () => getPortfolio({ filter, jobFilter, getFromAndTo, page, setPage }),
-        initialPageParam: 1,
+        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, from, to, pageParam }),
+        initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {
                 return null;
             }
-            return allPages.length + 1;
+            return allPages.length;
         },
         refetchOnWindowFocus: false,
     });
@@ -117,10 +118,9 @@ const Cards = ({ filterData }: { filterData: any }) => {
                 <Modal isVisible={isOpenModal} onClose={() => setIsOpenModal(false)}>
                     <Portfolio_detail />
                 </Modal>
-
-                <div ref={ref} />
-                {isFetchingNextPage && <h3>Loding...</h3>}
             </div>
+            <div ref={ref} />
+            {isFetchingNextPage && <h3>Loding...</h3>}
         </>
     );
 };

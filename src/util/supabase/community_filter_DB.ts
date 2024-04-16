@@ -1,31 +1,42 @@
 import { supabase } from "@/util/supabase/clientSupabase";
 
 export const getPortfolio = async (payload: any) => {
-    const { filter, jobFilter, getFromAndTo, page, setPage } = payload;
-    const { from, to } = getFromAndTo();
+    const { filter, pageParam, jobFilter } = payload;
+
+    const ITEM_PER_PAGE = 5;
+
+    let from = pageParam * ITEM_PER_PAGE; //0
+    let to = from + ITEM_PER_PAGE - 1; //6
 
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
     if (filter === "최신순") {
         query = query.order("created_at", { ascending: false });
+        // console.log("실행됨");
     }
 
     if (jobFilter === "*") {
+        query = query.order("created_at", { ascending: false });
         const { data } = await query.range(from, to);
-        setPage(page + 1);
+
+        console.log("from, to", from, to);
+        console.log("pageParam", pageParam);
         return data;
     }
 
-    if (jobFilter) {
+    if (jobFilter === jobFilter) {
         query = query.order("created_at", { ascending: true }).eq("job", `${jobFilter}`);
+        console.log("실행됨");
     }
 
     const { data, error } = await query.range(from, to);
-    setPage(page + 1);
+
+    console.log("실행됨");
 
     if (error) {
         console.error(error);
         return null;
     }
+    console.log(data);
     return data;
 };
 

@@ -1,10 +1,23 @@
+"use client";
+import Cards from "@/Components/Community/Cards";
 import Carousel from "@/Components/Community/Carousel";
 import JobFilter from "@/Components/Community/Filter";
 import Filter from "@/Components/Community/JobFilter";
-
-import React from "react";
+import useSupabaseRange from "@/hooks/useSupabaseRange";
+import useJobFilterStore from "@/store/jobFilterStore";
+import { QUERY_KEY } from "@/util/query_key";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const ComuunityPage = () => {
+    const queryClient = useQueryClient();
+    const { setPage } = useSupabaseRange();
+    const { setJobFilter } = useJobFilterStore();
+
+    useEffect(() => {
+        // queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
+        setPage(0);
+    }, []);
     return (
         <>
             <div className="font-spoqaMedium text-black font-bold text-2xl relative flex items-center justify-start mt-20 mb-3 pl-28 ">
@@ -17,6 +30,7 @@ const ComuunityPage = () => {
                 <Filter />
                 <div>
                     <JobFilter />
+                    <Cards />
                 </div>
             </div>
         </>
