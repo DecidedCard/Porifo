@@ -71,7 +71,7 @@ const SignButton = ({
     }, [confirmPassword, setInputDisabled]);
 
     return (
-        <div className="w-[350px] mt-8 mb-6 mx-auto">
+        <div className="w-[350px] mt-6 mb-6 mx-auto">
             <Button
                 text={text}
                 border="none"
