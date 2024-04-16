@@ -107,7 +107,7 @@ const Buttons = () => {
 
                     <div className="w-[208px]">
                         <Button
-                            text={`${portfolio?.share ? "포리포 피드에서 내리기" : "포리포 피드에 올리기"}`}
+                            text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                             size="l"
                             border="none"
                             color={portfolio ? "primary" : ""}
