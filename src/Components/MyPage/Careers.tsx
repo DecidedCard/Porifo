@@ -34,6 +34,7 @@ const Careers = () => {
                                     type="text"
                                     placeholder="회사이름을 입력해주세요."
                                     size="big"
+                                    maxLength={100}
                                     value={career.company}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                         onChangeCompanyHandler(e, careerIndex)
@@ -45,6 +46,7 @@ const Careers = () => {
                                             type="text"
                                             size="big"
                                             placeholder="부서"
+                                            maxLength={50}
                                             value={career.department}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                                 onChangeDepartmentHandler(e, careerIndex)
@@ -56,6 +58,7 @@ const Careers = () => {
                                             type="text"
                                             size="big"
                                             placeholder="직급/직책"
+                                            maxLength={50}
                                             value={career.position}
                                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                                 onChangePositionHandler(e, careerIndex)
@@ -67,9 +70,7 @@ const Careers = () => {
                         </div>
 
                         <div className="flex mt-1">
-                            <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                기간
-                            </label>
+                            <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기간</label>
                             <div className="w-[460px] ml-3">
                                 <div className="flex justify-between">
                                     <div className="w-[224px]">
@@ -105,19 +106,26 @@ const Careers = () => {
                             <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
                                 내용
                             </label>
-                            <textarea
-                                placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
-                                value={career.comment}
-                                onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                                    onChangeCommentHandler(e, careerIndex)
-                                }
-                                className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300"
-                            />
+                            <div className="flex flex-col gap-1 w-[460px]">
+                                <textarea
+                                    placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
+                                    maxLength={300}
+                                    value={career.comment}
+                                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                                        onChangeCommentHandler(e, careerIndex)
+                                    }
+                                    className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300"
+                                />
+                                <div className="ml-auto text-sm text-nonegray">{career.comment.length}/300</div>
+                            </div>
                         </div>
                     </div>
                 );
             })}
-            <div className="flex items-center justify-center rounded-full border-2 border-solid border-gray2 text-gray3 w-[32px] h-[32px] font-extralight pb-1 mt-1 text-3xl mx-auto cursor-pointer" onClick={onClickAddHandler}>
+            <div
+                className="flex items-center justify-center rounded-full border-2 border-solid border-gray2 text-gray3 w-[32px] h-[32px] font-extralight pb-1 mt-1 text-3xl mx-auto cursor-pointer"
+                onClick={onClickAddHandler}
+            >
                 +
             </div>
         </div>

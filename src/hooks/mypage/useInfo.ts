@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 import useSetMutation from "../useSetMutation";
-import usePortfolioQuery from "./usePortfolioQuery";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
@@ -33,6 +32,7 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
@@ -81,6 +81,12 @@ const useInfo = () => {
     };
 
     const onChangeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const regex = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
+        if (regex.test(e.target.value)) {
+            setEmailCheck(null);
+        } else {
+            setEmailCheck({ color: "error", helperText: "이메일을 정확하게 입력해주시기 바랍니다." });
+        }
         setEmail(e.target.value);
     };
 
@@ -247,6 +253,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        emailCheck,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,

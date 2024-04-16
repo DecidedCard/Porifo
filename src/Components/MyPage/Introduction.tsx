@@ -21,14 +21,20 @@ const Introduction = () => {
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
                 <div className="flex h-[82px]">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">한 줄 소개</label>
-                    <div className="w-[460px] ml-3">
-                        <Input
-                            placeholder="본인만의 소개글을 작성해 보세요"
-                            size="big"
-                            type="text"
-                            value={basicInfo.oneLineIntroduce}
-                            onChange={onChangeOneLineIntroduce}
-                        />
+                    <div className="flex flex-col gap-1 w-[460px]">
+                        <div className="w-[460px] ml-3">
+                            <Input
+                                placeholder="본인만의 소개글을 작성해 보세요"
+                                size="big"
+                                type="text"
+                                maxLength={100}
+                                value={basicInfo.oneLineIntroduce}
+                                onChange={onChangeOneLineIntroduce}
+                            />
+                        </div>
+                        <div className="ml-auto text-sm text-nonegray">
+                            {basicInfo.oneLineIntroduce?.length || "0"}/100
+                        </div>
                     </div>
                 </div>
 
@@ -36,12 +42,16 @@ const Introduction = () => {
 
                 <div className="flex">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">자기소개</label>
-                    <textarea
-                        className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg"
-                        placeholder="직무 경험과 핵심 역량 등을 구체적으로 작성해 주세요"
-                        value={basicInfo.introduce!}
-                        onChange={onChangeIntroduceHandler}
-                    />
+                    <div className="flex flex-col gap-1 w-[460px]">
+                        <textarea
+                            maxLength={800}
+                            className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg"
+                            placeholder="직무 경험과 핵심 역량 등을 구체적으로 작성해 주세요"
+                            value={basicInfo.introduce!}
+                            onChange={onChangeIntroduceHandler}
+                        />
+                        <div className="ml-auto text-sm text-nonegray">{basicInfo.introduce?.length || "0"}/800</div>
+                    </div>
                 </div>
 
                 <hr className="w-[657px] mx-auto border border-neutral-100" />
