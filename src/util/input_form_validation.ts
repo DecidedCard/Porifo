@@ -27,6 +27,10 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
+    if (!info.oneLineIntroduce) {
+        return true;
+    }
+
     if (!info.introduce) {
         return true;
     }
