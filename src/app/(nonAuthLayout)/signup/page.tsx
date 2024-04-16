@@ -13,7 +13,7 @@ import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 
 import useInput from "@/hooks/useInput";
-
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
@@ -40,7 +40,7 @@ const SignUp = () => {
     const [emailRegValid, setEmailRegValid] = useState(false);
 
     const [name, onChangeNameHandler] = useInput();
-
+    const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
     const [firstNumber, setFirstNumber] = useState("010");
     const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
     const [lastPhoneNumber, setLastPhoneNumber] = useState("");
@@ -80,6 +80,9 @@ const SignUp = () => {
 
     const onChangeLastPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
         signPhoneNumber({ event, setPhoneNumber: setLastPhoneNumber });
+
+    const checkRequiredPersonalInfo = () =>
+        personalInfoCheck ? setPersonalInfoCheck(false) : setPersonalInfoCheck(true);
 
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -171,9 +174,18 @@ const SignUp = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                     />
-                    <div className="mt-6 mx-9 flex gap-x-[142.5px]">
+                    <div onClick={checkRequiredPersonalInfo} className="mt-6 mx-9 flex gap-x-[113px]">
                         <span className="flex">
-                            개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                            <Image
+                                className="w-6 h-6 mr-1"
+                                src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
+                                width={0}
+                                height={0}
+                                alt="check"
+                            />
+                            <span className="flex mt-1">
+                                개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                            </span>
                         </span>
                         <Image
                             width={0}
@@ -183,6 +195,7 @@ const SignUp = () => {
                             alt="페이지 이동 화살표"
                         />
                     </div>
+                    {personalInfoCheck ? <SignPersonalInfoCheck setPersonalInfoCheck={setPersonalInfoCheck} /> : null}
                     <SignButton
                         text="회원가입"
                         inputDisabled={inputDisabled}
