@@ -26,7 +26,7 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-5">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10">
                 <div className="flex flex-col gap-4">
                     <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">
                         프로젝트

@@ -20,7 +20,7 @@ const usePortfolioQuery = (id: string) => {
     const { setInitialCareers } = useCareerStore();
     const {
         isError,
-        isFetching,
+        isLoading,
         data: portfolioData,
     } = useQuery({
         queryKey: [QUERY_KEY.myPagePortfolio],
@@ -44,7 +44,7 @@ const usePortfolioQuery = (id: string) => {
         }
     }, [setPortfolio, portfolioData, setInitialCareers, setInitialBasicInfo, setProjectsInitial]);
 
-    return { portfolio, isFetching, isError };
+    return { portfolio, isLoading, isError };
 };
 
 export default usePortfolioQuery;
