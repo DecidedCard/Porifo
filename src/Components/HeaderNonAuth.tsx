@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import { userData } from "@/util/supabase/supabase_user";
 
-const Header = () => {
+const HeaderNonAuth = () => {
     const [showMenu, setShowMenu] = useState(false);
     const router = useRouter();
 
@@ -27,16 +26,6 @@ const Header = () => {
         setUser(null);
         router.replace("/");
     };
-
-    useEffect(() => {
-        const userLoginFunc = async () => {
-            try {
-                const userLoginData = await userData();
-                setUser(userLoginData);
-            } catch (error) {}
-        };
-        userLoginFunc();
-    }, [setUser]);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -136,7 +125,7 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default HeaderNonAuth;
 
 const bubbleAfter =
     "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[-10px] after:mt-[-10px]";

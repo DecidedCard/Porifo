@@ -15,7 +15,7 @@ const Find_Email = () => {
         e.preventDefault();
         try {
             await supabase.auth.resetPasswordForEmail(userEmail, {
-                redirectTo: "http://localhost:3000/passwordChange",
+                redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/passwordChange`,
             });
             alert("이메일을 확인해 주세요.");
             setUserEmail("");
@@ -29,7 +29,7 @@ const Find_Email = () => {
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded p-10 w-[500px] h-[250px] bg-white flex justify-center flex-col">
+                <div className="rounded-2xl p-10 w-[500px] h-[250px] bg-white flex justify-center flex-col">
                     <form onSubmit={changePassword}>
                         <SignUpItem
                             type="email"

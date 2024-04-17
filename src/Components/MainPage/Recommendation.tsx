@@ -33,7 +33,7 @@ const Recommendation = () => {
                     </div>
 
                     <div className="flex flex-row gap-6 items-start justify-start">
-                        {data.slice(0, 4).map((developer: any, idx) => (
+                        {data?.slice(0, 4).map((developer: any, idx) => (
                             <React.Fragment key={idx}>
                                 <div className="flex rounded-2xl w-[302px] h-[225px] overflow-hidden">
                                     <div className="flex flex-row gap-2 items-center justify-center">

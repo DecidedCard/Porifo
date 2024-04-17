@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Button from "../Commen/Button";
+import useUserStore from "@/store/userStore";
 
 const Cover = () => {
+    const { user } = useUserStore();
     return (
         <main className="h-[732px] w-full animate-fadein relative overflow-hidden">
             <video
@@ -21,9 +23,15 @@ const Cover = () => {
                     포리포에서 당신의 커리어를 넓혀보세요.
                 </p>
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
-                    <div className="w-[180px]">
+                    <div className="w-[210px]">
                         <Link href={"/guest"}>
-                            <Button text="포트폴리오 등록하기" size="l" fontSize="m" color="primary" border="none" />
+                            <Button
+                                text={user ? "포트폴리오 작성" : "게스트로 포트폴리오 작성"}
+                                size="l"
+                                fontSize="m"
+                                color="primary"
+                                border="none"
+                            />
                         </Link>
                     </div>
                 </div>
