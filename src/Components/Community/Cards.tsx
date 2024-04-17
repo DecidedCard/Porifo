@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
@@ -10,20 +11,29 @@ import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import useCardIdStore from "@/store/detailStore";
+import useJobFilterStore from "@/store/jobFilterStore";
 
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import Loading from "../Loading";
-import Image from "next/image";
 
-const Cards = ({ filterData }: { filterData: any }) => {
+const Cards = () => {
     //모달 상태
     const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
-    const { jobFilter } = filterData;
-    const { page, setPage, getFromAndTo, filter } = useSupabaseRange();
+    const { jobFilter } = useJobFilterStore();
+    const { from, to, filter } = useSupabaseRange();
 
     const queryClient = useQueryClient();
+
+    const queryKeysToRemove = [QUERY_KEY.hotDevelopers, QUERY_KEY.communityPortfolio];
+
+    const onModalClose = () => {
+        setIsOpenModal(false);
+        queryKeysToRemove.forEach((key) => {
+            queryClient.invalidateQueries({ queryKey: [key] });
+        });
+    };
 
     // 모달 open일때 body스크롤 방지
     // if (isOpenModal) {
@@ -33,15 +43,15 @@ const Cards = ({ filterData }: { filterData: any }) => {
     // }
 
     //useInfiniteQuery
-    const { isLoading, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
-        queryFn: () => getPortfolio({ filter, jobFilter, getFromAndTo, page, setPage }),
-        initialPageParam: 1,
+        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, from, to, pageParam }),
+        initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {
                 return null;
             }
-            return allPages.length + 1;
+            return allPages.length;
         },
         refetchOnWindowFocus: false,
     });
@@ -56,7 +66,7 @@ const Cards = ({ filterData }: { filterData: any }) => {
         return;
     }, [inView, hasNextPage, fetchNextPage]);
 
-    if (isLoading) {
+    if (isPending) {
         return (
             <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
                 <Loading />
@@ -66,8 +76,8 @@ const Cards = ({ filterData }: { filterData: any }) => {
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 w-[1280px]">
-                {data?.pages.map((portfolio: any) => {
+            <div className="mt-8 flex flex-wrap gap-6 w-[1280px] lg:w-[730px]">
+                {data!.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
                             <div
@@ -115,8 +125,10 @@ const Cards = ({ filterData }: { filterData: any }) => {
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
-                                                <div className="w-6 h-6 ">{/* <img src="grayEye.svg" /> */}</div>
-                                                {/* <span>1523</span> */}
+                                                <div className="w-6 h-6 ">
+                                                    <Image width={24} height={24} alt="조회수" src="grayEye.svg" />
+                                                </div>
+                                                <span>{item.viewCnt}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -126,13 +138,12 @@ const Cards = ({ filterData }: { filterData: any }) => {
                     });
                 })}
                 {/* //모달섹션 */}
-                <Modal isVisible={isOpenModal} onClose={() => setIsOpenModal(false)}>
+                <Modal isVisible={isOpenModal} onClose={onModalClose}>
                     <Portfolio_detail />
                 </Modal>
-
-                <div ref={ref} />
-                {isFetchingNextPage && <h3>Loding...</h3>}
             </div>
+            <div ref={ref} />
+            {isFetchingNextPage && <h3>Loding...</h3>}
         </>
     );
 };
