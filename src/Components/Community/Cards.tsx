@@ -22,9 +22,18 @@ const Cards = () => {
     const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
     const { jobFilter } = useJobFilterStore();
-    const { page, setPage, from, to, filter } = useSupabaseRange();
+    const { from, to, filter } = useSupabaseRange();
 
     const queryClient = useQueryClient();
+
+    const queryKeysToRemove = [QUERY_KEY.hotDevelopers, QUERY_KEY.communityPortfolio];
+
+    const onModalClose = () => {
+        setIsOpenModal(false);
+        queryKeysToRemove.forEach((key) => {
+            queryClient.invalidateQueries({ queryKey: [key] });
+        });
+    };
 
     // 모달 open일때 body스크롤 방지
     // if (isOpenModal) {
@@ -116,8 +125,10 @@ const Cards = () => {
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
-                                                <div className="w-6 h-6 ">{/* <img src="grayEye.svg" /> */}</div>
-                                                {/* <span>1523</span> */}
+                                                <div className="w-6 h-6 ">
+                                                    <Image width={24} height={24} alt="조회수" src="grayEye.svg" />
+                                                </div>
+                                                <span>{item.viewCnt}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +138,7 @@ const Cards = () => {
                     });
                 })}
                 {/* //모달섹션 */}
-                <Modal isVisible={isOpenModal} onClose={() => setIsOpenModal(false)}>
+                <Modal isVisible={isOpenModal} onClose={onModalClose}>
                     <Portfolio_detail />
                 </Modal>
             </div>

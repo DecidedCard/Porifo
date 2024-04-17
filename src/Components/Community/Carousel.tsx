@@ -22,14 +22,10 @@ const Carousel = () => {
     const queryClient = useQueryClient();
 
     const { isPending, data } = useQuery({
-        queryKey: ["hotDevelopers"],
+        queryKey: [QUERY_KEY.hotDevelopers],
         queryFn: getHotDevelopers,
         refetchOnWindowFocus: false,
     });
-
-    useEffect(() => {
-        queryClient.invalidateQueries({ queryKey: ["hotDevelopers"] });
-    }, [data]);
 
     if (isPending) {
         return (

@@ -1,14 +1,10 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
-
 const Modal = ({ isVisible, onClose, children }: any) => {
-    const queryClient = useQueryClient();
     if (!isVisible) return null;
     const handleClose = (e: any) => {
         if (e.target.id === "wrapper") {
             onClose();
-            queryClient.removeQueries({ queryKey: ["hotDevelopers"] });
         }
     };
 

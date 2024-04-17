@@ -39,7 +39,7 @@ const Portfolio_detail = () => {
             </div>
             <div className="flex flex-col items-center gap-[20px]  bg-gray">
                 <div className="pt-10">
-                    <LikeShare />
+                    <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
                 <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
                     <Comments />
