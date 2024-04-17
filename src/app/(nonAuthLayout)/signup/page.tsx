@@ -10,15 +10,14 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
-import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 
 import useInput from "@/hooks/useInput";
-import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
+import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { passwordValidate } from "@/util/sign/sign_validate";
-import { Resend } from "resend";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -52,19 +51,21 @@ const SignUp = () => {
     const router = useRouter();
     const birthDate = birthYear + birthMonth + birthDay;
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    let phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
-        password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
+
         if (emailRegValid === true) setEmailError(true);
-        if (password.length >= 8) setPasswordError(true);
-    }, [email, password, emailRegValid]);
+    }, [email, emailRegValid]);
 
     useEffect(() => {
+        const confirmPassword = wordRegValid && specialRegValid && numberRegValid && lengthRegValid;
         passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-    }, [password]);
+
+        confirmPassword && password.length >= 8 ? setPasswordError(true) : setPasswordError(false);
+    }, [wordRegValid, specialRegValid, numberRegValid, lengthRegValid, password]);
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
@@ -90,7 +91,10 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, phoneNumber, email, password, personalInfoAgree: personalInfoCheck });
+            signUpValidation({ birthDate, email, name, password, personalInfoAgree: personalInfoCheck });
+            if (phoneNumber.length !== 11) {
+                phoneNumber = "000";
+            }
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
@@ -98,7 +102,7 @@ const SignUp = () => {
                     emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
                     data: {
                         birthDate,
-                        user_name: name,
+                        name,
                         sex,
                         phoneNumber,
                         personalInfoAgree: personalInfoCheck,
@@ -118,7 +122,7 @@ const SignUp = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded p-10 w-[500px] h-[860px] bg-white flex justify-center flex-col">
+            <div className="rounded-2xl p-10 w-[500px] h-[900px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
@@ -130,6 +134,7 @@ const SignUp = () => {
                             alt="회원가입의 form 로고"
                         />
                     </div>
+
                     <SignUpItem
                         setLabel="이메일"
                         type="email"
@@ -142,8 +147,8 @@ const SignUp = () => {
                     <SignUpItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 작성해주세요"
-                        color={passwordError ? "black" : "error"}
-                        pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+                        color={passwordError ? "success" : "error"}
+                        pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                         onChangeHandler={onChangePassword}
                         relative="relative"
@@ -219,6 +224,7 @@ const SignUp = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                         sex={sex}
+                        personalInfoCheck={personalInfoCheck}
                     />
                 </form>
             </div>

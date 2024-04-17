@@ -7,7 +7,9 @@ import Image from "next/image";
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
-import Button from "@/Components/Commen/Button";
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
+import SignButton from "@/Components/Sign/SignButton";
+
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
@@ -22,11 +24,11 @@ const SocialSeting = () => {
     const [birthDay, setBirthDay] = useState("");
 
     const [sex, setSex] = useState("");
-
+    const [inputDisabled, setInputDisabled] = useState(false);
     const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    let phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const birthDate = birthYear + birthMonth + birthDay;
 
     const router = useRouter();
@@ -54,10 +56,12 @@ const SocialSeting = () => {
         e.preventDefault();
 
         try {
-            signSettingValidation({ birthDate, phoneNumber, sex });
-
+            signSettingValidation({ birthDate, sex, personalInfoAgree: personalInfoCheck });
+            if (phoneNumber.length !== 11) {
+                phoneNumber = "000";
+            }
             await supabase.auth.updateUser({
-                data: { birthDate, phoneNumber, sex },
+                data: { birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck },
             });
 
             return router.replace("/");
@@ -68,7 +72,7 @@ const SocialSeting = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
+            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
@@ -117,9 +121,21 @@ const SocialSeting = () => {
                         />
                     </div>
 
-                    <div className="w-[350px] mt-8 mb-6 mx-auto">
-                        <Button text="모두 입력해 주세요" border="none" size="m" color="primary" />
-                    </div>
+                    {personalInfoModal ? (
+                        <SignPersonalInfoCheck
+                            setPersonalInfoModal={setPersonalInfoModal}
+                            setPersonalInfoCheck={setPersonalInfoCheck}
+                        />
+                    ) : null}
+
+                    <SignButton
+                        text="모두 입력해 주세요"
+                        inputDisabled={inputDisabled}
+                        setInputDisabled={setInputDisabled}
+                        birthDate={birthDate}
+                        sex={sex}
+                        personalInfoCheck={personalInfoCheck}
+                    />
                 </form>
             </div>
         </div>
