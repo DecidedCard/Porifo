@@ -9,13 +9,21 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
-    const { user } = useUserStore();
+    const { user } = useUserStore(); //로그인여부 확인
     const { cardId: id } = useCardIdStore();
 
+    //comment 갯수를 위한 query
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
         queryFn: () => getComments({ id }),
     });
+
+    //좋아요 버튼 클릭
+    const handleLikeBtn = () => {
+        if (!user) {
+            return alert("로그인이 필요한 서비스 입니다.");
+        }
+    };
 
     if (isPending) {
         return <div>로딩중</div>;
@@ -25,70 +33,37 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
         <>
             <div className="flex flex-col gap-4 items-center justify-center relative">
                 <div className="flex flex-row gap-4 items-center justify-center shrink-0 relative">
-                    <div className="bg-gray2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
-                        <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-20 h-10 relative">
-                            <div className="shrink-0 w-8 h-8 relative overflow-visible">
-                                {/* 좋아요 이미지 */}
-                                <Image src="redHeart.svg" alt="좋아요" width={32} height={32} />
-                            </div>
+                    {/* 좋아요 영역 */}
+                    <button
+                        onClick={handleLikeBtn}
+                        className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3"
+                    >
+                        <div className="flex items-center justify-center w-20 h-10">
+                            <Image src="grayHeart.svg" alt="좋아요 버튼" width={32} height={32} />
                         </div>
-                        <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
-                            좋아요
+                        <span>좋아요</span>
+                    </button>
+                    {/* 공유하기 영역 */}
+                    <button className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3">
+                        <div className="flex items-center justify-center w-20 h-10">
+                            <Image src="share.svg" alt="공유하기 버튼" width={28} height={28} />
                         </div>
-                    </div>
-                    <div className="bg-gray2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
-                        <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-10 h-10 relative">
-                            <Image
-                                className="shrink-0 w-8 h-8 relative overflow-visible"
-                                src="share.svg"
-                                alt="share"
-                                width={32}
-                                height={32}
-                            />
-                        </div>
-                        <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
-                            공유하기
-                        </div>
-                    </div>
+                        <span>공유하기</span>
+                    </button>
                 </div>
-                <div className="flex flex-row gap-6 items-center justify-end shrink-0 relative">
-                    <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                        <div className="shrink-0 w-6 h-6 relative">
-                            <Image
-                                className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
-                                src="grayHeart.svg"
-                                alt="좋아요 비활성화"
-                                width={24}
-                                height={24}
-                            />
-                        </div>
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            210
-                        </div>
+                {/* 좋아요, 조회수, 댓글 개수 영역 */}
+                <div className="flex gap-6">
+                    <div className="flex gap-1">
+                        <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
+                        <span className="flex items-center justify-center">210</span>
                     </div>
-                    <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                        <Image
-                            className="shrink-0 w-6 h-6 relative overflow-visible"
-                            src="grayEye.svg"
-                            alt=""
-                            width={30}
-                            height={30}
-                        />
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            {portfolioInfo.viewCnt}
-                        </div>
+                    <div className="flex gap-1">
+                        <Image src="grayEye.svg" alt="조회수" width={30} height={30} />
+                        <span className="flex items-center justify-center"> {portfolioInfo.viewCnt}</span>
                     </div>
-                    <div className="flex flex-row gap-1 items-center justify-end shrink-0 relative">
-                        <Image
-                            className="shrink-0 w-6 h-6 relative overflow-visible"
-                            src="grayComment.svg"
-                            alt=""
-                            width={24}
-                            height={24}
-                        />
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            {data!.length}
-                        </div>
+                    <div className="flex gap-1">
+                        <Image src="grayComment.svg" alt="댓글수" width={24} height={24} />
+                        <span className="flex items-center justify-center"> {data!.length}</span>
                     </div>
                 </div>
             </div>
