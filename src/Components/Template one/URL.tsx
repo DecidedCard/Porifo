@@ -21,7 +21,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             <div className="flex flex-col gap-5 items-center justify-start shrink-0 relative">
                                 <div className="flex items-center justify-start text-[14px] text-neutral-500">
                                     <Image
-                                        src="assets/image/link.svg"
+                                        src="/assets/image/link.svg"
                                         alt="link"
                                         width={24}
                                         height={24}
@@ -31,7 +31,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 </div>
                                 <div className="flex items-center justify-start text-[14px] text-neutral-500">
                                     <Image
-                                        src="assets/image/link.svg"
+                                        src="/assets/image/link.svg"
                                         alt="link"
                                         width={24}
                                         height={24}
