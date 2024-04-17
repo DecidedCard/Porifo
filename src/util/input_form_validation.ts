@@ -21,7 +21,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         }
     }
 
-    if (!info.job) {
+    if (info.job === "default") {
         return true;
     }
 
@@ -30,6 +30,12 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
     }
 
     if (!info.introduce) {
+        return true;
+    }
+
+    const skillTag = info.skillTag as string[];
+
+    if (skillTag.length === 0) {
         return true;
     }
 

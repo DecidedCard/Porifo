@@ -20,7 +20,9 @@ const Introduction = () => {
                 <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">소개</h1>
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
                 <div className="flex h-[82px]">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">한 줄 소개</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        한 줄 소개<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <div className="flex flex-col gap-1 w-[460px]">
                         <div className="w-[460px] ml-3">
                             <Input
@@ -41,7 +43,9 @@ const Introduction = () => {
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
 
                 <div className="flex">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">자기소개</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        자기소개<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <div className="flex flex-col gap-1 w-[460px]">
                         <textarea
                             maxLength={800}
@@ -57,7 +61,9 @@ const Introduction = () => {
                 <hr className="w-[657px] mx-auto border border-neutral-100" />
 
                 <div className="flex gap-3">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기술 스택</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        기술 스택<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <div className="flex flex-wrap justify-between gap-2 w-[460px]">
                         {SKILL_TAG.map((item, idx) => {
                             return (

@@ -33,7 +33,9 @@ const UserInfo = () => {
                 <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">내 정보</p>
 
                 <div className="flex">
-                    <p className="flex items-center font-medium text-zinc-500 w-[177px] h-[32px]">프로필 사진</p>
+                    <p className="flex font-medium text-zinc-500 w-[177px] h-[32px]">
+                        프로필 사진<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </p>
                     <label htmlFor="profile" className="cursor-pointer">
                         {basicInfo.profileImage ? (
                             <Image
@@ -57,7 +59,9 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex mt-1">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">이름</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        이름<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <div className="w-[460px] ml-3">
                         <Input
                             type="text"
@@ -98,7 +102,9 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex mt-1">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">e-mail</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        e-mail<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <div className="w-[460px] ml-3">
                         <Input
                             type="email"
@@ -112,7 +118,9 @@ const UserInfo = () => {
                     </div>
                 </div>
                 <div className="flex mt-1">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">직군</label>
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        직군<p className="ml-1 text-[10px] text-red-500">★</p>
+                    </label>
                     <select
                         className="font-medium ml-3 pl-2 text-zinc-500 w-[460px] h-14 rounded-lg border border-solid border-zinc-300"
                         value={basicInfo.job!}
