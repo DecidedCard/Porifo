@@ -16,9 +16,9 @@ const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
     const { user } = useUserStore();
 
-    const { isFetching } = usePortfolioQuery(user?.id!);
+    const { isLoading } = usePortfolioQuery(user?.id!);
 
-    if (isFetching) {
+    if (isLoading) {
         return (
             <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
                 <Loading />
@@ -27,7 +27,7 @@ const MyPage = () => {
     }
 
     return (
-        <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto">
+        <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] mx-auto">
             <Navigation setNav={setNav} />
             <div className="w-[800px] min-h-[750px]">
                 {nav === "basicInfo" && <UserInfo />}

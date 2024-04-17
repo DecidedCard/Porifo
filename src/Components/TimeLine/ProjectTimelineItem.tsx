@@ -13,7 +13,15 @@ interface TimelineItemProps {
     projectCount: number;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink, projectCount }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({
+    name,
+    date,
+    images,
+    introduce,
+    deployLink,
+    githubLink,
+    projectCount,
+}) => {
     const [imagePage, setImagePage] = useState(0);
 
     const handleNextImage = () => {
@@ -51,7 +59,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                             className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-center justify-center shrink-0"
                             style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                         >
-                            <Image className="shrink-0 w-6 h-6" src="icon-set9.svg" alt="이전" />
+                            <Image className="shrink-0 w-6 h-6" src="icon-set9.svg" alt="이전" width={24} height={24} />
                         </button>
                     )}
                     {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
@@ -61,7 +69,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                             className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-center justify-center shrink-0"
                             style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                         >
-                            <Image className="shrink-0 w-6 h-6" src="icon-set8.svg" alt="다음" />
+                            <Image className="shrink-0 w-6 h-6" src="icon-set8.svg" alt="다음" width={24} height={24} />
                         </button>
                     )}
                 </div>
@@ -77,19 +85,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                     <div className="flex flex-col mt-2 w-[804px]">
                         <p className="text-[14px] font-normal mb-2 text-gray3">{introduce}</p>
                         <div className="flex items-center text-gray3 mt-2">
-                            <Image
-                                src="assets/image/link.svg"
-                                alt="link"
-                                width={24}
-                                height={24}
-                                className="mr-1"
-                            />
+                            <Image src="/assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
                             <p className="text-[12px]">{githubLink}</p>
                         </div>
                         {deployLink && (
                             <div className="flex items-center text-gray3 mt-2">
                                 <Image
-                                    src="assets/image/link.svg"
+                                    src="/assets/image/link.svg"
                                     alt="link"
                                     width={24}
                                     height={24}
