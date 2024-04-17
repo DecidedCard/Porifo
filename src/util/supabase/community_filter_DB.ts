@@ -31,7 +31,6 @@ export const getPortfolio = async (payload: any) => {
         console.error(error);
         return null;
     }
-    console.log(data);
     return data;
 };
 
