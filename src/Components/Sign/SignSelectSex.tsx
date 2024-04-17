@@ -5,7 +5,7 @@ const clickSex = ["남자", "여자"];
 const SignSelectSex = ({ onClickSelectSex }: SeletSexType) => {
     return (
         <>
-            <p className="mt-5 mx-9 flex">
+            <p className="mt-5 mb-3 mx-9 flex">
                 성별<p className="ml-1 text-[10px] text-red-500">★</p>
             </p>
             <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
