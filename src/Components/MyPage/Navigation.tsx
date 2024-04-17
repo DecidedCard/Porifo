@@ -45,60 +45,53 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             <button
                 onClick={() => handleClick("basicInfo")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500
-            ${
-                selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-            } hover:bg-white hover:text-black`}
+            ${selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+                    } hover:bg-white hover:text-black`}
             >
                 <IoSettingsOutline className="mr-3" />
                 기본정보
                 <span
-                    className={`bg-red-400 ${
-                        !basicInfo.name || !basicInfo.profileImage || !basicInfo.email || basicInfo.job === "default"
+                    className={`bg-red-400 ${!basicInfo.name || !basicInfo.profileImage || !basicInfo.email || basicInfo.job === "default"
                             ? "bg-opacity-80"
                             : "bg-opacity-0"
-                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
                 onClick={() => handleClick("introduce")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
-            ${
-                selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-            } hover:bg-white hover:text-black`}
+            ${selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+                    } hover:bg-white hover:text-black`}
             >
                 <AiOutlineMessage className="mr-3" />
                 소개
                 <span
-                    className={`bg-red-400 ${
-                        !basicInfo.oneLineIntroduce ||
-                        !basicInfo.introduce ||
-                        JSON.parse(JSON.stringify(basicInfo.skillTag)).length === 0
+                    className={`bg-red-400 ${!basicInfo.oneLineIntroduce ||
+                            !basicInfo.introduce ||
+                            JSON.parse(JSON.stringify(basicInfo.skillTag)).length === 0
                             ? "bg-opacity-80"
                             : "bg-opacity-0"
-                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
                 onClick={() => handleClick("project")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
-            ${
-                selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-            } hover:bg-white hover:text-black`}
+            ${selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+                    } hover:bg-white hover:text-black`}
             >
                 <TbPencilMinus className="mr-3" />
                 프로젝트
                 <span
-                    className={`bg-red-400 ${
-                        projectCheck ? "bg-opacity-80" : "bg-opacity-0"
-                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                    className={`bg-red-400 ${projectCheck ? "bg-opacity-80" : "bg-opacity-0"
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
                 onClick={() => handleClick("url")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
-            ${
-                selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-            } hover:bg-white hover:text-black`}
+            ${selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+                    } hover:bg-white hover:text-black`}
             >
                 <RiLinkM className="mr-3" />
                 URL
