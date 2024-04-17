@@ -11,12 +11,15 @@ const ComuunityPage = () => {
 
     useEffect(() => {
         setPage(0);
-    }, []);
+    }, [setPage]);
     return (
-        <>
-            <div className="font-spoqaMedium text-black font-bold text-2xl relative flex items-center justify-start mt-20 mb-3 pl-28 ">
-                포리포 추천, HOT🔥 개발자
+        <div className="flex flex-col items-center">
+            <div className="flex w-full">
+                <div className="font-spoqaMedium text-black font-bold text-2xl relative mt-20 mb-3 ml-[15%]">
+                    포리포 추천, HOT🔥 개발자
+                </div>
             </div>
+
             <div>
                 <Carousel />
             </div>
@@ -27,7 +30,7 @@ const ComuunityPage = () => {
                     <Cards />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

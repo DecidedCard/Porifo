@@ -89,7 +89,7 @@ const Cards = () => {
                                         queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
-                                <div className="flex flex-col gap-2">
+                                <div className="group relative flex flex-col gap-2">
                                     {/* 대표이미지 */}
                                     <Image
                                         className="rounded-2xl w-[350px] h-[220px]"
@@ -101,6 +101,12 @@ const Cards = () => {
                                         width={300}
                                         height={300}
                                     />
+
+                                    <span className="absolute flex items-end py-5 px-4 w-[350px] h-[220px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
+                                        <p className="w-[269px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
+                                            {item.oneLineIntroduce}
+                                        </p>
+                                    </span>
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저아바타 */}
