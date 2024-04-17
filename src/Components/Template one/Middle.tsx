@@ -69,7 +69,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     {project.images.length > (imagePage + 1) * 3 && (
                                         <button
                                             onClick={handleNextImage}
-                                            className="absolute right-0 bottom-[270px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
+                                            className="absolute right-[-15px] bottom-[240px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
                                             style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                                         >
                                             <Image className="shrink-0 w-6 h-6" src="/icon-set8.svg" alt="다음" width={24} height={24} />
