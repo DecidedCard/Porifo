@@ -91,7 +91,7 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, email, password, personalInfoAgree: personalInfoCheck });
+            signUpValidation({ birthDate, email, name, password, personalInfoAgree: personalInfoCheck });
             if (phoneNumber.length !== 11) {
                 phoneNumber = "000";
             }
@@ -102,7 +102,7 @@ const SignUp = () => {
                     emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
                     data: {
                         birthDate,
-                        user_name: name,
+                        name,
                         sex,
                         phoneNumber,
                         personalInfoAgree: personalInfoCheck,

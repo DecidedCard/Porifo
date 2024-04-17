@@ -1,7 +1,7 @@
 type SignUpValidationType = {
     birthDate: string;
     email: string;
-
+    name: string;
     password: string;
     personalInfoAgree: boolean;
 };
@@ -13,14 +13,8 @@ type SignSettingValidationType = {
     personalInfoAgree: boolean;
 };
 
-export const signUpValidation = ({
-    birthDate,
-    email,
-
-    password,
-    personalInfoAgree,
-}: SignUpValidationType) => {
-    if (email.trim() === "" && password.trim() === "" && birthDate === "") {
+export const signUpValidation = ({ birthDate, email, name, password, personalInfoAgree }: SignUpValidationType) => {
+    if (email.trim() === "" && password.trim() === "" && birthDate === "" && name.trim() === "") {
         alert("정확한 값이 입력되지 않았습니다.");
         return;
     }
