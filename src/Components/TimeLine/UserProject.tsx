@@ -11,12 +11,12 @@ const UserProject = ({ project }: { project: Project[] }) => {
             <h2 className="text-[22px] font-bold">프로젝트</h2>
             <div className="bg-deepgray w-[804px] h-[1px] my-10"></div>
             {projects.length > 1 && (
-                <div className="absolute border-s border-solid border-secondary h-[47%] mt-[296px]">
-                </div>
+                <div className="absolute border-s border-solid border-secondary h-[70%] mt-[296px] pb-[300px]"></div>
             )}
             <div>
                 {projects.map((project, index) => (
-                    <React.Fragment key={index}> {/* Fragment로 각 요소를 감싸고 key 속성 제공 */}
+                    <React.Fragment key={index}>
+                        {/* Fragment로 각 요소를 감싸고 key 속성 제공 */}
                         <ProjectTimelineItem
                             name={project.name}
                             date={project.date}

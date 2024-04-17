@@ -3,9 +3,13 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineMessage } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 import { RiLinkM } from "react-icons/ri";
+import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+import useProjectsStore from "@/store/projectStore";
 
 const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<string>> }) => {
     const [selectedNav, setSelectedNav] = useState("basicInfo");
+    const { basicInfo } = usePortfolioInfoStore();
+    const { projects } = useProjectsStore();
 
     const handleClick = (navItem: string) => {
         setNav(navItem);
@@ -23,6 +27,13 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             >
                 <IoSettingsOutline className="mr-3" />
                 기본정보
+                <span
+                    className={`bg-red-400 ${
+                        !basicInfo.name || !basicInfo.profileImage || !basicInfo.email || basicInfo.job === "default"
+                            ? "bg-opacity-80"
+                            : "bg-opacity-0"
+                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                ></span>
             </button>
             <button
                 onClick={() => handleClick("introduce")}
@@ -33,6 +44,15 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             >
                 <AiOutlineMessage className="mr-3" />
                 소개
+                <span
+                    className={`bg-red-400 ${
+                        !basicInfo.oneLineIntroduce ||
+                        !basicInfo.introduce ||
+                        JSON.parse(JSON.stringify(basicInfo.skillTag)).length === 0
+                            ? "bg-opacity-80"
+                            : "bg-opacity-0"
+                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                ></span>
             </button>
             <button
                 onClick={() => handleClick("project")}
@@ -42,7 +62,18 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             } hover:bg-white hover:text-black`}
             >
                 <TbPencilMinus className="mr-3" />
-                프로젝트
+                프로젝트{" "}
+                <span
+                    className={`bg-red-400 ${projects.map((projectItem) => {
+                        return !projectItem.name ||
+                            projectItem.images.length === 0 ||
+                            !projectItem.introduce ||
+                            projectItem.date.length < 20 ||
+                            !projectItem.githubLink
+                            ? "bg-opacity-80"
+                            : "bg-opacity-0";
+                    })} ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                ></span>
             </button>
             <button
                 onClick={() => handleClick("url")}

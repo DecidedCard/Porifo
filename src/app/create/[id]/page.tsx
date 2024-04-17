@@ -9,9 +9,9 @@ import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
     const { id } = params;
-    const { portfolio, isFetching, isError } = usePortfolioQuery(id);
+    const { portfolio, isLoading, isError } = usePortfolioQuery(id);
 
-    if (isFetching) {
+    if (isLoading) {
         return (
             <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
                 <Loading />
@@ -24,7 +24,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <div>
+        <div className="w-fit mx-auto">
             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
         </div>
