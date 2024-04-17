@@ -32,7 +32,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                         !basicInfo.name || !basicInfo.profileImage || !basicInfo.email || basicInfo.job === "default"
                             ? "bg-opacity-80"
                             : "bg-opacity-0"
-                    } ml-auto w-5 h-5 rounded-full ease-in-out duration-500`}
+                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
@@ -51,7 +51,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                         JSON.parse(JSON.stringify(basicInfo.skillTag)).length === 0
                             ? "bg-opacity-80"
                             : "bg-opacity-0"
-                    } ml-auto w-5 h-5 rounded-full ease-in-out duration-500`}
+                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
@@ -72,7 +72,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                             !projectItem.githubLink
                             ? "bg-opacity-80"
                             : "bg-opacity-0";
-                    })} ml-auto w-5 h-5 rounded-full ease-in-out duration-500`}
+                    })} ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button

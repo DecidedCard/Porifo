@@ -65,7 +65,13 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 backdropFilter: "blur(28px)",
                                             }}
                                         >
-                                            <Image className="shrink-0 w-6 h-6" src="icon-set9.svg" alt="이전" />
+                                            <Image
+                                                className="shrink-0 w-6 h-6"
+                                                src="icon-set9.svg"
+                                                alt="이전"
+                                                width={24}
+                                                height={24}
+                                            />
                                         </button>
                                     )}
                                     {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
@@ -78,7 +84,13 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 backdropFilter: "blur(28px)",
                                             }}
                                         >
-                                            <Image className="shrink-0 w-6 h-6" src="icon-set8.svg" alt="다음" />
+                                            <Image
+                                                className="shrink-0 w-6 h-6"
+                                                src="icon-set8.svg"
+                                                alt="다음"
+                                                width={24}
+                                                height={24}
+                                            />
                                         </button>
                                     )}
                                 </div>
@@ -119,7 +131,12 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         <p className="font-bold text-[22px] w-[804px]">기술스택</p>
                         <div className="flex flex-wrap text-primary text-[12px]">
                             {userSkillTags.map((tag, index) => (
-                                <span key={index} className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9">{tag}</span>
+                                <span
+                                    key={index}
+                                    className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9"
+                                >
+                                    {tag}
+                                </span>
                             ))}
                         </div>
                     </div>
@@ -154,14 +171,12 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 </p>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </li>
                             ))}
                         </ol>
                     </div>
                 )}
-
 
                 <div className="flex flex-col items-start justify-start mt-12">
                     <p className="font-bold text-[22px]">자기소개</p>
