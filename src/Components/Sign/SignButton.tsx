@@ -14,6 +14,7 @@ type InputValue = {
     middlePhoneNumber?: string;
     lastPhoneNumber?: string;
     sex?: string;
+    personalInfoCheck?: boolean;
     inputDisabled: boolean;
     onClick?: () => void;
     setInputDisabled: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,15 +32,16 @@ const SignButton = ({
     name,
     birthDate,
     onClick,
-    firstNumber,
-    middlePhoneNumber,
-    lastPhoneNumber,
+    personalInfoCheck,
+
     sex,
 }: InputValue) => {
-    const signUp = email && password && birthDate && name && sex !== "";
+    const signUp = email && password && birthDate && name && sex !== "" && personalInfoCheck === true;
 
     const confirmEmail = findEmail && password === undefined && birthDate === undefined;
     const confirmPassword = password && confirmUserPassword;
+
+    const socialSettingConfirm = birthDate && sex !== "" && personalInfoCheck === true;
 
     useEffect(() => {
         {
@@ -55,6 +57,13 @@ const SignButton = ({
         }
         signUp ? setInputDisabled(true) : setInputDisabled(false);
     }, [signUp, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*소셜로그인 확인*/
+        }
+        socialSettingConfirm ? setInputDisabled(true) : setInputDisabled(false);
+    }, [socialSettingConfirm, setInputDisabled]);
 
     useEffect(() => {
         {

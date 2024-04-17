@@ -59,6 +59,10 @@ const config: Config = {
                 blue: "#F1F9FF",
                 sky_blue: "#E1FFFF",
                 green: "#E0FFEC",
+                realblack: "#000000",
+            },
+            screens: {
+                lg: { min: "1200px", max: "1500px" },
             },
         },
     },

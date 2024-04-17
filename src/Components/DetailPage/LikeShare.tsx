@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const LikeShare = () => {
+const LikeShare = ({ portfolioInfo }: any) => {
     return (
         <>
             <div className="flex flex-col gap-4 items-center justify-center relative">
@@ -11,7 +11,7 @@ const LikeShare = () => {
                         <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-20 h-10 relative">
                             <div className="shrink-0 w-8 h-8 relative overflow-visible">
                                 {/* 좋아요 이미지 */}
-                                <Image src="redHeart.svg" alt="좋아요" />
+                                <Image src="redHeart.svg" alt="좋아요" width={32} height={32} />
                             </div>
                         </div>
                         <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
@@ -20,7 +20,13 @@ const LikeShare = () => {
                     </div>
                     <div className="bg-gray2 rounded-[999px] pt-2 pb-2 flex flex-col gap-0 items-center justify-start shrink-0 w-32 relative">
                         <div className="rounded-[999px] flex flex-row gap-2 items-center justify-center shrink-0 w-10 h-10 relative">
-                            <Image className="shrink-0 w-8 h-8 relative overflow-visible" src="share.svg" alt="share" />
+                            <Image
+                                className="shrink-0 w-8 h-8 relative overflow-visible"
+                                src="share.svg"
+                                alt="share"
+                                width={32}
+                                height={32}
+                            />
                         </div>
                         <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
                             공유하기
@@ -34,6 +40,8 @@ const LikeShare = () => {
                                 className="w-[100%] h-[100%] absolute right-[0%] left-[0%] bottom-[0%] top-[0%] overflow-visible"
                                 src="grayHeart.svg"
                                 alt="좋아요 비활성화"
+                                width={24}
+                                height={24}
                             />
                         </div>
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
@@ -41,13 +49,25 @@ const LikeShare = () => {
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 items-center justify-start shrink-0 relative">
-                        <Image className="shrink-0 w-6 h-6 relative overflow-visible" src="grayEye.svg" alt="" />
+                        <Image
+                            className="shrink-0 w-6 h-6 relative overflow-visible"
+                            src="grayEye.svg"
+                            alt=""
+                            width={30}
+                            height={30}
+                        />
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            1523
+                            {portfolioInfo.viewCnt}
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 items-center justify-end shrink-0 relative">
-                        <Image className="shrink-0 w-6 h-6 relative overflow-visible" src="grayComment.svg" alt="" />
+                        <Image
+                            className="shrink-0 w-6 h-6 relative overflow-visible"
+                            src="grayComment.svg"
+                            alt=""
+                            width={24}
+                            height={24}
+                        />
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
                             36
                         </div>

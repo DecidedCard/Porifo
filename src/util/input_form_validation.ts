@@ -21,7 +21,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         }
     }
 
-    if (!info.job) {
+    if (info.job === "default") {
         return true;
     }
 
@@ -33,6 +33,12 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
         return true;
     }
 
+    const skillTag = info.skillTag as string[];
+
+    if (skillTag.length === 0) {
+        return true;
+    }
+
     const project = info.project as Project[];
 
     const projectCheck = project.map((projectItem) => {
@@ -40,7 +46,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
             return true;
         }
 
-        if (!projectItem.images) {
+        if (projectItem.images.length === 0) {
             return true;
         }
 
@@ -48,7 +54,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
             return true;
         }
 
-        if (!projectItem.date) {
+        if (projectItem.date.length !== 23) {
             return true;
         }
 

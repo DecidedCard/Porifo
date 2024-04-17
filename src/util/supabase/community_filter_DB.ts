@@ -1,8 +1,13 @@
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { supabase } from "@/util/supabase/clientSupabase";
 
 export const getPortfolio = async (payload: any) => {
-    const { filter, jobFilter, getFromAndTo, page, setPage } = payload;
-    const { from, to } = getFromAndTo();
+    const { filter, pageParam, jobFilter } = payload;
+
+    const ITEM_PER_PAGE = 5;
+
+    let from = pageParam * ITEM_PER_PAGE; //0
+    let to = from + ITEM_PER_PAGE - 1; //6
 
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
     if (filter === "최신순") {
@@ -10,17 +15,17 @@ export const getPortfolio = async (payload: any) => {
     }
 
     if (jobFilter === "*") {
+        query = query.order("created_at", { ascending: false });
         const { data } = await query.range(from, to);
-        setPage(page + 1);
+
         return data;
     }
 
-    if (jobFilter) {
+    if (jobFilter === jobFilter) {
         query = query.order("created_at", { ascending: true }).eq("job", `${jobFilter}`);
     }
 
     const { data, error } = await query.range(from, to);
-    setPage(page + 1);
 
     if (error) {
         console.error(error);
@@ -36,5 +41,6 @@ export const getHotDevelopers = async () => {
         console.error(error);
         return null;
     }
+
     return data;
 };

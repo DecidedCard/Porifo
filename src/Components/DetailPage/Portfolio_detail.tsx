@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
+import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 
 import useCardIdStore from "@/store/detailStore";
 
@@ -17,7 +17,7 @@ const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
-        queryFn: () => supabasePortfolioInfoRead({ id: "id", value: id }),
+        queryFn: () => getDetailData({ id: "id", value: id }),
     });
 
     if (isPending) {
@@ -32,14 +32,16 @@ const Portfolio_detail = () => {
 
     return (
         // 포트폴리오 영역
-        <div className="h-[820px] w-[100%] overflow-auto ">
+        <div className="h-[900px] w-[100%] overflow-auto rounded-2xl ">
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
             </div>
-            <div className="flex flex-col items-center gap-[30px] bg-gray">
-                <div>{/* <LikeShare /> */}</div>
-                <div className="w-[80%] flex justify-center rounded-2xl bg-hihigray">
+            <div className="flex flex-col items-center gap-[20px]  bg-gray">
+                <div className="pt-10">
+                    <LikeShare portfolioInfo={portfolioInfo} />
+                </div>
+                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
                     <Comments />
                 </div>
             </div>
