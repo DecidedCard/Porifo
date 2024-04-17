@@ -76,7 +76,7 @@ const Header = () => {
                                     />
                                 </button>
                                 <p className="flex items-center justify-center text-[16px] text-black">
-                                    {user?.user_metadata.user_name}
+                                    {user?.user_metadata.name}
                                 </p>
 
                                 {showMenu && (
