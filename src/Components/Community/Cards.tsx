@@ -120,8 +120,15 @@ const Cards = () => {
                                         <div className="flex gap-4">
                                             <div className="flex gap-1 items-center ">
                                                 {/* 좋아요 하트 */}
-                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
-                                                {/* <span>210</span> */}
+                                                <div className="w-6 h-6 ">
+                                                    <Image
+                                                        width={24}
+                                                        height={24}
+                                                        alt="좋아요 아이콘"
+                                                        src="grayHeart.svg"
+                                                    />
+                                                </div>
+                                                <span>210</span>
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}

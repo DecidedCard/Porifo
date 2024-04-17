@@ -1,8 +1,26 @@
 "use client";
 
+import useUserStore from "@/store/userStore";
+import useCardIdStore from "@/store/detailStore";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { QUERY_KEY } from "@/util/query_key";
+import { getComments } from "@/util/supabase/supabase_comments";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
-const LikeShare = ({ portfolioInfo }: any) => {
+const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
+    const { user } = useUserStore();
+    const { cardId: id } = useCardIdStore();
+
+    const { data, isPending } = useQuery({
+        queryKey: [QUERY_KEY.portfolidComments],
+        queryFn: () => getComments({ id }),
+    });
+
+    if (isPending) {
+        return <div>로딩중</div>;
+    }
+
     return (
         <>
             <div className="flex flex-col gap-4 items-center justify-center relative">
@@ -69,7 +87,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                             height={24}
                         />
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            36
+                            {data!.length}
                         </div>
                     </div>
                 </div>
