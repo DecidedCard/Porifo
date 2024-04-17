@@ -86,7 +86,7 @@ const Carousel = () => {
                         return (
                             <div
                                 key={idx + 1}
-                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer"
+                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
                                 style={{
                                     transform: `translateX(-${currCarousel * pixel}px)`,
                                     transition: carouselTransition,
