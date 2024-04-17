@@ -43,12 +43,12 @@ const UserInfo = () => {
                                 alt="프로필 사진 미리보기"
                                 width={200}
                                 height={200}
-                                className="ml-3 w-[200px] h-[200px] rounded-2xl"
+                                className="ml-3 w-[200px] h-[200px] rounded-2xl object-cover"
                             />
                         ) : (
                             <Image
                                 src="assets/image/mypagedefault.svg"
-                                alt="기본 이미지"
+                                alt="기본"
                                 width={200}
                                 height={200}
                                 className="ml-3 w-[200px] h-[200px] rounded-2xl"
