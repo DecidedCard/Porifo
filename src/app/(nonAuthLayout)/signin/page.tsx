@@ -79,7 +79,7 @@ const SignIn = () => {
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded p-10 w-[500px] h-[750px] bg-white flex justify-center flex-col">
+                <div className="rounded-2xl p-10 w-[500px] h-[750px] bg-white flex justify-center flex-col">
                     <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center">
                             <Image
