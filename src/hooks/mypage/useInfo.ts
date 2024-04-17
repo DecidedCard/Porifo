@@ -21,6 +21,7 @@ const useInfo = () => {
         setImageFile,
         setBirthday,
         setEmail,
+        setTel,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -89,6 +90,10 @@ const useInfo = () => {
             setEmailCheck({ color: "error", helperText: "이메일을 정확하게 입력해주시기 바랍니다." });
         }
         setEmail(e.target.value);
+    };
+
+    const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setTel(e.target.value);
     };
 
     const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
@@ -296,6 +301,7 @@ const useInfo = () => {
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeEmailHandler,
+        onChangeTelHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,
