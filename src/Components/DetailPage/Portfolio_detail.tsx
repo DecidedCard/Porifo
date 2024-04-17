@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
+import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 
 import useCardIdStore from "@/store/detailStore";
 
@@ -17,7 +17,7 @@ const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
-        queryFn: () => supabasePortfolioInfoRead({ id: "id", value: id }),
+        queryFn: () => getDetailData({ id: "id", value: id }),
     });
 
     if (isPending) {

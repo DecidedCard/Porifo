@@ -59,7 +59,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                 {/* 댓글인풋 */}
                 {user ? (
                     <input
-                        value={comment}
+                        defaultValue={comment}
                         onChange={handleComment}
                         type="text"
                         placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
@@ -67,7 +67,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                     />
                 ) : (
                     <input
-                        value={comment}
+                        defaultValue={comment}
                         type="text"
                         placeholder="로그인을 해주세요"
                         className="border-[2px] border-solid border-gray2 bg-gray-white rounded-lg self-stretch shrink-0 h-[78px]"
