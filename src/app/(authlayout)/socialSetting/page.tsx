@@ -7,12 +7,12 @@ import Image from "next/image";
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
-import Button from "@/Components/Commen/Button";
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
+import SignButton from "@/Components/Sign/SignButton";
+
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
-import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
-import SignButton from "@/Components/Sign/SignButton";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");

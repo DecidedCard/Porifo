@@ -10,10 +10,10 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
-import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 
 import useInput from "@/hooks/useInput";
-import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
+import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
