@@ -15,7 +15,7 @@ const Find_Email = () => {
         e.preventDefault();
         try {
             await supabase.auth.resetPasswordForEmail(userEmail, {
-                redirectTo: "http://localhost:3000/passwordChange",
+                redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/passwordChange`,
             });
             alert("이메일을 확인해 주세요.");
             setUserEmail("");
