@@ -1,8 +1,7 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
-
-import { RiLinkM } from "react-icons/ri";
 
 interface TimelineItemProps {
     name: string;
@@ -11,9 +10,10 @@ interface TimelineItemProps {
     introduce: string;
     deployLink: string | undefined;
     githubLink: string;
+    projectCount: number;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink, projectCount }) => {
     const [imagePage, setImagePage] = useState(0);
 
     const handleNextImage = () => {
@@ -25,9 +25,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
     };
 
     return (
-        <li className="mb-10 pl-10 flex flex-col items-center justify-center relative">
-            <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
-
+        <li className="mb-10 pl-5 flex flex-col items-center justify-center relative">
+            {projectCount > 0 && (
+                <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
+            )}
             <div className="flex flex-col w-[804px]">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                 <div className="flex flex-row">
@@ -66,22 +67,34 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                 </div>
 
                 {/* 제목과 날짜를 포함하는 영역 */}
-                <div className="flex w-full justify-between">
-                    <div className="flex flex-col mt-5">
+                <div className="flex flex-col flex-wrap w-full justify-between">
+                    <div className="flex flex-col mt-2 w-[804px]">
                         <h3 className="text-[20px] font-semibold text-gray-900 mb-3">{name}</h3>
                         <time className="text-middlegray text-[12px] font-normal leading-none">{date}</time>
                     </div>
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                    <div className="flex flex-col mt-5">
-                        <p className="text-[14px] font-normal mb-2 text-neutral-600">{introduce}</p>
-                        <div className="flex items-center text-neutral-600 mt-2">
-                            <RiLinkM className="mr-2" />
+                    <div className="flex flex-col mt-2 w-[804px]">
+                        <p className="text-[14px] font-normal mb-2 text-gray3">{introduce}</p>
+                        <div className="flex items-center text-gray3 mt-2">
+                            <Image
+                                src="assets/image/link.svg"
+                                alt="link"
+                                width={24}
+                                height={24}
+                                className="mr-1"
+                            />
                             <p className="text-[12px]">{githubLink}</p>
                         </div>
                         {deployLink && (
-                            <div className="flex items-center text-neutral-600 mt-2">
-                                <RiLinkM className="mr-2" />
+                            <div className="flex items-center text-gray3 mt-2">
+                                <Image
+                                    src="assets/image/link.svg"
+                                    alt="link"
+                                    width={24}
+                                    height={24}
+                                    className="mr-1"
+                                />
                                 <p className="text-[12px]">{deployLink}</p>
                             </div>
                         )}
