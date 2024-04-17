@@ -46,7 +46,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
             return true;
         }
 
-        if (!projectItem.images) {
+        if (projectItem.images.length === 0) {
             return true;
         }
 
@@ -54,7 +54,7 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
             return true;
         }
 
-        if (!projectItem.date) {
+        if (projectItem.date.length !== 23) {
             return true;
         }
 
