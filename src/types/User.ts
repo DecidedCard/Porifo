@@ -13,6 +13,6 @@ export type User = {
         phoneNumber: string;
         sex: string;
         sub: string;
-        user_name: string;
+        name: string;
     };
 };
