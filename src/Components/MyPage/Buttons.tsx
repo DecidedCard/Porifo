@@ -13,11 +13,11 @@ import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, portfolioPreview, disabled, onClickInsertHandler, onClickShareToggle } =
+    const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
         useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
-    const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio" });
+    const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
 
     const [previewModal, setPreviewModal] = useState(false);
 
@@ -97,28 +97,48 @@ const Buttons = () => {
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px]">
-                    <div className="w-[208px]">
-                        <Button
-                            text={portfolio?.id ? "이력서 수정하기" : "이력서 저장하기"}
-                            size="l"
-                            border="none"
-                            color={disabled ? "" : "primary"}
-                            onClick={onClickInsertHandler}
-                            disabled={disabled}
-                        />
-                    </div>
 
-                    <div className="w-[208px]">
-                        <Button
-                            text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
-                            size="l"
-                            border="none"
-                            color={portfolio ? "primary" : ""}
-                            onClick={onClickShareToggle}
-                            disabled={!portfolio}
-                        />
-                    </div>
+                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px]">
+                    {upload ? (
+                        <>
+                            <div className="w-[208px]">
+                                <Button text="업로드 중..." size="l" border="none" disabled />
+                            </div>
+
+                            <div className="w-[208px]">
+                                <Button
+                                    text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
+                                    size="l"
+                                    border="none"
+                                    disabled
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="w-[208px]">
+                                <Button
+                                    text={portfolio?.id ? "이력서 수정하기" : "이력서 저장하기"}
+                                    size="l"
+                                    border="none"
+                                    color={disabled ? "" : "primary"}
+                                    onClick={onClickInsertHandler}
+                                    disabled={disabled}
+                                />
+                            </div>
+
+                            <div className="w-[208px]">
+                                <Button
+                                    text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
+                                    size="l"
+                                    border="none"
+                                    color={portfolio?.id ? "primary" : ""}
+                                    onClick={onClickShareToggle}
+                                    disabled={!portfolio?.id}
+                                />
+                            </div>
+                        </>
+                    )}
                 </div>
                 {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
             </main>

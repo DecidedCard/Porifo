@@ -28,13 +28,28 @@ const useProject = () => {
 
     const onChangeProjectDate = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const { name, value } = e.target;
+
+        if (!value) {
+            setProjectDate("", index);
+            return;
+        }
+
         if (name === "startDate") {
             const startDate = name === "startDate" && value;
             setProjectDate(`${startDate} ~ ${projects[index].date.slice(13)}`, index);
             return;
         }
-        const endDate = name === "endDate" && value;
-        setProjectDate(`${projects[index].date.slice(0, 10)} ~ ${endDate}`, index);
+
+        if (name === "endDate") {
+            if (projects[index].date.length < 10) {
+                alert("시작날짜를 먼저 선택해 주세요");
+                return;
+            }
+
+            const endDate = name === "endDate" && value;
+            setProjectDate(`${projects[index].date.slice(0, 10)} ~ ${endDate}`, index);
+            return;
+        }
     };
 
     const onChangeProjectDeployLink = (e: ChangeEvent<HTMLInputElement>, index: number) => {

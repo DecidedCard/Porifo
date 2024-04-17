@@ -32,6 +32,7 @@ const useInfo = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
@@ -153,6 +154,7 @@ const useInfo = () => {
 
         // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
         const imagesSetting = projects.map(async (item, idx) => {
+            setUpload(true);
             if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
                 const PROJECT_STORAGE = {
                     bucket: "projectImage",
@@ -219,6 +221,7 @@ const useInfo = () => {
             insert(newPortfolio);
             localStorage.removeItem("portfolio");
             alert("이력서가 저장되었습니다.");
+            setUpload(false);
             return;
         }
 
@@ -247,7 +250,7 @@ const useInfo = () => {
             update({ arg: newPortfolio, value: user!.id });
             alert("이력서가 업데이트 되었습니다.");
             localStorage.removeItem("portfolio");
-
+            setUpload(false);
             return;
         }
 
@@ -265,6 +268,7 @@ const useInfo = () => {
             newPortfolio = { ...newPortfolioInfo, career: [] };
         }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
+        setUpload(false);
     };
 
     const onClickShareToggle = () => {
@@ -285,6 +289,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        upload,
         emailCheck,
         onChangeNameHandler,
         onChangeEngNameHandler,
