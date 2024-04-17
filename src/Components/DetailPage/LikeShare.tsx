@@ -23,6 +23,8 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
         if (!user) {
             return alert("로그인이 필요한 서비스 입니다.");
         }
+        const nowUserEmail = user.user_metadata.email; //현재 유저 email
+        console.log(nowUserEmail);
     };
 
     if (isPending) {
@@ -43,6 +45,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                         </div>
                         <span>좋아요</span>
                     </button>
+
                     {/* 공유하기 영역 */}
                     <button className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3">
                         <div className="flex items-center justify-center w-20 h-10">
