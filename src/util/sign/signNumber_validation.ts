@@ -1,14 +1,14 @@
 type SignUpValidationType = {
     birthDate: string;
     email: string;
-    phoneNumber: string;
+
     password: string;
     personalInfoAgree: boolean;
 };
 
 type SignSettingValidationType = {
     sex: string;
-    phoneNumber: string;
+
     birthDate: string;
     personalInfoAgree: boolean;
 };
@@ -16,11 +16,11 @@ type SignSettingValidationType = {
 export const signUpValidation = ({
     birthDate,
     email,
-    phoneNumber,
+
     password,
     personalInfoAgree,
 }: SignUpValidationType) => {
-    if (email.trim() === "" && password.trim() === "" && phoneNumber === "" && birthDate === "") {
+    if (email.trim() === "" && password.trim() === "" && birthDate === "") {
         alert("정확한 값이 입력되지 않았습니다.");
         return;
     }
@@ -33,12 +33,11 @@ export const signUpValidation = ({
 
 export const signSettingValidation = ({
     birthDate,
-    phoneNumber,
+
     sex,
     personalInfoAgree,
 }: SignSettingValidationType) => {
-    const hasAllInput = sex === "" && birthDate === "" && phoneNumber === "";
-
+    const hasAllInput = sex === "" && birthDate === "";
     if (hasAllInput) {
         alert("모두 입력해 주세요");
         return;

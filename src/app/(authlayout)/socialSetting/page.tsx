@@ -28,7 +28,7 @@ const SocialSeting = () => {
     const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    let phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
     const birthDate = birthYear + birthMonth + birthDay;
 
     const router = useRouter();
@@ -56,8 +56,10 @@ const SocialSeting = () => {
         e.preventDefault();
 
         try {
-            signSettingValidation({ birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck });
-
+            signSettingValidation({ birthDate, sex, personalInfoAgree: personalInfoCheck });
+            if (phoneNumber.length !== 11) {
+                phoneNumber = "000";
+            }
             await supabase.auth.updateUser({
                 data: { birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck },
             });

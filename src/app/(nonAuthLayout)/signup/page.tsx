@@ -51,7 +51,7 @@ const SignUp = () => {
     const router = useRouter();
     const birthDate = birthYear + birthMonth + birthDay;
 
-    const phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    let phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
@@ -91,7 +91,10 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, phoneNumber, email, password, personalInfoAgree: personalInfoCheck });
+            signUpValidation({ birthDate, email, password, personalInfoAgree: personalInfoCheck });
+            if (phoneNumber.length !== 11) {
+                phoneNumber = "000";
+            }
             const { error } = await supabase.auth.signUp({
                 email,
                 password,
