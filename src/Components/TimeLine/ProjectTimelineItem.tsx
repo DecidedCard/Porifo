@@ -26,13 +26,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
 
     return (
         <li className="mb-10 pl-5 flex flex-col items-center justify-center relative">
-            {projectCount > 0 && (
+            {projectCount > 1 && (
                 <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
             )}
             <div className="flex flex-col w-[804px]">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                 <div className="flex flex-row">
-                    {images.slice(imagePage * 3, imagePage * 3 + 2).map((image, index) => (
+                    {images.slice(imagePage * 2, imagePage * 2 + 2).map((image, index) => (
                         <Image
                             key={index}
                             src={image}
@@ -55,7 +55,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                         </button>
                     )}
                     {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
-                    {images.length > (imagePage + 1) * 3 && (
+                    {images.length > (imagePage + 1) * 2 && (
                         <button
                             onClick={handleNextImage}
                             className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-center justify-center shrink-0"
