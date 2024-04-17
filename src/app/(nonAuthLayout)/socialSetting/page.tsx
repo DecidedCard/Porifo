@@ -11,6 +11,8 @@ import Button from "@/Components/Commen/Button";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
+import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
+import SignButton from "@/Components/Sign/SignButton";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");
@@ -22,7 +24,7 @@ const SocialSeting = () => {
     const [birthDay, setBirthDay] = useState("");
 
     const [sex, setSex] = useState("");
-
+    const [inputDisabled, setInputDisabled] = useState(false);
     const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
 
@@ -54,10 +56,10 @@ const SocialSeting = () => {
         e.preventDefault();
 
         try {
-            signSettingValidation({ birthDate, phoneNumber, sex });
+            signSettingValidation({ birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck });
 
             await supabase.auth.updateUser({
-                data: { birthDate, phoneNumber, sex },
+                data: { birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck },
             });
 
             return router.replace("/");
@@ -117,9 +119,21 @@ const SocialSeting = () => {
                         />
                     </div>
 
-                    <div className="w-[350px] mt-8 mb-6 mx-auto">
-                        <Button text="모두 입력해 주세요" border="none" size="m" color="primary" />
-                    </div>
+                    {personalInfoModal ? (
+                        <SignPersonalInfoCheck
+                            setPersonalInfoModal={setPersonalInfoModal}
+                            setPersonalInfoCheck={setPersonalInfoCheck}
+                        />
+                    ) : null}
+
+                    <SignButton
+                        text="모두 입력해 주세요"
+                        inputDisabled={inputDisabled}
+                        setInputDisabled={setInputDisabled}
+                        birthDate={birthDate}
+                        sex={sex}
+                        personalInfoCheck={personalInfoCheck}
+                    />
                 </form>
             </div>
         </div>

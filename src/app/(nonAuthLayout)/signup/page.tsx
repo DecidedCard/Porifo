@@ -18,7 +18,6 @@ import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { passwordValidate } from "@/util/sign/sign_validate";
-import { Resend } from "resend";
 
 const SignUp = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -120,7 +119,7 @@ const SignUp = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded p-10 w-[500px] h-[860px] bg-white flex justify-center flex-col">
+            <div className="rounded p-10 w-[500px] h-[900px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
@@ -132,7 +131,7 @@ const SignUp = () => {
                             alt="회원가입의 form 로고"
                         />
                     </div>
-                    <button className="w-10 h-10 border-success border border-solid">확인 </button>
+
                     <SignUpItem
                         setLabel="이메일"
                         type="email"
@@ -222,6 +221,7 @@ const SignUp = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                         sex={sex}
+                        personalInfoCheck={personalInfoCheck}
                     />
                 </form>
             </div>
