@@ -8,7 +8,7 @@ import Input from "../Commen/Input";
 const PortfolioUrl = () => {
     const { basicInfo, onChangeBlogHandler, onChangeGithubHandler } = useInfo();
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[536px] pb-5">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10">
             <div className="flex flex-col gap-4">
                 <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">URL</h1>
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
