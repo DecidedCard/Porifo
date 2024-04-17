@@ -11,6 +11,7 @@ import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfol
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
+import { userUpdate } from "@/util/supabase/supabase_user";
 
 const useInfo = () => {
     const {
@@ -217,6 +218,7 @@ const useInfo = () => {
             }
 
             if (url) {
+                await userUpdate({ profileImage: url });
                 newPortfolio = {
                     ...newPortfolioInfo,
                     profileImage: url,
@@ -247,6 +249,7 @@ const useInfo = () => {
             }
 
             if (url) {
+                await userUpdate({ profileImage: url });
                 newPortfolio = {
                     ...newPortfolioInfo,
                     profileImage: url,
