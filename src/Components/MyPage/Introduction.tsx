@@ -21,7 +21,7 @@ const Introduction = () => {
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
                 <div className="flex h-[82px]">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                        한 줄 소개<p className="ml-1 text-[10px] text-red-500">★</p>
+                        한 줄 소개<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
                     <div className="flex flex-col gap-1 w-[460px]">
                         <div className="w-[460px] ml-3">
@@ -44,7 +44,7 @@ const Introduction = () => {
 
                 <div className="flex">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                        자기소개<p className="ml-1 text-[10px] text-red-500">★</p>
+                        자기소개<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
                     <div className="flex flex-col gap-1 w-[460px]">
                         <textarea
@@ -62,7 +62,7 @@ const Introduction = () => {
 
                 <div className="flex gap-3">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                        기술 스택<p className="ml-1 text-[10px] text-red-500">★</p>
+                        기술 스택<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
                     <div className="flex flex-wrap justify-between gap-2 w-[460px]">
                         {SKILL_TAG.map((item, idx) => {

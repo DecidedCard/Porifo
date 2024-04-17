@@ -45,7 +45,7 @@ const Project = () => {
                                     )}
                                     <div className="flex mt-1">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            기본정보<p className="ml-1 text-[10px] text-red-500">★</p>
+                                            기본정보<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="w-[460px] ml-3">
                                             <Input
@@ -63,7 +63,7 @@ const Project = () => {
 
                                     <div className="flex mt-1">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            내용<p className="ml-1 text-[10px] text-red-500">★</p>
+                                            내용<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="flex flex-col gap-1 w-[460px] ml-3 text-[14px]">
                                             <textarea
@@ -83,7 +83,7 @@ const Project = () => {
 
                                     <div className="flex mt-1">
                                         <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            사진 업로드 하기<p className="ml-1 text-[10px] text-red-500">★</p>
+                                            사진 업로드 하기<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </p>
                                         <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll">
                                             {item.images.length !== 0 ? (
@@ -145,7 +145,7 @@ const Project = () => {
 
                                     <div className="flex mt-1">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            프로젝트 기간<p className="ml-1 text-[10px] text-red-500">★</p>
+                                            프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="flex justify-between w-[460px] ml-3">
                                             <div className="w-[224px]">
@@ -177,7 +177,7 @@ const Project = () => {
                                     </div>
                                     <div className="flex mt-1">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            Github<p className="ml-1 text-[10px] text-red-500">★</p>
+                                            Github<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="w-[460px] ml-3">
                                             <Input

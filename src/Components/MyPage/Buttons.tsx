@@ -126,9 +126,9 @@ const Buttons = () => {
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
                                     border="none"
-                                    color={portfolio ? "primary" : ""}
+                                    color={portfolio?.id ? "primary" : ""}
                                     onClick={onClickShareToggle}
-                                    disabled={!portfolio}
+                                    disabled={!portfolio?.id}
                                 />
                             </div>
                         </>
