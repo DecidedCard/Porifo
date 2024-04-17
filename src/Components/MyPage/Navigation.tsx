@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineMessage } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
@@ -8,6 +8,7 @@ import useProjectsStore from "@/store/projectStore";
 
 const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<string>> }) => {
     const [selectedNav, setSelectedNav] = useState("basicInfo");
+    const [projectCheck, setProjectCheck] = useState(false);
     const { basicInfo } = usePortfolioInfoStore();
     const { projects } = useProjectsStore();
 
@@ -15,6 +16,29 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
         setNav(navItem);
         setSelectedNav(navItem);
     };
+
+    // project check
+    useEffect(() => {
+        const check = projects.map((projectItem) => {
+            if (
+                !projectItem.name ||
+                projectItem.images.length === 0 ||
+                !projectItem.introduce ||
+                projectItem.date.length !== 23 ||
+                !projectItem.githubLink
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        if (check.find((item) => item === true)) {
+            setProjectCheck(true);
+        } else {
+            setProjectCheck(false);
+        }
+    }, [projects]);
 
     return (
         <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px]">
@@ -62,17 +86,11 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             } hover:bg-white hover:text-black`}
             >
                 <TbPencilMinus className="mr-3" />
-                프로젝트{" "}
+                프로젝트
                 <span
-                    className={`bg-red-400 ${projects.map((projectItem) => {
-                        return !projectItem.name ||
-                            projectItem.images.length === 0 ||
-                            !projectItem.introduce ||
-                            projectItem.date.length !== 23 ||
-                            !projectItem.githubLink
-                            ? "bg-opacity-80"
-                            : "bg-opacity-0";
-                    })} ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                    className={`bg-red-400 ${
+                        projectCheck ? "bg-opacity-80" : "bg-opacity-0"
+                    } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                 ></span>
             </button>
             <button
