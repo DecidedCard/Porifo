@@ -15,7 +15,7 @@ export const getDetailData = async (col: { id: string; value: string }) => {
 
         const { error } = await supabase
             .from("portfolioInfo")
-            .update({ viewCnt: viewCnt + 1 })
+            .update({ viewCnt: viewCnt! + 1 })
             .eq("id", id);
 
         return portfolioInfo;

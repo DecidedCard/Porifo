@@ -53,6 +53,7 @@ export type Database = {
                     skillTag: Json;
                     template: string | null;
                     userId: string | null;
+                    viewCnt: number | null;
                 };
                 Insert: {
                     birthday?: string | null;
@@ -73,6 +74,7 @@ export type Database = {
                     skillTag: Json;
                     template?: string | null;
                     userId?: string | null;
+                    viewCnt?: number | null;
                 };
                 Update: {
                     birthday?: string | null;
@@ -93,6 +95,7 @@ export type Database = {
                     skillTag?: Json;
                     template?: string | null;
                     userId?: string | null;
+                    viewCnt?: number | null;
                 };
                 Relationships: [];
             };
