@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const LikeShare = () => {
+const LikeShare = ({ portfolioInfo }: any) => {
     return (
         <>
             <div className="flex flex-col gap-4 items-center justify-center relative">
@@ -57,7 +57,7 @@ const LikeShare = () => {
                             height={30}
                         />
                         <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
-                            1523
+                            {portfolioInfo.viewCnt}
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 items-center justify-end shrink-0 relative">

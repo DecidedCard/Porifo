@@ -8,6 +8,7 @@ import { QUERY_KEY } from "@/util/query_key";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import Cards from "./Cards";
+import useJobFilterStore from "@/store/jobFilterStore";
 
 export const SELECT_LIST = [
     { value: "*", name: "전체" },
@@ -23,7 +24,8 @@ export const SELECT_LIST = [
 
 const JobFilter = () => {
     const { setPage } = useSupabaseRange();
-    const [jobFilter, setJobFilter] = useState("");
+    // const [jobFilter, setJobFilter] = useState("*");
+    const { setJobFilter } = useJobFilterStore();
     const [activeMenu, setActiveMenu] = useState("*");
 
     const queryClient = useQueryClient();
@@ -37,32 +39,29 @@ const JobFilter = () => {
     };
 
     return (
-        <>
-            <div className="flex flex-row gap-10 ">
-                {SELECT_LIST.map((item, idx) => {
-                    return (
-                        <div className="flex flex-col" key={idx}>
-                            <button
-                                key={item.value}
-                                onClick={() => handleJobFilterBtn(item.value)}
-                                className={`h-9 ${
-                                    activeMenu === item.value ? "border-b-[3px] border-solid border-black" : ""
-                                } `}
+        <div className="flex flex-row gap-10 lg:ml-2 ">
+            {SELECT_LIST.map((item, idx) => {
+                return (
+                    <div className="flex flex-col" key={idx}>
+                        <button
+                            key={item.value}
+                            onClick={() => handleJobFilterBtn(item.value)}
+                            className={`h-9 ${
+                                activeMenu === item.value ? "border-b-[3px] border-solid border-black" : ""
+                            } `}
+                        >
+                            <div
+                                className={`font-spoqaMedium font-bold text-xl ${
+                                    activeMenu === item.value ? " text-black" : "text-gray3"
+                                }`}
                             >
-                                <div
-                                    className={`font-spoqaMedium font-bold text-xl ${
-                                        activeMenu === item.value ? " text-black" : "text-gray3"
-                                    }`}
-                                >
-                                    {item.name}
-                                </div>
-                            </button>
-                        </div>
-                    );
-                })}
-            </div>
-            <Cards filterData={{ jobFilter }} />
-        </>
+                                {item.name}
+                            </div>
+                        </button>
+                    </div>
+                );
+            })}
+        </div>
     );
 };
 
