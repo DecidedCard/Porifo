@@ -32,14 +32,16 @@ const Portfolio_detail = () => {
 
     return (
         // 포트폴리오 영역
-        <div className="h-[880px] w-[100%] overflow-auto ">
+        <div className="h-[900px] w-[100%] overflow-auto rounded-2xl ">
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
             </div>
-            <div className="flex flex-col items-center gap-[30px] bg-gray">
-                <div>{/* <LikeShare /> */}</div>
-                <div className="w-[80%] flex justify-center rounded-2xl bg-hihigray">
+            <div className="flex flex-col items-center gap-[20px]  bg-gray">
+                <div className="pt-10">
+                    <LikeShare />
+                </div>
+                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
                     <Comments />
                 </div>
             </div>

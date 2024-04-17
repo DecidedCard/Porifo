@@ -1,3 +1,4 @@
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { supabase } from "@/util/supabase/clientSupabase";
 
 export const getPortfolio = async (payload: any) => {
@@ -41,5 +42,6 @@ export const getHotDevelopers = async () => {
         console.error(error);
         return null;
     }
+
     return data;
 };

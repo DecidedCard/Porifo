@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -15,7 +15,6 @@ import useCardIdStore from "@/store/detailStore";
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
     const [pixel, setPixel] = useState(488);
-    // const [pixel, setPixel] = useState(488);
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -27,6 +26,10 @@ const Carousel = () => {
         queryFn: getHotDevelopers,
         refetchOnWindowFocus: false,
     });
+
+    useEffect(() => {
+        queryClient.invalidateQueries({ queryKey: ["hotDevelopers"] });
+    }, [data]);
 
     if (isPending) {
         return (
@@ -147,9 +150,14 @@ const Carousel = () => {
                                             <div className="flex gap-1 items-center">
                                                 <div className="shrink-0 w-6 h-6 relative">
                                                     {/* 조회수 */}
-                                                    {/* <img src="grayEye.svg" /> */}
+                                                    <Image
+                                                        width={24}
+                                                        height={24}
+                                                        alt="조회수 아이콘"
+                                                        src="grayEye.svg"
+                                                    />
                                                 </div>
-                                                {/* <div className="text-gray">1523</div> */}
+                                                <div className="text-gray">{item.viewCnt}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -12,15 +12,11 @@ export const getDetailData = async (col: { id: string; value: string }) => {
             throw new Error("에러가 발생했습니다.");
         }
         const { id, viewCnt }: PortfolioInfo = portfolioInfo[0];
-        console.log("viewCnt", viewCnt);
-        // if () {
-        //     // const { data, error } = await supabase
-        //     //     .from("portfolioInfo")
-        //     //     .upsert({ id: detailData.id, viewCnt: detailData.viewCnt + 1 })
-        //     //     .select("*");
 
-        // }
-        console.log("portfolioInfo", portfolioInfo);
+        const { error } = await supabase
+            .from("portfolioInfo")
+            .update({ viewCnt: viewCnt + 1 })
+            .eq("id", id);
 
         return portfolioInfo;
     } catch (error) {
