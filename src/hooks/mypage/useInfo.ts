@@ -12,6 +12,9 @@ import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { Project } from "@/types/Project";
+import { Career } from "@/types/Career";
 
 const useInfo = () => {
     const {
@@ -29,15 +32,18 @@ const useInfo = () => {
         setSkillTag,
         setBlog,
         setGithub,
+        setInitialBasicInfo,
     } = usePortfolioInfoStore();
     const { user, portfolio, setPortfolio } = useUserStore();
-    const { projects } = useProjectsStore();
-    const { careers } = useCareerStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
+    const { careers, setInitialCareers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [inputValidationCheck, setInputValidationCheck] = useState("");
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
+    const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -47,17 +53,24 @@ const useInfo = () => {
         const { imageFile, ...info } = basicInfo;
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
             setDisabled(true);
+            setInputValidationCheck("필수항목을 작성하셔야 합니다.");
         } else {
             setDisabled(false);
+            setInputValidationCheck("");
         }
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!);
-        if (user && !portfolio && localStorageItem) {
+        if (localStorageItem && !portfolio) {
+            const project = localStorageItem.project as unknown as Project[];
+            const career = localStorageItem.career as Career[];
+
             setPortfolio(localStorageItem);
+            setInitialBasicInfo(localStorageItem);
+            setProjectsInitial([...project]);
+            setInitialCareers([...career]);
         }
-    }, [portfolio, setPortfolio, user]);
+    }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -133,6 +146,8 @@ const useInfo = () => {
 
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
+        setUpload(true);
+
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
@@ -160,7 +175,6 @@ const useInfo = () => {
 
         // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
         const imagesSetting = projects.map(async (item, idx) => {
-            setUpload(true);
             if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
                 const PROJECT_STORAGE = {
                     bucket: "projectImage",
@@ -262,7 +276,7 @@ const useInfo = () => {
             return;
         }
 
-        let newPortfolio = { ...info, profileImage: url, project, career: careers };
+        let newPortfolio = { ...info, project, career: careers };
         const { ...newPortfolioInfo } = newPortfolio;
         if (
             careers.length === 0 ||
@@ -274,6 +288,12 @@ const useInfo = () => {
             !careers
         ) {
             newPortfolio = { ...newPortfolioInfo, career: [] };
+        }
+        if (url) {
+            newPortfolio = {
+                ...newPortfolioInfo,
+                profileImage: url,
+            };
         }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
         setUpload(false);
@@ -297,6 +317,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        inputValidationCheck,
         upload,
         emailCheck,
         onChangeNameHandler,

@@ -26,7 +26,7 @@ const Cover = () => {
                     <div className="w-[210px]">
                         <Link href={"/guest"}>
                             <Button
-                                text={user ? "포트폴리오 작성" : "게스트로 포트폴리오 작성"}
+                                text={user ? "포트폴리오 등록하기" : "바로 포트폴리오 작성하기"}
                                 size="l"
                                 fontSize="m"
                                 color="primary"
