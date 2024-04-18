@@ -59,9 +59,10 @@ const useInfo = () => {
     useEffect(() => {
         const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
 
-        const project = localStorageItem.project as unknown as Project[];
-        const career = localStorageItem.career as Career[];
         if (user && !portfolio && localStorageItem) {
+            const project = localStorageItem.project as unknown as Project[];
+            const career = localStorageItem.career as Career[];
+
             setPortfolio(localStorageItem);
             setInitialBasicInfo(localStorageItem);
             setProjectsInitial([...project]);
