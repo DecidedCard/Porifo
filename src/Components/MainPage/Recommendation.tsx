@@ -48,7 +48,7 @@ const Recommendation = () => {
                                         <div
                                             className="absolute top-[136px] w-full h-[90px] bg-[#0000008F] rounded-bl-2xl rounded-br-2xl px-6"
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}>
-                                            <div className="flex items-center mt-5">
+                                            <div className="flex items-center mt-4">
                                                 <div className="flex flex-col gap-4 flex-1 text-sm">
                                                     <p className="text-white">{developer.oneLineIntroduce.length > 20
                                                         ? `${developer.oneLineIntroduce.substring(0, 20)}...`

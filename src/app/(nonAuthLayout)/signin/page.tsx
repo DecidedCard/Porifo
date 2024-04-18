@@ -78,14 +78,14 @@ const SignIn = () => {
 
     return (
         <main>
-            <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded-2xl p-10 w-[500px] h-[750px] bg-white flex justify-center flex-col">
+            <div className="flex py-36 items-center justify-center bg-hihigray">
+                <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col">
                     <form onSubmit={signInWithEmail}>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center items-center h-[86px]">
                             <Image
-                                width={0}
-                                height={0}
-                                className="w-[160px] h-[140px]"
+                                width={160}
+                                height={54}
+                                className="w-[160px] h-[54px]"
                                 src="formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
@@ -106,8 +106,7 @@ const SignIn = () => {
                             placeholder="비밀번호를 작성해주세요"
                             helperText={passwordError ? "" : "비밀번호가 일치하지 않습니다."}
                             color={passwordError ? "black" : "error"}
-                            pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
-                        "
+                            pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/"
                             value={password}
                             onChangeHandler={onChangePassword}
                             relative="relative"
@@ -115,11 +114,18 @@ const SignIn = () => {
                             eyeClose="eye_close.svg"
                         />
 
+                        <SignButton
+                            text="로그인"
+                            inputDisabled={inputDisabled}
+                            setInputDisabled={setInputDisabled}
+                            email={email}
+                            loginPassword={password}
+                        />
                         <div
-                            className="mx-9 mb-8 text-slate-400 float-right flex flex-row cursor-pointer"
+                            className="text-gray4 float-right flex flex-row items-center justify-center text-[12px] cursor-pointer"
                             onClick={findPassword}
                         >
-                            <div className="mt-[1.5px]">비밀번호 찾기</div>
+                            <div className="mt-[1.5px] w-[67px] h-[27px] flex items-center">비밀번호 찾기</div>
                             <Image
                                 width={0}
                                 height={0}
@@ -128,21 +134,14 @@ const SignIn = () => {
                                 alt="페이지 이동 화살표"
                             />
                         </div>
-                        <SignButton
-                            text="로그인"
-                            inputDisabled={inputDisabled}
-                            setInputDisabled={setInputDisabled}
-                            email={email}
-                            loginPassword={password}
-                        />
                     </form>
 
                     <SocialSign redirectTo={redirectTo} />
 
-                    <div className="mx-auto">
-                        아직 포리포의 회원이 아니신가요?{" "}
-                        <a href="/signupMethod" className=" ml-3 underline">
-                            회원가입
+                    <div className="flex flex-row mx-auto text-[12px]">
+                        <p className="text-gray4">아직 포리포의 회원이 아니신가요?{" "}</p>
+                        <a href="/signupMethod" className="ml-3 underline">
+                            이메일로 회원가입
                         </a>
                     </div>
                 </div>
