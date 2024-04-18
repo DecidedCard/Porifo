@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import { userData } from "@/util/supabase/supabase_user";
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
@@ -32,6 +31,7 @@ const Header = () => {
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     };
+
     return (
         <main className="sticky top-0 z-10">
             <div className=" bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">

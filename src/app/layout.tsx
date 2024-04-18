@@ -10,6 +10,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "Porifo",
     description: "Easy to make portfolio",
+    icons: {
+        icon: "/favicon.ico",
+    },
+    openGraph: {
+        siteName: "Porifo",
+        title: "Porifo",
+        description: "바로 작성할 수 있는 포트폴리오",
+        images: "/favicon.ico",
+        url: "https://www.porifo.com/",
+    },
 };
 
 export default function RootLayout({
