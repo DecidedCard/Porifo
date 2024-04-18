@@ -128,7 +128,9 @@ const Buttons = () => {
                                     onClick={onClickInsertHandler}
                                     disabled={disabled}
                                 />
-                                {inputValidationCheck && <span className="text-sm">{inputValidationCheck}</span>}
+                                {inputValidationCheck && (
+                                    <span className="text-xs text-red-400">{inputValidationCheck}</span>
+                                )}
                             </div>
 
                             <div className="w-[208px]">
@@ -140,7 +142,9 @@ const Buttons = () => {
                                     onClick={onClickShareToggle}
                                     disabled={!portfolio?.id}
                                 />
-                                {!portfolio?.id && <span className="text-sm">이력서를 저장해야 합니다.</span>}
+                                {!portfolio?.id && (
+                                    <span className="text-xs text-red-400">이력서를 저장해야 합니다.</span>
+                                )}
                             </div>
                         </>
                     )}
