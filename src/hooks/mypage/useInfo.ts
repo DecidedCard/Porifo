@@ -43,6 +43,7 @@ const useInfo = () => {
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
+    const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -60,9 +61,7 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
-
-        if (user && !portfolio && localStorageItem) {
+        if (localStorageItem && !portfolio) {
             const project = localStorageItem.project as unknown as Project[];
             const career = localStorageItem.career as Career[];
 
@@ -71,7 +70,7 @@ const useInfo = () => {
             setProjectsInitial([...project]);
             setInitialCareers([...career]);
         }
-    }, [portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -277,7 +276,7 @@ const useInfo = () => {
             return;
         }
 
-        let newPortfolio = { ...info, profileImage: url, project, career: careers };
+        let newPortfolio = { ...info, project, career: careers };
         const { ...newPortfolioInfo } = newPortfolio;
         if (
             careers.length === 0 ||
@@ -289,6 +288,12 @@ const useInfo = () => {
             !careers
         ) {
             newPortfolio = { ...newPortfolioInfo, career: [] };
+        }
+        if (url) {
+            newPortfolio = {
+                ...newPortfolioInfo,
+                profileImage: url,
+            };
         }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
         setUpload(false);

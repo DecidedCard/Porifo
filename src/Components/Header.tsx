@@ -32,8 +32,6 @@ const Header = () => {
         setShowMenu(!showMenu);
     };
 
-    console.log(user?.user_metadata.profileImage);
-
     return (
         <main className="sticky top-0 z-10">
             <div className=" bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
