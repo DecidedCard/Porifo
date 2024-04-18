@@ -8,9 +8,24 @@ export const userData = async () => {
         } = await supabase.auth.getUser();
         if (error) {
             console.error(error);
-            throw new Error("로그인을 해주시기 바랍니다.");
+            throw new Error(error.message);
         }
         return user;
+    } catch (error) {
+        Promise.reject(error);
+    }
+};
+
+export const userUpdate = async (arg: any) => {
+    try {
+        const { data, error } = await supabase.auth.updateUser({
+            data: arg,
+        });
+        if (error) {
+            console.error(error);
+            throw new Error(error.message);
+        }
+        return data;
     } catch (error) {
         Promise.reject(error);
     }

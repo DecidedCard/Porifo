@@ -11,6 +11,7 @@ type Store = {
     setImageFile: (arg: File) => void;
     setBirthday: (arg: string) => void;
     setEmail: (arg: string) => void;
+    setTel: (arg: string) => void;
     setOneLineIntroduce: (arg: string) => void;
     setIntroduce: (arg: string) => void;
     setSkillTag: (arg: string[]) => void;
@@ -29,6 +30,7 @@ const initial = {
     imageFile: null,
     birthday: "",
     email: "",
+    tel: "",
     oneLineIntroduce: "",
     introduce: "",
     skillTag: [],
@@ -48,6 +50,7 @@ const usePortfolioInfoStore = create<Store>()((set) => ({
     setImageFile: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, imageFile: arg } })),
     setBirthday: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, birthday: arg } })),
     setEmail: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, email: arg } })),
+    setTel: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, tel: arg } })),
     setOneLineIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, oneLineIntroduce: arg } })),
     setIntroduce: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, introduce: arg } })),
     setSkillTag: (arg) => set((state) => ({ basicInfo: { ...state.basicInfo, skillTag: arg } })),

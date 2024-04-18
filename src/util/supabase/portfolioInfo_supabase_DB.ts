@@ -6,7 +6,7 @@ export const supabaseInsert = async (item: any) => {
         const { data, error } = await supabase.from("portfolioInfo").insert(item).select();
         if (error) {
             console.error(error);
-            throw new Error("데이터를 저장하지 못 했습니다.");
+            throw new Error(error.message);
         }
         return data;
     } catch (error) {
@@ -20,7 +20,7 @@ export const supabasePortfolioInfoRead = async (col: { id: string; value: string
         const { data: portfolioInfo, error } = await supabase.from("portfolioInfo").select("*").eq(col.id, col.value);
         if (error) {
             console.error(error);
-            throw new Error("에러가 발생했습니다.");
+            throw new Error(error.message);
         }
         return portfolioInfo;
     } catch (error) {

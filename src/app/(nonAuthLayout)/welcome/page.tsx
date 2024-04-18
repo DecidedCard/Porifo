@@ -14,7 +14,7 @@ const Welcome = () => {
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded w-[500px] h-[600px] bg-white flex justify-center flex-col">
+                <div className="rounded-2xl w-[500px] h-[600px] bg-white flex justify-center flex-col">
                     <div className="flex justify-center ">
                         <Image
                             className="w-[160px] h-[140px]"

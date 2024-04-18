@@ -14,7 +14,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                                 <Image src="redHeart.svg" alt="좋아요" width={32} height={32} />
                             </div>
                         </div>
-                        <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
+                        <div className="text-center relative flex items-center justify-center">
                             좋아요
                         </div>
                     </div>
@@ -28,7 +28,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                                 height={32}
                             />
                         </div>
-                        <div className="text-graytext-5 text-center font-body-p8m-font-family text-body-p8m-font-size leading-body-p8m-line-height font-body-p8m-font-weight relative flex items-center justify-center">
+                        <div className="text-center relative flex items-center justify-center">
                             공유하기
                         </div>
                     </div>
@@ -44,7 +44,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                                 height={24}
                             />
                         </div>
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
+                        <div className="text-center relative flex items-center justify-center">
                             210
                         </div>
                     </div>
@@ -56,7 +56,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                             width={30}
                             height={30}
                         />
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
+                        <div className="text-center relative flex items-center justify-center">
                             {portfolioInfo.viewCnt}
                         </div>
                     </div>
@@ -68,7 +68,7 @@ const LikeShare = ({ portfolioInfo }: any) => {
                             width={24}
                             height={24}
                         />
-                        <div className="text-graytext-4 text-center font-body-p7r-font-family text-body-p7r-font-size leading-body-p7r-line-height font-body-p7r-font-weight relative flex items-center justify-center">
+                        <div className="text-center relative flex items-center justify-center">
                             36
                         </div>
                     </div>

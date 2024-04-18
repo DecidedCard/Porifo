@@ -51,6 +51,7 @@ export type Database = {
                     project: Json | null;
                     share: boolean | null;
                     skillTag: Json;
+                    tel: string | null;
                     template: string | null;
                     userId: string | null;
                     viewCnt: number | null;
@@ -72,6 +73,7 @@ export type Database = {
                     project?: Json | null;
                     share?: boolean | null;
                     skillTag: Json;
+                    tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
                     viewCnt?: number | null;
@@ -93,6 +95,7 @@ export type Database = {
                     project?: Json | null;
                     share?: boolean | null;
                     skillTag?: Json;
+                    tel?: string | null;
                     template?: string | null;
                     userId?: string | null;
                     viewCnt?: number | null;

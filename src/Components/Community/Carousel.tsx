@@ -86,7 +86,7 @@ const Carousel = () => {
                         return (
                             <div
                                 key={idx + 1}
-                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer"
+                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
                                 style={{
                                     transform: `translateX(-${currCarousel * pixel}px)`,
                                     transition: carouselTransition,
@@ -99,22 +99,22 @@ const Carousel = () => {
                             >
                                 {/* 카드 이미지 */}
                                 <Image
-                                    className="rounded-2xl w-[100%] h-[100%] "
+                                    className="rounded-2xl w-[550px] h-[364px]"
                                     style={{
                                         objectFit: "cover",
                                     }}
-                                    width={500}
-                                    height={300}
+                                    width={550}
+                                    height={364}
                                     alt="카드 프로필"
                                     src={item.profileImage}
                                 />
                                 {/* 블러박스 */}
                                 <div
-                                    className="bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[238px]"
-                                    style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
+                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[238px]"
+                                    style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                 >
                                     {/* 한줄소개 */}
-                                    <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
+                                    <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-medium text-2xl flex items-center">
                                         <p className="truncate ...">{item.oneLineIntroduce}</p>
                                     </div>
                                     {/* 유저정보,좋아요,조회수 박스 */}
@@ -122,31 +122,32 @@ const Carousel = () => {
                                         <div className="flex gap-2">
                                             {/* 유저아바타 */}
                                             <Image
-                                                width={500}
-                                                height={300}
+                                                width={32}
+                                                height={32}
                                                 alt={`hotDeveloper-img-${idx}`}
                                                 className="rounded-[50px] w-8 h-8"
                                                 style={{ objectFit: "cover" }}
                                                 src={item.profileImage}
                                             />
                                             {/* 유저이름 */}
-                                            <div className="font-spoqaMedium text-white font-bold flex items-center justify-center">
+                                            <div className="font-spoqaMedium text-white font-medium flex items-center justify-center text-base">
                                                 {item.name}
                                             </div>
                                         </div>
                                         {/* 좋아요, 조회수 박스 */}
                                         <div className="flex gap-4">
                                             <div className="flex gap-1 items-center">
-                                                <div className="shrink-0 w-6 h-6 relative">
+                                                <div className="w-6 h-6 relative">
                                                     {/* 좋아요 */}
                                                     {/* <img src="grayHeart.svg" /> */}
                                                 </div>
                                                 {/* <div className="text-gray">210</div> */}
                                             </div>
                                             <div className="flex gap-1 items-center">
-                                                <div className="shrink-0 w-6 h-6 relative">
+                                                <div className="w-6 h-6 relative">
                                                     {/* 조회수 */}
                                                     <Image
+                                                        className="w-6 h-6"
                                                         width={24}
                                                         height={24}
                                                         alt="조회수 아이콘"
@@ -165,24 +166,24 @@ const Carousel = () => {
                 {/* 이미지 넘기기 버튼 */}
                 <button
                     onClick={handleImageNextBtn}
-                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[1450px] top-[162px] lg:left-[1150px]"
+                    className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] top-[162px] lg:left-[1150px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <Image
-                        className="shrink-0 w-6 h-6 relative overflow-visible"
+                        className="w-6 h-6 relative overflow-visible"
                         src="icon-set8.svg"
                         alt="아이콘"
-                        width={30}
-                        height={30}
+                        width={24}
+                        height={24}
                     />
                 </button>
                 <button
                     onClick={handleImagePrevBtn}
-                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[430px] top-[162px] lg:left-[150px]"
+                    className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[20%] top-[162px] lg:left-[150px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
                     style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                 >
                     <Image
-                        className="shrink-0 w-6 h-6 relative overflow-visible"
+                        className="w-6 h-6 relative overflow-visible"
                         src="icon-set9.svg"
                         alt="아이콘"
                         width={30}

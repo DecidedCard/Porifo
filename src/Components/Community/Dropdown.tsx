@@ -34,27 +34,27 @@ const Dropdown = ({ props }: any) => {
     };
 
     return (
-        <div className="list-none font-spoqaMedium font-bold border-solid border-2 border-t-0 border-gray2 rounded-xl ">
+        <div className="text-[12px] flex flex-col items-center justify-center list-none font-spoqaMedium border-solid border-2 border-t-0 border-gray2 rounded-br-lg rounded-bl-lg">
+            <li
+                value="인기순"
+                onClick={() => handleFilterChange("인기순")}
+                className="flex items-center w-[176px] h-[25px] my-2 p-1 hover:bg-hihigray rounded-[4px] cursor-pointer "
+            >
+                인기순
+            </li>
             <li
                 value="최신순"
                 onClick={() => handleFilterChange("최신순")}
-                className="p-4 hover:bg-hihigray rounded-xl cursor-pointer"
+                className="flex items-center w-[176px] h-[25px] my-2 p-1 hover:bg-hihigray rounded-[4px] cursor-pointer"
             >
                 최신순
             </li>
             <li
                 value="오래된 순"
                 onClick={() => handleFilterChange("오래된 순")}
-                className="p-4 hover:bg-hihigray rounded-xl cursor-pointer"
+                className="flex items-center w-[176px] h-[25px] my-2 p-1 hover:bg-hihigray rounded-[4px] cursor-pointer"
             >
                 오래된 순
-            </li>
-            <li
-                value="인기순"
-                onClick={() => handleFilterChange("인기순")}
-                className="p-4 hover:bg-hihigray rounded-xl cursor-pointer "
-            >
-                인기순
             </li>
         </div>
     );

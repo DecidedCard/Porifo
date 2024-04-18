@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "Easy to make portfolio",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -20,8 +20,10 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
-                <Header />
-                <Provider>{children}</Provider>
+                <Provider>
+                    <Header />
+                    {children}
+                </Provider>
                 <Footer />
             </body>
         </html>

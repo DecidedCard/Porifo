@@ -13,6 +13,8 @@ export type User = {
         phoneNumber: string;
         sex: string;
         sub: string;
+        name: string;
+        profileImage: string;
         user_name: string;
     };
 };

@@ -34,6 +34,7 @@ const Password_Change = () => {
             setUserPassword("");
             setConfirmUserPassword("");
             alert("비밀번호가 일치하지 않습니다!");
+            return;
         }
 
         await supabase.auth.updateUser({ password: userPassword });
@@ -80,7 +81,7 @@ const Password_Change = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 {isRecovery ? (
-                    <div className="rounded p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
                         <form onSubmit={confirmHandler}>
                             <div className="flex justify-center">
                                 <Image

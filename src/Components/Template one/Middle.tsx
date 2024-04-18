@@ -40,10 +40,10 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     {projects.map((project, index) => (
                         <li key={index} className="flex flex-col items-center justify-center">
                             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-                            <div className="flex flex-col w-[804px] relative">
+                            <div className="flex flex-col w-[804px]">
                                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                                <div className="flex flex-row relative">
-                                    {project.images.slice(imagePage * 3, imagePage * 3 + 3).map((image, index) => (
+                                <div className="flex flex-row">
+                                    {project.images.map((image, index) => (
                                         <Image
                                             key={index}
                                             src={image}

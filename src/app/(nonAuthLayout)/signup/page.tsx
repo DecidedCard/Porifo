@@ -91,7 +91,7 @@ const SignUp = () => {
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            signUpValidation({ birthDate, email, password, personalInfoAgree: personalInfoCheck });
+            signUpValidation({ birthDate, email, name, password, personalInfoAgree: personalInfoCheck });
             if (phoneNumber.length !== 11) {
                 phoneNumber = "000";
             }
@@ -102,7 +102,7 @@ const SignUp = () => {
                     emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
                     data: {
                         birthDate,
-                        user_name: name,
+                        name,
                         sex,
                         phoneNumber,
                         personalInfoAgree: personalInfoCheck,
@@ -122,7 +122,7 @@ const SignUp = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded p-10 w-[500px] h-[900px] bg-white flex justify-center flex-col">
+            <div className="rounded-2xl p-10 w-[500px] h-[900px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image

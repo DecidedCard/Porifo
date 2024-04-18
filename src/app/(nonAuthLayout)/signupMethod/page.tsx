@@ -16,7 +16,7 @@ const SignUpMethod = () => {
     return (
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
-                <div className="rounded w-[500px] h-[400px] bg-white flex justify-center flex-col">
+                <div className="rounded-2xl w-[500px] h-[400px] bg-white flex justify-center flex-col">
                     <div className="flex justify-center ">
                         <Image
                             className="w-[160px] h-[140px]"
@@ -28,7 +28,7 @@ const SignUpMethod = () => {
                     </div>
                     <SocialSign redirectTo={redirectTo} />
 
-                    <div className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
+                    {/* <div className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
                         <div className="bg-gray2 w-[150px] h-[1px]"></div>
 
                         <div className="text-graytext-5 text-left relative flex items-center justify-start">또는</div>
@@ -36,7 +36,7 @@ const SignUpMethod = () => {
                         <div className="bg-gray2 w-[150px] h-[1px]"></div>
                     </div>
 
-                    <SignRouterButton />
+                    <SignRouterButton /> */}
                 </div>
             </div>
         </main>
