@@ -46,19 +46,11 @@ export const portfolioInputFormValidation = (info: PortfolioInfo) => {
             return true;
         }
 
-        if (projectItem.images.length === 0) {
-            return true;
-        }
-
         if (!projectItem.introduce) {
             return true;
         }
 
         if (projectItem.date.length !== 23) {
-            return true;
-        }
-
-        if (!projectItem.githubLink) {
             return true;
         }
     });

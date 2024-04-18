@@ -38,6 +38,7 @@ const useInfo = () => {
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
+    const [inputValidationCheck, setInputValidationCheck] = useState("");
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
@@ -51,8 +52,10 @@ const useInfo = () => {
         const { imageFile, ...info } = basicInfo;
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
             setDisabled(true);
+            setInputValidationCheck("필수항목을 작성하셔야 합니다.");
         } else {
             setDisabled(false);
+            setInputValidationCheck("");
         }
     }, [basicInfo, careers, projects]);
 
@@ -309,6 +312,7 @@ const useInfo = () => {
         careers,
         portfolioPreview,
         disabled,
+        inputValidationCheck,
         upload,
         emailCheck,
         onChangeNameHandler,
