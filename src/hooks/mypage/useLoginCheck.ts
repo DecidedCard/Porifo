@@ -15,11 +15,18 @@ const useLoginCheck = () => {
 
     useEffect(() => {
         if (data) {
-            setUser(data);
+            setUser({
+                ...data,
+                user_metadata: {
+                    ...data.user_metadata,
+                    profileImage:
+                        data.user_metadata.profileImage || data.user_metadata.picture || data.user_metadata.avatar_url,
+                },
+            });
         }
     }, [setUser, data]);
 
-    return { isFetching, isError };
+    return { user, isFetching, isError };
 };
 
 export default useLoginCheck;
