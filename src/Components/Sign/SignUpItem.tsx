@@ -46,7 +46,7 @@ const SignUpItem = ({
 
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2 flex">
+            <label className="mb-2 flex text-sm font-medium">
                 {setLabel} <p className="ml-1 text-[10px] text-red-500">★</p>
             </label>
             <Input
@@ -58,7 +58,7 @@ const SignUpItem = ({
                 maxLength={maxLength}
                 placeholder={placeholder}
                 onChange={onChangeHandler}
-                color={color !== undefined ? color : "black"}
+                color={color !== undefined ? color : "gray2"}
                 size="big"
             />
             {eyeClose ? (

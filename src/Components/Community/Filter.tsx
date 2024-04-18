@@ -39,19 +39,19 @@ const JobFilter = () => {
     };
 
     return (
-        <div className="flex flex-row gap-10 lg:ml-2 ">
+        <div className="flex flex-row gap-8 lg:ml-2 ">
             {SELECT_LIST.map((item, idx) => {
                 return (
                     <div className="flex flex-col" key={idx}>
                         <button
                             key={item.value}
                             onClick={() => handleJobFilterBtn(item.value)}
-                            className={`h-9 ${
-                                activeMenu === item.value ? "border-b-[3px] border-solid border-black" : ""
+                            className={`h-8 ${
+                                activeMenu === item.value ? "border-b-[1.5px] border-solid border-black" : ""
                             } `}
                         >
                             <div
-                                className={`font-spoqaMedium font-bold text-xl ${
+                                className={`h-[48px] font-spoqaMedium font-medium text-base ${
                                     activeMenu === item.value ? " text-black" : "text-gray3"
                                 }`}
                             >
