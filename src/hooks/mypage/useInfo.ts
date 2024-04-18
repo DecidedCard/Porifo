@@ -11,6 +11,7 @@ import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfol
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
+import { userUpdate } from "@/util/supabase/supabase_user";
 
 const useInfo = () => {
     const {
@@ -21,6 +22,7 @@ const useInfo = () => {
         setImageFile,
         setBirthday,
         setEmail,
+        setTel,
         setJob,
         setOneLineIntroduce,
         setIntroduce,
@@ -89,6 +91,10 @@ const useInfo = () => {
             setEmailCheck({ color: "error", helperText: "이메일을 정확하게 입력해주시기 바랍니다." });
         }
         setEmail(e.target.value);
+    };
+
+    const onChangeTelHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setTel(e.target.value);
     };
 
     const onChangeOneLineIntroduce = (e: ChangeEvent<HTMLInputElement>) => {
@@ -212,6 +218,7 @@ const useInfo = () => {
             }
 
             if (url) {
+                await userUpdate({ profileImage: url });
                 newPortfolio = {
                     ...newPortfolioInfo,
                     profileImage: url,
@@ -242,6 +249,7 @@ const useInfo = () => {
             }
 
             if (url) {
+                await userUpdate({ profileImage: url });
                 newPortfolio = {
                     ...newPortfolioInfo,
                     profileImage: url,
@@ -296,6 +304,7 @@ const useInfo = () => {
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeEmailHandler,
+        onChangeTelHandler,
         onChangeOneLineIntroduce,
         onChangeIntroduceHandler,
         onChangeSelectHandler,

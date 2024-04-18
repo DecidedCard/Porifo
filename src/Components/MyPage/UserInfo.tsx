@@ -20,6 +20,7 @@ const UserInfo = () => {
         onChangeProfileHandler,
         onChangeBirthdayHandler,
         onChangeEmailHandler,
+        onChangeTelHandler,
         onChangeSelectHandler,
     } = useInfo();
 
@@ -75,6 +76,41 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex mt-1">
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        e-mail<span className="ml-1 text-[10px] text-red-500">★</span>
+                    </label>
+                    <div className="w-[460px] ml-3">
+                        <Input
+                            type="email"
+                            placeholder="E-mail을 입력해 주세요. ex) email@example.com"
+                            value={basicInfo.email}
+                            onChange={onChangeEmailHandler}
+                            color={`${emailCheck?.color ? emailCheck?.color : ""}`}
+                            helperText={`${emailCheck?.helperText ? emailCheck?.helperText : ""}`}
+                            size="big"
+                        />
+                    </div>
+                </div>
+                <div className="flex mt-1">
+                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        직군<span className="ml-1 text-[10px] text-red-500">★</span>
+                    </label>
+                    <select
+                        className="font-medium ml-3 pl-2 text-zinc-500 w-[460px] h-14 rounded-lg border border-solid border-zinc-300"
+                        value={basicInfo.job!}
+                        onChange={onChangeSelectHandler}
+                    >
+                        {SELECT_LIST.map((item) => {
+                            return (
+                                <option key={item.value} value={item.value}>
+                                    {item.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                </div>
+
+                <div className="flex mt-1">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">영문이름</label>
                     <div className="w-[460px] ml-3">
                         <Input
@@ -102,38 +138,16 @@ const UserInfo = () => {
                 </div>
 
                 <div className="flex mt-1">
-                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                        e-mail<span className="ml-1 text-[10px] text-red-500">★</span>
-                    </label>
+                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">전화번호</label>
                     <div className="w-[460px] ml-3">
                         <Input
-                            type="email"
-                            placeholder="E-mail을 입력해 주세요."
-                            value={basicInfo.email}
-                            onChange={onChangeEmailHandler}
-                            color={`${emailCheck?.color ? emailCheck?.color : ""}`}
-                            helperText={`${emailCheck?.helperText ? emailCheck?.helperText : ""}`}
+                            type="tel"
+                            placeholder="전화번로를 입력해주세요. ex) 010-1234-5678"
                             size="big"
+                            value={basicInfo.tel}
+                            onChange={onChangeTelHandler}
                         />
                     </div>
-                </div>
-                <div className="flex mt-1">
-                    <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                        직군<span className="ml-1 text-[10px] text-red-500">★</span>
-                    </label>
-                    <select
-                        className="font-medium ml-3 pl-2 text-zinc-500 w-[460px] h-14 rounded-lg border border-solid border-zinc-300"
-                        value={basicInfo.job!}
-                        onChange={onChangeSelectHandler}
-                    >
-                        {SELECT_LIST.map((item) => {
-                            return (
-                                <option key={item.value} value={item.value}>
-                                    {item.name}
-                                </option>
-                            );
-                        })}
-                    </select>
                 </div>
 
                 <hr className="w-[657px] mx-auto border border-neutral-100" />

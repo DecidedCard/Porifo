@@ -8,12 +8,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
 import { userData } from "@/util/supabase/supabase_user";
+import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const router = useRouter();
-
-    const { user, setUser } = useUserStore();
+    const { user } = useLoginCheck();
+    const { setUser } = useUserStore();
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
         try {
@@ -28,20 +29,9 @@ const Header = () => {
         router.replace("/");
     };
 
-    useEffect(() => {
-        const userLoginFunc = async () => {
-            try {
-                const userLoginData = await userData();
-                setUser(userLoginData);
-            } catch (error) {}
-        };
-        userLoginFunc();
-    }, [setUser]);
-
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     };
-
     return (
         <main className="sticky top-0 z-10">
             <div className=" bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
@@ -68,15 +58,16 @@ const Header = () => {
                             <div className="relative flex flex-row gap-5">
                                 <button onClick={toggleMenu}>
                                     <Image
-                                        src="/assets/image/profile.svg"
+                                        src={user.user_metadata.profileImage || "/assets/image/profile.svg"}
                                         width={28}
                                         height={28}
                                         alt="로그인 프로필"
                                         aria-hidden="true"
+                                        className="w-7 h-7 rounded-lg object-cover"
                                     />
                                 </button>
                                 <p className="flex items-center justify-center text-[16px] text-black">
-                                    {user?.user_metadata.name}
+                                    {user?.user_metadata.name || user.user_metadata.user_name}
                                 </p>
 
                                 {showMenu && (
