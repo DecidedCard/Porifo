@@ -29,7 +29,8 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const addLikeMutate = useMutation({
         mutationFn: addLike,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
+            // queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
         },
     });
 
@@ -38,11 +39,9 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     }
 
     //좋아요 눌렀는지 확인
-    const checkLike = likes.find((item) => item === user.user_metadata.email);
-    if (checkLike) {
-        console.log("이미 좋아요 했습니다.");
-    } else {
-        console.log("좋아요 안했어요");
+    const checkLike = likes.find((item) => item === user?.user_metadata.email);
+    if (!checkLike) {
+        console.log("좋아요 안눌렀어요");
     }
 
     //좋아요 버튼 클릭
@@ -85,7 +84,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                 <div className="flex gap-6">
                     <div className="flex gap-1">
                         <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
-                        <span className="flex items-center justify-center">210</span>
+                        <span className="flex items-center justify-center">{portfolioInfo.likes.length}</span>
                     </div>
                     <div className="flex gap-1">
                         <Image src="grayEye.svg" alt="조회수" width={30} height={30} />

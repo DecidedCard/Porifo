@@ -26,11 +26,16 @@ const Cards = () => {
 
     const queryClient = useQueryClient();
 
-    const queryKeysToRemove = [QUERY_KEY.hotDevelopers, QUERY_KEY.communityPortfolio];
+    //모달 close시 캐시 업데이트
+    const queryKeysToInvalidateQueries = [
+        QUERY_KEY.hotDevelopers,
+        QUERY_KEY.communityPortfolio,
+        QUERY_KEY.hotDevelopers,
+    ];
 
     const onModalClose = () => {
         setIsOpenModal(false);
-        queryKeysToRemove.forEach((key) => {
+        queryKeysToInvalidateQueries.forEach((key) => {
             queryClient.invalidateQueries({ queryKey: [key] });
         });
     };
@@ -134,7 +139,7 @@ const Cards = () => {
                                                         src="grayHeart.svg"
                                                     />
                                                 </div>
-                                                <span>210</span>
+                                                <span>{item.likes.length}</span>
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}

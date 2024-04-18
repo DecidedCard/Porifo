@@ -146,7 +146,7 @@ const Carousel = () => {
                                                         src="grayHeart.svg"
                                                     />
                                                 </div>
-                                                <div className="text-gray">210</div>
+                                                <div className="text-gray">{item.likes.length}</div>
                                             </div>
                                             <div className="flex gap-1 items-center">
                                                 <div className="shrink-0 w-6 h-6 relative">
