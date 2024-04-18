@@ -14,5 +14,7 @@ export type User = {
         sex: string;
         sub: string;
         name: string;
+        profileImage: string;
+        user_name: string;
     };
 };

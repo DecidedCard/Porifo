@@ -12,20 +12,19 @@ const Filter = () => {
     const [view, setView] = useState(false);
 
     return (
-        <div className="w-68 p-4 ml-20 mt-20 flex flex-col lg:ml-20 ">
-            <span className="font-spoqaMedium text-black font-bold text-lg">정렬</span>
-            <button className="font-spoqaMedium font-bold border-solid border-2 border-gray2 rounded-xl p-3 mt-2 w-58 ">
-                <ul
-                    className="flex justify-between w-[180px]"
-                    onClick={() => {
-                        setView(!view);
-                    }}
-                >
+        <div className="mt-20 flex flex-col lg:ml-20">
+            <span className="font-spoqaMedium text-black font-medium text-sm">정렬</span>
+            <button className={`w-[192px] h-9 font-spoqaMedium border-solid border-2 border-gray2 p-3 mt-2 w-58 text-[12px] ${view ? ("rounded-tr-lg rounded-tl-lg") : ("rounded-[8px]")}`}
+                onClick={() => {
+                    setView(!view);
+                }}
+            >
+                <ul className="flex justify-between items-center h-full">
                     {filter}{" "}
                     {view ? (
-                        <Image src="arrow-up.svg" alt="화살표 아이콘" width={20} height={20} />
+                        <Image src="arrow-up.svg" alt="화살표 아이콘" width={20} height={20} className="w-5 h-5"/>
                     ) : (
-                        <Image src="arrow-down.svg" alt="화살표 아이콘" width={20} height={20} />
+                        <Image src="arrow-down.svg" alt="화살표 아이콘" width={20} height={20} className="w-5 h-5"/>
                     )}
                 </ul>
             </button>

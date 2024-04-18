@@ -12,6 +12,7 @@ export interface PortfolioInfo {
     imageFile?: File | null;
     birthday: string | null;
     email: string | null;
+    tel: string | null;
     oneLineIntroduce: string | null;
     introduce: string | null;
     skillTag: string[] | Json;
