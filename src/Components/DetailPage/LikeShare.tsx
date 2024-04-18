@@ -5,31 +5,58 @@ import useCardIdStore from "@/store/detailStore";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { QUERY_KEY } from "@/util/query_key";
 import { getComments } from "@/util/supabase/supabase_comments";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
+import { addLike, getLikes } from "@/util/supabase/detail_supabase_DB";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const { user } = useUserStore(); //로그인여부 확인
     const { cardId: id } = useCardIdStore();
+
+    const queryClient = useQueryClient();
 
     //comment 갯수를 위한 query
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
         queryFn: () => getComments({ id }),
     });
+    const { data: likes, isPending: load } = useQuery({
+        queryKey: [QUERY_KEY.portfolioLikes],
+        queryFn: () => getLikes({ id: "id", value: id }),
+    });
+
+    //좋아요 추가
+    const addLikeMutate = useMutation({
+        mutationFn: addLike,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
+        },
+    });
+
+    if (isPending || load) {
+        return <div>로딩중</div>;
+    }
+
+    //좋아요 눌렀는지 확인
+    const checkLike = likes.find((item) => item === user.user_metadata.email);
+    if (checkLike) {
+        console.log("이미 좋아요 했습니다.");
+    } else {
+        console.log("좋아요 안했어요");
+    }
 
     //좋아요 버튼 클릭
     const handleLikeBtn = () => {
         if (!user) {
             return alert("로그인이 필요한 서비스 입니다.");
         }
-        const nowUserEmail = user.user_metadata.email; //현재 유저 email
-        console.log(nowUserEmail);
+        const nowUserEmail = [...likes, user.user_metadata.email]; //현재 유저 email
+        const likeUser = {
+            id,
+            user_email: nowUserEmail,
+        };
+        addLikeMutate.mutate(likeUser);
     };
-
-    if (isPending) {
-        return <div>로딩중</div>;
-    }
 
     return (
         <>
