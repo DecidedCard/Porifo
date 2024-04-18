@@ -12,6 +12,9 @@ import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { Project } from "@/types/Project";
+import { Career } from "@/types/Career";
 
 const useInfo = () => {
     const {
@@ -29,10 +32,11 @@ const useInfo = () => {
         setSkillTag,
         setBlog,
         setGithub,
+        setInitialBasicInfo,
     } = usePortfolioInfoStore();
     const { user, portfolio, setPortfolio } = useUserStore();
-    const { projects } = useProjectsStore();
-    const { careers } = useCareerStore();
+    const { projects, setProjectsInitial } = useProjectsStore();
+    const { careers, setInitialCareers } = useCareerStore();
     const [disabled, setDisabled] = useState(true);
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
@@ -53,11 +57,17 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!);
+        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+
+        const project = localStorageItem.project as unknown as Project[];
+        const career = localStorageItem.career as Career[];
         if (user && !portfolio && localStorageItem) {
             setPortfolio(localStorageItem);
+            setInitialBasicInfo(localStorageItem);
+            setProjectsInitial([...project]);
+            setInitialCareers([...career]);
         }
-    }, [portfolio, setPortfolio, user]);
+    }, [portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
