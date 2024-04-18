@@ -30,7 +30,7 @@ const Cards = () => {
     const queryKeysToInvalidateQueries = [
         QUERY_KEY.hotDevelopers,
         QUERY_KEY.communityPortfolio,
-        QUERY_KEY.hotDevelopers,
+        QUERY_KEY.portfolioLikes,
     ];
 
     const onModalClose = () => {

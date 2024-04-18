@@ -15,6 +15,8 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
 
     const queryClient = useQueryClient();
 
+    const nowUser = user?.user_metadata.email; //로그인 유저의 email
+
     //comment 갯수를 위한 query
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
@@ -29,8 +31,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const addLikeMutate = useMutation({
         mutationFn: addLike,
         onSuccess: () => {
-            // queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
         },
     });
 
@@ -40,16 +41,25 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
 
     //좋아요 눌렀는지 확인
     const checkLike = likes.find((item) => item === user?.user_metadata.email);
-    if (!checkLike) {
-        console.log("좋아요 안눌렀어요");
-    }
 
     //좋아요 버튼 클릭
     const handleLikeBtn = () => {
         if (!user) {
-            return alert("로그인이 필요한 서비스 입니다.");
+            return alert("로그인이 필요한 서비스 입니다."); //비회원일시
         }
-        const nowUserEmail = [...likes, user.user_metadata.email]; //현재 유저 email
+        if (checkLike) {
+            //좋아요를 이미 눌렀을 경우
+            //현재 likes배열에서 내 이메일을 제거
+            const deleteUserEmail = likes.filter((item) => item !== nowUser);
+            console.log("deleteUserEmail", deleteUserEmail);
+            const likeUser = {
+                id,
+                user_email: deleteUserEmail,
+            };
+            addLikeMutate.mutate(likeUser);
+            return;
+        }
+        const nowUserEmail = [...likes, user!.user_metadata.email]; //현재 유저 email
         const likeUser = {
             id,
             user_email: nowUserEmail,
@@ -67,7 +77,11 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                         className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3"
                     >
                         <div className="flex items-center justify-center w-20 h-10">
-                            <Image src="grayHeart.svg" alt="좋아요 버튼" width={32} height={32} />
+                            {checkLike ? (
+                                <Image src="redHeart.svg" alt="좋아요 버튼" width={32} height={32} />
+                            ) : (
+                                <Image src="grayHeart.svg" alt="좋아요 버튼" width={32} height={32} />
+                            )}
                         </div>
                         <span>좋아요</span>
                     </button>
@@ -84,7 +98,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                 <div className="flex gap-6">
                     <div className="flex gap-1">
                         <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
-                        <span className="flex items-center justify-center">{portfolioInfo.likes.length}</span>
+                        <span className="flex items-center justify-center">{likes.length}</span>
                     </div>
                     <div className="flex gap-1">
                         <Image src="grayEye.svg" alt="조회수" width={30} height={30} />
