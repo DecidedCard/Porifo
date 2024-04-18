@@ -133,6 +133,8 @@ const useInfo = () => {
 
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
+        setUpload(true);
+
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
@@ -160,7 +162,6 @@ const useInfo = () => {
 
         // 프로젝트 이미지 파일이 있을경우 스토리지에 저장 및 url 변경 작성
         const imagesSetting = projects.map(async (item, idx) => {
-            setUpload(true);
             if (item.imagesFile?.length !== undefined && item.imagesFile?.length !== 0) {
                 const PROJECT_STORAGE = {
                     bucket: "projectImage",
