@@ -91,7 +91,7 @@ const SignIn = () => {
                                 priority
                             />
                         </div>
-                        {/* <SignUpItem
+                        <SignUpItem
                             setLabel="이메일"
                             type="email"
                             helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
@@ -133,7 +133,7 @@ const SignIn = () => {
                                 src="find_password_arrow.svg"
                                 alt="페이지 이동 화살표"
                             />
-                        </div> */}
+                        </div>
                     </form>
 
                     <SocialSign redirectTo={redirectTo} />
