@@ -13,17 +13,8 @@ import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const Buttons = () => {
-    const {
-        user,
-        portfolio,
-        basicInfo,
-        portfolioPreview,
-        disabled,
-        inputValidationCheck,
-        upload,
-        onClickInsertHandler,
-        onClickShareToggle,
-    } = useInfo();
+    const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
+        useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
