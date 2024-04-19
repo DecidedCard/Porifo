@@ -15,16 +15,16 @@ const config: Config = {
                     "100%": { opacity: "1" },
                 },
                 slider: {
-                    '0%': {
-                      transform: 'translateX(0px)'
+                    "0%": {
+                        transform: "translateX(0px)",
                     },
-                    '100%': {
-                      transform: 'translateX(-1400px)'
-                    }
-                  },
+                    "100%": {
+                        transform: "translateX(-1400px)",
+                    },
+                },
             },
             animation: {
-                slider: 'slider 30s linear infinite'
+                slider: "slider 30s linear infinite",
             },
             backdropFilter: {},
             fontFamily: {
@@ -64,6 +64,7 @@ const config: Config = {
                 realblack: "#000000",
             },
             screens: {
+                sm: { min: "350px", max: "450px" },
                 lg: { min: "1200px", max: "1500px" },
             },
         },
