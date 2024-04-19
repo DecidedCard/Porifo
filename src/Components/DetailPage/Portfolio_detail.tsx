@@ -52,7 +52,7 @@ const Portfolio_detail = () => {
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
             </div>
-            <div className="flex flex-col items-center gap-[20px]  bg-gray">
+            <div className="flex flex-col items-center gap-[20px] bg-white">
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>

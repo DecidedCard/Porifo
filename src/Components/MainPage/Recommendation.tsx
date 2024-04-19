@@ -78,7 +78,7 @@ const Recommendation = () => {
                                                                 height={24}
                                                                 className="mr-1"
                                                             />
-                                                            <p className="text-white">{developer.viewCnt}</p>
+                                                            <p className="text-white">{developer.likes.length}</p>
                                                         </div>
 
                                                         <div className="flex items-center text-[10px]">
@@ -91,15 +91,11 @@ const Recommendation = () => {
                                                             />
                                                             <p className="text-white">{developer.viewCnt}</p>
                                                         </div>
-
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </React.Fragment>

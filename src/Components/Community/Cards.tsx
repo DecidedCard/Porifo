@@ -127,7 +127,7 @@ const Cards = () => {
                                             </div>
                                         </div>
                                         <div className="flex gap-4">
-                                            <div className="flex gap-1 items-center ">
+                                            <div className="flex gap-1 items-center">
                                                 {/* 좋아요 하트 */}
                                                 <div className="w-6 h-6 ">
                                                     <Image
@@ -137,9 +137,9 @@ const Cards = () => {
                                                         src="grayHeart.svg"
                                                     />
                                                 </div>
-                                                <span>{item.likes.length}</span>
+                                                <span className="text-gray3 text-sm">{item.likes.length}</span>
                                             </div>
-                                            <div className="flex gap-1 items-center ">
+                                            <div className="flex gap-1 items-center">
                                                 {/* 조회수 눈 */}
                                                 <div className="w-6 h-6 ">
                                                     <Image width={24} height={24} alt="조회수" src="grayEye.svg" />

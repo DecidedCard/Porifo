@@ -55,7 +55,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
         <div className=" flex w-[100%] pt-10">
             {/* 현재 로그인한 유저 프로필이미지 */}
             {/* <img className="rounded-[50px] w-10 h-10 object-cover mr-3" src="rectangle0.png" /> */}
-            <div className="flex flex-col items-end justify-start flex-1 ">
+            <div className="flex flex-col items-end justify-start flex-1 text-[14px]">
                 {/* 댓글인풋 */}
                 {user ? (
                     <input
@@ -63,13 +63,13 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                         onChange={handleComment}
                         type="text"
                         placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                        className="border-[2px] border-solid border-gray2 bg-gray-white rounded-lg self-stretch shrink-0 h-[78px]"
+                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3"
                     />
                 ) : (
                     <input
                         type="text"
                         placeholder="로그인을 해주세요"
-                        className="border-[2px] border-solid border-gray2 bg-gray-white rounded-lg self-stretch shrink-0 h-[78px]"
+                        className="border-[2px] border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3"
                     />
                 )}
                 {/* 댓글등록 버튼 */}
@@ -78,8 +78,8 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                     disabled={disable}
                     className={
                         disable
-                            ? "bg-gray rounded-lg text-gray2 text-center font-medium p-2 mt-2"
-                            : "bg-primary rounded-lg text-white text-center font-medium p-2 mt-2"
+                            ? "bg-gray flex items-center justify-center rounded-[4px] text-gray2 font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
+                            : "bg-primary rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
                     }
                 >
                     댓글 게시

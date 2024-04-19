@@ -45,16 +45,18 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                             <address className="text-[14px] text-grayblack flex flex-col items-start justify-start self-stretch shrink-0 relative">
                                 <div className="flex flex-row items-center justify-start">
-                                    <p className="text-center flex items-center justify-center mr-5">
-                                        <Image
-                                            src="assets/image/tel.svg"
-                                            alt="전화"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6 mr-1"
-                                        />
-                                        {userInfo.tel}
-                                    </p>
+                                    {userInfo.tel && (
+                                        <p className="text-center flex items-center justify-center mr-2 w-[130px]">
+                                            <Image
+                                                src="assets/image/tel.svg"
+                                                alt="전화"
+                                                width={24}
+                                                height={24}
+                                                className="object-cover w-6 h-6 mr-1"
+                                            />
+                                            {userInfo.tel}
+                                        </p>
+                                    )}
 
                                     <p className="text-center flex items-center justify-center">
                                         <Image
@@ -62,7 +64,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="메일"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1"
+                                            className="object-cover w-6 h-6 mr-1"
                                         />
                                         {userInfo.email}
                                     </p>
