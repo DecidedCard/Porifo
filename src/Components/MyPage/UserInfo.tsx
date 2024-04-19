@@ -67,7 +67,7 @@ const UserInfo = () => {
                         <Input
                             type="text"
                             placeholder="이름을 입력해 주세요."
-                            maxLength={50}
+                            maxLength={10}
                             value={basicInfo.name!}
                             onChange={onChangeNameHandler}
                             size="big"
@@ -88,6 +88,7 @@ const UserInfo = () => {
                             color={`${emailCheck?.color ? emailCheck?.color : ""}`}
                             helperText={`${emailCheck?.helperText ? emailCheck?.helperText : ""}`}
                             size="big"
+                            maxLength={30}
                         />
                     </div>
                 </div>
@@ -116,7 +117,7 @@ const UserInfo = () => {
                         <Input
                             type="text"
                             placeholder="영문 이름을 입력해 주세요."
-                            maxLength={100}
+                            maxLength={20}
                             value={basicInfo.englishName}
                             onChange={onChangeEngNameHandler}
                             size="big"
