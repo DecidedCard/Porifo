@@ -12,12 +12,15 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     });
 
     return (
-        <main className="flex my-10">
+        <main className="flex my-5">
             <div className="flex flex-row items-start justify-start">
                 <div className="flex flex-col gap-2 items-start justify-start flex-1">
-                    <div className="font-bold text-[22px]">URL</div>
-
-                    <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                    {(userInfo.blogLink || userInfo.githubLink) && (
+                        <>
+                            <div className="font-bold text-[22px]">URL</div>
+                            <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                        </>
+                    )}
 
                     <div className="flex flex-col gap-2 items-start justify-start">
                         <div className="flex flex-col gap-5 items-start justify-start">

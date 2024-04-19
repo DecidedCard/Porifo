@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -99,23 +99,23 @@ const Carousel = () => {
                             >
                                 {/* 카드 이미지 */}
                                 <Image
-                                    className="rounded-2xl w-[550px] h-[364px]"
-                                    style={{
-                                        objectFit: "cover",
-                                    }}
-                                    width={550}
-                                    height={364}
+                                    className="rounded-2xl w-[100%] h-[100%] object-cover "
+                                    width={500}
+                                    height={300}
                                     alt="카드 프로필"
                                     src={item.profileImage}
                                 />
                                 {/* 블러박스 */}
                                 <div
-                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[238px]"
+                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[254px]"
                                     style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                 >
                                     {/* 한줄소개 */}
-                                    <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-medium text-2xl flex items-center">
-                                        <p className="truncate ...">{item.oneLineIntroduce}</p>
+                                    <div className="w-[502px] h-[34px] flex space-x-[60px]">
+                                        <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-2xl">
+                                            {item.oneLineIntroduce}
+                                        </p>
+                                        <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[14px] w-[190px]">{`#${item.job}`}</p>
                                     </div>
                                     {/* 유저정보,좋아요,조회수 박스 */}
                                     <div className="flex justify-between">
@@ -125,8 +125,7 @@ const Carousel = () => {
                                                 width={32}
                                                 height={32}
                                                 alt={`hotDeveloper-img-${idx}`}
-                                                className="rounded-[50px] w-8 h-8"
-                                                style={{ objectFit: "cover" }}
+                                                className="rounded-[50px] w-8 h-8 object-cover"
                                                 src={item.profileImage}
                                             />
                                             {/* 유저이름 */}
@@ -139,9 +138,14 @@ const Carousel = () => {
                                             <div className="flex gap-1 items-center">
                                                 <div className="w-6 h-6 relative">
                                                     {/* 좋아요 */}
-                                                    {/* <img src="grayHeart.svg" /> */}
+                                                    <Image
+                                                        width={24}
+                                                        height={24}
+                                                        alt="좋아요 아이콘"
+                                                        src="grayHeart.svg"
+                                                    />
                                                 </div>
-                                                {/* <div className="text-gray">210</div> */}
+                                                <div className="text-gray">{item.likes.length}</div>
                                             </div>
                                             <div className="flex gap-1 items-center">
                                                 <div className="w-6 h-6 relative">

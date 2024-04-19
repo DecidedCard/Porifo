@@ -12,6 +12,8 @@ import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { useEffect } from "react";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -20,15 +22,28 @@ const Portfolio_detail = () => {
         queryFn: () => getDetailData({ id: "id", value: id }),
     });
 
+    useEffect(() => {
+        document.body.style.cssText = `
+        position: fixed; 
+        top: -${window.scrollY}px;
+        overflow-y: scroll;
+        width: 100%;`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = "";
+            window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+    }, []);
+
     if (isPending) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+            <div className="z-50 flex justify-center items-center h-[900px] w-[932px] bg-hihigray">
                 <Loading />
             </div>
         );
     }
 
-    const portfolioInfo = data![0];
+    const portfolioInfo: PortfolioInfo = data![0];
 
     return (
         // 포트폴리오 영역
@@ -37,7 +52,7 @@ const Portfolio_detail = () => {
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
             </div>
-            <div className="flex flex-col items-center gap-[20px]  bg-gray">
+            <div className="flex flex-col items-center gap-[20px] bg-white">
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>

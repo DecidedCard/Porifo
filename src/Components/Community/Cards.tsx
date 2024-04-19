@@ -8,7 +8,6 @@ import { useInView } from "react-intersection-observer";
 
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import useCardIdStore from "@/store/detailStore";
 import useJobFilterStore from "@/store/jobFilterStore";
@@ -21,16 +20,20 @@ const Cards = () => {
     //모달 상태
     const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
-    const { jobFilter } = useJobFilterStore();
-    const { from, to, filter } = useSupabaseRange();
+    const { jobFilter, filter } = useJobFilterStore();
 
     const queryClient = useQueryClient();
 
-    const queryKeysToRemove = [QUERY_KEY.hotDevelopers, QUERY_KEY.communityPortfolio];
+    //모달 close시 캐시 업데이트
+    const queryKeysToInvalidateQueries = [
+        QUERY_KEY.hotDevelopers,
+        QUERY_KEY.communityPortfolio,
+        QUERY_KEY.portfolioLikes,
+    ];
 
     const onModalClose = () => {
         setIsOpenModal(false);
-        queryKeysToRemove.forEach((key) => {
+        queryKeysToInvalidateQueries.forEach((key) => {
             queryClient.invalidateQueries({ queryKey: [key] });
         });
     };
@@ -45,7 +48,7 @@ const Cards = () => {
     //useInfiniteQuery
     const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
-        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, from, to, pageParam }),
+        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, pageParam }),
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {
@@ -124,12 +127,19 @@ const Cards = () => {
                                             </div>
                                         </div>
                                         <div className="flex gap-4">
-                                            <div className="flex gap-1 items-center ">
+                                            <div className="flex gap-1 items-center">
                                                 {/* 좋아요 하트 */}
-                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
-                                                {/* <span className="text-gray3 text-sm">210</span> */}
+                                                <div className="w-6 h-6 ">
+                                                    <Image
+                                                        width={24}
+                                                        height={24}
+                                                        alt="좋아요 아이콘"
+                                                        src="grayHeart.svg"
+                                                    />
+                                                </div>
+                                                <span className="text-gray3 text-sm">{item.likes.length}</span>
                                             </div>
-                                            <div className="flex gap-1 items-center ">
+                                            <div className="flex gap-1 items-center">
                                                 {/* 조회수 눈 */}
                                                 <div className="w-6 h-6 ">
                                                     <Image width={24} height={24} alt="조회수" src="grayEye.svg" />

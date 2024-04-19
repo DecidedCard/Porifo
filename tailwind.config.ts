@@ -14,15 +14,17 @@ const config: Config = {
                     "0%": { opacity: "0" },
                     "100%": { opacity: "1" },
                 },
-                slideRight: {
-                    // 여기에 slideRight 애니메이션을 추가합니다.
-                    from: { transform: "translateX(0)" },
-                    to: { transform: "translateX(-50%)" },
-                },
+                slider: {
+                    '0%': {
+                      transform: 'translateX(0px)'
+                    },
+                    '100%': {
+                      transform: 'translateX(-1400px)'
+                    }
+                  },
             },
             animation: {
-                fadein: "fadein 2s ease-in-out",
-                "slide-right": "slideRight 20s linear infinite", // 여기에 애니메이션 속성을 추가합니다.
+                slider: 'slider 30s linear infinite'
             },
             backdropFilter: {},
             fontFamily: {
@@ -46,7 +48,7 @@ const config: Config = {
                 warning: "#FF8039",
                 favorite: "#FFD645",
                 disabled: "#D9D9D9",
-                gray: "#f1f1f1",
+                gray: "#F1F1F1",
                 gray2: "#DBDBDB",
                 gray3: "#9A9A9A",
                 gray4: "#565656",

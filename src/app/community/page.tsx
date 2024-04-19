@@ -4,18 +4,12 @@ import Carousel from "@/Components/Community/Carousel";
 import JobFilter from "@/Components/Community/Filter";
 import Filter from "@/Components/Community/JobFilter";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
-import useJobFilterStore from "@/store/jobFilterStore";
-import { QUERY_KEY } from "@/util/query_key";
-import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 const ComuunityPage = () => {
-    const queryClient = useQueryClient();
     const { setPage } = useSupabaseRange();
-    const { setJobFilter } = useJobFilterStore();
 
     useEffect(() => {
-        // queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
         setPage(0);
     }, [setPage]);
     return (
