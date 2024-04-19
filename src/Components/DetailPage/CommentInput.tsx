@@ -67,7 +67,6 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                     />
                 ) : (
                     <input
-                        defaultValue={comment}
                         type="text"
                         placeholder="로그인을 해주세요"
                         className="border-[2px] border-solid border-gray2 bg-gray-white rounded-lg self-stretch shrink-0 h-[78px]"

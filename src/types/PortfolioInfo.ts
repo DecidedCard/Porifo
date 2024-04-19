@@ -23,4 +23,5 @@ export interface PortfolioInfo {
     share: boolean | null;
     career: Career[] | Json;
     viewCnt?: number | null;
+    likes: string[] | null;
 }

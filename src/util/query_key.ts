@@ -5,4 +5,5 @@ export const QUERY_KEY = {
     detailPortfolio: "detail/portfolio",
     portfolidComments: "detail/comments",
     hotDevelopers: "community/carousel",
+    portfolioLikes: "community/detail",
 };

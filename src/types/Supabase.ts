@@ -45,6 +45,7 @@ export type Database = {
                     id: number;
                     introduce: string | null;
                     job: string | null;
+                    likes: string[] | null;
                     name: string | null;
                     oneLineIntroduce: string | null;
                     profileImage: string | null;
@@ -67,6 +68,7 @@ export type Database = {
                     id?: number;
                     introduce?: string | null;
                     job?: string | null;
+                    likes?: string[] | null;
                     name?: string | null;
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
@@ -89,6 +91,7 @@ export type Database = {
                     id?: number;
                     introduce?: string | null;
                     job?: string | null;
+                    likes?: string[] | null;
                     name?: string | null;
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
