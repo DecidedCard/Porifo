@@ -17,8 +17,9 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
         );
     }
 
+    console.log(data?.user_metadata.sex);
     if (!isFetching && !isError) {
-        if (data?.user_metadata.birthDate !== undefined && data?.user_metadata.sex !== undefined) {
+        if (data?.user_metadata.birthDate === undefined && data?.user_metadata.sex === undefined) {
             router.replace("/socialSetting");
             return;
         }
