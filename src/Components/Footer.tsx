@@ -2,18 +2,21 @@ import Image from "next/image";
 
 const Footer = () => {
     return (
-        <div className="bg-hihigray -z-10 pt-[60px] pb-[60px] pl-[100px] flex flex-row gap-5 items-start justify-start shrink-0 h-[280px] relative">
+        <div className=" bg-hihigray -z-10 h-[172px] px-[190px] py-[60px] flex flex-row gap-6 items-start">
             <Image
-                className="flex flex-col gap-2 items-start justify-start shrink-0 w-[80px] h-[auto] relative overflow-visible"
+                className="flex flex-col items-start justify-start w-[105px] h-[34.5px] overflow-visible"
                 src="../porifo.svg"
                 alt="포리포 로고"
                 width={80}
                 height={80}
             />
-            <div className="pr-[43px] pl-[43px] flex flex-row gap-2 items-start justify-start self-stretch flex-1 relative">
-                <div className="text-left font-spoqaBold font-bold leading-normal text-xl relative flex items-center justify-start">
-                    푸터
-                </div>
+            <div className="w-[1410px] h-[52px] flex flex-col gap-3 items-start justify-start text-sm text-gray3">
+                <p className="w-[622px] h-[20px]">
+                    (주)포리포 | 대표 : 먼작귀 | 개인정보보호책임자 : 금상호 | 생성일 : 2024년 3월 26일
+                </p>
+                <p className="w-[410px] h-[22px]">
+                    경상북도 안동시 육사로 333 | ©️PORIFO. All rights reverved.
+                </p>
             </div>
         </div>
     );
