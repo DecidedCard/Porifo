@@ -99,10 +99,7 @@ const Carousel = () => {
                             >
                                 {/* 카드 이미지 */}
                                 <Image
-                                    className="rounded-2xl w-[100%] h-[100%] "
-                                    style={{
-                                        objectFit: "cover",
-                                    }}
+                                    className="rounded-2xl w-[100%] h-[100%] object-cover "
                                     width={500}
                                     height={300}
                                     alt="카드 프로필"
@@ -110,12 +107,15 @@ const Carousel = () => {
                                 />
                                 {/* 블러박스 */}
                                 <div
-                                    className="bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[238px]"
+                                    className="bg-[rgba(0,0,0,0.56)] rounded-br-2xl rounded-bl-2xl pt-4 pr-6 pb-4 pl-6 flex flex-col gap-3 absolute top-[256px]"
                                     style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                                 >
                                     {/* 한줄소개 */}
-                                    <div className="w-[500px] h-[50px] font-spoqaMedium text-white font-bold text-2xl flex items-center">
-                                        <p className="truncate ...">{item.oneLineIntroduce}</p>
+                                    <div className="w-[502px] h-[34px] flex space-x-[60px]">
+                                        <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-2xl">
+                                            {item.oneLineIntroduce}
+                                        </p>
+                                        <p className="pl-6 font-spoqaMedium text-white font-medium text-[14px] w-[190px]">{`#${item.job}`}</p>
                                     </div>
                                     {/* 유저정보,좋아요,조회수 박스 */}
                                     <div className="flex justify-between">
@@ -125,8 +125,7 @@ const Carousel = () => {
                                                 width={500}
                                                 height={300}
                                                 alt={`hotDeveloper-img-${idx}`}
-                                                className="rounded-[50px] w-8 h-8"
-                                                style={{ objectFit: "cover" }}
+                                                className="rounded-[50px] w-8 h-8 object-cover"
                                                 src={item.profileImage}
                                             />
                                             {/* 유저이름 */}
