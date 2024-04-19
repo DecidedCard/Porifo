@@ -26,7 +26,7 @@ const useLoginCheck = () => {
         }
     }, [setUser, data]);
 
-    return { user, isFetching, isError };
+    return { user, data, isFetching, isError };
 };
 
 export default useLoginCheck;
