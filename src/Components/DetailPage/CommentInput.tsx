@@ -47,6 +47,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
         return setComment("");
     };
 
+    console.log(user.user_metadata.profileImage);
     // if (isPending) {
     //     return <div>로딩중</div>;
     // }
