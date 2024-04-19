@@ -18,6 +18,16 @@ export const getComments = async ({ id }: { id: number }) => {
     return data;
 };
 
+export const getAllComments = async () => {
+    let query = supabase.from("comments").select("*");
+    const { data, error } = await query;
+    if (error) {
+        console.error(error);
+        return null;
+    }
+    return data;
+};
+
 export const addComment = async (newComment: Comment) => {
     const { comment, user_name, user_email, profileImage, portfolio_id } = newComment;
     const { data, error } = await supabase

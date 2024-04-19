@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
@@ -16,6 +16,7 @@ import useJobFilterStore from "@/store/jobFilterStore";
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import Loading from "../Loading";
+import { getAllComments, getComments } from "@/util/supabase/supabase_comments";
 
 const Cards = () => {
     //모달 상태
@@ -45,6 +46,11 @@ const Cards = () => {
     // } else {
     //     document.body.style.overflow = "auto";
     // }
+
+    const { data: comments } = useQuery({
+        queryKey: [QUERY_KEY.portfolidComments],
+        queryFn: getAllComments,
+    });
 
     //useInfiniteQuery
     const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
@@ -77,6 +83,7 @@ const Cards = () => {
             </div>
         );
     }
+    console.log(comments);
 
     return (
         <>
@@ -139,8 +146,6 @@ const Cards = () => {
                                                     />
                                                 </div>
                                                 <span>{item.likes.length}</span>
-                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
-                                                {/* <span className="text-gray3 text-sm">210</span> */}
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
