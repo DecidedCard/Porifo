@@ -5,7 +5,7 @@ import useUserStore from "@/store/userStore";
 const Cover = () => {
     const { user } = useUserStore();
     return (
-        <main className="h-[732px] w-full animate-fadein relative overflow-hidden">
+        <main className="h-[732px] w-full animate-fadein relative overflow-hidden sm:h-[500px] sm:w-[928px]">
             <video
                 className="w-full h-full absolute top-0 left-0 object-cover"
                 autoPlay // 페이지가 로드 될 때 재생
@@ -15,7 +15,7 @@ const Cover = () => {
                 <source src="/assets/video/mainVideo.mp4" type="video/mp4" />
             </video>
             <div className="w-full h-full absolute top-0 left-0 bg-black opacity-50"></div>
-            <div className="flex flex-col items-center justify-center mt-10 absolute top-[170px] w-full">
+            <div className="flex flex-col items-center justify-center mt-10 absolute top-[170px] w-full sm:-mt-24">
                 <p className="text-white text-center font-bold text-[80px] leading-[100px] font-spoqaBold">
                     For Your Career, PORIFO
                 </p>
