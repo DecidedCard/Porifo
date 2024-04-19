@@ -1,4 +1,3 @@
-import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { supabase } from "@/util/supabase/clientSupabase";
 
 export const getPortfolio = async (payload: any) => {
@@ -12,6 +11,12 @@ export const getPortfolio = async (payload: any) => {
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
     if (filter === "최신순") {
         query = query.order("created_at", { ascending: false });
+    }
+    if (filter === "오래된 순") {
+        query = query.order("created_at", { ascending: true });
+    }
+    if (filter === "인기순") {
+        query = query.order("likes", { ascending: false });
     }
 
     if (jobFilter === "*") {

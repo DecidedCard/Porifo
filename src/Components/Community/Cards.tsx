@@ -21,8 +21,7 @@ const Cards = () => {
     //모달 상태
     const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
 
-    const { jobFilter } = useJobFilterStore();
-    const { from, to, filter } = useSupabaseRange();
+    const { jobFilter, filter } = useJobFilterStore();
 
     const queryClient = useQueryClient();
 
@@ -50,7 +49,7 @@ const Cards = () => {
     //useInfiniteQuery
     const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: [QUERY_KEY.communityPortfolio],
-        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, from, to, pageParam }),
+        queryFn: ({ pageParam }) => getPortfolio({ filter, jobFilter, pageParam }),
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage!.length < 5) {
