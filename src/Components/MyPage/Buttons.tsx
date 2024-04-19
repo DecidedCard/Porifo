@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import Button from "../Commen/Button";
@@ -11,6 +11,8 @@ import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
 import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
+import Standard from "../Template one/Standard";
+import Grid from "../Template two/Grid";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -142,12 +144,12 @@ const Buttons = () => {
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
-                    <Preview
-                        template={basicInfo.template!}
-                        setPreviewModal={setPreviewModal}
-                        targetRef={targetRef}
-                        portfolio={portfolioPreview}
-                    />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl">
+                        <div ref={targetRef} className="">
+                            {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
+                            {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+                        </div>
+                    </div>
                 )}
             </div>
             {previewModal && (

@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "../Commen/Button";
 import Image from "next/image";
 
 const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelectHandler: (arg: string) => void }) => {
+    useEffect(() => {
+        document.body.style.cssText = `
+        position: fixed; 
+        top: -${window.scrollY}px;
+        overflow-y: scroll;
+        width: 100%;`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = "";
+            window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+    }, []);
+
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-5 w-[932px] h-[741px] bg-white rounded-2xl">
