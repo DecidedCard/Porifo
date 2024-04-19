@@ -51,7 +51,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="전화"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1"
+                                            className="object-cover w-6 h-6 mr-1"
                                         />
                                         {userInfo.tel}
                                     </p>
@@ -63,7 +63,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="메일"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1"
+                                            className="object-cover w-6 h-6 mr-1"
                                         />
                                         {userInfo.email}
                                     </p>

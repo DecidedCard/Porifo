@@ -12,11 +12,11 @@ const WorkExperience = ({ career }: { career: Career[] }) => {
                 <>
                     <h2 className="text-[22px] font-bold">업무경력</h2>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-                    <>
+                    {/* <>
                         {career.length > 1 && (
                             <div className="absolute border-s border-solid border-secondary h-[40%] mt-[64px]"></div>
                         )}
-                    </>
+                    </> */}
                     <div>
                         {experiences.map((experience, index) => (
                             <WorkTimelineItem

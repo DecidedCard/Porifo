@@ -24,7 +24,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     projectCount,
 }) => {
     return (
-        <li className="mb-10 pl-5 flex flex-col items-center justify-center">
+        <li className="mb-10 flex flex-col items-center justify-center">
             {/* {projectCount > 1 && (
                 <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
             )} */}
@@ -37,7 +37,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                                 key={index}
                                 src={image}
                                 alt="프로젝트"
-                                className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
+                                className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
                                 width={800}
                                 height={800}
                             />
