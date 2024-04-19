@@ -10,8 +10,6 @@ const signCheckUserPortfolio = async ({ setRedirecTo }: RedirectType) => {
     const havePortfolio = userId?.find((item) => (item.userId === user?.id ? true : false));
 
     let redirectTo: string;
-    console.log("userId", userId);
-    console.log("user", user);
 
     if (user === null || user === undefined) {
         redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/signin`;
@@ -19,17 +17,12 @@ const signCheckUserPortfolio = async ({ setRedirecTo }: RedirectType) => {
         return;
     }
 
-    console.log("havePortfolio", havePortfolio);
-    console.log("user_metadata.birthDate", user?.user_metadata.birthDate);
-    console.log("user_metadata.sex", user?.user_metadata.sex);
-
-    user?.user_metadata.birthDate !== undefined && user?.user_metadata.sex !== undefined
-        ? havePortfolio
-            ? (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/community`)
-            : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/mypage`)
-        : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/socialSetting`);
-    setRedirecTo(redirectTo);
-    console.log("redirectTo", redirectTo);
+    // user?.user_metadata.birthDate !== undefined && user?.user_metadata.sex !== undefined
+    //     ? havePortfolio
+    //         ? (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/community`)
+    //         : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/mypage`)
+    //     : (redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/socialSetting`);
+    // setRedirecTo(redirectTo);
 };
 
 export default signCheckUserPortfolio;

@@ -122,7 +122,7 @@ const Cards = () => {
                                                 height={32}
                                             />
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-center font-medium text-sm">
+                                            <div className="flex items-center justify-center font-medium text-sm whitespace-nowrap text-ellipsis overflow-hidden">
                                                 {item.name}
                                             </div>
                                         </div>
