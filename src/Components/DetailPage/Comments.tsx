@@ -45,7 +45,9 @@ const Comments = () => {
                 <div className="border-[1px] border-solid border-gray2 mt-5" />
                 {/* 댓글리스트 */}
                 {data?.length === 0 ? (
-                    <div className="text-sm flex items-center justify-center text-gray3 mt-5">자유로운 피드백을 남겨보세요 😎</div>
+                    <div className="text-sm flex items-center justify-center text-gray3 mt-5">
+                        자유로운 피드백을 남겨보세요 😎
+                    </div>
                 ) : (
                     data?.map((item) => {
                         return (
@@ -53,7 +55,7 @@ const Comments = () => {
                                 {/* profileImage */}
                                 <Image
                                     className="rounded-[50px] w-10 h-10 object-cover"
-                                    src="https://heurm-tutorial.vlpt.us/images/default_thumbnail.png"
+                                    src={item.profileImage!}
                                     alt="프로필"
                                     width={40}
                                     height={40}
