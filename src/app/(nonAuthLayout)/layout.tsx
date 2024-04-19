@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { PropsWithChildren } from "react";
 
 const NonAuthLayout = ({ children }: PropsWithChildren) => {
-    const { user, isFetching, isError } = useLoginCheck();
+    const { data, isFetching, isError } = useLoginCheck();
     const router = useRouter();
 
     if (isFetching) {
@@ -17,8 +17,9 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
         );
     }
 
+    console.log(data?.user_metadata.sex);
     if (!isFetching && !isError) {
-        if (user?.user_metadata.birthDate !== undefined && user?.user_metadata.sex !== undefined) {
+        if (data?.user_metadata.birthDate === undefined && data?.user_metadata.sex === undefined) {
             router.replace("/socialSetting");
             return;
         }
