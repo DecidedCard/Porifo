@@ -4,7 +4,7 @@ import Button from "../Commen/Button";
 
 const Bottom = () => {
     return (
-        <main className="mb-44">
+        <main className="mb-">
             <div className="flex flex-col items-start justify-start ml-[320px] gap-2.5">
                 <Image className="rounded-2xl"
                     src="/assets/image/mainImage8.svg"
@@ -68,7 +68,7 @@ const Bottom = () => {
                         </p>
                     </div>
                 </div>
-                <Link href={"/community"} className="flex items-start justify-start ml-5 w-[240px]">
+                <Link href={"/community"} className="flex items-start justify-start ml-5 mb-44 w-[240px]">
                     <Button text="더 많은 피드를 커뮤니티에서 보기" color="primary" border="none" size="m" fontSize="s" />
                 </Link>
             </div>

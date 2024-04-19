@@ -11,7 +11,7 @@ import Bottom from "@/Components/MainPage/Bottom";
 export default function Home() {
     return (
         <main>
-            <div>
+            <div className="bg-white">
                 <Cover />
                 <div className="flex justify-center">
                     <div className="flex mx-auto mt-32">
