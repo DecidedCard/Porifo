@@ -37,6 +37,7 @@ const initial = {
     githubLink: "",
     share: false,
     career: [],
+    likes: [],
 };
 
 const usePortfolioInfoStore = create<Store>()((set) => ({
