@@ -12,6 +12,13 @@ const signCheckUserPortfolio = async ({ setRedirecTo }: RedirectType) => {
     let redirectTo: string;
     console.log("userId", userId);
     console.log("user", user);
+
+    if (user === null) {
+        redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/signin`;
+        setRedirecTo(redirectTo);
+        return;
+    }
+
     console.log("havePortfolio", havePortfolio);
     console.log("user_metadata.birthDate", user?.user_metadata.birthDate);
     console.log("user_metadata.sex", user?.user_metadata.sex);
