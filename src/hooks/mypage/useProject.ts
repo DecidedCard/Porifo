@@ -65,8 +65,8 @@ const useProject = () => {
         const fileList = [...e.target.files!];
         fileRef.current!.value = "";
 
-        if (fileList!.length + projects[index].images.length > 5) {
-            alert("사진은 최대 5장이 최대입니다.");
+        if (fileList!.length + projects[index].images.length > 3) {
+            alert("사진은 최대 3장이 최대입니다.");
             return;
         }
 
