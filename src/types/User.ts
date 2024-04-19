@@ -10,6 +10,7 @@ export type User = {
     user_metadata: {
         age: string;
         email: string;
+        birthDate: string;
         phoneNumber: string;
         sex: string;
         sub: string;
