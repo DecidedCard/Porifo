@@ -11,7 +11,6 @@ const useGuestButton = () => {
     const { projects } = useProjectsStore();
     const { careers } = useCareerStore();
     const [previewModal, setPreviewModal] = useState(false);
-    const [loginCheckModal, setLoginCheckModal] = useState();
 
     const { targetRef, toPDF } = usePDF({ filename: "porifo_portfolio", page: { margin: 8 } });
 

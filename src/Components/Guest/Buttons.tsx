@@ -9,6 +9,8 @@ import TemplateSelect from "../MyPage/TemplateSelect";
 import Preview from "../MyPage/Preview";
 import useGuestButton from "@/hooks/guest/useGuestButton";
 import { useRouter } from "next/navigation";
+import Standard from "../Template one/Standard";
+import Grid from "../Template two/Grid";
 
 const Buttons = () => {
     const { basicInfo, disabled, onClickInsertHandler } = useInfo();
@@ -70,12 +72,12 @@ const Buttons = () => {
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
-                    <Preview
-                        template={basicInfo.template!}
-                        setPreviewModal={setPreviewModal}
-                        targetRef={targetRef}
-                        portfolio={portfolioPreview}
-                    />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl">
+                        <div ref={targetRef} className="">
+                            {basicInfo.template === "Standard" && <Standard portfolio={portfolioPreview} />}
+                            {basicInfo.template === "Grid" && <Grid portfolio={portfolioPreview} />}
+                        </div>
+                    </div>
                 )}
             </div>
             {previewModal && (

@@ -51,8 +51,11 @@ const useInfo = () => {
     useEffect(() => {
         const { imageFile, ...info } = basicInfo;
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
+            console.log("disabled");
             setDisabled(true);
         } else {
+            console.log("yet");
+
             setDisabled(false);
         }
     }, [basicInfo, careers, projects]);

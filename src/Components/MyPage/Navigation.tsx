@@ -9,6 +9,7 @@ import useProjectsStore from "@/store/projectStore";
 const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<string>> }) => {
     const [selectedNav, setSelectedNav] = useState("basicInfo");
     const [projectCheck, setProjectCheck] = useState(false);
+    const [emailCheck, setEmailCheck] = useState(false);
     const { basicInfo } = usePortfolioInfoStore();
     const { projects } = useProjectsStore();
 
@@ -34,6 +35,21 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
         }
     }, [projects]);
 
+    useEffect(() => {
+        if (!basicInfo.email) {
+            setEmailCheck(true);
+            return;
+        } else {
+            const regex = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
+
+            if (!regex.test(basicInfo.email)) {
+                setEmailCheck(true);
+                return;
+            }
+            setEmailCheck(false);
+        }
+    }, [basicInfo.email]);
+
     return (
         <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px]">
             <button
@@ -47,7 +63,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                 기본정보
                 <span
                     className={`bg-red-400 ${
-                        !basicInfo.name || !basicInfo.profileImage || !basicInfo.email || basicInfo.job === "default"
+                        !basicInfo.name || !basicInfo.profileImage || emailCheck || basicInfo.job === "default"
                             ? "bg-opacity-80"
                             : "bg-opacity-0"
                     } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}

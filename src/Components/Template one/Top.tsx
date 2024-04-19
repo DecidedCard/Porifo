@@ -19,7 +19,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
                 <div className="flex flex-col items-center justify-center self-stretch shrink-0">
                     <Image
-                        className="rounded-full shrink-0 mr-5 w-[200px] h-[200px] relative"
+                        className="rounded-full shrink-0 mr-5 w-[200px] h-[200px] relative object-cover"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
                         width={200}

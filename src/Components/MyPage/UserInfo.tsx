@@ -56,7 +56,13 @@ const UserInfo = () => {
                             />
                         )}
                     </label>
-                    <input type="file" id="profile" className="hidden" onChange={onChangeProfileHandler} />
+                    <input
+                        type="file"
+                        id="profile"
+                        className="hidden"
+                        onChange={onChangeProfileHandler}
+                        accept="image/png, image/jpeg"
+                    />
                 </div>
 
                 <div className="flex mt-1">
