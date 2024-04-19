@@ -79,7 +79,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                     className={
                         disable
                             ? "bg-gray flex items-center justify-center rounded-[4px] text-gray2 font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
-                            : "bg-primary rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
+                            : "bg-primary flex items-center justify-center rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
                     }
                 >
                     댓글 게시
