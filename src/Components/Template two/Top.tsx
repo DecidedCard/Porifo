@@ -20,7 +20,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <div className="flex flex-col gap-8 items-center justify-center self-stretch shrink-0">
                 <div className="flex flex-row items-start justify-center self-stretch shrink-0">
                     <Image
-                        className="rounded-full shrink-0 mr-8 w-[200px] h-[200px] relative"
+                        className="rounded-full shrink-0 mr-8 w-[200px] h-[200px] relative object-cover"
                         src={userInfo.profileImage}
                         alt="프로필 사진"
                         width={200}
@@ -52,7 +52,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 alt="전화"
                                                 width={24}
                                                 height={24}
-                                                className="object-cover w-6 h-6 mr-1"
+                                                className="w-6 h-6 mr-1 object-cover"
                                             />
                                             {userInfo.tel}
                                         </p>

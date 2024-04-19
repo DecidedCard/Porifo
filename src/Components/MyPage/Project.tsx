@@ -167,6 +167,7 @@ const Project = () => {
                                             type="file"
                                             name={`file${projectsIndex}`}
                                             id={`file${projectsIndex}`}
+                                            accept="image/png, image/jpeg"
                                             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                                 onChangeImagesHandler(e, projectsIndex);
                                             }}
