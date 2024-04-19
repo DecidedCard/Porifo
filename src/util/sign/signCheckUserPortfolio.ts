@@ -13,7 +13,7 @@ const signCheckUserPortfolio = async ({ setRedirecTo }: RedirectType) => {
     console.log("userId", userId);
     console.log("user", user);
 
-    if (user === null) {
+    if (user === null || user === undefined) {
         redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/signin`;
         setRedirecTo(redirectTo);
         return;
