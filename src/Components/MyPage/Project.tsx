@@ -82,8 +82,40 @@ const Project = () => {
                                     </div>
 
                                     <div className="flex mt-1">
+                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                            프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
+                                        </label>
+                                        <div className="flex justify-between w-[460px] ml-3">
+                                            <div className="w-[224px]">
+                                                <Input
+                                                    type="date"
+                                                    size="big"
+                                                    name="startDate"
+                                                    placeholder="YYYY.MM"
+                                                    value={item.date.slice(0, 10)}
+                                                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                                        onChangeProjectDate(e, projectsIndex)
+                                                    }
+                                                />
+                                            </div>
+
+                                            <div className="w-[224px]">
+                                                <Input
+                                                    type="date"
+                                                    size="big"
+                                                    name="endDate"
+                                                    placeholder="YYYY.MM"
+                                                    value={item.date.slice(13)}
+                                                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                                        onChangeProjectDate(e, projectsIndex)
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex mt-1">
                                         <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            사진 업로드 하기<span className="ml-1 text-[10px] text-red-500">★</span>
+                                            사진 업로드 하기
                                         </p>
                                         <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll">
                                             {item.images.length !== 0 ? (
@@ -142,42 +174,9 @@ const Project = () => {
                                             multiple
                                         />
                                     </div>
-
                                     <div className="flex mt-1">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
-                                        </label>
-                                        <div className="flex justify-between w-[460px] ml-3">
-                                            <div className="w-[224px]">
-                                                <Input
-                                                    type="date"
-                                                    size="big"
-                                                    name="startDate"
-                                                    placeholder="YYYY.MM"
-                                                    value={item.date.slice(0, 10)}
-                                                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                        onChangeProjectDate(e, projectsIndex)
-                                                    }
-                                                />
-                                            </div>
-
-                                            <div className="w-[224px]">
-                                                <Input
-                                                    type="date"
-                                                    size="big"
-                                                    name="endDate"
-                                                    placeholder="YYYY.MM"
-                                                    value={item.date.slice(13)}
-                                                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                                        onChangeProjectDate(e, projectsIndex)
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="flex mt-1">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            Github<span className="ml-1 text-[10px] text-red-500">★</span>
+                                            Github
                                         </label>
                                         <div className="w-[460px] ml-3">
                                             <Input

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface TimelineItemProps {
     name: string;
@@ -22,56 +23,25 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     githubLink,
     projectCount,
 }) => {
-    const [imagePage, setImagePage] = useState(0);
-
-    const handleNextImage = () => {
-        setImagePage((prevPage) => prevPage + 1);
-    };
-
-    const handlePrevImage = () => {
-        setImagePage((prevPage) => prevPage - 1);
-    };
-
     return (
         <li className="mb-10 pl-5 flex flex-col items-center justify-center">
-            {projectCount > 1 && (
+            {/* {projectCount > 1 && (
                 <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
-            )}
-            <div className="flex flex-col w-[804px] relative">
+            )} */}
+            <div className="flex flex-col w-[804px]">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                <div className="flex flex-row relative">
-                    {images.slice(imagePage * 2, imagePage * 2 + 2).map((image, index) => (
-                        <Image
-                            key={index}
-                            src={image}
-                            alt="프로젝트 이미지"
-                            className="flex flex-row w-[385px] h-[220px] rounded-2xl mr-2"
-                            width={400}
-                            height={200}
-                        />
-                    ))}
-                </div>
-                <div className="flex justify-between my-4">
-                    {/* 이전 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
-                    {imagePage > 0 && (
-                        <button
-                            onClick={handlePrevImage}
-                            className="absolute left-[-25px] bottom-[270px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
-                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
-                        >
-                            <Image className="shrink-0 w-6 h-6" src="/icon-set9.svg" alt="이전" width={24} height={24} />
-                        </button>
-                    )}
-                    {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
-                    {images.length > (imagePage + 1) * 2 && (
-                        <button
-                            onClick={handleNextImage}
-                            className="absolute right-0 bottom-[270px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
-                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
-                        >
-                            <Image className="shrink-0 w-6 h-6" src="/icon-set8.svg" alt="다음" width={24} height={24} />
-                        </button>
-                    )}
+                <div className="flex flex-row">
+                    {images &&
+                        images.map((image, index) => (
+                            <Image
+                                key={index}
+                                src={image}
+                                alt="프로젝트"
+                                className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
+                                width={800}
+                                height={800}
+                            />
+                        ))}
                 </div>
 
                 {/* 제목과 날짜를 포함하는 영역 */}
@@ -84,10 +54,21 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                     {/* 설명과 상세 정보를 포함하는 영역 */}
                     <div className="flex flex-col mt-2 w-[804px]">
                         <p className="text-[14px] font-normal mb-2 text-gray3">{introduce}</p>
-                        <div className="flex items-center text-gray3 mt-2">
-                            <Image src="/assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
-                            <p className="text-[12px]">{githubLink}</p>
-                        </div>
+                        {githubLink && (
+                            <div className="flex items-center text-gray3 mt-2">
+                                <Image
+                                    src="/assets/image/link.svg"
+                                    alt="link"
+                                    width={24}
+                                    height={24}
+                                    className="mr-1"
+                                />
+                                <Link href={githubLink}>
+                                    <p className="text-[12px]">{githubLink}</p>
+                                </Link>
+                            </div>
+                        )}
+
                         {deployLink && (
                             <div className="flex items-center text-gray3 mt-2">
                                 <Image
@@ -97,7 +78,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                                     height={24}
                                     className="mr-1"
                                 />
-                                <p className="text-[12px]">{deployLink}</p>
+                                <Link href={deployLink}>
+                                    <p className="text-[12px]">{deployLink}</p>
+                                </Link>
                             </div>
                         )}
                     </div>

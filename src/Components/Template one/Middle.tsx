@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
-import { RiLinkM } from "react-icons/ri";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
+import Link from "next/link";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const [userInfo] = useState({
@@ -40,41 +40,20 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     {projects.map((project, index) => (
                         <li key={index} className="flex flex-col items-center justify-center">
                             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
-                            <div className="flex flex-col w-[804px] relative">
+                            <div className="flex flex-col w-[804px]">
                                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                                <div className="flex flex-row relative">
-                                    {project.images.slice(imagePage * 3, imagePage * 3 + 3).map((image, index) => (
-                                        <Image
-                                            key={index}
-                                            src={image}
-                                            alt="프로젝트"
-                                            className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
-                                            width={800}
-                                            height={800}
-                                        />
-                                    ))}
-                                </div>
-                                <div className="flex justify-between my-4">
-                                    {/* 이전 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
-                                    {imagePage > 0 && (
-                                        <button
-                                            onClick={handlePrevImage}
-                                            className="absolute left-[-25px] bottom-[240px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
-                                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
-                                        >
-                                            <Image className="shrink-0 w-6 h-6" src="/icon-set9.svg" alt="이전" width={24} height={24} />
-                                        </button>
-                                    )}
-                                    {/* 다음 이미지 세트로 이동하는 버튼 (조건부 렌더링) */}
-                                    {project.images.length > (imagePage + 1) * 3 && (
-                                        <button
-                                            onClick={handleNextImage}
-                                            className="absolute right-[-15px] bottom-[240px] bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-center justify-center"
-                                            style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
-                                        >
-                                            <Image className="shrink-0 w-6 h-6" src="/icon-set8.svg" alt="다음" width={24} height={24} />
-                                        </button>
-                                    )}
+                                <div className="flex flex-row">
+                                    {project.images &&
+                                        project.images.map((image, index) => (
+                                            <Image
+                                                key={index}
+                                                src={image}
+                                                alt="프로젝트"
+                                                className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
+                                                width={800}
+                                                height={800}
+                                            />
+                                        ))}
                                 </div>
 
                                 {/* 제목과 날짜를 포함하는 영역 */}
@@ -91,14 +70,33 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         <p className="text-[14px] font-normal mb-2 text-neutral-600">
                                             {project.introduce}
                                         </p>
-                                        <div className="flex items-center text-neutral-600 mt-2">
-                                            <RiLinkM className="mr-2" />
-                                            <p className="text-[12px]">{project.githubLink}</p>
-                                        </div>
+                                        {project.githubLink && (
+                                            <div className="flex items-center text-neutral-600 mt-2">
+                                                <Image
+                                                    src="/assets/image/link.svg"
+                                                    alt="link"
+                                                    width={24}
+                                                    height={24}
+                                                    className="mr-1"
+                                                />
+                                                <Link href={project.githubLink}>
+                                                    <p className="text-[12px]">{project.githubLink}</p>
+                                                </Link>
+                                            </div>
+                                        )}
+
                                         {project.deployLink && (
                                             <div className="flex items-center text-neutral-600 mt-2">
-                                                <RiLinkM className="mr-2" />
-                                                <p className="text-[12px]">{project.deployLink}</p>
+                                                <Image
+                                                    src="/assets/image/link.svg"
+                                                    alt="link"
+                                                    width={24}
+                                                    height={24}
+                                                    className="mr-1"
+                                                />
+                                                <Link href={project.deployLink}>
+                                                    <p className="text-[12px]">{project.deployLink}</p>
+                                                </Link>
                                             </div>
                                         )}
                                     </div>

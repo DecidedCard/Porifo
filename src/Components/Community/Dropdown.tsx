@@ -49,14 +49,14 @@ const Dropdown = ({ props }: any) => {
     };
 
     return (
-        <div className="list-none font-spoqaMedium font-bold border-solid border-2 border-t-0 border-gray2 rounded-xl ">
+        <div className="text-[12px] flex flex-col items-center justify-center list-none font-spoqaMedium border-solid border-2 border-t-0 border-gray2 rounded-br-lg rounded-bl-lg ">
             {filterValue.map((item, idx) => {
                 return (
                     <li
                         key={idx}
                         value={item.value}
                         onClick={() => handleFilterChange(item.value)}
-                        className="p-4 hover:bg-hihigray rounded-xl cursor-pointer"
+                        className="flex items-center w-[176px] h-[25px] my-2 p-1 hover:bg-hihigray rounded-[4px] cursor-pointer"
                     >
                         {item.value}
                     </li>

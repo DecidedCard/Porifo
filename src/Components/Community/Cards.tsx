@@ -93,20 +93,20 @@ const Cards = () => {
                                         queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
-                                <div className="group relative flex flex-col gap-2">
+                                <div className="group relative flex flex-col gap-2 mb-8">
                                     {/* 대표이미지 */}
                                     <Image
-                                        className="rounded-2xl w-[350px] h-[220px]"
+                                        className="rounded-2xl w-[324px] h-[240px]"
                                         style={{
                                             objectFit: "cover",
                                         }}
                                         src={item.profileImage}
                                         alt="포트폴리오 프로필"
-                                        width={300}
-                                        height={300}
+                                        width={324}
+                                        height={240}
                                     />
 
-                                    <span className="absolute flex items-end py-5 px-4 w-[350px] h-[220px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
+                                    <span className="absolute flex items-end py-5 px-4 w-[324px] h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
                                         <p className="w-[269px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
                                             {item.oneLineIntroduce}
                                         </p>
@@ -115,15 +115,15 @@ const Cards = () => {
                                         <div className="flex flex-row gap-2">
                                             {/* 유저아바타 */}
                                             <Image
-                                                className="rounded-[50px] w-8 h-8"
+                                                className="rounded-full w-8 h-8"
                                                 style={{ objectFit: "cover" }}
                                                 src={item.profileImage}
                                                 alt="포트폴리오 프로필"
-                                                width={300}
-                                                height={300}
+                                                width={32}
+                                                height={32}
                                             />
                                             {/* 유저닉네임 */}
-                                            <div className="text-graytext-black flex items-center justify-center">
+                                            <div className="flex items-center justify-center font-medium text-sm">
                                                 {item.name}
                                             </div>
                                         </div>
@@ -139,13 +139,15 @@ const Cards = () => {
                                                     />
                                                 </div>
                                                 <span>{item.likes.length}</span>
+                                                <div className="w-6 h-6 ">{/* <img src="grayHeart.svg" /> */}</div>
+                                                {/* <span className="text-gray3 text-sm">210</span> */}
                                             </div>
                                             <div className="flex gap-1 items-center ">
                                                 {/* 조회수 눈 */}
                                                 <div className="w-6 h-6 ">
                                                     <Image width={24} height={24} alt="조회수" src="grayEye.svg" />
                                                 </div>
-                                                <span>{item.viewCnt}</span>
+                                                <span className="text-gray3 text-sm">{item.viewCnt}</span>
                                             </div>
                                         </div>
                                     </div>

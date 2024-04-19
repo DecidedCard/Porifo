@@ -13,8 +13,17 @@ import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 const Buttons = () => {
-    const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
-        useInfo();
+    const {
+        user,
+        portfolio,
+        basicInfo,
+        portfolioPreview,
+        disabled,
+        inputValidationCheck,
+        upload,
+        onClickInsertHandler,
+        onClickShareToggle,
+    } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
@@ -73,13 +82,7 @@ const Buttons = () => {
                             className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter"
                             onClick={onClickUrlCopyHandler}
                         >
-                            <Image
-                                src="assets/image/link.svg"
-                                alt="link"
-                                width={24}
-                                height={24}
-                                className="mr-1"
-                            />
+                            <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
                             URL 복사
                         </button>
                         <button
@@ -125,6 +128,9 @@ const Buttons = () => {
                                     onClick={onClickInsertHandler}
                                     disabled={disabled}
                                 />
+                                {inputValidationCheck && (
+                                    <span className="text-xs text-red-400">{inputValidationCheck}</span>
+                                )}
                             </div>
 
                             <div className="w-[208px]">
@@ -136,6 +142,9 @@ const Buttons = () => {
                                     onClick={onClickShareToggle}
                                     disabled={!portfolio?.id}
                                 />
+                                {!portfolio?.id && (
+                                    <span className="text-xs text-red-400">이력서를 저장해야 합니다.</span>
+                                )}
                             </div>
                         </>
                     )}
