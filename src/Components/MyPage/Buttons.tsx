@@ -114,7 +114,7 @@ const Buttons = () => {
                         <>
                             <div className="w-[208px]">
                                 <Button
-                                    text={portfolio?.id ? "이력서 수정하기" : "이력서 저장하기"}
+                                    text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
                                     size="l"
                                     border="none"
                                     color={disabled ? "" : "primary"}
