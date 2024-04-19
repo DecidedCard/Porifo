@@ -44,6 +44,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                             <address className="text-[14px] text-grayblack flex flex-row items-center justify-center self-stretch shrink-0 gap-5 relative">
                                 <div className="flex flex-row items-center justify-start">
+                                    {userInfo.tel && (
                                     <p className="text-center flex items-center justify-center mr-5">
                                         <Image
                                             src="assets/image/tel.svg"
@@ -54,6 +55,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         />
                                         {userInfo.tel}
                                     </p>
+                                    )}
 
                                     <p className="text-center flex items-center justify-center">
                                         <Image
