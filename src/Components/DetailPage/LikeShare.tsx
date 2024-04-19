@@ -40,7 +40,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     }
 
     //좋아요 눌렀는지 확인
-    const checkLike = likes.find((item) => item === user?.user_metadata.email);
+    const checkLike = likes!.find((item) => item === user?.user_metadata.email);
 
     //좋아요 버튼 클릭
     const handleLikeBtn = () => {
@@ -50,8 +50,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
         if (checkLike) {
             //좋아요를 이미 눌렀을 경우
             //현재 likes배열에서 내 이메일을 제거
-            const deleteUserEmail = likes.filter((item) => item !== nowUser);
-            console.log("deleteUserEmail", deleteUserEmail);
+            const deleteUserEmail = likes!.filter((item) => item !== nowUser);
             const likeUser = {
                 id,
                 user_email: deleteUserEmail,
@@ -59,7 +58,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
             addLikeMutate.mutate(likeUser);
             return;
         }
-        const nowUserEmail = [...likes, user!.user_metadata.email]; //현재 유저 email
+        const nowUserEmail = [...likes!, user!.user_metadata.email]; //현재 유저 email
         const likeUser = {
             id,
             user_email: nowUserEmail,
@@ -98,7 +97,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                 <div className="flex gap-6">
                     <div className="flex gap-1">
                         <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
-                        <span className="flex items-center justify-center">{likes.length}</span>
+                        <span className="flex items-center justify-center">{likes!.length}</span>
                     </div>
                     <div className="flex gap-1">
                         <Image src="grayEye.svg" alt="조회수" width={30} height={30} />
