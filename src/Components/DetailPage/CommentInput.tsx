@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { addComment } from "@/util/supabase/supabase_comments";
 
 const CommentInput = ({ user, id, queryClient }: any) => {
@@ -17,12 +16,6 @@ const CommentInput = ({ user, id, queryClient }: any) => {
             return setDisable(false);
         }
     }, [user, comment]);
-
-    //로그인한 유저의 프로필 이미지 가져오기 (추가 예정)
-    // const { data, isPending } = useQuery({
-    //     queryKey: [QUERY_KEY.detailPortfolio],
-    //     queryFn: () => supabasePortfolioInfoRead({ id: "id", value: id }),
-    // });
 
     const addMutate = useMutation({
         mutationFn: addComment,
@@ -47,15 +40,8 @@ const CommentInput = ({ user, id, queryClient }: any) => {
         return setComment("");
     };
 
-    console.log(user.user_metadata.profileImage);
-    // if (isPending) {
-    //     return <div>로딩중</div>;
-    // }
-
     return (
         <div className=" flex w-[100%] pt-10">
-            {/* 현재 로그인한 유저 프로필이미지 */}
-            {/* <img className="rounded-[50px] w-10 h-10 object-cover mr-3" src="rectangle0.png" /> */}
             <div className="flex flex-col items-end justify-start flex-1 text-[14px]">
                 {/* 댓글인풋 */}
                 {user ? (
