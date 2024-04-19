@@ -38,9 +38,9 @@ const CommentInput = ({ user, id, queryClient }: any) => {
     const handleSubmitBtn = () => {
         const commentValue = {
             comment,
-            user_name: user.user_metadata.name,
+            user_name: user.user_metadata.name || user.user_metadata.user_name,
             user_email: user.email,
-            profileImage: "https://heurm-tutorial.vlpt.us/images/default_thumbnail.png",
+            profileImage: user.user_metadata.profileImage,
             portfolio_id: id,
         };
         addMutate.mutate(commentValue);

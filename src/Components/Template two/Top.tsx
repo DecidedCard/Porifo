@@ -46,7 +46,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             <address className="text-[14px] text-grayblack flex flex-col items-start justify-start self-stretch shrink-0 relative">
                                 <div className="flex flex-row items-center justify-start">
                                     {userInfo.tel && (
-                                        <p className="text-center flex items-center justify-center mr-2 w-[130px]">
+                                        <p className="text-center flex items-center justify-start mr-2 w-[140px]">
                                             <Image
                                                 src="/assets/image/tel.svg"
                                                 alt="전화"
