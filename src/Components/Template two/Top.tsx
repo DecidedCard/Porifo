@@ -48,7 +48,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     {userInfo.tel && (
                                         <p className="text-center flex items-center justify-start mr-2 w-[140px]">
                                             <Image
-                                                src="assets/image/tel.svg"
+                                                src="/assets/image/tel.svg"
                                                 alt="전화"
                                                 width={24}
                                                 height={24}
@@ -60,7 +60,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                     <p className="text-center flex items-center justify-center">
                                         <Image
-                                            src="assets/image/mail.svg"
+                                            src="/assets/image/mail.svg"
                                             alt="메일"
                                             width={24}
                                             height={24}
