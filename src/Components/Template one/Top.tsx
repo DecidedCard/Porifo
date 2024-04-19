@@ -45,13 +45,13 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             <address className="text-[14px] text-grayblack flex flex-row items-center justify-center self-stretch shrink-0 gap-5 relative">
                                 <div className="flex flex-row items-center justify-start">
                                     {userInfo.tel && (
-                                    <p className="text-center flex items-center justify-center mr-5">
+                                    <p className="text-center flex items-center justify-center mr-2 w-[200px]">
                                         <Image
                                             src="assets/image/tel.svg"
                                             alt="전화"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1"
+                                            className="object-cover w-6 h-6 mr-1"
                                         />
                                         {userInfo.tel}
                                     </p>
@@ -63,7 +63,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="메일"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1"
+                                            className="object-cover w-6 h-6 mr-1"
                                         />
                                         {userInfo.email}
                                     </p>

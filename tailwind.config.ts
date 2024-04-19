@@ -48,7 +48,7 @@ const config: Config = {
                 warning: "#FF8039",
                 favorite: "#FFD645",
                 disabled: "#D9D9D9",
-                gray: "#f1f1f1",
+                gray: "#F1F1F1",
                 gray2: "#DBDBDB",
                 gray3: "#9A9A9A",
                 gray4: "#565656",

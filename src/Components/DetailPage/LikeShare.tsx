@@ -68,33 +68,33 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
 
     return (
         <>
-            <div className="flex flex-col gap-4 items-center justify-center relative">
-                <div className="flex flex-row gap-4 items-center justify-center shrink-0 relative">
+            <div className="flex flex-col gap-4 items-center justify-center mb-5">
+                <div className="flex flex-row gap-4 items-center justify-center">
                     {/* 좋아요 영역 */}
                     <button
                         onClick={handleLikeBtn}
-                        className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3"
+                        className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
                     >
-                        <div className="flex items-center justify-center w-20 h-10">
+                        <div className="flex items-center justify-center w-10 h-10">
                             {checkLike ? (
-                                <Image src="redHeart.svg" alt="좋아요 버튼" width={32} height={32} />
+                                <Image src="redHeart.svg" alt="좋아요 버튼" width={32} height={32} className="w-8 h-8"/>
                             ) : (
-                                <Image src="grayHeart.svg" alt="좋아요 버튼" width={32} height={32} />
+                                <Image src="assets/image/gray2Heart.svg" alt="좋아요 버튼" width={32} height={32} className="w-8 h-8"/>
                             )}
                         </div>
-                        <span>좋아요</span>
+                        <span className="text-xs text-gray4">좋아요</span>
                     </button>
 
                     {/* 공유하기 영역 */}
-                    <button className="bg-gray2 rounded-[999px] p-2 flex flex-col items-center w-32 hover:bg-gray3">
+                    <button className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3">
                         <div className="flex items-center justify-center w-20 h-10">
                             <Image src="share.svg" alt="공유하기 버튼" width={28} height={28} />
                         </div>
-                        <span>공유하기</span>
+                        <span className="text-xs text-gray4">공유하기</span>
                     </button>
                 </div>
                 {/* 좋아요, 조회수, 댓글 개수 영역 */}
-                <div className="flex gap-6">
+                <div className="flex gap-8 text-[14px] text-gray3">
                     <div className="flex gap-1">
                         <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
                         <span className="flex items-center justify-center">{likes!.length}</span>

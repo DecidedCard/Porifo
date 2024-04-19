@@ -49,7 +49,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 key={index}
                                                 src={image}
                                                 alt="프로젝트"
-                                                className="flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
+                                                className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2"
                                                 width={800}
                                                 height={800}
                                             />
