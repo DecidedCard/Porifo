@@ -8,6 +8,7 @@ import { getComments } from "@/util/supabase/supabase_comments";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { addLike, getLikes } from "@/util/supabase/detail_supabase_DB";
+import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const { user } = useUserStore(); //로그인여부 확인
@@ -34,6 +35,12 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
         },
     });
+
+    //공유하기 버튼
+
+    const onClickUrlCopyHandler = () => {
+        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${portfolioInfo?.id}`);
+    };
 
     if (isPending || load) {
         return <div>로딩중</div>;
@@ -77,16 +84,31 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                     >
                         <div className="flex items-center justify-center w-10 h-10">
                             {checkLike ? (
-                                <Image src="redHeart.svg" alt="좋아요 버튼" width={32} height={32} className="w-8 h-8"/>
+                                <Image
+                                    src="redHeart.svg"
+                                    alt="좋아요 버튼"
+                                    width={32}
+                                    height={32}
+                                    className="w-8 h-8"
+                                />
                             ) : (
-                                <Image src="assets/image/gray2Heart.svg" alt="좋아요 버튼" width={32} height={32} className="w-8 h-8"/>
+                                <Image
+                                    src="assets/image/gray2Heart.svg"
+                                    alt="좋아요 버튼"
+                                    width={32}
+                                    height={32}
+                                    className="w-8 h-8"
+                                />
                             )}
                         </div>
                         <span className="text-xs text-gray4">좋아요</span>
                     </button>
 
                     {/* 공유하기 영역 */}
-                    <button className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3">
+                    <button
+                        onClick={onClickUrlCopyHandler}
+                        className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
+                    >
                         <div className="flex items-center justify-center w-20 h-10">
                             <Image src="share.svg" alt="공유하기 버튼" width={28} height={28} />
                         </div>

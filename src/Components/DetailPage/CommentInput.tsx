@@ -38,13 +38,13 @@ const CommentInput = ({ user, id, queryClient }: any) => {
     const handleSubmitBtn = () => {
         const commentValue = {
             comment,
-            user_name: user.user_metadata.user_name,
+            user_name: user.user_metadata.name,
             user_email: user.email,
             profileImage: "https://heurm-tutorial.vlpt.us/images/default_thumbnail.png",
             portfolio_id: id,
         };
         addMutate.mutate(commentValue);
-        setComment("");
+        return setComment("");
     };
 
     // if (isPending) {
@@ -59,7 +59,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                 {/* 댓글인풋 */}
                 {user ? (
                     <input
-                        defaultValue={comment}
+                        value={comment || ""}
                         onChange={handleComment}
                         type="text"
                         placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
@@ -79,7 +79,7 @@ const CommentInput = ({ user, id, queryClient }: any) => {
                     className={
                         disable
                             ? "bg-gray flex items-center justify-center rounded-[4px] text-gray2 font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
-                            : "bg-primary rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
+                            : "bg-primary flex items-center justify-center rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
                     }
                 >
                     댓글 게시
