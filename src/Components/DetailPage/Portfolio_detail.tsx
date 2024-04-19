@@ -12,6 +12,7 @@ import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -28,7 +29,7 @@ const Portfolio_detail = () => {
         );
     }
 
-    const portfolioInfo = data![0];
+    const portfolioInfo: PortfolioInfo = data![0];
 
     return (
         // 포트폴리오 영역
