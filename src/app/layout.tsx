@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "Porifo",
     description: "Easy to make portfolio",
+    keywords: ["포트폴리오", "이력서", "포리포", "porifo", "porifo.com"],
     icons: {
         icon: "/favicon.ico",
     },
@@ -17,8 +18,10 @@ export const metadata: Metadata = {
         siteName: "Porifo",
         title: "Porifo",
         description: "바로 작성할 수 있는 포트폴리오",
-        images: "/metaPorifo.png",
         url: "https://www.porifo.com/",
+        locale: "ko_KR",
+        type: "website",
+        images: { url: "/metadataPorifo.png" },
     },
 };
 
