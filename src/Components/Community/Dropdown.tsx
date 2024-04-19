@@ -4,7 +4,6 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 
-import useSupabaseRange from "@/hooks/useSupabaseRange";
 import useJobFilterStore from "@/store/jobFilterStore";
 
 const filterValue = [

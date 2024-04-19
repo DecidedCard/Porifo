@@ -107,7 +107,7 @@ const Carousel = () => {
                                 />
                                 {/* 블러박스 */}
                                 <div
-                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[238px]"
+                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[254px]"
                                     style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                 >
                                     {/* 한줄소개 */}
@@ -115,7 +115,7 @@ const Carousel = () => {
                                         <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-2xl">
                                             {item.oneLineIntroduce}
                                         </p>
-                                        <p className="pl-6 font-spoqaMedium text-white font-medium text-[14px] w-[190px]">{`#${item.job}`}</p>
+                                        <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[14px] w-[190px]">{`#${item.job}`}</p>
                                     </div>
                                     {/* 유저정보,좋아요,조회수 박스 */}
                                     <div className="flex justify-between">
