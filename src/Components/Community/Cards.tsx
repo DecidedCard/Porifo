@@ -3,12 +3,11 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 
-import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import useCardIdStore from "@/store/detailStore";
 import useJobFilterStore from "@/store/jobFilterStore";
@@ -16,7 +15,6 @@ import useJobFilterStore from "@/store/jobFilterStore";
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/Portfolio_detail";
 import Loading from "../Loading";
-import { getAllComments, getComments } from "@/util/supabase/supabase_comments";
 
 const Cards = () => {
     //모달 상태
@@ -46,11 +44,6 @@ const Cards = () => {
     // } else {
     //     document.body.style.overflow = "auto";
     // }
-
-    const { data: comments } = useQuery({
-        queryKey: [QUERY_KEY.portfolidComments],
-        queryFn: getAllComments,
-    });
 
     //useInfiniteQuery
     const { isPending, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
@@ -83,7 +76,6 @@ const Cards = () => {
             </div>
         );
     }
-    console.log(comments);
 
     return (
         <>
