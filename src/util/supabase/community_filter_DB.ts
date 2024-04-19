@@ -41,7 +41,7 @@ export const getPortfolio = async (payload: any) => {
 
 export const getHotDevelopers = async () => {
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
-    const { data, error } = await query.order("id", { ascending: false }).range(0, 6);
+    const { data, error } = await query.order("likes", { ascending: false }).range(0, 6);
     if (error) {
         console.error(error);
         return null;
