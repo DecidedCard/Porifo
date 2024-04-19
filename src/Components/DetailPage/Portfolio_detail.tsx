@@ -13,6 +13,7 @@ import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { useEffect } from "react";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -21,9 +22,22 @@ const Portfolio_detail = () => {
         queryFn: () => getDetailData({ id: "id", value: id }),
     });
 
+    useEffect(() => {
+        document.body.style.cssText = `
+        position: fixed; 
+        top: -${window.scrollY}px;
+        overflow-y: scroll;
+        width: 100%;`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = "";
+            window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+    }, []);
+
     if (isPending) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+            <div className="z-50 flex justify-center items-center h-[900px] w-[932px] bg-hihigray">
                 <Loading />
             </div>
         );

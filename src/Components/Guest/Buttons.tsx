@@ -11,7 +11,7 @@ import useGuestButton from "@/hooks/guest/useGuestButton";
 import { useRouter } from "next/navigation";
 
 const Buttons = () => {
-    const { basicInfo, disabled, inputValidationCheck, onClickInsertHandler } = useInfo();
+    const { basicInfo, disabled, onClickInsertHandler } = useInfo();
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { previewModal, portfolioPreview, setPreviewModal, onClickPreviewModal } = useGuestButton();
@@ -63,7 +63,7 @@ const Buttons = () => {
                             onClick={onCliCkHandler}
                             disabled={disabled}
                         />
-                        {inputValidationCheck && <span className="text-xs text-red-400">{inputValidationCheck}</span>}
+                        {disabled && <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>}
                     </div>
                 </div>
                 {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}

@@ -23,15 +23,11 @@ const Cover = () => {
                     포리포에서 당신의 커리어를 넓혀보세요.
                 </p>
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center">
-                    <div className="w-[210px]">
-                        <Link href={"/guest"}>
-                            <Button
-                                text={user ? "포트폴리오 등록하기" : "바로 포트폴리오 작성하기"}
-                                size="l"
-                                fontSize="m"
-                                color="primary"
-                                border="none"
-                            />
+                    <div className="w-[192px]">
+                        <Link href={user ? "/mypage" : "/guest"}>
+                            <div className="flex justify-center items-center py-1 px-3 w-[210px] h-[58px] bg-primary rounded-lg text-white text-base font-medium">
+                                바로 포트폴리오 작성하기
+                            </div>
                         </Link>
                     </div>
                 </div>
