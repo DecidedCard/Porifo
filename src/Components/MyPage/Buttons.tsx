@@ -40,10 +40,10 @@ const Buttons = () => {
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col sm:absolute sm:top-28 sm:left-20">
             <main className="relative flex flex-col items-center gap-5">
                 <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5">
-                    <div className="absolute right-[115%] w-20 flex flex-row">
+                    <div className="absolute right-[115%] w-20 flex flex-row sm:-right-16 sm:top-[620px]">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
                     <div className="w-52 h-[186px] bg-blue overflow-hidden rounded-[8px]">

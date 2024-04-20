@@ -51,10 +51,10 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
     }, [basicInfo.email]);
 
     return (
-        <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px]">
+        <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px] sm:flex-row sm:flex-wrap sm:w-fit sm:mx-auto sm:justify-center sm:mt-3 sm:content-center sm:h-fit sm:z-10">
             <button
                 onClick={() => handleClick("basicInfo")}
-                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500
+                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-48
             ${
                 selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black`}
@@ -71,7 +71,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             </button>
             <button
                 onClick={() => handleClick("introduce")}
-                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
+                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-48
             ${
                 selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black`}
@@ -90,7 +90,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             </button>
             <button
                 onClick={() => handleClick("project")}
-                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
+                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-48
             ${
                 selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black`}
@@ -105,8 +105,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             </button>
             <button
                 onClick={() => handleClick("url")}
-                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 
-            ${
+                className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-48
                 selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black`}
             >
