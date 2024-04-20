@@ -33,15 +33,15 @@ const Header = () => {
     };
 
     return (
-        <main className="sticky top-0 z-10 sm:w-[900px]">
-            <div className=" bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
+        <main className="sticky top-0 z-10 sm:w-full sm:z-20">
+            <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px]" href={"/"}>
                     <Image className="overflow-visible" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
-                <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight">
+                <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
                     <Link className="text-black text-center text-[16px] font-semibold relative" href={"/"}>
                         서비스 소개
                     </Link>
@@ -72,7 +72,7 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
-                                        className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-[96px] bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
+                                        className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>
                                             <Link
@@ -100,6 +100,14 @@ const Header = () => {
                                                     height={15}
                                                 />
                                                 <p className="text-[12px]">로그아웃</p>
+                                            </Link>
+                                        </div>
+                                        <div className="hidden sm:block">
+                                            <Link
+                                                href="/community"
+                                                className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]"
+                                            >
+                                                <p className="text-[12px]">피드/커뮤니티</p>
                                             </Link>
                                         </div>
                                     </div>
