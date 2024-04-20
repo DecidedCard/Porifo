@@ -20,14 +20,14 @@ const MyPage = () => {
 
     if (isLoading) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-hihigray">
                 <Loading />
             </div>
         );
     }
 
     return (
-        <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] mx-auto">
+        <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] mx-auto sm:flex-col sm:w-full">
             <Navigation setNav={setNav} />
             <div className="w-[800px] min-h-[750px]">
                 {nav === "basicInfo" && <UserInfo />}
