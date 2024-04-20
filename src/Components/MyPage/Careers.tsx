@@ -17,17 +17,20 @@ const Careers = () => {
         onClickMinusHandler,
     } = useCareer();
     return (
-        <div className="flex flex-col gap-5">
-            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">업무 경력</p>
+        <div className="flex flex-col gap-5 ">
+            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-32">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
-                    <div key={careerIndex} className="flex flex-col gap-5">
-                        <div className="w-[637px] cursor-pointer" onClick={() => onClickMinusHandler(careerIndex)}>
+                    <div key={careerIndex} className="flex flex-col gap-4 sm:mx-auto">
+                        <div
+                            className="w-[637px] cursor-pointer sm:w-fit sm:ml-[500px]"
+                            onClick={() => onClickMinusHandler(careerIndex)}
+                        >
                             <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                         </div>
-                        <div className="flex mt-1">
+                        <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
-                            <div className="flex flex-col gap-5 w-[460px] ml-3">
+                            <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-[275px]">
                                 <Input
                                     type="text"
                                     placeholder="회사이름을 입력해주세요."
@@ -38,7 +41,7 @@ const Careers = () => {
                                         onChangeCompanyHandler(e, careerIndex)
                                     }
                                 />
-                                <div className="flex justify-between">
+                                <div className="flex justify-between sm:gap-2">
                                     <div className="w-[224px]">
                                         <Input
                                             type="text"
@@ -67,11 +70,11 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex mt-1">
+                        <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기간</label>
                             <div className="w-[460px] ml-3">
-                                <div className="flex justify-between">
-                                    <div className="w-[224px]">
+                                <div className="flex justify-between sm:gap-2 sm:w-[275px]">
+                                    <div className="w-[224px] sm:w-[49%]">
                                         <Input
                                             type="month"
                                             placeholder="YYYY.MM"
@@ -84,7 +87,7 @@ const Careers = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[224px]">
+                                    <div className="w-[224px] sm:w-[49%]">
                                         <Input
                                             type="month"
                                             placeholder="YYYY.MM"
@@ -100,11 +103,11 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-start mt-1">
+                        <div className="flex items-start mt-1 sm:w-[60%] sm:mx-auto">
                             <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
                                 내용
                             </label>
-                            <div className="flex flex-col gap-1 w-[460px]">
+                            <div className="flex flex-col gap-1 w-[460px] sm:mr-3">
                                 <textarea
                                     placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
                                     maxLength={300}
@@ -112,7 +115,7 @@ const Careers = () => {
                                     onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                         onChangeCommentHandler(e, careerIndex)
                                     }
-                                    className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300"
+                                    className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300 sm:w-full"
                                 />
                                 <div className="ml-auto text-sm text-nonegray">{career.comment.length}/300</div>
                             </div>
