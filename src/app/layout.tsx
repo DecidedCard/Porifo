@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://www.porifo.com/",
         locale: "ko_KR",
         type: "website",
-        images: { url: "/metadataPorifo.png" },
+        images: { url: "/metaPorifo.png" },
     },
 };
 
