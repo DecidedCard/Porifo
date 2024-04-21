@@ -36,7 +36,7 @@ const Header = () => {
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
-                <Link className="absolute left-[100px]" href={"/"}>
+                <Link className="absolute left-[100px] sm:left-4" href={"/"}>
                     <Image className="overflow-visible" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
                 </Link>
 
@@ -52,7 +52,7 @@ const Header = () => {
 
                 {/* Right Section: Authentication Buttons */}
 
-                <div className="absolute right-[100px] flex flex-row gap-2 items-center">
+                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-14">
                     {user ? (
                         <div className="flex flex-row gap-3">
                             <div className="relative flex flex-row gap-5">

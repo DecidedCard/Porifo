@@ -5,98 +5,98 @@ const MiddleImage = () => {
         <main className="overflow-hidden w-full">
             <div className="flex flex-row gap-8 items-start justify-start animate-slider">
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide2.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide3.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide4.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide5.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide6.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide7.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide1.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide2.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide3.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide4.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide5.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide6.svg"
                     alt="슬라이드 이미지"
                     width={370}
                     height={400}
                 />
                 <Image
-                    className="rounded-2xl"
+                    className="rounded-2xl sm:w-40"
                     src="/assets/image/slide7.svg"
                     alt="슬라이드 이미지"
                     width={370}
