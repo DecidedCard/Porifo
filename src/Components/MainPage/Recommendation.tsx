@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/util/query_key";
@@ -7,7 +6,6 @@ import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import Loading from "../Loading";
 
 const Recommendation = () => {
-
     const { isPending, data } = useQuery({
         queryKey: [QUERY_KEY.hotDevelopers],
         queryFn: getHotDevelopers,
@@ -24,14 +22,14 @@ const Recommendation = () => {
 
     return (
         <main>
-            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray">
+            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray sm:mx-auto sm:h-[1000px]">
                 <div className="flex flex-col gap-6 items-start">
-                    <p className="font-spoqaBold text-[40px] font-bold mb-14">
+                    <p className="font-spoqaBold text-[40px] font-bold mb-14 sm:text-[20px]">
                         포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
 
-                <div className="flex flex-row gap-6">
+                <div className="flex flex-row gap-6 sm:flex-col">
                     {data?.slice(0, 4).map((developer: any, idx) => (
                         <React.Fragment key={idx}>
                             <div className="rounded-2xl w-[302px] h-[225px] overflow-hidden">
@@ -46,14 +44,16 @@ const Recommendation = () => {
                                             style={{ objectFit: "cover" }}
                                         />
                                         <div
-                                            className="absolute top-[136px] w-full h-[90px] bg-[#0000008F] rounded-bl-2xl rounded-br-2xl px-6"
-                                            style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}>
+                                            className="absolute top-[136px] w-full h-[90px] bg-[#0000008F] rounded-bl-2xl rounded-br-2xl px-6 "
+                                            style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
+                                        >
                                             <div className="flex items-center mt-4">
                                                 <div className="flex flex-col gap-4 flex-1 text-sm">
-                                                    <p className="text-white">{developer.oneLineIntroduce.length > 20
-                                                        ? `${developer.oneLineIntroduce.substring(0, 20)}...`
-                                                        : developer.oneLineIntroduce}</p>
-
+                                                    <p className="text-white">
+                                                        {developer.oneLineIntroduce.length > 20
+                                                            ? `${developer.oneLineIntroduce.substring(0, 20)}...`
+                                                            : developer.oneLineIntroduce}
+                                                    </p>
 
                                                     <div className="flex justify-between w-full">
                                                         <div className="flex items-center gap-2">
@@ -103,18 +103,16 @@ const Recommendation = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-start justify-start ml-[450px] mt-36 gap-4">
-                <p className="flex items-center justify-center font-bold text-[40px] leading-normal">
+            <div className="flex flex-col items-start justify-start ml-[450px] mt-36 gap-4 sm:ml-10">
+                <p className="flex items-center justify-center font-bold text-[40px] leading-normal sm:text-[20px]">
                     동료들이 올린 양질의 정보를
                     <br />
                     손쉽게 확인할 수 있어요
                 </p>
-                <p className="text-gray3 leading-normal flex items-start justify-start pr-24 text-[20px]">
+                <p className="text-gray3 leading-normal flex items-start justify-start pr-24 text-[20px] sm:text-[10px]">
                     우리 옆의 동료도 이걸 쓰고 있을 수 있어요!
                 </p>
             </div>
-
-
         </main>
     );
 };
