@@ -8,15 +8,17 @@ import Link from "next/link";
 
 const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
+    const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
 
+    const experiences = [...career];
     const projects = [...project];
 
     return (
         <div>
             <ol>
                 {projects.map((project, index) => (
-                    <li key={index} className="flex flex-col items-start justify-start">
+                    <li key={index} className="flex flex-col items-start justify-start mt-10">
                         <p className="font-bold text-[22px]">프로젝트</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                         <div className="flex flex-col w-[804px]">
@@ -84,6 +86,41 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </li>
                 ))}
             </ol>
+            {experiences.length > 0 && (
+                <div className="flex flex-col items-start justify-start mt-16">
+                    <p className="font-bold text-[22px]">업무경험</p>
+                    <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                    <ol>
+                        {experiences.map((experience, index) => (
+                            <li key={index} className="flex relative mb-5">
+                                <div className="flex w-full flex-col">
+                                    {/* 제목과 날짜를 포함하는 영역 */}
+                                    <div className="flex justify-between w-[804px]">
+                                        <h3 className="text-[20px] font-semibold text-gray-900 mb-3">
+                                            {experience.company}
+                                        </h3>
+                                        <time className="text-middlegray text-[12px] font-normal leading-none">
+                                            {experience.date}
+                                        </time>
+                                    </div>
+
+                                    {/* 설명과 상세 정보를 포함하는 영역 */}
+                                    <div className="flex flex-col w-[480px]">
+                                        <p className="text-[14px] font-normal mb-2 text-neutral-600">
+                                            {experience.department} / {experience.position}
+                                        </p>
+                                        <div className="flex flex-col">
+                                            <p className="font-normal text-neutral-500 leading-6 text-[12px]">
+                                                • {experience.comment}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+            )}
         </div>
     );
 };
