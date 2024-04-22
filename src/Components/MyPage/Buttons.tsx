@@ -20,7 +20,6 @@ const Buttons = () => {
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
-    console.log(disabled);
 
     const [previewModal, setPreviewModal] = useState(false);
 
