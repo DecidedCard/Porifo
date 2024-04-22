@@ -15,16 +15,18 @@ const Introduction = () => {
     } = useInfo();
 
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[673px] pb-10">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[673px] pb-10 sm:w-full sm:mx-auto">
             <div className="flex flex-col gap-4">
-                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">소개</h1>
-                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
-                <div className="flex h-[82px]">
+                <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
+                    소개
+                </h2>
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
+                <div className="flex h-[82px] sm:w-[60%] sm:mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         한 줄 소개<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
                     <div className="flex flex-col gap-1 w-[460px]">
-                        <div className="w-[460px] ml-3">
+                        <div className="w-[460px] ml-3 sm:w-full ">
                             <Input
                                 placeholder="본인만의 소개글을 작성해 보세요"
                                 size="big"
@@ -40,16 +42,16 @@ const Introduction = () => {
                     </div>
                 </div>
 
-                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
 
-                <div className="flex">
+                <div className="flex sm:w-[60%] sm:mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         자기소개<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
-                    <div className="flex flex-col gap-1 w-[460px]">
+                    <div className="flex flex-col gap-1 w-[460px] ">
                         <textarea
                             maxLength={800}
-                            className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg"
+                            className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg sm:w-full"
                             placeholder="직무 경험과 핵심 역량 등을 구체적으로 작성해 주세요"
                             value={basicInfo.introduce!}
                             onChange={onChangeIntroduceHandler}
@@ -58,13 +60,13 @@ const Introduction = () => {
                     </div>
                 </div>
 
-                <hr className="w-[657px] mx-auto border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-[60%]" />
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 sm:w-[60%] mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         기술 스택<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
-                    <div className="flex flex-wrap justify-between gap-2 w-[460px]">
+                    <div className="flex flex-wrap justify-between gap-2 w-[460px] sm:w-full sm:content-center">
                         {SKILL_TAG.map((item, idx) => {
                             return (
                                 <div key={idx}>

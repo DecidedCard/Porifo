@@ -26,24 +26,29 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:mx-auto">
                 <div className="flex flex-col gap-4">
-                    <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">
+                    <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
                         프로젝트
-                    </h1>
-                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
-                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">프로젝트 정보</p>
+                    </h2>
+                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
+                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-[40%]">
+                        프로젝트 정보
+                    </p>
 
                     {projects &&
                         projects.map((item, projectsIndex) => {
                             return (
                                 <div key={projectsIndex} className="flex flex-col gap-5 mt-4">
                                     {projects.length >= 2 && (
-                                        <div className="w-[637px]" onClick={() => onClickMinusHandler(projectsIndex)}>
+                                        <div
+                                            className="w-[637px] sm:w-fit sm:ml-[500px]"
+                                            onClick={() => onClickMinusHandler(projectsIndex)}
+                                        >
                                             <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                                         </div>
                                     )}
-                                    <div className="flex mt-1">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             기본정보<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
@@ -61,7 +66,7 @@ const Project = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex mt-1">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             내용<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
@@ -73,7 +78,7 @@ const Project = () => {
                                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                                     onChangeProjectIntroduce(e, projectsIndex)
                                                 }
-                                                className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-zinc-300"
+                                                className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-zinc-300 sm:w-full"
                                             />
                                             <div className="ml-auto text-sm text-nonegray">
                                                 {item.introduce.length}/300
@@ -81,12 +86,12 @@ const Project = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex mt-1">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2 sm:text-sm">
                                             프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
-                                        <div className="flex justify-between w-[460px] ml-3">
-                                            <div className="w-[224px]">
+                                        <div className="flex justify-between w-[460px] ml-3 sm:w-[70%]">
+                                            <div className="w-[224px] sm:w-[48%]">
                                                 <Input
                                                     type="date"
                                                     size="big"
@@ -99,7 +104,7 @@ const Project = () => {
                                                 />
                                             </div>
 
-                                            <div className="w-[224px]">
+                                            <div className="w-[224px] sm:w-[48%]">
                                                 <Input
                                                     type="date"
                                                     size="big"
@@ -113,8 +118,8 @@ const Project = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex mt-1">
-                                        <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                        <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2 sm:text-xs">
                                             사진 업로드 하기
                                         </p>
                                         <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll">
@@ -167,6 +172,7 @@ const Project = () => {
                                             type="file"
                                             name={`file${projectsIndex}`}
                                             id={`file${projectsIndex}`}
+                                            accept="image/png, image/jpeg"
                                             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                                 onChangeImagesHandler(e, projectsIndex);
                                             }}
@@ -174,7 +180,7 @@ const Project = () => {
                                             multiple
                                         />
                                     </div>
-                                    <div className="flex mt-1">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             Github
                                         </label>
@@ -191,7 +197,7 @@ const Project = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex mt-1">
+                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                                         <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             베포링크
                                         </label>

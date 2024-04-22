@@ -25,15 +25,15 @@ const UserInfo = () => {
     } = useInfo();
 
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10 sm:w-full sm:mx-auto">
             <div className="flex flex-col gap-4">
-                <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider">
+                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
                     기본 정보
-                </h2>
-                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
-                <p className="flex items-center w-[657px] h-[38px] text-xl font-medium">내 정보</p>
+                </h1>
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
+                <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-32">내 정보</p>
 
-                <div className="flex">
+                <div className="flex sm:w-[60%] sm:mx-auto">
                     <p className="flex font-medium text-zinc-500 w-[177px] h-[32px]">
                         프로필 사진<span className="ml-1 text-[10px] text-red-500">★</span>
                     </p>
@@ -56,10 +56,16 @@ const UserInfo = () => {
                             />
                         )}
                     </label>
-                    <input type="file" id="profile" className="hidden" onChange={onChangeProfileHandler} />
+                    <input
+                        type="file"
+                        id="profile"
+                        className="hidden"
+                        onChange={onChangeProfileHandler}
+                        accept="image/png, image/jpeg"
+                    />
                 </div>
 
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         이름<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
@@ -75,7 +81,7 @@ const UserInfo = () => {
                     </div>
                 </div>
 
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         e-mail<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
@@ -92,7 +98,7 @@ const UserInfo = () => {
                         />
                     </div>
                 </div>
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         직군<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
@@ -111,7 +117,7 @@ const UserInfo = () => {
                     </select>
                 </div>
 
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">영문이름</label>
                     <div className="w-[460px] ml-3">
                         <Input
@@ -125,7 +131,7 @@ const UserInfo = () => {
                     </div>
                 </div>
 
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">생년월일</label>
                     <div className="w-[460px] ml-3">
                         <Input
@@ -138,7 +144,7 @@ const UserInfo = () => {
                     </div>
                 </div>
 
-                <div className="flex mt-1">
+                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">전화번호</label>
                     <div className="w-[460px] ml-3">
                         <Input
@@ -151,7 +157,7 @@ const UserInfo = () => {
                     </div>
                 </div>
 
-                <hr className="w-[657px] mx-auto border border-neutral-100" />
+                <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-[60%]" />
 
                 <Careers />
             </div>

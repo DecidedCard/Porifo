@@ -14,7 +14,7 @@ export default function Home() {
         <main>
             <div className="bg-white">
                 <Cover />
-                <div className="flex justify-center sm:w-[900px]">
+                <div className="flex justify-center sm:w-full">
                     <div className="flex mx-auto mt-32">
                         <div className="sticky top-32 self-start">
                             <MiddleLeft />
@@ -25,19 +25,19 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="mt-32 sm:w-[900px]">
+                <div className="mt-32 sm:w-full">
                     <MiddleBottom />
                 </div>
 
-                <div className="mt-32 sm:w-[900px]">
+                <div className="mt-32 sm:w-full">
                     <MiddleImage />
                 </div>
 
-                <div className="flex justify-center mt-32 sm:w-[900px]">
+                <div className="flex justify-center mt-32 sm:w-full">
                     <Recommendation />
                 </div>
 
-                <div className="mt-20 sm:w-[900px]">
+                <div className="mt-20 sm:w-full">
                     <Bottom />
                 </div>
             </div>

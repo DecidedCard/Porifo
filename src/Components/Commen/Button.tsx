@@ -14,10 +14,10 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, 
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
     const fontsize =
         (!fontSize && "text-base") ||
-        (fontSize === "xs" && "text-xs") ||
-        (fontSize === "s" && "text-sm") ||
-        (fontSize === "m" && "text-base") ||
-        (fontSize === "l" && "text-lg");
+        (fontSize === "xs" && "text-xs sm:text-[6px]") ||
+        (fontSize === "s" && "text-sm sm:text-[10px]") ||
+        (fontSize === "m" && "text-base sm: text-[12px]") ||
+        (fontSize === "l" && "text-lg sm:text-[16px]");
     const col =
         (!color && border === "none" && "bg-gray2 text-white") ||
         (color === "black" && border === "none" && "bg-black text-white") ||
