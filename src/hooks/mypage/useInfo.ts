@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import useSetMutation from "../useSetMutation";
 
@@ -16,6 +16,7 @@ import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { Project } from "@/types/Project";
 import { Career } from "@/types/Career";
 import { getFormattedDate } from "@/util/getformatDate";
+import useInput from "../useInput";
 
 const useInfo = () => {
     const {
@@ -38,6 +39,7 @@ const useInfo = () => {
     const { user, portfolio, setPortfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
+    const [skillTagInput, onChangeSkillTagInputHandler, setSkillTagInput] = useInput();
     const [disabled, setDisabled] = useState(true);
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
@@ -69,6 +71,7 @@ const useInfo = () => {
             setInitialCareers([...career]);
         }
     }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+
     useEffect(() => {
         if (user && !portfolio) {
             const birthDate = new Date(
@@ -88,6 +91,13 @@ const useInfo = () => {
             setEmail(user.user_metadata.email);
         }
     }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
+
+    useEffect(() => {
+        const skillTag = basicInfo.skillTag as string[];
+        if (skillTag.find((item) => item === skillTagInput)) {
+            console.log(skillTag.find((item) => item === skillTagInput));
+        }
+    }, [basicInfo.skillTag, skillTagInput]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -150,6 +160,12 @@ const useInfo = () => {
     const onClickSkillTagHandler = (item: string) => {
         const skillTag = basicInfo.skillTag as string[];
         setSkillTag([...skillTag, item]);
+    };
+
+    const onSubmitSkillTagHandler = (e: FormEvent<HTMLFormElement>, item: string) => {
+        e.preventDefault();
+        onClickSkillTagHandler(item);
+        setSkillTagInput("");
     };
 
     const onClickSkillTagDeleteHandler = (item: string) => {
@@ -339,6 +355,7 @@ const useInfo = () => {
         disabled,
         upload,
         emailCheck,
+        skillTagInput,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -350,7 +367,9 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onChangeSkillTagInputHandler,
         onClickSkillTagHandler,
+        onSubmitSkillTagHandler,
         onClickSkillTagDeleteHandler,
         onClickInsertHandler,
         onClickShareToggle,
