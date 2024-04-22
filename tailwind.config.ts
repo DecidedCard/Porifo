@@ -24,6 +24,7 @@ const config: Config = {
                 },
             },
             animation: {
+                fadein: "fadein 3s ease-in-out",
                 slider: "slider 30s linear infinite",
             },
             backdropFilter: {},

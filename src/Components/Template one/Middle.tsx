@@ -32,13 +32,11 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <main>
-            <div className="my-12 flex flex-col items-start justify-start">
-                <div className="flex flex-col items-start justify-start">
-                    <p className="font-bold text-[22px] mb-2">프로젝트</p>
-                </div>
+            <div className="my-12 flex flex-col items-start justify-start gap-10">
                 <ol>
                     {projects.map((project, index) => (
-                        <li key={index} className="flex flex-col items-center justify-center">
+                        <li key={index} className="flex flex-col items-start justify-start">
+                             <p className="font-bold text-[22px]">프로젝트</p>
                             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                             <div className="flex flex-col w-[804px]">
                                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
@@ -107,7 +105,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 </ol>
 
                 {userSkillTag.length > 0 && (
-                    <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
+                    <div className="flex flex-col items-start justify-start mt-12">
                         <p className="font-bold text-[22px] w-[804px]">기술스택</p>
                         <div className="flex flex-wrap text-primary text-[12px]">
                             {userSkillTags.map((tag, index) => (
@@ -123,7 +121,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 )}
 
                 {experiences.length > 0 && (
-                    <div className="flex flex-col items-start justify-start mt-12 self-stretch shrink-0">
+                    <div className="flex flex-col items-start justify-start mt-12">
                         <p className="font-bold text-[22px]">업무경험</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                         <ol>
