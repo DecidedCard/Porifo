@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://www.porifo.com/",
         locale: "ko_KR",
         type: "website",
-        images: { url: "/metaPorifo.png" },
+        images: { url: "https://cyhvfqdzonehvongdtow.supabase.co/storage/v1/object/public/metadata/metaPorifo.png" },
     },
 };
 
@@ -34,8 +34,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
                 <Provider>
-                    <Header />
-                    {children}
+                    <div className="min-h-[830px]">
+                        <Header />
+                        {children}
+                    </div>
                 </Provider>
                 <Footer />
             </body>
