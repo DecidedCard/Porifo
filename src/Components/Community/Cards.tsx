@@ -107,8 +107,11 @@ const Cards = () => {
                                     />
 
                                     <span className="absolute flex items-end py-5 px-4 w-[324px] h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
-                                        <p className="w-[269px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
+                                        <p className="w-[269px] text-[16px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
                                             {item.oneLineIntroduce}
+                                        </p>
+                                        <p className="w-[269px] text-[12px] absolute top-[20px] whitespace-nowrap overflow-hidden text-white text-base font-medium">
+                                            {`#${item.job}`}
                                         </p>
                                     </span>
                                     <div className="flex flex-row items-center justify-between">
