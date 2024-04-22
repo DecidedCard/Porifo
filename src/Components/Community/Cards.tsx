@@ -81,18 +81,6 @@ const Cards = () => {
     return (
         <>
             <div className="mt-8 flex flex-wrap gap-6 w-[1280px] lg:w-[730px]">
-                {data!.pages[0]!.length === 0 && (
-                    <div className="border-2 border-solid border-red-700 felx  ">
-                        <div className="">
-                            <Image src={"gray_warn_lined.svg"} alt="결과없음 아이콘" width={32} height={32} />
-                        </div>
-                        <div className="border-2 border-solid border-sky-700">
-                            <span className="font-spoqaBold text-[14px] text-nonegray">
-                                조건에 맞는 프로필이 없습니다.
-                            </span>
-                        </div>
-                    </div>
-                )}
                 {data!.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
@@ -175,6 +163,17 @@ const Cards = () => {
 
             <div ref={ref} />
             {isFetchingNextPage && <h3>Loding...</h3>}
+
+            {data!.pages[0]!.length === 0 && (
+                <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4">
+                    <div className="">
+                        <Image src={"gray_warn_lined.svg"} alt="결과없음 아이콘" width={32} height={32} />
+                    </div>
+                    <div>
+                        <span className="font-spoqaBold text-[14px] text-nonegray">조건에 맞는 프로필이 없습니다.</span>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
