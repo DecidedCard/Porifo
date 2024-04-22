@@ -13,6 +13,7 @@ import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
+import Modern from "../Template Three/Modern";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -148,6 +149,7 @@ const Buttons = () => {
                         <div ref={targetRef} className="">
                             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
                             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+                            {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
                         </div>
                     </div>
                 )}

@@ -20,16 +20,6 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const projects = [...project];
     const userSkillTags = [...userSkillTag];
 
-    const [imagePage, setImagePage] = useState(0);
-
-    const handleNextImage = () => {
-        setImagePage((prevPage) => prevPage + 1);
-    };
-
-    const handlePrevImage = () => {
-        setImagePage((prevPage) => prevPage - 1);
-    };
-
     return (
         <main>
             <div className="my-12 flex flex-col items-start justify-start gap-10">

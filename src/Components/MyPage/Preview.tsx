@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
+import Modern from "../Template Three/Modern";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({
@@ -38,6 +39,7 @@ const Preview = ({
                 <div ref={targetRef} className="">
                     {template === "Standard" && <Standard portfolio={portfolio} />}
                     {template === "Grid" && <Grid portfolio={portfolio} />}
+                    {template === "Modern" && <Modern portfolio={portfolio} />}
                 </div>
             </div>
         </div>

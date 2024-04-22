@@ -70,6 +70,30 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                             </div>
                         </div>
                     </div>
+                    <div className="flex flex-col gap-2 rounded-2xl sm:ml-2">
+                        <h3 className="text-lg font-medium text-gray4">Modern</h3>
+                        <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-sky_blue rounded-2xl">
+                            <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
+                                <Image
+                                    src={"/templateImage/Grid_template.png"}
+                                    alt="모던 템플릿"
+                                    width={400}
+                                    height={100}
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <div className="w-[100px] mt-2">
+                                    <Button
+                                        text="사용하기"
+                                        size="m"
+                                        border="none"
+                                        color="primary"
+                                        onClick={() => onClickTemplateSelectHandler("Modern")}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
