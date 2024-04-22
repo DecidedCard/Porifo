@@ -12,7 +12,7 @@ import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const { user } = useUserStore(); //로그인여부 확인
-    const { cardId: id } = useCardIdStore();
+    const { cardId: id } = useCardIdStore(); // 현재 모달 DB ID
 
     const queryClient = useQueryClient();
 
@@ -39,7 +39,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     //공유하기 버튼
 
     const onClickUrlCopyHandler = () => {
-        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${portfolioInfo?.id}`);
+        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${id}`);
     };
 
     if (isPending || load) {
