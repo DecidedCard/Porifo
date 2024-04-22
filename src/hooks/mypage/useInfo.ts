@@ -15,6 +15,7 @@ import { userUpdate } from "@/util/supabase/supabase_user";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { Project } from "@/types/Project";
 import { Career } from "@/types/Career";
+import { getFormattedDate } from "@/util/getformatDate";
 
 const useInfo = () => {
     const {
@@ -68,6 +69,25 @@ const useInfo = () => {
             setInitialCareers([...career]);
         }
     }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    useEffect(() => {
+        if (user && !portfolio) {
+            const birthDate = new Date(
+                user.user_metadata.birthDate.replace("년", "-").replace("월", "-").replace("일", ""),
+            );
+            const formatBirthDay = getFormattedDate(birthDate)
+                .replace(" ", "")
+                .replace(" ", "")
+                .replace(".", "-")
+                .replace(".", "-")
+                .replace(".", "");
+            setBirthday(formatBirthDay);
+            setName(user.user_metadata.name || user.user_metadata.user_name);
+            if (user.user_metadata.phoneNumber) {
+                setTel(user.user_metadata.phoneNumber);
+            }
+            setEmail(user.user_metadata.email);
+        }
+    }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
