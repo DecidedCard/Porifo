@@ -25,7 +25,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         </p>
                     </div>
 
-                    <address className="text-[14px] text-grayblack flex flex-col items-center justify-center">
+                    <address className="text-[12px] text-grayblack flex flex-col items-center justify-center">
                         <div className="flex flex-col items-center justify-center gap-3">
                             {/* {userInfo.tel && ( */}
                             <p className="flex items-center justify-center w-[140px]">
