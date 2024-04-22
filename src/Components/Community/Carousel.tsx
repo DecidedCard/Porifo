@@ -84,7 +84,7 @@ const Carousel = () => {
         <>
             <div className="items-center justify-center relative mb-20 ">
                 {/* 카드 */}
-                <div className="flex w-full sm:w-[900px] gap-5 overflow-hidden">
+                <div className="flex w-screen sm:w-[900px] gap-5 overflow-hidden">
                     {modifiedArray!.map((item: any, idx) => {
                         return (
                             <div
