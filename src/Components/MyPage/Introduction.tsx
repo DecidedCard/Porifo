@@ -4,15 +4,21 @@ import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
 import Input from "../Commen/Input";
 import { SKILL_TAG } from "@/util/skill_tag";
+import Image from "next/image";
 
 const Introduction = () => {
     const {
         basicInfo,
+        skillTagInput,
         onChangeOneLineIntroduce,
+        onChangeSkillTagInputHandler,
+        onSubmitSkillTagHandler,
         onClickSkillTagDeleteHandler,
         onChangeIntroduceHandler,
         onClickSkillTagHandler,
     } = useInfo();
+
+    const skillTag = basicInfo.skillTag as string[];
 
     return (
         <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[673px] pb-10 sm:w-full sm:mx-auto">
@@ -62,35 +68,56 @@ const Introduction = () => {
 
                 <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-[60%]" />
 
-                <div className="flex gap-3 sm:w-[60%] mx-auto">
+                <div className="flex gap-3 h-56 sm:w-[60%] mx-auto">
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         기술 스택<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
-                    <div className="flex flex-wrap justify-between gap-2 w-[460px] sm:w-full sm:content-center">
-                        {SKILL_TAG.map((item, idx) => {
-                            return (
-                                <div key={idx}>
-                                    {JSON.parse(JSON.stringify(basicInfo.skillTag)).find(
-                                        (tag: string) => tag === item,
-                                    ) ? (
+                    <div className="group relative flex flex-col gap-2 w-[460px]">
+                        <div className=" flex justify-between items-center h-9 border border-solid border-zinc-300 rounded-[999px] py-1 px-2">
+                            <Image src="/search.svg" alt="검색" width={24} height={24} className="top-1 left-2" />
+                            <form onSubmit={(e) => onSubmitSkillTagHandler(e, skillTagInput)}>
+                                <input
+                                    type="search"
+                                    className=" w-[425px] h-8 rounded-[999px] text-sm focus:outline-none"
+                                    placeholder="커스텀 태그를 추가 할 수 있습니다."
+                                    value={skillTagInput}
+                                    onChange={onChangeSkillTagInputHandler}
+                                />
+                            </form>
+                        </div>
+                        <div className="flex flex-wrap gap-2 w-[460px] h-[44px] overflow-hidden sm:w-full sm:content-center">
+                            {skillTag &&
+                                skillTag.map((item, idx) => {
+                                    return (
                                         <div
                                             key={idx}
-                                            className="py-[2px] px-3 h-[22px] text-xs font-medium text-white border border-solid border-primary bg-primary rounded cursor-pointer"
-                                            onClick={() => onClickSkillTagDeleteHandler(item)}
+                                            className="flex gap-2 py-[2px] px-3 w-fit h-[18px] text-[10px] font-medium border border-solid border-primary rounded"
                                         >
                                             {item}
+                                            <p
+                                                className="cursor-pointer"
+                                                onClick={() => onClickSkillTagDeleteHandler(item)}
+                                            >
+                                                X
+                                            </p>
                                         </div>
-                                    ) : (
+                                    );
+                                })}
+                        </div>
+                        <div className="flex flex-wrap justify-between gap-2 w-[460px] bg-white sm:w-full sm:content-center">
+                            {SKILL_TAG.map((item, idx) => {
+                                return (
+                                    <div key={idx}>
                                         <div
-                                            className="py-[2px] px-3 h-[22px] text-xs font-medium border border-solid border-nonegray rounded cursor-pointer"
+                                            className="py-[2px] px-3 h-[18px] text-[10px] font-medium border border-solid border-nonegray rounded cursor-pointer"
                                             onClick={() => onClickSkillTagHandler(item)}
                                         >
                                             {item}
                                         </div>
-                                    )}
-                                </div>
-                            );
-                        })}
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

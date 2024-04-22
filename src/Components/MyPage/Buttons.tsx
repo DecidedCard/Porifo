@@ -14,6 +14,7 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import Modern from "../Template Three/Modern";
+import Box from "../Template four/Box";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -47,7 +48,7 @@ const Buttons = () => {
                     <div className="absolute right-[115%] w-20 flex flex-row sm:-right-16 sm:top-[620px]">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
-                    <div className="w-52 h-[186px] bg-blue overflow-hidden rounded-[8px]">
+                    <div className="w-52 h-[186px] bg-gray2 overflow-hidden rounded-[8px]">
                         <div className="w-[168px] mx-auto">
                             <p className="text-xs font-medium text-gray4 pt-4">{basicInfo.template}</p>
                             <div className="pt-3">
@@ -118,9 +119,8 @@ const Buttons = () => {
                                     text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
                                     size="l"
                                     border="none"
-                                    color={disabled ? "" : "primary"}
+                                    color="primary"
                                     onClick={onClickInsertHandler}
-                                    disabled={disabled}
                                 />
                             </div>
 
@@ -129,14 +129,13 @@ const Buttons = () => {
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
                                     border="none"
-                                    color={portfolio?.id ? "primary" : ""}
+                                    color={!portfolio?.id || disabled ? "" : "primary"}
                                     onClick={onClickShareToggle}
-                                    disabled={!portfolio?.id}
+                                    disabled={!portfolio?.id || disabled}
                                 />
-                                {!portfolio?.id ||
-                                    (disabled && (
-                                        <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>
-                                    ))}
+                                {(!portfolio?.id || disabled) && (
+                                    <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>
+                                )}
                             </div>
                         </>
                     )}
@@ -150,6 +149,7 @@ const Buttons = () => {
                             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
                             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
                             {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
+                            {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
                         </div>
                     </div>
                 )}

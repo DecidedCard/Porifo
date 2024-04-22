@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import useSetMutation from "../useSetMutation";
 
@@ -15,6 +15,8 @@ import { userUpdate } from "@/util/supabase/supabase_user";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { Project } from "@/types/Project";
 import { Career } from "@/types/Career";
+import { getFormattedDate } from "@/util/getformatDate";
+import useInput from "../useInput";
 
 const useInfo = () => {
     const {
@@ -37,6 +39,7 @@ const useInfo = () => {
     const { user, portfolio, setPortfolio } = useUserStore();
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
+    const [skillTagInput, onChangeSkillTagInputHandler, setSkillTagInput] = useInput();
     const [disabled, setDisabled] = useState(true);
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
@@ -68,6 +71,33 @@ const useInfo = () => {
             setInitialCareers([...career]);
         }
     }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+
+    useEffect(() => {
+        if (user && !portfolio) {
+            const birthDate = new Date(
+                user.user_metadata.birthDate.replace("년", "-").replace("월", "-").replace("일", ""),
+            );
+            const formatBirthDay = getFormattedDate(birthDate)
+                .replace(" ", "")
+                .replace(" ", "")
+                .replace(".", "-")
+                .replace(".", "-")
+                .replace(".", "");
+            setBirthday(formatBirthDay);
+            setName(user.user_metadata.name || user.user_metadata.user_name);
+            if (user.user_metadata.phoneNumber) {
+                setTel(user.user_metadata.phoneNumber);
+            }
+            setEmail(user.user_metadata.email);
+        }
+    }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
+
+    useEffect(() => {
+        const skillTag = basicInfo.skillTag as string[];
+        if (skillTag.find((item) => item === skillTagInput)) {
+            console.log(skillTag.find((item) => item === skillTagInput));
+        }
+    }, [basicInfo.skillTag, skillTagInput]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -132,6 +162,12 @@ const useInfo = () => {
         setSkillTag([...skillTag, item]);
     };
 
+    const onSubmitSkillTagHandler = (e: FormEvent<HTMLFormElement>, item: string) => {
+        e.preventDefault();
+        onClickSkillTagHandler(item);
+        setSkillTagInput("");
+    };
+
     const onClickSkillTagDeleteHandler = (item: string) => {
         const skillTag = basicInfo.skillTag as string[];
 
@@ -148,7 +184,10 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) return;
+        // if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
+        //     setUpload(false);
+        //     return;
+        // }
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
@@ -316,6 +355,7 @@ const useInfo = () => {
         disabled,
         upload,
         emailCheck,
+        skillTagInput,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
@@ -327,7 +367,9 @@ const useInfo = () => {
         onChangeSelectHandler,
         onChangeBlogHandler,
         onChangeGithubHandler,
+        onChangeSkillTagInputHandler,
         onClickSkillTagHandler,
+        onSubmitSkillTagHandler,
         onClickSkillTagDeleteHandler,
         onClickInsertHandler,
         onClickShareToggle,
