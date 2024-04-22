@@ -18,16 +18,16 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <div>
             <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue">
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center py-[50px]">
                     <Image
-                        className="rounded-2xl w-[170px] h-[170px] object-cover mt-12"
+                        className="rounded-2xl w-[170px] h-[170px] object-cover"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
                         width={170}
                         height={170}
                     />
 
-                    <div className="flex flex-col gap-5 items-center justify-center w-80 min-w-[320px] max-w-xs">
+                    <div className="flex flex-col items-center justify-center w-80 min-w-[320px] max-w-xs">
                         <h1 className="leading-normal text-[30px] w-[932px] h-[92px] font-bold flex items-center justify-center">
                             {userInfo.oneLineIntroduce}
                         </h1>
@@ -38,7 +38,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     {userInfo.name}
                                 </h2>
                                 <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
-                                <p className="text-[14px] flex items-center justify-center">
+                                <p className="text-[14px] font-medium flex items-center justify-center">
                                     {userInfo.job}
                                 </p>
                             </div>

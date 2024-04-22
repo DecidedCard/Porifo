@@ -49,7 +49,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     <p className="text-[14px] font-normal mb-2 text-gray4">
                                         {project.introduce}
                                     </p>
-                                    <time className="text-middlegray text-[12px] font-normal leading-none my-3">
+                                    <time className="text-gray3 text-[12px] font-normal leading-none my-3">
                                         {project.date}
                                     </time>
                                     {project.githubLink && (
@@ -98,10 +98,10 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 <div className="flex w-full flex-col">
                                     {/* 제목과 날짜를 포함하는 영역 */}
                                     <div className="flex justify-between w-[804px]">
-                                        <h3 className="text-[16px] font-semibold text-gray-900 mb-3">
+                                        <h3 className="text-[16px] font-semibold mb-3">
                                             {experience.company}
                                         </h3>
-                                        <time className="text-gray4 text-[12px] font-normal leading-none">
+                                        <time className="text-gray4 text-[12px] font-normal leading-none mr-10">
                                             {experience.date}
                                         </time>
                                     </div>
@@ -123,7 +123,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </ol>
                 </div>
             )}
-            <div className="bg-deepgray w-[804px] h-[1px] my-10"></div>
+            <div className="bg-deepgray w-[804px] h-[1px] mb-10 mt-6"></div>
         </div>
     );
 };

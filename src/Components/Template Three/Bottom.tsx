@@ -19,7 +19,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <ol>
                 {projects.map((project, index) => (
                     <li key={index} className="flex flex-col items-start justify-start mt-10">
-                        <p className="font-bold text-[22px]">프로젝트</p>
+                        <p className="font-medium text-[22px]">프로젝트</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                         <div className="flex flex-col w-[804px]">
                             {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
@@ -88,7 +88,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             </ol>
             {experiences.length > 0 && (
                 <div className="flex flex-col items-start justify-start mt-16">
-                    <p className="font-bold text-[22px]">업무경험</p>
+                    <p className="font-medium text-[22px]">업무경험</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                     <ol>
                         {experiences.map((experience, index) => (
