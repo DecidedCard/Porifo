@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+    
     const [userInfo] = useState({
         introduce: portfolio.introduce,
     });
@@ -123,7 +124,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             <h3 className="text-[20px] font-semibold text-gray-900 mb-3">
                                                 {experience.company}
                                             </h3>
-                                            <time className="text-middlegray text-[12px] font-normal leading-none">
+                                            <time className="text-gray3 text-[12px] font-normal leading-none w-[97px]">
                                                 {experience.date}
                                             </time>
                                         </div>

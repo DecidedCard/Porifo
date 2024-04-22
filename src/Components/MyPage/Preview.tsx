@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
 import Modern from "../Template Three/Modern";
+import Box from "../Template four/Box";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({
@@ -40,6 +41,7 @@ const Preview = ({
                     {template === "Standard" && <Standard portfolio={portfolio} />}
                     {template === "Grid" && <Grid portfolio={portfolio} />}
                     {template === "Modern" && <Modern portfolio={portfolio} />}
+                    {template === "Box" && <Box portfolio={portfolio} />}
                 </div>
             </div>
         </div>
