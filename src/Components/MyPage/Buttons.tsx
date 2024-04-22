@@ -20,6 +20,7 @@ const Buttons = () => {
     const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
         useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
+    console.log(disabled);
 
     const [previewModal, setPreviewModal] = useState(false);
 
@@ -117,9 +118,8 @@ const Buttons = () => {
                                     text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
                                     size="l"
                                     border="none"
-                                    color={disabled ? "" : "primary"}
+                                    color="primary"
                                     onClick={onClickInsertHandler}
-                                    disabled={disabled}
                                 />
                             </div>
 
@@ -128,14 +128,13 @@ const Buttons = () => {
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
                                     border="none"
-                                    color={portfolio?.id ? "primary" : ""}
+                                    color={!portfolio?.id || disabled ? "" : "primary"}
                                     onClick={onClickShareToggle}
-                                    disabled={!portfolio?.id}
+                                    disabled={!portfolio?.id || disabled}
                                 />
-                                {!portfolio?.id ||
-                                    (disabled && (
-                                        <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>
-                                    ))}
+                                {(!portfolio?.id || disabled) && (
+                                    <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>
+                                )}
                             </div>
                         </>
                     )}
