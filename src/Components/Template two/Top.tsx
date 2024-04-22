@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
