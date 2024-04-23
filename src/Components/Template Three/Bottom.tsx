@@ -40,19 +40,19 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             {/* 제목과 날짜를 포함하는 영역 */}
                             <div className="flex w-full flex-col">
                                 <div className="flex justify-between w-[804px] mt-2">
-                                    <h3 className="text-[20px] font-semibold text-gray-900 mb-3">{project.name}</h3>
-                                    <time className="text-middlegray text-[12px] font-normal leading-none">
+                                    <h3 className="text-[20px] font-medium mb-3">{project.name}</h3>
+                                    <time className="text-gray3 text-[12px] leading-none">
                                         {project.date}
                                     </time>
                                 </div>
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
                                 <div className="flex flex-col mt-5">
-                                    <p className="text-[14px] font-normal mb-2 text-neutral-600">
+                                    <p className="text-[14px] font-normal mb-2 text-">
                                         {project.introduce}
                                     </p>
                                     {project.githubLink && (
-                                        <div className="flex items-center text-neutral-600 mt-2">
+                                        <div className="flex items-center text-gray4 mt-2">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -67,7 +67,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     )}
 
                                     {project.deployLink && (
-                                        <div className="flex items-center text-neutral-600 mt-2">
+                                        <div className="flex items-center text-gray4 mt-2">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -88,29 +88,29 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             </ol>
             {experiences.length > 0 && (
                 <div className="flex flex-col items-start justify-start mt-16">
-                    <p className="font-medium text-[22px]">업무경험</p>
+                    <p className="font-medium text-[22px]">업무경력</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                     <ol>
                         {experiences.map((experience, index) => (
                             <li key={index} className="flex relative mb-5">
-                                <div className="flex w-full flex-col">
+                                <div className="flex w-full flex-col gap-2">
                                     {/* 제목과 날짜를 포함하는 영역 */}
                                     <div className="flex justify-between w-[804px]">
-                                        <h3 className="text-[20px] font-semibold text-gray-900 mb-3">
+                                        <h3 className="text-[20px] font-medium mb-3">
                                             {experience.company}
                                         </h3>
-                                        <time className="text-middlegray text-[12px] font-normal leading-none">
+                                        <time className="text-gray3 text-[12px] font-normal leading-none">
                                             {experience.date}
                                         </time>
                                     </div>
 
                                     {/* 설명과 상세 정보를 포함하는 영역 */}
                                     <div className="flex flex-col w-[480px]">
-                                        <p className="text-[14px] font-normal mb-2 text-neutral-600">
+                                        <p className="text-[14px] font-normal mb-2 text-gray4">
                                             {experience.department} / {experience.position}
                                         </p>
                                         <div className="flex flex-col">
-                                            <p className="font-normal text-neutral-500 leading-6 text-[12px]">
+                                            <p className="font-normal text-gray4 leading-6 text-[12px]">
                                                 • {experience.comment}
                                             </p>
                                         </div>
