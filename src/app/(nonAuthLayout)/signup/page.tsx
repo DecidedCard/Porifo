@@ -95,6 +95,7 @@ const SignUp = () => {
             if (phoneNumber.length !== 11) {
                 phoneNumber = "000";
             }
+
             const { error } = await supabase.auth.signUp({
                 email,
                 password,

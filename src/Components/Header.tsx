@@ -11,6 +11,7 @@ import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
+    const [activeMenu, setActiveMenu] = useState<string>("about");
     const router = useRouter();
     const { user } = useLoginCheck();
     const { setUser } = useUserStore();
@@ -32,30 +33,44 @@ const Header = () => {
         setShowMenu(!showMenu);
     };
 
+    const handleMenuBtn = (value: string) => {
+        setActiveMenu(value);
+    };
+
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
-                    <Image className="overflow-visible" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
+                    <Image className="overflow-visible sm:w-[59px] sm:h-[20px]" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
-                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/"}>
+                    <Link
+                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        ${activeMenu === "about" ? "border-b-[1px] border-solid border-black" : ""}`}
+                        href={"/"}
+                        onClick={() => handleMenuBtn("about")}
+                    >
                         서비스 소개
                     </Link>
-                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/community"}>
+                    <Link
+                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        ${activeMenu === "community" ? "border-b-[1px] border-solid border-black" : ""}`}
+                        href={"/community"}
+                        onClick={() => handleMenuBtn("community")}
+                    >
                         피드/커뮤니티
                     </Link>
                 </div>
 
                 {/* Right Section: Authentication Buttons */}
 
-                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-14">
+                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
                     {user ? (
                         <div className="flex flex-row gap-3">
-                            <div className="relative flex flex-row gap-5">
+                            <div className="relative flex flex-row gap-5 sm:gap-2">
                                 <button onClick={toggleMenu}>
                                     <Image
                                         src={user.user_metadata.profileImage || "/assets/image/profile.svg"}
@@ -66,7 +81,7 @@ const Header = () => {
                                         className="w-7 h-7 rounded-lg object-cover"
                                     />
                                 </button>
-                                <p className="flex items-center justify-center text-[16px] text-black">
+                                <p className="flex items-center justify-center text-[16px] text-black sm:text-sm">
                                     {user?.user_metadata.name || user.user_metadata.user_name}
                                 </p>
 

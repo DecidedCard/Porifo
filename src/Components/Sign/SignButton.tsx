@@ -4,6 +4,8 @@ import Button from "@/Components/Commen/Button";
 type InputValue = {
     email?: string;
     findEmail?: string;
+    confirmUserEmail?: string;
+    confirmOTP?: string;
     text: string;
     password?: string;
     loginPassword?: string;
@@ -23,6 +25,8 @@ type InputValue = {
 const SignButton = ({
     email,
     findEmail,
+    confirmUserEmail,
+    confirmOTP,
     text,
     inputDisabled,
     setInputDisabled,
@@ -42,6 +46,7 @@ const SignButton = ({
     const confirmPassword = password && confirmUserPassword;
 
     const socialSettingConfirm = birthDate && sex !== "" && personalInfoCheck === true;
+    const confirmFirmEmailOTP = confirmUserEmail && confirmOTP;
 
     useEffect(() => {
         {
@@ -71,6 +76,14 @@ const SignButton = ({
         }
         confirmEmail ? setInputDisabled(true) : setInputDisabled(false);
     }, [confirmEmail, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*회원가입 이메일 확인*/
+        }
+
+        confirmFirmEmailOTP ? setInputDisabled(true) : setInputDisabled(false);
+    }, [confirmFirmEmailOTP, setInputDisabled]);
 
     useEffect(() => {
         {

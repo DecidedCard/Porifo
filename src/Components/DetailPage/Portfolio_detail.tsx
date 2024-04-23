@@ -8,8 +8,10 @@ import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 import useCardIdStore from "@/store/detailStore";
 
 import Comments from "./Comments";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
@@ -51,12 +53,14 @@ const Portfolio_detail = () => {
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
+                {portfolioInfo.template === "Modern" && <Modern portfolio={portfolioInfo} />}
+                {portfolioInfo.template === "Box" && <Box portfolio={portfolioInfo} />}
             </div>
             <div className="flex flex-col items-center gap-[20px] bg-white">
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
-                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
+                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray" id="comment">
                     <Comments />
                 </div>
             </div>
