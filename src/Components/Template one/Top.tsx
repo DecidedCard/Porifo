@@ -19,7 +19,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <div className="flex flex-col gap-8 items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
                     <Image
-                        className="rounded-full mr-5 w-[200px] h-[200px] object-cover"
+                        className="rounded-full mr-5 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
                         width={200}
@@ -27,25 +27,25 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     />
 
                     <div className="flex flex-col gap-5 items-center justify-center w-80 min-w-[320px] max-w-xs">
-                        <h1 className="leading-normal text-[30px] mt-5 font-bold flex items-center justify-start">
+                        <h1 className="leading-normal text-[30px] mt-5 font-bold flex items-center justify-start sm:text-[22px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-[22px] font-bold flex items-center justify-center">
+                                <h2 className="text-[22px] font-medium flex items-center justify-center sm:text-[16px]">
                                     {userInfo.name}
                                 </h2>
-                                <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
-                                <p className="text-[14px] flex items-center justify-center font-medium">
+                                <div className="bg-deepgray w-[60px] h-[1px] my-3 sm:w-[54px]"></div>
+                                <p className="text-[14px] flex items-center justify-center font-medium sm:text-[12px]">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-row items-center justify-center gap-5">
+                            <address className="text-[14px] text-gray4 flex flex-row items-center justify-center sm:text-[12px]">
                                 <div className="flex flex-row items-center justify-start">
                                     {userInfo.tel && (
-                                        <p className="flex items-center justify-center mr-2 w-[200px]">
+                                        <p className="flex items-center justify-center w-[200px] sm:mr-0">
                                             <Image
                                                 src="/assets/image/tel.svg"
                                                 alt="전화"
