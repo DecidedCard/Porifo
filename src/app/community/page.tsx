@@ -13,16 +13,13 @@ const ComuunityPage = () => {
         setPage(0);
     }, [setPage]);
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center sm:w-[900px]">
             <div className="flex w-full">
                 <div className="font-spoqaMedium text-black font-bold text-2xl relative mt-20 mb-3 ml-[15%]">
                     포리포 추천, HOT🔥 개발자
                 </div>
             </div>
-
-            <div>
-                <Carousel />
-            </div>
+            <Carousel />
             <div className="flex gap-32 lg:gap-20">
                 <Filter />
                 <div>

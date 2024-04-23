@@ -11,6 +11,7 @@ import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
+    const [activeMenu, setActiveMenu] = useState<string>("about");
     const router = useRouter();
     const { user } = useLoginCheck();
     const { setUser } = useUserStore();
@@ -32,6 +33,10 @@ const Header = () => {
         setShowMenu(!showMenu);
     };
 
+    const handleMenuBtn = (value: string) => {
+        setActiveMenu(value);
+    };
+
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
@@ -42,10 +47,20 @@ const Header = () => {
 
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
-                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/"}>
+                    <Link
+                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        ${activeMenu === "about" ? "border-b-[1px] border-solid border-black" : ""}`}
+                        href={"/"}
+                        onClick={() => handleMenuBtn("about")}
+                    >
                         서비스 소개
                     </Link>
-                    <Link className="text-black text-center text-[16px] font-semibold relative" href={"/community"}>
+                    <Link
+                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        ${activeMenu === "community" ? "border-b-[1px] border-solid border-black" : ""}`}
+                        href={"/community"}
+                        onClick={() => handleMenuBtn("community")}
+                    >
                         피드/커뮤니티
                     </Link>
                 </div>
