@@ -13,7 +13,7 @@ import Grid from "../Template two/Grid";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Portfolio_detail = () => {
     const { cardId: id } = useCardIdStore();
@@ -21,6 +21,8 @@ const Portfolio_detail = () => {
         queryKey: [QUERY_KEY.detailPortfolio],
         queryFn: () => getDetailData({ id: "id", value: id }),
     });
+
+    const ref = useRef(null);
 
     useEffect(() => {
         document.body.style.cssText = `
@@ -47,7 +49,7 @@ const Portfolio_detail = () => {
 
     return (
         // 포트폴리오 영역
-        <div className="h-[900px] w-[100%] overflow-auto rounded-2xl ">
+        <div className="h-[900px] w-[100%] overflow-auto rounded-2xl " ref={ref}>
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
@@ -56,7 +58,7 @@ const Portfolio_detail = () => {
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
-                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
+                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray" id="comment">
                     <Comments />
                 </div>
             </div>
