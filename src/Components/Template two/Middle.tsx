@@ -26,10 +26,6 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </div>
                 </div>
 
-
-
-
-
                 <div className="flex flex-col items-start justify-start">
                     <p className="font-bold text-[22px] text-left">자기소개</p>
                     <div className="bg-deepgray w-[370px] h-[1px] my-5"></div>
