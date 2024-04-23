@@ -14,7 +14,8 @@ import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
-    const [pixel, setPixel] = useState(488);
+    const [pixel, setPixel] = useState(488); // pc
+    // const [pixel, setPixel] = useState(367); // 모바일
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -48,7 +49,8 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
         setCurrCarousel(newCurr);
-        setPixel(488);
+        setPixel(488); //pc
+        // setPixel(367); //모바일
 
         if (newCurr === SliderLength + 2) {
             moveToNthSlide(1);
@@ -61,7 +63,8 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
-        setPixel(570);
+        setPixel(570); //pc
+        // setPixel(420); //mobile
 
         if (newCurr === 0) {
             moveToNthSlide(SliderLength);
@@ -79,14 +82,14 @@ const Carousel = () => {
 
     return (
         <>
-            <div className="items-center justify-center relative mb-20">
+            <div className="items-center justify-center relative mb-20 ">
                 {/* 카드 */}
-                <div className="flex w-screen gap-5 overflow-hidden">
+                <div className="flex w-screen sm:w-[900px] gap-5 overflow-hidden">
                     {modifiedArray!.map((item: any, idx) => {
                         return (
                             <div
                                 key={idx + 1}
-                                className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
+                                className="flex flex-col gap-2 w-[550px] h-[364px] sm:w-[400px] sm:h-[364px]  items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
                                 style={{
                                     transform: `translateX(-${currCarousel * pixel}px)`,
                                     transition: carouselTransition,
@@ -99,7 +102,7 @@ const Carousel = () => {
                             >
                                 {/* 카드 이미지 */}
                                 <Image
-                                    className="rounded-2xl w-[100%] h-[100%] object-cover "
+                                    className="rounded-2xl w-[100%] h-[100%] object-cover"
                                     width={500}
                                     height={300}
                                     alt="카드 프로필"
@@ -107,7 +110,7 @@ const Carousel = () => {
                                 />
                                 {/* 블러박스 */}
                                 <div
-                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[254px]"
+                                    className="bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 sm:w-[100%] flex flex-col gap-3 absolute top-[254px]"
                                     style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                 >
                                     {/* 한줄소개 */}
