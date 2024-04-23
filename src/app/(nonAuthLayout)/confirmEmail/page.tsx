@@ -16,16 +16,29 @@ const ConfirmEmailpage = () => {
 
     const onClickEmailConfirm = async () => {
         try {
-            const response = await fetch("/api/send", {
-                method: "POST",
+            const { data, error } = await supabase.auth.resend({
+                type: "signup",
+                email: confirmOTP,
+                options: {
+                    emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/confirmEmail`,
+                },
             });
-            console.log(response);
+            console.log(confirmOTP);
+            console.log("data: ", data);
+            console.log("error: ", error);
+            // const response = await fetch("/api/send", {
+            //     method: "POST",
+            // });
+            if (error) {
+                console.log(error);
+            }
         } catch (error) {}
 
         // window.location.href = `${process.env.NEXT_PUBLIC_BASE_URL}/confirmEmail/v1/authenticate?token_hash={{ .TokenHash }}&type=invite&redirect_to={{ .RedirectTo }}`;
     };
+    const onChangeConfirmOTPNumber = (e: any) => setOTPNumber(e.target.value);
 
-    const confirmEmailOTPNumber = async () => {
+    const confirmEmailAndOTPNumber = async () => {
         try {
             const { token_hash } = Object.fromEntries(new URLSearchParams(window.location.search));
             const {
@@ -85,7 +98,7 @@ const ConfirmEmailpage = () => {
                             maxLength={6}
                             type="text"
                             placeholder="인증번호"
-                            onChange={setOTPNumber}
+                            onChange={onChangeConfirmOTPNumber}
                             color="gray2"
                             size="big"
                         />
@@ -96,7 +109,7 @@ const ConfirmEmailpage = () => {
                         confirmOTP={OTPNumber}
                         inputDisabled={inputDisabled}
                         setInputDisabled={setInputDisabled}
-                        onClick={confirmEmailOTPNumber}
+                        onClick={confirmEmailAndOTPNumber}
                     />
                 </div>
             </div>
