@@ -11,8 +11,10 @@ import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
 import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -46,7 +48,7 @@ const Buttons = () => {
                     <div className="absolute right-[115%] w-20 flex flex-row sm:-right-16 sm:top-[620px]">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
-                    <div className="w-52 h-[186px] bg-blue overflow-hidden rounded-[8px]">
+                    <div className="w-52 h-[186px] bg-gray2 overflow-hidden rounded-[8px]">
                         <div className="w-[168px] mx-auto">
                             <p className="text-xs font-medium text-gray4 pt-4">{basicInfo.template}</p>
                             <div className="pt-3">
@@ -146,6 +148,8 @@ const Buttons = () => {
                         <div ref={targetRef} className="">
                             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
                             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+                            {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
+                            {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
                         </div>
                     </div>
                 )}

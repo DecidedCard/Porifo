@@ -15,8 +15,8 @@ export default function Home() {
             <div className="bg-white">
                 <Cover />
                 <div className="flex justify-center sm:w-full">
-                    <div className="flex mx-auto mt-32">
-                        <div className="sticky top-32 self-start">
+                    <div className="flex mx-auto mt-32 sm:flex-col">
+                        <div className="sticky top-32 self-start sm:static sm:top-0 sm:self-auto sm:-mt-14">
                             <MiddleLeft />
                         </div>
                         <div>

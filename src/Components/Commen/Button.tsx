@@ -8,15 +8,25 @@ interface ButtonProps {
     border?: string;
     color?: string;
     disabled?: boolean;
+    className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, color, disabled }) => {
+const Button: React.FC<ButtonProps> = ({
+    text,
+    onClick,
+    size,
+    fontSize,
+    border,
+    color,
+    disabled,
+    className
+}) => {
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
     const fontsize =
         (!fontSize && "text-base") ||
         (fontSize === "xs" && "text-xs sm:text-[6px]") ||
         (fontSize === "s" && "text-sm sm:text-[10px]") ||
-        (fontSize === "m" && "text-base sm: text-[12px]") ||
+        (fontSize === "m" && "text-base sm:text-[12px]") ||
         (fontSize === "l" && "text-lg sm:text-[16px]");
     const col =
         (!color && border === "none" && "bg-gray2 text-white") ||
@@ -29,10 +39,12 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, size, fontSize, border, 
         (color === "secondary" && "border border-solid border-secondary text-secondary") ||
         (color === "primarynone" && "text-primary");
 
+    const buttonClass = `flex items-center justify-center px-3 rounded-lg w-full ${height} ${fontsize} ${col} ${className}`;
+
     return (
         <button
             onClick={onClick}
-            className={`flex items-center justify-center px-3 rounded-lg w-full ${height} ${fontsize} ${col}`}
+            className={buttonClass}
             disabled={disabled}
         >
             {text}

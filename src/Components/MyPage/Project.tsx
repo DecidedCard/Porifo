@@ -199,7 +199,7 @@ const Project = () => {
                                     </div>
                                     <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
                                         <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
-                                            베포링크
+                                            배포링크
                                         </label>
                                         <div className="w-[460px] ml-3">
                                             <Input

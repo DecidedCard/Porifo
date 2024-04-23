@@ -1,15 +1,13 @@
-"use client";
 
-import { useState } from "react";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 import Link from "next/link";
 
 const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const [userInfo, setUserInfo] = useState({
+    const userInfo = {
         blogLink: portfolio.blogLink,
         githubLink: portfolio.githubLink,
-    });
+    };
 
     return (
         <main className="flex my-10 w-[804px]">
@@ -23,9 +21,9 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     )}
 
                     <div className="flex flex-col gap-2 items-start justify-start">
-                        <div className="flex flex-col gap-5 items-start justify-start">
+                        <div className="flex flex-col gap-2 items-start justify-start">
                             {userInfo.blogLink && (
-                                <div className="flex items-center text-[14px] text-neutral-500">
+                                <div className="flex items-center text-[14px] text-gray3">
                                     <Image
                                         src="/assets/image/link.svg"
                                         alt="link"
@@ -37,7 +35,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 </div>
                             )}
                             {userInfo.githubLink && (
-                                <div className="flex items-center text-[14px] text-neutral-500">
+                                <div className="flex items-center text-[14px] text-gray3">
                                     <Image
                                         src="/assets/image/link.svg"
                                         alt="link"

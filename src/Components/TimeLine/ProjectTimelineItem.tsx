@@ -1,6 +1,4 @@
-"use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +9,6 @@ interface TimelineItemProps {
     introduce: string;
     deployLink: string | undefined;
     githubLink: string;
-    projectCount: number;
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({
@@ -21,7 +18,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     introduce,
     deployLink,
     githubLink,
-    projectCount,
 }) => {
     return (
         <li className="mb-10 flex flex-col items-center justify-center">
@@ -47,15 +43,15 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                 {/* 제목과 날짜를 포함하는 영역 */}
                 <div className="flex flex-col flex-wrap w-full justify-between">
                     <div className="flex flex-col mt-2 w-[804px]">
-                        <h3 className="text-[20px] font-semibold text-gray-900 mb-3">{name}</h3>
-                        <time className="text-middlegray text-[12px] font-normal leading-none">{date}</time>
+                        <h3 className="text-[20px] font-medium mb-3">{name}</h3>
+                        <time className="text-gray3 text-[12px] leading-none mb-2">{date}</time>
                     </div>
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
                     <div className="flex flex-col mt-2 w-[804px]">
-                        <p className="text-[14px] font-normal mb-2 text-gray3">{introduce}</p>
+                        <p className="text-[14px] font-normal mb-2 text-gray4">{introduce}</p>
                         {githubLink && (
-                            <div className="flex items-center text-gray3 mt-2">
+                            <div className="flex items-center text-gray4 mt-2">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
@@ -70,7 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                         )}
 
                         {deployLink && (
-                            <div className="flex items-center text-gray3 mt-2">
+                            <div className="flex items-center text-gray4 mt-2">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
