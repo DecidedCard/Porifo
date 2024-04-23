@@ -7,7 +7,7 @@ import Button from "@/Components/Commen/Button";
 const SignRouterButton = () => {
     const router = useRouter();
 
-    const emailSignUp = () => router.push("/signup");
+    const emailSignUp = () => router.push("/confirmEmail");
 
     return (
         <div className="w-fit mt-8 mb-6 mx-auto">
