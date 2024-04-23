@@ -60,7 +60,7 @@ const Portfolio_detail = () => {
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
-                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray">
+                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray" id="comment">
                     <Comments />
                 </div>
             </div>
