@@ -22,9 +22,9 @@ const Recommendation = () => {
 
     return (
         <main>
-            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray sm:mx-auto sm:h-[1000px]">
-                <div className="flex flex-col gap-6 items-start">
-                    <p className="font-spoqaBold text-[40px] font-bold mb-14 sm:text-[20px]">
+            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray sm:mx-auto sm:h-[1100px]">
+                <div className="flex flex-col items-start">
+                    <p className="font-spoqaBold text-[40px] font-bold mb-14 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
                         포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
@@ -36,7 +36,7 @@ const Recommendation = () => {
                                 <div className="flex items-center justify-center">
                                     <div className="relative">
                                         <Image
-                                            className="rounded-2xl ease-in-out duration-300 hover:scale-105"
+                                            className="rounded-2xl ease-in-out duration-300 hover:scale-105 sm:w-[302px] h-[210px]"
                                             src={developer.profileImage || ""}
                                             alt="썸네일"
                                             width={302}
@@ -48,7 +48,7 @@ const Recommendation = () => {
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                                         >
                                             <div className="flex items-center mt-4">
-                                                <div className="flex flex-col gap-4 flex-1 text-sm">
+                                                <div className="flex flex-col gap-4 flex-1 text-sm font-medium">
                                                     <p className="text-white">
                                                         {developer.oneLineIntroduce.length > 20
                                                             ? `${developer.oneLineIntroduce.substring(0, 20)}...`
@@ -65,7 +65,7 @@ const Recommendation = () => {
                                                                 height={20}
                                                                 style={{ objectFit: "cover" }}
                                                             />
-                                                            <div className="text-white text-[10px] flex items-center">
+                                                            <div className="text-white text-[10px] flex items-center font-medium">
                                                                 {developer.name}
                                                             </div>
                                                         </div>
