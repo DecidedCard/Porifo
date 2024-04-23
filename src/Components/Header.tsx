@@ -52,7 +52,7 @@ const Header = () => {
 
                 {/* Right Section: Authentication Buttons */}
 
-                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-8">
+                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
                     {user ? (
                         <div className="flex flex-row gap-3">
                             <div className="relative flex flex-row gap-5 sm:gap-2">
