@@ -10,6 +10,8 @@ import useCardIdStore from "@/store/detailStore";
 import Comments from "./Comments";
 import Standard from "../Template one/Standard";
 import Grid from "../Template two/Grid";
+import Modern from "../Template Three/Modern";
+import Box from "../Template four/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
@@ -51,6 +53,8 @@ const Portfolio_detail = () => {
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
+                {portfolioInfo.template === "Modern" && <Modern portfolio={portfolioInfo} />}
+                {portfolioInfo.template === "Box" && <Box portfolio={portfolioInfo} />}
             </div>
             <div className="flex flex-col items-center gap-[20px] bg-white">
                 <div className="pt-10">
