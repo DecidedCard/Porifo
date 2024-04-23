@@ -37,7 +37,7 @@ const Header = () => {
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
-                    <Image className="overflow-visible" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
+                    <Image className="overflow-visible sm:w-[59px] sm:h-[20px]" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
@@ -52,10 +52,10 @@ const Header = () => {
 
                 {/* Right Section: Authentication Buttons */}
 
-                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-14">
+                <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-8">
                     {user ? (
                         <div className="flex flex-row gap-3">
-                            <div className="relative flex flex-row gap-5">
+                            <div className="relative flex flex-row gap-5 sm:gap-2">
                                 <button onClick={toggleMenu}>
                                     <Image
                                         src={user.user_metadata.profileImage || "/assets/image/profile.svg"}
@@ -66,7 +66,7 @@ const Header = () => {
                                         className="w-7 h-7 rounded-lg object-cover"
                                     />
                                 </button>
-                                <p className="flex items-center justify-center text-[16px] text-black">
+                                <p className="flex items-center justify-center text-[16px] text-black sm:text-sm">
                                     {user?.user_metadata.name || user.user_metadata.user_name}
                                 </p>
 
