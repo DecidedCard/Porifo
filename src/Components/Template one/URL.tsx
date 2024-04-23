@@ -23,9 +23,9 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     )}
 
                     <div className="flex flex-col gap-2 items-start justify-start">
-                        <div className="flex flex-col gap-5 items-start justify-start">
+                        <div className="flex flex-col gap-1 items-start justify-start">
                             {userInfo.blogLink && (
-                                <div className="flex items-center text-[14px] text-neutral-500">
+                                <div className="flex items-center text-[14px] text-gray4">
                                     <Image
                                         src="/assets/image/link.svg"
                                         alt="link"
@@ -37,7 +37,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 </div>
                             )}
                             {userInfo.githubLink && (
-                                <div className="flex items-center text-[14px] text-neutral-500">
+                                <div className="flex items-center text-[14px] text-gray4">
                                     <Image
                                         src="/assets/image/link.svg"
                                         alt="link"
