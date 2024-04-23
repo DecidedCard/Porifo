@@ -23,9 +23,7 @@ const Modal = ({ isVisible, onClose, children }: any) => {
     }
 
     //댓글 버튼
-    const handleCommentBtn = () => {
-        router.push("/community#comment");
-    };
+    const handleCommentBtn = () => router.push("/community#comment");
 
     return (
         <div
