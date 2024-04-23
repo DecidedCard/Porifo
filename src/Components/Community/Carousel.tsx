@@ -14,8 +14,8 @@ import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
-    // const [pixel, setPixel] = useState(488); // pc
-    const [pixel, setPixel] = useState(367); // 모바일
+    const [pixel, setPixel] = useState(488); // pc
+    // const [pixel, setPixel] = useState(367); // 모바일
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -49,8 +49,8 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
         setCurrCarousel(newCurr);
-        // setPixel(488); //pc
-        setPixel(367); //모바일
+        setPixel(488); //pc
+        // setPixel(367); //모바일
 
         if (newCurr === SliderLength + 2) {
             moveToNthSlide(1);
@@ -63,8 +63,8 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
-        // setPixel(570); //pc
-        setPixel(420); //mobile
+        setPixel(570); //pc
+        // setPixel(420); //mobile
 
         if (newCurr === 0) {
             moveToNthSlide(SliderLength);
