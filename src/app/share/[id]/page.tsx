@@ -3,8 +3,8 @@
 import React from "react";
 
 import Loading from "@/Components/Loading";
-import Standard from "@/Components/Template one/Standard";
-import Grid from "@/Components/Template two/Grid";
+import Standard from "@/Components/Template Standard/Standard";
+import Grid from "@/Components/Template Grid/Grid";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/util/query_key";
 import { getDetailData } from "@/util/supabase/detail_supabase_DB";

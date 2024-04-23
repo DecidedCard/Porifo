@@ -4,7 +4,7 @@ import WorkTimelineItem from "./WorkTimelineItem";
 import type { Career } from "@/types/Career";
 
 const WorkExperience = ({ career }: { career: Career[] }) => {
-    const experiences = [...career];
+
 
     return (
         <div className="flex flex-col items-start justify-start relative">
@@ -18,7 +18,7 @@ const WorkExperience = ({ career }: { career: Career[] }) => {
                         )}
                     </> */}
                     <div>
-                        {experiences.map((experience, index) => (
+                        {career.map((experience, index) => (
                             <WorkTimelineItem
                                 key={index}
                                 date={experience.date}

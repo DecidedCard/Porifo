@@ -3,8 +3,8 @@
 import React from "react";
 
 import Loading from "@/Components/Loading";
-import Standard from "@/Components/Template one/Standard";
-import Grid from "@/Components/Template two/Grid";
+import Standard from "@/Components/Template Standard/Standard";
+import Grid from "@/Components/Template Grid/Grid";
 import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
