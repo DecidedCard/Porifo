@@ -1,77 +1,75 @@
 "use client";
 
-import useUserStore from "@/store/userStore";
-import useCardIdStore from "@/store/detailStore";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { QUERY_KEY } from "@/util/query_key";
 import { getComments } from "@/util/supabase/supabase_comments";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { addLike, getLikes } from "@/util/supabase/detail_supabase_DB";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
+import useLiked from "@/hooks/community/useLiked";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
-    const { user } = useUserStore(); //로그인여부 확인
-    const { cardId: id } = useCardIdStore(); // 현재 모달 DB ID
+    const { checkLike, id, likes, pending, handleLikeBtn } = useLiked();
+    // const { user } = useUserStore(); //로그인여부 확인
+    // const { cardId: id } = useCardIdStore(); // 현재 모달 DB ID
 
-    const queryClient = useQueryClient();
+    // const queryClient = useQueryClient();
 
-    const nowUser = user?.user_metadata.email; //로그인 유저의 email
+    // const nowUser = user?.user_metadata.email; //로그인 유저의 email
 
-    //comment 갯수를 위한 query
+    //comment 개수를 위한 query
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
         queryFn: () => getComments({ id }),
     });
-    const { data: likes, isPending: load } = useQuery({
-        queryKey: [QUERY_KEY.portfolioLikes],
-        queryFn: () => getLikes({ id: "id", value: id }),
-    });
+    // const { data: likes, isPending: load } = useQuery({
+    //     queryKey: [QUERY_KEY.portfolioLikes],
+    //     queryFn: () => getLikes({ id: "id", value: id }),
+    // });
 
     //좋아요 추가
-    const addLikeMutate = useMutation({
-        mutationFn: addLike,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
-        },
-    });
+    // const addLikeMutate = useMutation({
+    //     mutationFn: addLike,
+    //     onSuccess: () => {
+    //         queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolioLikes] });
+    //     },
+    // });
 
-    //공유하기 버튼
-
-    const onClickUrlCopyHandler = () => {
-        onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${id}`);
-    };
-
-    if (isPending || load) {
+    if (isPending || pending) {
         return <div>로딩중</div>;
     }
 
     //좋아요 눌렀는지 확인
-    const checkLike = likes!.find((item) => item === user?.user_metadata.email);
+    // const checkLike = likes!.find((item) => item === user?.user_metadata.email);
 
     //좋아요 버튼 클릭
-    const handleLikeBtn = () => {
-        if (!user) {
-            return alert("로그인이 필요한 서비스 입니다."); //비회원일시
-        }
-        if (checkLike) {
-            //좋아요를 이미 눌렀을 경우
-            //현재 likes배열에서 내 이메일을 제거
-            const deleteUserEmail = likes!.filter((item) => item !== nowUser);
-            const likeUser = {
-                id,
-                user_email: deleteUserEmail,
-            };
-            addLikeMutate.mutate(likeUser);
-            return;
-        }
-        const nowUserEmail = [...likes!, user!.user_metadata.email]; //현재 유저 email
-        const likeUser = {
-            id,
-            user_email: nowUserEmail,
-        };
-        addLikeMutate.mutate(likeUser);
-    };
+    // const handleLikeBtn = () => {
+    //     if (!user) {
+    //         return alert("로그인이 필요한 서비스 입니다."); //비회원일시
+    //     }
+    //     if (checkLike) {
+    //         //좋아요를 이미 눌렀을 경우
+    //         //현재 likes배열에서 내 이메일을 제거
+    //         const deleteUserEmail = likes!.filter((item) => item !== nowUser);
+    //         const likeUser = {
+    //             id,
+    //             user_email: deleteUserEmail,
+    //         };
+    //         addLikeMutate.mutate(likeUser);
+    //         return;
+    //     }
+    //     const nowUserEmail = [...likes!, user!.user_metadata.email]; //현재 유저 email
+    //     const likeUser = {
+    //         id,
+    //         user_email: nowUserEmail,
+    //     };
+    //     addLikeMutate.mutate(likeUser);
+    // };
+
+    //공유하기 버튼
+    // const onClickUrlCopyHandler = () => {
+    //     onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${id}`);
+    // };
 
     return (
         <>
@@ -79,7 +77,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                 <div className="flex flex-row gap-4 items-center justify-center">
                     {/* 좋아요 영역 */}
                     <button
-                        onClick={handleLikeBtn}
+                        onClick={() => handleLikeBtn()}
                         className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
                     >
                         <div className="flex items-center justify-center w-10 h-10">
@@ -106,7 +104,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
 
                     {/* 공유하기 영역 */}
                     <button
-                        onClick={onClickUrlCopyHandler}
+                        onClick={() => onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${id}`)}
                         className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
                     >
                         <div className="flex items-center justify-center w-20 h-10">
