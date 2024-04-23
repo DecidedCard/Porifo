@@ -6,7 +6,7 @@ export const getPortfolio = async (payload: any) => {
     const ITEM_PER_PAGE = 5;
 
     let from = pageParam * ITEM_PER_PAGE; //0
-    let to = from + ITEM_PER_PAGE - 1; //6
+    let to = from + ITEM_PER_PAGE - 1; //4
 
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
     if (filter === "최신순") {
@@ -16,7 +16,12 @@ export const getPortfolio = async (payload: any) => {
         query = query.order("created_at", { ascending: true });
     }
     if (filter === "인기순") {
-        query = query.order("likes", { ascending: false });
+        query = query.order("created_at", { ascending: false });
+        const { data } = await query;
+
+        let ascendingData = data?.sort((a, b) => b.likes!.length - a.likes!.length).splice(from, to);
+
+        return ascendingData;
     }
 
     if (jobFilter === "*") {
@@ -41,11 +46,12 @@ export const getPortfolio = async (payload: any) => {
 
 export const getHotDevelopers = async () => {
     let query = supabase.from("portfolioInfo").select("*").eq("share", true);
-    const { data, error } = await query.order("likes", { ascending: false }).range(0, 6);
+    const { data, error } = await query.order("likes", { ascending: false });
+    let ascendingData = data?.sort((a, b) => b.likes!.length - a.likes!.length).splice(0, 6);
     if (error) {
         console.error(error);
         return null;
     }
 
-    return data;
+    return ascendingData;
 };
