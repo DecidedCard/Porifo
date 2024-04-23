@@ -41,7 +41,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             {/* 제목과 날짜를 포함하는 영역 */}
                             <div className="flex w-full flex-col">
                                 <div className="flex justify-between w-[804px] mt-2">
-                                    <h3 className="text-[20px] font-semibold text-gray-900 mb-3">{project.name}</h3>
+                                    <h3 className="text-[20px] font-medium mb-3">{project.name}</h3>
                                 </div>
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
