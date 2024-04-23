@@ -9,8 +9,8 @@ import TemplateSelect from "../MyPage/TemplateSelect";
 import Preview from "../MyPage/Preview";
 import useGuestButton from "@/hooks/guest/useGuestButton";
 import { useRouter } from "next/navigation";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
 
 const Buttons = () => {
     const { basicInfo, disabled, onClickInsertHandler } = useInfo();

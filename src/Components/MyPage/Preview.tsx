@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({
@@ -34,10 +36,12 @@ const Preview = ({
             >
                 x
             </div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl sm:w-screen sm:h-screen sm:rounded-none">
                 <div ref={targetRef} className="">
                     {template === "Standard" && <Standard portfolio={portfolio} />}
                     {template === "Grid" && <Grid portfolio={portfolio} />}
+                    {template === "Modern" && <Modern portfolio={portfolio} />}
+                    {template === "Box" && <Box portfolio={portfolio} />}
                 </div>
             </div>
         </div>

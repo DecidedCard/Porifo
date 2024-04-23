@@ -79,19 +79,19 @@ const SignIn = () => {
     return (
         <main>
             <div className="flex py-36 items-center justify-center bg-hihigray">
-                <div className="rounded-2xl w-[454px] h-[400px] bg-white flex justify-center items-center flex-col">
+                <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col">
                     <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center items-center h-[86px]">
                             <Image
-                                width={160}
-                                height={54}
+                                width={0}
+                                height={0}
                                 className="w-[160px] h-[54px]"
                                 src="formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
                             />
                         </div>
-                        {/* <SignUpItem
+                        <SignUpItem
                             setLabel="이메일"
                             type="email"
                             helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
@@ -121,7 +121,7 @@ const SignIn = () => {
                             email={email}
                             loginPassword={password}
                         />
-                        <div
+                        {/* <div
                             className="text-gray4 float-right flex flex-row items-center justify-center text-[12px] cursor-pointer"
                             onClick={findPassword}
                         >
