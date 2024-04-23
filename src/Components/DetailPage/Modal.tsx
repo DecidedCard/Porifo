@@ -1,14 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import useUserStore from "@/store/userStore";
-import useCardIdStore from "@/store/detailStore";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
-import { QUERY_KEY } from "@/util/query_key";
-import { getComments } from "@/util/supabase/supabase_comments";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
-import { addLike, getLikes } from "@/util/supabase/detail_supabase_DB";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import Loading from "../Loading";
 import useLiked from "@/hooks/community/useLiked";
@@ -16,6 +8,7 @@ import useLiked from "@/hooks/community/useLiked";
 const Modal = ({ isVisible, onClose, children }: any) => {
     const { checkLike, id, pending, handleLikeBtn } = useLiked();
 
+    //모달 close
     if (!isVisible) return null;
     const handleClose = (e: any) => {
         if (e.target.id === "wrapper") {
@@ -26,6 +19,9 @@ const Modal = ({ isVisible, onClose, children }: any) => {
     if (pending) {
         return <Loading />;
     }
+
+    //댓글 버튼
+    const handleCommentBtn = () => {};
 
     return (
         <div
