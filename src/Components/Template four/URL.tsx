@@ -24,7 +24,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     )}
 
                     <div className="flex flex-col gap-2 items-start justify-start">
-                        <div className="flex flex-col gap-5 items-start justify-start">
+                        <div className="flex flex-col gap-2 items-start justify-start">
                             {userInfo.blogLink && (
                                 <div className="flex items-center text-[12px] text-gray3 rounded-lg border border-solid border-disabled p-4">
                                     <Image

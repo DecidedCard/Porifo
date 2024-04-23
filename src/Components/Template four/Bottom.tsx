@@ -53,7 +53,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         {project.date}
                                     </time>
                                     {project.githubLink && (
-                                        <div className="flex items-center text-gray4 mt-2">
+                                        <div className="flex items-center text-gray3 mt-2">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -68,7 +68,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     )}
 
                                     {project.deployLink && (
-                                        <div className="flex items-center text-gray4 mt-2">
+                                        <div className="flex items-center text-gray3 mt-2">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
