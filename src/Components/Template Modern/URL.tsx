@@ -1,15 +1,13 @@
-"use client";
 
-import { useState } from "react";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 import Link from "next/link";
 
 const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const [userInfo, setUserInfo] = useState({
+    const userInfo = {
         blogLink: portfolio.blogLink,
         githubLink: portfolio.githubLink,
-    });
+    };
 
     return (
         <main className="flex my-10 w-[804px]">
@@ -18,7 +16,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     {(userInfo.blogLink || userInfo.githubLink) && (
                         <>
                             <div className="font-bold text-[22px]">URL</div>
-                            <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
+                            <div className="bg-deepgray w-[804px] h-[1px] my-3"></div>
                         </>
                     )}
 

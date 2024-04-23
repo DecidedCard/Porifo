@@ -1,19 +1,13 @@
-"use client";
 
-import { useState } from "react";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
-import Image from "next/image";
-import Link from "next/link";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
-    const [userInfo] = useState({
+    const userInfo = {
         introduce: portfolio.introduce,
-    });
+    };
 
     const userSkillTag = portfolio.skillTag as string[];
-
-    const userSkillTags = [...userSkillTag];
 
     return (
         <div>
@@ -22,7 +16,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="flex flex-col items-start justify-start mt-10">
                     <p className="font-medium text-[20px] w-[804px]">기술스택</p>
                     <div className="flex flex-wrap text-primary text-[12px]">
-                        {userSkillTags.map((tag, index) => (
+                        {userSkillTag.map((tag, index) => (
                             <span
                                 key={index}
                                 className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg bg-black text-white h-9"

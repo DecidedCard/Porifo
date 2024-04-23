@@ -1,6 +1,4 @@
-"use client";
 
-import { useState } from "react";
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
@@ -12,14 +10,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
 
-    const experiences = [...career];
-    const projects = [...project];
-
     return (
         <div>
             <ol className="flex flex-col items-start justify-start w-[800px]">
                 <p className="font-medium text-[20px] mb-3">프로젝트</p>
-                {projects.map((project, index) => (
+                {project.map((project, index) => (
                     <li key={index} className="flex flex-col items-start justify-start w-[800px] rounded-lg border border-solid border-disabled p-4">
 
                         <div className="flex flex-col w-[804px]">
@@ -89,11 +84,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="bg-deepgray w-[804px] h-[1px] my-10"></div>
             </ol>
 
-            {experiences.length > 0 && (
+            {career.length > 0 && (
                 <div className="flex flex-col items-start justify-start w-[800px]">
                     <p className="font-medium text-[20px] mb-3">업무경험</p>
                     <ol>
-                        {experiences.map((experience, index) => (
+                        {career.map((experience, index) => (
                             <li key={index} className="flex mb-5 w-[800px] rounded-lg border border-solid border-disabled p-4">
                                 <div className="flex w-full flex-col">
                                     {/* 제목과 날짜를 포함하는 영역 */}

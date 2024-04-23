@@ -24,7 +24,6 @@ const UserProject = ({ project }: { project: Project[] }) => {
                             introduce={project.introduce}
                             deployLink={project.deployLink}
                             githubLink={project.githubLink}
-                            projectCount={projects.length}
                         />
                         {index !== projects.length - 1 && (
                             <div className="bg-deepgray w-[760px] h-[1px] my-10 ml-7"></div>

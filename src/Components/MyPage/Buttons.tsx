@@ -11,10 +11,10 @@ import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
 import Preview from "./Preview";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
-import Modern from "../Template Three/Modern";
-import Box from "../Template four/Box";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =

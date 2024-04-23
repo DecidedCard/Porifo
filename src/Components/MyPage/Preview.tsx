@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
-import Modern from "../Template Three/Modern";
-import Box from "../Template four/Box";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({

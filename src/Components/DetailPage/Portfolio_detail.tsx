@@ -8,10 +8,10 @@ import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 import useCardIdStore from "@/store/detailStore";
 
 import Comments from "./Comments";
-import Standard from "../Template one/Standard";
-import Grid from "../Template two/Grid";
-import Modern from "../Template Three/Modern";
-import Box from "../Template four/Box";
+import Standard from "../Template Standard/Standard";
+import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";

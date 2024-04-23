@@ -1,4 +1,3 @@
-"use client"
 
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
@@ -11,13 +10,10 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
 
-    const experiences = [...career];
-    const projects = [...project];
-
     return (
         <div>
             <ol>
-                {projects.map((project, index) => (
+                {project.map((project, index) => (
                     <li key={index} className="flex flex-col items-start justify-start mt-10">
                         <p className="font-medium text-[22px]">프로젝트</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
@@ -86,12 +82,12 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </li>
                 ))}
             </ol>
-            {experiences.length > 0 && (
+            {career.length > 0 && (
                 <div className="flex flex-col items-start justify-start mt-16">
                     <p className="font-medium text-[22px]">업무경력</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                     <ol>
-                        {experiences.map((experience, index) => (
+                        {career.map((experience, index) => (
                             <li key={index} className="flex relative mb-5">
                                 <div className="flex w-full flex-col gap-2">
                                     {/* 제목과 날짜를 포함하는 영역 */}

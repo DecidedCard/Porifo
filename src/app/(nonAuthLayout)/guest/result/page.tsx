@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 
 import Button from "@/Components/Commen/Button";
 import LoginCheckModal from "@/Components/LoginCheckModal";
-import Standard from "@/Components/Template one/Standard";
-import Grid from "@/Components/Template two/Grid";
+import Standard from "@/Components/Template Standard/Standard";
+import Grid from "@/Components/Template Grid/Grid";
 
 import useGuestButton from "@/hooks/guest/useGuestButton";
 

@@ -1,18 +1,16 @@
-"use client";
 
-import { useState } from "react";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const [userInfo] = useState({
+    const userInfo = {
         name: portfolio.name,
         job: portfolio.job,
         tel: portfolio.tel,
         email: portfolio.email,
         profileImage: portfolio.profileImage,
         oneLineIntroduce: portfolio.oneLineIntroduce,
-    });
+    };
 
     return (
         <main className="mt-10">

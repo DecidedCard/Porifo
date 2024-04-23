@@ -1,18 +1,16 @@
-"use client";
 
-import { useState } from "react";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const [userInfo, setUserInfo] = useState({
+    const userInfo = {
         name: portfolio.name,
         job: portfolio.job,
         tel: portfolio.tel,
         email: portfolio.email,
         profileImage: portfolio.profileImage || "",
         oneLineIntroduce: portfolio.oneLineIntroduce,
-    });
+    };
 
     return (
         <div className="flex justify-between items-center w-[932px] h-[306px] bg-gray">

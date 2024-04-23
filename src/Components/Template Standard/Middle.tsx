@@ -1,6 +1,4 @@
-"use client";
 
-import { useState } from "react";
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
@@ -9,17 +7,14 @@ import Link from "next/link";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
-    const [userInfo] = useState({
+    const userInfo = {
         introduce: portfolio.introduce,
-    });
+    };
 
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
 
-    const experiences = [...career];
-    const projects = [...project];
-    const userSkillTags = [...userSkillTag];
 
     return (
         <main>
@@ -29,7 +24,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     <div className="flex flex-col items-start justify-start mt-2">
                         <p className="font-bold text-[22px] w-[804px]">기술스택</p>
                         <div className="flex flex-wrap text-primary text-[12px]">
-                            {userSkillTags.map((tag, index) => (
+                            {userSkillTag.map((tag, index) => (
                                 <span
                                     key={index}
                                     className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9"
@@ -48,7 +43,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 </div>
 
                 <ol>
-                    {projects.map((project, index) => (
+                    {project.map((project, index) => (
                         <li key={index} className="flex flex-col items-start justify-start">
                             <p className="font-bold text-[22px]">프로젝트</p>
                             <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
@@ -119,12 +114,12 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 </ol>
 
 
-                {experiences.length > 0 && (
+                {career.length > 0 && (
                     <div className="flex flex-col items-start justify-start mt-12">
                         <p className="font-bold text-[22px]">업무경력</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5"></div>
                         <ol>
-                            {experiences.map((experience, index) => (
+                            {career.map((experience, index) => (
                                 <li key={index} className="flex relative mb-5">
                                     <div className="flex w-full flex-col">
                                         {/* 제목과 날짜를 포함하는 영역 */}

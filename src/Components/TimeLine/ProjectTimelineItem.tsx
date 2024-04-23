@@ -1,6 +1,4 @@
-"use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +9,6 @@ interface TimelineItemProps {
     introduce: string;
     deployLink: string | undefined;
     githubLink: string;
-    projectCount: number;
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({
@@ -21,7 +18,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     introduce,
     deployLink,
     githubLink,
-    projectCount,
 }) => {
     return (
         <li className="mb-10 flex flex-col items-center justify-center">
