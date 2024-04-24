@@ -121,7 +121,7 @@ const SignIn = () => {
                             email={email}
                             loginPassword={password}
                         />
-                        {/* <div
+                        <div
                             className="text-gray4 float-right flex flex-row items-center justify-center text-[12px] cursor-pointer"
                             onClick={findPassword}
                         >
@@ -133,17 +133,17 @@ const SignIn = () => {
                                 src="find_password_arrow.svg"
                                 alt="페이지 이동 화살표"
                             />
-                        </div> */}
+                        </div>
                     </form>
 
                     <SocialSign redirectTo={redirectTo} />
 
-                    {/* <div className="flex flex-row mx-auto text-[12px]">
+                    <div className="flex flex-row mx-auto text-[12px]">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요? </p>
                         <a href="/signupMethod" className="ml-3 underline">
                             이메일로 회원가입
                         </a>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </main>
