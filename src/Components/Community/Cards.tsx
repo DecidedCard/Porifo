@@ -15,10 +15,11 @@ import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/PortfolioDetail";
 import Loading from "../Loading";
 import useDetailStore from "@/store/detailStore";
+import DeleteModal from "./DeleteModal";
 
 const Cards = () => {
     //모달 상태
-    const { setCardId, setIsOpenModal } = useDetailStore();
+    const { setCardId, setIsOpenModal, setIsDeleteModalOpen } = useDetailStore();
 
     const { jobFilter, filter } = useJobFilterStore();
 
@@ -69,7 +70,6 @@ const Cards = () => {
             </div>
         );
     }
-    console.log(data);
 
     return (
         <>
@@ -152,9 +152,11 @@ const Cards = () => {
                 })}
 
                 {/* //모달섹션 */}
-                <Modal onClose={onModalClose}>
-                    <Portfolio_detail />
-                </Modal>
+                <DeleteModal>
+                    <Modal onClose={onModalClose}>
+                        <Portfolio_detail />
+                    </Modal>
+                </DeleteModal>
             </div>
 
             <div ref={ref} />

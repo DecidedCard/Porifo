@@ -11,11 +11,12 @@ import useUserStore from "@/store/userStore";
 import useCardIdStore from "@/store/detailStore";
 
 import CommentInput from "./CommentInput";
+import useDetailStore from "@/store/detailStore";
 
 const Comments = () => {
-    const { cardId: id } = useCardIdStore();
+    const { cardId: id, setIsDeleteModalOpen, isDeleteModalOpen } = useDetailStore();
     const { user } = useUserStore();
-
+    console.log(isDeleteModalOpen);
     const queryClient = useQueryClient();
 
     const deleteMutate = useMutation({
@@ -31,7 +32,8 @@ const Comments = () => {
     });
 
     const handleDeleteBtn = (id: number) => {
-        deleteMutate.mutate(id);
+        // deleteMutate.mutate(id);
+        setIsDeleteModalOpen(true);
     };
 
     if (isPending) {
