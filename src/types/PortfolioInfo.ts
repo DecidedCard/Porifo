@@ -24,4 +24,5 @@ export interface PortfolioInfo {
     career: Career[] | Json;
     viewCnt?: number | null;
     likes: string[] | null;
+    likesCnt: number | null;
 }

@@ -46,6 +46,7 @@ export type Database = {
                     introduce: string | null;
                     job: string | null;
                     likes: string[] | null;
+                    likesCnt: number | null;
                     name: string | null;
                     oneLineIntroduce: string | null;
                     profileImage: string | null;
@@ -69,6 +70,7 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     likes?: string[] | null;
+                    likesCnt?: number | null;
                     name?: string | null;
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
@@ -92,6 +94,7 @@ export type Database = {
                     introduce?: string | null;
                     job?: string | null;
                     likes?: string[] | null;
+                    likesCnt?: number | null;
                     name?: string | null;
                     oneLineIntroduce?: string | null;
                     profileImage?: string | null;
