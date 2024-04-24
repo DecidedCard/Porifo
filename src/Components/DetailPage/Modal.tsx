@@ -5,13 +5,16 @@ import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import Loading from "../Loading";
 import useLiked from "@/hooks/community/useLiked";
 import { useRouter } from "next/navigation";
+import useDetailStore from "@/store/detailStore";
 
-const Modal = ({ isVisible, onClose, children }: any) => {
+const Modal = ({ onClose, children }: any) => {
     const { checkLike, id, pending, handleLikeBtn } = useLiked();
+    const { isOpenModal } = useDetailStore();
+
     const router = useRouter();
 
     //모달 close
-    if (!isVisible) return null;
+    if (!isOpenModal) return null;
     const handleClose = (e: any) => {
         if (e.target.id === "wrapper") {
             onClose();

@@ -9,16 +9,16 @@ import { useInView } from "react-intersection-observer";
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 
-import useCardIdStore from "@/store/detailStore";
 import useJobFilterStore from "@/store/jobFilterStore";
 
 import Modal from "../DetailPage/Modal";
 import Portfolio_detail from "../DetailPage/PortfolioDetail";
 import Loading from "../Loading";
+import useDetailStore from "@/store/detailStore";
 
 const Cards = () => {
     //모달 상태
-    const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
+    const { setCardId, setIsOpenModal } = useDetailStore();
 
     const { jobFilter, filter } = useJobFilterStore();
 
@@ -152,7 +152,7 @@ const Cards = () => {
                 })}
 
                 {/* //모달섹션 */}
-                <Modal isVisible={isOpenModal} onClose={onModalClose}>
+                <Modal onClose={onModalClose}>
                     <Portfolio_detail />
                 </Modal>
             </div>
