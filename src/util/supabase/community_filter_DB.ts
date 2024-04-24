@@ -16,12 +16,7 @@ export const getPortfolio = async (payload: any) => {
         query = query.order("created_at", { ascending: true });
     }
     if (filter === "인기순") {
-        query = query.order("created_at", { ascending: false });
-        const { data } = await query;
-
-        const likesAscendingData = data?.sort((a, b) => b.likes!.length - a.likes!.length).splice(from, to);
-
-        return likesAscendingData;
+        query = query.order("likesCnt", { ascending: false });
     }
 
     if (jobFilter === "*") {
