@@ -3,7 +3,7 @@ import useDetailStore from "@/store/detailStore";
 
 const DeleteModal = ({ children }: any) => {
     const { isDeleteModalOpen, setIsDeleteModalOpen } = useDetailStore();
-    console.log(isDeleteModalOpen);
+
     return (
         <>
             {!isDeleteModalOpen ? (
