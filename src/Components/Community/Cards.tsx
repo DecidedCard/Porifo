@@ -13,7 +13,7 @@ import useCardIdStore from "@/store/detailStore";
 import useJobFilterStore from "@/store/jobFilterStore";
 
 import Modal from "../DetailPage/Modal";
-import Portfolio_detail from "../DetailPage/Portfolio_detail";
+import Portfolio_detail from "../DetailPage/PortfolioDetail";
 import Loading from "../Loading";
 
 const Cards = () => {
@@ -69,6 +69,7 @@ const Cards = () => {
             </div>
         );
     }
+    console.log(data);
 
     return (
         <>

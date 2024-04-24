@@ -17,7 +17,7 @@ import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { useEffect } from "react";
 
-const Portfolio_detail = () => {
+const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
@@ -30,6 +30,7 @@ const Portfolio_detail = () => {
         top: -${window.scrollY}px;
         overflow-y: scroll;
         width: 100%;`;
+
         return () => {
             const scrollY = document.body.style.top;
             document.body.style.cssText = "";
@@ -68,4 +69,4 @@ const Portfolio_detail = () => {
     );
 };
 
-export default Portfolio_detail;
+export default PortfolioDetail;
