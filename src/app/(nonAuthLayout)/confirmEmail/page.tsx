@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useRouter } from "next/navigation";
 import useInput from "@/hooks/useInput";
 import Image from "next/image";
@@ -19,9 +23,31 @@ const ConfirmEmailpage = () => {
 
     const onClickResendOTP = async () => {
         try {
+            toast.info("인증번호를 보내고 있습니다!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Flip,
+            });
             await supabase.auth.resend({
                 type: "signup",
                 email: confirmOTP,
+            });
+            toast.success("인증번호가 발송되었습니다!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Flip,
             });
         } catch (error) {
             console.log("catchError: ", error);
@@ -52,7 +78,19 @@ const ConfirmEmailpage = () => {
                             alt="이메일 확인 form 로고"
                         />
                     </div>
-
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                        transition={Flip}
+                    />
                     <div className="flex flex-row w-[342px] gap-2">
                         <div className="mx-auto w-[190px] flex-col">
                             <label className="mb-2 flex text-sm font-medium">

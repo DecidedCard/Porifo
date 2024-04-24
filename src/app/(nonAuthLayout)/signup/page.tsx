@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -88,6 +91,19 @@ const SignUp = () => {
     const checkRequiredPersonalInfoModal = () =>
         personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
 
+    const onClickToast = () =>
+        toast.success("메일 전송중에 있습니다!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Flip,
+        });
+
     const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -96,7 +112,7 @@ const SignUp = () => {
                 phoneNumber = "000";
             }
 
-            const { error } = await supabase.auth.signUp({
+            await supabase.auth.signUp({
                 email,
                 password,
                 options: {
@@ -110,10 +126,6 @@ const SignUp = () => {
                     },
                 },
             });
-
-            if (error) {
-                throw new Error();
-            }
 
             return router.push("/confirmEmail");
         } catch (error) {
@@ -135,6 +147,20 @@ const SignUp = () => {
                             alt="회원가입의 form 로고"
                         />
                     </div>
+
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                        transition={Flip}
+                    />
 
                     <SignUpItem
                         setLabel="이메일"
@@ -225,6 +251,7 @@ const SignUp = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                         sex={sex}
+                        onClick={onClickToast}
                         personalInfoCheck={personalInfoCheck}
                     />
                 </form>

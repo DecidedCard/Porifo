@@ -37,7 +37,6 @@ const SignButton = ({
     birthDate,
     onClick,
     personalInfoCheck,
-
     sex,
 }: InputValue) => {
     const signUp = email && password && birthDate && name && sex !== "" && personalInfoCheck === true;
