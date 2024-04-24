@@ -100,7 +100,7 @@ const SignUp = () => {
                 email,
                 password,
                 options: {
-                    emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
+                    emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/confirmEmail`,
                     data: {
                         birthDate,
                         name,
@@ -115,7 +115,7 @@ const SignUp = () => {
                 throw new Error();
             }
 
-            return router.push("/welcome");
+            return router.push("/confirmEmail");
         } catch (error) {
             console.log(error);
         }

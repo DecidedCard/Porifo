@@ -1,50 +1,38 @@
 "use client";
 
-import useInput from "@/hooks/useInput";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import useInput from "@/hooks/useInput";
 import Image from "next/image";
 import Input from "@/Components/Commen/Input";
 import SignButton from "@/Components/Sign/SignButton";
 import Button from "@/Components/Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
+import SignUpItem from "@/Components/Sign/SignUpItem";
 
 const ConfirmEmailpage = () => {
     const [confirmOTP, onChangeConfirmOTP] = useInput();
-    const [OTPNumber, setOTPNumber] = useState("");
-
+    const [OTPNumber, onChangeConfirmOTPNumber] = useInput();
     const [inputDisabled, setInputDisabled] = useState(false);
 
-    const onClickEmailConfirm = async () => {
+    const router = useRouter();
+
+    const onClickResendOTP = async () => {
         try {
-            const { data, error } = await supabase.auth.resend({
+            await supabase.auth.resend({
                 type: "signup",
                 email: confirmOTP,
-                options: {
-                    emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/confirmEmail`,
-                },
             });
-            console.log(confirmOTP);
-            console.log("data: ", data);
-            console.log("error: ", error);
-            // const response = await fetch("/api/send", {
-            //     method: "POST",
-            // });
-            if (error) {
-                console.log(error);
-            }
-        } catch (error) {}
-
-        // window.location.href = `${process.env.NEXT_PUBLIC_BASE_URL}/confirmEmail/v1/authenticate?token_hash={{ .TokenHash }}&type=invite&redirect_to={{ .RedirectTo }}`;
+        } catch (error) {
+            console.log("catchError: ", error);
+        }
     };
-    const onChangeConfirmOTPNumber = (e: any) => setOTPNumber(e.target.value);
 
     const confirmEmailAndOTPNumber = async () => {
         try {
-            const { token_hash } = Object.fromEntries(new URLSearchParams(window.location.search));
-            const {
-                data: { session },
-                error,
-            } = await supabase.auth.verifyOtp({ token_hash, type: "email" });
+            await supabase.auth.verifyOtp({ token_hash: OTPNumber, type: "email" });
+
+            return router.push("/welcome");
         } catch (error) {
             console.log("error", error);
         }
@@ -65,8 +53,8 @@ const ConfirmEmailpage = () => {
                         />
                     </div>
 
-                    <div className="flex flex-row mb-8 w-[342px] gap-2">
-                        <div className="mx-auto w-[220px] flex-col">
+                    <div className="flex flex-row w-[342px] gap-2">
+                        <div className="mx-auto w-[190px] flex-col">
                             <label className="mb-2 flex text-sm font-medium">
                                 이메일 <p className="ml-1 text-[10px] text-red-500">★</p>
                             </label>
@@ -80,10 +68,10 @@ const ConfirmEmailpage = () => {
                                 size="big"
                             />
                         </div>
-                        <div className=" w-[114px] h-fit mt-7">
+                        <div className=" w-[144px] h-fit mt-7">
                             <Button
-                                onClick={onClickEmailConfirm}
-                                text="인증번호받기"
+                                onClick={onClickResendOTP}
+                                text="인증번호 다시 받기"
                                 fontSize="m"
                                 border="none"
                                 size="l"
@@ -91,18 +79,13 @@ const ConfirmEmailpage = () => {
                             />
                         </div>
                     </div>
-                    <div className="w-[342px] mb-12">
-                        <Input
-                            value={OTPNumber}
-                            pattern="[0-9]"
-                            maxLength={6}
-                            type="text"
-                            placeholder="인증번호"
-                            onChange={onChangeConfirmOTPNumber}
-                            color="gray2"
-                            size="big"
-                        />
-                    </div>
+
+                    <SignUpItem
+                        setLabel="인증번호"
+                        type="text"
+                        placeholder="인증번호를 입력해주세요"
+                        onChangeHandler={onChangeConfirmOTPNumber}
+                    />
                     <SignButton
                         text="다음"
                         confirmUserEmail={confirmOTP}
