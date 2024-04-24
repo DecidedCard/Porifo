@@ -27,7 +27,7 @@ const MyPage = () => {
     }
 
     return (
-        <div className="flex justify-center  bg-hihigray max-w-full min-h-[500px] sm:flex-col sm:w-full">
+        <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
             <Navigation setNav={setNav} />
             <div className="w-[800px] min-h-[750px] sm:w-full sm:mt-[450px] ">
                 {nav === "basicInfo" && <UserInfo />}
