@@ -62,39 +62,38 @@ const Buttons = () => {
                         </div>
                     </div>
 
-                    <div className="sm:flex">
-                        <div className="mt-2 w-52 sm:w-fit sm:mt-0">
-                            <Button
-                                text="템플릿 선택하기"
-                                size="s"
-                                color="primary"
-                                fontSize="s"
-                                onClick={onClickTemplateModalToggleHandler}
-                            />
-                        </div>
 
-                        <div className="flex flex-row my-5 mb-5 text-[12px] sm:my-0">
-                            <button
-                                className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter sm:pr-3"
-                                onClick={onClickUrlCopyHandler}
-                            >
-                                <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
-                                URL 복사
-                            </button>
-                            <button
-                                className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter sm:pl-0"
-                                onClick={() => toPDF()}
-                            >
-                                <Image
-                                    src="assets/image/download.svg"
-                                    alt="download"
-                                    width={24}
-                                    height={24}
-                                    className="mr-1"
-                                />
-                                PDF로 저장
-                            </button>
-                        </div>
+                    <div className="mt-2 w-52 sm:w-fit sm:mt-0">
+                        <Button
+                            text="템플릿 선택하기"
+                            size="s"
+                            color="primary"
+                            fontSize="s"
+                            onClick={onClickTemplateModalToggleHandler}
+                        />
+                    </div>
+
+                    <div className="flex flex-row my-5 mb-5 text-[12px] sm:my-0">
+                        <button
+                            className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter sm:pr-3"
+                            onClick={onClickUrlCopyHandler}
+                        >
+                            <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
+                            URL 복사
+                        </button>
+                        <button
+                            className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter sm:pl-0"
+                            onClick={() => toPDF()}
+                        >
+                            <Image
+                                src="assets/image/download.svg"
+                                alt="download"
+                                width={24}
+                                height={24}
+                                className="mr-1"
+                            />
+                            PDF로 저장
+                        </button>
                     </div>
                 </div>
 
