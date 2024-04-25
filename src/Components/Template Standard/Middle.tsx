@@ -23,7 +23,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 {userSkillTag.length > 0 && (
                     <div className="flex flex-col items-start justify-start mt-2 sm:w-[448px]">
                         <p className="font-bold text-[22px] w-[804px] sm:w-[448px] sm:font-medium sm:text-[20px]">기술스택</p>
-                        <div className="flex flex-wrap text-primary text-[12px]">
+                        <div className="flex flex-wrap text-primary text-[12px] sm:w-[448px]">
                             {userSkillTag.map((tag, index) => (
                                 <span
                                     key={index}
