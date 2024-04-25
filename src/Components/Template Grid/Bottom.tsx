@@ -13,8 +13,8 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     const project = portfolio.project as Project[];
 
     return (
-        <main className="flex items-start justify-start">
-            <section className="flex flex-col justify-center items-start gap-10">
+        <main className="flex items-start justify-start sm:items-center sm:justify-center">
+            <section className="flex flex-col justify-center items-start gap-10 sm:items-center">
                 <UserProject project={project} />
                 <WorkExperience career={career} />
             </section>

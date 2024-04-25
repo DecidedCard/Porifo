@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
 import SignButton from "@/Components/Sign/SignButton";
@@ -27,6 +29,18 @@ const Find_Email = () => {
 
     const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value);
 
+    const showToastAlert = () =>
+        toast.success("메일 전송중에 있습니다!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Flip,
+        });
     return (
         <main>
             <div className="flex py-36 items-center justify-center bg-hihigray relative">
@@ -42,6 +56,21 @@ const Find_Email = () => {
                                 priority
                             />
                         </div>
+
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition={Flip}
+                        />
+
                         <p className="flex flex-wrap items-center justify-center mt-8 font-normal text-sm w-[236px] h-[44px]">
                             비밀번호 재설정을 위해 회원님의 이메일로 인증메일이 발송됩니다.
                         </p>
@@ -56,6 +85,7 @@ const Find_Email = () => {
                             text="인증메일 보내기"
                             findEmail={userEmail}
                             inputDisabled={inputDisabled}
+                            onClick={showToastAlert}
                             setInputDisabled={setInputDisabled}
                         />
                     </form>

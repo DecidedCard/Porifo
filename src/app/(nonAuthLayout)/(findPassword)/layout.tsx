@@ -1,5 +1,4 @@
 import HeaderNonAuth from "@/Components/HeaderNonAuth";
-import Footer from "@/Components/Footer";
 
 export default function RootLayout({
     children,
