@@ -21,13 +21,15 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
     if (isError) {
         return (
             <div>
-                <Header />
                 <LoginCheckModal route="/" />
             </div>
         );
     }
 
-    return <div>{children}</div>;
+    return <div>
+        <Header />
+        {children}
+    </div>;
 };
 
 export default AuthLayout;
