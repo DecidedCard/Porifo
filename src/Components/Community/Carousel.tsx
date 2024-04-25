@@ -210,14 +210,15 @@ const Carousel = () => {
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                         >
                                             {/* 한줄소개 */}
-
                                             <div className="w-[254px] h-[22px] flex space-x-[60px]">
                                                 <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-sm">
                                                     {item.oneLineIntroduce}
                                                 </p>
-                                                <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[10px] w-[190px]">{`#${item.job}`}</p>
+                                                <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[10px] w-[190px]">{`#${item.job.slice(
+                                                    0,
+                                                    -3,
+                                                )}`}</p>
                                             </div>
-
                                             {/* 유저정보,좋아요,조회수 박스 */}
                                             <div className="flex justify-between">
                                                 <div className="flex gap-2">
