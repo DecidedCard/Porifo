@@ -10,8 +10,8 @@ const Footer = () => {
                 width={80}
                 height={80}
             />
-            <div className="w-[1410px] h-[52px] flex flex-col gap-3 items-start justify-start text-sm text-gray3 sm:text-[12px] sm:w-[480px]">
-                <p className="w-[622px] h-[20px]">
+            <div className="w-[1410px] h-[52px] flex flex-col gap-3 items-start justify-start text-sm text-gray3 sm:text-[12px] sm:w-[470px]">
+                <p className="w-[622px] h-[20px] sm:w-[470px]">
                     (주)포리포 | 대표 : 먼작귀 | 개인정보보호책임자 : 금상호 | 생성일 : 2024년 3월 26일
                 </p>
                 <p className="w-[410px] h-[22px]">경상북도 안동시 육사로 333 | ©️PORIFO. All rights reverved.</p>
