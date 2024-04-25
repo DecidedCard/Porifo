@@ -25,7 +25,7 @@ const Cover = () => {
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center sm:pt-5">
                     <div className="w-[192px]">
                         <Link href={user ? "/mypage" : "/guest"}>
-                            <div className="flex justify-center items-center py-1 px-3 w-[210px] h-[58px] bg-primary rounded-lg text-white text-base font-medium sm:w-[192px] sm:h-12 sm:text-[16px] sm:mx-auto">
+                            <div className="flex justify-center items-center py-1 px-3 w-[210px] h-[58px] bg-primary rounded-lg text-white text-base font-medium sm:w-[192px] sm:h-12 sm:text-[14px] sm:mx-auto">
                                 바로 포트폴리오 작성하기
                             </div>
                         </Link>

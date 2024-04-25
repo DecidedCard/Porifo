@@ -13,7 +13,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     };
 
     return (
-        <main className="mt-16 mb-10 sm:w-[448px] sm:py-10 sm:px-6">
+        <main className="mt-16 mb-10 sm:py-10 sm:px-6">
             <div className="flex flex-col gap-8 items-center justify-center">
                 <div className="flex flex-row items-start justify-center sm:ml-10">
                     <Image

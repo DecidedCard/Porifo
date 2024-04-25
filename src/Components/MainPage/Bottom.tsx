@@ -76,7 +76,7 @@ const Bottom = () => {
                         border="none"
                         size="m"
                         fontSize="s"
-                        className="sm:w-[400px] sm:h-[48px] sm:text-[16px] sm:font-medium"
+                        className="sm:w-[400px] sm:h-[48px] sm:text-[14px] sm:font-medium"
                     />
                 </Link>
             </div>
