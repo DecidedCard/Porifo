@@ -8,10 +8,11 @@ import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
 import Head from "next/head";
-
+import Header from "@/Components/Header";
 export default function Home() {
     return (
         <main>
+            <Header />
             <div className="bg-white sm:w-full">
                 <Cover />
                 <div className="flex justify-center sm:w-full">
