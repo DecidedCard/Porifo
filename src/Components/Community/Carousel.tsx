@@ -14,8 +14,8 @@ import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
-    const [pixel, setPixel] = useState(488); // pc
-    // const [devicePixel, setDevicePixel] = useState(367); // 모바일
+    const [pixel, setPixel] = useState(500); // pc
+    const [devicePixel, setDevicePixel] = useState(320); // 모바일
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -49,8 +49,7 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
         setCurrCarousel(newCurr);
-        setPixel(488); //pc
-        // setPixel(367); //모바일
+        setPixel(500); //pc
 
         if (newCurr === SliderLength + 2) {
             moveToNthSlide(1);
@@ -73,15 +72,37 @@ const Carousel = () => {
         setCarouselTransition("transform 500ms ease-in-out");
     };
 
+    const handleImageNextBtnDevice = () => {
+        const SliderLength = data!.length;
+        const newCurr = currCarousel + 1;
+        setCurrCarousel(newCurr);
+        setDevicePixel(320); //모바일
+        if (newCurr === SliderLength - 1) {
+            moveToNthSlide(1);
+        }
+
+        setCarouselTransition("transform 500ms ease-in-out");
+    };
+    const handleImagePrevBtnDevice = () => {
+        const SliderLength = data!.length;
+        const newCurr = currCarousel - 1;
+        setCurrCarousel(newCurr);
+        // setPixel(570); //pc
+        setPixel(320); //mobile
+
+        if (newCurr === 0) {
+            moveToNthSlide(0);
+        }
+
+        setCarouselTransition("transform 500ms ease-in-out");
+    };
+
     const moveToNthSlide = (n: any) => {
         setTimeout(() => {
             setCarouselTransition("");
             setCurrCarousel(n);
         }, 500);
     };
-
-    const handleImageNextBtnDevice = () => {};
-    const handleImagePrevBtnDevice = () => {};
 
     return (
         <>
@@ -180,7 +201,7 @@ const Carousel = () => {
                                         key={idx + 1}
                                         className=" flex flex-col gap-2 w-[302px] h-[210px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
                                         style={{
-                                            transform: `translateX(-${currCarousel * pixel}px)`,
+                                            transform: `translateX(-${currCarousel * devicePixel}px)`,
                                             transition: carouselTransition,
                                         }}
                                         onClick={() => {
