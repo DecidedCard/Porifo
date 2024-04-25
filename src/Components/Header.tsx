@@ -131,13 +131,13 @@ const Header = () => {
                         </div>
                     ) : (
                         <>
-                            <div className="">
+                            <div>
                                 <Link href="/signin">
                                     <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
                                 </Link>
                             </div>
 
-                            <div className="">
+                            <div>
                                 <Link href="/signupMethod">
                                     <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
                                 </Link>
