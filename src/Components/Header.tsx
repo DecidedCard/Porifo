@@ -14,6 +14,7 @@ const Header = () => {
     const [activeMenu, setActiveMenu] = useState<string>("about");
     const router = useRouter();
     const { user } = useLoginCheck();
+
     const { setUser } = useUserStore();
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
@@ -42,7 +43,13 @@ const Header = () => {
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
-                    <Image className="overflow-visible sm:w-[70px] sm:h-[30px]" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
+                    <Image
+                        className="overflow-visible sm:w-[70px] sm:h-[30px]"
+                        src="../porifo.svg"
+                        alt="Logo"
+                        width={84.42}
+                        height={28}
+                    />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
