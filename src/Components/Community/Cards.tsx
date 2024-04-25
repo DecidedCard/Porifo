@@ -160,7 +160,7 @@ const Cards = () => {
             {isFetchingNextPage && <h3>Loding...</h3>}
 
             {data!.pages[0]!.length === 0 && (
-                <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4">
+                <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4 sm:mr-0 ">
                     <div className="">
                         <Image src={"gray_warn_lined.svg"} alt="결과없음 아이콘" width={32} height={32} />
                     </div>
