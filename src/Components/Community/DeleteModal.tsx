@@ -1,9 +1,15 @@
 "use client";
+import useDelete from "@/hooks/community/useDelete";
 import useDetailStore from "@/store/detailStore";
 
 const DeleteModal = ({ children }: any) => {
-    const { isDeleteModalOpen, setIsDeleteModalOpen } = useDetailStore();
+    const { isDeleteModalOpen, setIsDeleteModalOpen, commentId } = useDetailStore();
+    const { handleCommentDelete } = useDelete();
 
+    const handleDeleteBtn = () => {
+        handleCommentDelete(commentId);
+        setIsDeleteModalOpen(false);
+    };
     return (
         <>
             {!isDeleteModalOpen ? (
@@ -22,7 +28,10 @@ const DeleteModal = ({ children }: any) => {
                             >
                                 취소
                             </button>
-                            <button className="bg-black pt-1 pr-3 pb-1 pl-3 w-[184px] h-[48px] rounded-xl font-spoqaMedium text-[16px] text-white">
+                            <button
+                                className="bg-black pt-1 pr-3 pb-1 pl-3 w-[184px] h-[48px] rounded-xl font-spoqaMedium text-[16px] text-white"
+                                onClick={handleDeleteBtn}
+                            >
                                 삭제
                             </button>
                         </div>
