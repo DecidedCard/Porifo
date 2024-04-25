@@ -14,6 +14,7 @@ import { supabase } from "@/util/supabase/clientSupabase";
 const Find_Email = () => {
     const [userEmail, setUserEmail] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
+
     const changePassword = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {

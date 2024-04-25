@@ -1,7 +1,7 @@
 "use client";
 
 import React, { PropsWithChildren } from "react";
-
+import Header from "@/Components/Header";
 import Loading from "@/Components/Loading";
 import LoginCheckModal from "@/Components/LoginCheckModal";
 
@@ -21,6 +21,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
     if (isError) {
         return (
             <div>
+                <Header />
                 <LoginCheckModal route="/" />
             </div>
         );
