@@ -12,6 +12,7 @@ import Header from "@/Components/Header";
 export default function Home() {
     return (
         <main>
+            <Header />
             <div className="bg-white sm:w-[480px]">
                 <Cover />
                 <div className="flex justify-center sm:w-[480px]">
