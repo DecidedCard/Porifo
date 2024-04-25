@@ -73,7 +73,7 @@ const Cards = () => {
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 w-[1280px] lg:w-[730px]">
+            <div className="mt-8 flex flex-wrap gap-6 sm:w-full sm:justify-center w-[1280px] lg:w-[730px]">
                 {data!.pages.map((portfolio: any) => {
                     return portfolio.map((item: any) => {
                         return (
@@ -86,32 +86,29 @@ const Cards = () => {
                                         queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
-                                <div className="group relative flex flex-col gap-2 mb-8">
+                                <div className="group relative flex flex-col gap-2 mb-8 sm:w-[416px] sm:h-[240px]">
                                     {/* 대표이미지 */}
                                     <Image
-                                        className="rounded-2xl w-[324px] h-[240px]"
-                                        style={{
-                                            objectFit: "cover",
-                                        }}
+                                        className="rounded-2xl w-[324px] h-[240px] sm:w-full object-cover"
                                         src={item.profileImage}
                                         alt="포트폴리오 프로필"
                                         width={324}
                                         height={240}
                                     />
 
-                                    <span className="absolute flex items-end py-5 px-4 w-[324px] h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
+                                    <span className="absolute flex items-end py-5 px-4 w-full h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100 sm:opacity-100">
                                         <p className="w-[269px] text-[16px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
                                             {item.oneLineIntroduce}
                                         </p>
                                         <p className="w-[269px] text-[12px] absolute top-[20px] whitespace-nowrap overflow-hidden text-white text-base font-medium">
-                                            {`#${item.job}`}
+                                            {`#${item.job.slice(0, -3)}`}
                                         </p>
                                     </span>
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저아바타 */}
                                             <Image
-                                                className="rounded-full w-8 h-8"
+                                                className="rounded-full w-8 h-8 sm:hidden"
                                                 style={{ objectFit: "cover" }}
                                                 src={item.profileImage}
                                                 alt="포트폴리오 프로필"
@@ -119,7 +116,7 @@ const Cards = () => {
                                                 height={32}
                                             />
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap">
+                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap sm:ml-2">
                                                 {item.name}
                                             </div>
                                         </div>
