@@ -4,9 +4,11 @@ import Image from "next/image";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import Loading from "../Loading";
 import useLiked from "@/hooks/community/useLiked";
+import { useRouter } from "next/navigation";
 
 const Modal = ({ isVisible, onClose, children }: any) => {
     const { checkLike, id, pending, handleLikeBtn } = useLiked();
+    const router = useRouter();
 
     //모달 close
     if (!isVisible) return null;
@@ -21,7 +23,9 @@ const Modal = ({ isVisible, onClose, children }: any) => {
     }
 
     //댓글 버튼
-    const handleCommentBtn = () => {};
+    const handleCommentBtn = () => {
+        router.push("/community#comment");
+    };
 
     return (
         <div

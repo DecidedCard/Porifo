@@ -10,7 +10,6 @@ export default function RootLayout({
         <>
             <HeaderNonAuth />
             {children}
-            <Footer />
         </>
     );
 }

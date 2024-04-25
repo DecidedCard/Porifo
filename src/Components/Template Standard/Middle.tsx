@@ -39,7 +39,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="flex flex-col items-start justify-start my-10 sm:items-center sm:justify-center">
                     <p className="font-bold text-[22px] sm:w-[448px] sm:font-medium sm:text-[20px]">자기소개</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[448px]"></div>
-                    <p className="text-[14px] w-[804px] tracking-wide leading-normal sm:w-[448px]">{userInfo.introduce}</p>
+                    <p className="text-[14px] w-[804px] tracking-wide leading-normal sm:w-[448px] sm:text-gray4">{userInfo.introduce}</p>
                 </div>
 
                 <ol>
@@ -93,7 +93,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         )}
 
                                         {project.deployLink && (
-                                            <div className="flex items-center text-neutral-600 mt-1 sm:w-[448px]">
+                                            <div className="flex items-center text-gray4 mt-1 sm:w-[448px]">
                                                 <Image
                                                     src="/assets/image/link.svg"
                                                     alt="link"

@@ -79,19 +79,19 @@ const SignIn = () => {
     return (
         <main>
             <div className="flex py-36 items-center justify-center bg-hihigray">
-                <div className="rounded-2xl w-[454px] h-[400px] bg-white flex justify-center items-center flex-col">
+                <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col">
                     <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center items-center h-[86px]">
                             <Image
-                                width={160}
-                                height={54}
+                                width={0}
+                                height={0}
                                 className="w-[160px] h-[54px]"
                                 src="formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
                             />
                         </div>
-                        {/* <SignUpItem
+                        <SignUpItem
                             setLabel="이메일"
                             type="email"
                             helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
@@ -133,17 +133,17 @@ const SignIn = () => {
                                 src="find_password_arrow.svg"
                                 alt="페이지 이동 화살표"
                             />
-                        </div> */}
+                        </div>
                     </form>
 
                     <SocialSign redirectTo={redirectTo} />
 
-                    {/* <div className="flex flex-row mx-auto text-[12px]">
+                    <div className="flex flex-row mx-auto text-[12px]">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요? </p>
                         <a href="/signupMethod" className="ml-3 underline">
                             이메일로 회원가입
                         </a>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </main>

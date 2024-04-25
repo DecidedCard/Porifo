@@ -42,7 +42,9 @@ const Find_Email = () => {
                                 priority
                             />
                         </div>
-                        <p className="flex flex-wrap items-center justify-center mt-8 font-normal text-sm w-[236px] h-[44px]">비밀번호 재설정을 위해 회원님의 이메일로 인증메일이 발송됩니다.</p>
+                        <p className="flex flex-wrap items-center justify-center mt-8 font-normal text-sm w-[236px] h-[44px]">
+                            비밀번호 재설정을 위해 회원님의 이메일로 인증메일이 발송됩니다.
+                        </p>
                         <SignUpItem
                             type="email"
                             setLabel="이메일"
