@@ -3,20 +3,23 @@ import Button from "@/Components/Commen/Button";
 
 type InputValue = {
     email?: string;
+    loginPassword?: string;
+    password?: string;
     OTPNumber?: string;
+
     confirmOTP?: string;
     findEmail?: string;
     text: string;
-    password?: string;
-    loginPassword?: string;
-    confirmUserPassword?: string;
+
     name?: string;
     birthDate?: string;
+    confirmUserPassword?: string;
+    sex?: string;
+    personalInfoCheck?: boolean;
+
     firstNumber?: string;
     middlePhoneNumber?: string;
     lastPhoneNumber?: string;
-    sex?: string;
-    personalInfoCheck?: boolean;
     inputDisabled: boolean;
     onClick?: () => void;
     setInputDisabled: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,21 +41,23 @@ const SignButton = ({
     personalInfoCheck,
     sex,
 }: InputValue) => {
+    const siginIn = email && loginPassword;
+
     const signUp = email && password && OTPNumber;
+
+    const signUpUserMetaData = name && birthDate && sex !== "" && personalInfoCheck === true;
 
     const confirmPassword = password && confirmUserPassword;
 
     const socialSettingConfirm = findEmail && birthDate && sex !== "" && personalInfoCheck === true;
 
-    const signUpUserMetaData = name && birthDate && sex !== "" && personalInfoCheck === true;
-
     useEffect(() => {
         {
             /*로그인*/
         }
-        const siginIn = email && loginPassword;
+
         siginIn ? setInputDisabled(true) : setInputDisabled(false);
-    }, [email, loginPassword, setInputDisabled]);
+    }, [siginIn, setInputDisabled]);
 
     useEffect(() => {
         {
