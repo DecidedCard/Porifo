@@ -1,109 +1,115 @@
 "use client";
 
-import { useState } from "react";
-import { Flip, ToastContainer, toast } from "react-toastify";
+import React, { useState, useEffect } from "react";
+import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { successNotify } from "@/util/toast";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-
-import SignUpItem from "@/Components/Sign/SignUpItem";
-import SignSelectSex from "@/Components/Sign/SignSelectSex";
-
-import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
-import SignButton from "@/Components/Sign/SignButton";
-import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
-import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
-
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import useInput from "@/hooks/useInput";
-import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
+import Image from "next/image";
+import { signUpValidation } from "@/util/sign/signNumber_validation";
+import SignButton from "@/Components/Sign/SignButton";
+
 import { supabase } from "@/util/supabase/clientSupabase";
+import SignUpItem from "@/Components/Sign/SignUpItem";
+import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
+import Button from "@/Components/Commen/Button";
 
-import { signSettingValidation } from "@/util/sign/signNumber_validation";
+const ConfirmEmailpage = () => {
+    const [email, onChangeEmailHandler] = useInput();
+    const [emailError, setEmailError] = useState(true);
 
-const SignUp = () => {
-    const [birthYear, setBirthYear] = useState("");
-    const [birthMonth, setBirthMonth] = useState("");
-    const [birthDay, setBirthDay] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState(true);
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState(true);
+
+    const [samePassword, setSamePassword] = useState(false);
+    const [emailSMPTNumber, setEmailSMPTNumber] = useState(false);
+
+    const [OTPNumber, onChangeConfirmOTPNumber] = useInput();
+    const [emailRegValid, setEmailRegValid] = useState(false);
 
     const [inputDisabled, setInputDisabled] = useState(false);
-
-    const [name, onChangeNameHandler] = useInput();
-
-    const [personalInfoModal, setPersonalInfoModal] = useState(false);
-    const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
-
-    const [firstNumber, setFirstNumber] = useState("010");
-    const [middlePhoneNumber, setMiddlePhoneNumber] = useState("");
-    const [lastPhoneNumber, setLastPhoneNumber] = useState("");
-    const [sex, setSex] = useState("");
+    const [wordRegValid, setWordRegValid] = useState(false);
+    const [specialRegValid, setSpecialRegValid] = useState(false);
+    const [numberRegValid, setNumberRegValid] = useState(false);
+    const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
-    const birthDate = birthYear + birthMonth + birthDay;
 
-    let phoneNumber = firstNumber + middlePhoneNumber + lastPhoneNumber;
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+    const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
 
-    const onClickSelectSex = (sex: string) => setSex(sex);
+    useEffect(() => {
+        emailValidate({ email, setEmailRegValid });
+        email.length >= 1 ? setEmailError(false) : setEmailError(true);
 
-    const onClickPhoneNumber = (e: React.ChangeEvent<HTMLSelectElement>) => setFirstNumber(e.target.value);
+        if (emailRegValid === true) setEmailError(true);
+    }, [email, emailRegValid]);
 
-    const onClickBirthYear = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthYear(e.target.value);
+    useEffect(() => {
+        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
+        const confirmPassword =
+            password.length === 0 || (wordRegValid && specialRegValid && numberRegValid && lengthRegValid);
 
-    const onClickBirthMonth = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthMonth(e.target.value);
+        confirmPassword && password.length >= 8 ? setPasswordError(true) : setPasswordError(false);
+    }, [wordRegValid, specialRegValid, numberRegValid, lengthRegValid, password]);
 
-    const onClickBirthDay = (e: React.ChangeEvent<HTMLSelectElement>) => setBirthDay(e.target.value);
+    useEffect(() => {
+        password === confirmPassword ? setSamePassword(true) : setSamePassword(false);
+        password === confirmPassword ? setConfirmPasswordError(true) : setConfirmPasswordError(false);
+    }, [password, confirmPassword]);
 
-    const onChangeMiddlePhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
-        signPhoneNumber({ event, setPhoneNumber: setMiddlePhoneNumber });
+    useEffect(() => {
+        email.trim() !== "" && password.trim() !== "" && samePassword === true
+            ? setEmailSMPTNumber(true)
+            : setEmailSMPTNumber(false);
+    }, [email, password, samePassword]);
 
-    const onChangeLastPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) =>
-        signPhoneNumber({ event, setPhoneNumber: setLastPhoneNumber });
-
-    const checkRequiredPersonalInfoModal = () =>
-        personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
-
-    const onClickToast = () =>
-        toast.success("메일 전송중에 있습니다!", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Flip,
-        });
-
-    const signUpNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const confirmEmailAndOTPNumber = async () => {
         try {
-            signSettingValidation({ birthDate, name, sex, personalInfoAgree: personalInfoCheck });
-            if (phoneNumber.length !== 11) {
-                phoneNumber = "000";
-            }
+            signUpValidation({ email, password });
+            successNotify({ title: "OTP인증 메일을 전송하고 있습니다!" });
 
-            return router.push("/confirmEmail");
+            await supabase.auth.signUp({
+                email,
+                password,
+            });
+            successNotify({ title: "OTP인증 메일이 전송되었습니다!" });
         } catch (error) {
             console.log(error);
         }
     };
 
+    const signUpNewUser = async () => {
+        try {
+            successNotify({ title: "잠시만 기다려 주세요!" });
+
+            await supabase.auth.verifyOtp({ token_hash: OTPNumber, type: "email" });
+
+            router.push("/confirmEmail");
+        } catch (error) {
+            console.log("error", error);
+        }
+    };
+
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded-2xl p-10 w-[454px] h-[756px] bg-white flex justify-center flex-col">
-                <form onSubmit={signUpNewUser}>
-                    <div className="flex justify-center">
+            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col">
+                <div className="flex flex-col items-center justify-center">
+                    <div className="flex justify-center items-center h-[86px] mb-5">
                         <Image
-                            className="w-[160px] h-auto"
+                            className="w-[162px] h-[54px]"
                             width={0}
                             height={0}
                             src="formLogo.svg"
                             priority
-                            alt="회원가입의 form 로고"
+                            alt="이메일 확인 form 로고"
                         />
                     </div>
-
                     <ToastContainer
                         position="top-center"
                         autoClose={5000}
@@ -118,74 +124,69 @@ const SignUp = () => {
                         transition={Flip}
                     />
 
-                    <div className="-mt-3">
-                        <SignUpItem
-                            setLabel="이름"
-                            type="text"
-                            placeholder="이름을 입력해주세요"
-                            onChangeHandler={onChangeNameHandler}
-                        />
-                    </div>
-                    <SignUploadBitrthDay
-                        onClickBirthYear={onClickBirthYear}
-                        onClickBirthMonth={onClickBirthMonth}
-                        onClickBirthDay={onClickBirthDay}
+                    <SignUpItem
+                        setLabel="이메일"
+                        type="email"
+                        helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
+                        color={emailError ? "black" : "error"}
+                        placeholder="이메일을 입력해주세요"
+                        pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+                        onChangeHandler={onChangeEmailHandler}
                     />
-                    <SignSelectSex onClickSelectSex={onClickSelectSex} />
 
-                    <SignPhoneNumber
-                        onClickPhoneNumber={onClickPhoneNumber}
-                        onChangeMiddlePhoneNumber={onChangeMiddlePhoneNumber}
-                        onChangeLastPhoneNumber={onChangeLastPhoneNumber}
-                        middlePhoneNumber={middlePhoneNumber}
-                        lastPhoneNumber={lastPhoneNumber}
+                    <SignUpItem
+                        setLabel="비밀번호"
+                        placeholder="비밀번호를 작성해주세요"
+                        color={password.length === 0 ? "black" : passwordError ? "black" : "error"}
+                        pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
+                        "
+                        onChangeHandler={onChangePassword}
+                        relative="relative"
+                        eye="eye.svg"
+                        eyeClose="eye_close.svg"
                     />
-                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[50px]">
-                        <span className="flex">
-                            <Image
-                                className="w-6 h-6 mr-1"
-                                src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
-                                width={0}
-                                height={0}
-                                alt="check"
-                            />
-                            <span className="flex mt-1">
-                                개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
-                            </span>
-                        </span>
-                        <Image
-                            width={0}
-                            height={0}
-                            className="w-[20px] h-[20px]"
-                            src="find_password_arrow.svg"
-                            alt="페이지 이동 화살표"
-                        />
-                    </div>
+                    <SignPasswordValidate
+                        lengthRegValid={lengthRegValid}
+                        numberRegValid={numberRegValid}
+                        wordRegValid={wordRegValid}
+                        specialRegValid={specialRegValid}
+                    />
 
-                    {personalInfoModal ? (
-                        <SignPersonalInfoCheck
-                            setPersonalInfoModal={setPersonalInfoModal}
-                            setPersonalInfoCheck={setPersonalInfoCheck}
-                        />
-                    ) : null}
+                    <SignUpItem
+                        setLabel="비밀번호"
+                        placeholder="비밀번호를 작성해주세요"
+                        color={confirmPassword.length === 0 ? "black" : confirmPasswordError ? "black" : "error"}
+                        pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
+                        "
+                        helperText={samePassword ? "" : "비밀번호가 일치하지 않습니다."}
+                        onChangeHandler={onChangeConfirmPassword}
+                        relative="relative"
+                        eye="eye.svg"
+                        eyeClose="eye_close.svg"
+                    />
+
+                    <SignUpItem
+                        setLabel="인증번호"
+                        type="text"
+                        placeholder="인증번호를 입력해주세요"
+                        onChangeHandler={onChangeConfirmOTPNumber}
+                    />
+
+                    <Button text="인증번호 받기" disabled={!emailSMPTNumber} onClick={confirmEmailAndOTPNumber} />
 
                     <SignButton
-                        text="회원가입"
+                        text="다음"
+                        email={email}
+                        password={password}
+                        OTPNumber={OTPNumber}
                         inputDisabled={inputDisabled}
                         setInputDisabled={setInputDisabled}
-                        name={name}
-                        birthDate={birthDate}
-                        firstNumber={firstNumber}
-                        middlePhoneNumber={middlePhoneNumber}
-                        lastPhoneNumber={lastPhoneNumber}
-                        sex={sex}
-                        onClick={onClickToast}
-                        personalInfoCheck={personalInfoCheck}
+                        onClick={signUpNewUser}
                     />
-                </form>
+                </div>
             </div>
         </div>
     );
 };
 
-export default SignUp;
+export default ConfirmEmailpage;
