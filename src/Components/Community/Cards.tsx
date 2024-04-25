@@ -157,7 +157,13 @@ const Cards = () => {
             </div>
 
             <div ref={ref} />
-            {isFetchingNextPage && <h3>Loding...</h3>}
+            {isFetchingNextPage && (
+                <div className="flex justify-center">
+                    <div className="w-[200px] sm:w-[100px] mt-8">
+                        <Loading />
+                    </div>
+                </div>
+            )}
 
             {data!.pages[0]!.length === 0 && (
                 <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4 sm:mr-0 ">
