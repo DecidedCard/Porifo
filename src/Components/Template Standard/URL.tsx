@@ -11,7 +11,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <main className="flex my-5">
-            <div className="flex flex-row items-start justify-start ">
+            <div className="flex flex-row items-start justify-start">
                 <div className="flex flex-col gap-2 items-start justify-start flex-1 sm:items-center sm:justify-center">
                     {(userInfo.blogLink || userInfo.githubLink) && (
                         <>
