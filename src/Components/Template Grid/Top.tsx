@@ -13,9 +13,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     };
 
     return (
-        <main className="mt-16 mb-10 sm:py-10 sm:px-6">
+        <main className="mt-16 mb-10 sm:py-10">
             <div className="flex flex-col gap-8 items-center justify-center sm:w-full">
-                <div className="flex flex-row items-start justify-center sm:ml-10">
+                <div className="flex flex-row items-start justify-center sm:ml-10 sm:w-full sm:gap-5">
                     <Image
                         className="rounded-full mr-8 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40 sm:mr-0"
                         src={userInfo.profileImage}
@@ -24,8 +24,8 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         height={200}
                     />
 
-                    <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs sm:w-[248px] sm:px-6">
-                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[26px]">
+                    <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs sm:min-w-[200px] sm:max-w-0">
+                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[26px] sm:w-[210px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
