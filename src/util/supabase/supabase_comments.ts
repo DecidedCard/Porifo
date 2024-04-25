@@ -31,7 +31,6 @@ export const addComment = async (newComment: Comment) => {
 };
 
 export const deleteComment = async (id: number) => {
-    console.log(id);
     const { error } = await supabase.from("comments").delete().eq("id", id);
     if (error) {
         console.error(error);

@@ -12,6 +12,7 @@ import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string>("about");
+    console.log(activeMenu);
     const router = useRouter();
     const { user } = useLoginCheck();
 
