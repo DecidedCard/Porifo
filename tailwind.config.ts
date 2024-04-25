@@ -65,6 +65,7 @@ const config: Config = {
                 realblack: "#000000",
             },
             screens: {
+                s: { min: "350px", max: "390px" },
                 sm: { min: "350px", max: "480px" },
                 lg: { min: "1200px", max: "1500px" },
             },
