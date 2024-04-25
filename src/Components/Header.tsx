@@ -38,7 +38,7 @@ const Header = () => {
     };
 
     return (
-        <main className="sticky top-0 z-10 sm:w-[480px] sm:z-20">
+        <main className="sticky top-0 z-10 sm:w-full sm:z-20">
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
