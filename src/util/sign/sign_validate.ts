@@ -8,6 +8,11 @@ type PasswordType = {
     setLengthRegValid: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type NameType = {
+    name: string;
+    setNameRegValid: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export const emailValidate = ({ email, setEmailRegValid }: SignType) => {
     const emailRegValid = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*/;
 
@@ -33,4 +38,9 @@ export const passwordValidate = ({
     specialReg.test(password) ? setSpecialRegValid(true) : setSpecialRegValid(false);
 
     lengthReg.test(password) ? setLengthRegValid(true) : setLengthRegValid(false);
+};
+
+export const nameValidate = ({ name, setNameRegValid }: NameType) => {
+    const nameReg = /[ㄱ-ㅣ가-힣]/;
+    nameReg.test(name) ? setNameRegValid(true) : setNameRegValid(false);
 };

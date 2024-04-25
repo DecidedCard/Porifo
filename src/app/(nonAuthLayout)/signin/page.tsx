@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 
 import SignUpItem from "@/Components/Sign/SignUpItem";
@@ -91,6 +92,7 @@ const SignIn = () => {
                                 priority
                             />
                         </div>
+
                         <SignUpItem
                             setLabel="이메일"
                             type="email"
