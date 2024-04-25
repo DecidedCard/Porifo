@@ -1,28 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { Flip, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-import { successNotify } from "@/util/toast";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
+import { Flip, ToastContainer } from "react-toastify";
 
 import SignUpItem from "@/Components/Sign/SignUpItem";
-import SignSelectSex from "@/Components/Sign/SignSelectSex";
-
-import { nameValidate } from "@/util/sign/sign_validate";
-
-import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignButton from "@/Components/Sign/SignButton";
+import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
+import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 
 import useInput from "@/hooks/useInput";
-import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 
+import { successNotify } from "@/util/toast";
+import { nameValidate } from "@/util/sign/sign_validate";
 import { supabase } from "@/util/supabase/clientSupabase";
-
+import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
 
 const SignUp = () => {
@@ -87,7 +83,7 @@ const SignUp = () => {
             }
             successNotify({ title: "회원가입이 완료되었습니다!" });
 
-            return router.push("/confirmEmail");
+            return router.push("/signin");
         } catch (error) {
             console.log(error);
         }

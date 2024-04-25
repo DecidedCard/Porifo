@@ -1,20 +1,22 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Flip, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { successNotify } from "@/util/toast";
-import { useRouter } from "next/navigation";
-import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
-import useInput from "@/hooks/useInput";
 import Image from "next/image";
-import { signUpValidation } from "@/util/sign/signNumber_validation";
-import SignButton from "@/Components/Sign/SignButton";
+import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
+import { Flip, ToastContainer } from "react-toastify";
 
-import { supabase } from "@/util/supabase/clientSupabase";
-import SignUpItem from "@/Components/Sign/SignUpItem";
-import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
 import Button from "@/Components/Commen/Button";
+import SignButton from "@/Components/Sign/SignButton";
+import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
+
+import useInput from "@/hooks/useInput";
+
+import { successNotify } from "@/util/toast";
+import { supabase } from "@/util/supabase/clientSupabase";
+import { signUpValidation } from "@/util/sign/signNumber_validation";
+import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
 
 const ConfirmEmailpage = () => {
     const [email, onChangeEmailHandler] = useInput();
