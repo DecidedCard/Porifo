@@ -40,7 +40,7 @@ const Header = () => {
     };
 
     return (
-        <main className="sticky top-0 z-10 sm:w-[480px] sm:z-20">
+        <main className="sticky top-0 z-10 sm:w-full sm:z-20">
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
@@ -111,6 +111,22 @@ const Header = () => {
                                                 <p className="text-[12px]">이력서 작성</p>
                                             </Link>
                                         </div>
+
+                                        <div className="hidden sm:block">
+                                            <Link
+                                                href="/community"
+                                                className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px] sm:ml-[12px]"
+                                            >
+                                                <Image 
+                                                src="/assets/image/comunity.svg"
+                                                alt="내 피드"
+                                                width={18}
+                                                height={18}
+                                                />
+                                                <p className="text-[12px]">피드/커뮤니티</p>
+                                            </Link>
+                                        </div>
+
                                         <div onClick={signOutFunc}>
                                             <Link
                                                 href="/"
@@ -123,14 +139,6 @@ const Header = () => {
                                                     height={15}
                                                 />
                                                 <p className="text-[12px]">로그아웃</p>
-                                            </Link>
-                                        </div>
-                                        <div className="hidden sm:block">
-                                            <Link
-                                                href="/community"
-                                                className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]"
-                                            >
-                                                <p className="text-[12px]">피드/커뮤니티</p>
                                             </Link>
                                         </div>
                                     </div>
