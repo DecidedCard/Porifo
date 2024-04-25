@@ -7,7 +7,7 @@ const Bottom = () => {
         <main className="mb-0 sm:w-full sm:gap-10">
             <div className="flex flex-col items-start justify-start ml-[320px] gap-2.5 sm:ml-0 sm:items-center sm:justify-center">
                 <Image
-                    className="rounded-2xl sm:w-[448px] sm:h-[228px]"
+                    className="rounded-2xl sm:w-[448px] sm:h-[228px] sm:object-cover"
                     src="/assets/image/mainImage8.svg"
                     alt="메인 이미지"
                     width={1020}
@@ -29,7 +29,7 @@ const Bottom = () => {
 
             <div className="flex flex-col items-start justify-start ml-[970px] gap-2.5 mt-20 sm:ml-0 sm:items-center sm:justify-center">
                 <Image
-                    className="rounded-2xl sm:w-[448px] sm:h-[228px]"
+                    className="rounded-2xl sm:w-[448px] sm:h-[228px] sm:object-cover"
                     src="/assets/image/mainImage9.svg"
                     alt="메인 이미지"
                     width={630}
@@ -51,7 +51,7 @@ const Bottom = () => {
 
             <div className="flex flex-col items-start justify-start ml-[450px] gap-2.5 mt-16 sm:ml-0 sm:items-center sm:justify-center">
                 <Image
-                    className="rounded-2xl sm:w-[448px] sm:h-[228px]"
+                    className="rounded-2xl sm:w-[448px] sm:h-[228px] sm:object-cover"
                     src="/assets/image/mainImage10.svg"
                     alt="메인 이미지"
                     width={500}
