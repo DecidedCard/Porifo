@@ -42,7 +42,7 @@ const Modal = ({ isVisible, onClose, children }: any) => {
                 <Image src="icon-set9.svg" alt="아이콘" width={25} height={25} />
             </button>
             {/* 오른쪽 UI */}
-            <div className="absolute right-[22%] top-[25px] flex flex-col gap-[28px] ">
+            <div className="absolute right-[22%] top-[25px] flex flex-col gap-[28px] sm:hidden">
                 {/* 좋아요 */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                     <button
