@@ -15,7 +15,7 @@ import useCardIdStore from "@/store/detailStore";
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
     const [pixel, setPixel] = useState(488); // pc
-    // const [pixel, setPixel] = useState(367); // 모바일
+    // const [devicePixel, setDevicePixel] = useState(367); // 모바일
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -80,11 +80,14 @@ const Carousel = () => {
         }, 500);
     };
 
+    const handleImageNextBtnDevice = () => {};
+    const handleImagePrevBtnDevice = () => {};
+
     return (
         <>
             <div className="items-center justify-center relative mb-20">
                 {/* 카드 */}
-                <div className="flex w-screen sm:w-full sm:overflow-hidden gap-5 overflow-hidden">
+                <div className="flex w-screen sm:w-full gap-5 overflow-hidden">
                     {modifiedArray!.map((item: any, idx) => {
                         return (
                             <>
@@ -257,7 +260,7 @@ const Carousel = () => {
                 <div className="sm:hidden">
                     <button
                         onClick={handleImageNextBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] top-[162px] sm:left-[53%] sm:top-[80px] lg:left-[1150px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -270,7 +273,7 @@ const Carousel = () => {
                     </button>
                     <button
                         onClick={handleImagePrevBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 sm:left-[45%] sm:top-[80px] absolute left-[20%] top-[162px] lg:left-[150px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[20%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -285,7 +288,7 @@ const Carousel = () => {
                 {/* 모바일 버전 */}
                 <div className="hidden sm:block">
                     <button
-                        onClick={handleImageNextBtn}
+                        onClick={handleImageNextBtnDevice}
                         className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex absolute left-[54%] top-[80px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
@@ -298,7 +301,7 @@ const Carousel = () => {
                         />
                     </button>
                     <button
-                        onClick={handleImagePrevBtn}
+                        onClick={handleImagePrevBtnDevice}
                         className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex left-[45%] top-[80px] absolute  ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
