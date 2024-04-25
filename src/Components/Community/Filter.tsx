@@ -33,10 +33,10 @@ const JobFilter = () => {
     };
 
     return (
-        <div className="flex flex-row gap-8 lg:ml-2 ">
+        <div className="flex flex-row gap-8 lg:ml-2 sm:w-full sm:justify-center sm:gap-5">
             {SELECT_LIST.map((item, idx) => {
                 return (
-                    <div className="flex flex-col" key={idx}>
+                    <div className="flex flex-col " key={idx}>
                         <button
                             key={item.value}
                             onClick={() => handleJobFilterBtn(item.value)}

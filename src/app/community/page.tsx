@@ -20,7 +20,7 @@ const ComuunityPage = () => {
                 </div>
             </div>
             <Carousel />
-            <div className="flex gap-32 lg:gap-20">
+            <div className="flex gap-32 lg:gap-20 ">
                 <Filter />
                 <div>
                     <JobFilter />
