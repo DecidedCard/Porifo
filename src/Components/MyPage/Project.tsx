@@ -26,13 +26,13 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:mx-auto">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:mx-auto sm:mt-0">
                 <div className="flex flex-col gap-4">
                     <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
                         프로젝트
                     </h2>
                     <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
-                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-[40%]">
+                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-32">
                         프로젝트 정보
                     </p>
 

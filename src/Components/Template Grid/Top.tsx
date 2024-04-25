@@ -13,34 +13,34 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     };
 
     return (
-        <main className="mt-16 mb-10">
+        <main className="mt-16 mb-10 sm:py-10 sm:px-6">
             <div className="flex flex-col gap-8 items-center justify-center">
-                <div className="flex flex-row items-start justify-center">
+                <div className="flex flex-row items-start justify-center sm:ml-10">
                     <Image
-                        className="rounded-full mr-8 w-[200px] h-[200px] object-cover"
+                        className="rounded-full mr-8 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40 sm:mr-0"
                         src={userInfo.profileImage}
                         alt="프로필 사진"
                         width={200}
                         height={200}
                     />
 
-                    <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs">
-                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start">
+                    <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs sm:w-[248px] sm:px-6">
+                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[26px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-start justify-start">
                             <div className="flex flex-col items-start justify-start">
-                                <h2 className="text-[22px] font-bold flex items-center justify-center">
+                                <h2 className="text-[22px] font-bold flex items-center justify-center sm:text-[16px] sm:font-medium">
                                     {userInfo.name}
                                 </h2>
                                 <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
-                                <p className="text-[14px] flex items-center justify-center font-medium">
+                                <p className="text-[14px] flex items-center justify-center font-medium sm:text-[12px] sm:font-normal">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-col items-start justify-start h-[44px]">
+                            <address className="text-[14px] text-gray4 flex flex-col items-start justify-start h-[44px] sm:text-[12px]">
                                 <div className="flex flex-col items-start justify-start gap-2">
                                     {userInfo.tel && (
                                         <p className="flex items-center justify-center mr-2">
@@ -49,7 +49,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 alt="전화"
                                                 width={24}
                                                 height={24}
-                                                className="w-6 h-6 mr-1 object-cover"
+                                                className="w-6 h-6 mr-1 object-cover sm:w-5 sm:h-5"
                                             />
                                             {userInfo.tel}
                                         </p>
@@ -61,7 +61,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="메일"
                                             width={24}
                                             height={24}
-                                            className="w-6 h-6 mr-1 object-cover"
+                                            className="w-6 h-6 mr-1 object-cover sm:w-5 sm:h-5"
                                         />
                                         {userInfo.email}
                                     </p>

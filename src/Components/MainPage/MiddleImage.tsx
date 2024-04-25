@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const MiddleImage = () => {
     return (
-        <main className="overflow-hidden w-full">
+        <main className="overflow-hidden w-full sm:w-[480px]">
             <div className="flex flex-row gap-8 items-start justify-start animate-slider">
                 <Image
                     className="rounded-2xl sm:w-[300px] sm:h-[324px]"
