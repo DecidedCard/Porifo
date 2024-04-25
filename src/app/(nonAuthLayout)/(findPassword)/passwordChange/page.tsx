@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
@@ -93,7 +93,7 @@ const Password_Change = () => {
                                     priority
                                 />
                             </div>
-                            <SignUpItem
+                            <SignInputItem
                                 setLabel="비밀번호"
                                 placeholder="비밀번호를 작성해주세요"
                                 pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
@@ -109,7 +109,7 @@ const Password_Change = () => {
                                 wordRegValid={wordRegValid}
                                 specialRegValid={specialRegValid}
                             />
-                            <SignUpItem
+                            <SignInputItem
                                 setLabel="비밀번호 확인"
                                 placeholder="비밀번호를 확인해 주세요"
                                 pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/

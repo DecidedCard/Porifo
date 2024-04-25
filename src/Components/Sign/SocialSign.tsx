@@ -2,10 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-
 import signInWithSocial from "@/util/sign/socialLogin";
 
-const SocialSign = ({ redirectTo }: { redirectTo: string }) => {
+type SocialSignType = { redirectTo: string; text: string; imageWidthNum: number; imageHeight: number; gap: number };
+
+const SocialSign = ({ redirectTo, text, imageWidthNum, imageHeight, gap }: SocialSignType) => {
     const queryParams = {
         access_type: "offline",
         prompt: "consent",
@@ -13,30 +14,30 @@ const SocialSign = ({ redirectTo }: { redirectTo: string }) => {
 
     return (
         <div>
-            <div className="mx-auto flex justify-center mt-8 text-sm text-gray4 font-medium">간편하게 시작하기</div>
-            <div className="mt-3 mb-8 justify-between mx-auto flex space-x-4 w-[144px] h-8">
+            <div className="mx-auto mt-3 flex justify-center text-sm text-gray4 font-medium">{text}</div>
+            <div className={`items-center justify-center mx-auto flex gap-${gap} w-[216px] h-[86px]`}>
                 <Image
                     onClick={() => signInWithSocial("google", redirectTo, queryParams)}
-                    className="w-[32px] h-[32px] cursor-pointer rounded-2xl"
-                    width={32}
-                    height={32}
+                    className={`w-${imageWidthNum} h-${imageHeight} cursor-pointer rounded-2xl`}
+                    width={imageWidthNum}
+                    height={imageHeight}
                     src="/assets/image/google.svg"
                     alt="구글 로그인"
                 />
 
                 <Image
                     onClick={() => signInWithSocial("kakao", redirectTo)}
-                    className="w-[32px] h-[32px] cursor-pointer rounded-2xl"
-                    width={32}
-                    height={32}
+                    className={`w-${imageWidthNum} h-${imageHeight} cursor-pointer rounded-2xl`}
+                    width={imageWidthNum}
+                    height={imageHeight}
                     alt="카카오 로그인"
                     src="/assets/image/kakao.svg"
                 />
                 <Image
                     onClick={() => signInWithSocial("github", redirectTo)}
-                    className="w-[32px] h-[32px] cursor-pointer rounded-2xl"
-                    width={32}
-                    height={32}
+                    className={`w-${imageWidthNum} h-${imageHeight} cursor-pointer rounded-2xl`}
+                    width={imageWidthNum}
+                    height={imageHeight}
                     alt="깃허브 로그인"
                     src="/assets/image/github.svg"
                 />

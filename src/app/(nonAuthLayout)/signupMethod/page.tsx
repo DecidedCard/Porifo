@@ -26,7 +26,13 @@ const SignUpMethod = () => {
                             alt="form 로고 사진"
                         />
                     </div>
-                    <SocialSign redirectTo={redirectTo} />
+                    <SocialSign
+                        redirectTo={redirectTo}
+                        text="SNS 계정 회원가입"
+                        imageWidthNum={40}
+                        imageHeight={40}
+                        gap={6}
+                    />
 
                     <div className="pr-2 pl-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative">
                         <div className="bg-gray2 w-[150px] h-[1px]"></div>

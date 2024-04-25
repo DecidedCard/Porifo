@@ -1,4 +1,5 @@
 import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 
 export default function FindPasswordLayout({
     children,
@@ -9,6 +10,7 @@ export default function FindPasswordLayout({
         <>
             <Header />
             {children}
+            <Footer />
         </>
     );
 }

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
 import SignButton from "@/Components/Sign/SignButton";
-import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignInputItem from "@/Components/Sign/SignInputItem";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 
@@ -75,7 +75,7 @@ const Find_Email = () => {
                         <p className="flex flex-wrap items-center justify-center mt-8 font-normal text-sm w-[236px] h-[44px]">
                             비밀번호 재설정을 위해 회원님의 이메일로 인증메일이 발송됩니다.
                         </p>
-                        <SignUpItem
+                        <SignInputItem
                             type="email"
                             setLabel="이메일"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
