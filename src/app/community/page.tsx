@@ -1,8 +1,8 @@
 "use client";
 import Cards from "@/Components/Community/Cards";
 import Carousel from "@/Components/Community/Carousel";
-import JobFilter from "@/Components/Community/Filter";
-import Filter from "@/Components/Community/JobFilter";
+import JobFilter from "@/Components/Community/JobFilter";
+import Filter from "@/Components/Community/Filter";
 import useSupabaseRange from "@/hooks/useSupabaseRange";
 import { useEffect } from "react";
 

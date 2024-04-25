@@ -86,7 +86,7 @@ const Cards = () => {
                                         queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
-                                <div className="group relative flex flex-col gap-2 mb-8 sm:w-[416px] sm:h-[240px]">
+                                <div className="group relative flex flex-col gap-2 mb-8 sm:w-[330px] sm:h-[240px]">
                                     {/* 대표이미지 */}
                                     <Image
                                         className="rounded-2xl w-[324px] h-[240px] sm:w-full object-cover"
