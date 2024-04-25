@@ -3,9 +3,9 @@ import Button from "@/Components/Commen/Button";
 
 type InputValue = {
     email?: string;
-    findEmail?: string;
-    confirmUserEmail?: string;
+    OTPNumber?: string;
     confirmOTP?: string;
+    findEmail?: string;
     text: string;
     password?: string;
     loginPassword?: string;
@@ -24,11 +24,10 @@ type InputValue = {
 
 const SignButton = ({
     email,
-    findEmail,
-    confirmUserEmail,
-    confirmOTP,
+    OTPNumber,
     text,
     inputDisabled,
+    findEmail,
     setInputDisabled,
     password,
     loginPassword,
@@ -39,13 +38,13 @@ const SignButton = ({
     personalInfoCheck,
     sex,
 }: InputValue) => {
-    const signUp = email && password && birthDate && name && sex !== "" && personalInfoCheck === true;
+    const signUp = email && password && OTPNumber;
 
-    const confirmEmail = findEmail && password === undefined && birthDate === undefined;
     const confirmPassword = password && confirmUserPassword;
 
-    const socialSettingConfirm = birthDate && sex !== "" && personalInfoCheck === true;
-    const confirmFirmEmailOTP = confirmUserEmail && confirmOTP;
+    const socialSettingConfirm = findEmail && birthDate && sex !== "" && personalInfoCheck === true;
+
+    const signUpUserMetaData = name && birthDate && sex !== "" && personalInfoCheck === true;
 
     useEffect(() => {
         {
@@ -64,25 +63,17 @@ const SignButton = ({
 
     useEffect(() => {
         {
+            /*회원가입 후 메타데이터 확인*/
+        }
+        signUpUserMetaData ? setInputDisabled(true) : setInputDisabled(false);
+    }, [signUpUserMetaData, setInputDisabled]);
+
+    useEffect(() => {
+        {
             /*소셜로그인 확인*/
         }
         socialSettingConfirm ? setInputDisabled(true) : setInputDisabled(false);
     }, [socialSettingConfirm, setInputDisabled]);
-
-    useEffect(() => {
-        {
-            /*이메일 확인*/
-        }
-        confirmEmail ? setInputDisabled(true) : setInputDisabled(false);
-    }, [confirmEmail, setInputDisabled]);
-
-    useEffect(() => {
-        {
-            /*회원가입 이메일 확인*/
-        }
-
-        confirmFirmEmailOTP ? setInputDisabled(true) : setInputDisabled(false);
-    }, [confirmFirmEmailOTP, setInputDisabled]);
 
     useEffect(() => {
         {
