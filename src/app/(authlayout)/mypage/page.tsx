@@ -8,9 +8,11 @@ import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
-import useUserStore from "@/store/userStore";
-import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 import Loading from "@/Components/Loading";
+
+import useUserStore from "@/store/userStore";
+
+import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");

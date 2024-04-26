@@ -24,9 +24,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
             {/* {projectCount > 1 && (
                 <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
             )} */}
-            <div className="flex flex-col w-[804px] sm:items-center sm:justify-center sm:w-full sm:ml-2">
+            <div className="flex flex-col w-[804px] sm:items-center sm:justify-center sm:w-full sm:ml-2 sm:gap-2">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                <div className="flex flex-row">
+                <div className="flex flex-row sm:w-full sm:items-center sm:justify-center">
                     {images &&
                         images.map((image, index) => (
                             <Image
@@ -48,10 +48,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                     </div>
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                    <div className="flex flex-col mt-2 w-[804px]">
+                    <div className="flex flex-col mt-2 w-[804px] sm:flex-wrap">
                         <p className="text-[14px] font-normal mb-2 text-gray4 sm:font-medium sm:w-[360px] leading-normal">{introduce}</p>
                         {githubLink && (
-                            <div className="flex items-center text-gray4 mt-2">
+                            <div className="flex items-center text-gray4 mt-2 sm:w-[370px]">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
@@ -66,7 +66,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                         )}
 
                         {deployLink && (
-                            <div className="flex items-center text-gray4 mt-2">
+                            <div className="flex items-center text-gray4 mt-2 sm:w-[370px]">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
