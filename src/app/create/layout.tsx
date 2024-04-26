@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 import Loading from "@/Components/Loading";
@@ -8,7 +10,7 @@ export default function FindPasswordLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { isFetching, isError } = useLoginCheck();
+    const { isFetching } = useLoginCheck();
 
     if (isFetching) {
         return (
