@@ -1,10 +1,13 @@
 "use client";
 
-import useInfo from "@/hooks/mypage/useInfo";
 import React from "react";
-import Input from "../Commen/Input";
-import { SKILL_TAG } from "@/util/skill_tag";
+
 import Image from "next/image";
+
+import Input from "../Commen/Input";
+
+import useInfo from "@/hooks/mypage/useInfo";
+
 import { Flip, ToastContainer } from "react-toastify";
 
 const Introduction = () => {
