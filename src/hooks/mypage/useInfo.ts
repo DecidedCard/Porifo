@@ -176,6 +176,7 @@ const useInfo = () => {
 
     const onClickSkillTagHandler = (item: string) => {
         const skillTag = basicInfo.skillTag as string[];
+
         if (skillTag.find((skillTag) => skillTag === item)) {
             warnNotify({ title: "중복입력이 불가능합니다." });
             return;
@@ -185,6 +186,10 @@ const useInfo = () => {
 
     const onSubmitSkillTagHandler = (e: FormEvent<HTMLFormElement>, item: string) => {
         e.preventDefault();
+        if (!skillTagInput) {
+            warnNotify({ title: "내용을 입력해주시기 바랍니다." });
+            return;
+        }
         onClickSkillTagHandler(item);
         setSkillTagInput("");
     };
