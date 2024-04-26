@@ -145,12 +145,15 @@ const SignIn = () => {
                         text="간편하게 시작하기"
                         gap={6}
                         imageWidthNum={32}
-                        imageHeight={32}
+                        imageHeightNum={32}
                     />
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요? </p>
-                        <a href="/signupMethod" className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0">
+                        <a
+                            href="/signupMethod"
+                            className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
+                        >
                             이메일로 회원가입
                         </a>
                     </div>

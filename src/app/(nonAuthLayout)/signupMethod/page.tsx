@@ -17,7 +17,7 @@ const SignUpMethod = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative sm:flex sm:w-full sm:py-0">
                 <div className="rounded-2xl w-[500px] h-[400px] bg-white flex justify-center flex-col sm:items-center sm:w-full sm:h-[844px]">
-                    <div className="sm:flex sm:flex-col sm:items-center sm:justify-center sm:w-[416px] sm:h-[273px]">
+                    <div className="sm:flex sm:flex-col sm:items-center sm:justify-center sm:w-full sm:h-[273px]">
                         <div className="flex justify-center sm:hidden">
                             <Image
                                 className="w-[160px] h-[140px]"
@@ -32,16 +32,14 @@ const SignUpMethod = () => {
                             redirectTo={redirectTo}
                             text="SNS 계정 회원가입"
                             imageWidthNum={40}
-                            imageHeight={40}
+                            imageHeightNum={40}
                             gap={6}
                         />
 
-                        <div className="px-2 flex flex-row gap-2 mx-auto items-center justify-start self-stretch shrink-0 relative sm:pr-0 sm:pl-0">
+                        <div className="px-2 flex flex-row gap-2 mx-auto items-center justify-center sm:pr-0 sm:pl-0">
                             <div className="bg-gray2 w-[150px] h-[1px]"></div>
 
-                            <div className="text-graytext-5 text-left relative flex items-center justify-start sm:text-[12px]">
-                                또는
-                            </div>
+                            <div className="flex items-center sm:text-[12px]">또는</div>
 
                             <div className="bg-gray2 w-[150px] h-[1px]"></div>
                         </div>

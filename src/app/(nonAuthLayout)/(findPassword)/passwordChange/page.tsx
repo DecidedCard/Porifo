@@ -137,18 +137,15 @@ const Password_Change = () => {
                         </form>
                     </div>
                 ) : (
-                    <div className="rounded p-10 w-[500px] h-[380px] bg-white flex justify-center flex-col">
-                        <div className="flex justify-center">
-                            <Image
-                                width={0}
-                                height={0}
-                                className="w-[160px] h-[140px]"
-                                src="formLogo.svg"
-                                alt="로그인의 form 로고"
-                                priority
-                            />
+                    <div className="rounded-2xl p-10 w-[454px] h-[500px] items-center bg-white flex justify-center flex-col">
+                        <div className="flex flex-col justify-center items-center w-[274px] h-[324px]">
+                            <p className="text-[108px]">🧩</p>
+                            <p className="flex items-center text-center justify-center leading-normal mt-8 font-medium text-[20px] w-[274px] h-[44px]">
+                                비밀번호가 재설정되었습니다.
+                                <br />
+                                로그인 후 포리포를 이용해 보세요.
+                            </p>
                         </div>
-                        <p className="text-center mb-[40px] flex-row text-[108px]">👏</p>
                         <SignButton
                             text="로그인 페이지로 이동"
                             password={userPassword}
