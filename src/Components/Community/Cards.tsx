@@ -19,7 +19,7 @@ import DeleteModal from "./DeleteModal";
 
 const Cards = () => {
     //모달 상태
-    const { setCardId, setIsOpenModal, setIsDeleteModalOpen } = useDetailStore();
+    const { setCardId, setIsOpenModal } = useDetailStore();
 
     const { jobFilter, filter } = useJobFilterStore();
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { TouchEventHandler, useRef, useState } from "react";
+import { TouchEventHandler, useState } from "react";
 import Image from "next/image";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -15,7 +15,6 @@ import useCardIdStore from "@/store/detailStore";
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
     const [pixel, setPixel] = useState(500); // pc
-    const [devicePixel, setDevicePixel] = useState(320); // 모바일
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
@@ -47,9 +46,9 @@ const Carousel = () => {
 
     const handleImageNextBtn = () => {
         const SliderLength = data!.length;
-        const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
+        const newCurr = currCarousel + 1;
         setCurrCarousel(newCurr);
-        setPixel(500); //pc
+        setPixel(500);
 
         if (newCurr === SliderLength + 2) {
             moveToNthSlide(1);
@@ -62,8 +61,7 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
-        setPixel(570); //pc
-        // setPixel(420); //mobile
+        setPixel(570);
 
         if (newCurr === 0) {
             moveToNthSlide(SliderLength);
@@ -73,10 +71,8 @@ const Carousel = () => {
     };
     const handleImageNextBtnDevice = () => {
         const SliderLength = data!.length;
-        const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
+        const newCurr = currCarousel + 1;
         setCurrCarousel(newCurr);
-        setDevicePixel(320);
-
         if (newCurr === SliderLength + 1) {
             moveToNthSlide(1);
         }
@@ -87,7 +83,6 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
-        setDevicePixel(320);
 
         if (newCurr === 0) {
             moveToNthSlide(SliderLength);
@@ -217,7 +212,7 @@ const Carousel = () => {
                                         onTouchStart={handleTouchStart}
                                         onTouchEnd={handleTouchEnd}
                                         style={{
-                                            transform: `translateX(-${currCarousel * devicePixel}px)`,
+                                            transform: `translateX(-${currCarousel * 320}px)`,
                                             transition: carouselTransition,
                                         }}
                                         onClick={() => {

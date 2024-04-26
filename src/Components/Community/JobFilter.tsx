@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
 
 import useJobFilterStore from "@/store/jobFilterStore";
 
@@ -18,7 +17,6 @@ export const SELECT_LIST = [
 ];
 
 const JobFilter = () => {
-    const { setPage } = useSupabaseRange();
     const { setJobFilter } = useJobFilterStore();
     const [activeMenu, setActiveMenu] = useState("*");
 
@@ -27,7 +25,7 @@ const JobFilter = () => {
     //직무 변경 버튼
     const handleJobFilterBtn = (jobfilterValue: string) => {
         queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
-        setPage(0);
+
         setActiveMenu(jobfilterValue);
         return setJobFilter(jobfilterValue);
     };

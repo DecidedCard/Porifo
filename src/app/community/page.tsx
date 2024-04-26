@@ -1,17 +1,9 @@
-"use client";
 import Cards from "@/Components/Community/Cards";
 import Carousel from "@/Components/Community/Carousel";
 import JobFilter from "@/Components/Community/JobFilter";
 import Filter from "@/Components/Community/Filter";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
-import { useEffect } from "react";
 
 const ComuunityPage = () => {
-    const { setPage } = useSupabaseRange();
-
-    useEffect(() => {
-        setPage(0);
-    }, [setPage]);
     return (
         <div className="flex flex-col items-center sm:w-full overflow-hidden">
             <div className="flex w-full">
@@ -20,7 +12,7 @@ const ComuunityPage = () => {
                 </div>
             </div>
             <Carousel />
-            <div className="flex gap-32 lg:gap-20 ">
+            <div className="flex gap-32 lg:gap-20">
                 <Filter />
                 <div>
                     <JobFilter />

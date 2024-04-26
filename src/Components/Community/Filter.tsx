@@ -2,13 +2,10 @@
 
 import { useState } from "react";
 
-import useSupabaseRange from "@/hooks/useSupabaseRange";
-
 import Dropdown from "./Dropdown";
 import Image from "next/image";
 
 const Filter = () => {
-    const { filter } = useSupabaseRange();
     const [view, setView] = useState(false);
 
     return (
@@ -23,7 +20,6 @@ const Filter = () => {
                 }}
             >
                 <ul className="flex justify-between items-center h-full">
-                    {filter}{" "}
                     {view ? (
                         <Image src="arrow-up.svg" alt="화살표 아이콘" width={20} height={20} className="w-5 h-5" />
                     ) : (
