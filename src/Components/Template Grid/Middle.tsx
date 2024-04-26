@@ -26,7 +26,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="flex flex-col items-start justify-start sm:w-[170px]">
                     <p className="font-bold text-[22px] text-left sm:w-[170px] sm:font-medium sm:text-[20px]">자기소개</p>
                     <div className="bg-deepgray w-[370px] h-[1px] my-5 sm:w-[170px]"></div>
-                    <p className="text-[14px] w-[382px] tracking-wide leading-normal sm:w-[150px] sm:text-gray4">{userInfo.introduce}</p>
+                    <p className="text-[14px] w-[382px] tracking-wide leading-normal sm:w-[170px] sm:text-gray4">{userInfo.introduce}</p>
                     <div className="flex flex-row gap-2 items-start justify-start self-stretch shrink-0"></div>
                 </div>
             </div>
