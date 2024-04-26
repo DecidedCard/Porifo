@@ -8,9 +8,11 @@ import Introduction from "@/Components/MyPage/Introduction";
 import Buttons from "@/Components/MyPage/Buttons";
 import Navigation from "@/Components/MyPage/Navigation";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
-import useUserStore from "@/store/userStore";
-import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 import Loading from "@/Components/Loading";
+
+import useUserStore from "@/store/userStore";
+
+import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const MyPage = () => {
     const [nav, setNav] = useState("basicInfo");
@@ -27,9 +29,9 @@ const MyPage = () => {
     }
 
     return (
-        <div className="flex justify-center  bg-hihigray max-w-full min-h-[500px] sm:flex-col sm:w-full">
+        <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
             <Navigation setNav={setNav} />
-            <div className="w-[800px] min-h-[750px] sm:w-full sm:mt-[450px] ">
+            <div className="w-[800px] min-h-[750px] sm:w-full">
                 {nav === "basicInfo" && <UserInfo />}
                 {nav === "introduce" && <Introduction />}
                 {nav === "project" && <Project />}

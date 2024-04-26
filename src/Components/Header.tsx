@@ -1,20 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string>("about");
     const router = useRouter();
-    const { user } = useLoginCheck();
-    const { setUser } = useUserStore();
+
+    const { user, setUser } = useUserStore();
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
         try {
@@ -42,7 +41,13 @@ const Header = () => {
             <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
-                    <Image className="overflow-visible sm:w-[59px] sm:h-[20px]" src="../porifo.svg" alt="Logo" width={84.42} height={28} />
+                    <Image
+                        className="overflow-visible sm:w-[70px] sm:h-[30px]"
+                        src="../porifo.svg"
+                        alt="Logo"
+                        width={84.42}
+                        height={28}
+                    />
                 </Link>
 
                 {/* Center Section: Navigation Links */}
@@ -103,6 +108,22 @@ const Header = () => {
                                                 <p className="text-[12px]">이력서 작성</p>
                                             </Link>
                                         </div>
+
+                                        <div className="hidden sm:block">
+                                            <Link
+                                                href="/community"
+                                                className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px] sm:ml-[12px]"
+                                            >
+                                                <Image
+                                                    src="/assets/image/comunity.svg"
+                                                    alt="내 피드"
+                                                    width={18}
+                                                    height={18}
+                                                />
+                                                <p className="text-[12px]">피드/커뮤니티</p>
+                                            </Link>
+                                        </div>
+
                                         <div onClick={signOutFunc}>
                                             <Link
                                                 href="/"
@@ -117,14 +138,6 @@ const Header = () => {
                                                 <p className="text-[12px]">로그아웃</p>
                                             </Link>
                                         </div>
-                                        <div className="hidden sm:block">
-                                            <Link
-                                                href="/community"
-                                                className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px]"
-                                            >
-                                                <p className="text-[12px]">피드/커뮤니티</p>
-                                            </Link>
-                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -133,13 +146,13 @@ const Header = () => {
                         <>
                             <div>
                                 <Link href="/signin">
-                                    <Button text="로그인" size="s" color="primarynone" fontSize="xs" />
+                                    <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
                                 </Link>
                             </div>
 
-                            <div className="">
+                            <div>
                                 <Link href="/signupMethod">
-                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs" />
+                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
                                 </Link>
                             </div>
                         </>

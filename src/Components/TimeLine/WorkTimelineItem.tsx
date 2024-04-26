@@ -9,14 +9,14 @@ interface WorkTimelineItemProps {
 
 const WorkTimelineItem: React.FC<WorkTimelineItemProps> = ({ date, company, description, position, comments, careerCount }) => {
     return (
-        <li className="mb-10 flex relative">
+        <li className="mb-10 flex relative sm:w-[448px]">
             {/* {careerCount > 0 && (
             <div className="absolute w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white"></div>
             )} */}
-            <div className="flex w-full">
+            <div className="flex w-full sm:w-[448px]">
                 {/* 제목과 날짜를 포함하는 영역 */}
                 <div className="flex flex-col w-1/2">
-                    <h3 className="text-[20px] font-medium mb-3">{company}</h3>
+                    <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">{company}</h3>
                     <time className="mb-1 text-gray3 text-[12px] font-normal leading-none">{date}</time>
                 </div>
 

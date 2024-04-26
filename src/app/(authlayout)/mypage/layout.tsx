@@ -1,15 +1,14 @@
-import HeaderNonAuth from "@/Components/HeaderNonAuth";
 import Footer from "@/Components/Footer";
 
-export default function RootLayout({
+export default function MypageLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <>
-            <HeaderNonAuth />
             {children}
+            <Footer />
         </>
     );
 }

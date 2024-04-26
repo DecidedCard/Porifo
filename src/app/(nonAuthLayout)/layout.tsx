@@ -1,5 +1,6 @@
 "use client";
 
+import HeaderNonAuth from "@/Components/HeaderNonAuth";
 import Loading from "@/Components/Loading";
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 import { useRouter } from "next/navigation";
@@ -25,7 +26,13 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
         router.replace("/mypage");
     }
 
-    return <div>{children}</div>;
+    return (
+        <div>
+            {" "}
+            <HeaderNonAuth />
+            {children}
+        </div>
+    );
 };
 
 export default NonAuthLayout;

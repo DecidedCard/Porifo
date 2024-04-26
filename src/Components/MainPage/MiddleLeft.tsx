@@ -14,7 +14,7 @@ const MiddleLeft = () => {
                     </p>
                     <div>
                         <Link href={"/community"}>
-                                <Button text="더 많은 포트폴리오 확인하기" size="l" fontSize="s" color="primary" className="sm:w-[218px] sm:h-[48px] sm:font-medium sm:text-[16px]"/>
+                                <Button text="더 많은 포트폴리오 확인하기" size="l sm:m" fontSize="s sm:xs" color="primary" className="sm:w-[218px] sm:h-[48px] sm:font-medium sm:text-[14px]"/>
                         </Link>
                     </div>
                 </div>
