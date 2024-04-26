@@ -27,6 +27,7 @@ const Input = ({
 
     const borderColor =
         (color === "black" && "zinc-500") ||
+        (color === "gray2" && "gray2") ||
         (color === "success" && "success") ||
         (color === "error" && "red-400") ||
         (!color && "zinc-300");

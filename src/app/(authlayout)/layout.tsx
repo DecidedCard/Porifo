@@ -2,6 +2,7 @@
 
 import React, { PropsWithChildren } from "react";
 import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 import Loading from "@/Components/Loading";
 import LoginCheckModal from "@/Components/LoginCheckModal";
 

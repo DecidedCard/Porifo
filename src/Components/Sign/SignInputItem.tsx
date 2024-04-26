@@ -21,7 +21,7 @@ type SignUpItemType = {
     onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SignUpItem = ({
+const SignInputItem = ({
     setLabel,
     value,
     name,
@@ -45,10 +45,11 @@ const SignUpItem = ({
     };
 
     return (
-        <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
+        <div className={`${relative} mx-auto my-4 w-[350px] h-fit flex flex-col`}>
             <label className="mb-2 flex text-sm font-medium">
                 {setLabel} <p className="ml-1 text-[10px] text-red-500">★</p>
             </label>
+
             <Input
                 type={type || showPassword.type}
                 value={value}
@@ -61,6 +62,7 @@ const SignUpItem = ({
                 color={color !== undefined ? color : "gray2"}
                 size="big"
             />
+
             {eyeClose ? (
                 <div
                     className="absolute inset-y-0 right-0 mt-[15px] mx-2 h-[22px] text-[22px] cursor-pointer"
@@ -91,4 +93,4 @@ const SignUpItem = ({
     );
 };
 
-export default SignUpItem;
+export default SignInputItem;

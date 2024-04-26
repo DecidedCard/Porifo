@@ -8,12 +8,12 @@ import { Flip, ToastContainer } from "react-toastify";
 
 import Button from "@/Components/Commen/Button";
 import SignButton from "@/Components/Sign/SignButton";
-import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import useInput from "@/hooks/useInput";
-
-import { successNotify } from "@/util/toast";
+import Input from "@/Components/Commen/Input";
+import { successNotify, infoNotify } from "@/util/toast";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
@@ -74,13 +74,13 @@ const ConfirmEmailpage = () => {
     const confirmEmailAndOTPNumber = async () => {
         try {
             signUpValidation({ email, password });
-            successNotify({ title: "OTP인증 메일을 전송하고 있습니다!" });
+            infoNotify({ title: "인증번호를 메일로 보내고 있습니다.🥹" });
 
             await supabase.auth.signUp({
                 email,
                 password,
             });
-            successNotify({ title: "OTP인증 메일이 전송되었습니다!" });
+            successNotify({ title: "인증번호를 메일로 보냈습니다.😎" });
         } catch (error) {
             console.log(error);
         }
@@ -101,7 +101,7 @@ const ConfirmEmailpage = () => {
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative">
             <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col">
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col">
                     <div className="flex justify-center items-center h-[86px] mb-5">
                         <Image
                             className="w-[162px] h-[54px]"
@@ -112,6 +112,7 @@ const ConfirmEmailpage = () => {
                             alt="이메일 확인 form 로고"
                         />
                     </div>
+
                     <ToastContainer
                         position="top-center"
                         autoClose={5000}
@@ -126,20 +127,20 @@ const ConfirmEmailpage = () => {
                         transition={Flip}
                     />
 
-                    <SignUpItem
+                    <SignInputItem
                         setLabel="이메일"
                         type="email"
                         helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
-                        color={emailError ? "black" : "error"}
+                        color={emailError ? "gray2" : "error"}
                         placeholder="이메일을 입력해주세요"
                         pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                         onChangeHandler={onChangeEmailHandler}
                     />
 
-                    <SignUpItem
+                    <SignInputItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 작성해주세요"
-                        color={password.length === 0 ? "black" : passwordError ? "black" : "error"}
+                        color={password.length === 0 ? "gray2" : passwordError ? "gray2" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                         onChangeHandler={onChangePassword}
@@ -147,6 +148,7 @@ const ConfirmEmailpage = () => {
                         eye="eye.svg"
                         eyeClose="eye_close.svg"
                     />
+
                     <SignPasswordValidate
                         lengthRegValid={lengthRegValid}
                         numberRegValid={numberRegValid}
@@ -154,10 +156,10 @@ const ConfirmEmailpage = () => {
                         specialRegValid={specialRegValid}
                     />
 
-                    <SignUpItem
+                    <SignInputItem
                         setLabel="비밀번호"
                         placeholder="비밀번호를 작성해주세요"
-                        color={confirmPassword.length === 0 ? "black" : confirmPasswordError ? "black" : "error"}
+                        color={confirmPassword.length === 0 ? "gray2" : confirmPasswordError ? "gray2" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "
                         helperText={samePassword ? "" : "비밀번호가 일치하지 않습니다."}
@@ -167,14 +169,28 @@ const ConfirmEmailpage = () => {
                         eyeClose="eye_close.svg"
                     />
 
-                    <SignUpItem
-                        setLabel="인증번호"
-                        type="text"
-                        placeholder="인증번호를 입력해주세요"
-                        onChangeHandler={onChangeConfirmOTPNumber}
-                    />
-
-                    <Button text="인증번호 받기" disabled={!emailSMPTNumber} onClick={confirmEmailAndOTPNumber} />
+                    <div className="mx-auto my-4 w-[350px] h-fit flex flex-col">
+                        <label className="mb-2 flex text-sm font-medium">인증번호</label>
+                        <div className="flex gap-4">
+                            <div className="w-[220px]">
+                                <Input
+                                    type="text"
+                                    placeholder="인증번호를 입력해주세요"
+                                    onChange={onChangeConfirmOTPNumber}
+                                    color="gray2"
+                                    size="big"
+                                />
+                            </div>
+                            <div className="w-[114px]">
+                                <Button
+                                    text="인증번호 받기"
+                                    size="l"
+                                    disabled={!emailSMPTNumber}
+                                    onClick={confirmEmailAndOTPNumber}
+                                />
+                            </div>
+                        </div>
+                    </div>
 
                     <SignButton
                         text="다음"
