@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -13,6 +13,7 @@ import { QUERY_KEY } from "@/util/query_key";
 import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
+    // const [currCarousel, setCurrCarousel] = useState(1);
     const [currCarousel, setCurrCarousel] = useState(1);
     const [pixel, setPixel] = useState(500); // pc
     const [devicePixel, setDevicePixel] = useState(320); // 모바일
@@ -71,13 +72,13 @@ const Carousel = () => {
 
         setCarouselTransition("transform 500ms ease-in-out");
     };
-
     const handleImageNextBtnDevice = () => {
         const SliderLength = data!.length;
-        const newCurr = currCarousel + 1;
+        const newCurr = currCarousel + 1; //현재 보고있는 index를 1씩 증가.
         setCurrCarousel(newCurr);
-        setDevicePixel(320); //모바일
-        if (newCurr === SliderLength - 1) {
+        setPixel(320);
+
+        if (newCurr === SliderLength + 1) {
             moveToNthSlide(1);
         }
 
@@ -87,11 +88,11 @@ const Carousel = () => {
         const SliderLength = data!.length;
         const newCurr = currCarousel - 1;
         setCurrCarousel(newCurr);
-        // setPixel(570); //pc
-        setPixel(320); //mobile
+        console.log(newCurr);
+        setPixel(320);
 
         if (newCurr === 0) {
-            moveToNthSlide(0);
+            moveToNthSlide(SliderLength);
         }
 
         setCarouselTransition("transform 500ms ease-in-out");
@@ -106,7 +107,7 @@ const Carousel = () => {
 
     return (
         <>
-            <div className="items-center justify-center relative mb-20">
+            <div className="items-center justify-center relative mb-20 sm:ml-[1280px]">
                 {/* 카드 */}
                 <div className="flex w-screen sm:w-full gap-5 overflow-hidden">
                     {modifiedArray!.map((item: any, idx) => {
@@ -115,7 +116,8 @@ const Carousel = () => {
                                 {/* pc버전 */}
                                 <div
                                     key={idx + 1}
-                                    className=" flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl sm:hidden"
+                                    className="flex flex-col gap-2 w-[550px] h-[364px]  items-center   justify-center shrink-0 cursor-pointer hover:shadow-xl sm:w-[302px]
+                                    "
                                     style={{
                                         transform: `translateX(-${currCarousel * pixel}px)`,
                                         transition: carouselTransition,
@@ -196,7 +198,7 @@ const Carousel = () => {
                                     </div>
                                 </div>
                                 {/* 모바일 버전 */}
-                                <div className="hidden sm:block">
+                                {/* <div className="hidden sm:block">
                                     <div
                                         key={idx + 1}
                                         className=" flex flex-col gap-2 w-[302px] h-[210px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl"
@@ -209,22 +211,22 @@ const Carousel = () => {
                                                 setCardId(item.id),
                                                 queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                         }}
-                                    >
-                                        {/* 카드 이미지 */}
-                                        <Image
+                                    > */}
+                                {/* 카드 이미지 */}
+                                {/* <Image
                                             className="rounded-2xl w-[100%] h-[100%] object-cover"
                                             width={500}
                                             height={300}
                                             alt="카드 프로필"
                                             src={item.profileImage}
-                                        />
-                                        {/* 블러박스 */}
-                                        <div
+                                        /> */}
+                                {/* 블러박스 */}
+                                {/* <div
                                             className=" bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-1 absolute w-[302px] h-[78px] top-[132px]"
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
-                                        >
-                                            {/* 한줄소개 */}
-                                            <div className="w-[254px] h-[22px] flex space-x-[30px]">
+                                        > */}
+                                {/* 한줄소개 */}
+                                {/* <div className="w-[254px] h-[22px] flex space-x-[30px]">
                                                 <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-sm">
                                                     {item.oneLineIntroduce}
                                                 </p>
@@ -232,21 +234,21 @@ const Carousel = () => {
                                                     0,
                                                     -3,
                                                 )}`}</p>
-                                            </div>
-                                            {/* 유저정보,좋아요,조회수 박스 */}
-                                            <div className="flex justify-between">
-                                                <div className="flex gap-2">
-                                                    {/* 유저이름 */}
-                                                    <div className="font-spoqaMedium text-white font-medium flex items-center justify-center  text-[10px]">
+                                            </div> */}
+                                {/* 유저정보,좋아요,조회수 박스 */}
+                                {/* <div className="flex justify-between">
+                                                <div className="flex gap-2"> */}
+                                {/* 유저이름 */}
+                                {/* <div className="font-spoqaMedium text-white font-medium flex items-center justify-center  text-[10px]">
                                                         {item.name}
                                                     </div>
-                                                </div>
-                                                {/* 좋아요, 조회수 박스 */}
-                                                <div className="flex gap-4">
+                                                </div> */}
+                                {/* 좋아요, 조회수 박스 */}
+                                {/* <div className="flex gap-4">
                                                     <div className="flex gap-1 items-center">
-                                                        <div className="relative w-3 h-3">
-                                                            {/* 좋아요 */}
-                                                            <Image
+                                                        <div className="relative w-3 h-3"> */}
+                                {/* 좋아요 */}
+                                {/* <Image
                                                                 width={24}
                                                                 height={24}
                                                                 alt="좋아요 아이콘"
@@ -256,9 +258,9 @@ const Carousel = () => {
                                                         <div className="text-gray text-[10px]">{item.likes.length}</div>
                                                     </div>
                                                     <div className="flex gap-1 items-center">
-                                                        <div className="w-4 h-4 relative">
-                                                            {/* 조회수 */}
-                                                            <Image
+                                                        <div className="w-4 h-4 relative"> */}
+                                {/* 조회수 */}
+                                {/* <Image
                                                                 width={24}
                                                                 height={24}
                                                                 alt="조회수 아이콘"
@@ -271,7 +273,7 @@ const Carousel = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </>
                         );
                     })}
@@ -281,7 +283,7 @@ const Carousel = () => {
                 <div className="sm:hidden">
                     <button
                         onClick={handleImageNextBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] sm:left-[53%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -294,7 +296,7 @@ const Carousel = () => {
                     </button>
                     <button
                         onClick={handleImagePrevBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute left-[20%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute sm:left-[45%] left-[20%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -310,7 +312,7 @@ const Carousel = () => {
                 <div className="hidden sm:block">
                     <button
                         onClick={handleImageNextBtnDevice}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex absolute left-[54%] top-[80px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex absolute left-[38%] top-[80px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -323,7 +325,7 @@ const Carousel = () => {
                     </button>
                     <button
                         onClick={handleImagePrevBtnDevice}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex left-[45%] top-[80px] absolute  ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex left-[32%] top-[80px] absolute  ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
