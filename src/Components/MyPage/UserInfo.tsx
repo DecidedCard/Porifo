@@ -4,12 +4,12 @@ import React from "react";
 
 import Image from "next/image";
 
+import Careers from "./Careers";
 import Input from "../Commen/Input";
 
 import useInfo from "@/hooks/mypage/useInfo";
-import { SELECT_LIST } from "@/util/select_list";
 
-import Careers from "./Careers";
+import { SELECT_LIST } from "@/util/select_list";
 
 const UserInfo = () => {
     const {

@@ -31,7 +31,6 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         <div>
             <Header />
             {children}
-            <Footer />
         </div>
     );
 };

@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import { useQuery } from "@tanstack/react-query";
-
 import useCareerStore from "@/store/careerStore";
 import useProjectsStore from "@/store/projectStore";
 import useUserStore from "@/store/userStore";
@@ -9,6 +7,8 @@ import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { supabasePortfolioInfoRead } from "@/util/supabase/portfolioInfo_supabase_DB";
+
+import { useQuery } from "@tanstack/react-query";
 
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";

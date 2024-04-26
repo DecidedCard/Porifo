@@ -7,15 +7,13 @@ import Button from "./Commen/Button";
 import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string>("about");
     const router = useRouter();
-    const { user } = useLoginCheck();
 
-    const { setUser } = useUserStore();
+    const { user, setUser } = useUserStore();
     const signOutFunc = async () => {
         const { error } = await supabase.auth.signOut();
         try {
@@ -116,11 +114,11 @@ const Header = () => {
                                                 href="/community"
                                                 className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px] sm:ml-[12px]"
                                             >
-                                                <Image 
-                                                src="/assets/image/comunity.svg"
-                                                alt="내 피드"
-                                                width={18}
-                                                height={18}
+                                                <Image
+                                                    src="/assets/image/comunity.svg"
+                                                    alt="내 피드"
+                                                    width={18}
+                                                    height={18}
                                                 />
                                                 <p className="text-[12px]">피드/커뮤니티</p>
                                             </Link>

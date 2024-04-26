@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { usePDF } from "react-to-pdf";
 
 import useCareerStore from "@/store/careerStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
+
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
+
+import { usePDF } from "react-to-pdf";
 
 const useGuestButton = () => {
     const { basicInfo } = usePortfolioInfoStore();

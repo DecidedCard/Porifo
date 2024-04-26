@@ -1,8 +1,11 @@
+import { useEffect } from "react";
+
 import useUserStore from "@/store/userStore";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { userData } from "@/util/supabase/supabase_user";
+
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 
 const useLoginCheck = () => {
     const { user, setUser } = useUserStore();
