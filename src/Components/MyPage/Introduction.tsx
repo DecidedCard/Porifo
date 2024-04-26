@@ -73,7 +73,7 @@ const Introduction = () => {
 
                     <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-[60%]" />
 
-                    <div className="flex gap-3 h-56 sm:w-[432px] sm:flex-col sm:mx-auto sm:gap-4">
+                    <div className="flex gap-3 h-36 sm:w-[432px] sm:flex-col sm:mx-auto sm:gap-4">
                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                             기술 스택<span className="ml-1 text-[10px] text-red-500">★</span>
                         </label>
@@ -91,6 +91,20 @@ const Introduction = () => {
                                 </form>
                             </div>
 
+                            <div className="flex flex-wrap justify-between gap-2 w-[460px] h-11 overflow-hidden bg-white sm:content-center sm:justify-start sm:w-[432px]">
+                                {skill_tag.map((item, idx) => {
+                                    return (
+                                        <div key={idx}>
+                                            <div
+                                                className="py-[2px] px-3 h-[18px] text-[10px] font-medium border border-solid border-nonegray rounded cursor-pointer"
+                                                onClick={() => onClickSkillTagHandler(item)}
+                                            >
+                                                {item}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                             <div className="flex flex-wrap gap-2 w-[460px] h-[44px] overflow-hidden sm:w-full sm:content-center">
                                 {skillTag &&
                                     skillTag.map((item, idx) => {
@@ -109,20 +123,6 @@ const Introduction = () => {
                                             </div>
                                         );
                                     })}
-                            </div>
-                            <div className="flex flex-wrap justify-between gap-2 w-[460px] h-11 overflow-hidden bg-white sm:content-center sm:justify-start sm:w-[432px]">
-                                {skill_tag.map((item, idx) => {
-                                    return (
-                                        <div key={idx}>
-                                            <div
-                                                className="py-[2px] px-3 h-[18px] text-[10px] font-medium border border-solid border-nonegray rounded cursor-pointer"
-                                                onClick={() => onClickSkillTagHandler(item)}
-                                            >
-                                                {item}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
                             </div>
                         </div>
                     </div>
