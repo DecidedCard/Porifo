@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { Flip, ToastContainer } from "react-toastify";
 
-import SignUpItem from "@/Components/Sign/SignUpItem";
+import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
@@ -118,7 +118,7 @@ const SignUp = () => {
                 />
 
                 <div className="-mt-3">
-                    <SignUpItem
+                    <SignInputItem
                         setLabel="이름"
                         pattern="/[ㄱ-ㅣ가-힣]/"
                         type="text"

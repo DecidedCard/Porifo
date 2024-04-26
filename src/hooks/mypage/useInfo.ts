@@ -1,22 +1,25 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-
-import useSetMutation from "../useSetMutation";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
 import useCareerStore from "@/store/careerStore";
 
+import useSetMutation from "../useSetMutation";
+import useInput from "../useInput";
+
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
-import { Project } from "@/types/Project";
-import { Career } from "@/types/Career";
+import { warnNotify } from "@/util/toast";
+import { SKILL_TAG } from "@/util/skill_tag";
 import { getFormattedDate } from "@/util/getformatDate";
-import useInput from "../useInput";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
+import type { Project } from "@/types/Project";
+import type { Career } from "@/types/Career";
 
 const useInfo = () => {
     const {
@@ -40,12 +43,13 @@ const useInfo = () => {
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
     const [skillTagInput, onChangeSkillTagInputHandler, setSkillTagInput] = useInput();
+    const [skill_tag, setSkill_Tag] = useState<string[]>([]);
     const [disabled, setDisabled] = useState(true);
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
-    const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+    const localStorageItemRef = useRef<PortfolioInfo | null>(null);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -61,16 +65,24 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        if (localStorageItem && !portfolio) {
-            const project = localStorageItem.project as unknown as Project[];
-            const career = localStorageItem.career as Career[];
+        if (localStorageItemRef.current && !portfolio) {
+            const project = localStorageItemRef.current.project as unknown as Project[];
+            const career = localStorageItemRef.current.career as Career[];
 
-            setPortfolio(localStorageItem);
-            setInitialBasicInfo(localStorageItem);
+            setPortfolio(localStorageItemRef.current);
+            setInitialBasicInfo(localStorageItemRef.current);
             setProjectsInitial([...project]);
             setInitialCareers([...career]);
         }
-    }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [
+        localStorageItemRef,
+        portfolio,
+        setPortfolio,
+        user,
+        setInitialBasicInfo,
+        setProjectsInitial,
+        setInitialCareers,
+    ]);
 
     useEffect(() => {
         if (user && !portfolio) {
@@ -93,11 +105,16 @@ const useInfo = () => {
     }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
 
     useEffect(() => {
-        const skillTag = basicInfo.skillTag as string[];
-        if (skillTag.find((item) => item === skillTagInput)) {
-            console.log(skillTag.find((item) => item === skillTagInput));
+        const skillTag = SKILL_TAG.filter((item) => item.toLowerCase().includes(skillTagInput.toLowerCase()));
+        setSkill_Tag(skillTag);
+    }, [skillTagInput]);
+
+    useEffect(() => {
+        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+        if (localStorageItem) {
+            localStorageItemRef.current = localStorageItem;
         }
-    }, [basicInfo.skillTag, skillTagInput]);
+    }, []);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -159,11 +176,20 @@ const useInfo = () => {
 
     const onClickSkillTagHandler = (item: string) => {
         const skillTag = basicInfo.skillTag as string[];
+
+        if (skillTag.find((skillTag) => skillTag === item)) {
+            warnNotify({ title: "중복입력이 불가능합니다." });
+            return;
+        }
         setSkillTag([...skillTag, item]);
     };
 
     const onSubmitSkillTagHandler = (e: FormEvent<HTMLFormElement>, item: string) => {
         e.preventDefault();
+        if (!skillTagInput) {
+            warnNotify({ title: "내용을 입력해주시기 바랍니다." });
+            return;
+        }
         onClickSkillTagHandler(item);
         setSkillTagInput("");
     };
@@ -356,6 +382,7 @@ const useInfo = () => {
         upload,
         emailCheck,
         skillTagInput,
+        skill_tag,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,

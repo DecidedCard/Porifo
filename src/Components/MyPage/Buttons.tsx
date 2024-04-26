@@ -1,20 +1,25 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import useInfo from "@/hooks/mypage/useInfo";
-import Button from "../Commen/Button";
-import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
-import { usePDF } from "react-to-pdf";
-import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
-import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
+
+import Button from "../Commen/Button";
+import TemplateSelect from "./TemplateSelect";
 import Preview from "./Preview";
-import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
 import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
+
+import useInfo from "@/hooks/mypage/useInfo";
+import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
+
+import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
+
+import { usePDF } from "react-to-pdf";
+import { share } from "@/util/share";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -61,7 +66,6 @@ const Buttons = () => {
                             </div>
                         </div>
                     </div>
-
 
                     <div className="mt-2 w-52 sm:w-fit sm:mt-0">
                         <Button
@@ -138,6 +142,12 @@ const Buttons = () => {
                                     <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>
                                 )}
                             </div>
+                            {/* 공유기능 테스트 */}
+                            {basicInfo.name === "react4기" && (
+                                <button onClick={() => share("테스트", "연습삼아", "https://www.porifo.com/")}>
+                                    test
+                                </button>
+                            )}
                         </>
                     )}
                 </div>

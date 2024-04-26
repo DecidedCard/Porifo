@@ -14,7 +14,7 @@ const SignPasswordValidate = ({
     const regValidate = lengthRegValid && numberRegValid && wordRegValid && specialRegValid;
 
     return (
-        <div className=" flex justify-start ml-9 mb-1 -mt-5">
+        <div className="flex ml-3">
             {regValidate ? (
                 <>
                     <p className="text-success text-center text-[11px]">✓ 8자리 이상</p>

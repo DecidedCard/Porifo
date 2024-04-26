@@ -7,9 +7,20 @@ import MiddleBottom from "@/Components/MainPage/MiddleBottom";
 import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
-import Head from "next/head";
 import Header from "@/Components/Header";
+import useLoginCheck from "@/hooks/mypage/useLoginCheck";
+import Loading from "@/Components/Loading";
 export default function Home() {
+    const { isFetching, isError } = useLoginCheck();
+
+    if (isFetching) {
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+                <Loading />
+            </div>
+        );
+    }
+
     return (
         <main>
             <Header />

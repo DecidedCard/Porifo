@@ -6,11 +6,9 @@ type InputValue = {
     loginPassword?: string;
     password?: string;
     OTPNumber?: string;
-
     confirmOTP?: string;
     findEmail?: string;
     text: string;
-
     name?: string;
     birthDate?: string;
     confirmUserPassword?: string;
@@ -45,11 +43,13 @@ const SignButton = ({
 
     const signUp = email && password && OTPNumber;
 
+    const confirmResetEmail = findEmail && !name;
+
     const signUpUserMetaData = name && birthDate && sex !== "" && personalInfoCheck === true;
 
     const confirmPassword = password && confirmUserPassword;
 
-    const socialSettingConfirm = findEmail && birthDate && sex !== "" && personalInfoCheck === true;
+    const socialSettingConfirm = birthDate && sex !== "" && personalInfoCheck === true;
 
     useEffect(() => {
         {
@@ -65,6 +65,13 @@ const SignButton = ({
         }
         signUp ? setInputDisabled(true) : setInputDisabled(false);
     }, [signUp, setInputDisabled]);
+
+    useEffect(() => {
+        {
+            /*비밀번호 찾기*/
+        }
+        confirmResetEmail ? setInputDisabled(true) : setInputDisabled(false);
+    }, [confirmResetEmail, setInputDisabled]);
 
     useEffect(() => {
         {

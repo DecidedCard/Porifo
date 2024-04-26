@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
-import SignUpItem from "@/Components/Sign/SignUpItem";
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
+
+import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { emailValidate } from "@/util/sign/sign_validate";
@@ -36,6 +37,7 @@ const SignIn = () => {
 
     useEffect(() => {
         emailValidate({ email, setEmailRegValid });
+
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
         password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
         if (emailRegValid === true) setEmailError(true);
@@ -93,21 +95,21 @@ const SignIn = () => {
                             />
                         </div>
 
-                        <SignUpItem
+                        <SignInputNonStarItem
                             setLabel="이메일"
                             type="email"
                             helperText={emailError ? "" : "이메일 형식에 맞춰 입력해 주세요."}
-                            color={emailError ? "black" : "error"}
+                            color={emailError ? "gray2" : "error"}
                             placeholder="이메일을 입력해주세요"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
                             onChangeHandler={onChangeEmailHandler}
                         />
 
-                        <SignUpItem
+                        <SignInputNonStarItem
                             setLabel="비밀번호"
                             placeholder="비밀번호를 작성해주세요"
                             helperText={passwordError ? "" : "비밀번호가 일치하지 않습니다."}
-                            color={passwordError ? "black" : "error"}
+                            color={passwordError ? "gray2" : "error"}
                             pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/"
                             value={password}
                             onChangeHandler={onChangePassword}
@@ -138,11 +140,20 @@ const SignIn = () => {
                         </div>
                     </form>
 
-                    <SocialSign redirectTo={redirectTo} />
+                    <SocialSign
+                        redirectTo={redirectTo}
+                        text="간편하게 시작하기"
+                        gap={6}
+                        imageWidthNum={32}
+                        imageHeightNum={32}
+                    />
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요? </p>
-                        <a href="/signupMethod" className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0">
+                        <a
+                            href="/signupMethod"
+                            className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
+                        >
                             이메일로 회원가입
                         </a>
                     </div>
