@@ -16,7 +16,7 @@ const Footer = () => {
                     <p className="w-[622px] h-[20px] sm:w-full">
                         (주)포리포 | 대표 : 먼작귀 | 개인정보보호책임자 : 금상호 | 생성일 : 2024년 3월 26일
                     </p>
-                    <p className="w-[410px] h-[22px] sm:w-full">경상북도 안동시 육사로 333 | ©️PORIFO. All rights reverved.</p>
+                    <p className="w-[410px] h-[22px] sm:w-full">©️PORIFO. All rights reverved.</p>
                 </div>
             </div>
 
@@ -32,7 +32,6 @@ const Footer = () => {
                 <p>대표 : 먼작귀</p>
                 <p>개인정보보호책임자 : 금상호</p>
                 <p>생성일 : 2024년 3월 26일</p>
-                <p>경상북도 안동시 육사로 333</p>
                 <p>©️PORIFO. All rights reverved.</p>
             </div>
 
