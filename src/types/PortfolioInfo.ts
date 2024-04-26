@@ -22,7 +22,7 @@ export interface PortfolioInfo {
     project?: Project[] | Json;
     share: boolean | null;
     career: Career[] | Json;
-    viewCnt?: number | null;
+    viewCnt: number | null;
     likes: string[] | null;
     likesCnt: number | null;
 }
