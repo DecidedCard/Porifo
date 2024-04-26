@@ -17,7 +17,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <div className="flex flex-col gap-8 items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
                     <Image
-                        className="rounded-full mr-5 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40"
+                        className="rounded-full mr-5 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40 sm:mr-0"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
                         width={200}
@@ -25,7 +25,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     />
 
                     <div className="flex flex-col gap-5 items-center justify-center w-80 min-w-[320px] max-w-xs">
-                        <h1 className="leading-normal text-[30px] mt-5 font-bold flex items-center justify-start sm:text-[22px]">
+                        <h1 className="leading-normal text-[30px] mt-5 font-bold flex items-center justify-start sm:text-[22px] sm:w-[360px] sm:justify-center">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
@@ -41,9 +41,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             </div>
 
                             <address className="text-[14px] text-gray4 flex flex-row items-center justify-center sm:text-[12px]">
-                                <div className="flex flex-row items-center justify-start">
+                                <div className="flex flex-row items-center justify-start sm:justify-center">
                                     {userInfo.tel && (
-                                        <p className="flex items-center justify-center w-[200px]">
+                                        <p className="flex items-center justify-center w-[200px] sm:w-[150px]">
                                             <Image
                                                 src="/assets/image/tel.svg"
                                                 alt="전화"
