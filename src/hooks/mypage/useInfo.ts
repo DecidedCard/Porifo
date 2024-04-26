@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
 import useSetMutation from "../useSetMutation";
 
@@ -45,7 +45,7 @@ const useInfo = () => {
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
-    const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+    const localStorageItemRef = useRef<PortfolioInfo | null>(null);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -61,16 +61,24 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        if (localStorageItem && !portfolio) {
-            const project = localStorageItem.project as unknown as Project[];
-            const career = localStorageItem.career as Career[];
+        if (localStorageItemRef.current && !portfolio) {
+            const project = localStorageItemRef.current.project as unknown as Project[];
+            const career = localStorageItemRef.current.career as Career[];
 
-            setPortfolio(localStorageItem);
-            setInitialBasicInfo(localStorageItem);
+            setPortfolio(localStorageItemRef.current);
+            setInitialBasicInfo(localStorageItemRef.current);
             setProjectsInitial([...project]);
             setInitialCareers([...career]);
         }
-    }, [localStorageItem, portfolio, setPortfolio, user, setInitialBasicInfo, setProjectsInitial, setInitialCareers]);
+    }, [
+        localStorageItemRef,
+        portfolio,
+        setPortfolio,
+        user,
+        setInitialBasicInfo,
+        setProjectsInitial,
+        setInitialCareers,
+    ]);
 
     useEffect(() => {
         if (user && !portfolio) {
@@ -98,6 +106,13 @@ const useInfo = () => {
             console.log(skillTag.find((item) => item === skillTagInput));
         }
     }, [basicInfo.skillTag, skillTagInput]);
+
+    useEffect(() => {
+        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+        if (localStorageItem) {
+            localStorageItemRef.current = localStorageItem;
+        }
+    }, []);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
