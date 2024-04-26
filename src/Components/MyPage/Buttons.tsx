@@ -1,20 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import useInfo from "@/hooks/mypage/useInfo";
-import Button from "../Commen/Button";
-import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
-import { usePDF } from "react-to-pdf";
-import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
-import TemplateSelect from "./TemplateSelect";
 import Image from "next/image";
+
+import Button from "../Commen/Button";
+import TemplateSelect from "./TemplateSelect";
 import Preview from "./Preview";
-import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
 import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
+
+import useInfo from "@/hooks/mypage/useInfo";
+import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
+
+import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
+
+import { usePDF } from "react-to-pdf";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -61,7 +65,6 @@ const Buttons = () => {
                             </div>
                         </div>
                     </div>
-
 
                     <div className="mt-2 w-52 sm:w-fit sm:mt-0">
                         <Button

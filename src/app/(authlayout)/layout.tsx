@@ -26,10 +26,12 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         );
     }
 
-    return <div>
-        <Header />
-        {children}
-    </div>;
+    return (
+        <div>
+            <Header />
+            {children}
+        </div>
+    );
 };
 
 export default AuthLayout;

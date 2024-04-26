@@ -1,8 +1,12 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
+
 import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineMessage } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 import { RiLinkM } from "react-icons/ri";
+
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
 
@@ -55,52 +59,57 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             <button
                 onClick={() => handleClick("basicInfo")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-[110px] sm:justify-center sm:h-10 sm:rounded-lg sm:px-0 sm:py-0
-            ${selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-                    } hover:bg-white hover:text-black sm:hover:bg-gray`}
+            ${
+                selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+            } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
                 <div className="flex sm:flex sm:items-center sm:justify-center">
                     <IoSettingsOutline className="mr-3" />
                     기본 정보
                     <span
-                        className={`bg-red-400 ${!basicInfo.name || !basicInfo.profileImage || emailCheck || basicInfo.job === "default"
-                            ? "bg-opacity-80"
-                            : "bg-opacity-0"
-                            } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                        className={`bg-red-400 ${
+                            !basicInfo.name || !basicInfo.profileImage || emailCheck || basicInfo.job === "default"
+                                ? "bg-opacity-80"
+                                : "bg-opacity-0"
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                     ></span>
                 </div>
             </button>
             <button
                 onClick={() => handleClick("introduce")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-[82px] sm:h-10 sm:justify-center sm:rounded-lg sm:px-0 sm:py-0
-            ${selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-                    } hover:bg-white hover:text-black sm:hover:bg-gray`}
+            ${
+                selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+            } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
                 <div className="flex sm:flex sm:items-center sm:justify-center">
                     <AiOutlineMessage className="mr-3" />
                     소개
                     <span
-                        className={`bg-red-400 ${!basicInfo.oneLineIntroduce ||
+                        className={`bg-red-400 ${
+                            !basicInfo.oneLineIntroduce ||
                             !basicInfo.introduce ||
                             JSON.parse(JSON.stringify(basicInfo.skillTag)).length === 0
-                            ? "bg-opacity-80"
-                            : "bg-opacity-0"
-                            } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                                ? "bg-opacity-80"
+                                : "bg-opacity-0"
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                     ></span>
                 </div>
             </button>
             <button
                 onClick={() => handleClick("project")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-[107px] sm:h-10 sm:justify-center sm:rounded-lg sm:px-0 sm:py-0
-            ${selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-                    } hover:bg-white hover:text-black sm:hover:bg-gray`}
+            ${
+                selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+            } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
                 <div className="flex sm:flex sm:items-center sm:justify-center">
                     <TbPencilMinus className="mr-3" />
                     프로젝트
-
                     <span
-                        className={`bg-red-400 ${projectCheck ? "bg-opacity-80" : "bg-opacity-0"
-                            } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                        className={`bg-red-400 ${
+                            projectCheck ? "bg-opacity-80" : "bg-opacity-0"
+                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
                     ></span>
                 </div>
             </button>

@@ -2,12 +2,13 @@
 
 import { ChangeEvent } from "react";
 
-import useProject from "@/hooks/mypage/useProject";
-import Input from "../Commen/Input";
-
 import Image from "next/image";
 
 import { MdClose } from "react-icons/md";
+
+import Input from "../Commen/Input";
+
+import useProject from "@/hooks/mypage/useProject";
 
 const Project = () => {
     const {
