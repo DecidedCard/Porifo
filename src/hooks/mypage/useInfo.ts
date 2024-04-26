@@ -17,6 +17,9 @@ import { Project } from "@/types/Project";
 import { Career } from "@/types/Career";
 import { getFormattedDate } from "@/util/getformatDate";
 import useInput from "../useInput";
+import { SKILL_TAG } from "@/util/skill_tag";
+import { toast } from "react-toastify";
+import { warnNotify } from "@/util/toast";
 
 const useInfo = () => {
     const {
@@ -40,6 +43,7 @@ const useInfo = () => {
     const { projects, setProjectsInitial } = useProjectsStore();
     const { careers, setInitialCareers } = useCareerStore();
     const [skillTagInput, onChangeSkillTagInputHandler, setSkillTagInput] = useInput();
+    const [skill_tag, setSkill_Tag] = useState<string[]>([]);
     const [disabled, setDisabled] = useState(true);
     const [upload, setUpload] = useState(false);
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
@@ -101,11 +105,9 @@ const useInfo = () => {
     }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
 
     useEffect(() => {
-        const skillTag = basicInfo.skillTag as string[];
-        if (skillTag.find((item) => item === skillTagInput)) {
-            console.log(skillTag.find((item) => item === skillTagInput));
-        }
-    }, [basicInfo.skillTag, skillTagInput]);
+        const skillTag = SKILL_TAG.filter((item) => item.toLowerCase().includes(skillTagInput.toLowerCase()));
+        setSkill_Tag(skillTag);
+    }, [skillTagInput]);
 
     useEffect(() => {
         const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
@@ -174,6 +176,10 @@ const useInfo = () => {
 
     const onClickSkillTagHandler = (item: string) => {
         const skillTag = basicInfo.skillTag as string[];
+        if (skillTag.find((skillTag) => skillTag === item)) {
+            warnNotify({ title: "중복입력이 불가능합니다." });
+            return;
+        }
         setSkillTag([...skillTag, item]);
     };
 
@@ -371,6 +377,7 @@ const useInfo = () => {
         upload,
         emailCheck,
         skillTagInput,
+        skill_tag,
         onChangeNameHandler,
         onChangeEngNameHandler,
         onChangeProfileHandler,
