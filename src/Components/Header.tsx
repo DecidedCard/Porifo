@@ -136,7 +136,11 @@ const Header = () => {
                                                     width={15}
                                                     height={15}
                                                 />
-                                                <p className="text-[12px]">로그아웃</p>
+                                                <form action="/auth/signout" method="post">
+                                                    <button className="text-[12px]" type="submit">
+                                                        로그아웃
+                                                    </button>
+                                                </form>
                                             </Link>
                                         </div>
                                     </div>
