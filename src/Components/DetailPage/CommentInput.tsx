@@ -43,7 +43,7 @@ const CommentInput = ({ user, id }: any) => {
     };
 
     return (
-        <div className=" flex w-[100%] pt-10">
+        <div className=" flex w-[100%] pt-10 sm:justify-center">
             <div className="flex flex-col items-end justify-start flex-1 text-[14px]">
                 {/* 댓글인풋 */}
                 {user ? (
@@ -52,7 +52,7 @@ const CommentInput = ({ user, id }: any) => {
                         onChange={handleComment}
                         type="text"
                         placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3"
+                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px]"
                     />
                 ) : (
                     <input
