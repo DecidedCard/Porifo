@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./Provider";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+import { QUERY_KEY } from "@/util/query_key";
+import serverUserCheck from "@/util/serverUserCheck";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,11 +31,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const queryClient = new QueryClient();
+    queryClient.prefetchQuery({ queryKey: [QUERY_KEY.myPageUser], queryFn: serverUserCheck });
     return (
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
                 <Provider>
-                    <div className="min-h-[830px]">{children}</div>
+                    <HydrationBoundary state={dehydrate(queryClient)}>
+                        <div className="min-h-[830px]">{children}</div>
+                    </HydrationBoundary>
                 </Provider>
             </body>
         </html>
