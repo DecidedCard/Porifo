@@ -6,8 +6,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
+import { User } from "@/types/User";
 
-const CommentInput = ({ user, id }: any) => {
+const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
     const [comment, setComment] = useState("");
     const [disable, setDisable] = useState(true);
 
@@ -26,16 +27,16 @@ const CommentInput = ({ user, id }: any) => {
         },
     });
 
-    const handleComment = (e: any) => {
+    const handleComment = (e: React.ChangeEvent<HTMLInputElement>) => {
         setComment(e.target.value);
     };
 
     const handleSubmitBtn = () => {
         const commentValue = {
             comment,
-            user_name: user.user_metadata.name || user.user_metadata.user_name,
-            user_email: user.email,
-            profileImage: user.user_metadata.profileImage,
+            user_name: user!.user_metadata.name || user!.user_metadata.user_name,
+            user_email: user!.email,
+            profileImage: user!.user_metadata.profileImage,
             portfolio_id: id,
         };
         addMutate.mutate(commentValue);
@@ -43,7 +44,7 @@ const CommentInput = ({ user, id }: any) => {
     };
 
     return (
-        <div className=" flex w-[100%] pt-10">
+        <div className=" flex w-[100%] pt-10 sm:justify-">
             <div className="flex flex-col items-end justify-start flex-1 text-[14px]">
                 {/* 댓글인풋 */}
                 {user ? (
@@ -52,7 +53,7 @@ const CommentInput = ({ user, id }: any) => {
                         onChange={handleComment}
                         type="text"
                         placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3"
+                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px]"
                     />
                 ) : (
                     <input

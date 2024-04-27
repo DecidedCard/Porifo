@@ -90,7 +90,7 @@ const Carousel = () => {
 
         setCarouselTransition("transform 500ms ease-in-out");
     };
-    const moveToNthSlide = (n: any) => {
+    const moveToNthSlide = (n: number) => {
         setTimeout(() => {
             setCarouselTransition("");
             setCurrCarousel(n);
