@@ -1,7 +1,6 @@
-import { createClient } from "./supabase/server";
+import { SupabaseClient } from "@supabase/supabase-js";
 
-const serverUserCheck = async () => {
-    const supabase = createClient();
+const serverUserCheck = async (supabase: SupabaseClient) => {
     const {
         data: { user },
         error,

@@ -17,6 +17,7 @@ import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
 import useInput from "@/hooks/useInput";
 
 import useUserStore from "@/store/userStore";
+import serverClient from "@/util/supabase/serverClient";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -50,6 +51,7 @@ const SignIn = () => {
 
     const signInWithEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const supabase = serverClient();
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email,

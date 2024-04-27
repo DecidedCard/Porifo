@@ -5,6 +5,9 @@ import Provider from "./Provider";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/util/query_key";
 import serverUserCheck from "@/util/serverUserCheck";
+import cacheQueryClient from "@/util/cacheQueryClient";
+import { User } from "@supabase/supabase-js";
+import { createClient } from "@/util/supabase/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,8 +34,12 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const queryClient = new QueryClient();
-    queryClient.prefetchQuery({ queryKey: [QUERY_KEY.myPageUser], queryFn: serverUserCheck });
+    const queryClient = cacheQueryClient();
+    const supabase = createClient();
+    queryClient.prefetchQuery<User | null>({
+        queryKey: [QUERY_KEY.myPageUser],
+        queryFn: () => serverUserCheck(supabase),
+    });
     return (
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
