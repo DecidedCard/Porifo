@@ -16,12 +16,12 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="flex flex-col gap-2 items-start justify-start flex-1 sm:items-center sm:justify-center">
                     {(userInfo.blogLink || userInfo.githubLink) && (
                         <>
-                            <div className="font-medium text-[20px] sm:w-[448px] sm:font-medium sm:text-[20px]">URL</div>
+                            <div className="font-medium text-[20px] sm:w-[370px] sm:font-medium sm:text-[20px]">URL</div>
                             <div className="bg-white w-[804px] h-[1px]"></div>
                         </>
                     )}
 
-                    <div className="flex flex-col gap-2 items-start justify-start sm:w-[448px]">
+                    <div className="flex flex-col gap-2 items-start justify-start sm:w-[370px]">
                         <div className="flex flex-col gap-2 items-start justify-start">
                             {userInfo.blogLink && (
                                 <div className="flex items-center text-[12px] text-gray3 rounded-lg border border-solid border-disabled p-4">
