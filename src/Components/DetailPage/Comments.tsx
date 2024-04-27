@@ -36,12 +36,12 @@ const Comments = () => {
                 <CommentInput user={user} id={id} />
                 <div className="border-[1px] border-solid border-gray2 mt-5 sm:mt-2 " />
                 {/* 댓글리스트 */}
-                {data?.length === 0 ? (
+                {data!.length === 0 ? (
                     <div className="text-sm flex items-center justify-center text-gray3 mt-5 ">
                         자유로운 피드백을 남겨보세요 😎
                     </div>
                 ) : (
-                    data?.map((item) => {
+                    data!.map((item) => {
                         return (
                             <div key={item.id} className="flex gap-3">
                                 {/* profileImage */}
