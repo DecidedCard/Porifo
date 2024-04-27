@@ -2,28 +2,19 @@
 
 import Image from "next/image";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import { deleteComment, getComments } from "@/util/supabase/supabase_comments";
+import { getComments } from "@/util/supabase/supabase_comments";
 
 import useUserStore from "@/store/userStore";
-import useCardIdStore from "@/store/detailStore";
 
 import CommentInput from "./CommentInput";
+import useDetailStore from "@/store/detailStore";
 
 const Comments = () => {
-    const { cardId: id } = useCardIdStore();
+    const { cardId: id, setIsDeleteModalOpen, setCommentId } = useDetailStore();
     const { user } = useUserStore();
-
-    const queryClient = useQueryClient();
-
-    const deleteMutate = useMutation({
-        mutationFn: deleteComment,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolidComments] });
-        },
-    });
 
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
@@ -31,7 +22,8 @@ const Comments = () => {
     });
 
     const handleDeleteBtn = (id: number) => {
-        deleteMutate.mutate(id);
+        setIsDeleteModalOpen(true);
+        setCommentId(id);
     };
 
     if (isPending) {
@@ -41,7 +33,7 @@ const Comments = () => {
     return (
         <>
             <div className="w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
-                <CommentInput user={user} id={id} queryClient={queryClient} />
+                <CommentInput user={user} id={id} />
                 <div className="border-[1px] border-solid border-gray2 mt-5" />
                 {/* 댓글리스트 */}
                 {data?.length === 0 ? (

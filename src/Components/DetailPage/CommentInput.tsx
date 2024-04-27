@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
 
-const CommentInput = ({ user, id, queryClient }: any) => {
+const CommentInput = ({ user, id }: any) => {
     const [comment, setComment] = useState("");
     const [disable, setDisable] = useState(true);
+
+    const queryClient = useQueryClient();
 
     useEffect(() => {
         if (user && comment.length > 0) {

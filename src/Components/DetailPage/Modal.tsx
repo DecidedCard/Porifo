@@ -5,16 +5,20 @@ import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import Loading from "../Loading";
 import useLiked from "@/hooks/community/useLiked";
 import { useRouter } from "next/navigation";
+import useDetailStore from "@/store/detailStore";
 
-const Modal = ({ isVisible, onClose, children }: any) => {
+const Modal = ({ onClose, children }: any) => {
     const { checkLike, id, pending, handleLikeBtn } = useLiked();
+    const { isOpenModal } = useDetailStore();
+
     const router = useRouter();
 
     //모달 close
-    if (!isVisible) return null;
+    if (!isOpenModal) return null;
     const handleClose = (e: any) => {
         if (e.target.id === "wrapper") {
             onClose();
+            router.push("/community");
         }
     };
 
@@ -23,8 +27,11 @@ const Modal = ({ isVisible, onClose, children }: any) => {
     }
 
     //댓글 버튼
-    const handleCommentBtn = () => {
-        router.push("/community#comment");
+    const handleCommentBtn = () => router.push("/community#comment");
+
+    const handleBackBtn = () => {
+        onClose();
+        router.push("/community");
     };
 
     return (
@@ -37,7 +44,7 @@ const Modal = ({ isVisible, onClose, children }: any) => {
             <button
                 className="bg-[rgba(255,255,255,0.80)] rounded-[999px] w-[48px] h-[48px] p-2 flex flex-row gap-2 items-center justify-center shrink-0 absolute left-[22%] top-[25px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 sm:z-50 sm:left-8"
                 style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
-                onClick={onClose}
+                onClick={handleBackBtn}
             >
                 <Image src="icon-set9.svg" alt="아이콘" width={25} height={25} />
             </button>

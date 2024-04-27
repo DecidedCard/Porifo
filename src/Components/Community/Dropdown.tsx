@@ -6,17 +6,7 @@ import { QUERY_KEY } from "@/util/query_key";
 
 import useJobFilterStore from "@/store/jobFilterStore";
 
-const filterValue = [
-    {
-        value: "최신순",
-    },
-    {
-        value: "오래된 순",
-    },
-    {
-        value: "인기순",
-    },
-];
+const filterValue = [{ value: "최신순" }, { value: "오래된 순" }, { value: "인기순" }];
 
 const Dropdown = ({ props }: any) => {
     const { setView } = props;
