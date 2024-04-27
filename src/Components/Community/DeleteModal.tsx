@@ -2,7 +2,11 @@
 import useDelete from "@/hooks/community/useDelete";
 import useDetailStore from "@/store/detailStore";
 
-const DeleteModal = ({ children }: any) => {
+const DeleteModal = ({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) => {
     const { isDeleteModalOpen, setIsDeleteModalOpen, commentId } = useDetailStore();
     const { handleCommentDelete } = useDelete();
 

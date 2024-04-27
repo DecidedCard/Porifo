@@ -11,10 +11,11 @@ import useUserStore from "@/store/userStore";
 
 import CommentInput from "./CommentInput";
 import useDetailStore from "@/store/detailStore";
+import { User } from "@/types/User";
 
 const Comments = () => {
     const { cardId: id, setIsDeleteModalOpen, setCommentId } = useDetailStore();
-    const { user } = useUserStore();
+    const { user }: { user: User | null } = useUserStore();
 
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
