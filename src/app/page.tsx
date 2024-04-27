@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import Cover from "@/Components/MainPage/Cover";
 import MiddleLeft from "@/Components/MainPage/MiddleLeft";
@@ -9,19 +9,8 @@ import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
 import Header from "@/Components/Header";
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
-import Loading from "@/Components/Loading";
-import useUserCheck from "@/hooks/useUserCheck";
 export default function Home() {
-    // const { isFetching, isError } = useLoginCheck();
-    useUserCheck();
-
-    // if (isFetching) {
-    //     return (
-    //         <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
-    //             <Loading />
-    //         </div>
-    //     );
-    // }
+    useLoginCheck();
 
     return (
         <main>

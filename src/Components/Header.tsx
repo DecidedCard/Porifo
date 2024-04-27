@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import Button from "./Commen/Button";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
+import serverClient from "@/util/supabase/serverClient";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -15,6 +15,7 @@ const Header = () => {
 
     const { user, setUser } = useUserStore();
     const signOutFunc = async () => {
+        const supabase = serverClient();
         const { error } = await supabase.auth.signOut();
         try {
             if (!error) {
