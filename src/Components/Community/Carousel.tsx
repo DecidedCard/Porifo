@@ -14,7 +14,7 @@ import useCardIdStore from "@/store/detailStore";
 
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
-    const [pixel, setPixel] = useState(500); // pc
+    const [pixel, setPixel] = useState(500);
     const [carouselTransition, setCarouselTransition] = useState("transform 500ms ease-in-out");
 
     const { setCardId, setIsOpenModal } = useCardIdStore();
