@@ -11,3 +11,5 @@ const serverUserCheck = async () => {
         throw error;
     }
 };
+
+export default serverUserCheck;
