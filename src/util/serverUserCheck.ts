@@ -10,6 +10,7 @@ const serverUserCheck = async () => {
         console.error(error);
         throw error;
     }
+    return user;
 };
 
 export default serverUserCheck;
