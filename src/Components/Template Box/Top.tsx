@@ -15,10 +15,10 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <div>
-            <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-[448px] sm:min-h-[511px] sm:mt-4">
+            <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-[480px] sm:min-h-[511px] sm:mt-4">
                 <div className="flex flex-col items-center justify-center py-[50px]">
                     <Image
-                        className="rounded-2xl w-[170px] h-[170px] object-cover sm:w-[150px] sm:h-[150px] sm:mb-4"
+                        className="rounded-2xl w-[170px] h-[170px] object-cover sm:w-[150px] sm:h-[150px] sm:mb-2"
                         src={userInfo.profileImage!}
                         alt="프로필 사진"
                         width={170}
@@ -26,7 +26,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     />
 
                     <div className="flex flex-col items-center justify-center w-80 min-w-[320px] max-w-xs sm:w-[316px]">
-                        <h1 className="leading-normal text-[30px] w-[932px] h-[92px] font-bold flex items-center justify-center sm:text-[26px] sm:w-[316px]">
+                        <h1 className="leading-normal text-[30px] w-[932px] h-[92px] font-bold flex items-center justify-center sm:text-[22px] sm:w-[316px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 

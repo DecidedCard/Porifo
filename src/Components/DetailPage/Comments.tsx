@@ -2,28 +2,20 @@
 
 import Image from "next/image";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
-import { deleteComment, getComments } from "@/util/supabase/supabase_comments";
+import { getComments } from "@/util/supabase/supabase_comments";
 
 import useUserStore from "@/store/userStore";
-import useCardIdStore from "@/store/detailStore";
 
 import CommentInput from "./CommentInput";
+import useDetailStore from "@/store/detailStore";
+import { User } from "@/types/User";
 
 const Comments = () => {
-    const { cardId: id } = useCardIdStore();
-    const { user } = useUserStore();
-
-    const queryClient = useQueryClient();
-
-    const deleteMutate = useMutation({
-        mutationFn: deleteComment,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.portfolidComments] });
-        },
-    });
+    const { cardId: id, setIsDeleteModalOpen, setCommentId } = useDetailStore();
+    const { user }: { user: User | null } = useUserStore();
 
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
@@ -31,7 +23,8 @@ const Comments = () => {
     });
 
     const handleDeleteBtn = (id: number) => {
-        deleteMutate.mutate(id);
+        setIsDeleteModalOpen(true);
+        setCommentId(id);
     };
 
     if (isPending) {
@@ -40,16 +33,16 @@ const Comments = () => {
 
     return (
         <>
-            <div className="w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
-                <CommentInput user={user} id={id} queryClient={queryClient} />
-                <div className="border-[1px] border-solid border-gray2 mt-5" />
+            <div className="w-[80%] rounded-2xl flex flex-col gap-5 pb-10 ">
+                <CommentInput user={user} id={id} />
+                <div className="border-[1px] border-solid border-gray2 mt-5 sm:mt-2 " />
                 {/* 댓글리스트 */}
-                {data?.length === 0 ? (
-                    <div className="text-sm flex items-center justify-center text-gray3 mt-5">
+                {data!.length === 0 ? (
+                    <div className="text-sm flex items-center justify-center text-gray3 mt-5 ">
                         자유로운 피드백을 남겨보세요 😎
                     </div>
                 ) : (
-                    data?.map((item) => {
+                    data!.map((item) => {
                         return (
                             <div key={item.id} className="flex gap-3">
                                 {/* profileImage */}

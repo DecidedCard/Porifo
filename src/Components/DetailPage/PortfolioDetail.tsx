@@ -17,7 +17,7 @@ import Loading from "../Loading";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { useEffect } from "react";
 
-const Portfolio_detail = () => {
+const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
@@ -30,6 +30,7 @@ const Portfolio_detail = () => {
         top: -${window.scrollY}px;
         overflow-y: scroll;
         width: 100%;`;
+
         return () => {
             const scrollY = document.body.style.top;
             document.body.style.cssText = "";
@@ -49,7 +50,7 @@ const Portfolio_detail = () => {
 
     return (
         // 포트폴리오 영역
-        <div className="relative h-[900px] w-[100%] overflow-auto rounded-2xl sm:w-full">
+        <div className="relative h-[900px] w-[100%] overflow-auto rounded-2xl sm:w-full ">
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
@@ -68,4 +69,4 @@ const Portfolio_detail = () => {
     );
 };
 
-export default Portfolio_detail;
+export default PortfolioDetail;

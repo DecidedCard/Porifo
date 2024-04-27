@@ -14,19 +14,19 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         <div>
             <ol>
                 {project.map((project, index) => (
-                    <li key={index} className="flex flex-col items-start justify-start mt-10 sm:items-center sm:justify-center">
-                        <p className="font-medium text-[22px] sm:w-[448px] sm:font-medium sm:text-[20px]">프로젝트</p>
-                        <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[448px]"></div>
-                        <div className="flex flex-col w-[804px] sm:w-[448px]">
+                    <li key={index} className="flex flex-col items-start justify-start mt-10 sm:items-center sm:justify-center sm:w-full">
+                        <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
+                        <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
+                        <div className="flex flex-col w-[804px] sm:w-[370px]">
                             {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                            <div className="flex flex-row sm:items-center sm:justify-center sm:w-[448px]">
+                            <div className="flex flex-row sm:items-center sm:justify-center sm:w-[370px]">
                                 {project.images &&
                                     project.images.map((image, index) => (
                                         <Image
                                             key={index}
                                             src={image}
                                             alt="프로젝트"
-                                            className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[140px] sm:h-[100px]"
+                                            className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[110px] sm:mr-1"
                                             width={800}
                                             height={800}
                                         />
@@ -35,7 +35,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                             {/* 제목과 날짜를 포함하는 영역 */}
                             <div className="flex w-full flex-col sm:items-center sm:justify-center sm:mt-2">
-                                <div className="flex justify-between w-[804px] mt-2 sm:w-[448px]">
+                                <div className="flex justify-between w-[804px] mt-2 sm:w-[370px]">
                                     <h3 className="text-[20px] font-medium mb-3 sm:text-[16px] sm:w-[299px]">{project.name}</h3>
                                     <time className="text-gray3 text-[12px] leading-none sm:text-[10px]">
                                         {project.date}
@@ -44,11 +44,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
                                 <div className="flex flex-col mt-5 sm:items-center sm:justify-center">
-                                    <p className="text-[14px] font-normal mb-2 text-gray4 sm:w-[448px]">
+                                    <p className="text-[14px] font-normal mb-2 text-gray4 sm:w-[370px]">
                                         {project.introduce}
                                     </p>
                                     {project.githubLink && (
-                                        <div className="flex items-center text-gray4 mt-1 sm:w-[448px]">
+                                        <div className="flex items-center text-gray4 mt-1 sm:w-[370px]">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -63,7 +63,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     )}
 
                                     {project.deployLink && (
-                                        <div className="flex items-center text-gray4 mt-1 sm:w-[448px]">
+                                        <div className="flex items-center text-gray4 mt-1 sm:w-[370px]">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -84,14 +84,14 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             </ol>
             {career.length > 0 && (
                 <div className="flex flex-col items-start justify-start mt-12 sm:items-center sm:justify-center">
-                    <p className="font-medium text-[22px] sm:w-[448px] sm:font-medium sm:text-[20px]">업무경력</p>
-                    <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[448px]"></div>
+                    <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
+                    <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                     <ol>
                         {career.map((experience, index) => (
-                            <li key={index} className="flex relative mb-5 sm:w-[448px]">
+                            <li key={index} className="flex relative mb-5 sm:w-[370px]">
                                 <div className="flex w-full flex-col">
                                     {/* 제목과 날짜를 포함하는 영역 */}
-                                    <div className="flex justify-between w-[804px] sm:w-[448px]">
+                                    <div className="flex justify-between w-[804px] sm:w-[370px]">
                                         <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
                                             {experience.company}
                                         </h3>
