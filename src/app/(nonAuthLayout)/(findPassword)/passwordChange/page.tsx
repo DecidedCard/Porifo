@@ -16,7 +16,7 @@ const Password_Change = () => {
     const [confirmUserPassword, setConfirmUserPassword] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
 
-    const [isRecovery, setRecovery] = useState(false);
+    const [isRecovery, setRecovery] = useState(true);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
@@ -38,6 +38,7 @@ const Password_Change = () => {
         }
 
         await supabase.auth.updateUser({ password: userPassword });
+        setRecovery(false);
     };
 
     const finishChangePassword = () => router.push("/signin");
@@ -81,7 +82,7 @@ const Password_Change = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 {isRecovery ? (
-                    <div className="rounded-2xl p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col">
                         <form onSubmit={confirmHandler}>
                             <div className="flex justify-center">
                                 <Image

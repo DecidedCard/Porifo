@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { Flip, ToastContainer, toast } from "react-toastify";
+import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { successNotify } from "@/util/toast";
+
 import SignButton from "@/Components/Sign/SignButton";
 import SignInputItem from "@/Components/Sign/SignInputItem";
 
+import { successNotify } from "@/util/toast";
 import { supabase } from "@/util/supabase/clientSupabase";
 
 const Find_Email = () => {
@@ -29,6 +29,7 @@ const Find_Email = () => {
     const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value);
 
     const showToastAlert = () => successNotify({ title: "이메일을 통해 비밀번호를 변경해 주세요. 😎" });
+
     return (
         <main>
             <div className="flex py-36 items-center justify-center bg-hihigray relative">
