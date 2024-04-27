@@ -11,7 +11,6 @@ import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 
 import useCardIdStore from "@/store/detailStore";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Carousel = () => {
     const [currCarousel, setCurrCarousel] = useState(1);
