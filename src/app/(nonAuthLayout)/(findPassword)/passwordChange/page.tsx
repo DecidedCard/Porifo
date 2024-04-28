@@ -10,6 +10,7 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
+import serverClient from "@/util/supabase/serverClient";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
@@ -37,6 +38,7 @@ const Password_Change = () => {
             return;
         }
 
+        const supabase = serverClient();
         await supabase.auth.updateUser({ password: userPassword });
         setRecovery(false);
     };
