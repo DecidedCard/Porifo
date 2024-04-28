@@ -1,5 +1,5 @@
-import { supabase } from "@/util/supabase/clientSupabase";
 import { Provider } from "@supabase/supabase-js";
+import serverClient from "../supabase/serverClient";
 
 type QueryParams = {
     access_type: string;
@@ -7,6 +7,7 @@ type QueryParams = {
 };
 
 const signInWithSocial = async (social: Provider, redirectTo: string, queryParams?: QueryParams) => {
+    const supabase = serverClient();
     try {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: social,
