@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+import Image from "next/image";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
-import { User } from "@/types/User";
-import Image from "next/image";
+import type { User } from "@/types/User";
 
 const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
     const [comment, setComment] = useState("");

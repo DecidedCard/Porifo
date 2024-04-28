@@ -8,10 +8,11 @@ import { QUERY_KEY } from "@/util/query_key";
 import { getComments } from "@/util/supabase/supabase_comments";
 
 import useUserStore from "@/store/userStore";
+import useDetailStore from "@/store/detailStore";
 
 import CommentInput from "./CommentInput";
-import useDetailStore from "@/store/detailStore";
-import { User } from "@/types/User";
+
+import type { User } from "@/types/User";
 
 const Comments = () => {
     const { cardId: id, setIsDeleteModalOpen, setCommentId } = useDetailStore();
