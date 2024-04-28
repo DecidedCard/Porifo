@@ -16,7 +16,7 @@ const Password_Change = () => {
     const [confirmUserPassword, setConfirmUserPassword] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
 
-    const [isRecovery, setRecovery] = useState(true);
+    const [isRecovery, setRecovery] = useState(false);
     const [wordRegValid, setWordRegValid] = useState(false);
     const [specialRegValid, setSpecialRegValid] = useState(false);
     const [numberRegValid, setNumberRegValid] = useState(false);
@@ -44,10 +44,11 @@ const Password_Change = () => {
     const finishChangePassword = () => router.push("/signin");
 
     useEffect(() => {
-        supabase.auth.onAuthStateChange(async (event) => {
+        const { data } = supabase.auth.onAuthStateChange(async (event) => {
             if (event == "PASSWORD_RECOVERY") {
                 setRecovery(true);
             }
+            data.subscription.unsubscribe();
         });
     }, []);
 
