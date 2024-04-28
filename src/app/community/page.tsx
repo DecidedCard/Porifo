@@ -3,7 +3,7 @@ import Carousel from "@/Components/Community/Carousel";
 import JobFilter from "@/Components/Community/JobFilter";
 import Filter from "@/Components/Community/Filter";
 
-const ComuunityPage = () => {
+const CommunityPage = () => {
     return (
         <div className="flex flex-col items-center sm:w-full overflow-hidden">
             <div className="flex w-full">
@@ -23,4 +23,4 @@ const ComuunityPage = () => {
     );
 };
 
-export default ComuunityPage;
+export default CommunityPage;
