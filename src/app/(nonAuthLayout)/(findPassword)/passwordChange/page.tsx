@@ -40,16 +40,19 @@ const Password_Change = () => {
         setRecovery(false);
     };
 
-    const finishChangePassword = () => router.push("/signin");
+    const finishChangePassword = () => router.replace("/signin");
 
     useEffect(() => {
-        const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
-            console.log("data", data);
-            console.log("event", event);
-            if (event == "SIGNED_IN" || event == "PASSWORD_RECOVERY") {
+        const { data } = supabase.auth.onAuthStateChange(async (event) => {
+            if (
+                event === "INITIAL_SESSION" ||
+                event == "SIGNED_IN" ||
+                event == "PASSWORD_RECOVERY" ||
+                event === "USER_UPDATED"
+            ) {
                 setRecovery(true);
             }
-            console.log("session", session);
+
             data.subscription.unsubscribe();
         });
     }, []);
