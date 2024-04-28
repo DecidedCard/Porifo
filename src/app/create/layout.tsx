@@ -10,15 +10,8 @@ export default function FindPasswordLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { isFetching } = useLoginCheck();
+    useLoginCheck();
 
-    if (isFetching) {
-        return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
-                <Loading />
-            </div>
-        );
-    }
     return (
         <>
             <Header />

@@ -6,30 +6,26 @@ import { QUERY_KEY } from "@/util/query_key";
 import { userData } from "@/util/supabase/supabase_user";
 
 import { useQuery } from "@tanstack/react-query";
+import useUserCheck from "../useUserCheck";
 
 const useLoginCheck = () => {
-    const { user, setUser } = useUserStore();
-    const { isFetching, isError, data } = useQuery({
-        queryKey: [QUERY_KEY.myPageUser],
-        queryFn: userData,
-        retry: 0,
-        refetchOnWindowFocus: false,
-    });
+    const { setUser } = useUserStore();
+    const user = useUserCheck();
 
     useEffect(() => {
-        if (data) {
+        if (user) {
             setUser({
-                ...data,
+                ...user,
                 user_metadata: {
-                    ...data.user_metadata,
+                    ...user.user_metadata,
                     profileImage:
-                        data.user_metadata.profileImage || data.user_metadata.picture || data.user_metadata.avatar_url,
+                        user.user_metadata.profileImage || user.user_metadata.picture || user.user_metadata.avatar_url,
                 },
             });
         }
-    }, [setUser, data]);
+    }, [setUser, user]);
 
-    return { user, data, isFetching, isError };
+    return { user };
 };
 
 export default useLoginCheck;

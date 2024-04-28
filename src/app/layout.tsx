@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "./Provider";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+import { QUERY_KEY } from "@/util/query_key";
+import serverUserCheck from "@/util/serverUserCheck";
+import cacheQueryClient from "@/util/cacheQueryClient";
+import { User } from "@supabase/supabase-js";
+import { createClient } from "@/util/supabase/server";
+import Prefetch from "./Prefetch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +39,9 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
                 <Provider>
-                    <div className="min-h-[830px]">{children}</div>
+                    <div className="min-h-[830px]">
+                        <Prefetch>{children}</Prefetch>
+                    </div>
                 </Provider>
             </body>
         </html>

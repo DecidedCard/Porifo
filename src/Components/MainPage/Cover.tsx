@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Button from "../Commen/Button";
 import useUserStore from "@/store/userStore";
 
 const Cover = () => {
