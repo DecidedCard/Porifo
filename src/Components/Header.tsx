@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Commen/Button";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
@@ -14,6 +14,12 @@ const Header = () => {
     const router = useRouter();
 
     const { user, setUser } = useUserStore();
+
+    useEffect(() => {
+        if (window.location.pathname === "/community") {
+            setActiveMenu("community");
+        }
+    }, []);
     const signOutFunc = async () => {
         const supabase = serverClient();
         const { error } = await supabase.auth.signOut();
