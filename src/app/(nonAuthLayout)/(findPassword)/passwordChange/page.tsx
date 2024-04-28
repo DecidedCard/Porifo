@@ -8,7 +8,6 @@ import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
-import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
 import serverClient from "@/util/supabase/serverClient";
 
@@ -29,7 +28,7 @@ const Password_Change = () => {
     const [lengthConfirmRegValid, setLengthConfirmRegValid] = useState(false);
 
     const router = useRouter();
-
+    const supabase = serverClient();
     const confirmHandler = async () => {
         if (userPassword !== confirmUserPassword) {
             setUserPassword("");
@@ -38,7 +37,6 @@ const Password_Change = () => {
             return;
         }
 
-        const supabase = serverClient();
         await supabase.auth.updateUser({ password: userPassword });
         setRecovery(false);
     };
@@ -49,14 +47,13 @@ const Password_Change = () => {
         const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
             console.log("data", data);
             console.log("event", event);
-            if (event == "PASSWORD_RECOVERY") {
+            if (event == "SIGNED_IN") {
                 setRecovery(true);
             }
             console.log("session", session);
             data.subscription.unsubscribe();
         });
-    }, []);
-    console.log("isRecovery", isRecovery);
+    }, [supabase.auth]);
 
     useEffect(() => {
         passwordValidate({
