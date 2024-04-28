@@ -1,4 +1,5 @@
 import { supabase } from "./clientSupabase";
+import serverClient from "./serverClient";
 
 export const userData = async () => {
     try {
@@ -17,6 +18,7 @@ export const userData = async () => {
 };
 
 export const userUpdate = async (arg: any) => {
+    const supabase = serverClient();
     try {
         const { data, error } = await supabase.auth.updateUser({
             data: arg,
