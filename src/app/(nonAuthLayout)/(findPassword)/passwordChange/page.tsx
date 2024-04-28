@@ -36,20 +36,18 @@ const Password_Change = () => {
             alert("비밀번호가 일치하지 않습니다!");
             return;
         }
+        await supabase.auth.updateUser({ password: userPassword });
 
-        const { data } = await supabase.auth.updateUser({ password: userPassword });
-        console.log("data", data);
         setRecovery(false);
     };
 
-    console.log("isRecovery", isRecovery);
     const finishChangePassword = () => router.replace("/signin");
 
     const { data } = supabase.auth.onAuthStateChange(async (event) => {
-        if (event == "SIGNED_IN" || event == "PASSWORD_RECOVERY") {
+        if (event == "PASSWORD_RECOVERY") {
             setRecovery(true);
         }
-        console.log("event", event);
+
         data.subscription.unsubscribe();
     });
 
