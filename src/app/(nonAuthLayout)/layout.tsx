@@ -7,19 +7,11 @@ import { useRouter } from "next/navigation";
 import React, { PropsWithChildren } from "react";
 
 const NonAuthLayout = ({ children }: PropsWithChildren) => {
-    const { data, isFetching, isError } = useLoginCheck();
+    const { user } = useLoginCheck();
     const router = useRouter();
 
-    if (isFetching) {
-        return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
-                <Loading />
-            </div>
-        );
-    }
-
-    if (!isFetching && !isError) {
-        if (data?.user_metadata.birthDate === undefined && data?.user_metadata.sex === undefined) {
+    if (user) {
+        if (user?.user_metadata.birthDate === undefined && user?.user_metadata.sex === undefined) {
             router.replace("/socialSetting");
             return;
         }

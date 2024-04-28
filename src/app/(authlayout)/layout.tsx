@@ -7,24 +7,22 @@ import Loading from "@/Components/Loading";
 import LoginCheckModal from "@/Components/LoginCheckModal";
 
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
+import { useRouter } from "next/navigation";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
-    const { isFetching, isError } = useLoginCheck();
+    const { user } = useLoginCheck();
+    const router = useRouter();
 
-    if (isFetching) {
-        return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
-                <Loading />
-            </div>
-        );
+    if (!user) {
+        return <LoginCheckModal route="/" />;
     }
 
-    if (isError) {
-        return (
-            <div>
-                <LoginCheckModal route="/" />
-            </div>
-        );
+    if (!user.user_metadata.name && !user.user_metadata.user_name) {
+        router.replace("/confirmEmail");
+    } else {
+        if (!user.user_metadata.birthDate && !user.user_metadata.sex) {
+            router.replace("/socialSetting");
+        }
     }
 
     return (

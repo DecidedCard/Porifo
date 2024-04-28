@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import { supabase } from "@/util/supabase/clientSupabase";
 import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
-import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
 
 const Password_Change = () => {
@@ -29,26 +28,28 @@ const Password_Change = () => {
 
     const router = useRouter();
 
-    const confirmHandler = async () => {
+    const confirmHandler = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         if (userPassword !== confirmUserPassword) {
             setUserPassword("");
             setConfirmUserPassword("");
             alert("비밀번호가 일치하지 않습니다!");
             return;
         }
-
         await supabase.auth.updateUser({ password: userPassword });
+
+        setRecovery(false);
     };
 
-    const finishChangePassword = () => router.push("/signin");
+    const finishChangePassword = () => router.replace("/signin");
 
-    useEffect(() => {
-        supabase.auth.onAuthStateChange(async (event) => {
-            if (event == "PASSWORD_RECOVERY") {
-                setRecovery(true);
-            }
-        });
-    }, []);
+    const { data } = supabase.auth.onAuthStateChange(async (event) => {
+        if (event == "PASSWORD_RECOVERY") {
+            setRecovery(true);
+        }
+
+        data.subscription.unsubscribe();
+    });
 
     useEffect(() => {
         passwordValidate({
@@ -81,7 +82,7 @@ const Password_Change = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 {isRecovery ? (
-                    <div className="rounded-2xl p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col">
                         <form onSubmit={confirmHandler}>
                             <div className="flex justify-center">
                                 <Image
@@ -128,7 +129,7 @@ const Password_Change = () => {
                             />
 
                             <SignButton
-                                text="비밀번호"
+                                text="비밀번호 재설정 완료"
                                 password={userPassword}
                                 confirmUserPassword={confirmUserPassword}
                                 inputDisabled={inputDisabled}
