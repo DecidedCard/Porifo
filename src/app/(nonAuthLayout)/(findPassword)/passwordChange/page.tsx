@@ -42,20 +42,18 @@ const Password_Change = () => {
 
     const finishChangePassword = () => router.replace("/signin");
 
-    useEffect(() => {
-        const { data } = supabase.auth.onAuthStateChange(async (event) => {
-            if (
-                event === "INITIAL_SESSION" ||
-                event == "SIGNED_IN" ||
-                event == "PASSWORD_RECOVERY" ||
-                event === "USER_UPDATED"
-            ) {
-                setRecovery(true);
-            }
+    const { data } = supabase.auth.onAuthStateChange(async (event) => {
+        if (
+            event === "INITIAL_SESSION" ||
+            event == "SIGNED_IN" ||
+            event == "PASSWORD_RECOVERY" ||
+            event === "USER_UPDATED"
+        ) {
+            setRecovery(true);
+        }
 
-            data.subscription.unsubscribe();
-        });
-    }, []);
+        data.subscription.unsubscribe();
+    });
 
     useEffect(() => {
         passwordValidate({
@@ -135,7 +133,7 @@ const Password_Change = () => {
                             />
 
                             <SignButton
-                                text="비밀번호"
+                                text="비밀번호 재설정 완료"
                                 password={userPassword}
                                 confirmUserPassword={confirmUserPassword}
                                 inputDisabled={inputDisabled}
