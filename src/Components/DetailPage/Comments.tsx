@@ -55,7 +55,7 @@ const Comments = () => {
                                 />
                                 <div className="flex flex-col gap-1 flex-1 ">
                                     <div className="flex flex-row gap-2 items-center">
-                                        <span>
+                                        <span className=" text-gray4">
                                             {/* user_name */}
                                             {item.user_name}
                                         </span>
@@ -64,7 +64,7 @@ const Comments = () => {
                                             {item.created_at}
                                         </span>
                                     </div>
-                                    <div className="flex gap-2 ">
+                                    <div className="flex gap-2 text-gray4">
                                         <span>
                                             {/* comment */}
                                             {item.comment}

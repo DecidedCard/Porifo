@@ -62,7 +62,7 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                             onChange={handleComment}
                             type="text"
                             placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                            className="border border-solid border-gray2 w-full  rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px] "
+                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px] "
                         />
                     </div>
                 ) : (
