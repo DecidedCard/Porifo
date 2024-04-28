@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
 import { User } from "@/types/User";
+import Image from "next/image";
 
 const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
     const [comment, setComment] = useState("");
@@ -44,17 +45,26 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
     };
 
     return (
-        <div className=" flex w-[100%] pt-10 sm:justify-">
-            <div className="flex flex-col items-end justify-start flex-1 text-[14px]">
+        <div className="w-full pt-10 ">
+            <div className="flex flex-col flex-1 text-[14px]">
                 {/* 댓글인풋 */}
                 {user ? (
-                    <input
-                        value={comment || ""}
-                        onChange={handleComment}
-                        type="text"
-                        placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                        className="border border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px]"
-                    />
+                    <div className="flex gap-2">
+                        <Image
+                            className="rounded-[50px] w-10 h-10 object-cover"
+                            src={user!.user_metadata.profileImage}
+                            alt="프로필"
+                            width={40}
+                            height={40}
+                        />
+                        <input
+                            value={comment || ""}
+                            onChange={handleComment}
+                            type="text"
+                            placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
+                            className="border border-solid border-gray2 w-full  rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px] "
+                        />
+                    </div>
                 ) : (
                     <input
                         type="text"
@@ -63,17 +73,19 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                     />
                 )}
                 {/* 댓글등록 버튼 */}
-                <button
-                    onClick={handleSubmitBtn}
-                    disabled={disable}
-                    className={
-                        disable
-                            ? "bg-gray flex items-center justify-center rounded-[4px] text-gray2 font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
-                            : "bg-primary flex items-center justify-center rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
-                    }
-                >
-                    댓글 게시
-                </button>
+                <div className="flex flex-row-reverse ">
+                    <button
+                        onClick={handleSubmitBtn}
+                        disabled={disable}
+                        className={
+                            disable
+                                ? "bg-gray flex items-center justify-center rounded-[4px] text-gray2 font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px] "
+                                : "bg-primary flex items-center justify-center rounded-[4px] text-white font-medium p-2 mt-2 w-[62px] h-[18px] text-[10px]"
+                        }
+                    >
+                        댓글 게시
+                    </button>
+                </div>
             </div>
         </div>
     );

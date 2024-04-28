@@ -61,7 +61,7 @@ const Comments = () => {
                                         </span>
                                         <span>
                                             {/* 몇일됬는지 */}
-                                            {/* {item.created_at} */}
+                                            {item.created_at}
                                         </span>
                                     </div>
                                     <div className="flex gap-2">
