@@ -46,13 +46,17 @@ const Password_Change = () => {
     const finishChangePassword = () => router.push("/signin");
 
     useEffect(() => {
-        const { data } = supabase.auth.onAuthStateChange(async (event) => {
+        const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
+            console.log("data", data);
+            console.log("event", event);
             if (event == "PASSWORD_RECOVERY") {
                 setRecovery(true);
             }
+            console.log("session", session);
             data.subscription.unsubscribe();
         });
     }, []);
+    console.log("isRecovery", isRecovery);
 
     useEffect(() => {
         passwordValidate({
