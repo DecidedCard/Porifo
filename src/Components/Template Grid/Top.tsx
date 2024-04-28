@@ -15,9 +15,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <main className="mt-16 mb-10 sm:py-10">
             <div className="flex flex-col gap-8 items-center justify-center sm:w-full">
-                <div className="flex flex-row items-start justify-center sm:ml-10 sm:w-full sm:gap-5">
+                <div className="flex flex-row items-start justify-center sm:ml-5 sm:w-full sm:gap-5">
                     <Image
-                        className="rounded-full mr-8 w-[200px] h-[200px] object-cover sm:w-40 sm:h-40 sm:mr-0"
+                        className="rounded-full mr-8 w-[200px] h-[200px] object-cover sm:w-32 sm:h-32 sm:mr-0"
                         src={userInfo.profileImage}
                         alt="프로필 사진"
                         width={200}
@@ -25,7 +25,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     />
 
                     <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs sm:min-w-[200px] sm:max-w-0">
-                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[26px] sm:w-[210px]">
+                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[22px] sm:w-[190px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
@@ -34,13 +34,13 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 <h2 className="text-[22px] font-bold flex items-center justify-center sm:text-[16px] sm:font-medium">
                                     {userInfo.name}
                                 </h2>
-                                <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
+                                <div className="bg-deepgray w-[60px] h-[1px] my-3 sm:w-[45px]"></div>
                                 <p className="text-[14px] flex items-center justify-center font-medium sm:text-[12px] sm:font-normal">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-col items-start justify-start h-[44px] sm:text-[12px]">
+                            <address className="text-[14px] text-gray4 flex flex-col items-start justify-start h-[44px] sm:text-[10px]">
                                 <div className="flex flex-col items-start justify-start gap-2">
                                     {userInfo.tel && (
                                         <p className="flex items-center justify-center mr-2">

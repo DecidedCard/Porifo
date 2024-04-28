@@ -13,7 +13,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     };
 
     return (
-        <div className="flex justify-between items-center w-[932px] h-[306px] bg-gray sm:w-[448px] sm:h-[451px] sm:justify-center sm:items-start sm:flex-col-reverse sm:gap-8 sm:mt-4">
+        <div className="flex justify-between items-center w-[932px] h-[306px] bg-gray sm:w-full sm:h-[451px] sm:justify-center sm:items-start sm:flex-col-reverse sm:gap-8 sm:mt-4 sm:ml-10">
             <div className="flex flex-col gap-5 ml-[66px] items-start justify-start w-[500px] sm:w-[316px]">
                 <h1 className="leading-normal text-[30px] font-bold flex items-center justify-center sm:text-[26px]">
                     {userInfo.oneLineIntroduce}
@@ -24,7 +24,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         <h2 className="text-[22px] font-bold flex items-start justify-start sm:text-[16px] sm:font-medium">
                             {userInfo.name}
                         </h2>
-                        <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
+                        <div className="bg-deepgray w-[60px] h-[1px] my-3 sm:w-[45px]"></div>
                         <p className="text-[14px] flex items-center justify-center sm:text-[12px] sm:font-normal">
                             {userInfo.job}
                         </p>

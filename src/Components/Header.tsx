@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Commen/Button";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
+import serverClient from "@/util/supabase/serverClient";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -14,19 +14,12 @@ const Header = () => {
     const router = useRouter();
 
     const { user, setUser } = useUserStore();
-    const signOutFunc = async () => {
-        const { error } = await supabase.auth.signOut();
-        try {
-            if (!error) {
-                console.log(error);
-            }
-            setUser(null);
-        } catch (error) {
-            throw new Error();
+
+    useEffect(() => {
+        if (window.location.pathname === "/community") {
+            setActiveMenu("community");
         }
-        setUser(null);
-        router.replace("/");
-    };
+    }, []);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -123,21 +116,22 @@ const Header = () => {
                                                 <p className="text-[12px]">피드/커뮤니티</p>
                                             </Link>
                                         </div>
+                                        <form
+                                            action="/auth/signout"
+                                            method="post"
+                                            className="flex flex-row items-center justify-center gap-3 mr-[13.5px] w-[146px] h-[32px]"
+                                        >
+                                            <Image
+                                                src="/assets/image/headerlogout.svg"
+                                                alt="X"
+                                                width={15}
+                                                height={15}
+                                            />
 
-                                        <div onClick={signOutFunc}>
-                                            <Link
-                                                href="/"
-                                                className="flex flex-row items-center justify-center gap-3 mr-[13.5px] w-[146px] h-[32px]"
-                                            >
-                                                <Image
-                                                    src="/assets/image/headerlogout.svg"
-                                                    alt="X"
-                                                    width={15}
-                                                    height={15}
-                                                />
-                                                <p className="text-[12px]">로그아웃</p>
-                                            </Link>
-                                        </div>
+                                            <button className="text-[12px]" type="submit">
+                                                로그아웃
+                                            </button>
+                                        </form>
                                     </div>
                                 )}
                             </div>

@@ -7,9 +7,9 @@ const UserProject = ({ project }: { project: Project[] }) => {
     const projects = [...project];
 
     return (
-        <div className="flex flex-col items-start justify-start mt-10 sm:w-[448px] sm:items-center sm:justify-center">
-            <h2 className="text-[22px] font-bold sm:text-[20px] sm:font-medium sm:w-[448px]">프로젝트</h2>
-            <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[448px]"></div>
+        <div className="flex flex-col items-start justify-start mt-10 sm:w-full sm:items-center sm:justify-center">
+            <h2 className="text-[22px] font-bold sm:text-[20px] sm:font-medium sm:w-[360px]">프로젝트</h2>
+            <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[360px]"></div>
             {/* {projects.length > 1 && (
                 <div className="absolute border-s border-solid border-secondary h-[70%] mt-[296px] pb-[300px]"></div>
             )} */}
@@ -26,7 +26,7 @@ const UserProject = ({ project }: { project: Project[] }) => {
                             githubLink={project.githubLink}
                         />
                         {index !== projects.length - 1 && (
-                            <div className="bg-deepgray w-[760px] h-[1px] my-10 ml-7"></div>
+                            <div className="bg-deepgray w-[760px] h-[1px] my-10 ml-7 sm:w-[360px]"></div>
                         )}
                     </React.Fragment>
                 ))}

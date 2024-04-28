@@ -10,6 +10,7 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
+import serverClient from "@/util/supabase/serverClient";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
@@ -37,16 +38,19 @@ const Password_Change = () => {
             return;
         }
 
+        const supabase = serverClient();
         await supabase.auth.updateUser({ password: userPassword });
+        setRecovery(false);
     };
 
     const finishChangePassword = () => router.push("/signin");
 
     useEffect(() => {
-        supabase.auth.onAuthStateChange(async (event) => {
+        const { data } = supabase.auth.onAuthStateChange(async (event) => {
             if (event == "PASSWORD_RECOVERY") {
                 setRecovery(true);
             }
+            data.subscription.unsubscribe();
         });
     }, []);
 
@@ -81,7 +85,7 @@ const Password_Change = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative">
                 {isRecovery ? (
-                    <div className="rounded-2xl p-10 w-[500px] h-[520px] bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col">
                         <form onSubmit={confirmHandler}>
                             <div className="flex justify-center">
                                 <Image

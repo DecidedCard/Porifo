@@ -1,21 +1,13 @@
-"use client";
 import Cards from "@/Components/Community/Cards";
 import Carousel from "@/Components/Community/Carousel";
-import JobFilter from "@/Components/Community/Filter";
-import Filter from "@/Components/Community/JobFilter";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
-import { useEffect } from "react";
+import JobFilter from "@/Components/Community/JobFilter";
+import Filter from "@/Components/Community/Filter";
 
-const ComuunityPage = () => {
-    const { setPage } = useSupabaseRange();
-
-    useEffect(() => {
-        setPage(0);
-    }, [setPage]);
+const CommunityPage = () => {
     return (
-        <div className="flex flex-col items-center sm:w-[900px]">
+        <div className="flex flex-col items-center sm:w-full overflow-hidden">
             <div className="flex w-full">
-                <div className="font-spoqaMedium text-black font-bold text-2xl relative mt-20 mb-3 ml-[15%]">
+                <div className="font-spoqaMedium text-black font-bold text-2xl relative mt-20 mb-3 ml-[15%] sm:hidden">
                     포리포 추천, HOT🔥 개발자
                 </div>
             </div>
@@ -31,4 +23,4 @@ const ComuunityPage = () => {
     );
 };
 
-export default ComuunityPage;
+export default CommunityPage;

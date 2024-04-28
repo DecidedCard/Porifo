@@ -11,8 +11,8 @@ import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 import SignButton from "@/Components/Sign/SignButton";
 
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
+import serverClient from "@/util/supabase/serverClient";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");
@@ -54,6 +54,8 @@ const SocialSeting = () => {
 
     const signUpNewUser = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        const supabase = serverClient();
 
         try {
             signSettingValidation({ birthDate, sex, personalInfoAgree: personalInfoCheck });

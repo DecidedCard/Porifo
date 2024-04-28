@@ -40,6 +40,8 @@ const initial = {
     share: false,
     career: [],
     likes: [],
+    likesCnt: 0,
+    viewCnt: 0,
 };
 
 const usePortfolioInfoStore = create<Store>()((set) => ({

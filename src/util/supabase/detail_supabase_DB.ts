@@ -36,11 +36,19 @@ export const getLikes = async (col: { id: string; value: string }) => {
 };
 
 export const addLike = async (payload: any) => {
-    const { id, user_email } = payload;
-    const { data, error } = await supabase.from("portfolioInfo").update({ likes: user_email }).eq("id", id);
-    if (error) {
-        console.error(error);
-        return null;
+    try {
+        const { id, user_email } = payload;
+
+        //추가 또는 제거한 likes 배열
+        const { data } = await supabase.from("portfolioInfo").update({ likes: user_email }).eq("id", id);
+        //likes가 변동 될때 같이 바뀌는 likesCnt
+        const { error } = await supabase.from("portfolioInfo").update({ likesCnt: user_email.length }).eq("id", id);
+        if (error) {
+            console.error(error);
+            throw new Error("에러가 발생했습니다.");
+        }
+        return data;
+    } catch (error) {
+        return Promise.reject(error);
     }
-    return data;
 };

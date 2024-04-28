@@ -1,62 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
-import { useQueryClient } from "@tanstack/react-query";
-
-import { QUERY_KEY } from "@/util/query_key";
-import useSupabaseRange from "@/hooks/useSupabaseRange";
+import Dropdown from "./Dropdown";
 
 import useJobFilterStore from "@/store/jobFilterStore";
 
-export const SELECT_LIST = [
-    { value: "*", name: "전체" },
-    { value: "프론트앤드 개발자", name: "프론트앤드" },
-    { value: "서버/백앤드 개발자", name: "서버/백앤드" },
-    { value: "앱 개발자", name: "앱 개발자" },
-    { value: "게임 개발자", name: "게임 개발자" },
-];
-
-const JobFilter = () => {
-    const { setPage } = useSupabaseRange();
-    const { setJobFilter } = useJobFilterStore();
-    const [activeMenu, setActiveMenu] = useState("*");
-
-    const queryClient = useQueryClient();
-
-    //직무 변경 버튼
-    const handleJobFilterBtn = (jobfilterValue: string) => {
-        queryClient.removeQueries({ queryKey: [QUERY_KEY.communityPortfolio] });
-        setPage(0);
-        setActiveMenu(jobfilterValue);
-        return setJobFilter(jobfilterValue);
-    };
+const Filter = () => {
+    const { filter } = useJobFilterStore();
+    const [view, setView] = useState(false);
 
     return (
-        <div className="flex flex-row gap-8 lg:ml-2 ">
-            {SELECT_LIST.map((item, idx) => {
-                return (
-                    <div className="flex flex-col" key={idx}>
-                        <button
-                            key={item.value}
-                            onClick={() => handleJobFilterBtn(item.value)}
-                            className={`h-8 ${
-                                activeMenu === item.value ? "border-b-[1.5px] border-solid border-black" : ""
-                            } `}
-                        >
-                            <div
-                                className={`h-[48px] font-spoqaMedium font-medium text-base ${
-                                    activeMenu === item.value ? " text-black" : "text-gray3"
-                                }`}
-                            >
-                                {item.name}
-                            </div>
-                        </button>
-                    </div>
-                );
-            })}
+        <div className="mt-16 flex flex-col lg:ml-20 sm:hidden">
+            <span className="font-spoqaMedium text-black font-medium text-sm ml-1">정렬</span>
+            <button
+                className={`w-[192px] h-9 font-spoqaMedium border-solid border-2 border-gray2 p-3 mt-2 w-58 text-[12px] ${
+                    view ? "rounded-tr-lg rounded-tl-lg" : "rounded-[8px]"
+                }`}
+                onClick={() => {
+                    setView(!view);
+                }}
+            >
+                <ul className="flex justify-between items-center h-full">
+                    {filter}
+                    {view ? (
+                        <Image src="arrow-up.svg" alt="화살표 아이콘" width={20} height={20} className="w-5 h-5" />
+                    ) : (
+                        <Image src="arrow-down.svg" alt="화살표 아이콘" width={20} height={20} className="w-5 h-5" />
+                    )}
+                </ul>
+            </button>
+            {view && <Dropdown props={{ setView }} />}
         </div>
     );
 };
 
-export default JobFilter;
+export default Filter;

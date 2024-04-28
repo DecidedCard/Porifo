@@ -9,16 +9,17 @@ import { useInView } from "react-intersection-observer";
 import { getPortfolio } from "../../util/supabase/community_filter_DB";
 import { QUERY_KEY } from "@/util/query_key";
 
-import useCardIdStore from "@/store/detailStore";
-import useJobFilterStore from "@/store/jobFilterStore";
-
 import Modal from "../DetailPage/Modal";
-import Portfolio_detail from "../DetailPage/Portfolio_detail";
+import Portfolio_detail from "../DetailPage/PortfolioDetail";
 import Loading from "../Loading";
+import DeleteModal from "./DeleteModal";
+
+import useDetailStore from "@/store/detailStore";
+import useJobFilterStore from "@/store/jobFilterStore";
 
 const Cards = () => {
     //모달 상태
-    const { setCardId, isOpenModal, setIsOpenModal } = useCardIdStore();
+    const { setCardId, setIsOpenModal } = useDetailStore();
 
     const { jobFilter, filter } = useJobFilterStore();
 
@@ -72,9 +73,9 @@ const Cards = () => {
 
     return (
         <>
-            <div className="mt-8 flex flex-wrap gap-6 w-[1280px] lg:w-[730px]">
-                {data!.pages.map((portfolio: any) => {
-                    return portfolio.map((item: any) => {
+            <div className="mt-8 flex flex-wrap gap-6 sm:w-full sm:justify-center w-[1280px] lg:w-[730px]">
+                {data!.pages.map((portfolio) => {
+                    return portfolio!.map((item: any) => {
                         return (
                             <div
                                 key={item.id}
@@ -85,32 +86,29 @@ const Cards = () => {
                                         queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
                                 }}
                             >
-                                <div className="group relative flex flex-col gap-2 mb-8">
+                                <div className="group relative flex flex-col gap-2 mb-8 sm:w-[330px] sm:h-[240px]">
                                     {/* 대표이미지 */}
                                     <Image
-                                        className="rounded-2xl w-[324px] h-[240px]"
-                                        style={{
-                                            objectFit: "cover",
-                                        }}
+                                        className="rounded-2xl w-[324px] h-[240px] sm:w-full object-cover"
                                         src={item.profileImage}
                                         alt="포트폴리오 프로필"
                                         width={324}
                                         height={240}
                                     />
 
-                                    <span className="absolute flex items-end py-5 px-4 w-[324px] h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100">
+                                    <span className="absolute flex items-end py-5 px-4 w-full h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100 sm:opacity-100">
                                         <p className="w-[269px] text-[16px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
                                             {item.oneLineIntroduce}
                                         </p>
                                         <p className="w-[269px] text-[12px] absolute top-[20px] whitespace-nowrap overflow-hidden text-white text-base font-medium">
-                                            {`#${item.job}`}
+                                            {`#${item.job.slice(0, -3)}`}
                                         </p>
                                     </span>
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저아바타 */}
                                             <Image
-                                                className="rounded-full w-8 h-8"
+                                                className="rounded-full w-8 h-8 sm:hidden"
                                                 style={{ objectFit: "cover" }}
                                                 src={item.profileImage}
                                                 alt="포트폴리오 프로필"
@@ -118,7 +116,7 @@ const Cards = () => {
                                                 height={32}
                                             />
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap">
+                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap sm:ml-2">
                                                 {item.name}
                                             </div>
                                         </div>
@@ -151,16 +149,24 @@ const Cards = () => {
                 })}
 
                 {/* //모달섹션 */}
-                <Modal isVisible={isOpenModal} onClose={onModalClose}>
-                    <Portfolio_detail />
-                </Modal>
+                <DeleteModal>
+                    <Modal onClose={onModalClose}>
+                        <Portfolio_detail />
+                    </Modal>
+                </DeleteModal>
             </div>
 
             <div ref={ref} />
-            {isFetchingNextPage && <h3>Loding...</h3>}
+            {isFetchingNextPage && (
+                <div className="flex justify-center">
+                    <div className="w-[200px] sm:w-[100px] mt-8">
+                        <Loading />
+                    </div>
+                </div>
+            )}
 
             {data!.pages[0]!.length === 0 && (
-                <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4">
+                <div className="flex flex-col items-center mt-28 mr-40 mb-28 gap-4 sm:mr-0 ">
                     <div className="">
                         <Image src={"gray_warn_lined.svg"} alt="결과없음 아이콘" width={32} height={32} />
                     </div>
