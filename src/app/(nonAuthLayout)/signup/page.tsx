@@ -14,6 +14,7 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import useInput from "@/hooks/useInput";
 import Input from "@/Components/Commen/Input";
 import { successNotify, infoNotify } from "@/util/toast";
+import { supabase } from "@/util/supabase/clientSupabase";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
 import serverClient from "@/util/supabase/serverClient";
@@ -41,7 +42,6 @@ const ConfirmEmailpage = () => {
     const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
-    const supabase = serverClient();
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
     const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
@@ -88,10 +88,12 @@ const ConfirmEmailpage = () => {
     };
 
     const signUpNewUser = async () => {
+        const serverSupabase = serverClient();
         try {
             successNotify({ title: "잠시만 기다려 주세요!" });
 
             await supabase.auth.verifyOtp({ token_hash: OTPNumber, type: "email" });
+            await serverSupabase.auth.signInWithPassword({ email, password });
 
             router.push("/confirmEmail");
         } catch (error) {
