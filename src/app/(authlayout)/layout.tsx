@@ -7,10 +7,23 @@ import Loading from "@/Components/Loading";
 import LoginCheckModal from "@/Components/LoginCheckModal";
 
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
+import { useRouter } from "next/navigation";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
-    useLoginCheck();
+    const { user } = useLoginCheck();
+    const router = useRouter();
 
+    if (!user) {
+        return <LoginCheckModal route="/" />;
+    }
+
+    if (!user.user_metadata.name) {
+        router.replace("/confirmEmail");
+    }
+
+    if (!user.user_metadata.birthDate && !user.user_metadata.sex) {
+        router.replace("/socialSetting");
+    }
     return (
         <div>
             <Header />

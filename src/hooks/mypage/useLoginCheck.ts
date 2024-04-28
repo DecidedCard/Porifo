@@ -24,7 +24,6 @@ const useLoginCheck = () => {
             });
         }
     }, [setUser, user]);
-    console.log(user);
 
     return { user };
 };

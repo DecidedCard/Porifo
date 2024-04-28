@@ -17,9 +17,9 @@ import useInput from "@/hooks/useInput";
 
 import { successNotify } from "@/util/toast";
 import { nameValidate } from "@/util/sign/sign_validate";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
+import serverClient from "@/util/supabase/serverClient";
 
 const SignUp = () => {
     const [birthYear, setBirthYear] = useState("");
@@ -63,6 +63,7 @@ const SignUp = () => {
         personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
 
     const signUpNewUser = async () => {
+        const supabase = serverClient();
         try {
             nameValidate({ name, setNameRegValid });
 
@@ -75,7 +76,7 @@ const SignUp = () => {
             signSettingValidation({ birthDate, name, sex, personalInfoAgree: personalInfoCheck });
 
             await supabase.auth.updateUser({
-                data: { birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck },
+                data: { birthDate, phoneNumber, sex, personalInfoAgree: personalInfoCheck, name },
             });
 
             if (phoneNumber.length !== 11) {

@@ -1,10 +1,13 @@
+import React from "react";
+
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+
 import cacheQueryClient from "@/util/cacheQueryClient";
 import { QUERY_KEY } from "@/util/query_key";
 import serverUserCheck from "@/util/serverUserCheck";
 import { createClient } from "@/util/supabase/server";
-import { User } from "@supabase/supabase-js";
-import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import React from "react";
+
+import type { User } from "@supabase/supabase-js";
 
 const Prefetch = async ({ children }: { children: React.ReactNode }) => {
     const queryClient = cacheQueryClient();
