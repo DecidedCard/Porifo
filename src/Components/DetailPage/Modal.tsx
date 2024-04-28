@@ -7,7 +7,7 @@ import useLiked from "@/hooks/community/useLiked";
 import { useRouter } from "next/navigation";
 import useDetailStore from "@/store/detailStore";
 
-const Modal = ({ onClose, children }: any) => {
+const Modal = ({ onClose, children }: { onClose: () => void; children: React.ReactNode }) => {
     const { checkLike, id, pending, handleLikeBtn } = useLiked();
     const { isOpenModal } = useDetailStore();
 
@@ -15,8 +15,9 @@ const Modal = ({ onClose, children }: any) => {
 
     //모달 close
     if (!isOpenModal) return null;
-    const handleClose = (e: any) => {
-        if (e.target.id === "wrapper") {
+    const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+        const targetElement = e.target as HTMLDivElement;
+        if (targetElement.id === "wrapper") {
             onClose();
             router.push("/community");
         }

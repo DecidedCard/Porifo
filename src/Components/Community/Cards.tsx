@@ -74,8 +74,8 @@ const Cards = () => {
     return (
         <>
             <div className="mt-8 flex flex-wrap gap-6 sm:w-full sm:justify-center w-[1280px] lg:w-[730px]">
-                {data!.pages.map((portfolio: any) => {
-                    return portfolio.map((item: any) => {
+                {data!.pages.map((portfolio) => {
+                    return portfolio!.map((item: any) => {
                         return (
                             <div
                                 key={item.id}
