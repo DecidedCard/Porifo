@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "@/util/supabase/clientSupabase";
@@ -28,7 +28,8 @@ const Password_Change = () => {
 
     const router = useRouter();
 
-    const confirmHandler = async () => {
+    const confirmHandler = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         if (userPassword !== confirmUserPassword) {
             setUserPassword("");
             setConfirmUserPassword("");
