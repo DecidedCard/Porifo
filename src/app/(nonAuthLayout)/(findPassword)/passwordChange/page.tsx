@@ -38,22 +38,18 @@ const Password_Change = () => {
         }
 
         const { data } = await supabase.auth.updateUser({ password: userPassword });
-        console.log(data);
+        console.log("data", data);
         setRecovery(false);
     };
 
+    console.log("isRecovery", isRecovery);
     const finishChangePassword = () => router.replace("/signin");
 
     const { data } = supabase.auth.onAuthStateChange(async (event) => {
-        if (
-            event === "INITIAL_SESSION" ||
-            event == "SIGNED_IN" ||
-            event == "PASSWORD_RECOVERY" ||
-            event === "USER_UPDATED"
-        ) {
+        if (event == "SIGNED_IN" || event == "PASSWORD_RECOVERY") {
             setRecovery(true);
         }
-        console.log(event);
+        console.log("event", event);
         data.subscription.unsubscribe();
     });
 
