@@ -59,12 +59,12 @@ const Comments = () => {
                                             {/* user_name */}
                                             {item.user_name}
                                         </span>
-                                        <span>
+                                        <span className="text-[10px] font-spoqaMedium font-normal text-gray3">
                                             {/* 몇일됬는지 */}
                                             {item.created_at}
                                         </span>
                                     </div>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 ">
                                         <span>
                                             {/* comment */}
                                             {item.comment}
