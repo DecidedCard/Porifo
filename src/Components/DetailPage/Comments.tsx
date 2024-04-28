@@ -22,6 +22,18 @@ const Comments = () => {
         queryFn: () => getComments({ id }),
     });
 
+    const today = new Date();
+
+    const getDaysAgo = (createdAt: string) => {
+        const createdDate = new Date(createdAt); //연산을 위해 문자열 객체화
+        const diffTime = Math.abs(today.getTime() - createdDate.getTime()); //현재 시간과 차이 절댓값
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); //24시간으로 나눔 ceil로 올림 정수 반환
+        if (diffDays === 1) {
+            return "오늘";
+        }
+        return `${diffDays}일 전`;
+    };
+
     const handleDeleteBtn = (id: number) => {
         setIsDeleteModalOpen(true);
         setCommentId(id);
@@ -61,7 +73,7 @@ const Comments = () => {
                                         </span>
                                         <span className="text-[10px] font-spoqaMedium font-normal text-gray3">
                                             {/* 몇일됬는지 */}
-                                            {item.created_at}
+                                            {getDaysAgo(item.created_at)}
                                         </span>
                                     </div>
                                     <div className="flex gap-2 text-gray4">
