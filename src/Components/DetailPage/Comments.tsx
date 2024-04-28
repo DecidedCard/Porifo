@@ -65,18 +65,18 @@ const Comments = () => {
                                     width={40}
                                     height={40}
                                 />
-                                <div className="flex flex-col gap-1 flex-1 ">
+                                <div className="flex flex-col justify-center gap-1 flex-1 ">
                                     <div className="flex flex-row gap-2 items-center">
-                                        <span className=" text-gray4">
+                                        <span className=" text-gray4 text-[12px] font-spoqaMedium font-medium">
                                             {/* user_name */}
                                             {item.user_name}
                                         </span>
                                         <span className="text-[10px] font-spoqaMedium font-normal text-gray3">
-                                            {/* 몇일됬는지 */}
+                                            {/* 몇일전 댓글인지 */}
                                             {getDaysAgo(item.created_at)}
                                         </span>
                                     </div>
-                                    <div className="flex gap-2 text-gray4">
+                                    <div className="flex gap-2 text-gray4 font-spoqaMedium font-normal text-[14px]">
                                         <span>
                                             {/* comment */}
                                             {item.comment}
