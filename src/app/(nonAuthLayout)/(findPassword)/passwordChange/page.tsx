@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import { supabase } from "@/util/supabase/clientSupabase";
 import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
 import { passwordValidate } from "@/util/sign/sign_validate";
-import serverClient from "@/util/supabase/serverClient";
 
 const Password_Change = () => {
     const [userPassword, setUserPassword] = useState("");
@@ -28,7 +27,7 @@ const Password_Change = () => {
     const [lengthConfirmRegValid, setLengthConfirmRegValid] = useState(false);
 
     const router = useRouter();
-    const supabase = serverClient();
+
     const confirmHandler = async () => {
         if (userPassword !== confirmUserPassword) {
             setUserPassword("");
@@ -47,13 +46,13 @@ const Password_Change = () => {
         const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
             console.log("data", data);
             console.log("event", event);
-            if (event == "SIGNED_IN") {
+            if (event == "SIGNED_IN" || event == "PASSWORD_RECOVERY") {
                 setRecovery(true);
             }
             console.log("session", session);
             data.subscription.unsubscribe();
         });
-    }, [supabase.auth]);
+    }, []);
 
     useEffect(() => {
         passwordValidate({
