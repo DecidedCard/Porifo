@@ -36,7 +36,8 @@ const Password_Change = () => {
             return;
         }
 
-        await supabase.auth.updateUser({ password: userPassword });
+        const { data } = await supabase.auth.updateUser({ password: userPassword });
+        console.log(data);
         setRecovery(false);
     };
 
@@ -51,7 +52,7 @@ const Password_Change = () => {
         ) {
             setRecovery(true);
         }
-
+        console.log(event);
         data.subscription.unsubscribe();
     });
 
