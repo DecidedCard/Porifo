@@ -14,9 +14,9 @@ import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 import useInput from "@/hooks/useInput";
 import Input from "@/Components/Commen/Input";
 import { successNotify, infoNotify } from "@/util/toast";
-import { supabase } from "@/util/supabase/clientSupabase";
 import { signUpValidation } from "@/util/sign/signNumber_validation";
 import { emailValidate, passwordValidate } from "@/util/sign/sign_validate";
+import serverClient from "@/util/supabase/serverClient";
 
 const ConfirmEmailpage = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -41,6 +41,7 @@ const ConfirmEmailpage = () => {
     const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
+    const supabase = serverClient();
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
     const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
