@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { addComment } from "@/util/supabase/supabase_comments";
+
 import type { User } from "@/types/User";
 
 const CommentInput = ({ user, id }: { user: User | null; id: number }) => {

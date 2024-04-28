@@ -17,7 +17,7 @@ import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 
 import useCardIdStore from "@/store/detailStore";
 
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
