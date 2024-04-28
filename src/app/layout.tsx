@@ -8,6 +8,7 @@ import serverUserCheck from "@/util/serverUserCheck";
 import cacheQueryClient from "@/util/cacheQueryClient";
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/util/supabase/server";
+import Prefetch from "./Prefetch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,19 +35,13 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const queryClient = cacheQueryClient();
-    const supabase = createClient();
-    queryClient.prefetchQuery<User | null>({
-        queryKey: [QUERY_KEY.myPageUser],
-        queryFn: () => serverUserCheck(supabase),
-    });
     return (
         <html lang="en">
             <body className={`${inter.className} bg-hihigray`}>
                 <Provider>
-                    <HydrationBoundary state={dehydrate(queryClient)}>
-                        <div className="min-h-[830px]">{children}</div>
-                    </HydrationBoundary>
+                    <div className="min-h-[830px]">
+                        <Prefetch>{children}</Prefetch>
+                    </div>
                 </Provider>
             </body>
         </html>
