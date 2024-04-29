@@ -1,10 +1,6 @@
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const userInfo = {
-        introduce: portfolio.introduce,
-    };
-
     const userSkillTag = portfolio.skillTag as string[];
 
     return (
@@ -31,7 +27,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </p>
                     <div className="bg-deepgray w-[370px] h-[1px] my-5 sm:w-[170px]"></div>
                     <p className="text-[14px] w-[382px] tracking-wide leading-normal sm:w-[170px] sm:text-gray4">
-                        {userInfo.introduce}
+                        {portfolio.introduce}
                     </p>
                     <div className="flex flex-row gap-2 items-start justify-start self-stretch shrink-0"></div>
                 </div>

@@ -5,10 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-    const userInfo = {
-        introduce: portfolio.introduce,
-    };
-
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
@@ -38,7 +34,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     <p className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">자기소개</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                     <p className="text-[14px] w-[804px] tracking-wide leading-normal sm:w-[370px] sm:text-gray4">
-                        {userInfo.introduce}
+                        {portfolio.introduce}
                     </p>
                 </div>
 
