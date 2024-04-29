@@ -210,10 +210,6 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        // if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
-        //     setUpload(false);
-        //     return;
-        // }
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
@@ -278,28 +274,29 @@ const useInfo = () => {
             return projectInfo;
         });
 
+        let newPortfolio = { ...info, project, career: careers };
+
+        if (
+            careers.length === 0 ||
+            !careers[0].comment ||
+            !careers[0].company ||
+            !careers[0].date ||
+            !careers[0].department ||
+            !careers[0].position
+        ) {
+            newPortfolio = { ...newPortfolio, career: [] };
+        }
+
+        if (url) {
+            await userUpdate({ profileImage: url });
+            newPortfolio = {
+                ...newPortfolio,
+                profileImage: url,
+            };
+        }
+
         if (user && !portfolio?.id) {
-            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
-            const { ...newPortfolioInfo } = newPortfolio;
-
-            if (
-                careers.length === 0 ||
-                !careers[0].comment ||
-                !careers[0].company ||
-                !careers[0].date ||
-                !careers[0].department ||
-                !careers[0].position
-            ) {
-                newPortfolio = { ...newPortfolioInfo, career: [] };
-            }
-
-            if (url) {
-                await userUpdate({ profileImage: url });
-                newPortfolio = {
-                    ...newPortfolioInfo,
-                    profileImage: url,
-                };
-            }
+            newPortfolio = { ...newPortfolio, userId: user!.id };
 
             insert(newPortfolio);
             localStorage.removeItem("portfolio");
@@ -309,28 +306,6 @@ const useInfo = () => {
         }
 
         if (portfolio?.id) {
-            let newPortfolio = { ...info, userId: user!.id, project, career: careers };
-            const { ...newPortfolioInfo } = newPortfolio;
-
-            if (
-                careers.length === 0 ||
-                !careers[0].comment ||
-                !careers[0].company ||
-                !careers[0].date ||
-                !careers[0].department ||
-                !careers[0].position ||
-                !careers
-            ) {
-                newPortfolio = { ...newPortfolioInfo, career: [] };
-            }
-
-            if (url) {
-                await userUpdate({ profileImage: url });
-                newPortfolio = {
-                    ...newPortfolioInfo,
-                    profileImage: url,
-                };
-            }
             update({ arg: newPortfolio, value: user!.id });
             alert("이력서가 업데이트 되었습니다.");
             localStorage.removeItem("portfolio");
@@ -338,25 +313,6 @@ const useInfo = () => {
             return;
         }
 
-        let newPortfolio = { ...info, project, career: careers };
-        const { ...newPortfolioInfo } = newPortfolio;
-        if (
-            careers.length === 0 ||
-            !careers[0].comment ||
-            !careers[0].company ||
-            !careers[0].date ||
-            !careers[0].department ||
-            !careers[0].position ||
-            !careers
-        ) {
-            newPortfolio = { ...newPortfolioInfo, career: [] };
-        }
-        if (url) {
-            newPortfolio = {
-                ...newPortfolioInfo,
-                profileImage: url,
-            };
-        }
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
         setUpload(false);
     };
