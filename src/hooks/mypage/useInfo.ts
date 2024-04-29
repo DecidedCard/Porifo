@@ -13,13 +13,14 @@ import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
-import { warnNotify } from "@/util/toast";
+import { infoNotify, successNotify, warnNotify } from "@/util/toast";
 import { SKILL_TAG } from "@/util/skill_tag";
 import { getFormattedDate } from "@/util/getformatDate";
 
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import type { Project } from "@/types/Project";
 import type { Career } from "@/types/Career";
+import { title } from "process";
 
 const useInfo = () => {
     const {
@@ -206,6 +207,7 @@ const useInfo = () => {
     // 조건에 따라 로컬스토리지 또는 supabase 등록 및 업데이트
     const onClickInsertHandler = async () => {
         setUpload(true);
+        infoNotify({ title: "저장 중 입니다." });
 
         let url = "";
 
@@ -300,14 +302,14 @@ const useInfo = () => {
 
             insert(newPortfolio);
             localStorage.removeItem("portfolio");
-            alert("이력서가 저장되었습니다.");
+            successNotify({ title: "포트폴리오가 저장되었습니다." });
             setUpload(false);
             return;
         }
 
         if (portfolio?.id) {
             update({ arg: newPortfolio, value: user!.id });
-            alert("이력서가 업데이트 되었습니다.");
+            successNotify({ title: "포트폴리오가 업데이트 되었습니다." });
             localStorage.removeItem("portfolio");
             setUpload(false);
             return;
@@ -315,6 +317,7 @@ const useInfo = () => {
 
         localStorage.setItem("portfolio", JSON.stringify(newPortfolio));
         setUpload(false);
+        successNotify({ title: "포트폴리오가 저장되었습니다." });
     };
 
     const onClickShareToggle = () => {

@@ -1,13 +1,9 @@
 import { userData } from "@/util/supabase/supabase_user";
-import { supabase } from "@/util/supabase/clientSupabase";
 
 type RedirectType = { setRedirecTo: React.Dispatch<React.SetStateAction<string>> };
 
 const signCheckUserPortfolio = async ({ setRedirecTo }: RedirectType) => {
     const user = await userData();
-    const { data: userId } = await supabase.from("portfolioInfo").select("userId");
-
-    const havePortfolio = userId?.find((item) => (item.userId === user?.id ? true : false));
 
     let redirectTo: string;
 

@@ -6,9 +6,8 @@ import URL from "./URL";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Modern = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-
     return (
-        <div className="w-[932px] flex flex-col items-center bg-white pb-10 sm:w-[480px] sm:pt-7">
+        <div className="w-[932px] flex flex-col items-center bg-white pb-10 sm:w-full sm:pt-7">
             <Top portfolio={portfolio} />
             <Middle portfolio={portfolio} />
             <Bottom portfolio={portfolio} />

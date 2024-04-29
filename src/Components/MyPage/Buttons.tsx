@@ -20,6 +20,8 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import { usePDF } from "react-to-pdf";
 import { share } from "@/util/share";
+import { warnNotify } from "@/util/toast";
+import { Flip, ToastContainer } from "react-toastify";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -35,11 +37,19 @@ const Buttons = () => {
     const [previewModal, setPreviewModal] = useState(false);
 
     const onClickUrlCopyHandler = () => {
-        if (!portfolio?.id) {
-            alert("저장을 해야 url을 제공해드릴 수 있습니다.");
+        if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
+            warnNotify({ title: "저장 및 필수사항을 입력해야됩니다." });
             return;
         }
         onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/create/${user?.id}`);
+    };
+
+    const onClickPdfDownloadHandler = () => {
+        if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
+            warnNotify({ title: "저장 및 필수사항을 입력해야됩니다." });
+            return;
+        }
+        toPDF();
     };
 
     const onClickPreviewModal = () => {
@@ -52,6 +62,19 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Flip}
+            />
             <main className="relative flex flex-col items-center gap-5">
                 <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl sm:mt-10 h-[300px] pt-5 sm:h-fit">
                     <div className="absolute right-[115%] w-20 flex flex-row sm:left-0 sm:right-0 sm:h-fit sm:hidden">
@@ -91,7 +114,7 @@ const Buttons = () => {
                         </button>
                         <button
                             className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter sm:pl-0"
-                            onClick={() => toPDF()}
+                            onClick={onClickPdfDownloadHandler}
                         >
                             <Image
                                 src="assets/image/download.svg"

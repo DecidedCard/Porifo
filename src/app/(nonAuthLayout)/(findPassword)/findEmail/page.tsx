@@ -6,7 +6,7 @@ import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import SignButton from "@/Components/Sign/SignButton";
-import SignInputItem from "@/Components/Sign/SignInputItem";
+import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
 
 import { successNotify } from "@/util/toast";
 import { supabase } from "@/util/supabase/clientSupabase";
@@ -28,7 +28,7 @@ const Find_Email = () => {
 
     const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value);
 
-    const showToastAlert = () => successNotify({ title: "이메일을 통해 비밀번호를 변경해 주세요. 😎" });
+    const showToastAlert = () => successNotify({ title: "이메일로 비밀번호를 변경해 주세요." });
 
     return (
         <main>
@@ -65,7 +65,7 @@ const Find_Email = () => {
                             <br />
                             인증메일이 발송됩니다.
                         </p>
-                        <SignInputItem
+                        <SignInputNonStarItem
                             type="email"
                             setLabel="이메일"
                             pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"

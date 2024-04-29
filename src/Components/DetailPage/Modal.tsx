@@ -1,5 +1,7 @@
 "use client";
 
+import { Flip, ToastContainer } from "react-toastify";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +25,8 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
         const targetElement = e.target as HTMLDivElement;
         if (targetElement.id === "wrapper") {
             onClose();
-            router.push("/community");
+            window.location.hash = "";
+            // router.push("/community");
         }
     };
 
@@ -32,11 +35,14 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
     }
 
     //댓글 버튼
-    const handleCommentBtn = () => router.push("/community#comment");
+    const handleCommentBtn = () => {
+        router.push("/community#comment");
+    };
 
     const handleBackBtn = () => {
         onClose();
-        router.push("/community");
+        window.location.hash = "";
+        // router.push("/community");
     };
 
     return (
@@ -90,7 +96,22 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                     <span className="text-white font-spoqaBold text-[12px]">공유하기</span>
                 </div>
             </div>
-            <div className="p-2 ">{children}</div>
+
+            <div className="p-2 sm:w-full sm:p-0 ">{children}</div>
+
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Flip}
+            />
         </div>
     );
 };
