@@ -8,10 +8,11 @@ import { QUERY_KEY } from "@/util/query_key";
 import { getComments } from "@/util/supabase/supabase_comments";
 
 import useUserStore from "@/store/userStore";
+import useDetailStore from "@/store/detailStore";
 
 import CommentInput from "./CommentInput";
-import useDetailStore from "@/store/detailStore";
-import { User } from "@/types/User";
+
+import type { User } from "@/types/User";
 
 const Comments = () => {
     const { cardId: id, setIsDeleteModalOpen, setCommentId } = useDetailStore();
@@ -21,6 +22,18 @@ const Comments = () => {
         queryKey: [QUERY_KEY.portfolidComments],
         queryFn: () => getComments({ id }),
     });
+
+    const today = new Date();
+
+    const getDaysAgo = (createdAt: string) => {
+        const createdDate = new Date(createdAt); //연산을 위해 문자열 객체화
+        const diffTime = Math.abs(today.getTime() - createdDate.getTime()); //현재 시간과 차이 절댓값
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); //24시간으로 나눔 ceil로 올림 정수 반환
+        if (diffDays === 1) {
+            return "오늘";
+        }
+        return `${diffDays}일 전`;
+    };
 
     const handleDeleteBtn = (id: number) => {
         setIsDeleteModalOpen(true);
@@ -53,18 +66,18 @@ const Comments = () => {
                                     width={40}
                                     height={40}
                                 />
-                                <div className="flex flex-col gap-1 flex-1 ">
+                                <div className="flex flex-col justify-center gap-1 flex-1 ">
                                     <div className="flex flex-row gap-2 items-center">
-                                        <span>
+                                        <span className=" text-gray4 text-[12px] font-spoqaMedium font-medium">
                                             {/* user_name */}
                                             {item.user_name}
                                         </span>
-                                        <span>
-                                            {/* 몇일됬는지 */}
-                                            {/* {item.created_at} */}
+                                        <span className="text-[10px] font-spoqaMedium font-normal text-gray3">
+                                            {/* 몇일전 댓글인지 */}
+                                            {getDaysAgo(item.created_at)}
                                         </span>
                                     </div>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 text-gray4 font-spoqaMedium font-normal text-[14px]">
                                         <span>
                                             {/* comment */}
                                             {item.comment}

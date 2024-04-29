@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
-import Loading from "../Loading";
-import useLiked from "@/hooks/community/useLiked";
 import { useRouter } from "next/navigation";
+
+import Loading from "../Loading";
+
+import useLiked from "@/hooks/community/useLiked";
+
+import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
+
 import useDetailStore from "@/store/detailStore";
 
 const Modal = ({ onClose, children }: { onClose: () => void; children: React.ReactNode }) => {

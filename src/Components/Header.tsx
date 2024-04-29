@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Commen/Button";
-import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import serverClient from "@/util/supabase/serverClient";
+import useMouseClickClose from "@/hooks/useMouseClickClose";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string>("about");
-    const router = useRouter();
 
     const { user, setUser } = useUserStore();
+
+    const { modalRef } = useMouseClickClose(showMenu, setShowMenu);
 
     useEffect(() => {
         if (window.location.pathname === "/community") {
@@ -85,6 +85,7 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
+                                        ref={modalRef}
                                         className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>
