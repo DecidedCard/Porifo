@@ -16,7 +16,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
             {/* {projectCount > 1 && (
                 <div className="flex w-[10px] h-[10px] rounded-full left-[-5px] border-2 border-primary border-solid bg-white absolute"></div>
             )} */}
-            <div className="flex flex-col w-[804px] sm:items-center sm:justify-center sm:w-full sm:ml-2 sm:gap-2">
+            <div className="flex flex-col w-[804px] sm:items-center sm:justify-center sm:w-full sm:pl-2 sm:gap-2">
                 {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                 <div className="flex flex-row sm:w-full sm:items-center sm:justify-center">
                     {images &&
