@@ -110,7 +110,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             {experience.department} / {experience.position}
                                         </p>
                                         <div className="flex flex-col sm:w-[370px] sm:flex-wrap">
-                                            <p className="font-normal text-gray4 leading-6 text-[12px]">
+                                            <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
                                                 • {experience.comment}
                                             </p>
                                         </div>

@@ -142,7 +142,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 {experience.department} / {experience.position}
                                             </p>
                                             <div className="flex flex-col">
-                                                <p className="font-normal text-gray4 leading-6 text-[12px] sm:text-[14px]">
+                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
                                                     • {experience.comment}
                                                 </p>
                                             </div>
