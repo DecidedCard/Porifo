@@ -5,10 +5,10 @@ const clickSex = ["남자", "여자"];
 const SignSelectSex = ({ onClickSelectSex }: SeletSexType) => {
     return (
         <>
-            <p className="mt-5 mb-3 mx-9 flex">
+            <p className="mt-5 mb-2 mx-6 flex">
                 성별<p className="ml-1 text-[10px] text-red-500">★</p>
             </p>
-            <div className="mx-9 mt-[9px] mb-8 h-fit flex flex-row ">
+            <div className="mx-6 mt-[9px] mb-10 h-fit flex flex-row ">
                 {clickSex.map((item: string, idx: number) => {
                     return (
                         <div key={idx} className="flex flex-row my-auto mr-4">

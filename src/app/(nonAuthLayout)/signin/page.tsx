@@ -84,7 +84,7 @@ const SignIn = () => {
     return (
         <main>
             <div className="flex py-36 items-center justify-center bg-hihigray sm:w-full sm:py-0">
-                <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col sm:w-full sm:h-[844px] sm:justify-start sm:pt-10">
+                <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col sm:w-full sm:h-screen sm:justify-center">
                     <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center items-center h-[86px] sm:hidden">
                             <Image
@@ -151,7 +151,7 @@ const SignIn = () => {
                     />
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
-                        <p className="text-gray4">아직 포리포의 회원이 아니신가요? </p>
+                        <p className="text-gray4">아직 포리포의 회원이 아니신가요?</p>
                         <a
                             href="/signupMethod"
                             className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
