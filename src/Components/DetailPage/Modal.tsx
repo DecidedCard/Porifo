@@ -1,5 +1,7 @@
 "use client";
 
+import { Flip, ToastContainer } from "react-toastify";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -91,6 +93,19 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                 </div>
             </div>
             <div className="p-2 ">{children}</div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Flip}
+            />
         </div>
     );
 };
