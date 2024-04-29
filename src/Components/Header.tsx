@@ -2,24 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Commen/Button";
-import { useRouter } from "next/navigation";
 import useUserStore from "@/store/userStore";
-import serverClient from "@/util/supabase/serverClient";
+import { mouseClickModalClose } from "@/util/mouseClickModalClose";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string>("about");
-    const router = useRouter();
 
     const { user, setUser } = useUserStore();
+
+    const showMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (window.location.pathname === "/community") {
             setActiveMenu("community");
         }
     }, []);
+
+    useEffect(() => {
+        document.addEventListener("mousedown", (e) => mouseClickModalClose(e, showMenu, showMenuRef, setShowMenu));
+    }, [showMenu]);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -85,6 +89,7 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
+                                        ref={showMenuRef}
                                         className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>
