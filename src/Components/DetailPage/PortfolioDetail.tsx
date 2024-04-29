@@ -1,11 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { useQuery } from "@tanstack/react-query";
-
-import { QUERY_KEY } from "@/util/query_key";
-import { getDetailData } from "@/util/supabase/detail_supabase_DB";
-
-import useCardIdStore from "@/store/detailStore";
 
 import Comments from "./Comments";
 import Standard from "../Template Standard/Standard";
@@ -14,8 +11,13 @@ import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
-import { useEffect } from "react";
+
+import { QUERY_KEY } from "@/util/query_key";
+import { getDetailData } from "@/util/supabase/detail_supabase_DB";
+
+import useCardIdStore from "@/store/detailStore";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
@@ -61,7 +63,10 @@ const PortfolioDetail = () => {
                 <div className="pt-10">
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
-                <div className="w-[80%] mb-10 flex justify-center rounded-2xl bg-hihigray" id="comment">
+                <div
+                    className="w-[80%] sm:w-full sm:mb-96 sm:px-4  mb-10 flex justify-center rounded-2xl bg-hihigray"
+                    id="comment"
+                >
                     <Comments />
                 </div>
             </div>
