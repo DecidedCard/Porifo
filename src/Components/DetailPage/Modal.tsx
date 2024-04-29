@@ -23,7 +23,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
         const targetElement = e.target as HTMLDivElement;
         if (targetElement.id === "wrapper") {
             onClose();
-            router.push("/community");
+            // router.push("/community");
         }
     };
 
@@ -36,7 +36,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
 
     const handleBackBtn = () => {
         onClose();
-        router.push("/community");
+        // router.push("/community");
     };
 
     return (
