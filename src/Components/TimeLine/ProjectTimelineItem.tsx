@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,14 +10,7 @@ interface TimelineItemProps {
     githubLink: string;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({
-    name,
-    date,
-    images,
-    introduce,
-    deployLink,
-    githubLink,
-}) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink }) => {
     return (
         <li className="mb-10 flex flex-col items-center justify-center sm:w-full">
             {/* {projectCount > 1 && (
@@ -49,7 +41,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
                     <div className="flex flex-col mt-2 w-[804px] sm:flex-wrap">
-                        <p className="text-[14px] font-normal mb-2 text-gray4 sm:font-medium sm:w-[360px] leading-normal">{introduce}</p>
+                        <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:font-medium sm:w-[360px] leading-normal">
+                            {introduce}
+                        </p>
                         {githubLink && (
                             <div className="flex items-center text-gray4 mt-2 sm:w-[370px]">
                                 <Image
