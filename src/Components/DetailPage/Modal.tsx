@@ -106,6 +106,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                 theme="light"
                 transition={Flip}
             />
+            <div className="p-2 sm:w-full sm:p-0 ">{children}</div>
         </div>
     );
 };

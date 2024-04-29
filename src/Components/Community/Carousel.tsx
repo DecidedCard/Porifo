@@ -145,7 +145,7 @@ const Carousel = () => {
                                     />
                                     {/* 블러박스 */}
                                     <div
-                                        className=" bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[254px] "
+                                        className=" bg-[#0000008F] rounded-br-2xl rounded-bl-2xl py-4 px-6 flex flex-col gap-3 absolute top-[262px] "
                                         style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(56px))" }}
                                     >
                                         {/* 한줄소개 */}
@@ -161,16 +161,8 @@ const Carousel = () => {
                                         {/* 유저정보,좋아요,조회수 박스 */}
                                         <div className="flex justify-between">
                                             <div className="flex gap-2">
-                                                {/* 유저아바타 */}
-                                                <Image
-                                                    width={32}
-                                                    height={32}
-                                                    alt={`hotDeveloper-img-${idx}`}
-                                                    className="rounded-[50px] w-8 h-8 object-cover "
-                                                    src={item.profileImage}
-                                                />
                                                 {/* 유저이름 */}
-                                                <div className="font-spoqaMedium text-white font-medium flex items-center justify-center text-base ">
+                                                <div className="font-spoqaMedium text-white flex items-center justify-center text-base ">
                                                     {item.name}
                                                 </div>
                                             </div>

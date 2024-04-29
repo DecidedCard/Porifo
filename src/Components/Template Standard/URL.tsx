@@ -1,4 +1,3 @@
-
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <main className="flex my-5">
             <div className="flex flex-row items-start justify-start">
-                <div className="flex flex-col gap-2 items-start justify-start flex-1 sm:items-center sm:justify-center">
+                <div className="flex flex-col gap-2  items-start justify-start flex-1 sm:items-center sm:justify-center">
                     {(userInfo.blogLink || userInfo.githubLink) && (
                         <>
                             <div className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">URL</div>

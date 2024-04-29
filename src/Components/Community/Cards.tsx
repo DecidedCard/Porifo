@@ -106,17 +106,8 @@ const Cards = () => {
                                     </span>
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
-                                            {/* 유저아바타 */}
-                                            <Image
-                                                className="rounded-full w-8 h-8 sm:hidden"
-                                                style={{ objectFit: "cover" }}
-                                                src={item.profileImage}
-                                                alt="포트폴리오 프로필"
-                                                width={32}
-                                                height={32}
-                                            />
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap sm:ml-2">
+                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap ml-2">
                                                 {item.name}
                                             </div>
                                         </div>
