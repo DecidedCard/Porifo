@@ -24,46 +24,48 @@ const ConfirmEmailpage = () => {
     const [emailError, setEmailError] = useState(true);
 
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState(true);
-
     const [confirmPassword, setConfirmPassword] = useState("");
+
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
 
     const [samePassword, setSamePassword] = useState(false);
     const [emailSMPTNumber, setEmailSMPTNumber] = useState(false);
 
     const [OTPNumber, onChangeConfirmOTPNumber] = useInput();
-    const [emailRegValid, setEmailRegValid] = useState(false);
 
     const [inputDisabled, setInputDisabled] = useState(false);
-    const [wordRegValid, setWordRegValid] = useState(false);
-    const [specialRegValid, setSpecialRegValid] = useState(false);
-    const [numberRegValid, setNumberRegValid] = useState(false);
-    const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
     const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
+    const emailRegValid = emailValidate({ email });
 
     useEffect(() => {
-        emailValidate({ email, setEmailRegValid });
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
 
-        if (emailRegValid === true) setEmailError(true);
-    }, [email, emailRegValid]);
+        if (emailRegValid) setEmailError(true);
+    }, [email.length, emailRegValid]);
+
+    const passwordRegValid = passwordValidate({ password });
+
+    const confirmPasswordIsError =
+        password.length === 0 ||
+        (passwordRegValid.wordRegBoolean &&
+            passwordRegValid.numberRegBoolean &&
+            passwordRegValid.specialRegBoolean &&
+            passwordRegValid.lengthRegBoolean);
+
+    const passwordError = confirmPasswordIsError && password.length >= 8;
 
     useEffect(() => {
-        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-        const confirmPassword =
-            password.length === 0 || (wordRegValid && specialRegValid && numberRegValid && lengthRegValid);
-
-        confirmPassword && password.length >= 8 ? setPasswordError(true) : setPasswordError(false);
-    }, [wordRegValid, specialRegValid, numberRegValid, lengthRegValid, password]);
-
-    useEffect(() => {
-        password === confirmPassword ? setSamePassword(true) : setSamePassword(false);
-        password === confirmPassword ? setConfirmPasswordError(true) : setConfirmPasswordError(false);
+        if (password === confirmPassword) {
+            setSamePassword(true);
+            setConfirmPasswordError(true);
+        } else {
+            setSamePassword(false);
+            setConfirmPasswordError(false);
+        }
     }, [password, confirmPassword]);
 
     useEffect(() => {
@@ -75,8 +77,7 @@ const ConfirmEmailpage = () => {
     const confirmEmailAndOTPNumber = async () => {
         try {
             signUpValidation({ email, password });
-            infoNotify({ title: "인증번호를 메일로 보내고 있습니다.🥹" });
-
+            infoNotify({ title: "잠시만 기다려 주세요.🥹" });
             await supabase.auth.signUp({
                 email,
                 password,
@@ -102,10 +103,10 @@ const ConfirmEmailpage = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
-            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col sm:w-full sm:h-screen sm:justify-center sm:items-center sm:p-0">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative">
+            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col">
                 <div className="flex flex-col">
-                    <div className="flex justify-center items-center h-[86px] mb-5 sm:hidden">
+                    <div className="flex justify-center items-center h-[86px] mb-5">
                         <Image
                             className="w-[162px] h-[54px]"
                             width={0}
@@ -153,15 +154,15 @@ const ConfirmEmailpage = () => {
                     />
 
                     <SignPasswordValidate
-                        lengthRegValid={lengthRegValid}
-                        numberRegValid={numberRegValid}
-                        wordRegValid={wordRegValid}
-                        specialRegValid={specialRegValid}
+                        lengthRegValid={passwordRegValid.wordRegBoolean}
+                        numberRegValid={passwordRegValid.numberRegBoolean}
+                        wordRegValid={passwordRegValid.specialRegBoolean}
+                        specialRegValid={passwordRegValid.lengthRegBoolean}
                     />
 
                     <SignInputItem
-                        setLabel="비밀번호 확인"
-                        placeholder="비밀번호를 한번 더 작성해주세요"
+                        setLabel="비밀번호"
+                        placeholder="비밀번호를 작성해주세요"
                         color={confirmPassword.length === 0 ? "gray2" : confirmPasswordError ? "gray2" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "

@@ -4,8 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
-import { Flip, ToastContainer } from "react-toastify";
-
+import Button from "@/Components/Commen/Button";
 import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
@@ -14,6 +13,7 @@ import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 
 import useInput from "@/hooks/useInput";
+import { Flip, ToastContainer } from "react-toastify";
 
 import { successNotify } from "@/util/toast";
 import { nameValidate } from "@/util/sign/sign_validate";
@@ -21,7 +21,7 @@ import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
 import serverClient from "@/util/supabase/serverClient";
 
-const SignUp = () => {
+const ConfirmEmail = () => {
     const [birthYear, setBirthYear] = useState("");
     const [birthMonth, setBirthMonth] = useState("");
     const [birthDay, setBirthDay] = useState("");
@@ -29,7 +29,7 @@ const SignUp = () => {
     const [inputDisabled, setInputDisabled] = useState(false);
 
     const [name, onChangeNameHandler] = useInput();
-    const [namehRegValid, setNameRegValid] = useState(false);
+
     const [personalInfoModal, setPersonalInfoModal] = useState(false);
     const [personalInfoCheck, setPersonalInfoCheck] = useState(false);
 
@@ -63,15 +63,14 @@ const SignUp = () => {
         personalInfoModal ? setPersonalInfoModal(false) : setPersonalInfoModal(true);
 
     const signUpNewUser = async () => {
-        const supabase = serverClient();
         try {
-            nameValidate({ name, setNameRegValid });
+            const supabase = serverClient();
 
-            if (!namehRegValid) {
+            const nameBoolean = nameValidate({ name });
+
+            if (!nameBoolean) {
                 return;
             }
-
-            successNotify({ title: "잠시만 기다려주세요" });
 
             signSettingValidation({ birthDate, name, sex, personalInfoAgree: personalInfoCheck });
 
@@ -84,7 +83,7 @@ const SignUp = () => {
             }
             successNotify({ title: "회원가입이 완료되었습니다!" });
 
-            return router.push("/mypage");
+            return router.push("/welcome");
         } catch (error) {
             console.log(error);
         }
@@ -189,4 +188,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default ConfirmEmail;
