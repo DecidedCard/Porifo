@@ -95,21 +95,21 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             >
                                 <div className="flex w-full flex-col">
                                     {/* 제목과 날짜를 포함하는 영역 */}
-                                    <div className="flex justify-between w-[804px] sm:w-[370px]">
+                                    <div className="flex justify-between w-[804px] sm:w-full">
                                         <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
                                             {experience.company}
                                         </h3>
-                                        <time className="text-gray4 text-[12px] font-normal leading-none mr-10">
+                                        <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
                                             {experience.date}
                                         </time>
                                     </div>
 
                                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                                    <div className="flex flex-col w-[480px] sm:w-[370px] sm:flex-wrap">
+                                    <div className="flex flex-col w-[480px] sm:w-full sm:flex-wrap">
                                         <p className="text-[14px] font-normal mb-2 text-gray4">
                                             {experience.department} / {experience.position}
                                         </p>
-                                        <div className="flex flex-col sm:w-[370px] sm:flex-wrap">
+                                        <div className="flex flex-col sm:w-full sm:flex-wrap">
                                             <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
                                                 • {experience.comment}
                                             </p>
