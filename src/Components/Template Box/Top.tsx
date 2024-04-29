@@ -1,9 +1,7 @@
-
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
 const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-
     const userInfo = {
         name: portfolio.name,
         job: portfolio.job,
@@ -15,7 +13,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <div>
-            <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-[480px] sm:min-h-[511px] sm:mt-4">
+            <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-full sm:min-h-[511px] sm:mt-4">
                 <div className="flex flex-col items-center justify-center py-[50px]">
                     <Image
                         className="rounded-2xl w-[170px] h-[170px] object-cover sm:w-[150px] sm:h-[150px] sm:mb-2"

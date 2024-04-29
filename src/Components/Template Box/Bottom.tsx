@@ -10,16 +10,16 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <div>
-            <ol className="flex flex-col items-start justify-start w-[800px] sm:items-center sm:justify-center">
+            <ol className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
                 <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
                 {project.map((project, index) => (
                     <li
                         key={index}
                         className="flex flex-col items-start justify-start w-[800px] rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
                     >
-                        <div className="flex flex-col w-[804px] sm:items-center sm:justify-center">
+                        <div className="flex flex-col w-[804px] sm:items-center sm:w-full sm:justify-center">
                             {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
-                            <div className="flex flex-row sm:flex-col sm:w-[396px] sm:items-center sm:justify-center">
+                            <div className="flex flex-row sm:flex-col sm:w-full sm:items-center sm:justify-center">
                                 {project.images &&
                                     project.images.map((image, index) => (
                                         <Image
@@ -85,7 +85,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             </ol>
 
             {career.length > 0 && (
-                <div className="flex flex-col items-start justify-start w-[800px] sm:items-center sm:justify-center">
+                <div className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
                     <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
                     <ol>
                         {career.map((experience, index) => (
