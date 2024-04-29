@@ -210,10 +210,6 @@ const useInfo = () => {
         let url = "";
 
         const { imageFile, ...info } = basicInfo;
-        // if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
-        //     setUpload(false);
-        //     return;
-        // }
 
         if (basicInfo.imageFile) {
             // 이미지 파일이 있을 경우 스토리지에 저장 및 url 저장
