@@ -25,9 +25,11 @@ const Welcome = () => {
                         />
                     </div>
 
-                    <p className="text-center mb-[40px] flex-row text-[108px]">👏</p>
-                    <p className="text-center mb-[40px] flex-row text-[35px] sm:text-[20px] sm:mb-[20px] sm:font-medium">포리포에 오신 것을</p>
-                    <p className="text-center mb-[40px] flex-row text-[35px] sm:text-[20px] sm:font-medium">환영합니다!</p>
+                    <p className="text-center mb-[40px] text-[108px]">👏</p>
+                    <p className="text-center mb-[40px] text-[35px] sm:text-[20px] sm:mb-[20px] sm:leading-normal sm:font-medium">
+                        포리포에 오신 것을 <br /> 환영합니다!
+                    </p>
+
                     <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button
                             text="로그인 하기"
