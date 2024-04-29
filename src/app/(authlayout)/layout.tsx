@@ -19,10 +19,8 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
 
     if (!user.user_metadata.name && !user.user_metadata.user_name) {
         router.replace("/confirmEmail");
-    } else {
-        if (!user.user_metadata.birthDate && !user.user_metadata.sex) {
-            router.replace("/socialSetting");
-        }
+    } else if (!user.user_metadata.birthDate && !user.user_metadata.sex) {
+        router.replace("/socialSetting");
     }
 
     return (

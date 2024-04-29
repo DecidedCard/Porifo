@@ -32,10 +32,10 @@ const Find_Email = () => {
 
     return (
         <main>
-            <div className="flex py-36 items-center justify-center bg-hihigray relative">
-                <div className="rounded-2xl p-10 w-[454px] h-[456px] bg-white flex justify-center items-center flex-col">
+            <div className="flex py-36 items-center justify-center bg-hihigray relative sm:py-0">
+                <div className="rounded-2xl p-10 w-[454px] h-[456px] bg-white flex justify-center items-center flex-col sm:w-full sm:h-screen sm:p-0">
                     <form onSubmit={changePassword} className="flex flex-col items-center justify-center">
-                        <div className="flex justify-center items-center h-[86px]">
+                        <div className="flex justify-center items-center h-[86px] sm:hidden">
                             <Image
                                 width={160}
                                 height={54}
