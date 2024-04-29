@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Button from "./Commen/Button";
 import useUserStore from "@/store/userStore";
-import { mouseClickModalClose } from "@/util/mouseClickModalClose";
+import useMouseClickClose from "@/hooks/useMouseClickClose";
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -13,17 +13,13 @@ const Header = () => {
 
     const { user, setUser } = useUserStore();
 
-    const showMenuRef = useRef<HTMLDivElement>(null);
+    const { modalRef } = useMouseClickClose(showMenu, setShowMenu);
 
     useEffect(() => {
         if (window.location.pathname === "/community") {
             setActiveMenu("community");
         }
     }, []);
-
-    useEffect(() => {
-        document.addEventListener("mousedown", (e) => mouseClickModalClose(e, showMenu, showMenuRef, setShowMenu));
-    }, [showMenu]);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -89,7 +85,7 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
-                                        ref={showMenuRef}
+                                        ref={modalRef}
                                         className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>

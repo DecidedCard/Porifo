@@ -1,8 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import Button from "../Commen/Button";
 import Image from "next/image";
+import useMouseClickClose from "@/hooks/useMouseClickClose";
 
-const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelectHandler: (arg: string) => void }) => {
+const TemplateSelect = ({
+    templateSelectModal,
+    setTemplateSelectModal,
+    onClickTemplateSelectHandler,
+}: {
+    templateSelectModal: boolean;
+    setTemplateSelectModal: React.Dispatch<React.SetStateAction<boolean>>;
+    onClickTemplateSelectHandler: (arg: string) => void;
+}) => {
+    const { modalRef } = useMouseClickClose(templateSelectModal, setTemplateSelectModal);
     useEffect(() => {
         document.body.style.cssText = `
         position: fixed; 
@@ -18,12 +28,13 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
 
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10 overflow-auto w-[932px] bg-white rounded-2xl sm:w-full sm:mx-auto sm:h-fit sm:overflow-auto">
+            <div
+                ref={modalRef}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10 overflow-auto w-[932px] bg-white rounded-2xl sm:w-full sm:mx-auto sm:h-fit sm:overflow-auto"
+            >
                 <h2 className="w-fit h-9 mx-auto text-2xl font-bold mt-10 text-[22px]">원하는 템플릿을 선택하세요.</h2>
                 <hr className="w-[852px] h-4 text-gray2 mx-auto sm:w-[90%]" />
                 <div className="flex flex-col gap-6 w-[852px] h-[549px] mx-auto sm:flex-col">
-
-
                     <div className="flex flex-row">
                         <div className="flex flex-col gap-2 rounded-2xl sm:ml-2">
                             <h3 className="text-lg font-medium text-gray4">Standard</h3>
@@ -125,7 +136,6 @@ const TemplateSelect = ({ onClickTemplateSelectHandler }: { onClickTemplateSelec
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

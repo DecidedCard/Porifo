@@ -4,7 +4,7 @@ import Grid from "../Template Grid/Grid";
 import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
-import { mouseClickModalClose } from "@/util/mouseClickModalClose";
+import useMouseClickClose from "@/hooks/useMouseClickClose";
 
 const Preview = ({
     template,
@@ -19,7 +19,8 @@ const Preview = ({
     targetRef?: React.MutableRefObject<any>;
     portfolio: PortfolioInfo;
 }) => {
-    const modalRef = useRef<HTMLDivElement>(null);
+    const { modalRef } = useMouseClickClose(previewModal, setPreviewModal);
+
     useEffect(() => {
         document.body.style.cssText = `
         position: fixed; 
@@ -32,9 +33,7 @@ const Preview = ({
             window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
         };
     }, []);
-    useEffect(() => {
-        document.addEventListener("mousedown", (e) => mouseClickModalClose(e, previewModal, modalRef, setPreviewModal));
-    }, [previewModal, setPreviewModal]);
+
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 ">
             <div

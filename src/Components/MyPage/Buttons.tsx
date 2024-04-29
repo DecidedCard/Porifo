@@ -24,8 +24,12 @@ import { share } from "@/util/share";
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
         useInfo();
-    const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
-        useTemplateSelect();
+    const {
+        templateSelectModal,
+        setTemplateSelectModal,
+        onClickTemplateModalToggleHandler,
+        onClickTemplateSelectHandler,
+    } = useTemplateSelect();
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
 
     const [previewModal, setPreviewModal] = useState(false);
@@ -151,7 +155,13 @@ const Buttons = () => {
                         </>
                     )}
                 </div>
-                {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
+                {templateSelectModal && (
+                    <TemplateSelect
+                        templateSelectModal={templateSelectModal}
+                        setTemplateSelectModal={setTemplateSelectModal}
+                        onClickTemplateSelectHandler={onClickTemplateSelectHandler}
+                    />
+                )}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
