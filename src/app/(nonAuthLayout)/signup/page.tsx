@@ -24,7 +24,6 @@ const ConfirmEmailpage = () => {
     const [emailError, setEmailError] = useState(true);
 
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState(true);
 
     const [confirmPassword, setConfirmPassword] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
@@ -33,13 +32,8 @@ const ConfirmEmailpage = () => {
     const [emailSMPTNumber, setEmailSMPTNumber] = useState(false);
 
     const [OTPNumber, onChangeConfirmOTPNumber] = useInput();
-    const [emailRegValid, setEmailRegValid] = useState(false);
 
     const [inputDisabled, setInputDisabled] = useState(false);
-    const [wordRegValid, setWordRegValid] = useState(false);
-    const [specialRegValid, setSpecialRegValid] = useState(false);
-    const [numberRegValid, setNumberRegValid] = useState(false);
-    const [lengthRegValid, setLengthRegValid] = useState(false);
 
     const router = useRouter();
 
@@ -47,22 +41,25 @@ const ConfirmEmailpage = () => {
     const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
 
     useEffect(() => {
-        emailValidate({ email, setEmailRegValid });
+        const emailRegValid = emailValidate({ email });
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
 
         if (emailRegValid === true) setEmailError(true);
-    }, [email, emailRegValid]);
+    }, [email]);
 
+    const passwordRegValid = passwordValidate({ password });
+
+    const confirmPasswordIsError =
+        password.length === 0 ||
+        (passwordRegValid.wordRegBoolean &&
+            passwordRegValid.numberRegBoolean &&
+            passwordRegValid.specialRegBoolean &&
+            passwordRegValid.lengthRegBoolean);
+
+    const passwordError = confirmPasswordIsError && password.length >= 8;
+
+    password === confirmPassword ? setSamePassword(true) : setSamePassword(false);
     useEffect(() => {
-        passwordValidate({ password, setWordRegValid, setNumberRegValid, setSpecialRegValid, setLengthRegValid });
-        const confirmPassword =
-            password.length === 0 || (wordRegValid && specialRegValid && numberRegValid && lengthRegValid);
-
-        confirmPassword && password.length >= 8 ? setPasswordError(true) : setPasswordError(false);
-    }, [wordRegValid, specialRegValid, numberRegValid, lengthRegValid, password]);
-
-    useEffect(() => {
-        password === confirmPassword ? setSamePassword(true) : setSamePassword(false);
         password === confirmPassword ? setConfirmPasswordError(true) : setConfirmPasswordError(false);
     }, [password, confirmPassword]);
 
@@ -75,7 +72,6 @@ const ConfirmEmailpage = () => {
     const confirmEmailAndOTPNumber = async () => {
         try {
             signUpValidation({ email, password });
-            infoNotify({ title: "인증번호를 메일로 보내고 있습니다.🥹" });
 
             await supabase.auth.signUp({
                 email,
@@ -153,10 +149,10 @@ const ConfirmEmailpage = () => {
                     />
 
                     <SignPasswordValidate
-                        lengthRegValid={lengthRegValid}
-                        numberRegValid={numberRegValid}
-                        wordRegValid={wordRegValid}
-                        specialRegValid={specialRegValid}
+                        lengthRegValid={passwordRegValid.wordRegBoolean}
+                        numberRegValid={passwordRegValid.numberRegBoolean}
+                        wordRegValid={passwordRegValid.specialRegBoolean}
+                        specialRegValid={passwordRegValid.lengthRegBoolean}
                     />
 
                     <SignInputItem
