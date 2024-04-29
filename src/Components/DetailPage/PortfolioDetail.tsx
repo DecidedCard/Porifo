@@ -64,7 +64,7 @@ const PortfolioDetail = () => {
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
                 <div
-                    className="w-[80%] sm:w-full sm:mb-96 sm:px-4  mb-10 flex justify-center rounded-2xl bg-hihigray"
+                    className="w-[80%] sm:w-full sm:mb-[180px] sm:px-4  mb-10 flex justify-center rounded-2xl bg-hihigray"
                     id="comment"
                 >
                     <Comments />
