@@ -162,7 +162,7 @@ const Carousel = () => {
                                         <div className="flex justify-between">
                                             <div className="flex gap-2">
                                                 {/* 유저이름 */}
-                                                <div className="font-spoqaMedium text-whitev flex items-center justify-center text-base ">
+                                                <div className="font-spoqaMedium text-white flex items-center justify-center text-base ">
                                                     {item.name}
                                                 </div>
                                             </div>

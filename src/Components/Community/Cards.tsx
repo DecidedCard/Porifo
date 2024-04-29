@@ -107,7 +107,7 @@ const Cards = () => {
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap sm:ml-2">
+                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap ml-2">
                                                 {item.name}
                                             </div>
                                         </div>

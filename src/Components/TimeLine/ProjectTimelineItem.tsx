@@ -34,13 +34,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
 
                 {/* 제목과 날짜를 포함하는 영역 */}
                 <div className="flex flex-col flex-wrap w-full justify-between sm:w-[360px] sm:items-center sm:justify-center">
-                    <div className="flex flex-col mt-2 w-[804px]">
+                    <div className="flex flex-col mt-2 w-[804px] sm:w-full">
                         <h3 className="text-[20px] font-medium mb-3 sm:w-[360px] sm:text-[16px]">{name}</h3>
                         <time className="text-gray3 text-[12px] leading-none mb-2">{date}</time>
                     </div>
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                    <div className="flex flex-col mt-2 w-[804px] sm:flex-wrap">
+                    <div className="flex flex-col mt-2 w-[804px] sm:w-full sm:flex-wrap">
                         <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:font-medium sm:w-[360px] leading-normal">
                             {introduce}
                         </p>
