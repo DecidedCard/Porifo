@@ -14,8 +14,12 @@ import Grid from "../Template Grid/Grid";
 
 const Buttons = () => {
     const { basicInfo, disabled, onClickInsertHandler } = useInfo();
-    const { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler } =
-        useTemplateSelect();
+    const {
+        templateSelectModal,
+        setTemplateSelectModal,
+        onClickTemplateModalToggleHandler,
+        onClickTemplateSelectHandler,
+    } = useTemplateSelect();
     const { previewModal, portfolioPreview, setPreviewModal, onClickPreviewModal } = useGuestButton();
 
     const { targetRef } = usePDF({ filename: "Porifo_Portfolio" });
@@ -68,7 +72,13 @@ const Buttons = () => {
                         {disabled && <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>}
                     </div>
                 </div>
-                {templateSelectModal && <TemplateSelect onClickTemplateSelectHandler={onClickTemplateSelectHandler} />}
+                {templateSelectModal && (
+                    <TemplateSelect
+                        templateSelectModal={templateSelectModal}
+                        setTemplateSelectModal={setTemplateSelectModal}
+                        onClickTemplateSelectHandler={onClickTemplateSelectHandler}
+                    />
+                )}
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
@@ -83,6 +93,7 @@ const Buttons = () => {
             {previewModal && (
                 <Preview
                     template={basicInfo.template!}
+                    previewModal={previewModal}
                     setPreviewModal={setPreviewModal}
                     portfolio={portfolioPreview}
                 />
