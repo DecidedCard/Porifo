@@ -20,6 +20,7 @@ type InputValue = {
     lastPhoneNumber?: string;
     inputDisabled: boolean;
     onClick?: () => void;
+    onTypeClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     setInputDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -36,6 +37,7 @@ const SignButton = ({
     name,
     birthDate,
     onClick,
+    onTypeClick,
     personalInfoCheck,
     sex,
 }: InputValue) => {
@@ -101,6 +103,7 @@ const SignButton = ({
                 border="none"
                 size="m"
                 onClick={onClick}
+                onTypeClick={onTypeClick}
                 color={inputDisabled ? "primary" : ""}
                 disabled={!inputDisabled}
             />

@@ -3,6 +3,7 @@ import React from "react";
 interface ButtonProps {
     text: string;
     onClick?: () => void;
+    onTypeClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     size?: string;
     fontSize?: string;
     border?: string;
@@ -14,12 +15,13 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
     text,
     onClick,
+    onTypeClick,
     size,
     fontSize,
     border,
     color,
     disabled,
-    className
+    className,
 }) => {
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
     const fontsize =
@@ -42,11 +44,7 @@ const Button: React.FC<ButtonProps> = ({
     const buttonClass = `flex items-center justify-center px-3 rounded-lg w-full ${height} ${fontsize} ${col} ${className}`;
 
     return (
-        <button
-            onClick={onClick}
-            className={buttonClass}
-            disabled={disabled}
-        >
+        <button onClick={onClick ? onClick : onTypeClick} className={buttonClass} disabled={disabled}>
             {text}
         </button>
     );
