@@ -24,8 +24,8 @@ const ConfirmEmailpage = () => {
     const [emailError, setEmailError] = useState(true);
 
     const [password, setPassword] = useState("");
-
     const [confirmPassword, setConfirmPassword] = useState("");
+
     const [confirmPasswordError, setConfirmPasswordError] = useState(true);
 
     const [samePassword, setSamePassword] = useState(false);
@@ -39,13 +39,13 @@ const ConfirmEmailpage = () => {
 
     const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
     const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
+    const emailRegValid = emailValidate({ email });
 
     useEffect(() => {
-        const emailRegValid = emailValidate({ email });
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
 
-        if (emailRegValid === true) setEmailError(true);
-    }, [email]);
+        if (emailRegValid) setEmailError(true);
+    }, [email.length, emailRegValid]);
 
     const passwordRegValid = passwordValidate({ password });
 
@@ -58,9 +58,14 @@ const ConfirmEmailpage = () => {
 
     const passwordError = confirmPasswordIsError && password.length >= 8;
 
-    password === confirmPassword ? setSamePassword(true) : setSamePassword(false);
     useEffect(() => {
-        password === confirmPassword ? setConfirmPasswordError(true) : setConfirmPasswordError(false);
+        if (password === confirmPassword) {
+            setSamePassword(true);
+            setConfirmPasswordError(true);
+        } else {
+            setSamePassword(false);
+            setConfirmPasswordError(false);
+        }
     }, [password, confirmPassword]);
 
     useEffect(() => {
@@ -72,7 +77,7 @@ const ConfirmEmailpage = () => {
     const confirmEmailAndOTPNumber = async () => {
         try {
             signUpValidation({ email, password });
-
+            infoNotify({ title: "잠시만 기다려 주세요.🥹" });
             await supabase.auth.signUp({
                 email,
                 password,
@@ -98,10 +103,10 @@ const ConfirmEmailpage = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
-            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col sm:w-full sm:h-screen sm:justify-center sm:items-center sm:p-0">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative">
+            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col">
                 <div className="flex flex-col">
-                    <div className="flex justify-center items-center h-[86px] mb-5 sm:hidden">
+                    <div className="flex justify-center items-center h-[86px] mb-5">
                         <Image
                             className="w-[162px] h-[54px]"
                             width={0}
@@ -156,8 +161,8 @@ const ConfirmEmailpage = () => {
                     />
 
                     <SignInputItem
-                        setLabel="비밀번호 확인"
-                        placeholder="비밀번호를 한번 더 작성해주세요"
+                        setLabel="비밀번호"
+                        placeholder="비밀번호를 작성해주세요"
                         color={confirmPassword.length === 0 ? "gray2" : confirmPasswordError ? "gray2" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
                         "

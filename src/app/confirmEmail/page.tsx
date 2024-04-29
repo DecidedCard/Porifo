@@ -15,13 +15,13 @@ import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 import useInput from "@/hooks/useInput";
 import { Flip, ToastContainer } from "react-toastify";
 
-import { infoNotify, successNotify } from "@/util/toast";
+import { successNotify } from "@/util/toast";
 import { nameValidate } from "@/util/sign/sign_validate";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
 import serverClient from "@/util/supabase/serverClient";
 
-const SignUp = () => {
+const ConfirmEmail = () => {
     const [birthYear, setBirthYear] = useState("");
     const [birthMonth, setBirthMonth] = useState("");
     const [birthDay, setBirthDay] = useState("");
@@ -83,7 +83,7 @@ const SignUp = () => {
             }
             successNotify({ title: "회원가입이 완료되었습니다!" });
 
-            return router.push("/mypage");
+            return router.push("/welcome");
         } catch (error) {
             console.log(error);
         }
@@ -188,4 +188,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default ConfirmEmail;

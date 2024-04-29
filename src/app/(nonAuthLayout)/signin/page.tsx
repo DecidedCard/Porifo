@@ -70,7 +70,9 @@ const SignIn = () => {
                 throw new Error("로그인에 실패했습니다.");
             }
             setUser(data.user);
+
             successNotify({ title: "로그인에 성공하였습니다.😎" });
+
             confirmPortfolio !== undefined ? router.replace("/community") : router.replace("/mypage");
             router.refresh();
         } catch (error) {
