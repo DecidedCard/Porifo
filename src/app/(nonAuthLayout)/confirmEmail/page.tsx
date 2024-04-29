@@ -90,9 +90,9 @@ const SignUp = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded-2xl p-10 w-[454px] h-[756px] bg-white flex justify-center flex-col">
-                <div className="flex justify-center">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
+            <div className="rounded-2xl w-[454px] h-[756px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
+                <div className="flex justify-center sm:hidden">
                     <Image
                         className="w-[160px] h-auto"
                         width={0}
@@ -141,7 +141,7 @@ const SignUp = () => {
                     middlePhoneNumber={middlePhoneNumber}
                     lastPhoneNumber={lastPhoneNumber}
                 />
-                <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[50px]">
+                <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-5 flex gap-x-[50px]">
                     <span className="flex">
                         <Image
                             className="w-6 h-6 mr-1"

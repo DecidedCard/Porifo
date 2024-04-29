@@ -80,11 +80,11 @@ const Password_Change = () => {
 
     return (
         <main>
-            <div className="flex py-44 items-center justify-center bg-hihigray relative">
+            <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
                 {isRecovery ? (
-                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
                         <form onSubmit={confirmHandler}>
-                            <div className="flex justify-center">
+                            <div className="flex justify-center sm:hidden">
                                 <Image
                                     width={0}
                                     height={0}
@@ -94,11 +94,11 @@ const Password_Change = () => {
                                     priority
                                 />
                             </div>
+                            <p className="hidden sm:flex sm:items-center sm:justify-center sm:text-[14px] sm:mb-10">새로운 비밀번호를 입력해주세요.</p>
                             <SignInputItem
                                 setLabel="비밀번호"
                                 placeholder="비밀번호를 작성해주세요"
-                                pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
-                        "
+                                pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/"
                                 onChangeHandler={handleUserPassword}
                                 relative="relative"
                                 eye="eye.svg"
@@ -138,7 +138,7 @@ const Password_Change = () => {
                         </form>
                     </div>
                 ) : (
-                    <div className="rounded-2xl p-10 w-[454px] h-[500px] items-center bg-white flex justify-center flex-col">
+                    <div className="rounded-2xl p-10 w-[454px] h-[500px] items-center bg-white flex justify-center flex-col sm:p-0 sm:w-full sm:h-screen">
                         <div className="flex flex-col justify-center items-center w-[274px] h-[324px]">
                             <p className="text-[108px]">🧩</p>
                             <p className="flex items-center text-center justify-center leading-normal mt-8 font-medium text-[20px] w-[274px] h-[44px]">
