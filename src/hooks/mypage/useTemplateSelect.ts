@@ -15,7 +15,12 @@ const useTemplateSelect = () => {
         onClickTemplateModalToggleHandler();
     };
 
-    return { templateSelectModal, onClickTemplateModalToggleHandler, onClickTemplateSelectHandler };
+    return {
+        templateSelectModal,
+        setTemplateSelectModal,
+        onClickTemplateModalToggleHandler,
+        onClickTemplateSelectHandler,
+    };
 };
 
 export default useTemplateSelect;

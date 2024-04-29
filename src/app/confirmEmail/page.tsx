@@ -84,7 +84,7 @@ const SignUp = () => {
             }
             successNotify({ title: "회원가입이 완료되었습니다!" });
 
-            return router.push("/signin");
+            return router.push("/mypage");
         } catch (error) {
             console.log(error);
         }

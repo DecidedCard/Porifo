@@ -11,10 +11,6 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
     const router = useRouter();
 
     if (user) {
-        if (user?.user_metadata.birthDate === undefined && user?.user_metadata.sex === undefined) {
-            router.replace("/socialSetting");
-            return;
-        }
         router.replace("/mypage");
     }
 
