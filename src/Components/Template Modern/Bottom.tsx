@@ -104,7 +104,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     </div>
 
                                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                                    <div className="flex flex-col w-[480px]">
+                                    <div className="flex flex-col w-full">
                                         <p className="text-[14px] font-normal mb-2 text-gray4">
                                             {experience.department} / {experience.position}
                                         </p>
