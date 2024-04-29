@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
@@ -158,7 +158,6 @@ const useInfo = () => {
         setOneLineIntroduce(e.target.value);
     };
 
-    useCallback(() => {}, []);
     const onChangeIntroduceHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setIntroduce(e.target.value);
     };
