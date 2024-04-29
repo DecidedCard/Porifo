@@ -20,7 +20,6 @@ import { portfolioInputFormValidation } from "@/util/input_form_validation";
 
 import { usePDF } from "react-to-pdf";
 import { share } from "@/util/share";
-import { mouseClickModalClose } from "@/util/mouseClickModalClose";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -30,13 +29,6 @@ const Buttons = () => {
     const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
 
     const [previewModal, setPreviewModal] = useState(false);
-    const previewModalRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        document.addEventListener("mousedown", (e) =>
-            mouseClickModalClose(e, previewModal, previewModalRef, setPreviewModal),
-        );
-    }, [previewModal]);
 
     const onClickUrlCopyHandler = () => {
         if (!portfolio?.id) {
@@ -176,9 +168,9 @@ const Buttons = () => {
             {previewModal && (
                 <Preview
                     template={basicInfo.template!}
+                    previewModal={previewModal}
                     setPreviewModal={setPreviewModal}
                     portfolio={portfolioPreview}
-                    ref={previewModalRef}
                 />
             )}
         </div>

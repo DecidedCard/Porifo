@@ -1,23 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
 import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { mouseClickModalClose } from "@/util/mouseClickModalClose";
 
 const Preview = ({
     template,
+    previewModal,
     setPreviewModal,
     targetRef,
     portfolio,
-    ref,
 }: {
     template: string;
+    previewModal: boolean;
     setPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
     targetRef?: React.MutableRefObject<any>;
     portfolio: PortfolioInfo;
-    ref: React.RefObject<HTMLDivElement>;
 }) => {
+    const modalRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         document.body.style.cssText = `
         position: fixed; 
@@ -30,6 +32,9 @@ const Preview = ({
             window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
         };
     }, []);
+    useEffect(() => {
+        document.addEventListener("mousedown", (e) => mouseClickModalClose(e, previewModal, modalRef, setPreviewModal));
+    }, [previewModal, setPreviewModal]);
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 ">
             <div
@@ -39,7 +44,7 @@ const Preview = ({
                 x
             </div>
             <div
-                ref={ref}
+                ref={modalRef}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl sm:w-full sm:h-full sm:rounded-none"
             >
                 <div ref={targetRef} className="">
