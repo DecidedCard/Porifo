@@ -1,4 +1,3 @@
-
 import { Career } from "@/types/Career";
 import { Project } from "@/types/Project";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
@@ -6,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
 
@@ -14,7 +12,10 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         <div>
             <ol>
                 {project.map((project, index) => (
-                    <li key={index} className="flex flex-col items-start justify-start mt-10 sm:items-center sm:justify-center sm:w-full">
+                    <li
+                        key={index}
+                        className="flex flex-col items-start justify-start mt-10 sm:items-center sm:justify-center sm:w-full"
+                    >
                         <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                         <div className="flex flex-col w-[804px] sm:w-[370px]">
@@ -36,7 +37,9 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             {/* 제목과 날짜를 포함하는 영역 */}
                             <div className="flex w-full flex-col sm:items-center sm:justify-center sm:mt-2">
                                 <div className="flex justify-between w-[804px] mt-2 sm:w-[370px]">
-                                    <h3 className="text-[20px] font-medium mb-3 sm:text-[16px] sm:w-[299px]">{project.name}</h3>
+                                    <h3 className="text-[20px] font-medium mb-3 sm:text-[16px] sm:w-[299px]">
+                                        {project.name}
+                                    </h3>
                                     <time className="text-gray3 text-[12px] leading-none sm:text-[10px]">
                                         {project.date}
                                     </time>
@@ -44,7 +47,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
                                 <div className="flex flex-col mt-5 sm:items-center sm:justify-center">
-                                    <p className="text-[14px] font-normal mb-2 text-gray4 sm:w-[370px]">
+                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:w-[370px]">
                                         {project.introduce}
                                     </p>
                                     {project.githubLink && (
@@ -101,12 +104,12 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     </div>
 
                                     {/* 설명과 상세 정보를 포함하는 영역 */}
-                                    <div className="flex flex-col w-[480px]">
+                                    <div className="flex flex-col w-full">
                                         <p className="text-[14px] font-normal mb-2 text-gray4">
                                             {experience.department} / {experience.position}
                                         </p>
                                         <div className="flex flex-col">
-                                            <p className="font-normal text-gray4 leading-6 text-[12px] sm:text-[14px]">
+                                            <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
                                                 • {experience.comment}
                                             </p>
                                         </div>

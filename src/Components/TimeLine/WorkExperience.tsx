@@ -4,8 +4,6 @@ import WorkTimelineItem from "./WorkTimelineItem";
 import type { Career } from "@/types/Career";
 
 const WorkExperience = ({ career }: { career: Career[] }) => {
-
-
     return (
         <div className="flex flex-col items-start justify-start relative sm:items-center sm:justify-center">
             {career.length > 0 && (

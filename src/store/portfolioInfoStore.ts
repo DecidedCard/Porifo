@@ -38,6 +38,7 @@ const initial = {
     blogLink: "",
     githubLink: "",
     share: false,
+    userId: "",
     career: [],
     likes: [],
     likesCnt: 0,

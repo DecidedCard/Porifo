@@ -90,7 +90,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                     <span className="text-white font-spoqaBold text-[12px]">공유하기</span>
                 </div>
             </div>
-            <div className="p-2 ">{children}</div>
+            <div className="p-2 sm:w-full sm:p-0 ">{children}</div>
         </div>
     );
 };
