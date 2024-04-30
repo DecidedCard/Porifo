@@ -46,7 +46,7 @@ const Comments = () => {
 
     return (
         <>
-            <div className="w-[80%] rounded-2xl flex flex-col gap-5 pb-10">
+            <div className="w-[80%] sm:w-full rounded-2xl flex flex-col gap-5 pb-10">
                 <CommentInput user={user} id={id} />
                 <div className="border-[1px] border-solid border-gray2 mt-5 sm:mt-2 " />
                 {/* 댓글리스트 */}
