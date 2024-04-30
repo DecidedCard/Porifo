@@ -62,12 +62,21 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
+            <div className="mt-2 w-52 hidden sm:block sm:absolute sm:top-48 sm: left-[57%]">
+                <button
+                    onClick={onClickTemplateModalToggleHandler}
+                    className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                >
+                    템플릿 선택하기
+                </button>
+            </div>
+
             <main className="relative flex flex-col items-center gap-5">
-                <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl sm:mt-10 h-[300px] pt-5 sm:h-fit">
-                    <div className="absolute right-[115%] w-20 flex flex-row sm:left-0 sm:right-0 sm:h-fit sm:hidden">
+                <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5 sm:hidden">
+                    <div className="absolute right-[115%] w-20 flex flex-row">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
-                    <div className="w-52 h-[186px] bg-gray2 overflow-hidden rounded-[8px] sm:hidden sm:w-fit">
+                    <div className="w-52 h-[186px] bg-gray2 overflow-hidden rounded-[8px]">
                         <div className="w-[168px] mx-auto">
                             <p className="text-xs font-medium text-gray4 pt-4">{basicInfo.template}</p>
                             <div className="pt-3">
@@ -81,7 +90,7 @@ const Buttons = () => {
                         </div>
                     </div>
 
-                    <div className="mt-2 w-52 sm:w-fit sm:mt-0">
+                    <div className="mt-2 w-52">
                         <button
                             onClick={onClickTemplateModalToggleHandler}
                             className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
@@ -90,16 +99,16 @@ const Buttons = () => {
                         </button>
                     </div>
 
-                    <div className="flex flex-row my-5 mb-5 text-[12px] sm:my-0">
+                    <div className="flex flex-row my-5 mb-5 text-[12px]">
                         <button
-                            className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter sm:pr-3"
+                            className="flex items-center pr-7 pl-5 rounded-xl tracking-tighter"
                             onClick={onClickUrlCopyHandler}
                         >
                             <Image src="assets/image/link.svg" alt="link" width={24} height={24} className="mr-1" />
                             URL 복사
                         </button>
                         <button
-                            className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter sm:pl-0"
+                            className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter"
                             onClick={onClickPdfDownloadHandler}
                         >
                             <Image
@@ -114,14 +123,14 @@ const Buttons = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:pb-10">
+                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:flex-row sm:flex-wrap sm:justify-center sm:w-full sm:pb-10 sm:gap-1">
                     {upload ? (
                         <>
-                            <div className="w-[208px] sm:w-[202px] sm:h-[48px]">
+                            <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
                                 <Button text="업로드 중..." size="l" border="none" disabled />
                             </div>
 
-                            <div className="w-[208px] sm:w-[202px] sm:h-[48px]">
+                            <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
@@ -132,17 +141,16 @@ const Buttons = () => {
                         </>
                     ) : (
                         <>
-                            <div className="w-[208px]">
+                            <div className="w-[208px] sm:w-[49%]">
                                 <Button
                                     text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
                                     size="l"
-                                    border="none"
                                     color="primary"
                                     onClick={onClickInsertHandler}
                                 />
                             </div>
 
-                            <div className="w-[208px]">
+                            <div className="w-[208px] sm:w-[49%]">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
