@@ -13,9 +13,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
     return (
         <div className="sm:w-full sm:p-4">
-            <div className="flex justify-between items-center w-[932px] h-[306px] bg-gray sm:w-full sm:h-[451px] sm:justify-center sm:items-start sm:flex-col-reverse sm:gap-8 ">
+            <div className="flex justify-between items-center w-[932px] h-[406px] bg-gray sm:w-full sm:h-[451px] sm:justify-center sm:items-start sm:flex-col-reverse sm:gap-8 ">
                 <div className="flex flex-col gap-5 ml-[66px]  items-start justify-start w-[500px] sm:w-[300px] sm:ml-[40px]">
-                    <h1 className="leading-normal text-[30px] font-bold flex items-center justify-center sm:text-[26px]">
+                    <h1 className="leading-normal text-[30px] font-bold flex items-center justify-start w-[500px] sm:text-[26px]">
                         {userInfo.oneLineIntroduce}
                     </h1>
 
