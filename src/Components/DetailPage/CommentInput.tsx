@@ -63,13 +63,13 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                             value={comment || ""}
                             onChange={handleComment}
                             placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] text-[12px] p-3 sm:text-[8px]"
+                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] text-[12px] p-3 sm:text-[10px]"
                         />
                     </div>
                 ) : (
                     <textarea
                         placeholder="로그인을 해주세요"
-                        className="border-[2px] border-solid border-gray2 rounded-lg self-stretch h-[78px] p-3 sm:text-[8px]"
+                        className="border-[2px] border-solid border-gray2 rounded-lg self-stretch h-[78px] p-3 sm:text-[10px]"
                         disabled
                     />
                 )}
