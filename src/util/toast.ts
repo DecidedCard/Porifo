@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const successNotify = ({ title }: { title: string }) => {
     toast.success(title, {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -17,7 +17,7 @@ export const successNotify = ({ title }: { title: string }) => {
 
 export const infoNotify = ({ title }: { title: string }) => {
     toast.info(title, {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -31,7 +31,7 @@ export const infoNotify = ({ title }: { title: string }) => {
 
 export const warnNotify = ({ title }: { title: string }) => {
     toast.warn(title, {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -44,7 +44,7 @@ export const warnNotify = ({ title }: { title: string }) => {
 };
 export const errorNotify = ({ title }: { title: string }) => {
     toast.error(title, {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
+
+import { usePDF } from "react-to-pdf";
+import { Flip, ToastContainer } from "react-toastify";
 
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
@@ -17,11 +20,8 @@ import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-
-import { usePDF } from "react-to-pdf";
 import { share } from "@/util/share";
-import { warnNotify } from "@/util/toast";
-import { Flip, ToastContainer } from "react-toastify";
+import { errorNotify } from "@/util/toast";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -38,7 +38,7 @@ const Buttons = () => {
 
     const onClickUrlCopyHandler = () => {
         if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
-            warnNotify({ title: "저장 및 필수사항을 입력해야됩니다." });
+            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 URL을 복사할 수 있습니다." });
             return;
         }
         onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/create/${user?.id}`);
@@ -46,7 +46,7 @@ const Buttons = () => {
 
     const onClickPdfDownloadHandler = () => {
         if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
-            warnNotify({ title: "저장 및 필수사항을 입력해야됩니다." });
+            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 다운로드할 수 있습니다." });
             return;
         }
         toPDF();
@@ -62,19 +62,6 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition={Flip}
-            />
             <main className="relative flex flex-col items-center gap-5">
                 <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl sm:mt-10 h-[300px] pt-5 sm:h-fit">
                     <div className="absolute right-[115%] w-20 flex flex-row sm:left-0 sm:right-0 sm:h-fit sm:hidden">
@@ -206,6 +193,18 @@ const Buttons = () => {
                     portfolio={portfolioPreview}
                 />
             )}
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                theme="light"
+                transition={Flip}
+                style={{ width: "fit-content" }}
+            />
         </div>
     );
 };

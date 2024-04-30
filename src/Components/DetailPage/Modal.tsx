@@ -26,7 +26,6 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
         if (targetElement.id === "wrapper") {
             onClose();
             window.location.hash = "";
-            // router.push("/community");
         }
     };
 
@@ -42,7 +41,6 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
     const handleBackBtn = () => {
         onClose();
         window.location.hash = "";
-        // router.push("/community");
     };
 
     return (
