@@ -20,18 +20,18 @@ const Careers = () => {
         onClickMinusHandler,
     } = useCareer();
     return (
-        <div className="flex flex-col gap-5 ">
-            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-32">업무 경력</p>
+        <div className="flex flex-col gap-5 sm:w-full">
+            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-full sm:ml-32">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
-                    <div key={careerIndex} className="flex flex-col gap-4 sm:mx-auto">
+                    <div key={careerIndex} className="flex flex-col gap-4">
                         <div
-                            className="w-[637px] cursor-pointer sm:w-fit sm:ml-[500px]"
+                            className="w-[637px] cursor-pointer sm:w-fit"
                             onClick={() => onClickMinusHandler(careerIndex)}
                         >
                             <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                         </div>
-                        <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                        <div className="flex mt-1 sm:w-[60%] ">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
                             <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-[275px]">
                                 <Input
