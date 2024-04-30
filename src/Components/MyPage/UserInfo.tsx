@@ -25,9 +25,9 @@ const UserInfo = () => {
     } = useInfo();
 
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10 sm:w-full sm:mx-auto sm:mt-0 sm:pt-4 sm:pb-10">
-            <div className="flex flex-col gap-4">
-                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full ">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+            <div className="flex flex-col gap-4 sm:w-full">
+                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full">
                     기본 정보
                 </h1>
                 <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
@@ -85,7 +85,7 @@ const UserInfo = () => {
                     <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                         e-mail<span className="ml-1 text-[10px] text-red-500">★</span>
                     </label>
-                    <div className="w-[460px] ml-3 sm:w-full">
+                    <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                         <Input
                             type="email"
                             placeholder="E-mail을 입력해 주세요. ex) email@example.com"
