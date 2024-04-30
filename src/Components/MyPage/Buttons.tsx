@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
+
+import { usePDF } from "react-to-pdf";
+import { Flip, ToastContainer } from "react-toastify";
 
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
@@ -17,11 +20,8 @@ import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-
-import { usePDF } from "react-to-pdf";
 import { share } from "@/util/share";
 import { errorNotify } from "@/util/toast";
-import { Flip, ToastContainer } from "react-toastify";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =

@@ -11,14 +11,12 @@ import Preview from "../MyPage/Preview";
 import Button from "../Commen/Button";
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import useGuestButton from "@/hooks/guest/useGuestButton";
-import { errorNotify } from "@/util/toast";
-import { portfolioInputFormValidation } from "@/util/input_form_validation";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
 
 const Buttons = () => {
     const { basicInfo, disabled, onClickInsertHandler } = useInfo();
