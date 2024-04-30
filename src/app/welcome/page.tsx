@@ -20,7 +20,7 @@ const Welcome = () => {
                             className="w-[160px] h-[140px]"
                             width={0}
                             height={0}
-                            src="formLogo.svg"
+                            src="/assets/image/signImage/formLogo.svg"
                             alt="form 로고 사진"
                         />
                     </div>

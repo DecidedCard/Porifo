@@ -98,7 +98,7 @@ const ConfirmEmail = () => {
                         className="w-[160px] h-auto"
                         width={0}
                         height={0}
-                        src="formLogo.svg"
+                        src="/assets/image/signImage/formLogo.svg"
                         priority
                         alt="회원가입의 form 로고"
                     />

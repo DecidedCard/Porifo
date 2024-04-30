@@ -93,7 +93,7 @@ const SignIn = () => {
                                 width={0}
                                 height={0}
                                 className="w-[160px] h-[54px]"
-                                src="formLogo.svg"
+                                src="/assets/image/signImage/formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
                             />
@@ -130,8 +130,8 @@ const SignIn = () => {
                             value={password}
                             onChangeHandler={onChangePassword}
                             relative="relative"
-                            eye="eye.svg"
-                            eyeClose="eye_close.svg"
+                            eye="/assets/image/signImage/eye.svg"
+                            eyeClose="/assets/image/signImage/eye_close.svg"
                         />
 
                         <SignButton
@@ -150,7 +150,7 @@ const SignIn = () => {
                                 width={0}
                                 height={0}
                                 className="w-[20px] h-[20px]"
-                                src="find_password_arrow.svg"
+                                src="/assets/image/signImage/find_password_arrow.svg"
                                 alt="페이지 이동 화살표"
                             />
                         </div>
