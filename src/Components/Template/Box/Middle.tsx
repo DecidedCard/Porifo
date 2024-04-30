@@ -1,7 +1,6 @@
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
-const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
-
+const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const userSkillTag = portfolio.skillTag as string[];
 
     return (
@@ -13,7 +12,12 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </p>
                     <div className="flex flex-wrap text-primary text-[12px] sm:w-[370px]">
                         {userSkillTag.map((tag, index) => (
-                            <span key={index} className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg bg-black text-white h-9">
+                            <span
+                                key={index}
+                                className={`flex items-center mt-4 mr-2 px-3 bg-gray-200 rounded-lg bg-black text-white h-9 ${
+                                    pdf && "pb-2"
+                                }`}
+                            >
                                 {tag}
                             </span>
                         ))}

@@ -1,7 +1,7 @@
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
-const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const userInfo = {
         name: portfolio.name,
         job: portfolio.job,
@@ -15,13 +15,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
         <div className="sm:w-full sm:p-4">
             <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-full sm:min-h-[511px] ">
                 <div className="flex flex-col items-center justify-center py-[50px]">
-                    <Image
-                        className="rounded-2xl w-[170px] h-[170px] object-cover sm:w-[150px] sm:h-[150px] sm:mb-2"
-                        src={userInfo.profileImage!}
-                        alt="프로필 사진"
-                        width={170}
-                        height={170}
-                    />
+                    <div className="rounded-2xl w-[170px] h-[170px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:mb-2">
+                        <Image src={userInfo.profileImage!} alt="프로필 사진" width={170} height={170} />
+                    </div>
 
                     <div className="flex flex-col items-center justify-center w-80 min-w-[320px] max-w-xs sm:w-[316px]">
                         <h1 className="leading-normal text-[30px] w-[500px] my-5 font-bold flex items-center justify-center sm:text-[22px] sm:w-[316px]">
@@ -48,7 +44,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 alt="전화"
                                                 width={24}
                                                 height={24}
-                                                className="object-cover w-6 h-6 mr-1"
+                                                className={`object-cover w-6 h-6 mr-1 ${pdf && "pt-2 h-fit"}`}
                                             />
                                             {userInfo.tel}
                                         </p>
@@ -60,7 +56,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="메일"
                                             width={24}
                                             height={24}
-                                            className="object-cover w-6 h-6 mr-1"
+                                            className={`object-cover w-6 h-6 mr-1 ${pdf && "pt-2 h-fit"}`}
                                         />
                                         {userInfo.email}
                                     </p>
