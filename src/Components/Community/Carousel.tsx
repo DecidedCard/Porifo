@@ -127,7 +127,7 @@ const Carousel = () => {
                                 <div key={idx}>
                                     {/* pc버전 */}
                                     <div
-                                        className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:shadow-xl sm:hidden"
+                                        className="flex flex-col gap-2 w-[550px] h-[364px] items-center justify-center shrink-0 cursor-pointer hover:drop-shadow-[4.0px_8.0px_6.0px_rgba(0,0,0,0.38)] sm:hidden"
                                         style={{
                                             transform: `translateX(-${currCarousel * pixel}px)`,
                                             transition: carouselTransition,
@@ -140,7 +140,7 @@ const Carousel = () => {
                                     >
                                         {/* 카드 이미지 */}
                                         <Image
-                                            className="rounded-2xl w-[100%] h-[100%] object-cover"
+                                            className="rounded-2xl w-[100%] h-[100%] object-cover "
                                             width={500}
                                             height={300}
                                             alt="카드 프로필"
