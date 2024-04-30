@@ -11,7 +11,7 @@ const DeleteModal = ({
     const { handleCommentDelete } = useDelete();
 
     const handleDeleteBtn = () => {
-        handleCommentDelete(commentId);
+        handleCommentDelete(commentId!);
         setIsDeleteModalOpen(false);
     };
     return (

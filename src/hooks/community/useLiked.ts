@@ -1,19 +1,19 @@
 import useUserStore from "@/store/userStore";
-import useCardIdStore from "@/store/detailStore";
 import { QUERY_KEY } from "@/util/query_key";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addLike, getLikes } from "@/util/supabase/detail_supabase_DB";
+import useDetailStore from "@/store/detailStore";
 
 const useLiked = () => {
     const queryClient = useQueryClient();
     const { user } = useUserStore(); //로그인여부 확인
-    const { cardId: id } = useCardIdStore(); // 현재 모달 DB ID
+    const { cardId: id } = useDetailStore(); // 현재 모달 DB ID
 
     const nowUser = user?.user_metadata.email; //로그인 유저의 email
 
     const { data: likes, isPending: pending } = useQuery({
         queryKey: [QUERY_KEY.portfolioLikes],
-        queryFn: () => getLikes({ id: "id", value: id }),
+        queryFn: () => getLikes({ id: "id", value: id! }),
     });
 
     //좋아요 추가
