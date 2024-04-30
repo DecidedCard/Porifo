@@ -8,6 +8,7 @@ import MiddleImage from "@/Components/MainPage/MiddleImage";
 import Recommendation from "@/Components/MainPage/Recommendation";
 import Bottom from "@/Components/MainPage/Bottom";
 import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 import useLoginCheck from "@/hooks/mypage/useLoginCheck";
 export default function Home() {
     useLoginCheck();
@@ -43,6 +44,7 @@ export default function Home() {
                 <div className="mt-20 sm:w-full">
                     <Bottom />
                 </div>
+                <Footer />
             </div>
         </main>
     );

@@ -26,7 +26,7 @@ const Recommendation = () => {
         <main>
             <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray sm:mx-auto sm:h-[1100px]">
                 <div className="flex flex-col items-start">
-                    <p className="font-spoqaBold text-[40px] font-bold mb-14 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
+                    <p className="font-spoqaBold text-[40px] font-bold mb-10 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
                         포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
@@ -59,14 +59,6 @@ const Recommendation = () => {
 
                                                     <div className="flex justify-between w-full">
                                                         <div className="flex items-center gap-2">
-                                                            <Image
-                                                                className="rounded-full w-5 h-5"
-                                                                src={developer.profileImage || ""}
-                                                                alt="프로필 이미지"
-                                                                width={20}
-                                                                height={20}
-                                                                style={{ objectFit: "cover" }}
-                                                            />
                                                             <div className="text-white text-[10px] flex items-center font-medium">
                                                                 {developer.name}
                                                             </div>
