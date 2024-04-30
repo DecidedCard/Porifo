@@ -14,7 +14,7 @@ import { QUERY_KEY } from "@/util/query_key";
 import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 import NotFoundCatchAll from "@/app/[...404]/page";
 
-const PortfolioPage = ({ params }: { params: { id: string } }) => {
+const PortfolioPage = ({ params }: { params: { id: number } }) => {
     const { id } = params;
 
     const { data, isLoading, isError }: any = useQuery({

@@ -23,7 +23,7 @@ export const getDetailData = async (col: { id: string; value: number }) => {
 };
 
 //likes
-export const getLikes = async (col: { id: string; value: string }) => {
+export const getLikes = async (col: { id: string; value: number }) => {
     try {
         const { data: likesInfo } = await supabase.from("portfolioInfo").select("*").eq(col.id, col.value);
 
