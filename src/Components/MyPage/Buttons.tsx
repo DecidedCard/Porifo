@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
+
+import { usePDF } from "react-to-pdf";
+import { Flip, ToastContainer } from "react-toastify";
 
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
@@ -17,9 +20,8 @@ import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
-
-import { usePDF } from "react-to-pdf";
 import { share } from "@/util/share";
+import { errorNotify } from "@/util/toast";
 
 const Buttons = () => {
     const { user, portfolio, basicInfo, portfolioPreview, disabled, upload, onClickInsertHandler, onClickShareToggle } =
@@ -35,11 +37,19 @@ const Buttons = () => {
     const [previewModal, setPreviewModal] = useState(false);
 
     const onClickUrlCopyHandler = () => {
-        if (!portfolio?.id) {
-            alert("저장을 해야 url을 제공해드릴 수 있습니다.");
+        if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
+            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 URL을 복사할 수 있습니다." });
             return;
         }
         onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/create/${user?.id}`);
+    };
+
+    const onClickPdfDownloadHandler = () => {
+        if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
+            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 다운로드할 수 있습니다." });
+            return;
+        }
+        toPDF();
     };
 
     const onClickPreviewModal = () => {
@@ -91,7 +101,7 @@ const Buttons = () => {
                         </button>
                         <button
                             className="flex items-center pl-7 pr-5 rounded-xl tracking-tighter sm:pl-0"
-                            onClick={() => toPDF()}
+                            onClick={onClickPdfDownloadHandler}
                         >
                             <Image
                                 src="assets/image/download.svg"
@@ -183,6 +193,18 @@ const Buttons = () => {
                     portfolio={portfolioPreview}
                 />
             )}
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                theme="light"
+                transition={Flip}
+                style={{ width: "fit-content" }}
+            />
         </div>
     );
 };

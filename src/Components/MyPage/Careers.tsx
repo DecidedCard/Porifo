@@ -1,9 +1,12 @@
 "use client";
 
 import React, { ChangeEvent } from "react";
-import Input from "../Commen/Input";
-import useCareer from "@/hooks/mypage/useCareer";
+
 import { MdClose } from "react-icons/md";
+
+import Input from "../Commen/Input";
+
+import useCareer from "@/hooks/mypage/useCareer";
 
 const Careers = () => {
     const {

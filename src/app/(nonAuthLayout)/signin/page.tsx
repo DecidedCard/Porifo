@@ -1,23 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Image from "next/image";
+import { Flip, ToastContainer } from "react-toastify";
 
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-
 import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
 
-import { supabase } from "@/util/supabase/clientSupabase";
+import serverClient from "@/util/supabase/serverClient";
+import { successNotify, errorNotify } from "@/util/toast";
 import { emailValidate } from "@/util/sign/sign_validate";
 import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
 
 import useInput from "@/hooks/useInput";
 
 import useUserStore from "@/store/userStore";
-import serverClient from "@/util/supabase/serverClient";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -29,7 +30,6 @@ const SignIn = () => {
     const [passwordError, setPasswordError] = useState(true);
 
     const [inputDisabled, setInputDisabled] = useState(false);
-    const [emailRegValid, setEmailRegValid] = useState(false);
 
     const { user, setUser } = useUserStore();
 
@@ -37,13 +37,13 @@ const SignIn = () => {
     const findPassword = () => router.replace("/findEmail");
 
     useEffect(() => {
-        emailValidate({ email, setEmailRegValid });
+        const emailRegValid = emailValidate({ email });
 
         email.length >= 1 ? setEmailError(false) : setEmailError(true);
         password.length >= 1 ? setPasswordError(false) : setPasswordError(true);
         if (emailRegValid === true) setEmailError(true);
         if (password.length >= 8) setPasswordError(true);
-    }, [email, password, emailRegValid]);
+    }, [email, password]);
 
     useEffect(() => {
         signCheckUserPortfolio({ setRedirecTo });
@@ -67,10 +67,12 @@ const SignIn = () => {
             }
 
             if (error) {
-                alert("로그인에 실패했습니다.");
+                errorNotify({ title: "비밀번호를 확인해 주세요.😅" });
                 throw new Error("로그인에 실패했습니다.");
             }
             setUser(data.user);
+
+            successNotify({ title: "로그인에 성공하였습니다.😎" });
 
             confirmPortfolio !== undefined ? router.replace("/community") : router.replace("/mypage");
             router.refresh();
@@ -96,7 +98,19 @@ const SignIn = () => {
                                 priority
                             />
                         </div>
-
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition={Flip}
+                        />
                         <SignInputNonStarItem
                             setLabel="이메일"
                             type="email"
@@ -152,12 +166,12 @@ const SignIn = () => {
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요?</p>
-                        <a
-                            href="/signupMethod"
+                        <Link
+                            href="/signup"
                             className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
                         >
-                            이메일로 회원가입
-                        </a>
+                            <p>이메일로 회원가입</p>
+                        </Link>
                     </div>
                 </div>
             </div>

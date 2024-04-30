@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
+
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
 import Modern from "../Template Modern/Modern";
 import Box from "../Template Box/Box";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+
 import useMouseClickClose from "@/hooks/useMouseClickClose";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Preview = ({
     template,

@@ -1,6 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import Button from "../Commen/Button";
+import React, { useEffect } from "react";
+
 import Image from "next/image";
+
+import Button from "../Commen/Button";
+
 import useMouseClickClose from "@/hooks/useMouseClickClose";
 
 const TemplateSelect = ({
