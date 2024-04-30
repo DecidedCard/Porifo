@@ -13,6 +13,8 @@ const useUserCheck = () => {
         queryKey: [QUERY_KEY.myPageUser],
         queryFn: () => serverUserCheck(supabase),
         initialData: queryClient.getQueryData([QUERY_KEY.myPageUser]) as User,
+        retry: 0,
+        refetchOnWindowFocus: false,
     });
     return user;
 };

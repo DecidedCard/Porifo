@@ -46,8 +46,6 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
         return setComment("");
     };
 
-    console.log(user!);
-
     return (
         <div className="w-full pt-10 ">
             <div className="flex flex-col flex-1 text-[14px]">
