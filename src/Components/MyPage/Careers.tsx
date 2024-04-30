@@ -21,7 +21,7 @@ const Careers = () => {
     } = useCareer();
     return (
         <div className="flex flex-col gap-5 sm:w-full">
-            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-full sm:ml-32">업무 경력</p>
+            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[45%] ">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return (
                     <div key={careerIndex} className="flex flex-col gap-4">
@@ -31,9 +31,9 @@ const Careers = () => {
                         >
                             <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                         </div>
-                        <div className="flex mt-1 sm:w-[60%] ">
+                        <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
-                            <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-[275px]">
+                            <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-full">
                                 <Input
                                     type="text"
                                     placeholder="회사이름을 입력해주세요."
@@ -73,7 +73,7 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                        <div className="flex mt-1 sm:w-full">
                             <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기간</label>
                             <div className="w-[460px] ml-3">
                                 <div className="flex justify-between sm:gap-2 sm:w-[275px]">
@@ -106,11 +106,11 @@ const Careers = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-start mt-1 sm:w-[60%] sm:mx-auto">
+                        <div className="flex items-start mt-1 sm:w-[60%]">
                             <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
                                 내용
                             </label>
-                            <div className="flex flex-col gap-1 w-[460px] sm:mr-3">
+                            <div className="flex flex-col gap-1 w-[460px]">
                                 <textarea
                                     placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
                                     maxLength={300}
