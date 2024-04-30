@@ -23,7 +23,7 @@ const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
-        queryFn: () => getDetailData({ id: "id", value: id }),
+        queryFn: () => getDetailData({ id: "id", value: id! }),
     });
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import { supabase } from "./clientSupabase";
 
-export const getDetailData = async (col: { id: string; value: string }) => {
+export const getDetailData = async (col: { id: string; value: number }) => {
     try {
         const { data: portfolioInfo } = await supabase.from("portfolioInfo").select("*").eq(col.id, col.value);
 
