@@ -10,10 +10,10 @@ import { Flip, ToastContainer } from "react-toastify";
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
 import Preview from "./Preview";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";

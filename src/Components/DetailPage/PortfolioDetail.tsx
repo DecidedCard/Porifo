@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Comments from "./Comments";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 

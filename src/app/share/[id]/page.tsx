@@ -5,10 +5,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Loading from "@/Components/Loading";
-import Standard from "@/Components/Template Standard/Standard";
-import Grid from "@/Components/Template Grid/Grid";
-import Modern from "@/Components/Template Modern/Modern";
-import Box from "@/Components/Template Box/Box";
+import Standard from "@/Components/Template/Standard/Standard";
+import Grid from "@/Components/Template/Grid/Grid";
+import Modern from "@/Components/Template/Modern/Modern";
+import Box from "@/Components/Template/Box/Box";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { getDetailData } from "@/util/supabase/detail_supabase_DB";

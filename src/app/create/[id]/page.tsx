@@ -4,10 +4,10 @@ import React from "react";
 
 import NotFoundCatchAll from "@/app/[...404]/page";
 import Loading from "@/Components/Loading";
-import Standard from "@/Components/Template Standard/Standard";
-import Grid from "@/Components/Template Grid/Grid";
-import Modern from "@/Components/Template Modern/Modern";
-import Box from "@/Components/Template Box/Box";
+import Standard from "@/Components/Template/Standard/Standard";
+import Grid from "@/Components/Template/Grid/Grid";
+import Modern from "@/Components/Template/Modern/Modern";
+import Box from "@/Components/Template/Box/Box";
 
 import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
