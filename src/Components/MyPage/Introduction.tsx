@@ -94,7 +94,7 @@ const Introduction = () => {
                                 </form>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 w-[460px] h-11 overflow-hidden bg-white sm:content-center sm:justify-start sm:w-full">
+                            <div className="flex flex-wrap gap-2 w-[460px] h-11 overflow-hidden bg-white sm:justify-start sm:w-full">
                                 {skill_tag.map((item, idx) => {
                                     return (
                                         <div key={idx}>
