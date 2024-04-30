@@ -154,14 +154,14 @@ const ConfirmEmailpage = () => {
                     />
 
                     <SignPasswordValidate
-                        lengthRegValid={passwordRegValid.wordRegBoolean}
+                        lengthRegValid={passwordRegValid.lengthRegBoolean}
                         numberRegValid={passwordRegValid.numberRegBoolean}
-                        wordRegValid={passwordRegValid.specialRegBoolean}
-                        specialRegValid={passwordRegValid.lengthRegBoolean}
+                        wordRegValid={passwordRegValid.wordRegBoolean}
+                        specialRegValid={passwordRegValid.specialRegBoolean}
                     />
 
                     <SignInputItem
-                        setLabel="비밀번호"
+                        setLabel="비밀번호 확인"
                         placeholder="비밀번호를 작성해주세요"
                         color={confirmPassword.length === 0 ? "gray2" : confirmPasswordError ? "gray2" : "error"}
                         pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/
