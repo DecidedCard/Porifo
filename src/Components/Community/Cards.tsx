@@ -119,7 +119,7 @@ const Cards = () => {
                                                         width={24}
                                                         height={24}
                                                         alt="좋아요 아이콘"
-                                                        src="grayHeart.svg"
+                                                        src="/assets/image/communityImage/grayHeart.svg"
                                                     />
                                                 </div>
                                                 <span className="text-gray3 text-sm">{item.likes.length}</span>
@@ -127,7 +127,12 @@ const Cards = () => {
                                             <div className="flex gap-1 items-center">
                                                 {/* 조회수 눈 */}
                                                 <div className="w-6 h-6 ">
-                                                    <Image width={24} height={24} alt="조회수" src="grayEye.svg" />
+                                                    <Image
+                                                        width={24}
+                                                        height={24}
+                                                        alt="조회수"
+                                                        src="/assets/image/communityImage/grayEye.svg"
+                                                    />
                                                 </div>
                                                 <span className="text-gray3 text-sm">{item.viewCnt}</span>
                                             </div>
