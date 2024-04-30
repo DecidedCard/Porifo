@@ -65,7 +65,7 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        if (localStorageItemRef.current && !portfolio) {
+        if (localStorageItemRef.current && !basicInfo.id) {
             const project = localStorageItemRef.current.project as unknown as Project[];
             const career = localStorageItemRef.current.career as Career[];
 
