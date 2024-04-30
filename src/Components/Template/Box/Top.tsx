@@ -15,7 +15,7 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
         <div className="sm:w-full sm:p-4">
             <div className="flex flex-col items-center justify-center w-[932px] h-[454px] bg-blue sm:w-full sm:min-h-[511px] ">
                 <div className="flex flex-col items-center justify-center py-[50px]">
-                    <div className="rounded-2xl w-[170px] h-[170px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:mb-2">
+                    <div className="flex justify-center items-center rounded-2xl w-[170px] h-[170px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:mb-2">
                         <Image src={userInfo.profileImage!} alt="프로필 사진" width={170} height={170} />
                     </div>
 
