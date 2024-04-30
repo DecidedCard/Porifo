@@ -15,9 +15,9 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 {project.map((project, index) => (
                     <li
                         key={index}
-                        className="flex flex-col items-start justify-start w-[800px] rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
+                        className="flex flex-col items-start justify-start w-[800px] mb-3 rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
                     >
-                        <div className="flex flex-col w-[804px] sm:items-center sm:w-full sm:justify-center">
+                        <div className="flex flex-col w-[730px] gap-3 sm:items-center sm:w-full sm:justify-center">
                             {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                             <div className="flex flex-row sm:flex-col sm:w-full sm:items-center sm:justify-center">
                                 {project.images &&
@@ -33,7 +33,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     ))}
                             </div>
 
-                            <div className="flex w-full flex-col sm:items-center sm:justify-center sm:w-[370px] sm:ml-3">
+                            <div className="flex w-[750px] flex-col leading-snug sm:items-center sm:justify-center sm:w-[370px] sm:ml-3">
                                 <div className="flex justify-between w-[804px] mt-2 sm:w-[350px]">
                                     <h3 className="text-[20px] font-medium mb-3 sm:text-[16px] sm:mt-3 sm:mb-0">
                                         {project.name}
@@ -81,7 +81,6 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         </div>
                     </li>
                 ))}
-                <div className="bg-deepgray w-[804px] h-[1px] my-10 sm:w-[370px]"></div>
             </ol>
 
             {career.length > 0 && (
@@ -122,7 +121,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 </div>
             )}
             <div className="sm:flex sm:justify-center sm:items-center">
-                <div className="bg-deepgray w-[804px] h-[1px] mb-10 mt-6 sm:w-[370px]"></div>
+                <div className="bg-deepgray w-[804px] h-[1px] mb-10 mt-10 sm:w-[370px]"></div>
             </div>
         </div>
     );
