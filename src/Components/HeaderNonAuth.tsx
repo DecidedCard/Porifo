@@ -4,11 +4,20 @@ import Link from "next/link";
 import { useState } from "react";
 import Button from "./Commen/Button";
 import Image from "next/image";
+import useMouseClickClose from "@/hooks/useMouseClickClose";
 
 const HeaderNonAuth = () => {
     const [activeMenu, setActiveMenu] = useState<string>("about");
 
+    const [showMenu, setShowMenu] = useState(false);
+
+    const { modalRef } = useMouseClickClose(showMenu, setShowMenu);
+
     const handleMenuBtn = (value: string) => setActiveMenu(value);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
 
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
@@ -47,17 +56,51 @@ const HeaderNonAuth = () => {
                 {/* Right Section: Authentication Buttons */}
 
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
-                    <div>
-                        <Link href="/signin">
-                            <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
-                        </Link>
+                    <div className="sm:hidden flex flex-row">
+                        <div>
+                            <Link href="/signin">
+                                <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
+                            </Link>
+                        </div>
+
+                        <div>
+                            <Link href="/signupMethod">
+                                <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
+                            </Link>
+                        </div>
                     </div>
 
-                    <div>
-                        <Link href="/signupMethod">
-                            <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
-                        </Link>
+                    <div className="hidden sm:flex" ref={modalRef}>
+                        <button>
+                            <Image
+                                src="assets/image/menu.svg"
+                                alt="menu"
+                                width={24}
+                                height={24}
+                                onClick={toggleMenu}
+                            />
+                        </button>
+                        {showMenu && (
+                            <div>
+                                <div
+                                    className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[100px] h-fit bg-white rounded-[16px] p-2 transform -translate-x-16 ${bubbleSm}`}
+                                >
+                                    <div>
+                                        <Link href="/signin">
+                                            <Button text="로그인" size="s" color="primarynone" fontSize="m" />
+                                        </Link>
+                                    </div>
+
+                                    <div>
+                                        <Link href="/signupMethod">
+                                            <Button text="회원가입" size="s" color="primary" border="none" fontSize="m" />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
+
                 </div>
             </div>
         </main>
@@ -65,3 +108,6 @@ const HeaderNonAuth = () => {
 };
 
 export default HeaderNonAuth;
+
+const bubbleSm =
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[12px] after:mt-[-8px]";

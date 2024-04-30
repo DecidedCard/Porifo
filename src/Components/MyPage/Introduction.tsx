@@ -4,11 +4,11 @@ import React from "react";
 
 import Image from "next/image";
 
+import { Flip, ToastContainer } from "react-toastify";
+
 import Input from "../Commen/Input";
 
 import useInfo from "@/hooks/mypage/useInfo";
-
-import { Flip, ToastContainer } from "react-toastify";
 
 const Introduction = () => {
     const {

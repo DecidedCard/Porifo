@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { supabase } from "@/util/supabase/clientSupabase";
-import SignInputItem from "@/Components/Sign/SignInputItem";
+import { useRouter } from "next/navigation";
+
 import SignButton from "@/Components/Sign/SignButton";
+import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignPasswordValidate from "@/Components/Sign/SignPasswordValidate";
 
+import { supabase } from "@/util/supabase/clientSupabase";
 import { passwordValidate } from "@/util/sign/sign_validate";
 
 const Password_Change = () => {
@@ -71,7 +72,7 @@ const Password_Change = () => {
                                     width={0}
                                     height={0}
                                     className="w-[160px] h-[140px]"
-                                    src="formLogo.svg"
+                                    src="/assets/image/signImage/formLogo.svg"
                                     alt="로그인의 form 로고"
                                     priority
                                 />

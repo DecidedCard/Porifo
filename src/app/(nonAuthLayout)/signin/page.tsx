@@ -1,23 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Image from "next/image";
 import { Flip, ToastContainer } from "react-toastify";
-import { successNotify, errorNotify } from "@/util/toast";
+
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-
 import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
 
+import serverClient from "@/util/supabase/serverClient";
+import { successNotify, errorNotify } from "@/util/toast";
 import { emailValidate } from "@/util/sign/sign_validate";
 import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
 
 import useInput from "@/hooks/useInput";
 
 import useUserStore from "@/store/userStore";
-import serverClient from "@/util/supabase/serverClient";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -92,7 +93,7 @@ const SignIn = () => {
                                 width={0}
                                 height={0}
                                 className="w-[160px] h-[54px]"
-                                src="formLogo.svg"
+                                src="/assets/image/signImage/formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
                             />
@@ -129,8 +130,8 @@ const SignIn = () => {
                             value={password}
                             onChangeHandler={onChangePassword}
                             relative="relative"
-                            eye="eye.svg"
-                            eyeClose="eye_close.svg"
+                            eye="/assets/image/signImage/eye.svg"
+                            eyeClose="/assets/image/signImage/eye_close.svg"
                         />
 
                         <SignButton
@@ -149,7 +150,7 @@ const SignIn = () => {
                                 width={0}
                                 height={0}
                                 className="w-[20px] h-[20px]"
-                                src="find_password_arrow.svg"
+                                src="/assets/image/signImage/find_password_arrow.svg"
                                 alt="페이지 이동 화살표"
                             />
                         </div>
@@ -165,12 +166,12 @@ const SignIn = () => {
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요?</p>
-                        <a
-                            href="/signupMethod"
+                        <Link
+                            href="/signup"
                             className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
                         >
-                            이메일로 회원가입
-                        </a>
+                            <p>이메일로 회원가입</p>
+                        </Link>
                     </div>
                 </div>
             </div>

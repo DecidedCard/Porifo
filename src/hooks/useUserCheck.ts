@@ -1,9 +1,10 @@
-import { User } from "@supabase/supabase-js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEY } from "@/util/query_key";
 import serverUserCheck from "@/util/serverUserCheck";
 import serverClient from "@/util/supabase/serverClient";
+
+import type { User } from "@supabase/supabase-js";
 
 const useUserCheck = () => {
     const queryClient = useQueryClient();

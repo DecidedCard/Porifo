@@ -1,5 +1,6 @@
-import { Provider } from "@supabase/supabase-js";
 import serverClient from "../supabase/serverClient";
+
+import type { Provider } from "@supabase/supabase-js";
 
 type QueryParams = {
     access_type: string;

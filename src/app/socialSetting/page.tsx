@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
@@ -10,9 +10,9 @@ import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 import SignButton from "@/Components/Sign/SignButton";
 
+import serverClient from "@/util/supabase/serverClient";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
-import serverClient from "@/util/supabase/serverClient";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");
@@ -81,7 +81,7 @@ const SocialSeting = () => {
                             width={0}
                             height={0}
                             className="w-[160px] h-[140px]"
-                            src="formLogo.svg"
+                            src="/assets/image/signImage/formLogo.svg"
                             alt="로그인의 form 로고"
                             priority
                         />

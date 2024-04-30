@@ -1,6 +1,6 @@
 import type { Career } from "./Career";
 import type { Project } from "./Project";
-import { Json } from "./Supabase";
+import type { Json } from "./Supabase";
 
 export interface PortfolioInfo {
     id?: number;

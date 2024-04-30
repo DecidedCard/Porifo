@@ -1,6 +1,7 @@
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+
     const userSkillTag = portfolio.skillTag as string[];
 
     return (

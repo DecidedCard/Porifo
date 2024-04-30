@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "@/Components/Commen/Button";
+import { Flip, ToastContainer } from "react-toastify";
+
 import SignInputItem from "@/Components/Sign/SignInputItem";
 import SignButton from "@/Components/Sign/SignButton";
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
@@ -13,7 +15,6 @@ import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
 import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 
 import useInput from "@/hooks/useInput";
-import { Flip, ToastContainer } from "react-toastify";
 
 import { successNotify } from "@/util/toast";
 import { nameValidate } from "@/util/sign/sign_validate";
@@ -97,7 +98,7 @@ const ConfirmEmail = () => {
                         className="w-[160px] h-auto"
                         width={0}
                         height={0}
-                        src="formLogo.svg"
+                        src="/assets/image/signImage/formLogo.svg"
                         priority
                         alt="회원가입의 form 로고"
                     />
@@ -141,8 +142,11 @@ const ConfirmEmail = () => {
                     middlePhoneNumber={middlePhoneNumber}
                     lastPhoneNumber={lastPhoneNumber}
                 />
-                <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-5 flex gap-x-[50px]">
-                    <span className="flex">
+                <div
+                    onClick={checkRequiredPersonalInfoModal}
+                    className="mt-6 mx-5 justify-between pr-7 flex gap-x-[50px]"
+                >
+                    <span className="flex pl-7">
                         <Image
                             className="w-6 h-6 mr-1"
                             src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}

@@ -2,10 +2,14 @@
 
 import React from "react";
 
+import { useQuery } from "@tanstack/react-query";
+
 import Loading from "@/Components/Loading";
 import Standard from "@/Components/Template Standard/Standard";
 import Grid from "@/Components/Template Grid/Grid";
-import { useQuery } from "@tanstack/react-query";
+import Modern from "@/Components/Template Modern/Modern";
+import Box from "@/Components/Template Box/Box";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { getDetailData } from "@/util/supabase/detail_supabase_DB";
 
@@ -35,6 +39,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         <div className="w-fit mx-auto">
             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+            {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
+            {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
         </div>
     );
 };

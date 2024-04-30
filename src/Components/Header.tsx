@@ -138,19 +138,53 @@ const Header = () => {
                             </div>
                         </div>
                     ) : (
-                        <>
-                            <div>
-                                <Link href="/signin">
-                                    <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
-                                </Link>
+                        <div>
+                            <div className="sm:hidden flex flex-row">
+                                <div>
+                                    <Link href="/signin">
+                                        <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
+                                    </Link>
+                                </div>
+
+                                <div>
+                                    <Link href="/signupMethod">
+                                        <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
+                                    </Link>
+                                </div>
                             </div>
 
-                            <div>
-                                <Link href="/signupMethod">
-                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
-                                </Link>
+                            <div className="sm:flex hidden" ref={modalRef}>
+                                <button>
+                                    <Image
+                                        src="assets/image/menu.svg"
+                                        alt="menu"
+                                        width={24}
+                                        height={24}
+                                        onClick={toggleMenu}
+                                    />
+                                </button>
+                                {showMenu && (
+                                    <div>
+                                        <div
+                                            className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[100px] h-fit bg-white rounded-[16px] p-2 transform -translate-x-16 ${bubbleSm}`}
+                                        >
+                                            <div>
+                                                <Link href="/signin">
+                                                    <Button text="로그인" size="s" color="primarynone" fontSize="m" />
+                                                </Link>
+                                            </div>
+
+                                            <div>
+                                                <Link href="/signupMethod">
+                                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="m" />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                        </>
+
+                        </div>
                     )}
                 </div>
             </div>
@@ -162,3 +196,5 @@ export default Header;
 
 const bubbleAfter =
     "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
+const bubbleSm =
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[12px] after:mt-[-8px]";

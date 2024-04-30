@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Flip, ToastContainer } from "react-toastify";
 
 import SignButton from "@/Components/Sign/SignButton";
 import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
@@ -40,7 +40,7 @@ const Find_Email = () => {
                                 width={160}
                                 height={54}
                                 className="w-[160px] h-[54px]"
-                                src="formLogo.svg"
+                                src="/assets/image/signImage/formLogo.svg"
                                 alt="로그인의 form 로고"
                                 priority
                             />
