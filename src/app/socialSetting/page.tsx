@@ -74,7 +74,7 @@ const SocialSeting = () => {
 
     return (
         <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
-            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
+            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col sm:p-0 sm:w-full sm:h-screen">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
@@ -99,9 +99,11 @@ const SocialSeting = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                     />
+                    <div className="sm:mt-10">
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
+                    </div>
 
-                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px]">
+                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px] sm:mx-5">
                         <span className="flex">
                             <Image
                                 className="w-6 h-6 mr-1"
