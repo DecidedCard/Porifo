@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Flip, ToastContainer } from "react-toastify";
 
 import SignButton from "@/Components/Sign/SignButton";
 import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
