@@ -1,23 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Image from "next/image";
 import { Flip, ToastContainer } from "react-toastify";
-import { successNotify, errorNotify } from "@/util/toast";
+
 import SocialSign from "@/Components/Sign/SocialSign";
 import SignButton from "@/Components/Sign/SignButton";
-
 import SignInputNonStarItem from "@/Components/Sign/SignInputNonStar";
 
+import serverClient from "@/util/supabase/serverClient";
+import { successNotify, errorNotify } from "@/util/toast";
 import { emailValidate } from "@/util/sign/sign_validate";
 import signCheckUserPortfolio from "@/util/sign/signCheckUserPortfolio";
 
 import useInput from "@/hooks/useInput";
 
 import useUserStore from "@/store/userStore";
-import serverClient from "@/util/supabase/serverClient";
 
 const SignIn = () => {
     const [email, onChangeEmailHandler] = useInput();
@@ -165,12 +166,12 @@ const SignIn = () => {
 
                     <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
                         <p className="text-gray4">아직 포리포의 회원이 아니신가요?</p>
-                        <a
-                            href="/signupMethod"
+                        <Link
+                            href="/signup"
                             className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"
                         >
-                            이메일로 회원가입
-                        </a>
+                            <p>이메일로 회원가입</p>
+                        </Link>
                     </div>
                 </div>
             </div>
