@@ -45,7 +45,7 @@ const Buttons = () => {
     };
 
     const onClickPdfDownloadHandler = () => {
-        if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
+        if (!portfolio?.id || portfolioInputFormValidation(portfolioPreview)) {
             errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 다운로드할 수 있습니다." });
             return;
         }
@@ -186,10 +186,10 @@ const Buttons = () => {
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
                     <div ref={targetRef} className="w-full">
-                        {portfolio?.template === "Standard" && <Standard portfolio={portfolio} pdf />}
-                        {portfolio?.template === "Grid" && <Grid portfolio={portfolio} pdf />}
-                        {portfolio?.template === "Modern" && <Modern portfolio={portfolio} pdf />}
-                        {portfolio?.template === "Box" && <Box portfolio={portfolio} pdf />}
+                        {portfolioPreview.template === "Standard" && <Standard portfolio={portfolioPreview} pdf />}
+                        {portfolioPreview.template === "Grid" && <Grid portfolio={portfolioPreview} pdf />}
+                        {portfolioPreview.template === "Modern" && <Modern portfolio={portfolioPreview} pdf />}
+                        {portfolioPreview.template === "Box" && <Box portfolio={portfolioPreview} pdf />}
                     </div>
                 )}
             </div>
