@@ -30,7 +30,13 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
     };
 
     if (pending) {
-        return <Loading />;
+        return (
+            <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[900px] h-[900px] bg-hihigray rounded-2xl">
+                    <Loading />
+                </div>
+            </div>
+        );
     }
 
     //댓글 버튼

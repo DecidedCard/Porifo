@@ -5,7 +5,7 @@ import Filter from "@/Components/Community/Filter";
 
 const CommunityPage = () => {
     return (
-        <div className="flex flex-col items-center sm:w-full overflow-hidden">
+        <div className="flex flex-col items-center sm:w-full sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4 overflow-hidden">
             <div className="flex w-full">
                 <div className="font-spoqaMedium text-black font-bold text-2xl relative mt-20 mb-3 ml-[15%] sm:hidden">
                     포리포 추천, HOT🔥 개발자
