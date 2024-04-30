@@ -177,7 +177,7 @@ const Carousel = () => {
                                                             width={24}
                                                             height={24}
                                                             alt="좋아요 아이콘"
-                                                            src="grayHeart.svg"
+                                                            src="/assets/image/communityImage/grayHeart.svg"
                                                         />
                                                     </div>
                                                     <div className="text-gray sm:text-[10px]">{item.likes.length}</div>
@@ -189,7 +189,7 @@ const Carousel = () => {
                                                             width={24}
                                                             height={24}
                                                             alt="조회수 아이콘"
-                                                            src="grayEye.svg"
+                                                            src="/assets/image/communityImage/grayEye.svg"
                                                         />
                                                     </div>
                                                     <div className="text-gray ">{item.viewCnt}</div>
@@ -255,7 +255,7 @@ const Carousel = () => {
                                                                 width={24}
                                                                 height={24}
                                                                 alt="좋아요 아이콘"
-                                                                src="grayHeart.svg"
+                                                                src="/assets/image/communityImage/grayHeart.svg"
                                                             />
                                                         </div>
                                                         <div className="text-gray text-[10px]">{item.likes.length}</div>
@@ -267,7 +267,7 @@ const Carousel = () => {
                                                                 width={24}
                                                                 height={24}
                                                                 alt="조회수 아이콘"
-                                                                src="grayEye.svg"
+                                                                src="/assets/image/communityImage/grayEye.svg"
                                                             />
                                                         </div>
                                                         <div className="text-gray text-[10px]">{item.viewCnt}</div>
@@ -291,7 +291,7 @@ const Carousel = () => {
                     >
                         <Image
                             className="w-6 h-6 relative overflow-visible"
-                            src="icon-set8.svg"
+                            src="/assets/image/communityImage/carouselNextArrow.svg"
                             alt="아이콘"
                             width={24}
                             height={24}
@@ -304,7 +304,7 @@ const Carousel = () => {
                     >
                         <Image
                             className="w-6 h-6 relative overflow-visible"
-                            src="icon-set9.svg"
+                            src="/assets/image/communityImage/carouselPrevArrow.svg"
                             alt="아이콘"
                             width={30}
                             height={30}
@@ -320,7 +320,7 @@ const Carousel = () => {
                     >
                         <Image
                             className="w-6 h-6 relative overflow-visible"
-                            src="icon-set8.svg"
+                            src="/assets/image/communityImage/carouselNextArrow.svg"
                             alt="아이콘"
                             width={24}
                             height={24}
@@ -333,7 +333,7 @@ const Carousel = () => {
                     >
                         <Image
                             className="w-6 h-6 relative overflow-visible"
-                            src="icon-set9.svg"
+                            src="/assets/image/communityImage/carouselPrevArrow.svg"
                             alt="아이콘"
                             width={30}
                             height={30}

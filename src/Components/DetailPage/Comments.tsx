@@ -89,7 +89,7 @@ const Comments = () => {
                                     <Image
                                         onClick={() => handleDeleteBtn(item.id)}
                                         className="cursor-pointer"
-                                        src="grayClose.svg"
+                                        src="/assets/image/communityImage/grayClose.svg"
                                         alt="삭제 아이콘"
                                         width={24}
                                         height={24}

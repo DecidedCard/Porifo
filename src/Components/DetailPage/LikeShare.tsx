@@ -40,7 +40,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                         <div className="flex items-center justify-center w-10 h-10">
                             {checkLike ? (
                                 <Image
-                                    src="redHeart.svg"
+                                    src="/assets/image/communityImage/redHeart.svg"
                                     alt="좋아요 버튼"
                                     width={32}
                                     height={32}
@@ -48,7 +48,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                                 />
                             ) : (
                                 <Image
-                                    src="assets/image/gray2Heart.svg"
+                                    src="/assets/image/communityImage/lightGrayHeart.svg"
                                     alt="좋아요 버튼"
                                     width={32}
                                     height={32}
@@ -65,7 +65,12 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                         className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
                     >
                         <div className="flex items-center justify-center w-20 h-10">
-                            <Image src="share.svg" alt="공유하기 버튼" width={28} height={28} />
+                            <Image
+                                src="/assets/image/communityImage/share.svg"
+                                alt="공유하기 버튼"
+                                width={28}
+                                height={28}
+                            />
                         </div>
                         <span className="text-xs text-gray4">공유하기</span>
                     </button>
@@ -73,15 +78,20 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                 {/* 좋아요, 조회수, 댓글 개수 영역 */}
                 <div className="flex gap-8 text-[14px] text-gray3">
                     <div className="flex gap-1">
-                        <Image src="grayHeart.svg" alt="좋아요 개수" width={24} height={24} />
+                        <Image
+                            src="/assets/image/communityImage/grayHeart.svg"
+                            alt="좋아요 개수"
+                            width={24}
+                            height={24}
+                        />
                         <span className="flex items-center justify-center">{likes!.length}</span>
                     </div>
                     <div className="flex gap-1">
-                        <Image src="grayEye.svg" alt="조회수" width={30} height={30} />
+                        <Image src="/assets/image/communityImage/grayEye.svg" alt="조회수" width={30} height={30} />
                         <span className="flex items-center justify-center"> {portfolioInfo.viewCnt}</span>
                     </div>
                     <div className="flex gap-1">
-                        <Image src="grayComment.svg" alt="댓글수" width={24} height={24} />
+                        <Image src="/assets/image/communityImage/grayComment.svg" alt="댓글수" width={24} height={24} />
                         <span className="flex items-center justify-center"> {data!.length}</span>
                     </div>
                 </div>
