@@ -30,7 +30,7 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
         },
     });
 
-    const handleComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setComment(e.target.value);
     };
 
@@ -59,19 +59,18 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                             width={40}
                             height={40}
                         />
-                        <input
+                        <textarea
                             value={comment || ""}
                             onChange={handleComment}
-                            type="text"
                             placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] text-[12px] "
+                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] text-[12px] p-3 sm:text-[8px]"
                         />
                     </div>
                 ) : (
-                    <input
-                        type="text"
+                    <textarea
                         placeholder="로그인을 해주세요"
-                        className="border-[2px] border-solid border-gray2 rounded-lg self-stretch h-[78px] pl-3"
+                        className="border-[2px] border-solid border-gray2 rounded-lg self-stretch h-[78px] p-3 sm:text-[8px]"
+                        disabled
                     />
                 )}
                 {/* 댓글등록 버튼 */}

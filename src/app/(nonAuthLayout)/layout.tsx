@@ -11,7 +11,7 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
     const router = useRouter();
 
     if (user) {
-        if (!user.user_metadata.user_name || !user.user_metadata.name) {
+        if (!user.user_metadata.name && !user.user_metadata.user_name) {
             router.replace("/confirmEmail");
             return;
         }
