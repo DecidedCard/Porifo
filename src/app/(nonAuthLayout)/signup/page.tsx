@@ -154,10 +154,10 @@ const ConfirmEmailpage = () => {
                     />
 
                     <SignPasswordValidate
-                        lengthRegValid={passwordRegValid.wordRegBoolean}
+                        lengthRegValid={passwordRegValid.lengthRegBoolean}
                         numberRegValid={passwordRegValid.numberRegBoolean}
-                        wordRegValid={passwordRegValid.specialRegBoolean}
-                        specialRegValid={passwordRegValid.lengthRegBoolean}
+                        wordRegValid={passwordRegValid.wordRegBoolean}
+                        specialRegValid={passwordRegValid.specialRegBoolean}
                     />
 
                     <SignInputItem
