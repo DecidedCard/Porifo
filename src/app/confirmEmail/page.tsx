@@ -162,7 +162,7 @@ const ConfirmEmail = () => {
                         width={0}
                         height={0}
                         className="w-[20px] h-[20px]"
-                        src="find_password_arrow.svg"
+                        src="/assets/image/signImage/find_password_arrow.svg"
                         alt="페이지 이동 화살표"
                     />
                 </div>
