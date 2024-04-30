@@ -42,7 +42,7 @@ const PortfolioDetail = () => {
 
     if (isPending) {
         return (
-            <div className="z-50 flex justify-center items-center h-[900px] w-[932px] bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
                 <Loading />
             </div>
         );
@@ -64,7 +64,7 @@ const PortfolioDetail = () => {
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
                 <div
-                    className="w-[80%] sm:w-[95%] sm:mb-[180px] sm:px-4 mb-10 flex justify-center rounded-2xl bg-hihigray"
+                    className="w-[80%] sm:w-[95%] sm:mb-[120px] sm:px-4 mb-10 flex justify-center rounded-2xl bg-hihigray"
                     id="comment"
                 >
                     <Comments />
