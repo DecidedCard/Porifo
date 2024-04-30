@@ -43,13 +43,13 @@ const Introduction = () => {
                                     placeholder="본인만의 소개글을 작성해 보세요"
                                     size="big"
                                     type="text"
-                                    maxLength={100}
+                                    maxLength={30}
                                     value={basicInfo.oneLineIntroduce}
                                     onChange={onChangeOneLineIntroduce}
                                 />
                             </div>
                             <div className="ml-auto text-sm text-nonegray">
-                                {basicInfo.oneLineIntroduce?.length || "0"}/100
+                                {basicInfo.oneLineIntroduce?.length || "0"}/30
                             </div>
                         </div>
                     </div>
