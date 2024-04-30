@@ -116,8 +116,9 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
             <button
                 onClick={() => handleClick("url")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-[49%] sm:h-10 sm:justify-center sm:rounded-lg sm:px-0 sm:py-0 sm:pr-3
-                selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
-            } hover:bg-white hover:text-black sm:hover:bg-gray`}
+                ${
+                    selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
+                } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
                 <div className="flex sm:flex sm:items-center sm:justify-center">
                     <RiLinkM className="mr-3" />
