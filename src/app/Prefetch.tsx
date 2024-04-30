@@ -15,6 +15,7 @@ const Prefetch = async ({ children }: { children: React.ReactNode }) => {
     await queryClient.prefetchQuery<User | null>({
         queryKey: [QUERY_KEY.myPageUser],
         queryFn: () => serverUserCheck(supabase),
+        retry: 0,
     });
 
     return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;

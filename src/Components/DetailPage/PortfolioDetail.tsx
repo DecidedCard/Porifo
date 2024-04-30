@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Comments from "./Comments";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 import LikeShare from "./LikeShare";
 import Loading from "../Loading";
 
@@ -23,7 +23,7 @@ const PortfolioDetail = () => {
     const { cardId: id } = useCardIdStore();
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.detailPortfolio],
-        queryFn: () => getDetailData({ id: "id", value: id }),
+        queryFn: () => getDetailData({ id: "id", value: id! }),
     });
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const PortfolioDetail = () => {
 
     if (isPending) {
         return (
-            <div className="z-50 flex justify-center items-center h-[900px] w-[932px] bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
                 <Loading />
             </div>
         );
@@ -64,7 +64,7 @@ const PortfolioDetail = () => {
                     <LikeShare portfolioInfo={portfolioInfo} />
                 </div>
                 <div
-                    className="w-[80%] sm:w-full sm:mb-[180px] sm:px-4 mb-10 flex justify-center rounded-2xl bg-hihigray"
+                    className="w-[80%] sm:w-[95%] sm:mb-[120px] sm:px-4 mb-10 flex justify-center rounded-2xl bg-hihigray"
                     id="comment"
                 >
                     <Comments />

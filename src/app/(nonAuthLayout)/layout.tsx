@@ -11,7 +11,15 @@ const NonAuthLayout = ({ children }: PropsWithChildren) => {
     const router = useRouter();
 
     if (user) {
-        router.replace("/mypage");
+        if (user.user_metadata.user_name || user.user_metadata.name) {
+            router.replace("/confirmEmail");
+            return;
+        }
+        if (user.user_metadata.birthDate || user.user_metadata.sex) {
+            router.replace("/socialSetting");
+            return;
+        }
+        router.replace("/");
     }
 
     return (

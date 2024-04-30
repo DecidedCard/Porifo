@@ -65,13 +65,13 @@ const SignInputItem = ({
 
             {eyeClose ? (
                 <div
-                    className="absolute inset-y-0 right-0 mt-[15px] mx-2 h-[22px] text-[22px] cursor-pointer"
+                    className="absolute top-9 right-0 flex items-center pr-2 mt-2 text-[22px] cursor-pointer"
                     onClick={handlePasswordVisible}
                 >
                     {showPassword.visible ? (
                         <Image
                             src={`${eye}`}
-                            className="mt-6 w-[25px] h-[25px]"
+                            className="w-[25px] h-[25px]"
                             height={0}
                             width={0}
                             alt="password 확인 사진"
@@ -79,7 +79,7 @@ const SignInputItem = ({
                     ) : (
                         <Image
                             src={`${eyeClose}`}
-                            className="mt-6 w-[25px] h-[25px]"
+                            className="w-[25px] h-[25px]"
                             height={0}
                             width={0}
                             alt="password 가림 사진"

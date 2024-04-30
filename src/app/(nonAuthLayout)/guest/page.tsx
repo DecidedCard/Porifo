@@ -22,9 +22,9 @@ const Guest = () => {
     }, [setPortfolio, setReset]);
 
     return (
-        <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto">
+        <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto sm:bg-white sm:flex-col sm:w-full">
             <Navigation setNav={setNav} />
-            <div className="w-[800px] min-h-[750px]">
+            <div className="w-[800px] min-h-[750px] sm:w-full">
                 {nav === "basicInfo" && <UserInfo />}
                 {nav === "introduce" && <Introduction />}
                 {nav === "project" && <Project />}

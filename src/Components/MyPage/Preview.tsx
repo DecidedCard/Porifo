@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 
 import Image from "next/image";
 
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useMouseClickClose from "@/hooks/useMouseClickClose";
 
@@ -45,7 +45,7 @@ const Preview = ({
                 className="flex justify-center items-center text-[32px] text-gray3 absolute top-[9%] left-[22%] w-12 h-12 bg-gray2 rounded-full cursor-pointer"
                 onClick={() => setPreviewModal(false)}
             >
-                <Image src="icon-set9.svg" alt="아이콘" width={25} height={25} />
+                <Image src="/assets/image/communityImage/carouselPrevArrow.svg" alt="아이콘" width={25} height={25} />
             </div>
             <div
                 ref={modalRef}

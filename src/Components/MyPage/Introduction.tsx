@@ -43,13 +43,13 @@ const Introduction = () => {
                                     placeholder="본인만의 소개글을 작성해 보세요"
                                     size="big"
                                     type="text"
-                                    maxLength={100}
+                                    maxLength={30}
                                     value={basicInfo.oneLineIntroduce}
                                     onChange={onChangeOneLineIntroduce}
                                 />
                             </div>
                             <div className="ml-auto text-sm text-nonegray">
-                                {basicInfo.oneLineIntroduce?.length || "0"}/100
+                                {basicInfo.oneLineIntroduce?.length || "0"}/30
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@ const Introduction = () => {
                                 </form>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 w-[460px] h-11 overflow-hidden bg-white sm:content-center sm:justify-start sm:w-full">
+                            <div className="flex flex-wrap gap-2 w-[460px] h-11 overflow-hidden bg-white sm:justify-start sm:w-full">
                                 {skill_tag.map((item, idx) => {
                                     return (
                                         <div key={idx}>
@@ -133,7 +133,7 @@ const Introduction = () => {
             </main>
             <ToastContainer
                 position="top-center"
-                autoClose={5000}
+                autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop
                 closeOnClick

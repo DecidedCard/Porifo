@@ -27,33 +27,31 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:mx-auto sm:mt-0">
-                <div className="flex flex-col gap-4">
-                    <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+                <div className="flex flex-col gap-4 sm:w-full">
+                    <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full">
                         프로젝트
                     </h2>
-                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-[60%]" />
-                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[40%] sm:ml-32">
-                        프로젝트 정보
-                    </p>
+                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
+                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-full">프로젝트 정보</p>
 
                     {projects &&
                         projects.map((item, projectsIndex) => {
                             return (
-                                <div key={projectsIndex} className="flex flex-col gap-5 mt-4">
+                                <div key={projectsIndex} className="flex flex-col gap-5 mt-4 sm:w-full">
                                     {projects.length >= 2 && (
                                         <div
-                                            className="w-[637px] sm:w-fit sm:ml-[500px]"
+                                            className="w-[637px] sm:w-fit sm:ml-auto"
                                             onClick={() => onClickMinusHandler(projectsIndex)}
                                         >
                                             <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                                         </div>
                                     )}
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             기본정보<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
-                                        <div className="w-[460px] ml-3">
+                                        <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                                             <Input
                                                 type="text"
                                                 size="big"
@@ -67,11 +65,11 @@ const Project = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             내용<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
-                                        <div className="flex flex-col gap-1 w-[460px] ml-3 text-[14px]">
+                                        <div className="flex flex-col gap-1 w-[460px] ml-3 text-[14px] sm:w-full sm:ml-0">
                                             <textarea
                                                 placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
                                                 maxLength={300}
@@ -87,11 +85,11 @@ const Project = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2 sm:text-sm">
                                             프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
-                                        <div className="flex justify-between w-[460px] ml-3 sm:w-[70%]">
+                                        <div className="flex justify-between w-[460px] ml-3 sm:w-full sm:ml-0">
                                             <div className="w-[224px] sm:w-[48%]">
                                                 <Input
                                                     type="date"
@@ -119,17 +117,17 @@ const Project = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
-                                        <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2 sm:text-xs">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full">
+                                        <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             사진 업로드 하기
                                         </p>
-                                        <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll">
+                                        <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll sm:w-full sm:ml-0">
                                             {item.images.length !== 0 ? (
                                                 <div>
                                                     {item.images.map((item, idx) => {
                                                         return (
-                                                            <div key={idx} className="relative group">
-                                                                <div className="relative w-[435px] h-[100px] overflow-hidden">
+                                                            <div key={idx} className="relative group sm:w-full">
+                                                                <div className="relative w-[435px] h-[100px] overflow-hidden sm:w-full">
                                                                     <Image
                                                                         src={item}
                                                                         alt="프로젝트 이미지"
@@ -139,7 +137,7 @@ const Project = () => {
                                                                     />
                                                                 </div>
 
-                                                                <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[100px] pr-2 bg-black bg-opacity-20 invisible opacity-0 ease-in-out duration-300  group-hover:visible group-hover:opacity-100">
+                                                                <div className="absolute bottom-0 flex justify-end items-center w-[435px] h-[100px] pr-2 bg-black bg-opacity-20 invisible opacity-0 ease-in-out duration-300  group-hover:visible group-hover:opacity-100 sm:w-full">
                                                                     <p
                                                                         className="cursor-pointer text-white"
                                                                         onClick={() =>
@@ -181,11 +179,11 @@ const Project = () => {
                                             multiple
                                         />
                                     </div>
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full">
                                         <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             Github
                                         </label>
-                                        <div className="w-[460px] ml-3">
+                                        <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                                             <Input
                                                 type="url"
                                                 size="big"
@@ -198,11 +196,11 @@ const Project = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                                    <div className="flex mt-1 sm:flex-col sm:w-full">
                                         <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
                                             배포링크
                                         </label>
-                                        <div className="w-[460px] ml-3">
+                                        <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                                             <Input
                                                 type="url"
                                                 size="big"

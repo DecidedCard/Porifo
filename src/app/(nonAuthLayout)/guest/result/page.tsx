@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 
 import Button from "@/Components/Commen/Button";
 import LoginCheckModal from "@/Components/LoginCheckModal";
-import Standard from "@/Components/Template Standard/Standard";
-import Grid from "@/Components/Template Grid/Grid";
-import Box from "@/Components/Template Box/Box";
-import Modern from "@/Components/Template Modern/Modern";
+import Standard from "@/Components/Template/Standard/Standard";
+import Grid from "@/Components/Template/Grid/Grid";
+import Box from "@/Components/Template/Box/Box";
+import Modern from "@/Components/Template/Modern/Modern";
 
 import useGuestButton from "@/hooks/guest/useGuestButton";
 

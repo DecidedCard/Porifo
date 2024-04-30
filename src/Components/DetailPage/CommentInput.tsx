@@ -39,7 +39,7 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
             comment,
             user_name: user!.user_metadata.name || user!.user_metadata.user_name,
             user_email: user!.email,
-            profileImage: user!.user_metadata.profileImage,
+            profileImage: user!.user_metadata.profileImage || "/assets/image/profile.svg",
             portfolio_id: id,
         };
         addMutate.mutate(commentValue);
@@ -54,7 +54,7 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                     <div className="flex gap-2">
                         <Image
                             className="rounded-[50px] w-10 h-10 object-cover"
-                            src={user!.user_metadata.profileImage}
+                            src={user!.user_metadata.profileImage || "/assets/image/profile.svg"}
                             alt="프로필"
                             width={40}
                             height={40}
@@ -64,7 +64,7 @@ const CommentInput = ({ user, id }: { user: User | null; id: number }) => {
                             onChange={handleComment}
                             type="text"
                             placeholder="이 이력과 포트폴리오에 대해 어떻게 생각 하시나요?"
-                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] pl-3 sm:w-[368px] "
+                            className="border border-solid border-gray2 w-full rounded-lg self-stretch h-[78px] text-[12px] "
                         />
                     </div>
                 ) : (

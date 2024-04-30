@@ -1,8 +1,8 @@
 
 import React from "react";
 
-import WorkExperience from "../TimeLine/WorkExperience";
-import UserProject from "../TimeLine/UserProject";
+import WorkExperience from "./TimeLine/WorkExperience";
+import UserProject from "./TimeLine/UserProject";
 
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
