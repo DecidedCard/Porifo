@@ -21,7 +21,7 @@ const SocialSign = ({ redirectTo, text, imageWidthNum, imageHeightNum, gap }: So
                     className={`w-${imageWidthNum} h-${imageHeightNum} cursor-pointer rounded-2xl`}
                     width={imageWidthNum}
                     height={imageHeightNum}
-                    src="/assets/image/google.svg"
+                    src="/assets/image/signImage/google.svg"
                     alt="구글 로그인"
                 />
 
@@ -31,7 +31,7 @@ const SocialSign = ({ redirectTo, text, imageWidthNum, imageHeightNum, gap }: So
                     width={imageWidthNum}
                     height={imageHeightNum}
                     alt="카카오 로그인"
-                    src="/assets/image/kakao.svg"
+                    src="/assets/image/signImage/kakao.svg"
                 />
                 <Image
                     onClick={() => signInWithSocial("github", redirectTo)}
@@ -39,7 +39,7 @@ const SocialSign = ({ redirectTo, text, imageWidthNum, imageHeightNum, gap }: So
                     width={imageWidthNum}
                     height={imageHeightNum}
                     alt="깃허브 로그인"
-                    src="/assets/image/github.svg"
+                    src="/assets/image/signImage/github.svg"
                 />
             </div>
         </div>

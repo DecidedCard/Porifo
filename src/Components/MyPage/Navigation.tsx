@@ -55,7 +55,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
     }, [basicInfo.email]);
 
     return (
-        <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px] sm:flex-row sm:w-[448px] sm:mx-auto sm:items-center sm:justify-center sm:mt-3 sm:content-center sm:h-[56px] sm:p-2 sm:z-10 sm:text-sm sm:font-medium sm:gap-1">
+        <nav className="flex flex-col mt-20 items-start justify-start text-gray3 w-[240px] h-[200px] text-[16px] sm:flex-row sm:w-full sm:mx-auto sm:items-center sm:justify-center sm:mt-3 sm:content-center sm:h-[56px] sm:p-2 sm:z-10 sm:text-sm sm:font-medium sm:gap-1">
             <button
                 onClick={() => handleClick("basicInfo")}
                 className={`w-[220px] h-[40px] mb-3 flex items-center py-2 px-4 rounded-xl ease-in-out duration-500 sm:w-[110px] sm:justify-center sm:h-10 sm:rounded-lg sm:px-0 sm:py-0
