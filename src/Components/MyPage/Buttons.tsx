@@ -188,8 +188,8 @@ const Buttons = () => {
                     <div ref={targetRef} className="w-full">
                         {portfolio?.template === "Standard" && <Standard portfolio={portfolio} pdf />}
                         {portfolio?.template === "Grid" && <Grid portfolio={portfolio} pdf />}
-                        {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
-                        {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
+                        {portfolio?.template === "Modern" && <Modern portfolio={portfolio} pdf />}
+                        {portfolio?.template === "Box" && <Box portfolio={portfolio} pdf />}
                     </div>
                 )}
             </div>

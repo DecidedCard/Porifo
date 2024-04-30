@@ -58,13 +58,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         </address>
                     </div>
                 </div>
-                <Image
-                    className="mr-[66px] w-[200px] h-[200px] relative object-cover sm:w-[150px] sm:h-[150px] sm:ml-[66px]"
-                    src={userInfo.profileImage}
-                    alt="프로필 사진"
-                    width={200}
-                    height={200}
-                />
+                <div className="mr-[66px] w-[200px] h-[200px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:ml-[66px]">
+                    <Image className="" src={userInfo.profileImage} alt="프로필 사진" width={200} height={200} />
+                </div>
             </div>
         </div>
     );

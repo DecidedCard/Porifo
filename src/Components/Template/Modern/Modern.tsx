@@ -5,7 +5,7 @@ import Bottom from "./Bottom";
 import URL from "./URL";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
-const Modern = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+const Modern = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     return (
         <div className="w-[932px] flex flex-col items-center bg-white pb-10 sm:w-full sm:pt-7">
             <Top portfolio={portfolio} />
