@@ -24,7 +24,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     />
 
                     <div className="flex flex-col items-center justify-center w-80 min-w-[320px] max-w-xs sm:w-[316px]">
-                        <h1 className="leading-normal text-[30px] w-[932px] h-[92px] font-bold flex items-center justify-center sm:text-[22px] sm:w-[316px]">
+                        <h1 className="leading-normal text-[30px] w-[500px] my-5 font-bold flex items-center justify-center sm:text-[22px] sm:w-[316px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 

@@ -9,15 +9,15 @@ import useInfo from "@/hooks/mypage/useInfo";
 const PortfolioUrl = () => {
     const { basicInfo, onChangeBlogHandler, onChangeGithubHandler } = useInfo();
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10 sm:w-full sm:mx-auto sm:mt-0">
-            <div className="flex flex-col gap-4">
-                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-[40%] sm:ml-32">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+            <div className="flex flex-col gap-4 sm:w-full">
+                <h1 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full">
                     URL
                 </h1>
-                <hr className="w-[657px] mx-auto my-1 border border-neutral-100" />
-                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
+                <div className="flex mt-1 sm:flex-col sm:w-full">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">Blog</label>
-                    <div className="w-[460px] ml-3">
+                    <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                         <Input
                             type="url"
                             size="big"
@@ -28,9 +28,9 @@ const PortfolioUrl = () => {
                         />
                     </div>
                 </div>
-                <div className="flex mt-1 sm:w-[60%] sm:mx-auto">
+                <div className="flex mt-1 sm:flex-col sm:w-full">
                     <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">Github</label>
-                    <div className="w-[460px] ml-3">
+                    <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                         <Input
                             type="url"
                             size="big"
