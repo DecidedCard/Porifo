@@ -141,8 +141,11 @@ const ConfirmEmail = () => {
                     middlePhoneNumber={middlePhoneNumber}
                     lastPhoneNumber={lastPhoneNumber}
                 />
-                <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-5 flex gap-x-[50px]">
-                    <span className="flex">
+                <div
+                    onClick={checkRequiredPersonalInfoModal}
+                    className="mt-6 mx-5 justify-between pr-7 flex gap-x-[50px]"
+                >
+                    <span className="flex pl-7">
                         <Image
                             className="w-6 h-6 mr-1"
                             src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
