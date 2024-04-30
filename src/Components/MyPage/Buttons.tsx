@@ -46,7 +46,7 @@ const Buttons = () => {
 
     const onClickPdfDownloadHandler = () => {
         if (!portfolio?.id || portfolioInputFormValidation(portfolio)) {
-            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 URL을 복사할 수 있습니다." });
+            errorNotify({ title: "필수 항목을 모두 작성 및 저장한 후 다운로드할 수 있습니다." });
             return;
         }
         toPDF();
