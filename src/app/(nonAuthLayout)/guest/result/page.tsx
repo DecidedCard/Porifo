@@ -6,14 +6,15 @@ import Button from "@/Components/Commen/Button";
 import LoginCheckModal from "@/Components/LoginCheckModal";
 import Standard from "@/Components/Template Standard/Standard";
 import Grid from "@/Components/Template Grid/Grid";
+import Box from "@/Components/Template Box/Box";
+import Modern from "@/Components/Template Modern/Modern";
 
 import useGuestButton from "@/hooks/guest/useGuestButton";
 
-import type { PortfolioInfo } from "@/types/PortfolioInfo";
-import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { errorNotify, successNotify } from "@/util/toast";
-import Modern from "@/Components/Template Modern/Modern";
-import Box from "@/Components/Template Box/Box";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const ResultPage = () => {
     const [portfolio, setPortfolio] = useState<PortfolioInfo>();
