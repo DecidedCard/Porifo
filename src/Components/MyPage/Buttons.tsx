@@ -185,13 +185,11 @@ const Buttons = () => {
             </main>
             <div className="absolute top-0 left-0 opacity-0 -z-50">
                 {portfolioPreview && (
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl">
-                        <div ref={targetRef} className="">
-                            {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
-                            {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
-                            {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
-                            {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
-                        </div>
+                    <div ref={targetRef} className="w-full">
+                        {portfolio?.template === "Standard" && <Standard portfolio={portfolio} pdf />}
+                        {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+                        {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
+                        {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
                     </div>
                 )}
             </div>
