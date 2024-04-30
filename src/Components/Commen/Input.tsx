@@ -35,7 +35,7 @@ const Input = ({
     const helperTextColor = color === "error" ? "text-red-400" : "text-zinc-300";
 
     return (
-        <div>
+        <div className="h-[50px]">
             <input
                 type={type}
                 value={value}

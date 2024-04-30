@@ -61,7 +61,7 @@ const SignInputNonStarItem = ({
             />
             {eyeClose ? (
                 <div
-                    className="absolute inset-y-0 right-0 flex items-center pr-2 mt-2 text-[22px] cursor-pointer"
+                    className="absolute top-9 right-0 flex items-center pr-2 mt-2 text-[22px] cursor-pointer"
                     onClick={handlePasswordVisible}
                 >
                     {showPassword.visible ? (

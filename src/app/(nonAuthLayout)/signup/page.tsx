@@ -191,6 +191,7 @@ const ConfirmEmailpage = () => {
                                     size="l"
                                     disabled={!emailSMPTNumber}
                                     onClick={confirmEmailAndOTPNumber}
+                                    fontSize="s"
                                 />
                             </div>
                         </div>
