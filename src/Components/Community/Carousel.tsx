@@ -43,7 +43,7 @@ const Carousel = () => {
     const data2 = data?.[data.length - 2];
     const data3 = data?.[data.length - 3];
 
-    const modifiedArray: PortfolioInfo[] = [data3!, data2!, dataEnd!, dataStart!, dataSecond!, dataThird!, ...data!];
+    const modifiedArray: PortfolioInfo[] = [data3!, data2!, dataEnd!, ...data!, dataStart!, dataSecond!, dataThird!];
 
     const handleImageNextBtn = () => {
         const SliderLength = data!.length;
