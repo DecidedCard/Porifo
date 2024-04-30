@@ -18,7 +18,7 @@ const Cover = () => {
                 <p className="text-white text-center font-bold text-[80px] leading-[100px] font-spoqaBold sm:text-[22px] sm:-mb-5">
                     For Your Career, PORIFO
                 </p>
-                <p className="text-white text-center font-bold text-[40px] font-spoqaMedium-bold sm:text-[14px] sm:font-normal">
+                <p className="text-white text-center font-bold text-[40px] font-spoqaMedium-bold mt-5 sm:text-[14px] sm:font-normal">
                     포리포에서 당신의 커리어를 넓혀보세요.
                 </p>
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center sm:pt-5">

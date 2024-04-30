@@ -9,7 +9,7 @@ import Button from "@/Components/Commen/Button";
 const Welcome = () => {
     const router = useRouter();
 
-    const onClickLogin = () => router.replace("/signin");
+    const onClickLogin = () => router.replace("/mypage");
 
     return (
         <main>
@@ -32,7 +32,7 @@ const Welcome = () => {
 
                     <div className="w-[350px] mt-8 mb-6 mx-auto">
                         <Button
-                            text="로그인 하기"
+                            text="마이페이지로 가기"
                             border="none"
                             color="primary"
                             disabled={false}

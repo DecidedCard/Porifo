@@ -15,16 +15,7 @@ const Password_Change = () => {
     const [confirmUserPassword, setConfirmUserPassword] = useState("");
     const [inputDisabled, setInputDisabled] = useState(false);
 
-    const [isRecovery, setRecovery] = useState(false);
-    const [wordRegValid, setWordRegValid] = useState(false);
-    const [specialRegValid, setSpecialRegValid] = useState(false);
-    const [numberRegValid, setNumberRegValid] = useState(false);
-    const [lengthRegValid, setLengthRegValid] = useState(false);
-
-    const [wordConfirmRegValid, setWordRegConfirmValid] = useState(false);
-    const [specialConfirmRegValid, setSpecialConfirmRegValid] = useState(false);
-    const [numberConfirmRegValid, setNumberConfirmRegValid] = useState(false);
-    const [lengthConfirmRegValid, setLengthConfirmRegValid] = useState(false);
+    const [isRecovery, setRecovery] = useState(true);
 
     const router = useRouter();
 
@@ -50,22 +41,13 @@ const Password_Change = () => {
 
         data.subscription.unsubscribe();
     });
+    const passwordRegValid = passwordValidate({ password: userPassword });
+
+    const confirmPasswordRegValid = passwordValidate({
+        password: confirmUserPassword,
+    });
 
     useEffect(() => {
-        passwordValidate({
-            password: userPassword,
-            setWordRegValid,
-            setNumberRegValid,
-            setSpecialRegValid,
-            setLengthRegValid,
-        });
-        passwordValidate({
-            password: confirmUserPassword,
-            setWordRegValid: setWordRegConfirmValid,
-            setNumberRegValid: setNumberConfirmRegValid,
-            setSpecialRegValid: setSpecialConfirmRegValid,
-            setLengthRegValid: setLengthConfirmRegValid,
-        });
         if (userPassword && confirmUserPassword) {
             setInputDisabled(true);
         } else {
@@ -94,7 +76,9 @@ const Password_Change = () => {
                                     priority
                                 />
                             </div>
-                            <p className="hidden sm:flex sm:items-center sm:justify-center sm:text-[14px] sm:mb-10">새로운 비밀번호를 입력해주세요.</p>
+                            <p className="hidden sm:flex sm:items-center sm:justify-center sm:text-[14px] sm:mb-10">
+                                새로운 비밀번호를 입력해주세요.
+                            </p>
                             <SignInputItem
                                 setLabel="비밀번호"
                                 placeholder="비밀번호를 작성해주세요"
@@ -105,10 +89,10 @@ const Password_Change = () => {
                                 eyeClose="eye_close.svg"
                             />
                             <SignPasswordValidate
-                                lengthRegValid={lengthRegValid}
-                                numberRegValid={numberRegValid}
-                                wordRegValid={wordRegValid}
-                                specialRegValid={specialRegValid}
+                                lengthRegValid={passwordRegValid.lengthRegBoolean}
+                                numberRegValid={passwordRegValid.numberRegBoolean}
+                                wordRegValid={passwordRegValid.specialRegBoolean}
+                                specialRegValid={passwordRegValid.wordRegBoolean}
                             />
                             <SignInputItem
                                 setLabel="비밀번호 확인"
@@ -122,10 +106,10 @@ const Password_Change = () => {
                             />
 
                             <SignPasswordValidate
-                                lengthRegValid={lengthConfirmRegValid}
-                                numberRegValid={numberConfirmRegValid}
-                                wordRegValid={wordConfirmRegValid}
-                                specialRegValid={specialConfirmRegValid}
+                                lengthRegValid={confirmPasswordRegValid.lengthRegBoolean}
+                                numberRegValid={confirmPasswordRegValid.numberRegBoolean}
+                                wordRegValid={confirmPasswordRegValid.specialRegBoolean}
+                                specialRegValid={confirmPasswordRegValid.wordRegBoolean}
                             />
 
                             <SignButton

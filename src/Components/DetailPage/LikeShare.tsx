@@ -1,13 +1,19 @@
 "use client";
 
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+import Image from "next/image";
+
+import { useQuery } from "@tanstack/react-query";
+import { Flip, ToastContainer } from "react-toastify";
+
+import Loading from "../Loading";
+
+import useLiked from "@/hooks/community/useLiked";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { getComments } from "@/util/supabase/supabase_comments";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import { onClickCopyClipBoardHandler } from "@/util/urlCopy";
-import useLiked from "@/hooks/community/useLiked";
-import Loading from "../Loading";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     const { checkLike, id, likes, pending, handleLikeBtn } = useLiked();
@@ -80,6 +86,19 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Flip}
+            />
         </>
     );
 };
