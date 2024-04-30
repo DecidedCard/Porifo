@@ -21,7 +21,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
     //comment 개수를 위한 query
     const { data, isPending } = useQuery({
         queryKey: [QUERY_KEY.portfolidComments],
-        queryFn: () => getComments({ id }),
+        queryFn: () => getComments({ id: id! }),
     });
 
     if (isPending || pending) {
@@ -98,7 +98,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
             </div>
             <ToastContainer
                 position="top-center"
-                autoClose={5000}
+                autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop
                 closeOnClick

@@ -4,10 +4,11 @@ import "react-toastify/dist/ReactToastify.css";
 export const successNotify = ({ title }: { title: string }) => {
     toast.success(title, {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
+        pauseOnFocusLoss: false,
         draggable: true,
         progress: undefined,
         theme: "light",
@@ -18,10 +19,11 @@ export const successNotify = ({ title }: { title: string }) => {
 export const infoNotify = ({ title }: { title: string }) => {
     toast.info(title, {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
+        pauseOnFocusLoss: false,
         draggable: true,
         progress: undefined,
         theme: "light",
@@ -32,10 +34,11 @@ export const infoNotify = ({ title }: { title: string }) => {
 export const warnNotify = ({ title }: { title: string }) => {
     toast.warn(title, {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
+        pauseOnFocusLoss: false,
         draggable: true,
         progress: undefined,
         theme: "light",
@@ -45,10 +48,11 @@ export const warnNotify = ({ title }: { title: string }) => {
 export const errorNotify = ({ title }: { title: string }) => {
     toast.error(title, {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
+        pauseOnFocusLoss: false,
         draggable: true,
         progress: undefined,
         theme: "light",
