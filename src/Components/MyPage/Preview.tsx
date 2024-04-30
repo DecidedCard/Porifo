@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 
 import Image from "next/image";
 
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useMouseClickClose from "@/hooks/useMouseClickClose";
 

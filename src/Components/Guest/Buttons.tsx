@@ -9,10 +9,10 @@ import { usePDF } from "react-to-pdf";
 import TemplateSelect from "../MyPage/TemplateSelect";
 import Preview from "../MyPage/Preview";
 import Button from "../Commen/Button";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
