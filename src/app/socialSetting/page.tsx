@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import SignSelectSex from "@/Components/Sign/SignSelectSex";
 import SignUploadBitrthDay from "@/Components/Sign/SignUploadBitrthDay";
@@ -10,9 +10,9 @@ import SignPhoneNumber from "@/Components/Sign/SignPhoneNumber";
 import SignPersonalInfoCheck from "@/Components/Sign/SignPersonalInfoCheck";
 import SignButton from "@/Components/Sign/SignButton";
 
+import serverClient from "@/util/supabase/serverClient";
 import { signPhoneNumber } from "@/util/sign/signPhoneNumberUtill";
 import { signSettingValidation } from "@/util/sign/signNumber_validation";
-import serverClient from "@/util/supabase/serverClient";
 
 const SocialSeting = () => {
     const [firstNumber, setFirstNumber] = useState("010");
