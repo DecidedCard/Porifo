@@ -41,7 +41,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                 </div>
 
                                 <div className="flex flex-col mt-5 sm:w-[350px]">
-                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:w-[345px]">
+                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[345px]">
                                         {project.introduce}
                                     </p>
                                     <time className="text-gray3 text-[12px] font-normal leading-none my-3 sm:text-[10px]">

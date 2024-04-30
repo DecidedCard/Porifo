@@ -73,8 +73,8 @@ const SocialSeting = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
+            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image

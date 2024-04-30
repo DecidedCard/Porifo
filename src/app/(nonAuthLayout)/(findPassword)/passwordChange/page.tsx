@@ -65,7 +65,7 @@ const Password_Change = () => {
         <main>
             <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
                 {isRecovery ? (
-                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
+                    <div className="rounded-2xl p-10 w-[454px] h-[520px] bg-white flex justify-center flex-col sm:items-center sm:p-0 sm:w-full sm:h-screen">
                         <form onSubmit={confirmHandler}>
                             <div className="flex justify-center sm:hidden">
                                 <Image
