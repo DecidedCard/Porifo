@@ -10,10 +10,10 @@ import { Flip, ToastContainer } from "react-toastify";
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
 import Preview from "./Preview";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
@@ -123,11 +123,11 @@ const Buttons = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:flex-row sm:flex-wrap sm:justify-center sm:w-full sm:pb-10 sm:gap-1">
+                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:flex-row sm:justify-center sm:w-full sm:pb-10 sm:gap-1">
                     {upload ? (
                         <>
                             <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
-                                <Button text="업로드 중..." size="l" border="none" disabled />
+                                <Button text="업로드 중..." size="l" border="none" disabled className="sm:text-xs" />
                             </div>
 
                             <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
@@ -136,6 +136,7 @@ const Buttons = () => {
                                     size="l"
                                     border="none"
                                     disabled
+                                    className="sm:text-xs"
                                 />
                             </div>
                         </>
@@ -147,6 +148,7 @@ const Buttons = () => {
                                     size="l"
                                     color="primary"
                                     onClick={onClickInsertHandler}
+                                    className="sm:text-xs"
                                 />
                             </div>
 
@@ -158,6 +160,7 @@ const Buttons = () => {
                                     color={!portfolio?.id || disabled ? "" : "primary"}
                                     onClick={onClickShareToggle}
                                     disabled={!portfolio?.id || disabled}
+                                    className="sm:text-xs"
                                 />
                                 {(!portfolio?.id || disabled) && (
                                     <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>

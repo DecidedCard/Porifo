@@ -11,13 +11,13 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <div>
             <ol>
+                <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
+                <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                 {project.map((project, index) => (
                     <li
                         key={index}
                         className="flex flex-col items-start justify-start mt-10 sm:items-center sm:justify-center sm:w-full"
                     >
-                        <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
-                        <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                         <div className="flex flex-col w-[804px] sm:w-[370px]">
                             {/* 이미지 영역 - 이미지가 있을 경우에만 렌더링 */}
                             <div className="flex flex-row sm:items-center sm:justify-center sm:w-[370px]">
@@ -47,7 +47,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
                                 <div className="flex flex-col mt-5 sm:items-center sm:justify-center">
-                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:w-[370px]">
+                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[370px]">
                                         {project.introduce}
                                     </p>
                                     {project.githubLink && (

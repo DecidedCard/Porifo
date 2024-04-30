@@ -75,7 +75,7 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
                                     {/* 설명과 상세 정보를 포함하는 영역 */}
                                     <div className="flex flex-col mt-5 sm:items-center sm:justify-center">
-                                        <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:w-[370px]">
+                                        <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[370px]">
                                             {project.introduce}
                                         </p>
                                         {project.githubLink && (
