@@ -67,7 +67,7 @@ const Header = () => {
 
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
                     {user ? (
-                        <div className="flex flex-row gap-3">
+                        <div ref={modalRef} className="flex flex-row gap-3">
                             <div className="relative flex flex-row gap-5 sm:gap-2">
                                 <button onClick={toggleMenu}>
                                     <Image
@@ -85,7 +85,6 @@ const Header = () => {
 
                                 {showMenu && (
                                     <div
-                                        ref={modalRef}
                                         className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                     >
                                         <div>
@@ -148,7 +147,13 @@ const Header = () => {
 
                                 <div>
                                     <Link href="/signupMethod">
-                                        <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
+                                        <Button
+                                            text="회원가입"
+                                            size="s"
+                                            color="primary"
+                                            border="none"
+                                            fontSize="xs sm:s"
+                                        />
                                     </Link>
                                 </div>
                             </div>
@@ -176,14 +181,19 @@ const Header = () => {
 
                                             <div>
                                                 <Link href="/signupMethod">
-                                                    <Button text="회원가입" size="s" color="primary" border="none" fontSize="m" />
+                                                    <Button
+                                                        text="회원가입"
+                                                        size="s"
+                                                        color="primary"
+                                                        border="none"
+                                                        fontSize="m"
+                                                    />
                                                 </Link>
                                             </div>
                                         </div>
                                     </div>
                                 )}
                             </div>
-
                         </div>
                     )}
                 </div>
