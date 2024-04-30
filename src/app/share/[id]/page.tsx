@@ -12,6 +12,7 @@ import Box from "@/Components/Template/Box/Box";
 
 import { QUERY_KEY } from "@/util/query_key";
 import { getDetailData } from "@/util/supabase/detail_supabase_DB";
+import NotFoundCatchAll from "@/app/[...404]/page";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
     const { id } = params;
@@ -30,7 +31,11 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     }
 
     if (isError) {
-        return <div>에러!!!!</div>;
+        return (
+            <div>
+                <NotFoundCatchAll />
+            </div>
+        );
     }
 
     const portfolio = data[0];
