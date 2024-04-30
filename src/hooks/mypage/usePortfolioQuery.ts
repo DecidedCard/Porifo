@@ -15,7 +15,7 @@ import type { Project } from "@/types/Project";
 
 const usePortfolioQuery = (id: string) => {
     const { setPortfolio, portfolio } = useUserStore();
-    const { setInitialBasicInfo, basicInfo } = usePortfolioInfoStore();
+    const { setInitialBasicInfo } = usePortfolioInfoStore();
     const { setProjectsInitial } = useProjectsStore();
     const { setInitialCareers } = useCareerStore();
     const {
