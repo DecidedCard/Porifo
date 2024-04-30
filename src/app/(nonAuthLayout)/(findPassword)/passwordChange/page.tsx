@@ -86,8 +86,8 @@ const Password_Change = () => {
                                 pattern="/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/"
                                 onChangeHandler={handleUserPassword}
                                 relative="relative"
-                                eye="eye.svg"
-                                eyeClose="eye_close.svg"
+                                eye="/assets/image/signImage/eye.svg"
+                                eyeClose="/assets/image/signImage/eye_close.svg"
                             />
                             <SignPasswordValidate
                                 lengthRegValid={passwordRegValid.lengthRegBoolean}
@@ -102,8 +102,8 @@ const Password_Change = () => {
                         "
                                 onChangeHandler={handleConfirmUserPassword}
                                 relative="relative"
-                                eye="eye.svg"
-                                eyeClose="eye_close.svg"
+                                eye="/assets/image/signImage/eye.svg"
+                                eyeClose="/assets/image/signImage/eye_close.svg"
                             />
 
                             <SignPasswordValidate
