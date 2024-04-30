@@ -31,7 +31,7 @@ const SignIn = () => {
 
     const [inputDisabled, setInputDisabled] = useState(false);
 
-    const { user, setUser } = useUserStore();
+    const { setUser } = useUserStore();
 
     const router = useRouter();
     const findPassword = () => router.replace("/findEmail");
@@ -58,14 +58,6 @@ const SignIn = () => {
                 password,
             });
 
-            const { data: userId } = await supabase.from("portfolioInfo").select("userId");
-
-            let confirmPortfolio;
-
-            if (data.user !== null) {
-                confirmPortfolio = userId?.find((item) => (item.userId === data.user.id ? true : false));
-            }
-
             if (error) {
                 errorNotify({ title: "비밀번호를 확인해 주세요.😅" });
                 throw new Error("로그인에 실패했습니다.");
@@ -74,8 +66,7 @@ const SignIn = () => {
 
             successNotify({ title: "로그인에 성공하였습니다.😎" });
 
-            confirmPortfolio !== undefined ? router.replace("/community") : router.replace("/mypage");
-            router.refresh();
+            router.replace("/");
         } catch (error) {
             return Promise.reject(error);
         }
@@ -100,7 +91,7 @@ const SignIn = () => {
                         </div>
                         <ToastContainer
                             position="top-center"
-                            autoClose={5000}
+                            autoClose={3000}
                             hideProgressBar={false}
                             newestOnTop
                             closeOnClick
@@ -145,10 +136,10 @@ const SignIn = () => {
                             className="text-gray4 float-right flex flex-row items-center justify-center text-[12px] cursor-pointer sm:float-none"
                             onClick={findPassword}
                         >
-                            <div className="mt-[1.5px] w-[67px] h-[27px] flex items-center">비밀번호 찾기</div>
+                            <div className="mt-[1.5px] w-[80px] h-[27px] flex items-center">비밀번호 찾기</div>
                             <Image
-                                width={0}
-                                height={0}
+                                width={20}
+                                height={20}
                                 className="w-[20px] h-[20px]"
                                 src="/assets/image/signImage/find_password_arrow.svg"
                                 alt="페이지 이동 화살표"

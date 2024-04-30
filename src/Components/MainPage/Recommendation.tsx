@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/util/query_key";
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
 import Loading from "../Loading";
+import { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Recommendation = () => {
     const { isPending, data } = useQuery({
@@ -32,8 +33,8 @@ const Recommendation = () => {
                 </div>
 
                 <div className="flex flex-row gap-6 sm:flex-col">
-                    {data?.slice(0, 4).map((developer: any, idx) => (
-                        <React.Fragment key={idx}>
+                    {data?.slice(0, 4).map((developer: PortfolioInfo) => (
+                        <React.Fragment key={developer.id}>
                             <div className="rounded-2xl w-[302px] h-[225px] overflow-hidden">
                                 <div className="flex items-center justify-center">
                                     <div className="relative">
@@ -52,8 +53,8 @@ const Recommendation = () => {
                                             <div className="flex items-center mt-4">
                                                 <div className="flex flex-col gap-4 flex-1 text-sm font-medium">
                                                     <p className="text-white">
-                                                        {developer.oneLineIntroduce.length > 20
-                                                            ? `${developer.oneLineIntroduce.substring(0, 20)}...`
+                                                        {developer.oneLineIntroduce!.length > 20
+                                                            ? `${developer.oneLineIntroduce!.substring(0, 20)}...`
                                                             : developer.oneLineIntroduce}
                                                     </p>
 
@@ -66,18 +67,18 @@ const Recommendation = () => {
 
                                                         <div className="flex items-center ml-20 text-[10px]">
                                                             <Image
-                                                                src="grayHeart.svg"
+                                                                src="/assets/image/communityImage/grayHeart.svg"
                                                                 alt="좋아요 아이콘"
                                                                 width={24}
                                                                 height={24}
                                                                 className="mr-1"
                                                             />
-                                                            <p className="text-white">{developer.likes.length}</p>
+                                                            <p className="text-white">{developer.likes!.length}</p>
                                                         </div>
 
                                                         <div className="flex items-center text-[10px]">
                                                             <Image
-                                                                src="grayEye.svg"
+                                                                src="/assets/image/communityImage/grayEye.svg"
                                                                 alt="조회수 아이콘"
                                                                 width={24}
                                                                 height={24}

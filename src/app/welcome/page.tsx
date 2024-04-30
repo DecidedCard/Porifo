@@ -9,7 +9,7 @@ import Button from "@/Components/Commen/Button";
 const Welcome = () => {
     const router = useRouter();
 
-    const onClickLogin = () => router.replace("/mypage");
+    const onClickLogin = (route: string) => router.replace(route);
 
     return (
         <main>
@@ -30,14 +30,21 @@ const Welcome = () => {
                         포리포에 오신 것을 <br /> 환영합니다!
                     </p>
 
-                    <div className="w-[350px] mt-8 mb-6 mx-auto">
+                    <div className="flex flex-col gap-4 w-[350px] mt-8 mb-6 mx-auto">
                         <Button
-                            text="마이페이지로 가기"
+                            text="포트폴리오 작성하기"
+                            color="primary"
+                            disabled={false}
+                            size="m"
+                            onClick={() => onClickLogin("/mypage")}
+                        />
+                        <Button
+                            text="포트폴리오 둘러보기"
                             border="none"
                             color="primary"
                             disabled={false}
                             size="m"
-                            onClick={onClickLogin}
+                            onClick={() => onClickLogin("/community")}
                         />
                     </div>
                 </div>
