@@ -85,43 +85,50 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
 
             {career.length > 0 && (
                 <div className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
+                    <div className="sm:flex sm:justify-center sm:items-center">
+                        <div className="bg-disabled w-[804px] h-[0.5px] mb-10 mt-10 sm:w-[370px]"></div>
+                    </div>
                     <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
                     <ol>
                         {career.map((experience, index) => (
-                            <li
-                                key={index}
-                                className="flex mb-5 w-[800px] rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
-                            >
-                                <div className="flex w-full flex-col">
-                                    {/* 제목과 날짜를 포함하는 영역 */}
-                                    <div className="flex justify-between w-[804px] sm:w-full">
-                                        <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
-                                            {experience.company}
-                                        </h3>
-                                        <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
-                                            {experience.date}
-                                        </time>
-                                    </div>
+                            <>
+                                <li
+                                    key={index}
+                                    className="flex mb-5 w-[800px] rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
+                                >
+                                    <div className="flex w-full flex-col">
+                                        {/* 제목과 날짜를 포함하는 영역 */}
+                                        <div className="flex justify-between w-[804px] sm:w-full">
+                                            <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
+                                                {experience.company}
+                                            </h3>
+                                            <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
+                                                {experience.date}
+                                            </time>
+                                        </div>
 
-                                    {/* 설명과 상세 정보를 포함하는 영역 */}
-                                    <div className="flex flex-col w-[480px] sm:w-full sm:flex-wrap">
-                                        <p className="text-[14px] font-normal mb-2 text-gray4">
-                                            {experience.department} / {experience.position}
-                                        </p>
-                                        <div className="flex flex-col sm:w-full sm:flex-wrap">
-                                            <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
-                                                • {experience.comment}
+                                        {/* 설명과 상세 정보를 포함하는 영역 */}
+                                        <div className="flex flex-col w-[480px] sm:w-full sm:flex-wrap">
+                                            <p className="text-[14px] font-normal mb-2 text-gray4">
+                                                {experience.department} / {experience.position}
                                             </p>
+                                            <div className="flex flex-col sm:w-full sm:flex-wrap">
+                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
+                                                    • {experience.comment}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+
+                                </li>
+                            </>
                         ))}
+
                     </ol>
                 </div>
             )}
             <div className="sm:flex sm:justify-center sm:items-center">
-                <div className="bg-deepgray w-[804px] h-[1px] mb-10 mt-10 sm:w-[370px]"></div>
+                <div className="bg-disabled w-[804px] h-[0.5px] mb-10 mt-10 sm:w-[370px]"></div>
             </div>
         </div>
     );

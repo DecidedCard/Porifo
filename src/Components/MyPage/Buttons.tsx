@@ -10,10 +10,10 @@ import { Flip, ToastContainer } from "react-toastify";
 import Button from "../Commen/Button";
 import TemplateSelect from "./TemplateSelect";
 import Preview from "./Preview";
-import Standard from "../Template Standard/Standard";
-import Grid from "../Template Grid/Grid";
-import Modern from "../Template Modern/Modern";
-import Box from "../Template Box/Box";
+import Standard from "../Template/Standard/Standard";
+import Grid from "../Template/Grid/Grid";
+import Modern from "../Template/Modern/Modern";
+import Box from "../Template/Box/Box";
 
 import useInfo from "@/hooks/mypage/useInfo";
 import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
@@ -82,13 +82,12 @@ const Buttons = () => {
                     </div>
 
                     <div className="mt-2 w-52 sm:w-fit sm:mt-0">
-                        <Button
-                            text="템플릿 선택하기"
-                            size="s"
-                            color="primary"
-                            fontSize="s"
+                        <button
                             onClick={onClickTemplateModalToggleHandler}
-                        />
+                            className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                        >
+                            템플릿 선택하기
+                        </button>
                     </div>
 
                     <div className="flex flex-row my-5 mb-5 text-[12px] sm:my-0">

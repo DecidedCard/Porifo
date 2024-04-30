@@ -111,7 +111,7 @@ const ConfirmEmailpage = () => {
                             className="w-[162px] h-[54px]"
                             width={0}
                             height={0}
-                            src="formLogo.svg"
+                            src="/assets/image/signImage/formLogo.svg"
                             priority
                             alt="이메일 확인 form 로고"
                         />
@@ -149,8 +149,8 @@ const ConfirmEmailpage = () => {
                         "
                         onChangeHandler={onChangePassword}
                         relative="relative"
-                        eye="eye.svg"
-                        eyeClose="eye_close.svg"
+                        eye="/assets/image/signImage/eye.svg"
+                        eyeClose="/assets/image/signImage/eye_close.svg"
                     />
 
                     <SignPasswordValidate
@@ -169,8 +169,8 @@ const ConfirmEmailpage = () => {
                         helperText={samePassword ? "" : "비밀번호가 일치하지 않습니다."}
                         onChangeHandler={onChangeConfirmPassword}
                         relative="relative"
-                        eye="eye.svg"
-                        eyeClose="eye_close.svg"
+                        eye="/assets/image/signImage/eye.svg"
+                        eyeClose="/assets/image/signImage/eye_close.svg"
                     />
 
                     <div className="mx-auto my-4 w-[350px] h-fit flex flex-col">

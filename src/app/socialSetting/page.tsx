@@ -73,15 +73,15 @@ const SocialSeting = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
-            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col sm:p-0 sm:w-full sm:h-screen">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative">
+            <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
                         <Image
                             width={0}
                             height={0}
                             className="w-[160px] h-[140px]"
-                            src="formLogo.svg"
+                            src="/assets/image/signImage/formLogo.svg"
                             alt="로그인의 form 로고"
                             priority
                         />
@@ -99,11 +99,9 @@ const SocialSeting = () => {
                         middlePhoneNumber={middlePhoneNumber}
                         lastPhoneNumber={lastPhoneNumber}
                     />
-                    <div className="sm:mt-10">
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
-                    </div>
 
-                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px] sm:mx-5">
+                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px]">
                         <span className="flex">
                             <Image
                                 className="w-6 h-6 mr-1"

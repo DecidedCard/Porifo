@@ -106,11 +106,13 @@ const Carousel = () => {
     const handleTouchEnd: TouchEventHandler<HTMLDivElement> = (e) => {
         touchEndX = e.nativeEvent.changedTouches[0].clientX;
 
-        if (touchStartX >= touchEndX) {
+        if (touchStartX > touchEndX) {
             handleImageNextBtnDevice();
-        } else {
+        }
+        if (touchStartX < touchEndX) {
             handleImagePrevBtnDevice();
         }
+        return;
     };
 
     return (

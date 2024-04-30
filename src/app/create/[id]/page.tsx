@@ -2,9 +2,13 @@
 
 import React from "react";
 
+import NotFoundCatchAll from "@/app/[...404]/page";
 import Loading from "@/Components/Loading";
-import Standard from "@/Components/Template Standard/Standard";
-import Grid from "@/Components/Template Grid/Grid";
+import Standard from "@/Components/Template/Standard/Standard";
+import Grid from "@/Components/Template/Grid/Grid";
+import Modern from "@/Components/Template/Modern/Modern";
+import Box from "@/Components/Template/Box/Box";
+
 import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
@@ -20,13 +24,15 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     }
 
     if (isError) {
-        return <div>에러!!!!</div>;
+        return <NotFoundCatchAll />;
     }
 
     return (
         <div className="w-fit mx-auto">
             {portfolio?.template === "Standard" && <Standard portfolio={portfolio} />}
             {portfolio?.template === "Grid" && <Grid portfolio={portfolio} />}
+            {portfolio?.template === "Modern" && <Modern portfolio={portfolio} />}
+            {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
         </div>
     );
 };

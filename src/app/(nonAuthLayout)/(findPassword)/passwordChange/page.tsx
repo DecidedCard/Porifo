@@ -72,7 +72,7 @@ const Password_Change = () => {
                                     width={0}
                                     height={0}
                                     className="w-[160px] h-[140px]"
-                                    src="formLogo.svg"
+                                    src="/assets/image/signImage/formLogo.svg"
                                     alt="로그인의 form 로고"
                                     priority
                                 />
