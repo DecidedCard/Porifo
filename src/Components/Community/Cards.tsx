@@ -65,7 +65,7 @@ const Cards = () => {
 
     if (isPending) {
         return (
-            <div className="flex justify-center items-center w-[1280px] h-[700px] bg-hihigray lg:w-[730px]">
+            <div className="flex justify-center items-center w-[1280px] h-[700px] sm:w-full bg-hihigray lg:w-[730px]">
                 <Loading />
             </div>
         );
