@@ -1,16 +1,24 @@
 "use client";
 
-import useInfo from "@/hooks/mypage/useInfo";
-import Button from "../Commen/Button";
-import { usePDF } from "react-to-pdf";
-import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { Flip, ToastContainer } from "react-toastify";
+import { usePDF } from "react-to-pdf";
+
 import TemplateSelect from "../MyPage/TemplateSelect";
 import Preview from "../MyPage/Preview";
-import useGuestButton from "@/hooks/guest/useGuestButton";
-import { useRouter } from "next/navigation";
+import Button from "../Commen/Button";
 import Standard from "../Template Standard/Standard";
 import Grid from "../Template Grid/Grid";
+
+import useInfo from "@/hooks/mypage/useInfo";
+import useTemplateSelect from "@/hooks/mypage/useTemplateSelect";
+import useGuestButton from "@/hooks/guest/useGuestButton";
+import { errorNotify } from "@/util/toast";
+import { portfolioInputFormValidation } from "@/util/input_form_validation";
+import Modern from "../Template Modern/Modern";
+import Box from "../Template Box/Box";
 
 const Buttons = () => {
     const { basicInfo, disabled, onClickInsertHandler } = useInfo();
@@ -86,6 +94,8 @@ const Buttons = () => {
                         <div ref={targetRef} className="">
                             {basicInfo.template === "Standard" && <Standard portfolio={portfolioPreview} />}
                             {basicInfo.template === "Grid" && <Grid portfolio={portfolioPreview} />}
+                            {basicInfo.template === "Modern" && <Modern portfolio={portfolioPreview} />}
+                            {basicInfo.template === "Box" && <Box portfolio={portfolioPreview} />}
                         </div>
                     </div>
                 )}
@@ -98,6 +108,18 @@ const Buttons = () => {
                     portfolio={portfolioPreview}
                 />
             )}
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                theme="light"
+                transition={Flip}
+                style={{ width: "fit-content" }}
+            />
         </div>
     );
 };
