@@ -13,7 +13,7 @@ import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
 import { portfolioInputFormValidation } from "@/util/input_form_validation";
 import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
-import { infoNotify, successNotify, warnNotify } from "@/util/toast";
+import { successNotify, warnNotify } from "@/util/toast";
 import { SKILL_TAG } from "@/util/skill_tag";
 import { getFormattedDate } from "@/util/getformatDate";
 
@@ -56,16 +56,34 @@ const useInfo = () => {
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
 
     useEffect(() => {
-        const { imageFile, ...info } = basicInfo;
-        if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
-            setDisabled(true);
-        } else {
-            setDisabled(false);
+        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
+        if (localStorageItem) {
+            localStorageItemRef.current = localStorageItem;
         }
-    }, [basicInfo, careers, projects]);
+    }, []);
 
     useEffect(() => {
-        if (user && !portfolio) {
+        if (localStorageItemRef.current && !portfolio) {
+            const project = localStorageItemRef.current.project as unknown as Project[];
+            const career = localStorageItemRef.current.career as Career[];
+
+            setPortfolio({ ...localStorageItemRef.current });
+            setInitialBasicInfo({ ...localStorageItemRef.current });
+            setProjectsInitial([...project]);
+            setInitialCareers([...career]);
+        }
+    }, [
+        localStorageItemRef,
+        portfolio,
+        setPortfolio,
+        user,
+        setInitialBasicInfo,
+        setProjectsInitial,
+        setInitialCareers,
+    ]);
+
+    useEffect(() => {
+        if (!localStorageItemRef.current && user && !portfolio) {
             const birthDate = new Date(
                 user.user_metadata.birthDate.replace("년", "-").replace("월", "-").replace("일", ""),
             );
@@ -85,36 +103,18 @@ const useInfo = () => {
     }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
 
     useEffect(() => {
+        const { imageFile, ...info } = basicInfo;
+        if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
+            setDisabled(true);
+        } else {
+            setDisabled(false);
+        }
+    }, [basicInfo, careers, projects]);
+
+    useEffect(() => {
         const skillTag = SKILL_TAG.filter((item) => item.toLowerCase().includes(skillTagInput.toLowerCase()));
         setSkill_Tag(skillTag);
     }, [skillTagInput]);
-
-    useEffect(() => {
-        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
-        if (localStorageItem) {
-            localStorageItemRef.current = localStorageItem;
-        }
-    }, []);
-
-    useEffect(() => {
-        if (localStorageItemRef.current && !portfolio?.id) {
-            const project = localStorageItemRef.current.project as unknown as Project[];
-            const career = localStorageItemRef.current.career as Career[];
-
-            setPortfolio(localStorageItemRef.current);
-            setInitialBasicInfo(localStorageItemRef.current);
-            setProjectsInitial([...project]);
-            setInitialCareers([...career]);
-        }
-    }, [
-        localStorageItemRef,
-        portfolio,
-        setPortfolio,
-        user,
-        setInitialBasicInfo,
-        setProjectsInitial,
-        setInitialCareers,
-    ]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
