@@ -18,7 +18,7 @@ const Bottom = () => {
                         <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
                             포토샵을 몰라도
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[20px]">
+                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
                             디자인 경험이 없어도
                             <br />
                             감각적인 포트폴리오 사이트가 만들어져요
@@ -40,7 +40,7 @@ const Bottom = () => {
                         <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
                             나의 포트폴리오를 공유하고
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[20px]">
+                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
                             다른 동료 개발자들과의 커뮤니티를 통해
                             <br />
                             나의 포트폴리오에 피드백을 받을 수 있어요
@@ -62,7 +62,7 @@ const Bottom = () => {
                         <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
                             나의 포트폴리오를 공유하고
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[20px]">
+                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
                             디자인 경험이 없어도
                             <br />
                             감각적인 포트폴리오 사이트가 만들어져요
