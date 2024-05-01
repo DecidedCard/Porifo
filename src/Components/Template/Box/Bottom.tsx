@@ -1,20 +1,32 @@
-import { Career } from "@/types/Career";
-import { Project } from "@/types/Project";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import CheckImage from "../CheckImage";
+
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
+
 const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+    const [checkImage, setCheckImage] = useState<number | null>(null);
+    const [projectIdx, setProjectIndex] = useState<number | null>(null);
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
+
+    const onClickImageCheckHandler = (project: number, image: number) => {
+        setProjectIndex(project);
+        setCheckImage(image);
+    };
 
     return (
         <div>
             <ol className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
                 <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
-                {project.map((project, index) => (
+                {project.map((project, projectIndex) => (
                     <li
-                        key={index}
+                        key={projectIndex}
                         className="flex flex-col items-start justify-start w-[800px] mb-3 rounded-lg border border-solid border-disabled p-4 sm:p-6 sm:w-[370px] sm:h-fit sm:items-center sm:justify-center"
                     >
                         <div className="flex flex-col w-[730px] gap-3 sm:items-center sm:w-full sm:justify-center">
@@ -22,14 +34,23 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             <div className="flex flex-row sm:flex-col sm:w-full sm:items-center sm:justify-center">
                                 {project.images &&
                                     project.images.map((image, index) => (
-                                        <Image
-                                            key={index}
-                                            src={image}
-                                            alt="프로젝트"
-                                            className="object-cover flex flex-row w-[250.67px] h-[198px] rounded-2xl mr-2 sm:w-[320px] sm:mr-0"
-                                            width={800}
-                                            height={800}
-                                        />
+                                        <div key={index}>
+                                            <Image
+                                                src={image}
+                                                alt="프로젝트"
+                                                className="object-cover flex flex-row w-[250.67px] h-[198px] rounded-2xl mr-2 cursor-pointer sm:w-[320px] sm:mr-0"
+                                                width={800}
+                                                height={800}
+                                                onClick={() => onClickImageCheckHandler(projectIndex, index)}
+                                            />
+                                            {projectIndex === projectIdx && checkImage === index && (
+                                                <CheckImage
+                                                    image={image}
+                                                    checkImage={checkImage}
+                                                    setCheckImage={setCheckImage}
+                                                />
+                                            )}
+                                        </div>
                                     ))}
                             </div>
 
@@ -119,11 +140,9 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </li>
                             </>
                         ))}
-
                     </ol>
                 </div>
             )}
