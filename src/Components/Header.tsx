@@ -91,7 +91,7 @@ const Header = () => {
 
                                         {showMenu && (
                                             <div
-                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-white rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
+                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-gray2 bg-opacity-90 rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                             >
                                                 <div>
                                                     <Link
@@ -177,7 +177,7 @@ const Header = () => {
                                         {showMenu && (
                                             <div>
                                                 <div
-                                                    className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[100px] h-fit bg-white rounded-[16px] p-2 transform -translate-x-16 ${bubbleSm}`}
+                                                    className={`absolute left-[45%] flex flex-col items-center justify-center top-full mt-4 w-[140px] h-fit bg-gray2 bg-opacity-90  rounded-[16px] p-2 transform -translate-x-28 ${bubbleSm}`}
                                                 >
                                                     <div>
                                                         <Link href="/signin">
@@ -201,6 +201,12 @@ const Header = () => {
                                                             />
                                                         </Link>
                                                     </div>
+                                                    <Link
+                                                        href="/community"
+                                                        className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px] mt-1"
+                                                    >
+                                                        <p className="text-[12px]">피드/커뮤니티</p>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         )}
@@ -218,6 +224,6 @@ const Header = () => {
 export default Header;
 
 const bubbleAfter =
-    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray2 after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
 const bubbleSm =
-    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[12px] after:mt-[-8px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray2 after:border-t-0 after:border-t-gray2 after:ml-[12px] after:mt-[-8px]";
