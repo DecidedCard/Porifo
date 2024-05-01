@@ -34,7 +34,7 @@ const CheckImage = ({
     return (
         <div className="fixed top-0 left-0 flex justify-center items-center w-screen h-screen bg-black bg-opacity-80 z-10">
             <div ref={modalRef}>
-                <Image src={image} alt="포트폴리오" width={700} height={700} />
+                <Image src={image} alt="포트폴리오" width={600} height={600} />
             </div>
         </div>
     );
