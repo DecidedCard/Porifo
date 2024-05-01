@@ -2,19 +2,14 @@ import { supabase } from "./clientSupabase";
 import serverClient from "./serverClient";
 
 export const userData = async () => {
-    try {
-        const {
-            data: { user },
-            error,
-        } = await supabase.auth.getUser();
-        if (error) {
-            console.error(error);
-            throw new Error(error.message);
-        }
-        return user;
-    } catch (error) {
-        Promise.reject(error);
+    const {
+        data: { user },
+        error,
+    } = await supabase.auth.getUser();
+    if (error) {
+        throw error;
     }
+    return user;
 };
 
 export const userUpdate = async (arg: any) => {
