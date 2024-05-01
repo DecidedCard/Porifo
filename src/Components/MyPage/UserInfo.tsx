@@ -41,7 +41,7 @@ const UserInfo = () => {
                         {basicInfo.profileImage ? (
                             <Image
                                 src={basicInfo.profileImage}
-                                alt="프로필 사진 미리보기"
+                                alt="프로필 사진"
                                 width={200}
                                 height={200}
                                 className="ml-3 w-[200px] h-[200px] rounded-2xl object-cover sm:w-[150px] sm:h-[150px]"

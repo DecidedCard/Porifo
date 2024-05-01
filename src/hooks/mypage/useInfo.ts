@@ -65,26 +65,6 @@ const useInfo = () => {
     }, [basicInfo, careers, projects]);
 
     useEffect(() => {
-        if (localStorageItemRef.current && !portfolio?.id) {
-            const project = localStorageItemRef.current.project as unknown as Project[];
-            const career = localStorageItemRef.current.career as Career[];
-
-            setPortfolio(localStorageItemRef.current);
-            setInitialBasicInfo(localStorageItemRef.current);
-            setProjectsInitial([...project]);
-            setInitialCareers([...career]);
-        }
-    }, [
-        localStorageItemRef,
-        portfolio,
-        setPortfolio,
-        user,
-        setInitialBasicInfo,
-        setProjectsInitial,
-        setInitialCareers,
-    ]);
-
-    useEffect(() => {
         if (user && !portfolio) {
             const birthDate = new Date(
                 user.user_metadata.birthDate.replace("년", "-").replace("월", "-").replace("일", ""),
@@ -115,6 +95,26 @@ const useInfo = () => {
             localStorageItemRef.current = localStorageItem;
         }
     }, []);
+
+    useEffect(() => {
+        if (localStorageItemRef.current && !portfolio?.id) {
+            const project = localStorageItemRef.current.project as unknown as Project[];
+            const career = localStorageItemRef.current.career as Career[];
+
+            setPortfolio(localStorageItemRef.current);
+            setInitialBasicInfo(localStorageItemRef.current);
+            setProjectsInitial([...project]);
+            setInitialCareers([...career]);
+        }
+    }, [
+        localStorageItemRef,
+        portfolio,
+        setPortfolio,
+        user,
+        setInitialBasicInfo,
+        setProjectsInitial,
+        setInitialCareers,
+    ]);
 
     // 스토어 적용 onChangeHandler
     const onChangeNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
