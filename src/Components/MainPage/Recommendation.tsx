@@ -47,7 +47,7 @@ const Recommendation = () => {
                                             style={{ objectFit: "cover" }}
                                         />
                                         <div
-                                            className="absolute top-[136px] w-full h-[90px] bg-[#0000008F] rounded-bl-2xl rounded-br-2xl px-6 "
+                                            className="absolute top-[120px] w-full h-[90px] bg-[#0000008F] rounded-bl-2xl rounded-br-2xl px-6 "
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                                         >
                                             <div className="flex items-center mt-4">

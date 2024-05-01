@@ -6,7 +6,6 @@ const serverUserCheck = async (supabase: SupabaseClient) => {
         error,
     } = await supabase.auth.getUser();
     if (error) {
-        console.error(error);
         throw error;
     }
     return user;
