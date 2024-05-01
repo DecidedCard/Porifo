@@ -4,7 +4,7 @@ import { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 import Link from "next/link";
 
-const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
@@ -21,7 +21,9 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             {userSkillTag.map((tag, index) => (
                                 <span
                                     key={index}
-                                    className="mt-4 mr-2 p-3 bg-gray-200 rounded-lg border border-primary border-solid h-9"
+                                    className={`flex items-center mt-4 mr-2 px-3 bg-gray-200 rounded-lg border border-primary border-solid h-9 ${
+                                        pdf && "pb-2"
+                                    }`}
                                 >
                                     {tag}
                                 </span>

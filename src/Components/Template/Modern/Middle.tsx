@@ -1,6 +1,6 @@
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 
-const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const userSkillTag = portfolio.skillTag as string[];
 
     return (
@@ -13,7 +13,9 @@ const Middle = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         {userSkillTag.map((tag, index) => (
                             <span
                                 key={index}
-                                className="flex items-center justify-center py-1 px-3 bg-gray-200 rounded-lg bg-black text-white h-9"
+                                className={`flex items-center justify-center py-1 px-3 bg-gray-200 rounded-lg bg-black text-white h-9 ${
+                                    pdf && "pb-3"
+                                }`}
                             >
                                 {tag}
                             </span>

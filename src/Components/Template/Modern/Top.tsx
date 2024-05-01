@@ -1,7 +1,7 @@
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 
-const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
+const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const userInfo = {
         name: portfolio.name,
         job: portfolio.job,
@@ -39,7 +39,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             alt="전화"
                                             width={24}
                                             height={24}
-                                            className="object-cover w-6 h-6 mr-1 sm:w-5 sm:h-5"
+                                            className={`object-cover w-6 h-6 mr-1 sm:w-5 sm:h-5 ${pdf && "pt-2 h-fit"}`}
                                         />
                                         {userInfo.tel}
                                     </p>
@@ -50,7 +50,7 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         alt="메일"
                                         width={24}
                                         height={24}
-                                        className="object-cover w-6 h-6 mr-1 sm:w-5 sm:h-5"
+                                        className={`object-cover w-6 h-6 mr-1 sm:w-5 sm:h-5 ${pdf && "pt-2 h-fit"}`}
                                     />
                                     {userInfo.email}
                                 </p>
@@ -58,13 +58,9 @@ const Top = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                         </address>
                     </div>
                 </div>
-                <Image
-                    className="mr-[66px] w-[200px] h-[200px] relative object-cover sm:w-[150px] sm:h-[150px] sm:ml-[66px]"
-                    src={userInfo.profileImage}
-                    alt="프로필 사진"
-                    width={200}
-                    height={200}
-                />
+                <div className="flex justify-center items-center mr-[66px] w-[200px] h-[200px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:ml-[66px]">
+                    <Image className="" src={userInfo.profileImage} alt="프로필 사진" width={200} height={200} />
+                </div>
             </div>
         </div>
     );
