@@ -3,8 +3,11 @@ import { Project } from "@/types/Project";
 import { PortfolioInfo } from "@/types/PortfolioInfo";
 import Image from "next/image";
 import Link from "next/link";
+import CheckImage from "../CheckImage";
+import { useState } from "react";
 
 const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
+    const [checkImage, setCheckImage] = useState<number | null>(null);
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
@@ -53,14 +56,23 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                                 <div className="flex flex-row sm:items-center sm:justify-center">
                                     {project.images &&
                                         project.images.map((image, index) => (
-                                            <Image
-                                                key={index}
-                                                src={image}
-                                                alt="프로젝트"
-                                                className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[110px] sm:mr-1"
-                                                width={800}
-                                                height={800}
-                                            />
+                                            <div key={index}>
+                                                <Image
+                                                    src={image}
+                                                    alt="프로젝트"
+                                                    className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[110px] sm:mr-1"
+                                                    width={800}
+                                                    height={800}
+                                                    onClick={() => setCheckImage(index)}
+                                                />
+                                                {checkImage === index && (
+                                                    <CheckImage
+                                                        image={image}
+                                                        checkImage={checkImage}
+                                                        setCheckImage={setCheckImage}
+                                                    />
+                                                )}
+                                            </div>
                                         ))}
                                 </div>
 
