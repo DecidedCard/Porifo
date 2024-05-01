@@ -8,9 +8,15 @@ import { useState } from "react";
 
 const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const [checkImage, setCheckImage] = useState<number | null>(null);
+    const [projectIdx, setProjectIndex] = useState<number | null>(null);
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
     const userSkillTag = portfolio.skillTag as string[];
+
+    const onClickImageCheckHandler = (project: number, image: number) => {
+        setProjectIndex(project);
+        setCheckImage(image);
+    };
 
     return (
         <main>
@@ -44,9 +50,9 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                 </div>
 
                 <ol>
-                    {project.map((project, index) => (
+                    {project.map((project, projectIndex) => (
                         <li
-                            key={index}
+                            key={projectIndex}
                             className="flex flex-col items-start justify-start sm:items-center sm:justify-center"
                         >
                             <p className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
@@ -63,9 +69,9 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                                                     className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[110px] sm:mr-1"
                                                     width={800}
                                                     height={800}
-                                                    onClick={() => setCheckImage(index)}
+                                                    onClick={() => onClickImageCheckHandler(projectIndex, index)}
                                                 />
-                                                {checkImage === index && (
+                                                {projectIndex === projectIdx && checkImage === index && (
                                                     <CheckImage
                                                         image={image}
                                                         checkImage={checkImage}

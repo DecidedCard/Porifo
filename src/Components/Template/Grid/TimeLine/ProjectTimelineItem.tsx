@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import CheckImage from "../../CheckImage";
 
 interface TimelineItemProps {
     name: string;
@@ -8,9 +10,25 @@ interface TimelineItemProps {
     introduce: string;
     deployLink: string | undefined;
     githubLink: string;
+    index: number;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introduce, deployLink, githubLink }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({
+    name,
+    date,
+    images,
+    introduce,
+    deployLink,
+    githubLink,
+    index: projectIndex,
+}) => {
+    const [checkImage, setCheckImage] = useState<number | null>(null);
+    const [projectIdx, setProjectIndex] = useState<number | null>(null);
+
+    const onClickImageCheckHandler = (project: number, image: number) => {
+        setProjectIndex(project);
+        setCheckImage(image);
+    };
     return (
         <li className="mb-10 flex flex-col items-center justify-center sm:w-full">
             {/* {projectCount > 1 && (
@@ -21,14 +39,19 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ name, date, images, introdu
                 <div className="flex flex-row sm:w-full sm:items-center sm:justify-center">
                     {images &&
                         images.map((image, index) => (
-                            <Image
-                                key={index}
-                                src={image}
-                                alt="프로젝트"
-                                className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[100px]"
-                                width={800}
-                                height={800}
-                            />
+                            <div key={index}>
+                                <Image
+                                    src={image}
+                                    alt="프로젝트"
+                                    className="object-cover flex flex-row w-[263px] h-[198px] rounded-2xl mr-2 sm:w-[120px] sm:h-[100px]"
+                                    width={800}
+                                    height={800}
+                                    onClick={() => onClickImageCheckHandler(projectIndex, index)}
+                                />
+                                {projectIndex === projectIdx && checkImage === index && (
+                                    <CheckImage image={image} checkImage={checkImage} setCheckImage={setCheckImage} />
+                                )}
+                            </div>
                         ))}
                 </div>
 
