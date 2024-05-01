@@ -15,7 +15,7 @@ const MiddleRight = () => {
                         height={550}
                     />
                     <div className="flex flex-col gap-4 items-start justify-start">
-                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[20px]">
+                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[18px]">
                             짧은 시간을 투자해도 <br /> 그럴싸한 포트폴리오가 완성되더라고요
                         </div>
                         <div className="pr-2 pl-2 flex flex-row gap-2 items-center justify-center sm:flex-row">
@@ -31,7 +31,7 @@ const MiddleRight = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[16px] sm:font-medium">
+                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[14px] sm:font-medium">
                                     3년차 프론트엔드 개발자
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ const MiddleRight = () => {
                         height={550}
                     />
                     <div className="flex flex-col gap-4 items-start justify-start">
-                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[20px]">
+                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[18px]">
                             취업에 포트폴리오는 필수잖아요! <br /> 저는 포리포에서 만들었어요
                         </div>
                         <div className="pr-2 pl-2 flex flex-row gap-2 items-center justify-center sm:flex-row">
@@ -69,7 +69,7 @@ const MiddleRight = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[16px] sm:font-medium">
+                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[14px] sm:font-medium">
                                     주니어 벡엔드 개발자
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ const MiddleRight = () => {
                         height={550}
                     />
                     <div className="flex flex-col gap-4 items-start justify-start">
-                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[20px]">
+                        <div className="text-black font-medium text-[26px] leading-snug relative flex items-center justify-start sm:text-[18px]">
                             개발자 전용 포트폴리오 사이트라 <br /> 포트폴리오 구성이 깔끔해요
                         </div>
                         <div className="pr-2 pl-2 flex flex-row gap-2 items-center justify-center sm:flex-row">
@@ -107,7 +107,7 @@ const MiddleRight = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[16px] sm:font-medium">
+                                <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[14px] sm:font-medium">
                                     2년차 풀 스택 개발자
                                 </div>
                             </div>

@@ -10,6 +10,8 @@ const Cover = () => {
                 autoPlay // 페이지가 로드 될 때 재생
                 muted // 비디오 음소거
                 loop // 비디오가 재생이 끝나면 다시 재생
+                preload="auto"
+                playsInline
             >
                 <source src="/assets/video/mainVideo.mp4" type="video/mp4" />
             </video>
