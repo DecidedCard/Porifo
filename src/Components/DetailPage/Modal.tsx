@@ -51,7 +51,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
 
     return (
         <div
-            className="fixed inset-0 z-20 bg-realblack bg-opacity-25 backdrop-blur-xl flex items-center justify-center"
+            className="fixed inset-0 z-20 bg-realblack bg-opacity-[0.8] backdrop-blur-xl flex items-center justify-center"
             id="wrapper"
             onClick={handleClose}
         >
