@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="hidden sm:flex sm:justify-center sm:items-center sm:flex-col sm:w-full sm:text-gray3 sm:gap-3">
+            <div className="hidden sm:flex sm:justify-center sm:items-center sm:flex-col sm:w-full sm:text-gray3 sm:gap-3 sm:text-[12px]">
                 <Image
                     className="flex flex-col items-center justify-center overflow-visible sm:mb-4"
                     src="../porifo.svg"

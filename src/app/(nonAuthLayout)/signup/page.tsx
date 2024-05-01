@@ -103,10 +103,10 @@ const ConfirmEmailpage = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative">
-            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col">
+        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
+            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col sm:items-center sm:w-full sm:h-screen">
                 <div className="flex flex-col">
-                    <div className="flex justify-center items-center h-[86px] mb-5">
+                    <div className="flex justify-center items-center h-[86px] mb-5 sm:hidden">
                         <Image
                             className="w-[162px] h-[54px]"
                             width={0}
@@ -173,7 +173,7 @@ const ConfirmEmailpage = () => {
                         eyeClose="/assets/image/signImage/eye_close.svg"
                     />
 
-                    <div className="mx-auto my-4 w-[350px] h-fit flex flex-col">
+                    <div className="mx-auto my-4 w-[350px] h-fit flex flex-col sm:mt-5">
                         <label className="mb-2 flex text-sm font-medium">인증번호</label>
                         <div className="flex gap-4">
                             <div className="w-[220px]">
