@@ -63,8 +63,8 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                 selectedNav === "basicInfo" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
-                <div className="flex sm:flex sm:items-center sm:justify-center">
-                    <IoSettingsOutline className="mr-3" />
+                <div className="flex gap-4 sm:flex sm:items-center sm:justify-center">
+                    <IoSettingsOutline />
                     기본 정보
                     <span
                         className={`bg-red-400 ${
@@ -82,8 +82,8 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                 selectedNav === "introduce" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
-                <div className="flex sm:flex sm:items-center sm:justify-center">
-                    <AiOutlineMessage className="mr-3" />
+                <div className="flex gap-4 sm:flex sm:items-center sm:justify-center">
+                    <AiOutlineMessage />
                     소개
                     <span
                         className={`bg-red-400 ${
@@ -103,8 +103,8 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                 selectedNav === "project" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
             } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
-                <div className="flex sm:flex sm:items-center sm:justify-center">
-                    <TbPencilMinus className="mr-3" />
+                <div className="flex gap-4 sm:flex sm:items-center sm:justify-center">
+                    <TbPencilMinus />
                     프로젝트
                     <span
                         className={`bg-red-400 ${
@@ -120,8 +120,8 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                     selectedNav === "url" ? "bg-white text-black" : "bg-gray-100 text-gray-700"
                 } hover:bg-white hover:text-black sm:hover:bg-gray`}
             >
-                <div className="flex sm:flex sm:items-center sm:justify-center">
-                    <RiLinkM className="mr-3" />
+                <div className="flex gap-4 sm:flex sm:items-center sm:justify-center">
+                    <RiLinkM />
                     URL
                 </div>
             </button>
