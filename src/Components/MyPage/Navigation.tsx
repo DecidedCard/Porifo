@@ -71,7 +71,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                             !basicInfo.name || !basicInfo.profileImage || emailCheck || basicInfo.job === "default"
                                 ? "bg-opacity-80"
                                 : "bg-opacity-0"
-                        } ml-auto w-3 h-3 rounded-full ease-in-out duration-500`}
+                        } w-3 h-3 rounded-full ease-in-out duration-500`}
                     ></span>
                 </div>
             </button>
