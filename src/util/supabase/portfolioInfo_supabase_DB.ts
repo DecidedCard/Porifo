@@ -17,13 +17,15 @@ export const supabaseInsert = async (item: any) => {
 // 특정 값을 가져오거나 아니면 전체 값을 가져올 수 있도록 작성
 export const supabasePortfolioInfoRead = async (col: { id: string; value: string }) => {
     try {
-        const { data: portfolioInfo, error } = await supabase.from("portfolioInfo").select("*").eq(col.id, col.value);
-        if (error) {
-            console.error(error);
-            throw new Error(error.message);
-        }
-        return portfolioInfo;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/portfolio/myPage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: col.id, value: col.value }),
+        });
+        const res = await response.json();
+        return res.data;
     } catch (error) {
+        console.log(error);
         return Promise.reject(error);
     }
 };
