@@ -38,23 +38,14 @@ const UserInfo = () => {
                         프로필 사진<span className="ml-1 text-[10px] text-red-500">★</span>
                     </p>
                     <label htmlFor="profile" className="cursor-pointer">
-                        {basicInfo.profileImage ? (
+                        <div className="flex justify-center items-center ml-3 w-[200px] h-[200px] rounded-2xl overflow-hidden sm:w-[150px] sm:h-[150px]">
                             <Image
-                                src={basicInfo.profileImage}
+                                src={basicInfo.profileImage ? basicInfo.profileImage : "assets/image/mypagedefault.svg"}
                                 alt="프로필 사진"
                                 width={200}
-                                height={200}
-                                className="ml-3 w-[200px] h-[200px] rounded-2xl object-cover sm:w-[150px] sm:h-[150px]"
+                                height={0}
                             />
-                        ) : (
-                            <Image
-                                src="assets/image/mypagedefault.svg"
-                                alt="기본"
-                                width={200}
-                                height={200}
-                                className="ml-3 w-[200px] h-[200px] rounded-2xl sm:w-[150px] sm:h-[150px]"
-                            />
-                        )}
+                        </div>
                     </label>
                     <input
                         type="file"
