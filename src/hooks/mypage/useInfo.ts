@@ -56,53 +56,6 @@ const useInfo = () => {
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
 
     useEffect(() => {
-        const localStorageItem = JSON.parse(localStorage.getItem("portfolio")!) as PortfolioInfo;
-        if (localStorageItem) {
-            localStorageItemRef.current = localStorageItem;
-        }
-    }, []);
-
-    useEffect(() => {
-        if (localStorageItemRef.current && !portfolio) {
-            const project = localStorageItemRef.current.project as unknown as Project[];
-            const career = localStorageItemRef.current.career as Career[];
-
-            setPortfolio({ ...localStorageItemRef.current });
-            setInitialBasicInfo({ ...localStorageItemRef.current });
-            setProjectsInitial([...project]);
-            setInitialCareers([...career]);
-        }
-    }, [
-        localStorageItemRef,
-        portfolio,
-        setPortfolio,
-        user,
-        setInitialBasicInfo,
-        setProjectsInitial,
-        setInitialCareers,
-    ]);
-
-    useEffect(() => {
-        if (!localStorageItemRef.current && user && !portfolio) {
-            const birthDate = new Date(
-                user.user_metadata.birthDate.replace("년", "-").replace("월", "-").replace("일", ""),
-            );
-            const formatBirthDay = getFormattedDate(birthDate)
-                .replace(" ", "")
-                .replace(" ", "")
-                .replace(".", "-")
-                .replace(".", "-")
-                .replace(".", "");
-            setBirthday(formatBirthDay);
-            setName(user.user_metadata.name || user.user_metadata.user_name);
-            if (user.user_metadata.phoneNumber) {
-                setTel(user.user_metadata.phoneNumber);
-            }
-            setEmail(user.user_metadata.email);
-        }
-    }, [user, portfolio, setBirthday, setName, setTel, setEmail]);
-
-    useEffect(() => {
         const { imageFile, ...info } = basicInfo;
         if (portfolioInputFormValidation({ ...info, project: projects, career: careers })) {
             setDisabled(true);
