@@ -101,8 +101,11 @@ const SocialSeting = () => {
                     />
                     <SignSelectSex onClickSelectSex={onClickSelectSex} />
 
-                    <div onClick={checkRequiredPersonalInfoModal} className="mt-6 mx-9 flex gap-x-[113px]">
-                        <span className="flex">
+                    <div
+                        onClick={checkRequiredPersonalInfoModal}
+                        className="mt-6 mx-9 flex gap-x-[90px] w-full sm:w-full sm:mx-0 sm:justify-between"
+                    >
+                        <span className="flex sm:w-full">
                             <Image
                                 className="w-6 h-6 mr-1"
                                 src={personalInfoCheck ? "/assets/image/checkTrue.svg" : "/assets/image/checkFalse.svg"}
@@ -115,8 +118,8 @@ const SocialSeting = () => {
                             </span>
                         </span>
                         <Image
-                            width={0}
-                            height={0}
+                            width={20}
+                            height={20}
                             className="w-[20px] h-[20px]"
                             src="/assets/image/signImage/find_password_arrow.svg"
                             alt="페이지 이동 화살표"
