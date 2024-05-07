@@ -72,16 +72,13 @@ const Project = () => {
                                         <div className="flex flex-col gap-1 w-[460px] ml-3 text-[14px] sm:w-full sm:ml-0">
                                             <textarea
                                                 placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
-                                                maxLength={300}
                                                 value={item.introduce}
                                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                                     onChangeProjectIntroduce(e, projectsIndex)
                                                 }
                                                 className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-zinc-300 sm:w-full"
                                             />
-                                            <div className="ml-auto text-sm text-nonegray">
-                                                {item.introduce.length}/300
-                                            </div>
+                                            <div className="ml-auto text-sm text-nonegray">{item.introduce.length}</div>
                                         </div>
                                     </div>
 
