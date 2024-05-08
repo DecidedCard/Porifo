@@ -107,10 +107,10 @@ const Password_Change = () => {
                             />
 
                             <SignPasswordValidate
-                                lengthRegValid={passwordRegValid.lengthRegBoolean}
-                                numberRegValid={passwordRegValid.numberRegBoolean}
-                                wordRegValid={passwordRegValid.wordRegBoolean}
-                                specialRegValid={passwordRegValid.specialRegBoolean}
+                                lengthRegValid={confirmPasswordRegValid.lengthRegBoolean}
+                                numberRegValid={confirmPasswordRegValid.numberRegBoolean}
+                                wordRegValid={confirmPasswordRegValid.wordRegBoolean}
+                                specialRegValid={confirmPasswordRegValid.specialRegBoolean}
                             />
 
                             <SignButton
