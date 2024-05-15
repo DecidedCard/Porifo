@@ -47,11 +47,10 @@ const Education = () => {
                             </div>
                         </div>
                         <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
-                            <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">전공</label>
-                            <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-full sm:ml-0">
+                            <div className="flex flex-col gap-4 w-[460px] ml-auto mr-2 sm:w-full sm:ml-0">
                                 <Input
                                     type="text"
-                                    placeholder="학교를 입력해주세요."
+                                    placeholder="전공 및 학위"
                                     size="big"
                                     maxLength={100}
                                     value={education.class}
@@ -92,24 +91,6 @@ const Education = () => {
                                         />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start mt-1 sm:flex-col sm:w-full sm:gap-4">
-                            <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
-                                내용
-                            </label>
-                            <div className="flex flex-col gap-1 w-[460px] sm:w-full">
-                                <textarea
-                                    placeholder="구체적인 역할과 성과를 위주로 작성해 주세요."
-                                    maxLength={300}
-                                    value={education.comment}
-                                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                                        onChangeCommentHandler(e, educationIndex)
-                                    }
-                                    className="w-[460px] h-[140px] resize-none rounded-lg p-3 ml-3 text-[14px] border border-solid border-zinc-300 sm:w-full sm:ml-0"
-                                />
-                                <div className="ml-auto text-sm text-nonegray">{education.comment.length}/300</div>
                             </div>
                         </div>
                     </div>
