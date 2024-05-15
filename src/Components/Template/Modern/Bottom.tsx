@@ -152,7 +152,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             )}
             {education.length > 0 && education[0].school && (
                 <div className="flex flex-col items-start justify-start mt-12 sm:items-center sm:justify-center">
-                    <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
+                    <p className="font-medium text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">학력</p>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                     <ol>
                         {education.map((education, index) => (
