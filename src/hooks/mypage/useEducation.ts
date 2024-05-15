@@ -1,9 +1,10 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import useEducationStore from "@/store/educationStore";
 
 const useEducation = () => {
-    const { education, setSchool, setClass, setDate, setAddEducation, setMinusEducation } = useEducationStore();
+    const { education, setSchool, setClass, setDate, setComment, setAddEducation, setMinusEducation } =
+        useEducationStore();
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [attending, setAttending] = useState(false);
@@ -58,6 +59,10 @@ const useEducation = () => {
         }
     };
 
+    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>, index: number) => {
+        setComment(e.target.value, index);
+    };
+
     const onClickAddHandler = () => {
         setAddEducation();
     };
@@ -77,6 +82,7 @@ const useEducation = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeDateHandler,
+        onChangeCommentHandler,
         onClickAddHandler,
         onClickMinusHandler,
     };
