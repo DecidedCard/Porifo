@@ -11,6 +11,7 @@ import useEducation from "@/hooks/mypage/useEducation";
 const Education = () => {
     const {
         education,
+        attending,
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeDateHandler,
@@ -89,6 +90,15 @@ const Education = () => {
                                             }
                                         />
                                     </div>
+                                </div>
+                                <div className="flex gap-1 mt-2">
+                                    <input
+                                        type="checkBox"
+                                        name="attending"
+                                        checked={attending}
+                                        onChange={(e) => onChangeDateHandler(e, educationIndex)}
+                                    />
+                                    <p>재학 중</p>
                                 </div>
                             </div>
                         </div>
