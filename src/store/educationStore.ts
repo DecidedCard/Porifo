@@ -20,7 +20,7 @@ const initial: Education = {
     comment: "",
 };
 
-const useCareerStore = create<Store>()((set) => ({
+const useEducationStore = create<Store>()((set) => ({
     education: [initial],
     setSchool: (arg, index) =>
         set((item) => ({
@@ -75,4 +75,4 @@ const useCareerStore = create<Store>()((set) => ({
     setInitialEducation: (arg) => set({ education: [...arg] }),
 }));
 
-export default useCareerStore;
+export default useEducationStore;
