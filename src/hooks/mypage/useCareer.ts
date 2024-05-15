@@ -1,9 +1,12 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 import useCareerStore from "@/store/careerStore";
 const useCareer = () => {
     const { careers, setCompany, setDepartment, setPosition, setDate, setComment, setAddCareer, setMinusCareer } =
         useCareerStore();
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [attending, setAttending] = useState(false);
 
     const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setCompany(e.target.value, index);
@@ -21,14 +24,39 @@ const useCareer = () => {
         const { name, value } = e.target;
 
         if (name === "startDate") {
-            const startDate = name === "startDate" && value;
-            setDate(`${startDate} ~ ${careers[index].date.slice(10)}`, index);
+            if (!value) {
+                setDate("", index);
+                setAttending(false);
+                setStartDate("");
+                setEndDate("");
+                return;
+            }
+            setDate(`${value} ~ ${endDate}`, index);
+            setStartDate(value);
             return;
         }
 
         if (name === "endDate") {
-            const endDate = name === "endDate" && value;
-            setDate(`${careers[index].date.slice(0, 7)} ~ ${endDate}`, index);
+            if (!value) {
+                setDate("", index);
+                setAttending(false);
+                setStartDate("");
+                setEndDate("");
+                return;
+            }
+            setDate(`${startDate} ~ ${value}`, index);
+            setEndDate(value);
+            return;
+        }
+
+        if (name === "attending") {
+            if (attending) {
+                setDate(`${startDate} ~ `, index);
+                setAttending(false);
+                return;
+            }
+            setDate(`${startDate} ~ 재직 중`, index);
+            setAttending(true);
             return;
         }
     };
@@ -47,6 +75,12 @@ const useCareer = () => {
 
     return {
         careers,
+        startDate,
+        endDate,
+        attending,
+        setStartDate,
+        setEndDate,
+        setAttending,
         onChangeCompanyHandler,
         onChangeDepartmentHandler,
         onChangePositionHandler,

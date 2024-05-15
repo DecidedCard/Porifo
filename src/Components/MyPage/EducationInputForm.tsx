@@ -1,8 +1,12 @@
-import useEducation from "@/hooks/mypage/useEducation";
 import React, { ChangeEvent, useEffect } from "react";
-import { MdClose } from "react-icons/md";
+
 import Input from "../Commen/Input";
-import { Education } from "@/types/Education";
+
+import { MdClose } from "react-icons/md";
+
+import useEducation from "@/hooks/mypage/useEducation";
+
+import type { Education } from "@/types/Education";
 
 const EducationInputForm = ({ education, educationIndex }: { education: Education; educationIndex: number }) => {
     const {
@@ -32,7 +36,7 @@ const EducationInputForm = ({ education, educationIndex }: { education: Educatio
 
     return (
         <div>
-            <div key={educationIndex} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
                 <div className="w-fit cursor-pointer ml-auto" onClick={() => onClickMinusHandler(educationIndex)}>
                     <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                 </div>

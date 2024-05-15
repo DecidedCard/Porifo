@@ -23,9 +23,11 @@ const useEducation = () => {
             if (!value) {
                 setDate("", index);
                 setAttending(false);
+                setStartDate("");
+                setEndDate("");
                 return;
             }
-            setDate(`${value} ~ ${education[index].date.slice(10)}`, index);
+            setDate(`${value} ~ ${endDate}`, index);
             setStartDate(value);
             return;
         }
@@ -34,9 +36,11 @@ const useEducation = () => {
             if (!value) {
                 setDate("", index);
                 setAttending(false);
+                setStartDate("");
+                setEndDate("");
                 return;
             }
-            setDate(`${education[index].date.slice(0, 7)} ~ ${value}`, index);
+            setDate(`${startDate} ~ ${value}`, index);
             setAttending(false);
             setEndDate(value);
             return;
@@ -44,7 +48,7 @@ const useEducation = () => {
 
         if (name === "attending") {
             if (attending) {
-                setDate(`${education[index].date.slice(0, 7)} ~ `, index);
+                setDate(`${startDate} ~ `, index);
                 setAttending(false);
                 return;
             }
