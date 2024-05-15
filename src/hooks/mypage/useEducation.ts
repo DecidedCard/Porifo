@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 
 import useEducationStore from "@/store/educationStore";
-const useCareer = () => {
+const useEducation = () => {
     const { education, setSchool, setClass, setDate, setComment, setAddEducation, setMinusEducation } =
         useEducationStore();
 
@@ -52,4 +52,4 @@ const useCareer = () => {
     };
 };
 
-export default useCareer;
+export default useEducation;
