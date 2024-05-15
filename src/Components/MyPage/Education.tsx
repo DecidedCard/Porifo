@@ -14,7 +14,6 @@ const Education = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeDateHandler,
-        onChangeCommentHandler,
         onClickAddHandler,
         onClickMinusHandler,
     } = useEducation();
@@ -38,7 +37,7 @@ const Education = () => {
                                     type="text"
                                     placeholder="학교를 입력해주세요."
                                     size="big"
-                                    maxLength={100}
+                                    maxLength={50}
                                     value={education.school}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                         onChangeSchoolHandler(e, educationIndex)
@@ -52,7 +51,7 @@ const Education = () => {
                                     type="text"
                                     placeholder="전공 및 학위"
                                     size="big"
-                                    maxLength={100}
+                                    maxLength={50}
                                     value={education.class}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                         onChangeClassHandler(e, educationIndex)

@@ -3,14 +3,14 @@ import { ChangeEvent } from "react";
 import useEducationStore from "@/store/educationStore";
 
 const useEducation = () => {
-    const { education, setSchool, setClass, setDate, setComment, setAddEducation, setMinusEducation } =
-        useEducationStore();
+    const { education, setSchool, setClass, setDate, setAddEducation, setMinusEducation } = useEducationStore();
 
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         setSchool(e.target.value, index);
     };
 
     const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        console.log("작동중...");
         setClass(e.target.value, index);
     };
 
@@ -30,10 +30,6 @@ const useEducation = () => {
         }
     };
 
-    const onChangeCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>, index: number) => {
-        setComment(e.target.value, index);
-    };
-
     const onClickAddHandler = () => {
         setAddEducation();
     };
@@ -47,7 +43,6 @@ const useEducation = () => {
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeDateHandler,
-        onChangeCommentHandler,
         onClickAddHandler,
         onClickMinusHandler,
     };

@@ -7,7 +7,6 @@ type Store = {
     setSchool: (arg: string, index: number) => void;
     setClass: (arg: string, index: number) => void;
     setDate: (arg: string, index: number) => void;
-    setComment: (arg: string, index: number) => void;
     setAddEducation: () => void;
     setMinusEducation: (arg: number) => void;
     setInitialEducation: (arg: Education[]) => void;
@@ -17,7 +16,6 @@ const initial: Education = {
     school: "",
     class: "",
     date: "",
-    comment: "",
 };
 
 const useEducationStore = create<Store>()((set) => ({
@@ -39,7 +37,7 @@ const useEducationStore = create<Store>()((set) => ({
             education: [
                 ...item.education.map((education, educationIndex) => {
                     if (educationIndex === index) {
-                        return { ...education, department: arg };
+                        return { ...education, class: arg };
                     } else {
                         return { ...education };
                     }
@@ -58,18 +56,7 @@ const useEducationStore = create<Store>()((set) => ({
                 }),
             ],
         })),
-    setComment: (arg, index) =>
-        set((item) => ({
-            education: [
-                ...item.education.map((education, educationIndex) => {
-                    if (educationIndex === index) {
-                        return { ...education, comment: arg };
-                    } else {
-                        return { ...education };
-                    }
-                }),
-            ],
-        })),
+
     setAddEducation: () => set((item) => ({ education: [...item.education, initial] })),
     setMinusEducation: (arg) => set((item) => ({ education: [...item.education.filter((_, idx) => idx !== arg)] })),
     setInitialEducation: (arg) => set({ education: [...arg] }),
