@@ -92,8 +92,8 @@ const Password_Change = () => {
                             <SignPasswordValidate
                                 lengthRegValid={passwordRegValid.lengthRegBoolean}
                                 numberRegValid={passwordRegValid.numberRegBoolean}
-                                wordRegValid={passwordRegValid.specialRegBoolean}
-                                specialRegValid={passwordRegValid.wordRegBoolean}
+                                wordRegValid={passwordRegValid.wordRegBoolean}
+                                specialRegValid={passwordRegValid.specialRegBoolean}
                             />
                             <SignInputItem
                                 setLabel="비밀번호 확인"
@@ -109,8 +109,8 @@ const Password_Change = () => {
                             <SignPasswordValidate
                                 lengthRegValid={confirmPasswordRegValid.lengthRegBoolean}
                                 numberRegValid={confirmPasswordRegValid.numberRegBoolean}
-                                wordRegValid={confirmPasswordRegValid.specialRegBoolean}
-                                specialRegValid={confirmPasswordRegValid.wordRegBoolean}
+                                wordRegValid={confirmPasswordRegValid.wordRegBoolean}
+                                specialRegValid={confirmPasswordRegValid.specialRegBoolean}
                             />
 
                             <SignButton
