@@ -49,6 +49,13 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                     {education.class}
                                                 </p>
                                             )}
+                                            {education.comment && (
+                                                <div className="flex flex-col">
+                                                    <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
+                                                        {education.comment}
+                                                    </p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </li>

@@ -205,6 +205,11 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                                                     {education.class}
                                                 </p>
                                             )}
+                                            {education.comment && (
+                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
+                                                    • {education.comment}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                 </li>

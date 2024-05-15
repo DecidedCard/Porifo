@@ -175,6 +175,13 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         {education.class && (
                                             <p className="text-[14px] font-normal mb-2 text-gray4">{education.class}</p>
                                         )}
+                                        {education.comment && (
+                                            <div className="flex flex-col">
+                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
+                                                    • {education.comment}
+                                                </p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </li>
