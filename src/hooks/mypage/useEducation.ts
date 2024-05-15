@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 
 import useEducationStore from "@/store/educationStore";
+
 const useEducation = () => {
     const { education, setSchool, setClass, setDate, setComment, setAddEducation, setMinusEducation } =
         useEducationStore();
