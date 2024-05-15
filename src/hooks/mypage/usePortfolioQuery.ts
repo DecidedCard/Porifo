@@ -14,10 +14,13 @@ import { getFormattedDate } from "@/util/getformatDate";
 import type { Career } from "@/types/Career";
 import type { Project } from "@/types/Project";
 import type { PortfolioInfo } from "@/types/PortfolioInfo";
+import { Education } from "@/types/Education";
+import useEducationStore from "@/store/educationStore";
 
 const usePortfolioQuery = (id: string) => {
     const { user, setPortfolio, portfolio } = useUserStore();
     const { setInitialBasicInfo, setBirthday, setName, setTel, setEmail } = usePortfolioInfoStore();
+    const { setInitialEducation } = useEducationStore();
     const { setProjectsInitial } = useProjectsStore();
     const { setInitialCareers } = useCareerStore();
     const localStorageItemRef = useRef<PortfolioInfo | null>(null);
@@ -38,6 +41,9 @@ const usePortfolioQuery = (id: string) => {
             setInitialBasicInfo(portfolioData[0]);
 
             setPortfolio(portfolioData[0]);
+
+            const education = portfolioData[0].education as Education[];
+            setInitialEducation(education);
 
             const project = portfolioData[0].project as unknown as Project[];
             setProjectsInitial(project);
@@ -69,9 +75,11 @@ const usePortfolioQuery = (id: string) => {
         if (localStorageItemRef.current && !portfolio) {
             const project = localStorageItemRef.current.project as unknown as Project[];
             const career = localStorageItemRef.current.career as Career[];
+            const education = localStorageItemRef.current.education as Education[];
 
             setPortfolio({ ...localStorageItemRef.current });
             setInitialBasicInfo({ ...localStorageItemRef.current });
+            setInitialEducation({ ...education });
             setProjectsInitial([...project]);
             setInitialCareers([...career]);
         }
@@ -80,6 +88,7 @@ const usePortfolioQuery = (id: string) => {
         portfolio,
         setPortfolio,
         portfolioData,
+        setInitialEducation,
         setInitialCareers,
         setInitialBasicInfo,
         setProjectsInitial,
