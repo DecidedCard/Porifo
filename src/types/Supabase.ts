@@ -39,7 +39,7 @@ export type Database = {
                     blogLink: string | null;
                     career: Json | null;
                     created_at: string;
-                    Education: Json | null;
+                    education: Json | null;
                     email: string | null;
                     englishName: string | null;
                     githubLink: string | null;
@@ -64,7 +64,7 @@ export type Database = {
                     blogLink?: string | null;
                     career?: Json | null;
                     created_at?: string;
-                    Education?: Json | null;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
@@ -89,7 +89,7 @@ export type Database = {
                     blogLink?: string | null;
                     career?: Json | null;
                     created_at?: string;
-                    Education?: Json | null;
+                    education?: Json | null;
                     email?: string | null;
                     englishName?: string | null;
                     githubLink?: string | null;
