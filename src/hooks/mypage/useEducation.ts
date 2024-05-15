@@ -1,9 +1,11 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import useEducationStore from "@/store/educationStore";
 
 const useEducation = () => {
     const { education, setSchool, setClass, setDate, setAddEducation, setMinusEducation } = useEducationStore();
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
     const [attending, setAttending] = useState(false);
 
     const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -11,26 +13,32 @@ const useEducation = () => {
     };
 
     const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        console.log("작동중...");
         setClass(e.target.value, index);
     };
 
     const onChangeDateHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const { name, value } = e.target;
 
-        if (education[index].date.length < 7) {
-            setAttending(false);
-        }
-
         if (name === "startDate") {
-            const startDate = name === "startDate" && value;
-            setDate(`${startDate} ~ ${education[index].date.slice(10)}`, index);
+            if (!value) {
+                setDate("", index);
+                setAttending(false);
+                return;
+            }
+            setDate(`${value} ~ ${education[index].date.slice(10)}`, index);
+            setStartDate(value);
             return;
         }
 
         if (name === "endDate") {
-            const endDate = name === "endDate" && value;
-            setDate(`${education[index].date.slice(0, 7)} ~ ${endDate}`, index);
+            if (!value) {
+                setDate("", index);
+                setAttending(false);
+                return;
+            }
+            setDate(`${education[index].date.slice(0, 7)} ~ ${value}`, index);
+            setAttending(false);
+            setEndDate(value);
             return;
         }
 
@@ -56,7 +64,12 @@ const useEducation = () => {
 
     return {
         education,
+        startDate,
+        endDate,
         attending,
+        setStartDate,
+        setEndDate,
+        setAttending,
         onChangeSchoolHandler,
         onChangeClassHandler,
         onChangeDateHandler,
