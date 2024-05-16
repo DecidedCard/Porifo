@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Introduction from "@/Components/MyPage/Introduction";
 import Project from "@/Components/MyPage/Project";
@@ -8,14 +8,18 @@ import UserInfo from "@/Components/MyPage/UserInfo";
 import PortfolioUrl from "@/Components/MyPage/PortfolioUrl";
 import Navigation from "@/Components/MyPage/Navigation";
 import Buttons from "@/Components/Guest/Buttons";
+import Loading from "@/Components/Loading";
 
 import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
+
+import usePortfolioQuery from "@/hooks/mypage/usePortfolioQuery";
 
 const Guest = () => {
     const { setPortfolio } = useUserStore();
     const { setReset } = usePortfolioInfoStore();
     const [nav, setNav] = useState("basicInfo");
+    const { isLoading } = usePortfolioQuery("test");
     useEffect(() => {
         setPortfolio(null);
         setReset();
@@ -52,6 +56,14 @@ const Guest = () => {
             return;
         }
     };
+
+    if (isLoading) {
+        return (
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-hihigray">
+                <Loading />
+            </div>
+        );
+    }
 
     return (
         <>

@@ -40,6 +40,7 @@ const initial = {
     share: false,
     userId: "",
     career: [],
+    education: [],
     likes: [],
     likesCnt: 0,
     viewCnt: 0,

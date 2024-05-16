@@ -38,15 +38,15 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="mt-2 w-52 hidden sm:block sm:absolute sm:top-48 sm: left-[57%]">
+            <div className="mt-2 w-fit hidden sm:block sm:absolute sm:top-48 sm:left-[67%] ml-auto">
                 <button
                     onClick={onClickTemplateModalToggleHandler}
-                    className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                    className="flex justify-center items-center w-fit h-[26px] py-1 px-3 text-primary text-xs font-medium"
                 >
                     템플릿 선택하기
                 </button>
             </div>
-            <main className="relative flex flex-col items-center gap-5 ">
+            <main className="relative flex flex-col items-center gap-5">
                 <div className="pt-5 pl-3 pr-3 flex flex-col mt-20 items-center border-slate-800 bg-white rounded-2xl h-[280px] sm:hidden">
                     <div className="absolute right-[120%] w-20 flex flex-row">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />

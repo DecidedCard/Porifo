@@ -1,23 +1,20 @@
 import { ChangeEvent, useState } from "react";
 
-import useCareerStore from "@/store/careerStore";
-const useCareer = () => {
-    const { careers, setCompany, setDepartment, setPosition, setDate, setComment, setAddCareer, setMinusCareer } =
-        useCareerStore();
+import useEducationStore from "@/store/educationStore";
+
+const useEducation = () => {
+    const { education, setSchool, setClass, setDate, setComment, setAddEducation, setMinusEducation } =
+        useEducationStore();
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [attending, setAttending] = useState(false);
 
-    const onChangeCompanyHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        setCompany(e.target.value, index);
+    const onChangeSchoolHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setSchool(e.target.value, index);
     };
 
-    const onChangeDepartmentHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        setDepartment(e.target.value, index);
-    };
-
-    const onChangePositionHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-        setPosition(e.target.value, index);
+    const onChangeClassHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+        setClass(e.target.value, index);
     };
 
     const onChangeDateHandler = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -45,6 +42,7 @@ const useCareer = () => {
                 return;
             }
             setDate(`${startDate} ~ ${value}`, index);
+            setAttending(false);
             setEndDate(value);
             return;
         }
@@ -55,7 +53,7 @@ const useCareer = () => {
                 setAttending(false);
                 return;
             }
-            setDate(`${startDate} ~ 재직 중`, index);
+            setDate(`${education[index].date.slice(0, 7)} ~ 재학 중`, index);
             setAttending(true);
             return;
         }
@@ -66,24 +64,23 @@ const useCareer = () => {
     };
 
     const onClickAddHandler = () => {
-        setAddCareer();
+        setAddEducation();
     };
 
     const onClickMinusHandler = (arg: number) => {
-        setMinusCareer(arg);
+        setMinusEducation(arg);
     };
 
     return {
-        careers,
+        education,
         startDate,
         endDate,
         attending,
         setStartDate,
         setEndDate,
         setAttending,
-        onChangeCompanyHandler,
-        onChangeDepartmentHandler,
-        onChangePositionHandler,
+        onChangeSchoolHandler,
+        onChangeClassHandler,
         onChangeDateHandler,
         onChangeCommentHandler,
         onClickAddHandler,
@@ -91,4 +88,4 @@ const useCareer = () => {
     };
 };
 
-export default useCareer;
+export default useEducation;

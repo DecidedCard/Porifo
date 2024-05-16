@@ -10,6 +10,7 @@ import Input from "../Commen/Input";
 import useInfo from "@/hooks/mypage/useInfo";
 
 import { SELECT_LIST } from "@/util/select_list";
+import Education from "./Education";
 
 const UserInfo = () => {
     const {
@@ -147,6 +148,8 @@ const UserInfo = () => {
                         />
                     </div>
                 </div>
+                <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-full" />
+                <Education />
 
                 <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-full" />
 
