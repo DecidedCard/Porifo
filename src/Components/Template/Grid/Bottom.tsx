@@ -18,7 +18,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
             <section className="flex flex-col justify-center items-start gap-10 sm:items-center">
                 <UserProject project={project} />
                 <WorkExperience career={career} />
-                {education.length > 0 && education[0].school && (
+                {education && education.length > 0 && education[0].school && (
                     <div>
                         <h2 className="text-[22px] font-bold sm:text-[20px] sm:font-medium sm:w-[360px]">학력</h2>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[360px]"></div>
@@ -35,7 +35,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
                                                 {education.school}
                                             </h3>
-                                            {education.date.length > 10 && (
+                                            {education.date && education.date.length > 10 && (
                                                 <time className="mb-1 text-gray3 text-[12px] font-normal leading-none sm:w-[150px]">
                                                     {education.date}
                                                 </time>

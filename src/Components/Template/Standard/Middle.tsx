@@ -152,9 +152,11 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                                             <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
                                                 {experience.company}
                                             </h3>
-                                            <time className="text-gray4 text-[12px] font-normal leading-none sm:text-[10px]">
-                                                {experience.date}
-                                            </time>
+                                            {experience.date && experience.date.length > 10 && (
+                                                <time className="text-gray4 text-[12px] font-normal leading-none sm:text-[10px]">
+                                                    {experience.date}
+                                                </time>
+                                            )}
                                         </div>
 
                                         {/* 설명과 상세 정보를 포함하는 영역 */}
@@ -180,7 +182,7 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                     </div>
                 )}
 
-                {education.length > 0 && education[0].school && (
+                {education && education.length > 0 && education[0].school && (
                     <div className="flex flex-col items-start justify-start mt-12 sm:items-center sm:justify-center">
                         <p className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">학력</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
@@ -193,9 +195,11 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                                             <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
                                                 {education.school}
                                             </h3>
-                                            <time className="text-gray4 text-[12px] font-normal leading-none sm:text-[10px]">
-                                                {education.date}
-                                            </time>
+                                            {education.date && education.date.length > 10 && (
+                                                <time className="text-gray4 text-[12px] font-normal leading-none sm:text-[10px]">
+                                                    {education.date}
+                                                </time>
+                                            )}
                                         </div>
 
                                         {/* 설명과 상세 정보를 포함하는 영역 */}

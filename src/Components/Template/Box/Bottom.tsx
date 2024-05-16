@@ -125,7 +125,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
                                                 {experience.company}
                                             </h3>
-                                            {experience.date.length > 10 && (
+                                            {experience.date && experience.date.length > 10 && (
                                                 <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
                                                     {experience.date}
                                                 </time>
@@ -154,7 +154,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     </ol>
                 </div>
             )}
-            {education.length > 0 && education[0].school && (
+            {education && education.length > 0 && education[0].school && (
                 <div className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
                     <div className="sm:flex sm:justify-center sm:items-center">
                         <div className="bg-disabled w-[804px] h-[0.5px] mb-10 mt-10 sm:w-[370px]"></div>
@@ -173,7 +173,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                             <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
                                                 {education.school}
                                             </h3>
-                                            {education.date.length > 10 && (
+                                            {education.date && education.date.length > 10 && (
                                                 <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
                                                     {education.date}
                                                 </time>
