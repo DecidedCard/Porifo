@@ -46,7 +46,7 @@ const useInfo = () => {
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
 
-    const portfolioPreview = { ...basicInfo, project: projects, career: careers };
+    const portfolioPreview = { ...basicInfo, project: projects, career: careers, education };
 
     // 처음로딩시 작성한 포트폴리오가 있으면 가져온 데이터를 기반으로 초기화
 
