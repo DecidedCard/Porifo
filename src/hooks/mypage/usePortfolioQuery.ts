@@ -85,9 +85,15 @@ const usePortfolioQuery = (id: string) => {
 
             setPortfolio({ ...localStorageItemRef.current });
             setInitialBasicInfo({ ...localStorageItemRef.current });
-            setInitialEducation({ ...education });
-            setProjectsInitial([...project]);
-            setInitialCareers([...career]);
+            if (education) {
+                setInitialEducation({ ...education });
+            }
+            if (project) {
+                setProjectsInitial([...project]);
+            }
+            if (career) {
+                setInitialCareers([...career]);
+            }
         }
     }, [
         user,
