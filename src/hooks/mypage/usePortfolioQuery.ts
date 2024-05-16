@@ -43,13 +43,19 @@ const usePortfolioQuery = (id: string) => {
             setPortfolio(portfolioData[0]);
 
             const education = portfolioData[0].education as Education[];
-            setInitialEducation(education);
+            if (education) {
+                setInitialEducation(education);
+            }
 
             const project = portfolioData[0].project as unknown as Project[];
-            setProjectsInitial(project);
+            if (project) {
+                setProjectsInitial(project);
+            }
 
             const career = portfolioData[0].career as Career[];
-            setInitialCareers(career);
+            if (career) {
+                setInitialCareers(career);
+            }
         }
         if (user && !portfolio) {
             const birthDate = new Date(
