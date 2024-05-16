@@ -7,6 +7,7 @@ import useUserStore from "@/store/userStore";
 import usePortfolioInfoStore from "@/store/portfolioInfoStore";
 import useProjectsStore from "@/store/projectStore";
 import useCareerStore from "@/store/careerStore";
+import useEducationStore from "@/store/educationStore";
 
 import { supabaseInsert, supabasePortfolioUpdate } from "@/util/supabase/portfolioInfo_supabase_DB";
 import { imageUrl, storageInsert } from "@/util/supabase/supabase_storage";
@@ -15,11 +16,6 @@ import { QUERY_KEY } from "@/util/query_key";
 import { userUpdate } from "@/util/supabase/supabase_user";
 import { successNotify, warnNotify } from "@/util/toast";
 import { SKILL_TAG } from "@/util/skill_tag";
-import { getFormattedDate } from "@/util/getformatDate";
-
-import type { PortfolioInfo } from "@/types/PortfolioInfo";
-import type { Project } from "@/types/Project";
-import type { Career } from "@/types/Career";
 
 const useInfo = () => {
     const {
@@ -37,11 +33,11 @@ const useInfo = () => {
         setSkillTag,
         setBlog,
         setGithub,
-        setInitialBasicInfo,
     } = usePortfolioInfoStore();
-    const { user, portfolio, setPortfolio } = useUserStore();
-    const { projects, setProjectsInitial } = useProjectsStore();
-    const { careers, setInitialCareers } = useCareerStore();
+    const { user, portfolio } = useUserStore();
+    const { projects } = useProjectsStore();
+    const { education } = useEducationStore();
+    const { careers } = useCareerStore();
     const [skillTagInput, onChangeSkillTagInputHandler, setSkillTagInput] = useInput();
     const [skill_tag, setSkill_Tag] = useState<string[]>([]);
     const [disabled, setDisabled] = useState(true);
@@ -49,7 +45,6 @@ const useInfo = () => {
     const [emailCheck, setEmailCheck] = useState<{ color: string; helperText: string } | null>(null);
     const { mutate: insert } = useSetMutation(supabaseInsert, [QUERY_KEY.myPagePortfolio]);
     const { mutate: update } = useSetMutation(supabasePortfolioUpdate, [QUERY_KEY.myPagePortfolio]);
-    const localStorageItemRef = useRef<PortfolioInfo | null>(null);
 
     const portfolioPreview = { ...basicInfo, project: projects, career: careers };
 
@@ -227,18 +222,7 @@ const useInfo = () => {
             return projectInfo;
         });
 
-        let newPortfolio = { ...info, project, career: careers };
-
-        if (
-            careers.length === 0 ||
-            !careers[0].comment ||
-            !careers[0].company ||
-            !careers[0].date ||
-            !careers[0].department ||
-            !careers[0].position
-        ) {
-            newPortfolio = { ...newPortfolio, career: [] };
-        }
+        let newPortfolio = { ...info, project, education, career: careers };
 
         if (url) {
             await userUpdate({ profileImage: url });

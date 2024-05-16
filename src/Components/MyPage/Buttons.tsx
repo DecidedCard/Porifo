@@ -32,7 +32,10 @@ const Buttons = () => {
         onClickTemplateModalToggleHandler,
         onClickTemplateSelectHandler,
     } = useTemplateSelect();
-    const { targetRef, toPDF } = usePDF({ filename: "PORIFO_portfolio", page: { margin: 8 } });
+    const { targetRef, toPDF } = usePDF({
+        filename: "PORIFO_portfolio",
+        page: { margin: 8 },
+    });
 
     const [previewModal, setPreviewModal] = useState(false);
 
@@ -62,10 +65,10 @@ const Buttons = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="mt-2 w-52 hidden sm:block sm:absolute sm:top-48 sm: left-[57%]">
+            <div className="mt-2 w-fit hidden sm:block sm:absolute sm:top-48 sm: left-[67%]">
                 <button
                     onClick={onClickTemplateModalToggleHandler}
-                    className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                    className="flex justify-center items-center w-fit h-[26px] py-1 px-3 text-primary text-xs font-medium"
                 >
                     템플릿 선택하기
                 </button>

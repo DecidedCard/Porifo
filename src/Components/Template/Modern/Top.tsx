@@ -59,7 +59,7 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
                     </div>
                 </div>
                 <div className="flex justify-center items-center mr-[66px] w-[200px] h-[200px] overflow-hidden sm:w-[150px] sm:h-[150px] sm:ml-[66px]">
-                    <Image className="" src={userInfo.profileImage} alt="프로필 사진" width={200} height={200} />
+                    <Image src={userInfo.profileImage} alt="프로필 사진" width={200} height={200} />
                 </div>
             </div>
         </div>

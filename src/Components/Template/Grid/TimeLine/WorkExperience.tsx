@@ -6,7 +6,7 @@ import type { Career } from "@/types/Career";
 const WorkExperience = ({ career }: { career: Career[] }) => {
     return (
         <div className="flex flex-col items-start justify-start relative sm:items-center sm:justify-center">
-            {career.length > 0 && (
+            {career.length > 0 && career[0].company && (
                 <>
                     <h2 className="text-[22px] font-bold sm:text-[20px] sm:font-medium sm:w-[360px]">업무경력</h2>
                     <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[360px]"></div>

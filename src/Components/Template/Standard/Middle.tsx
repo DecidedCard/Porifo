@@ -1,16 +1,21 @@
-import { Career } from "@/types/Career";
-import { Project } from "@/types/Project";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import CheckImage from "../CheckImage";
-import { useState } from "react";
+
+import type { Education } from "@/types/Education";
+import type { Career } from "@/types/Career";
+import type { Project } from "@/types/Project";
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) => {
     const [checkImage, setCheckImage] = useState<number | null>(null);
     const [projectIdx, setProjectIndex] = useState<number | null>(null);
     const career = portfolio.career as Career[];
     const project = portfolio.project as Project[];
+    const education = portfolio.education as Education[];
     const userSkillTag = portfolio.skillTag as string[];
 
     const onClickImageCheckHandler = (project: number, image: number) => {
@@ -134,7 +139,7 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                     ))}
                 </ol>
 
-                {career.length > 0 && (
+                {career.length > 0 && career[0].company && (
                     <div className="flex flex-col items-start justify-start mt-12 sm:items-center sm:justify-center">
                         <p className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
                         <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
@@ -154,14 +159,57 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
 
                                         {/* 설명과 상세 정보를 포함하는 영역 */}
                                         <div className="flex flex-col w-[370px]">
-                                            <p className="text-[14px] font-normal mb-2 text-gray4">
-                                                {experience.department} / {experience.position}
-                                            </p>
-                                            <div className="flex flex-col">
-                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
-                                                    • {experience.comment}
+                                            {experience.department && experience.position && (
+                                                <p className="text-[14px] font-normal mb-2 text-gray4">
+                                                    {experience.department} / {experience.position}
                                                 </p>
+                                            )}
+
+                                            <div className="flex flex-col">
+                                                {experience.comment && (
+                                                    <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
+                                                        • {experience.comment}
+                                                    </p>
+                                                )}
                                             </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                )}
+
+                {education.length > 0 && education[0].school && (
+                    <div className="flex flex-col items-start justify-start mt-12 sm:items-center sm:justify-center">
+                        <p className="font-bold text-[22px] sm:w-[370px] sm:font-medium sm:text-[20px]">학력</p>
+                        <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
+                        <ol>
+                            {education.map((education, index) => (
+                                <li key={index} className="flex relative mb-5 sm:w-[370px]">
+                                    <div className="flex w-full flex-col">
+                                        {/* 제목과 날짜를 포함하는 영역 */}
+                                        <div className="flex justify-between w-[804px] sm:w-[370px]">
+                                            <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
+                                                {education.school}
+                                            </h3>
+                                            <time className="text-gray4 text-[12px] font-normal leading-none sm:text-[10px]">
+                                                {education.date}
+                                            </time>
+                                        </div>
+
+                                        {/* 설명과 상세 정보를 포함하는 영역 */}
+                                        <div className="flex flex-col w-[370px]">
+                                            {education.class && (
+                                                <p className="text-[14px] font-normal mb-2 text-gray4">
+                                                    {education.class}
+                                                </p>
+                                            )}
+                                            {education.comment && (
+                                                <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap sm:text-[14px]">
+                                                    • {education.comment}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                 </li>

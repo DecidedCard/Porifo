@@ -20,13 +20,13 @@
 
 ## 🖇️ 배포 링크
 
-porifo.vercel.app
+https://www.porifo.com/
 
 <br>
 
 ## ⏰ 개발 기간
 
-2024.03.26 ~ 04. 15 (MVP)
+2024.03.26 ~ 05. 01
 
 
 <br>

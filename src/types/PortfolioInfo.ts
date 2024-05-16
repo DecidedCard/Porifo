@@ -1,4 +1,5 @@
 import type { Career } from "./Career";
+import type { Education } from "./Education";
 import type { Project } from "./Project";
 import type { Json } from "./Supabase";
 
@@ -23,6 +24,7 @@ export interface PortfolioInfo {
     share: boolean | null;
     userId: string | null;
     career: Career[] | Json;
+    education: Education[] | Json;
     viewCnt: number | null;
     likes: string[] | null;
     likesCnt: number | null;
