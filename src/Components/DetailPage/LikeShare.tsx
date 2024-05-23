@@ -61,7 +61,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
 
                     {/* 공유하기 영역 */}
                     <button
-                        onClick={() => onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}/share/${id}`)}
+                        onClick={() => onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}share/${id}`)}
                         className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
                     >
                         <div className="flex items-center justify-center w-20 h-10">
@@ -92,7 +92,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                     </div>
                     <div className="flex gap-1">
                         <Image src="/assets/image/communityImage/grayComment.svg" alt="댓글수" width={24} height={24} />
-                        <span className="flex items-center justify-center"> {data!.length}</span>
+                        <span className="flex items-center justify-center">{data!.length}</span>
                     </div>
                 </div>
             </div>
