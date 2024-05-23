@@ -13,7 +13,7 @@ export const getDetailData = async (col: { id: string; value: number }) => {
             .eq("id", id);
         if (error) {
             console.error(error);
-            throw new Error("에러가 발생했습니다.");
+            throw new Error("조회수 에러 발생");
         }
 
         return portfolioInfo;
