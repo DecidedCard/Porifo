@@ -68,9 +68,11 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                         height={25}
                     />
                 </button>
-                <div className="h-[800px] overflow-hidden rounded-2xl">{children}</div>
+
+                <div className="h-[800px] overflow-y-scroll rounded-2xl">{children}</div>
+
                 {/* 오른쪽 UI */}
-                <div className="absolute -right-16 top-1 flex flex-col gap-[28px] sm:hidden">
+                <div className="absolute -right-16 top-1 flex flex-col gap-[28px] text-white sm:hidden">
                     {/* 좋아요 */}
                     <div className="flex flex-col items-center justify-center gap-2 ">
                         <button
