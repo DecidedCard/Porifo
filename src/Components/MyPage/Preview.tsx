@@ -41,21 +41,25 @@ const Preview = ({
 
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50 ">
-            <div
-                className="flex justify-center items-center text-[32px] text-gray3 absolute top-[9%] left-[22%] w-12 h-12 bg-gray2 rounded-full cursor-pointer"
-                onClick={() => setPreviewModal(false)}
-            >
-                <Image src="/assets/image/communityImage/carouselPrevArrow.svg" alt="아이콘" width={25} height={25} />
-            </div>
-            <div
-                ref={modalRef}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] overflow-y-auto rounded-2xl sm:w-full sm:h-full sm:rounded-none"
-            >
-                <div ref={targetRef} className="">
-                    {template === "Standard" && <Standard portfolio={portfolio} />}
-                    {template === "Grid" && <Grid portfolio={portfolio} />}
-                    {template === "Modern" && <Modern portfolio={portfolio} />}
-                    {template === "Box" && <Box portfolio={portfolio} />}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-[800px]">
+                <div
+                    className="absolute flex justify-center items-center w-12 h-12 z-10 rounded-full cursor-pointer"
+                    onClick={() => setPreviewModal(false)}
+                >
+                    <Image
+                        src="/assets/image/communityImage/carouselPrevArrow.svg"
+                        alt="아이콘"
+                        width={25}
+                        height={25}
+                    />
+                </div>
+                <div ref={modalRef} className=" overflow-y-auto rounded-2xl sm:w-full sm:h-full sm:rounded-none">
+                    <div ref={targetRef} className="">
+                        {template === "Standard" && <Standard portfolio={portfolio} />}
+                        {template === "Grid" && <Grid portfolio={portfolio} />}
+                        {template === "Modern" && <Modern portfolio={portfolio} />}
+                        {template === "Box" && <Box portfolio={portfolio} />}
+                    </div>
                 </div>
             </div>
         </div>

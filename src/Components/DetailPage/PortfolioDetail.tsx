@@ -52,7 +52,7 @@ const PortfolioDetail = () => {
 
     return (
         // 포트폴리오 영역
-        <div className="relative h-[900px] sm:h-[850px] sm:rounded-none w-full overflow-auto rounded-2xl  ">
+        <div className="relative h-[900px] sm:h-[850px] sm:rounded-none w-full overflow-auto rounded-2xl">
             <div className="flex flex-col">
                 {portfolioInfo.template === "Standard" && <Standard portfolio={portfolioInfo} />}
                 {portfolioInfo.template === "Grid" && <Grid portfolio={portfolioInfo} />}
