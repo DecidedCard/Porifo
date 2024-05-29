@@ -35,6 +35,18 @@ const TemplateSelect = ({
                 ref={modalRef}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10 overflow-auto w-[932px] bg-white rounded-2xl sm:mx-auto sm:h-fit sm:overflow-auto sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4"
             >
+                <div
+                    className="absolute flex justify-center items-center w-12 h-12 z-10 rounded-full cursor-pointer"
+                    onClick={() => setTemplateSelectModal(false)}
+                >
+                    <Image
+                        src="/assets/image/communityImage/carouselPrevArrow.svg"
+                        alt="아이콘"
+                        width={25}
+                        height={25}
+                    />
+                </div>
+
                 <h2 className="w-fit h-9 mx-auto text-2xl font-bold mt-10 text-[22px]">원하는 템플릿을 선택하세요.</h2>
                 <hr className="w-[852px] h-4 text-gray2 mx-auto sm:w-[90%]" />
                 <div className="flex flex-col gap-6 w-[852px] h-[549px] mx-auto sm:w-full">
