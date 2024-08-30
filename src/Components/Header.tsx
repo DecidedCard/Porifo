@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Commen/Button";
 import useUserStore from "@/store/userStore";
 import useMouseClickClose from "@/hooks/useMouseClickClose";
@@ -12,7 +12,7 @@ const Header = () => {
     const [activeMenu, setActiveMenu] = useState<string>("about");
     const [pathNameCheck, setPathNameCheck] = useState(true);
 
-    const { user, setUser } = useUserStore();
+    const { user } = useUserStore();
 
     const { modalRef } = useMouseClickClose(showMenu, setShowMenu);
 
@@ -35,8 +35,8 @@ const Header = () => {
     };
 
     return (
-        <main className="sticky top-0 z-10 sm:w-full sm:z-20">
-            <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
+        <main className="sticky top-[68px] z-10 sm:w-full sm:z-20">
+            <div className="bg-white bg-opacity-[56%] flex flex-row items-center justify-center h-[68px]">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
                     <Image
@@ -51,7 +51,7 @@ const Header = () => {
                 {/* Center Section: Navigation Links */}
                 {pathNameCheck && (
                     <>
-                        <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
+                        <div className="relative flex flex-row gap-[100px] items-center justify-center shrink-0 text-subhead/SH5 sm:hidden">
                             <Link
                                 className={`text-black text-center text-[16px] h-6 font-semibold relative
                         ${activeMenu === "about" ? "border-b-[1px] border-solid border-black" : ""}`}
@@ -71,7 +71,7 @@ const Header = () => {
                         </div>
                         {/* Right Section: Authentication Buttons */}
 
-                        <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
+                        <div className="absolute right-[100px] flex flex-row gap-2 items-center text-body/P6_M sm:right-5">
                             {user ? (
                                 <div ref={modalRef} className="flex flex-row gap-3">
                                     <div className="relative flex flex-row gap-5 sm:gap-2">
@@ -85,13 +85,13 @@ const Header = () => {
                                                 className="w-7 h-7 rounded-lg object-cover"
                                             />
                                         </button>
-                                        <p className="flex items-center justify-center text-[16px] text-black sm:text-sm">
+                                        <p className="flex items-center justify-center sm:text-sm">
                                             {user?.user_metadata.name || user.user_metadata.user_name}
                                         </p>
 
                                         {showMenu && (
                                             <div
-                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-gray2 bg-opacity-90 rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
+                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-gray2 bg-opacity-90 rounded-[16px] text-body/P8_R p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                             >
                                                 <div>
                                                     <Link
@@ -104,7 +104,7 @@ const Header = () => {
                                                             width={16}
                                                             height={18}
                                                         />
-                                                        <p className="text-[12px]">이력서 작성</p>
+                                                        <p>이력서 작성</p>
                                                     </Link>
                                                 </div>
 
@@ -119,7 +119,7 @@ const Header = () => {
                                                             width={18}
                                                             height={18}
                                                         />
-                                                        <p className="text-[12px]">피드/커뮤니티</p>
+                                                        <p>피드/커뮤니티</p>
                                                     </Link>
                                                 </div>
                                                 <form
@@ -134,9 +134,7 @@ const Header = () => {
                                                         height={15}
                                                     />
 
-                                                    <button className="text-[12px]" type="submit">
-                                                        로그아웃
-                                                    </button>
+                                                    <button type="submit">로그아웃</button>
                                                 </form>
                                             </div>
                                         )}
@@ -144,7 +142,7 @@ const Header = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    <div className="sm:hidden flex flex-row">
+                                    <div className="sm:hidden flex flex-row text-body/P8_M">
                                         <div>
                                             <Link href="/signin">
                                                 <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
