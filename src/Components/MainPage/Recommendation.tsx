@@ -2,11 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
+
 import { useQuery } from "@tanstack/react-query";
+
+import Loading from "../Loading";
+
 import { QUERY_KEY } from "@/util/query_key";
 import { getHotDevelopers } from "@/util/supabase/community_filter_DB";
-import Loading from "../Loading";
-import { PortfolioInfo } from "@/types/PortfolioInfo";
+
+import type { PortfolioInfo } from "@/types/PortfolioInfo";
 
 const Recommendation = () => {
     const { isPending, data } = useQuery({
