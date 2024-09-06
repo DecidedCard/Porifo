@@ -91,7 +91,7 @@ const config: Config = {
                     1: "#FAFAFA",
                     2: "#F1F1F1",
                     3: "#DBDBDB",
-                    4: "#DBDBDB",
+                    4: "#9A9A9A",
                     5: "#565656",
                 },
                 background: {
