@@ -8,10 +8,9 @@ interface ButtonProps {
     border?: boolean;
     color?: "black" | "gray3" | "primary" | "secondary" | "gray2";
     disabled?: boolean;
-    className?: string;
 }
 
-const Button = ({ text, onClick, onTypeClick, size, border, color, disabled, className }: ButtonProps) => {
+const Button = ({ text, onClick, onTypeClick, size, border, color, disabled }: ButtonProps) => {
     const height =
         (size === "sm" && "h-[22px]") ||
         (size === "md" && "h-9") ||
@@ -30,7 +29,7 @@ const Button = ({ text, onClick, onTypeClick, size, border, color, disabled, cla
         (color === "primary" && "bg-primary-1 text-white") ||
         (color === "secondary" && "bg-secondary-1 text-white");
 
-    const buttonClass = `flex items-center justify-center px-3 rounded-lg w-full ${height} ${col} ${className}`;
+    const buttonClass = `flex items-center justify-center px-3 rounded-lg w-full ${height} ${col}`;
 
     return (
         <button onClick={onClick ? onClick : onTypeClick} className={buttonClass} disabled={disabled}>
