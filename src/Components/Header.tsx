@@ -141,22 +141,16 @@ const Header = () => {
                             </div>
                         ) : (
                             <div>
-                                <div className="sm:hidden flex flex-row text-body/P8_M">
+                                <div className="sm:hidden flex flex-row gap-2 text-body/P8_M">
                                     <div>
                                         <Link href="/signin">
-                                            <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
+                                            <Button text="로그인" size="md" color="primary" border />
                                         </Link>
                                     </div>
 
                                     <div>
                                         <Link href="/signupMethod">
-                                            <Button
-                                                text="회원가입"
-                                                size="s"
-                                                color="primary"
-                                                border="none"
-                                                fontSize="xs sm:s"
-                                            />
+                                            <Button text="회원가입" size="md" color="primary" />
                                         </Link>
                                     </div>
                                 </div>
@@ -178,24 +172,13 @@ const Header = () => {
                                             >
                                                 <div>
                                                     <Link href="/signin">
-                                                        <Button
-                                                            text="로그인"
-                                                            size="s"
-                                                            color="primarynone"
-                                                            fontSize="m"
-                                                        />
+                                                        <Button text="로그인" size="md" color="primary" border />
                                                     </Link>
                                                 </div>
 
                                                 <div>
                                                     <Link href="/signupMethod">
-                                                        <Button
-                                                            text="회원가입"
-                                                            size="s"
-                                                            color="primary"
-                                                            border="none"
-                                                            fontSize="m"
-                                                        />
+                                                        <Button text="회원가입" size="md" color="primary" />
                                                     </Link>
                                                 </div>
                                                 <Link
