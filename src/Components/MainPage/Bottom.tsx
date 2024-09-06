@@ -15,10 +15,10 @@ const Bottom = () => {
                 />
                 <div className="flex flex-col items-start justify-start gap-2 p-6">
                     <div className="flex flex-col items-start justify-start gap-2 mr-[590px] sm:mr-0">
-                        <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
+                        <p className="flex items-start justify-start left-[320px] text-body/P5_M text-secondary-1 sm:text-[16px]">
                             포토샵을 몰라도
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
+                        <p className="flex items-center justify-start text-headline/H6_B sm:text-[18px]">
                             디자인 경험이 없어도
                             <br />
                             감각적인 포트폴리오 사이트가 만들어져요
@@ -37,10 +37,10 @@ const Bottom = () => {
                 />
                 <div className="flex flex-col items-start justify-start p-6 mr-48 gap-2 sm:mr-0">
                     <div className="flex flex-col items-start justify-start gap-2">
-                        <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
+                        <p className="flex items-start justify-start left-[320px] text-body/P5_M text-secondary-1 sm:text-[16px]">
                             나의 포트폴리오를 공유하고
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
+                        <p className="flex items-center justify-start text-headline/H6_B sm:text-[18px]">
                             다른 동료 개발자들과의 커뮤니티를 통해
                             <br />
                             나의 포트폴리오에 피드백을 받을 수 있어요
@@ -59,25 +59,18 @@ const Bottom = () => {
                 />
                 <div className="flex flex-col items-start justify-start p-6 mr-20 gap-2 sm:mr-0">
                     <div className="flex flex-col items-start justify-start gap-2">
-                        <p className="flex items-start justify-start text-secondary text-[20px] font-spoqaBold font-medium leading-normal left-[320px] sm:text-[16px]">
+                        <p className="flex items-start justify-start left-[320px] text-body/P5_M text-secondary-1 sm:text-[16px]">
                             나의 포트폴리오를 공유하고
                         </p>
-                        <p className="flex items-center justify-start text-[26px] font-spoqaBold font-bold leading-normal sm:text-[18px]">
+                        <p className="flex items-center justify-start text-headline/H6_B sm:text-[18px]">
                             디자인 경험이 없어도
                             <br />
                             감각적인 포트폴리오 사이트가 만들어져요
                         </p>
                     </div>
                 </div>
-                <Link href={"/community"} className="flex items-start justify-start ml-5 mb-44 w-[240px] sm:w-[300px] sm:h-[58px] sm:mb-10 sm:items-center sm:justify-center sm:ml-0">
-                    <Button
-                        text="더 많은 피드를 커뮤니티에서 보기"
-                        color="primary"
-                        border="none"
-                        size="m"
-                        fontSize="s"
-                        className="sm:w-[400px] sm:h-[48px] sm:text-[14px] sm:font-medium"
-                    />
+                <Link href={"/community"} className="px-7 text-body/P6_M">
+                    <Button text="더 많은 포트폴리오 보기" color="primary" size="extra" />
                 </Link>
             </div>
         </main>
