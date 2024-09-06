@@ -1,5 +1,6 @@
 import Link from "next/link";
 import useUserStore from "@/store/userStore";
+import Button from "../Commen/Button";
 
 const Cover = () => {
     const { user } = useUserStore();
@@ -23,11 +24,8 @@ const Cover = () => {
                 </p>
                 <div className="pt-[85px] flex flex-col gap-2 items-center justify-center sm:pt-5">
                     <div className="flex flex-col items-center justify-center w-[350px]">
-                        <Link
-                            href={user ? "/mypage" : "/guest"}
-                            className="flex items-center px-3 h-[58px] bg-primary-1 rounded-lg text-body/P6_M text-white"
-                        >
-                            바로 포트폴리오 작성하기
+                        <Link href={user ? "/mypage" : "/guest"} className="text-body/P6_M">
+                            <Button text="바로 포트폴리오 작성하기" color="primary" size="extra" />
                         </Link>
                     </div>
                 </div>
