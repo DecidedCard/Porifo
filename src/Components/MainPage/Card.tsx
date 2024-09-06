@@ -36,12 +36,14 @@ const Card = ({ image1, image2, stack, text1, text2 }: Props) => {
                                 />
                             </div>
                         </div>
-                        <div className="ml-1 text-black font-medium text-[20px] leading-tight flex items-center justify-start sm:text-[14px] sm:font-medium">
+                        <div className="ml-1 flex items-center justify-start text-subhead/SH4 sm:text-[14px] sm:font-medium">
                             {text2}
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-start text-gray3 sm:text-[10px]">{stack}</div>
+                    <div className="flex items-center justify-start text-body/P6_M text-gray-3 sm:text-[10px]">
+                        {stack}
+                    </div>
                 </div>
             </div>
         </div>
