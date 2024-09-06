@@ -61,17 +61,17 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                             {/* 제목과 날짜를 포함하는 영역 */}
                             <div className="flex w-full flex-col sm:items-center sm:justify-center sm:mt-2">
                                 <div className="flex justify-between w-[804px] mt-2 sm:w-[370px]">
-                                    <h3 className="text-[24px] font-medium mb-3 sm:text-[16px] sm:w-[299px]">
+                                    <h3 className="text-[22px] font-medium mb-3 sm:text-[16px] sm:w-[299px]">
                                         {project.name}
                                     </h3>
-                                    <time className="text-gray3 text-[16px] leading-none sm:text-[10px]">
+                                    <time className="text-gray3 text-[14px] leading-none sm:text-[10px]">
                                         {project.date}
                                     </time>
                                 </div>
 
                                 {/* 설명과 상세 정보를 포함하는 영역 */}
                                 <div className="flex flex-col mt-5 sm:items-center sm:justify-center">
-                                    <p className="text-[18px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[370px]">
+                                    <p className="text-[16px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[370px]">
                                         {project.introduce}
                                     </p>
                                     {project.githubLink && (
@@ -84,7 +84,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 className="mr-1"
                                             />
                                             <Link href={project.githubLink}>
-                                                <p className="text-[16px]">{project.githubLink}</p>
+                                                <p className="text-[14px]">{project.githubLink}</p>
                                             </Link>
                                         </div>
                                     )}
@@ -99,7 +99,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 className="mr-1"
                                             />
                                             <Link href={project.deployLink}>
-                                                <p className="text-[16px]">{project.deployLink}</p>
+                                                <p className="text-[14px]">{project.deployLink}</p>
                                             </Link>
                                         </div>
                                     )}
