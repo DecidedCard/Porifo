@@ -44,7 +44,9 @@ export default function Home() {
                 <div className="mt-20 sm:w-full">
                     <Bottom />
                 </div>
-                <Footer />
+                <div className="mt-28">
+                    <Footer />
+                </div>
             </div>
         </main>
     );
