@@ -100,11 +100,10 @@ const SignButton = ({
         <div className="w-[350px] mt-6 mb-6 mx-auto">
             <Button
                 text={text}
-                border="none"
-                size="m"
+                size="extra"
                 onClick={onClick}
                 onTypeClick={onTypeClick}
-                color={inputDisabled ? "primary" : ""}
+                color={inputDisabled ? "primary" : "gray2"}
                 disabled={!inputDisabled}
             />
         </div>

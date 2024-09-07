@@ -46,7 +46,7 @@ const SignInputNonStarItem = ({
 
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2 flex text-sm font-medium">{setLabel}</label>
+            <label className="mb-2 flex text-body/P6_R font-medium">{setLabel}</label>
             <Input
                 type={type || showPassword.type}
                 value={value}
@@ -61,7 +61,7 @@ const SignInputNonStarItem = ({
             />
             {eyeClose ? (
                 <div
-                    className="absolute top-9 right-0 flex items-center pr-2 mt-2 text-[22px] cursor-pointer"
+                    className="absolute top-9 right-0 flex items-center pr-2 mt-2 text-body/P6_R cursor-pointer"
                     onClick={handlePasswordVisible}
                 >
                     {showPassword.visible ? (
