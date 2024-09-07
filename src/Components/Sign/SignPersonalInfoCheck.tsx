@@ -34,18 +34,12 @@ const SignPersonalInfoCheck = ({ setPersonalInfoModal, setPersonalInfoCheck }: P
                         □ 개인정보의 보관 및 이용 기간 - 귀하의 개인정보를 다음과 같이 보관하며, 수집, 이용 및
                         제공목적이 달성된 경우 [개인정보 보호법] 제21조에 따라 처리합니다.
                     </p>
-                    <div className="flex h-fit justify-items-end gap-2 relative">
+                    <div className="flex h-fit justify-items-end gap-2 relative text-body/P6_M">
                         <div className="w-72 h-fit mt-6 mb-6 mx-auto sm:w-40">
-                            <Button border="none" size="m" text="취소하기" onClick={disagreePersonalInfo} />
+                            <Button size="extra" color="gray3" text="취소" onClick={disagreePersonalInfo} />
                         </div>
                         <div className="w-72 mt-6 mb-6 mx-auto sm:w-40">
-                            <Button
-                                border="none"
-                                size="m"
-                                color="primary"
-                                text="동의하기"
-                                onClick={agreePersonalInfo}
-                            />
+                            <Button size="extra" color="primary" text="동의하기" onClick={agreePersonalInfo} />
                         </div>
                     </div>
                 </div>
