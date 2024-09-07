@@ -10,8 +10,8 @@ const SignRouterButton = () => {
     const emailSignUp = () => router.push("/signup");
 
     return (
-        <div className="w-fit mt-8 mb-6 mx-auto sm:w-[340px]">
-            <Button onClick={emailSignUp} text="이메일로 회원가입" size="m" />
+        <div className="w-full mt-8 mb-6 mx-auto text-body/P6_M text-gray-4 sm:w-[340px]">
+            <Button onClick={emailSignUp} text="이메일로 회원가입" size="extra" color="gray3" border />
         </div>
     );
 };
