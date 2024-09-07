@@ -56,29 +56,23 @@ const HeaderNonAuth = () => {
                 {/* Right Section: Authentication Buttons */}
 
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
-                    <div className="sm:hidden flex flex-row">
+                    <div className="sm:hidden flex gap-2">
                         <div>
-                            <Link href="/signin">
-                                <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
+                            <Link href="/signin" className="w-[70px]">
+                                <Button text="로그인" size="md" color="primary" border />
                             </Link>
                         </div>
 
                         <div>
-                            <Link href="/signupMethod">
-                                <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
+                            <Link href="/signupMethod" className="w-[70px]">
+                                <Button text="회원가입" size="md" color="primary" />
                             </Link>
                         </div>
                     </div>
 
                     <div className="hidden sm:flex" ref={modalRef}>
                         <button>
-                            <Image
-                                src="assets/image/menu.svg"
-                                alt="menu"
-                                width={24}
-                                height={24}
-                                onClick={toggleMenu}
-                            />
+                            <Image src="assets/image/menu.svg" alt="menu" width={24} height={24} onClick={toggleMenu} />
                         </button>
                         {showMenu && (
                             <div>
@@ -87,20 +81,19 @@ const HeaderNonAuth = () => {
                                 >
                                     <div>
                                         <Link href="/signin">
-                                            <Button text="로그인" size="s" color="primarynone" fontSize="m" />
+                                            <Button text="로그인" size="md" color="primary" border />
                                         </Link>
                                     </div>
 
                                     <div>
                                         <Link href="/signupMethod">
-                                            <Button text="회원가입" size="s" color="primary" border="none" fontSize="m" />
+                                            <Button text="회원가입" size="md" color="primary" />
                                         </Link>
                                     </div>
                                 </div>
                             </div>
                         )}
                     </div>
-
                 </div>
             </div>
         </main>
