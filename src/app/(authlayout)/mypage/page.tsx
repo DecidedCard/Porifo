@@ -54,7 +54,7 @@ const MyPage = () => {
 
     if (isLoading) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-gray_1">
                 <Loading />
             </div>
         );
@@ -62,7 +62,7 @@ const MyPage = () => {
 
     return (
         <>
-            <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
+            <div className="flex justify-center bg-gray_1 max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
                 <Navigation setNav={setNav} />
                 <div className="w-[800px] min-h-[750px] sm:w-full">
                     {nav === "basicInfo" && <UserInfo />}
