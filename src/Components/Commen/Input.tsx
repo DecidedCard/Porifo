@@ -26,13 +26,13 @@ const Input = ({
     const height = size === "big" ? "h-14" : "h-9";
 
     const borderColor =
-        (color === "black" && "zinc-500") ||
-        (color === "gray2" && "gray2") ||
+        (color === "black" && "gray_5") ||
+        (color === "gray2" && "gray_2") ||
         (color === "success" && "success") ||
-        (color === "error" && "red-400") ||
-        (!color && "zinc-300");
+        (color === "error" && "alert") ||
+        (!color && "gray_3");
 
-    const helperTextColor = color === "error" ? "text-red-400" : "text-zinc-300";
+    const helperTextColor = color === "error" ? "alert" : "gray_4";
 
     return (
         <div className="h-[50px]">

@@ -39,11 +39,12 @@ const CareerInputForm = ({ career, careerIndex }: { career: Career; careerIndex:
     return (
         <div>
             <div className="flex flex-col gap-4">
+                {/* 추후 수정 */}
                 <div className="w-fit cursor-pointer ml-auto" onClick={() => onClickMinusHandler(careerIndex)}>
                     <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                 </div>
                 <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">회사이름</label>
+                    <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">회사이름</label>
                     <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-full sm:ml-0">
                         <Input
                             type="text"
@@ -83,7 +84,7 @@ const CareerInputForm = ({ career, careerIndex }: { career: Career; careerIndex:
                 </div>
 
                 <div className="flex mt-1 sm:flex-col sm:w-full">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기간</label>
+                    <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">기간</label>
                     <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                         <div className="flex justify-between sm:gap-2">
                             <div className="w-[224px] sm:w-[49%]">
@@ -121,7 +122,7 @@ const CareerInputForm = ({ career, careerIndex }: { career: Career; careerIndex:
                 </div>
 
                 <div className="flex items-start mt-1 sm:flex-col sm:w-full sm:gap-4">
-                    <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
+                    <label className="relative w-[177px] flex items-center justify-start mt-2 text-gray_5 text-P6_M">
                         내용
                     </label>
                     <div className="flex flex-col gap-1 w-[460px] sm:w-full">

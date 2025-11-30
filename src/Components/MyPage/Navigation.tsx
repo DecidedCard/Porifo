@@ -75,6 +75,7 @@ const Navigation = ({ setNav }: { setNav: React.Dispatch<React.SetStateAction<st
                     <div className="flex gap-4 sm:flex sm:items-center sm:justify-center">
                         {i.icon}
                         {i.text}
+                        {/* 추후 추가 작업 */}
                         <span
                             className={`bg-red-400 ${
                                 !basicInfo.name || !basicInfo.profileImage || emailCheck || basicInfo.job === "default"
