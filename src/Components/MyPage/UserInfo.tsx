@@ -26,7 +26,7 @@ const UserInfo = () => {
     } = useInfo();
 
     return (
-        <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] p-6 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+        <main className="flex justify-center bg-white rounded-2xl mt-20 mb-[200px] ml-[75px] w-[705px] p-6 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
             <div className="flex flex-col gap-4 sm:w-full">
                 <h1 className="flex items-center w-[574px] h-[46px] text-H5_B">기본 정보</h1>
                 <hr className="w-[657px] mx-auto my-1 border border-gray_2 sm:w-full" />

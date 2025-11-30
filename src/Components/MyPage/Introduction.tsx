@@ -27,14 +27,14 @@ const Introduction = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[673px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 mb-[200px] ml-[75px] w-[705px] min-h-[673px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
                 <div className="flex flex-col gap-4 sm:w-full">
-                    <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full">
-                        소개
-                    </h2>
-                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
+                    <h2 className="flex items-center w-[657px] h-[46px] mt-4 text-black text-H5_B sm:w-full">소개</h2>
+
+                    <hr className="w-full mx-auto my-1 border border-gray_2" />
+
                     <div className="flex h-[82px] sm:flex-col sm:gap-4 sm:w-full">
-                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                             한 줄 소개<span className="ml-1 text-[10px] text-red-500">★</span>
                         </label>
                         <div className="flex flex-col gap-1 w-[460px] sm:w-full">
@@ -54,22 +54,22 @@ const Introduction = () => {
                         </div>
                     </div>
 
-                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
+                    <hr className="w-full mx-auto my-1 border border-gray_2" />
 
                     <div className="flex sm:flex-col sm:w-full">
-                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        <label className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                             자기소개<span className="ml-1 text-[10px] text-red-500">★</span>
                         </label>
                         <div className="flex flex-col gap-1 w-[460px] sm:w-full">
                             <textarea
-                                maxLength={800}
-                                className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-zinc-300 rounded-lg sm:w-full sm:ml-0"
+                                maxLength={2000}
+                                className="h-[334px] w-[460px] text-[14px] resize-none py-4 px-3 ml-3 border border-solid border-gray_3 rounded-lg sm:w-full sm:ml-0"
                                 placeholder="직무 경험과 핵심 역량 등을 구체적으로 작성해 주세요"
                                 value={basicInfo.introduce!}
                                 onChange={onChangeIntroduceHandler}
                             />
-                            <div className="ml-auto text-sm text-nonegray">
-                                {basicInfo.introduce?.length || "0"}/800
+                            <div className="ml-auto text-P7_R text-gray_4">
+                                {basicInfo.introduce?.length || "0"}/2000
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ const Introduction = () => {
                     <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-full" />
 
                     <div className="flex gap-3 h-36 sm:w-full sm:flex-col sm:gap-4">
-                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                        <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                             기술 스택<span className="ml-1 text-[10px] text-red-500">★</span>
                         </label>
                         <div className="group relative flex flex-col gap-2 w-[460px] sm:w-full">
@@ -99,7 +99,7 @@ const Introduction = () => {
                                     return (
                                         <div key={idx}>
                                             <div
-                                                className="py-[2px] px-3 h-[18px] text-[10px] font-medium border border-solid border-nonegray rounded cursor-pointer"
+                                                className="py-[2px] px-3 h-[18px] text-P9_M border border-solid border-gray_4 rounded cursor-pointer"
                                                 onClick={() => onClickSkillTagHandler(item)}
                                             >
                                                 {item}
@@ -114,7 +114,7 @@ const Introduction = () => {
                                         return (
                                             <div
                                                 key={idx}
-                                                className="flex gap-2 py-[2px] px-3 w-fit h-[18px] text-[10px] font-medium border border-solid border-primary rounded"
+                                                className="flex gap-2 py-[2px] px-3 w-fit h-[18px] text-P9_M border border-solid border-primary rounded"
                                             >
                                                 {item}
                                                 <p
