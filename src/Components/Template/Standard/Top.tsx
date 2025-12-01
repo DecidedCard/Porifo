@@ -20,22 +20,22 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
                     </div>
 
                     <div className="flex flex-col gap-5 items-center justify-center w-80 min-w-[320px] max-w-xs">
-                        <h1 className="leading-normal text-[30px] mt-5 font-bold flex items-center justify-start sm:text-[22px] sm:w-[360px] sm:justify-center">
+                        <h1 className="mt-5 flex items-center justify-start text-H5_B sm:text-[22px] sm:w-[360px] sm:justify-center">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-[22px] font-medium flex items-center justify-center sm:text-[16px]">
+                                <h2 className="flex items-center justify-center text-H7_B sm:text-[16px]">
                                     {userInfo.name}
                                 </h2>
-                                <div className="bg-deepgray w-[60px] h-[1px] my-3 sm:w-[54px]"></div>
-                                <p className="text-[14px] flex items-center justify-center font-medium sm:text-[12px]">
+                                <div className="bg-gray_3 w-[60px] h-[1px] my-3 sm:w-[54px]"></div>
+                                <p className="flex items-center justify-center text-P7_M sm:text-[12px]">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-row items-center justify-center sm:text-[12px]">
+                            <address className="flex flex-row items-center justify-center text-gray_5 text-P7_R sm:text-[12px]">
                                 <div className="flex flex-row items-center justify-start sm:justify-center">
                                     {userInfo.tel && (
                                         <p className="flex items-center justify-center w-[200px] sm:w-[150px]">
