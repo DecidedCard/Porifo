@@ -25,11 +25,11 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     const height = (!size && "h-6") || (size === "s" && "h-9") || (size === "m" && "h-12") || (size === "l" && "h-14");
     const fontsize =
-        (!fontSize && "text-base") ||
-        (fontSize === "xs" && "text-xs sm:text-[6px]") ||
-        (fontSize === "s" && "text-sm sm:text-[10px]") ||
-        (fontSize === "m" && "text-base sm:text-[12px]") ||
-        (fontSize === "l" && "text-lg sm:text-[16px]");
+        (!fontSize && "text-P6_M") ||
+        (fontSize === "xs" && "text-P9_M") ||
+        (fontSize === "s" && "text-P8_M") ||
+        (fontSize === "m" && "text-P6_M") ||
+        (fontSize === "l" && "text-P6_M");
     const col =
         (!color && border === "none" && "bg-gray2 text-white") ||
         (color === "black" && border === "none" && "bg-black text-white") ||
