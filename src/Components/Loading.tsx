@@ -1,6 +1,6 @@
 import React from "react";
 
-import Lottie from "react-lottie";
+import Lottie from "react-lottie-player";
 
 import LoadingLottie from "../../public/poripo_loading.json";
 
@@ -16,7 +16,7 @@ const defaultOptions = {
 const Loading = () => {
     return (
         <div>
-            <Lottie options={defaultOptions} />
+            <Lottie loop animationData={LoadingLottie} play />
         </div>
     );
 };

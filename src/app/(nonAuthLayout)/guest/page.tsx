@@ -59,7 +59,7 @@ const Guest = () => {
 
     if (isLoading) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-gray_1">
                 <Loading />
             </div>
         );
@@ -67,7 +67,7 @@ const Guest = () => {
 
     return (
         <>
-            <div className="flex justify-center bg-hihigray max-w-full min-h-full mx-auto sm:bg-white sm:flex-col sm:w-full">
+            <div className="flex justify-center bg-gray_1 max-w-full min-h-full mx-auto sm:bg-white sm:flex-col sm:w-full">
                 <Navigation setNav={setNav} />
                 <div className="w-[800px] min-h-[750px] sm:w-full">
                     {nav === "basicInfo" && <UserInfo />}
@@ -77,14 +77,15 @@ const Guest = () => {
                 </div>
                 <Buttons />
             </div>
-            <div className="flex justify-center gap-20 mt-4 text-primary">
+            {/* 추후 수정 */}
+            {/* <div className="flex justify-center gap-20 mt-4 text-primary">
                 <div className={`cursor-pointer ${nav === "basicInfo" && "opacity-0"}`} onClick={onClickPrevHandler}>
                     PREV
                 </div>
                 <div className={`cursor-pointer ${nav === "url" && "opacity-0"}`} onClick={onClickNextHandler}>
                     NEXT
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };

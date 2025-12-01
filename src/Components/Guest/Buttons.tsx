@@ -41,7 +41,7 @@ const Buttons = () => {
             <div className="mt-2 w-fit hidden sm:block sm:absolute sm:top-48 sm:left-[67%] ml-auto">
                 <button
                     onClick={onClickTemplateModalToggleHandler}
-                    className="flex justify-center items-center w-fit h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                    className="flex justify-center items-center w-fit h-[26px] py-1 px-3 text-primary_1 text-P8_M"
                 >
                     템플릿 선택하기
                 </button>
@@ -66,7 +66,7 @@ const Buttons = () => {
                     <div className="mt-2 w-52">
                         <button
                             onClick={onClickTemplateModalToggleHandler}
-                            className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary text-xs font-medium"
+                            className="flex justify-center items-center w-[208px] h-[26px] py-1 px-3 text-primary_1 text-P8_M"
                         >
                             템플릿 선택하기
                         </button>
@@ -82,7 +82,7 @@ const Buttons = () => {
                             onClick={onCliCkHandler}
                             disabled={disabled}
                         />
-                        {disabled && <span className="text-xs text-red-400">필수항목을 입력해 주세요.</span>}
+                        {disabled && <span className="text-P8_R text-alert">필수항목을 입력해 주세요.</span>}
                     </div>
                 </div>
                 {templateSelectModal && (
