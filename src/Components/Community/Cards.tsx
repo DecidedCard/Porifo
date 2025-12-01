@@ -61,7 +61,7 @@ const Cards = () => {
             fetchNextPage();
         }
         return;
-    }, [inView, hasNextPage]);
+    }, [inView, hasNextPage, fetchNextPage]);
 
     if (isPending) {
         return (
