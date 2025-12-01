@@ -9,7 +9,7 @@ const Middle = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean })
                 <div className="flex flex-col items-start justify-start sm:w-[170px]">
                     <p className="text-black text-SH4_M sm:w-[150px] sm:font-medium sm:text-[20px]">기술스택</p>
                     <div className="bg-gray_3 w-[370px] h-[1px] my-5 sm:w-[170px]"></div>
-                    <div className="flex flex-row flex-wrap text-primary w-[382px] h-fit gap-4 text-P8_M sm:w-[170px]">
+                    <div className="flex flex-row flex-wrap w-[382px] h-fit gap-4 text-P8_M sm:w-[170px]">
                         {userSkillTag.map((tag, index) => (
                             <span
                                 key={index}

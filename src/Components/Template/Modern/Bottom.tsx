@@ -26,7 +26,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <div>
             <ol>
-                <p className="text-SH4_M sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
+                <p className="text-SH4_M text-black sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
                 <div className="bg-gray_3 w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                 {project.map((project, projectIndex) => (
                     <li

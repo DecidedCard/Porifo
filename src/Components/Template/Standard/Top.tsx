@@ -20,17 +20,17 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
                     </div>
 
                     <div className="flex flex-col gap-5 items-center justify-center w-80 min-w-[320px] max-w-xs">
-                        <h1 className="mt-5 flex items-center justify-start text-H5_B sm:text-[22px] sm:w-[360px] sm:justify-center">
+                        <h1 className="mt-5 flex items-center justify-start text-H5_B text-black sm:text-[22px] sm:w-[360px] sm:justify-center">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="flex items-center justify-center text-H7_B sm:text-[16px]">
+                                <h2 className="flex items-center justify-center text-H7_B text-black sm:text-[16px]">
                                     {userInfo.name}
                                 </h2>
                                 <div className="bg-gray_3 w-[60px] h-[1px] my-3 sm:w-[54px]"></div>
-                                <p className="flex items-center justify-center text-P7_M sm:text-[12px]">
+                                <p className="flex items-center justify-center text-P7_M text-black sm:text-[12px]">
                                     {userInfo.job}
                                 </p>
                             </div>

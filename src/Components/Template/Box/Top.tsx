@@ -26,7 +26,7 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
 
                         <div className="flex flex-col gap-4 items-center justify-center sm:mt-3">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="flex items-center justify-center sm:text-[16px] sm:font-medium">
+                                <h2 className="flex items-center justify-center text-black text-H7_B sm:text-[16px] sm:font-medium">
                                     {userInfo.name}
                                 </h2>
                                 <div className="bg-gray_3 w-[60px] h-[1px] my-3"></div>

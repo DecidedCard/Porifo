@@ -14,7 +14,7 @@ const URL = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <div className="flex flex-col gap-2 items-start justify-start flex-1 sm:w-[370px] sm:ml-2">
                     {(userInfo.blogLink || userInfo.githubLink) && (
                         <>
-                            <div className="text-H7_B sm:w-[370px] sm:font-medium sm:text-[20px]">URL</div>
+                            <div className="text-H7_B text-black sm:w-[370px] sm:font-medium sm:text-[20px]">URL</div>
                             <div className="bg-gray_3 w-[804px] h-[1px] my-5 sm:w-[370px]"></div>
                         </>
                     )}

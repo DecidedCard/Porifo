@@ -126,7 +126,7 @@ const Password_Change = () => {
                     <div className="rounded-2xl p-10 w-[454px] h-[500px] items-center bg-white flex justify-center flex-col sm:p-0 sm:w-full sm:h-screen">
                         <div className="flex flex-col justify-center items-center w-[274px] h-[324px]">
                             <p className="text-[108px]">🧩</p>
-                            <p className="flex items-center text-center justify-center leading-normal mt-8 text-P5_M w-[274px] h-[44px]">
+                            <p className="flex items-center text-center justify-center leading-normal mt-8 text-P5_M text-black w-[274px] h-[44px]">
                                 비밀번호가 재설정되었습니다.
                                 <br />
                                 로그인 후 포리포를 이용해 보세요.

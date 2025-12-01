@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
         (fontSize === "xs" && "text-P9_M") ||
         (fontSize === "s" && "text-P8_M") ||
         (fontSize === "m" && "text-P6_M") ||
-        (fontSize === "l" && "text-P6_M");
+        (fontSize === "l" && "text-P5_M");
     const col =
         (!color && border === "none" && "bg-gray_3 text-white") ||
         (color === "black" && border === "none" && "bg-black text-white") ||
