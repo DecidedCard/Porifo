@@ -20,22 +20,22 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
                     </div>
 
                     <div className="flex flex-col items-center justify-center w-80 min-w-[320px] max-w-xs sm:w-[316px]">
-                        <h1 className="leading-normal text-[30px] w-[500px] my-5 font-bold flex items-center justify-center sm:text-[22px] sm:w-[316px]">
+                        <h1 className="w-[500px] my-5 flex items-center justify-center text-black text-H5_B sm:text-[22px] sm:w-[316px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-center justify-center sm:mt-3">
                             <div className="flex flex-col items-center justify-center">
-                                <h2 className="text-[22px] font-bold flex items-center justify-center sm:text-[16px] sm:font-medium">
+                                <h2 className="flex items-center justify-center sm:text-[16px] sm:font-medium">
                                     {userInfo.name}
                                 </h2>
-                                <div className="bg-deepgray w-[60px] h-[1px] my-3"></div>
-                                <p className="text-[14px] font-medium flex items-center justify-center sm:text-[12px]">
+                                <div className="bg-gray_3 w-[60px] h-[1px] my-3"></div>
+                                <p className="flex items-center justify-center text-black text-P7_M sm:text-[12px]">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-row items-center justify-center gap-5 sm:flex-col">
+                            <address className="flex flex-row items-center justify-center gap-5 text-gray_5 text-P7_R sm:flex-col">
                                 <div className="flex flex-row items-center justify-start sm:flex-col">
                                     {userInfo.tel && (
                                         <p className="flex items-center justify-center mr-2 w-[200px]">
