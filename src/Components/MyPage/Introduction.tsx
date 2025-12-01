@@ -74,7 +74,7 @@ const Introduction = () => {
                         </div>
                     </div>
 
-                    <hr className="w-[657px] mx-auto border border-neutral-100 sm:w-full" />
+                    <hr className="w-full mx-auto border border-gray_2" />
 
                     <div className="flex gap-3 h-36 sm:w-full sm:flex-col sm:gap-4">
                         <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
