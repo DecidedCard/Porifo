@@ -31,15 +31,15 @@ const Button: React.FC<ButtonProps> = ({
         (fontSize === "m" && "text-P6_M") ||
         (fontSize === "l" && "text-P6_M");
     const col =
-        (!color && border === "none" && "bg-gray2 text-white") ||
+        (!color && border === "none" && "bg-gray_3 text-white") ||
         (color === "black" && border === "none" && "bg-black text-white") ||
-        (color === "primary" && border === "none" && "bg-primary text-white") ||
-        (color === "secondary" && border === "none" && "bg-secondary text-white") ||
-        (!color && "border border-solid border-gray2 text-gray2") ||
+        (color === "primary" && border === "none" && "bg-primary_1 text-white") ||
+        (color === "secondary" && border === "none" && "bg-secondary_1 text-white") ||
+        (!color && "border border-solid border-gray_3 text-gray_3") ||
         (color === "black" && "border border-solid border-black text-black") ||
-        (color === "primary" && "border border-solid border-primary text-primary") ||
-        (color === "secondary" && "border border-solid border-secondary text-secondary") ||
-        (color === "primarynone" && "text-primary");
+        (color === "primary" && "border border-solid border-primary_1 text-primary_1") ||
+        (color === "secondary" && "border border-solid border-secondary_1 text-secondary_1") ||
+        (color === "primarynone" && "text-primary_1");
 
     const buttonClass = `flex items-center justify-center px-3 rounded-lg w-full ${height} ${fontsize} ${col} ${className}`;
 
