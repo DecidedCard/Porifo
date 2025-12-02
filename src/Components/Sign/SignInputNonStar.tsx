@@ -46,7 +46,7 @@ const SignInputNonStarItem = ({
 
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2 flex text-sm font-medium">{setLabel}</label>
+            <label className="mb-2 flex text-P7_M">{setLabel}</label>
             <Input
                 type={type || showPassword.type}
                 value={value}
