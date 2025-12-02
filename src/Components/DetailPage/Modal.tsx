@@ -32,7 +32,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
     if (pending) {
         return (
             <div className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen bg-black bg-opacity-80 z-50">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[900px] h-[900px] bg-hihigray rounded-2xl">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[900px] h-[900px] bg-gray_1 rounded-2xl">
                     <Loading />
                 </div>
             </div>
@@ -51,14 +51,14 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
 
     return (
         <div
-            className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen z-20 bg-realblack bg-opacity-[0.8] backdrop-blur-xl"
+            className="fixed top-0 left-0 bottom-0 right-0 w-screen h-screen z-20 bg-black bg-opacity-[0.8] backdrop-blur-xl"
             id="wrapper"
             onClick={handleClose}
         >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl h-[800px]">
                 {/* 뒤로가기 버튼 */}
                 <button
-                    className="rounded-[999px] w-12 h-12 z-10 p-2 flex flex-row gap-2 items-center justify-center shrink-0 absolute ease-in-out duration-300 hover:bg-gray2 hover:bg-opacity-20 sm:z-50"
+                    className="rounded-[999px] w-12 h-12 z-10 p-2 flex flex-row gap-2 items-center justify-center shrink-0 absolute ease-in-out duration-300 hover:bg-gray_3 hover:bg-opacity-20 sm:z-50"
                     onClick={handleBackBtn}
                 >
                     <Image
@@ -95,7 +95,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                                 />
                             )}
                         </button>
-                        <span className="font-spoqaBold text-[12px]">좋아요</span>
+                        <span className="font-spoqaBold text-P8_M">좋아요</span>
                     </div>
                     {/* 댓글 */}
                     <div className="flex flex-col items-center justify-center gap-2">
@@ -110,7 +110,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                                 height={26}
                             />
                         </button>
-                        <span className="font-spoqaBold text-[12px]">댓글</span>
+                        <span className="font-spoqaBold text-P8_M">댓글</span>
                     </div>
                     {/* 공유하기 */}
                     <div className="flex flex-col items-center justify-center gap-2">
@@ -122,7 +122,7 @@ const Modal = ({ onClose, children }: { onClose: () => void; children: React.Rea
                         >
                             <Image src="/assets/image/communityImage/share.svg" alt="아이콘" width={25} height={25} />
                         </button>
-                        <span className="font-spoqaBold text-[12px]">공유하기</span>
+                        <span className="font-spoqaBold text-P8_M">공유하기</span>
                     </div>
                 </div>
             </div>

@@ -51,7 +51,7 @@ const Comments = () => {
                 <div className="border-[1px] border-solid border-gray2 mt-5 sm:mt-2 " />
                 {/* 댓글리스트 */}
                 {data!.length === 0 ? (
-                    <div className="text-sm flex items-center justify-center text-gray3 mt-5 ">
+                    <div className="text-P7_M flex items-center justify-center text-gray_4 mt-5">
                         자유로운 피드백을 남겨보세요 😎
                     </div>
                 ) : (
@@ -66,18 +66,18 @@ const Comments = () => {
                                     width={40}
                                     height={40}
                                 />
-                                <div className="flex flex-col justify-center gap-1 flex-1 ">
+                                <div className="flex flex-col justify-center gap-1 flex-1">
                                     <div className="flex flex-row gap-2 items-center">
-                                        <span className=" text-gray4 text-[12px] font-spoqaMedium font-medium">
+                                        <span className=" text-gray_5 font-spoqaMedium text-P8_M">
                                             {/* user_name */}
                                             {item.user_name}
                                         </span>
-                                        <span className="text-[10px] font-spoqaMedium font-normal text-gray3">
+                                        <span className="font-spoqaMedium text-gray_4 text-P9_R">
                                             {/* 몇일전 댓글인지 */}
                                             {getDaysAgo(item.created_at)}
                                         </span>
                                     </div>
-                                    <div className="flex gap-2 text-gray4 font-spoqaMedium font-normal text-[14px]">
+                                    <div className="flex gap-2 text-gray_5 font-spoqaMedium text-P7_R">
                                         <span>
                                             {/* comment */}
                                             {item.comment}
