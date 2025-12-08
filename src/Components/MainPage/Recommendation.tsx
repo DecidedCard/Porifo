@@ -17,7 +17,7 @@ const Recommendation = () => {
 
     if (isPending) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-gray_1">
                 <Loading />
             </div>
         );
@@ -25,7 +25,7 @@ const Recommendation = () => {
 
     return (
         <main>
-            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-hihigray sm:mx-auto sm:h-[1100px]">
+            <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-gray_1 sm:mx-auto sm:h-[1100px]">
                 <div className="flex flex-col items-start">
                     <p className="font-spoqaBold text-[40px] font-bold mb-10 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
                         포리포 추천, HOT🔥 개발자
