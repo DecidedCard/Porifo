@@ -23,12 +23,12 @@ const SignPhoneNumber = ({
             <div className="flex flex-row gap-2">
                 <select
                     id="number"
-                    className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R"
                     onChange={onClickPhoneNumber}
                 >
                     {clickNumber.map((item: string, idx: number) => {
                         return (
-                            <option key={idx} className="text-zinc-300 mt-2 text-sm">
+                            <option key={idx} className="text-black mt-2 text-P6_R">
                                 {item}
                             </option>
                         );
