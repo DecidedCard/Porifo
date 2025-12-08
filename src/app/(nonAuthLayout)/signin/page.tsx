@@ -76,7 +76,7 @@ const SignIn = () => {
 
     return (
         <main>
-            <div className="flex py-36 items-center justify-center bg-hihigray sm:w-full sm:py-0">
+            <div className="flex py-36 items-center justify-center bg-gray_1 sm:w-full sm:py-0">
                 <div className="rounded-2xl w-[454px] h-[670px] bg-white flex justify-center items-center flex-col sm:w-full sm:h-screen sm:justify-center">
                     <form onSubmit={signInWithEmail}>
                         <div className="flex justify-center items-center h-[86px] sm:hidden">
@@ -133,7 +133,7 @@ const SignIn = () => {
                             loginPassword={password}
                         />
                         <div
-                            className="text-gray4 float-right flex flex-row items-center justify-center text-[12px] cursor-pointer sm:float-none"
+                            className="text-gray_5 float-right flex flex-row items-center justify-center text-P8_R cursor-pointer sm:float-none"
                             onClick={findPassword}
                         >
                             <div className="mt-[1.5px] w-[80px] h-[27px] flex items-center">비밀번호 찾기</div>
@@ -155,8 +155,8 @@ const SignIn = () => {
                         imageHeightNum={32}
                     />
 
-                    <div className="flex flex-row mx-auto text-[12px] sm:flex-col sm:gap-5">
-                        <p className="text-gray4">아직 포리포의 회원이 아니신가요?</p>
+                    <div className="flex flex-row mx-auto text-P8_R sm:flex-col sm:gap-5">
+                        <p className="text-gray_5">아직 포리포의 회원이 아니신가요?</p>
                         <Link
                             href="/signup"
                             className="ml-3 underline sm:flex sm:items-center sm:justify-center sm:ml-0"

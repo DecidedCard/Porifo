@@ -153,10 +153,10 @@ const Carousel = () => {
                                         >
                                             {/* 한줄소개 */}
                                             <div className="w-[502px] h-[34px] flex space-x-[60px] ">
-                                                <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-2xl">
+                                                <p className="truncate ... w-[380px]  font-spoqaMedium text-white text-SH3_M">
                                                     {item.oneLineIntroduce}
                                                 </p>
-                                                <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[14px] w-[190px]">{`#${item.job!.slice(
+                                                <p className="pl-6 font-spoqaMedium flex justify-end  text-white text-SH5_M w-[190px]">{`#${item.job!.slice(
                                                     0,
                                                     -3,
                                                 )}`}</p>
@@ -165,12 +165,12 @@ const Carousel = () => {
                                             <div className="flex justify-between">
                                                 <div className="flex gap-2">
                                                     {/* 유저이름 */}
-                                                    <div className="font-spoqaMedium text-white flex items-center justify-center text-base ">
+                                                    <div className="font-spoqaMedium text-white flex items-center justify-center text-SH5_M">
                                                         {item.name}
                                                     </div>
                                                 </div>
                                                 {/* 좋아요, 조회수 박스 */}
-                                                <div className="flex gap-4">
+                                                <div className="flex gap-4 text-P7_R">
                                                     <div className="flex gap-1 items-center">
                                                         <div className="w-6 h-6 relative ">
                                                             {/* 좋아요 */}
@@ -181,7 +181,7 @@ const Carousel = () => {
                                                                 src="/assets/image/communityImage/grayHeart.svg"
                                                             />
                                                         </div>
-                                                        <div className="text-gray sm:text-[10px]">
+                                                        <div className="text-gray_2 sm:text-[10px]">
                                                             {item.likes!.length}
                                                         </div>
                                                     </div>
@@ -195,7 +195,7 @@ const Carousel = () => {
                                                                 src="/assets/image/communityImage/grayEye.svg"
                                                             />
                                                         </div>
-                                                        <div className="text-gray ">{item.viewCnt}</div>
+                                                        <div className="text-gray_2 ">{item.viewCnt}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,10 +236,10 @@ const Carousel = () => {
                                             >
                                                 {/* 한줄소개 */}
                                                 <div className="w-[254px] h-[22px] flex space-x-[30px]">
-                                                    <p className="truncate ... w-[380px]  font-spoqaMedium text-white font-medium text-sm">
+                                                    <p className="truncate ... w-[380px]  font-spoqaMedium text-white text-P7_M">
                                                         {item.oneLineIntroduce}
                                                     </p>
-                                                    <p className="pl-6 font-spoqaMedium flex justify-end  text-white font-medium text-[10px] w-[190px]">{`#${item.job!.slice(
+                                                    <p className="pl-6 font-spoqaMedium flex justify-end  text-white text-P9_M w-[190px]">{`#${item.job!.slice(
                                                         0,
                                                         -3,
                                                     )}`}</p>
@@ -248,12 +248,12 @@ const Carousel = () => {
                                                 <div className="flex justify-between">
                                                     <div className="flex gap-2">
                                                         {/* 유저이름 */}
-                                                        <div className="font-spoqaMedium text-white font-medium flex items-center justify-center  text-[10px]">
+                                                        <div className="font-spoqaMedium text-white flex items-center justify-center text-P9_M">
                                                             {item.name}
                                                         </div>
                                                     </div>
                                                     {/* 좋아요, 조회수 박스 */}
-                                                    <div className="flex gap-4">
+                                                    <div className="flex gap-4 text-P9_R">
                                                         <div className="flex gap-1 items-center">
                                                             <div className="relative w-3 h-3">
                                                                 {/* 좋아요 */}
@@ -264,9 +264,7 @@ const Carousel = () => {
                                                                     src="/assets/image/communityImage/grayHeart.svg"
                                                                 />
                                                             </div>
-                                                            <div className="text-gray text-[10px]">
-                                                                {item.likes!.length}
-                                                            </div>
+                                                            <div className="text-gray_2">{item.likes!.length}</div>
                                                         </div>
                                                         <div className="flex gap-1 items-center">
                                                             <div className="w-4 h-4 relative">
@@ -278,7 +276,7 @@ const Carousel = () => {
                                                                     src="/assets/image/communityImage/grayEye.svg"
                                                                 />
                                                             </div>
-                                                            <div className="text-gray text-[10px]">{item.viewCnt}</div>
+                                                            <div className="text-gray_2">{item.viewCnt}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -294,7 +292,7 @@ const Carousel = () => {
                 <div className="sm:hidden">
                     <button
                         onClick={handleImageNextBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] sm:left-[53%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex flex-row gap-2 items-start justify-start absolute left-[80%] sm:left-[53%] top-[162px] ease-in-out duration-300 hover:bg-gray_4 hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -307,7 +305,7 @@ const Carousel = () => {
                     </button>
                     <button
                         onClick={handleImagePrevBtn}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute sm:left-[45%] left-[20%] top-[162px] ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex flex-row gap-2 items-start justify-start shrink-0 absolute sm:left-[45%] left-[20%] top-[162px] ease-in-out duration-300 hover:bg-gray_4 hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -323,7 +321,7 @@ const Carousel = () => {
                 <div className="hidden sm:block">
                     <button
                         onClick={handleImageNextBtnDevice}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex absolute left-[38%] top-[80px] ml-3 ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20 w-10 h-10"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-full p-2 flex absolute left-[38%] top-[80px] ml-3 ease-in-out duration-300 hover:bg-gray_4 hover:bg-opacity-20 w-10 h-10"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image
@@ -336,7 +334,7 @@ const Carousel = () => {
                     </button>
                     <button
                         onClick={handleImagePrevBtnDevice}
-                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex left-[30%] top-[80px]  absolute  ease-in-out duration-300 hover:bg-nonegray hover:bg-opacity-20"
+                        className="bg-[rgba(255,255,255,0.80)] rounded-[999px] p-2 flex left-[30%] top-[80px]  absolute  ease-in-out duration-300 hover:bg-gray_4 hover:bg-opacity-20"
                         style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.16)", backdropFilter: "blur(28px)" }}
                     >
                         <Image

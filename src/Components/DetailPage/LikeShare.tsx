@@ -35,7 +35,7 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                     {/* 좋아요 영역 */}
                     <button
                         onClick={() => handleLikeBtn()}
-                        className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
+                        className="bg-gray_2 rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray_4"
                     >
                         <div className="flex items-center justify-center w-10 h-10">
                             {checkLike ? (
@@ -56,13 +56,13 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                                 />
                             )}
                         </div>
-                        <span className="text-xs text-gray4">좋아요</span>
+                        <span className="text-P8_M text-gray_5">좋아요</span>
                     </button>
 
                     {/* 공유하기 영역 */}
                     <button
                         onClick={() => onClickCopyClipBoardHandler(`${process.env.NEXT_PUBLIC_BASE_URL}share/${id}`)}
-                        className="bg-gray rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray3"
+                        className="bg-gray_2 rounded-[999px] py-2 flex flex-col items-center w-[128px] h-[73px] hover:bg-gray_4"
                     >
                         <div className="flex items-center justify-center w-20 h-10">
                             <Image
@@ -72,11 +72,11 @@ const LikeShare = ({ portfolioInfo }: { portfolioInfo: PortfolioInfo }) => {
                                 height={28}
                             />
                         </div>
-                        <span className="text-xs text-gray4">공유하기</span>
+                        <span className="text-P8_M text-gray_5">공유하기</span>
                     </button>
                 </div>
                 {/* 좋아요, 조회수, 댓글 개수 영역 */}
-                <div className="flex gap-8 text-[14px] text-gray3">
+                <div className="flex gap-8 text-P7_R text-gray_4">
                     <div className="flex gap-1">
                         <Image
                             src="/assets/image/communityImage/grayHeart.svg"

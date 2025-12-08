@@ -13,9 +13,9 @@ const Filter = () => {
 
     return (
         <div className="mt-16 flex flex-col lg:ml-20 sm:hidden">
-            <span className="font-spoqaMedium text-black font-medium text-sm ml-1">정렬</span>
+            <span className="font-spoqaMedium text-black text-P7_M ml-1">정렬</span>
             <button
-                className={`w-[192px] h-9 font-spoqaMedium border-solid border-2 border-gray2 p-3 mt-2 w-58 text-[12px] ${
+                className={`w-[192px] h-9 font-spoqaMedium border-solid border-2 border-gray_3 p-3 mt-2 w-58 text-[12px] ${
                     view ? "rounded-tr-lg rounded-tl-lg" : "rounded-[8px]"
                 }`}
                 onClick={() => {
