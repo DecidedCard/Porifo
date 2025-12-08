@@ -13,7 +13,7 @@ const Welcome = () => {
 
     return (
         <main>
-            <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
+            <div className="flex py-44 items-center justify-center bg-gray_1 relative sm:py-0">
                 <div className="rounded-2xl w-[500px] h-[600px] bg-white flex justify-center flex-col sm:items-center sm:w-full sm:h-screen">
                     <div className="flex justify-center sm:hidden">
                         <Image
@@ -26,7 +26,7 @@ const Welcome = () => {
                     </div>
 
                     <p className="text-center mb-[40px] text-[108px]">👏</p>
-                    <p className="text-center mb-[40px] text-[35px] sm:text-[20px] sm:mb-[20px] sm:leading-normal sm:font-medium">
+                    <p className="text-center mb-[40px] text-P2_M sm:text-[20px] sm:mb-[20px] sm:leading-normal sm:font-medium">
                         포리포에 오신 것을 <br /> 환영합니다!
                     </p>
 
