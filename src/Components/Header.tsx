@@ -226,4 +226,4 @@ export default Header;
 const bubbleAfter =
     "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_3 after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
 const bubbleSm =
-    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_3 after:border-t-0 after:border-t-gray_3 after:ml-[12px] after:mt-[-8px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_3 after:border-t-0 after:ml-[12px] after:mt-[-8px]";

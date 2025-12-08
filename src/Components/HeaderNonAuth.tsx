@@ -109,4 +109,4 @@ const HeaderNonAuth = () => {
 export default HeaderNonAuth;
 
 const bubbleSm =
-    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[12px] after:mt-[-8px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_1 after:border-t-0 after:ml-[12px] after:mt-[-8px]";

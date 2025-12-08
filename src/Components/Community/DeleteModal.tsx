@@ -19,7 +19,7 @@ const DeleteModal = ({
             {!isDeleteModalOpen ? (
                 <>{children}</>
             ) : (
-                <div className="fixed inset-0 z-20 bg-gray flex items-center justify-center ">
+                <div className="fixed inset-0 z-20 bg-gray_4 flex items-center justify-center ">
                     <div className="w-[440px] p-8 rounded-2xl bg-white flex flex-col items-center gap-4 sm:w-[85%]">
                         <div className="w-[376px] h-[76px] flex flex-col items-center justify-center gap-2 font-spoqaMedium text-P5_R">
                             <span>댓글을 삭제할까요?</span>
