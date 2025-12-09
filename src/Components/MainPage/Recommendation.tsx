@@ -27,7 +27,7 @@ const Recommendation = () => {
         <main>
             <div className="flex flex-col items-center justify-center h-[466px] w-screen bg-gray_1 sm:mx-auto sm:h-[1100px]">
                 <div className="flex flex-col items-start">
-                    <p className="font-spoqaBold text-[40px] font-bold mb-10 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
+                    <p className="font-spoqaBold text-H4_B mb-10 sm:text-[22px] sm:-mb-[-30px] sm:mt-6">
                         포리포 추천, HOT🔥 개발자
                     </p>
                 </div>
@@ -51,7 +51,7 @@ const Recommendation = () => {
                                             style={{ backdropFilter: "var(--bgblur56-backdrop-filter, blur(28px))" }}
                                         >
                                             <div className="flex items-center mt-4">
-                                                <div className="flex flex-col gap-4 flex-1 text-sm font-medium">
+                                                <div className="flex flex-col gap-4 flex-1 text-P7_M">
                                                     <p className="text-white">
                                                         {developer.oneLineIntroduce!.length > 20
                                                             ? `${developer.oneLineIntroduce!.substring(0, 20)}...`
@@ -60,7 +60,7 @@ const Recommendation = () => {
 
                                                     <div className="flex justify-between w-full">
                                                         <div className="flex items-center gap-2">
-                                                            <div className="text-white text-[10px] flex items-center font-medium">
+                                                            <div className="flex items-center text-white text-P9_M">
                                                                 {developer.name}
                                                             </div>
                                                         </div>
@@ -99,12 +99,12 @@ const Recommendation = () => {
             </div>
 
             <div className="flex flex-col items-start justify-start ml-[450px] mt-36 gap-4 sm:ml-10">
-                <p className="flex items-center justify-center font-bold text-[40px] leading-normal sm:text-[20px]">
+                <p className="flex items-center justify-center text-H4_B text-black sm:text-[20px]">
                     동료들이 올린 양질의 정보를
                     <br />
                     손쉽게 확인할 수 있어요
                 </p>
-                <p className="text-gray3 leading-normal flex items-start justify-start pr-24 text-[20px] sm:text-[10px]">
+                <p className="text-gray_4 flex items-start justify-start pr-24 text-SH4_M sm:text-[10px]">
                     우리 옆의 동료도 이걸 쓰고 있을 수 있어요!
                 </p>
             </div>
