@@ -14,7 +14,7 @@ const SocialSign = ({ redirectTo, text, imageWidthNum, imageHeightNum, gap }: So
 
     return (
         <div>
-            <div className="mx-auto mt-3 flex justify-center text-sm text-gray4 font-medium">{text}</div>
+            <div className="mx-auto mt-3 flex justify-center text-P7_M text-gray_5">{text}</div>
             <div className={`items-center justify-center mx-auto flex gap-${gap} w-[216px] h-[86px]`}>
                 <Image
                     onClick={() => signInWithSocial("google", redirectTo, queryParams)}

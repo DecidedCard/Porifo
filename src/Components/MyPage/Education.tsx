@@ -1,26 +1,12 @@
 "use client";
 
-import React, { ChangeEvent } from "react";
-
-import { MdClose } from "react-icons/md";
-
-import Input from "../Commen/Input";
+import React from "react";
 
 import useEducation from "@/hooks/mypage/useEducation";
 import EducationInputForm from "./EducationInputForm";
 
 const Education = () => {
-    const {
-        education,
-        startDate,
-        endDate,
-        attending,
-        onChangeSchoolHandler,
-        onChangeClassHandler,
-        onChangeDateHandler,
-        onClickAddHandler,
-        onClickMinusHandler,
-    } = useEducation();
+    const { education, onClickAddHandler } = useEducation();
 
     return (
         <div className="flex flex-col gap-5 sm:w-full">

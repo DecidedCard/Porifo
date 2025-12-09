@@ -61,7 +61,7 @@ const Cards = () => {
             fetchNextPage();
         }
         return;
-    }, [inView, hasNextPage]);
+    }, [inView, hasNextPage, fetchNextPage]);
 
     if (isPending) {
         return (
@@ -79,7 +79,7 @@ const Cards = () => {
                         return (
                             <div
                                 key={item.id}
-                                className="cursor-pointer "
+                                className="cursor-pointer"
                                 onClick={() => {
                                     setIsOpenModal(true),
                                         setCardId(item.id),
@@ -97,24 +97,24 @@ const Cards = () => {
                                     />
 
                                     <span className="absolute flex items-end py-5 px-4 w-full h-[240px] bg-black rounded-2xl bg-opacity-30 opacity-0 ease-in-out duration-300 group-hover:opacity-100 sm:opacity-100">
-                                        <p className="w-[269px] text-[16px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-base font-medium">
+                                        <p className="w-[269px] text-ellipsis whitespace-nowrap overflow-hidden text-white text-SH5_M">
                                             {item.oneLineIntroduce}
                                         </p>
-                                        <p className="w-[269px] text-[12px] absolute top-[20px] whitespace-nowrap overflow-hidden text-white text-base font-medium">
+                                        <p className="w-[269px] absolute top-[20px] whitespace-nowrap overflow-hidden text-white text-P8_M">
                                             {`#${item.job.slice(0, -3)}`}
                                         </p>
                                     </span>
                                     <div className="flex flex-row items-center justify-between">
                                         <div className="flex flex-row gap-2">
                                             {/* 유저닉네임 */}
-                                            <div className="flex items-center justify-start w-[100px] font-medium text-sm overflow-hidden whitespace-nowrap ml-2">
+                                            <div className="flex items-center justify-start w-[100px] overflow-hidden whitespace-nowrap ml-2 text-P7_M">
                                                 {item.name}
                                             </div>
                                         </div>
                                         <div className="flex gap-4">
                                             <div className="flex gap-1 items-center">
                                                 {/* 좋아요 하트 */}
-                                                <div className="w-6 h-6 ">
+                                                <div className="w-6 h-6">
                                                     <Image
                                                         width={24}
                                                         height={24}
@@ -122,7 +122,7 @@ const Cards = () => {
                                                         src="/assets/image/communityImage/grayHeart.svg"
                                                     />
                                                 </div>
-                                                <span className="text-gray3 text-sm">{item.likes.length}</span>
+                                                <span className="text-gray_4 text-P7_R">{item.likes.length}</span>
                                             </div>
                                             <div className="flex gap-1 items-center">
                                                 {/* 조회수 눈 */}
@@ -134,7 +134,7 @@ const Cards = () => {
                                                         src="/assets/image/communityImage/grayEye.svg"
                                                     />
                                                 </div>
-                                                <span className="text-gray3 text-sm">{item.viewCnt}</span>
+                                                <span className="text-gray_4 text-P7_R">{item.viewCnt}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ const Cards = () => {
                         <Image src={"gray_warn_lined.svg"} alt="결과없음 아이콘" width={32} height={32} />
                     </div>
                     <div>
-                        <span className="font-spoqaBold text-[14px] text-nonegray">조건에 맞는 프로필이 없습니다.</span>
+                        <span className="font-spoqaBold text-P7_M text-gray_4">조건에 맞는 프로필이 없습니다.</span>
                     </div>
                 </div>
             )}

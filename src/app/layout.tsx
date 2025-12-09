@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${inter.className} bg-hihigray`}>
+            <body className={`${inter.className} bg-gray_1`}>
                 <Provider>
                     <div className="min-h-[830px] sm:w-full">
                         <Prefetch>{children}</Prefetch>

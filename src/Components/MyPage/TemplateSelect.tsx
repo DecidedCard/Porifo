@@ -47,13 +47,13 @@ const TemplateSelect = ({
                     />
                 </div>
 
-                <h2 className="w-fit h-9 mx-auto text-2xl font-bold mt-10 text-[22px]">원하는 템플릿을 선택하세요.</h2>
-                <hr className="w-[852px] h-4 text-gray2 mx-auto sm:w-[90%]" />
+                <h2 className="w-fit h-9 mx-auto mt-10 text-black text-H7_B">원하는 템플릿을 선택하세요.</h2>
+                <hr className="w-[852px] h-4 text-gray_3 mx-auto sm:w-[90%]" />
                 <div className="flex flex-col gap-6 w-[852px] h-[549px] mx-auto sm:w-full">
                     <div className="flex flex-row sm:flex-col sm:w-full">
                         <div className="flex flex-col gap-2 rounded-2xl">
-                            <h3 className="text-lg font-medium text-gray4">Standard</h3>
-                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray2 rounded-2xl mr-6 sm:w-full">
+                            <h3 className="text-gray_5 text-SH5_M">Standard</h3>
+                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray_3 rounded-2xl mr-6 sm:w-full">
                                 <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
                                     <Image
                                         src={"/templateImage/Standard_template.png"}
@@ -76,8 +76,8 @@ const TemplateSelect = ({
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 rounded-2xl sm:w-full">
-                            <h3 className="text-lg font-medium text-gray4">Grid</h3>
-                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray2 rounded-2xl sm:w-full">
+                            <h3 className="text-gray_5 text-SH5_M">Grid</h3>
+                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray_3 rounded-2xl sm:w-full">
                                 <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
                                     <Image
                                         src={"/templateImage/Grid_template.png"}
@@ -103,8 +103,8 @@ const TemplateSelect = ({
 
                     <div className="flex flex-row pb-10 sm:flex-col">
                         <div className="flex flex-col gap-2 rounded-2xl sm:w-full">
-                            <h3 className="text-lg font-medium text-gray4">Modern</h3>
-                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray2 rounded-2xl mr-6 sm:w-full">
+                            <h3 className="text-gray_5 text-SH5_M">Modern</h3>
+                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray_3 rounded-2xl mr-6 sm:w-full">
                                 <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
                                     <Image
                                         src={"/templateImage/Modern_template.png"}
@@ -127,8 +127,8 @@ const TemplateSelect = ({
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 rounded-2xl sm:w-full">
-                            <h3 className="text-lg font-medium text-gray4">Box</h3>
-                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray2 rounded-2xl sm:w-full">
+                            <h3 className="text-gray_5 text-SH5_M">Box</h3>
+                            <div className="flex flex-col items-center justify-center gap-2 w-[414px] h-[517px] bg-gray_3 rounded-2xl sm:w-full">
                                 <div className="w-[315px] h-[413px] rounded-2xl overflow-hidden">
                                     <Image
                                         src={"/templateImage/Box_template.png"}

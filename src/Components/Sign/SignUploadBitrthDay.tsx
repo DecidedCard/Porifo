@@ -14,13 +14,13 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
     return (
         <div className="mb-5 mx-auto w-fit h-fit flex flex-col">
             <label className="mb-5  flex">
-                생년월일 <p className="ml-1 text-[10px] text-red-500">★</p>
+                생년월일 <p className="ml-1 text-[10px] text-alert">★</p>
             </label>
 
             <div className="flex flex-row gap-2">
                 <select
                     onChange={onClickBirthYear}
-                    className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R"
                 >
                     {BIRTHDAY_YEAR_LIST.map((year, index) => (
                         <option value={year} key={index}>
@@ -30,7 +30,7 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
                 </select>
                 <select
                     onChange={onClickBirthMonth}
-                    className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R text-black placeholder:text-gray_4"
                 >
                     {BIRTHDAY_MONTH_LIST.map((month, index) => (
                         <option key={index}>{month}</option>
@@ -38,7 +38,7 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
                 </select>
                 <select
                     onChange={onClickBirthDay}
-                    className="flex-1 border border-solid size-14 border-zinc-300 rounded-lg w-[110px] p-2 text-sm font-nomal"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R"
                 >
                     {BIRTHDAY_DAY_LIST.map((day, index) => (
                         <option key={index}>{day}</option>

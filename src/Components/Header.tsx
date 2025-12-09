@@ -36,7 +36,7 @@ const Header = () => {
 
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
-            <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
+            <div className="bg-gray_1 bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
                     <Image
@@ -53,7 +53,7 @@ const Header = () => {
                     <>
                         <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
                             <Link
-                                className={`text-black text-center text-[16px] h-6 font-semibold relative
+                                className={`text-black text-center text-SH5_M h-6 relative
                         ${activeMenu === "about" ? "border-b-[1px] border-solid border-black" : ""}`}
                                 href={"/"}
                                 onClick={() => handleMenuBtn("about")}
@@ -61,7 +61,7 @@ const Header = () => {
                                 서비스 소개
                             </Link>
                             <Link
-                                className={`text-black text-center text-[16px] h-6 font-semibold relative
+                                className={`text-black text-center text-SH5_M h-6 relative
                         ${activeMenu === "community" ? "border-b-[1px] border-solid border-black" : ""}`}
                                 href={"/community"}
                                 onClick={() => handleMenuBtn("community")}
@@ -85,13 +85,13 @@ const Header = () => {
                                                 className="w-7 h-7 rounded-lg object-cover"
                                             />
                                         </button>
-                                        <p className="flex items-center justify-center text-[16px] text-black sm:text-sm">
+                                        <p className="flex items-center justify-center text-P6_M text-black sm:text-sm">
                                             {user?.user_metadata.name || user.user_metadata.user_name}
                                         </p>
 
                                         {showMenu && (
                                             <div
-                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-gray2 bg-opacity-90 rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
+                                                className={`absolute left-[15%] flex flex-col items-center justify-center top-full mt-4 w-[170px] h-fit bg-gray_3 bg-opacity-90 rounded-[16px] p-3 transform -translate-x-1/2 ${bubbleAfter}`}
                                             >
                                                 <div>
                                                     <Link
@@ -104,7 +104,7 @@ const Header = () => {
                                                             width={16}
                                                             height={18}
                                                         />
-                                                        <p className="text-[12px]">이력서 작성</p>
+                                                        <p className="text-P8_R">이력서 작성</p>
                                                     </Link>
                                                 </div>
 
@@ -119,7 +119,7 @@ const Header = () => {
                                                             width={18}
                                                             height={18}
                                                         />
-                                                        <p className="text-[12px]">피드/커뮤니티</p>
+                                                        <p className="text-P8_R">피드/커뮤니티</p>
                                                     </Link>
                                                 </div>
                                                 <form
@@ -134,7 +134,7 @@ const Header = () => {
                                                         height={15}
                                                     />
 
-                                                    <button className="text-[12px]" type="submit">
+                                                    <button className="text-P8_R" type="submit">
                                                         로그아웃
                                                     </button>
                                                 </form>
@@ -177,7 +177,7 @@ const Header = () => {
                                         {showMenu && (
                                             <div>
                                                 <div
-                                                    className={`absolute left-[45%] flex flex-col items-center justify-center top-full mt-4 w-[140px] h-fit bg-gray2 bg-opacity-90  rounded-[16px] p-2 transform -translate-x-28 ${bubbleSm}`}
+                                                    className={`absolute left-[45%] flex flex-col items-center justify-center top-full mt-4 w-[140px] h-fit bg-gray_3 bg-opacity-90  rounded-[16px] p-2 transform -translate-x-28 ${bubbleSm}`}
                                                 >
                                                     <div>
                                                         <Link href="/signin">
@@ -205,7 +205,7 @@ const Header = () => {
                                                         href="/community"
                                                         className="flex flex-row items-center justify-center gap-3 w-[146px] h-[32px] mt-1"
                                                     >
-                                                        <p className="text-[12px]">피드/커뮤니티</p>
+                                                        <p className="text-P8_R">피드/커뮤니티</p>
                                                     </Link>
                                                 </div>
                                             </div>
@@ -224,6 +224,6 @@ const Header = () => {
 export default Header;
 
 const bubbleAfter =
-    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray2 after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_3 after:border-t-0 after:ml-[-10px] after:mt-[-10px]";
 const bubbleSm =
-    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray2 after:border-t-0 after:border-t-gray2 after:ml-[12px] after:mt-[-8px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[65%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_3 after:border-t-0 after:ml-[12px] after:mt-[-8px]";

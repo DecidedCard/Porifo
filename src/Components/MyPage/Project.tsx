@@ -27,13 +27,15 @@ const Project = () => {
 
     return (
         <>
-            <main className="flex justify-center bg-white rounded-2xl mt-20 ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
+            <main className="flex justify-center bg-white rounded-2xl mt-20 mb-[200px] ml-[75px] w-[705px] min-h-[817px] pb-10 sm:w-full sm:ml-0 sm:mt-0 sm:pt-4 sm:pb-10 sm:px-4">
                 <div className="flex flex-col gap-4 sm:w-full">
-                    <h2 className="flex items-center w-[657px] h-[46px] text-[30px] mt-4 font-bold tracking-wider sm:w-full">
+                    <h2 className="flex items-center w-[657px] h-[46px] mt-4 text-black text-H5_B sm:w-full">
                         프로젝트
                     </h2>
-                    <hr className="w-[657px] mx-auto my-1 border border-neutral-100 sm:w-full" />
-                    <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-full">프로젝트 정보</p>
+
+                    <hr className="w-full mx-auto my-1 border border-gray_2" />
+
+                    <p className="flex items-center w-[657px] h-[38px] text-black text-P5_M sm:w-full">프로젝트 정보</p>
 
                     {projects &&
                         projects.map((item, projectsIndex) => {
@@ -44,11 +46,11 @@ const Project = () => {
                                             className="w-[637px] sm:w-fit sm:ml-auto"
                                             onClick={() => onClickMinusHandler(projectsIndex)}
                                         >
-                                            <MdClose className="w-6 h-6 ml-auto text-grayblack" />
+                                            <MdClose className="w-6 h-6 ml-auto text-black" />
                                         </div>
                                     )}
                                     <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                        <label className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                                             기본정보<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
@@ -66,24 +68,24 @@ const Project = () => {
                                     </div>
 
                                     <div className="flex mt-1 sm:flex-col sm:w-full">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                        <label className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                                             내용<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
-                                        <div className="flex flex-col gap-1 w-[460px] ml-3 text-[14px] sm:w-full sm:ml-0">
+                                        <div className="flex flex-col gap-1 w-[460px] ml-3 text-P6_M sm:w-full sm:ml-0">
                                             <textarea
                                                 placeholder="프로젝트의 내용과 본인의 역할, 기여도 등을 서술해 주세요"
                                                 value={item.introduce}
                                                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                                                     onChangeProjectIntroduce(e, projectsIndex)
                                                 }
-                                                className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-zinc-300 sm:w-full"
+                                                className="w-[460px] h-[140px] resize-none rounded-lg py-3 px-3 border border-solid border-gray_3 sm:w-full"
                                             />
-                                            <div className="ml-auto text-sm text-nonegray">{item.introduce.length}</div>
+                                            {/* <div className="ml-auto text-sm text-gray_4">{item.introduce.length}</div> */}
                                         </div>
                                     </div>
 
                                     <div className="flex mt-1 sm:flex-col sm:w-full">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2 sm:text-sm">
+                                        <label className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M sm:text-sm">
                                             프로젝트 기간<span className="ml-1 text-[10px] text-red-500">★</span>
                                         </label>
                                         <div className="flex justify-between w-[460px] ml-3 sm:w-full sm:ml-0">
@@ -115,10 +117,10 @@ const Project = () => {
                                         </div>
                                     </div>
                                     <div className="flex mt-1 sm:flex-col sm:w-full">
-                                        <p className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                        <p className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                                             사진 업로드 하기
                                         </p>
-                                        <div className="flex flex-col gap-4 items-center border border-solid border-zinc-300 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll sm:w-full sm:ml-0">
+                                        <div className="flex flex-col gap-4 items-center border border-solid border-gray_3 w-[460px] h-[200px] rounded-lg ml-3 overflow-scroll sm:w-full sm:ml-0">
                                             {item.images.length !== 0 ? (
                                                 <div>
                                                     {item.images.map((item, idx) => {
@@ -148,7 +150,7 @@ const Project = () => {
                                                         );
                                                     })}
                                                     <label htmlFor={`file${projectsIndex}`}>
-                                                        <div className="flex items-center justify-center w-10 h-10 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer mx-auto">
+                                                        <div className="flex items-center justify-center w-10 h-10 border border-solid border-gray_3 rounded-full text-2xl text-gray_3 cursor-pointer mx-auto">
                                                             +
                                                         </div>
                                                     </label>
@@ -156,7 +158,7 @@ const Project = () => {
                                             ) : (
                                                 <div className="flex items-center justify-center w-full h-full">
                                                     <label htmlFor={`file${projectsIndex}`}>
-                                                        <div className="flex items-center justify-center w-8 h-8 border border-solid border-zinc-300 rounded-full text-2xl text-zinc-300 cursor-pointer">
+                                                        <div className="flex items-center justify-center w-8 h-8 border border-solid border-gray_3 rounded-full text-2xl text-gray_3 cursor-pointer">
                                                             +
                                                         </div>
                                                     </label>
@@ -177,7 +179,7 @@ const Project = () => {
                                         />
                                     </div>
                                     <div className="flex mt-1 sm:flex-col sm:w-full">
-                                        <label className="flex font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                        <label className="flex w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                                             Github
                                         </label>
                                         <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
@@ -194,7 +196,7 @@ const Project = () => {
                                         </div>
                                     </div>
                                     <div className="flex mt-1 sm:flex-col sm:w-full">
-                                        <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">
+                                        <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">
                                             배포링크
                                         </label>
                                         <div className="w-[460px] ml-3 sm:w-full sm:ml-0">

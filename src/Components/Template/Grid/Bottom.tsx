@@ -20,8 +20,8 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                 <WorkExperience career={career} />
                 {education && education.length > 0 && education[0].school && (
                     <div>
-                        <h2 className="text-[22px] font-bold sm:text-[20px] sm:font-medium sm:w-[360px]">학력</h2>
-                        <div className="bg-deepgray w-[804px] h-[1px] my-5 sm:w-[360px]"></div>
+                        <h2 className="text-H7_B sm:text-[20px] sm:font-medium sm:w-[360px]">학력</h2>
+                        <div className="bg-gray_3 w-[804px] h-[1px] my-5 sm:w-[360px]"></div>
 
                         <div>
                             {education.map((education, index) => (
@@ -32,11 +32,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     <div className="flex w-full sm:w-[360px]">
                                         {/* 제목과 날짜를 포함하는 영역 */}
                                         <div className="flex flex-col w-1/2">
-                                            <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">
+                                            <h3 className="mb-3 text-black text-P5_M sm:text-[16px]">
                                                 {education.school}
                                             </h3>
                                             {education.date && education.date.length > 10 && (
-                                                <time className="mb-1 text-gray3 text-[12px] font-normal leading-none sm:w-[150px]">
+                                                <time className="mb-1 text-gray_4 text-P8_R sm:w-[150px]">
                                                     {education.date}
                                                 </time>
                                             )}
@@ -45,13 +45,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         {/* 설명과 상세 정보를 포함하는 영역 */}
                                         <div className="flex flex-col w-[480px] ml-10">
                                             {education.class && (
-                                                <p className="text-[14px] font-normal mb-2 text-gray3">
-                                                    {education.class}
-                                                </p>
+                                                <p className="mb-2 text-gray_4 text-P8_R">{education.class}</p>
                                             )}
                                             {education.comment && (
                                                 <div className="flex flex-col">
-                                                    <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
+                                                    <p className="text-gray_5 text-P8_R whitespace-pre-wrap">
                                                         {education.comment}
                                                     </p>
                                                 </div>
