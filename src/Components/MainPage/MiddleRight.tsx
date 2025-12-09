@@ -35,7 +35,7 @@ const MiddleRight = () => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-start text-gray_4  sm:text-[10px]">
+                            <div className="flex items-center justify-start text-gray_4 sm:text-[10px]">
                                 React / Vue.js / Angular
                             </div>
                         </div>
