@@ -91,7 +91,7 @@ const ConfirmEmail = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative sm:py-0">
+        <div className="flex py-44 items-center justify-center bg-gray_1 relative sm:py-0">
             <div className="rounded-2xl w-[454px] h-[756px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
                 <div className="flex justify-center sm:hidden">
                     <Image
@@ -155,7 +155,7 @@ const ConfirmEmail = () => {
                             alt="check"
                         />
                         <span className="flex mt-1">
-                            개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                            개인정보 수집 및 이용 <p className="ml-2 text-alert">(필수)</p>
                         </span>
                     </span>
                     <Image
