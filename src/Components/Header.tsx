@@ -12,7 +12,7 @@ const Header = () => {
     const [activeMenu, setActiveMenu] = useState<string>("about");
     const [pathNameCheck, setPathNameCheck] = useState(true);
 
-    const { user, setUser } = useUserStore();
+    const { user } = useUserStore();
 
     const { modalRef } = useMouseClickClose(showMenu, setShowMenu);
 
@@ -36,11 +36,11 @@ const Header = () => {
 
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
-            <div className="bg-gray_1 bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
+            <div className="bg-gray_1 bg-opacity-50 flex items-center justify-between px-[190px] h-[68px] backdrop-blur-3xl sm:p-4">
                 {/* Left Section: Logo */}
-                <Link className="absolute left-[100px] sm:left-4" href={"/"}>
+                <Link className="" href={"/"}>
                     <Image
-                        className="overflow-visible sm:w-[70px] sm:h-[30px]"
+                        className="overflow-visible sm:w-[59px] sm:h-[20px]"
                         src="../porifo.svg"
                         alt="Logo"
                         width={84.42}
@@ -71,7 +71,7 @@ const Header = () => {
                         </div>
                         {/* Right Section: Authentication Buttons */}
 
-                        <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
+                        <div className="flex flex-row gap-2 items-center sm:right-5">
                             {user ? (
                                 <div ref={modalRef} className="flex flex-row gap-3">
                                     <div className="relative flex flex-row gap-5 sm:gap-2">

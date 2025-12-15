@@ -72,15 +72,6 @@ const MyPage = () => {
                 </div>
                 <Buttons />
             </div>
-            {/* 추후 수정 */}
-            {/* <div className="flex justify-center gap-20 mt-4 text-primary">
-                <div className={`cursor-pointer ${nav === "basicInfo" && "opacity-0"}`} onClick={onClickPrevHandler}>
-                    PREV
-                </div>
-                <div className={`cursor-pointer ${nav === "url" && "opacity-0"}`} onClick={onClickNextHandler}>
-                    NEXT
-                </div>
-            </div> */}
         </>
     );
 };
