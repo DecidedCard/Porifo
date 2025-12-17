@@ -62,9 +62,9 @@ const MyPage = () => {
 
     return (
         <>
-            <div className="relative top-20 flex justify-center gap-[75px] bg-gray_1 max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
+            <div className="relative top-20 flex justify-center gap-[75px] bg-gray_1 max-w-full sm:bg-white sm:flex-col sm:w-full">
                 <Navigation setNav={setNav} />
-                <div className="flex gap-5 pb-[200px] w-[800px] min-h-[750px] sm:w-full">
+                <div className="flex gap-5 pb-[200px] w-[800px] sm:w-full">
                     {nav === "basicInfo" && <UserInfo />}
                     {nav === "introduce" && <Introduction />}
                     {nav === "project" && <Project />}
