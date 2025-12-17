@@ -75,7 +75,7 @@ const Buttons = () => {
             </div>
 
             <main className="relative flex flex-col items-center gap-5">
-                <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5 sm:hidden">
+                <div className="flex flex-col items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5 sm:hidden">
                     <div className="absolute right-[115%] w-20 flex flex-row">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
                     </div>
