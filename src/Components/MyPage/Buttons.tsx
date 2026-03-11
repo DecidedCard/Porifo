@@ -64,17 +64,22 @@ const Buttons = () => {
     };
 
     return (
-        <div className="flex flex-col">
-            <div className="mt-2 w-fit hidden sm:block sm:absolute sm:top-48 sm: left-[67%]">
-                <button
-                    onClick={onClickTemplateModalToggleHandler}
-                    className="flex justify-center items-center w-fit h-[26px] py-1 px-3 text-primary text-xs font-medium"
-                >
-                    템플릿 선택하기
-                </button>
-            </div>
-
-            <main className="relative flex flex-col items-center gap-5">
+        <div className="flex flex-col sm:w-full sm:px-4">
+            <main className="relative flex flex-col items-center gap-5 sm:gap-3">
+                <div className="hidden sm:grid sm:w-full sm:grid-cols-2 sm:gap-2">
+                    <button
+                        onClick={onClickTemplateModalToggleHandler}
+                        className="flex h-11 items-center justify-center rounded-xl border border-solid border-gray-2 bg-white text-sm font-medium text-primary-1"
+                    >
+                        템플릿 선택하기
+                    </button>
+                    <button
+                        onClick={onClickPreviewModal}
+                        className="flex h-11 items-center justify-center rounded-xl border border-solid border-gray-2 bg-white text-sm font-medium text-black"
+                    >
+                        미리보기
+                    </button>
+                </div>
                 <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5 sm:hidden">
                     <div className="absolute right-[115%] w-20 flex flex-row">
                         <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
@@ -126,14 +131,14 @@ const Buttons = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:flex-row sm:justify-center sm:w-full sm:pb-10 sm:gap-1">
+                <div className="flex flex-col gap-3 bg-white p-4 rounded-[8px] sm:sticky sm:bottom-0 sm:z-20 sm:w-full sm:gap-2 sm:border sm:border-solid sm:border-gray-2 sm:px-3 sm:py-3 sm:shadow-[0_-10px_30px_rgba(15,23,42,0.08)]">
                     {upload ? (
                         <>
-                            <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
+                            <div className="w-[208px] sm:w-full sm:h-[48px]">
                                 <Button text="업로드 중..." size="l" border="none" disabled className="sm:text-xs" />
                             </div>
 
-                            <div className="w-[208px] sm:w-[49%] sm:h-[48px]">
+                            <div className="w-[208px] sm:w-full sm:h-[48px]">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"
@@ -145,7 +150,7 @@ const Buttons = () => {
                         </>
                     ) : (
                         <>
-                            <div className="w-[208px] sm:w-[49%]">
+                            <div className="w-[208px] sm:w-full">
                                 <Button
                                     text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
                                     size="l"
@@ -155,7 +160,7 @@ const Buttons = () => {
                                 />
                             </div>
 
-                            <div className="w-[208px] sm:w-[49%]">
+                            <div className="w-[208px] sm:w-full">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
                                     size="l"

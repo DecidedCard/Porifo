@@ -54,7 +54,7 @@ const MyPage = () => {
 
     if (isLoading) {
         return (
-            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-hihigray">
+            <div className="absolute top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-gray-1">
                 <Loading />
             </div>
         );
@@ -62,7 +62,7 @@ const MyPage = () => {
 
     return (
         <>
-            <div className="flex justify-center bg-hihigray max-w-full min-h-[500px] sm:bg-white sm:flex-col sm:w-full">
+            <div className="flex justify-center bg-gray-1 max-w-full min-h-[500px] sm:flex-col sm:w-full sm:bg-white sm:pb-6">
                 <Navigation setNav={setNav} />
                 <div className="w-[800px] min-h-[750px] sm:w-full">
                     {nav === "basicInfo" && <UserInfo />}
@@ -72,7 +72,7 @@ const MyPage = () => {
                 </div>
                 <Buttons />
             </div>
-            <div className="flex justify-center gap-20 mt-4 text-primary">
+            <div className="flex justify-center gap-20 mt-4 text-primary sm:mt-0 sm:px-4 sm:pb-2">
                 <div className={`cursor-pointer ${nav === "basicInfo" && "opacity-0"}`} onClick={onClickPrevHandler}>
                     PREV
                 </div>
