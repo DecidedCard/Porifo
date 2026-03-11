@@ -20,22 +20,22 @@ const Top = ({ portfolio, pdf }: { portfolio: PortfolioInfo; pdf?: boolean }) =>
                     </div>
 
                     <div className="flex flex-col gap-5 items-start justify-center w-80 min-w-[320px] max-w-xs sm:min-w-[200px] sm:max-w-0">
-                        <h1 className="leading-normal text-[30px] text-left font-bold flex items-center justify-start sm:text-[22px] sm:w-[190px]">
+                        <h1 className="text-left flex items-center justify-start text-black text-H5_B sm:text-[22px] sm:w-[190px]">
                             {userInfo.oneLineIntroduce}
                         </h1>
 
                         <div className="flex flex-col gap-4 items-start justify-start">
                             <div className="flex flex-col items-start justify-start">
-                                <h2 className="text-[22px] font-bold flex items-center justify-center sm:text-[16px] sm:font-medium">
+                                <h2 className="flex items-center justify-center text-black text-H7_B sm:text-[16px] sm:font-medium">
                                     {userInfo.name}
                                 </h2>
-                                <div className="bg-deepgray w-[60px] h-[1px] my-3 sm:w-[45px]"></div>
-                                <p className="text-[14px] flex items-center justify-center font-medium sm:text-[12px] sm:font-normal">
+                                <div className="bg-gray_3 w-[60px] h-[1px] my-3 sm:w-[45px]"></div>
+                                <p className="flex items-center justify-center text-black text-P7_M sm:text-[12px] sm:font-normal">
                                     {userInfo.job}
                                 </p>
                             </div>
 
-                            <address className="text-[14px] text-gray4 flex flex-col items-start justify-start h-[44px] sm:text-[10px]">
+                            <address className="flex flex-col items-start justify-start text-gray_5 text-P8_R h-[44px] sm:text-[10px]">
                                 <div className="flex flex-col items-start justify-start gap-2">
                                     {userInfo.tel && (
                                         <p className="flex items-center justify-center mr-2">

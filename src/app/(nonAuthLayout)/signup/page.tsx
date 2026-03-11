@@ -103,8 +103,8 @@ const ConfirmEmailpage = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-gray-1 relative sm:py-0">
-            <div className="rounded-2xl p-14 w-[454px] h-[730px] bg-white flex justify-center flex-col sm:items-center sm:w-full sm:h-screen">
+        <div className="flex py-44 items-center justify-center bg-gray_1 relative sm:py-0">
+            <div className="rounded-2xl p-10 w-[454px] h-[730px] bg-white flex justify-center flex-col sm:items-center sm:w-full sm:h-screen">
                 <div className="flex flex-col">
                     <div className="flex justify-center items-center h-[86px] mb-5 sm:hidden">
                         <Image
@@ -174,24 +174,23 @@ const ConfirmEmailpage = () => {
                     />
 
                     <div className="mx-auto my-4 w-[350px] h-fit flex flex-col sm:mt-5">
-                        <div className="flex gap-2">
-                            <div className="">
+                        <div className="flex gap-4">
+                            <div className="w-[220px]">
                                 <Input
                                     type="text"
-                                    placeholder="인증번호"
+                                    placeholder="인증번호를 입력해주세요"
                                     onChange={onChangeConfirmOTPNumber}
                                     color="gray2"
                                     size="big"
                                 />
                             </div>
-                            <div className="text-body/P6_M">
+                            <div className="w-[114px]">
                                 <Button
                                     text="인증번호 받기"
-                                    size="extra"
-                                    color="primary"
-                                    border
+                                    size="l"
                                     disabled={!emailSMPTNumber}
                                     onClick={confirmEmailAndOTPNumber}
+                                    fontSize="s"
                                 />
                             </div>
                         </div>

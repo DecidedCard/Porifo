@@ -1,6 +1,8 @@
+import { Database } from "@/types/Supabase";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { ServerClientType } from "./supabase/serverClient";
 
-const serverUserCheck = async (supabase: SupabaseClient) => {
+const serverUserCheck = async (supabase: ServerClientType) => {
     const {
         data: { user },
         error,

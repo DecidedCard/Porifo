@@ -43,8 +43,8 @@ const JobFilter = () => {
                             } `}
                         >
                             <div
-                                className={`h-[48px] font-spoqaMedium font-medium text-base sm:text-[13px] ${
-                                    activeMenu === item.value ? " text-black" : "text-gray3"
+                                className={`h-[48px] font-spoqaMedium text-SH5_M sm:text-[13px] ${
+                                    activeMenu === item.value ? " text-black" : "text-gray_4"
                                 }`}
                             >
                                 {item.name}

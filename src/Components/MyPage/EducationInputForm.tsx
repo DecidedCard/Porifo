@@ -38,11 +38,12 @@ const EducationInputForm = ({ education, educationIndex }: { education: Educatio
     return (
         <div>
             <div className="flex flex-col gap-4">
+                {/* 추후 수정 */}
                 <div className="w-fit cursor-pointer ml-auto" onClick={() => onClickMinusHandler(educationIndex)}>
                     <MdClose className="w-6 h-6 ml-auto text-grayblack" />
                 </div>
                 <div className="flex mt-1 sm:flex-col sm:w-full sm:ml-0">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">학교</label>
+                    <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">학교이름</label>
                     <div className="flex flex-col gap-4 w-[460px] ml-3 sm:w-full sm:ml-0">
                         <Input
                             type="text"
@@ -68,7 +69,7 @@ const EducationInputForm = ({ education, educationIndex }: { education: Educatio
                 </div>
 
                 <div className="flex mt-1 sm:flex-col sm:w-full">
-                    <label className="font-medium text-zinc-500 w-[177px] h-[32px] mt-2">기간</label>
+                    <label className="w-[177px] h-[32px] mt-2 text-gray_5 text-P6_M">기간</label>
                     <div className="w-[460px] ml-3 sm:w-full sm:ml-0">
                         <div className="flex justify-between sm:gap-2">
                             <div className="w-[224px] sm:w-[49%]">
@@ -108,7 +109,8 @@ const EducationInputForm = ({ education, educationIndex }: { education: Educatio
                         </div>
                     </div>
                 </div>
-                <div className="flex items-start mt-1 sm:flex-col sm:w-full sm:gap-4">
+                {/* 내용이 필요없어져서 주석 처리 추후 삭제할지 고민 후 제거 */}
+                {/* <div className="flex items-start mt-1 sm:flex-col sm:w-full sm:gap-4">
                     <label className="font-medium text-zinc-500 relative w-[177px] flex items-center justify-start mt-2">
                         내용
                     </label>
@@ -124,7 +126,7 @@ const EducationInputForm = ({ education, educationIndex }: { education: Educatio
                         />
                         <div className="ml-auto text-sm text-nonegray">{education.comment.length}/300</div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

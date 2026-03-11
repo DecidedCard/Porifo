@@ -32,7 +32,7 @@ const Find_Email = () => {
 
     return (
         <main>
-            <div className="flex py-36 items-center justify-center bg-hihigray relative sm:py-0">
+            <div className="flex py-36 items-center justify-center bg-gray_1 relative sm:py-0">
                 <div className="rounded-2xl p-10 w-[454px] h-[456px] bg-white flex justify-center items-center flex-col sm:w-full sm:h-screen sm:p-0">
                     <form onSubmit={changePassword} className="flex flex-col items-center justify-center">
                         <div className="flex justify-center items-center h-[86px] sm:hidden">
@@ -60,7 +60,7 @@ const Find_Email = () => {
                             transition={Flip}
                         />
 
-                        <p className="flex items-center text-center justify-center mt-8 font-normal text-sm w-[236px] h-[44px]">
+                        <p className="flex items-center text-center justify-center mt-8 w-[236px] h-[44px] text-black text-P7_R">
                             비밀번호 재설정을 위해 회원님의 이메일로
                             <br />
                             인증메일이 발송됩니다.

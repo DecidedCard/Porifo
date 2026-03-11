@@ -21,7 +21,7 @@ const HeaderNonAuth = () => {
 
     return (
         <main className="sticky top-0 z-10 sm:w-full sm:z-20">
-            <div className="bg-hihigray bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
+            <div className="bg-gray_1 bg-opacity-50 flex flex-row items-center justify-center h-[68px] backdrop-blur-3xl">
                 {/* Left Section: Logo */}
                 <Link className="absolute left-[100px] sm:left-4" href={"/"}>
                     <Image
@@ -36,7 +36,7 @@ const HeaderNonAuth = () => {
                 {/* Center Section: Navigation Links */}
                 <div className="flex flex-row gap-[100px] items-center justify-center shrink-0 relative font-spoqaLight sm:hidden">
                     <Link
-                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        className={`text-black text-center text-SH5_M h-6 relative
                         ${activeMenu === "about" ? "border-b-[1px] border-solid border-black" : ""}`}
                         href={"/"}
                         onClick={() => handleMenuBtn("about")}
@@ -44,7 +44,7 @@ const HeaderNonAuth = () => {
                         서비스 소개
                     </Link>
                     <Link
-                        className={`text-black text-center text-[16px] h-6 font-semibold relative
+                        className={`text-black text-center text-SH5_M h-6 relative
                         ${activeMenu === "community" ? "border-b-[1px] border-solid border-black" : ""}`}
                         href={"/community"}
                         onClick={() => handleMenuBtn("community")}
@@ -56,16 +56,16 @@ const HeaderNonAuth = () => {
                 {/* Right Section: Authentication Buttons */}
 
                 <div className="absolute right-[100px] flex flex-row gap-2 items-center sm:right-5">
-                    <div className="sm:hidden flex gap-2">
+                    <div className="sm:hidden flex flex-row">
                         <div>
-                            <Link href="/signin" className="w-[70px]">
-                                <Button text="로그인" size="md" color="primary" border />
+                            <Link href="/signin">
+                                <Button text="로그인" size="s" color="primarynone" fontSize="xs sm:s" />
                             </Link>
                         </div>
 
                         <div>
-                            <Link href="/signupMethod" className="w-[70px]">
-                                <Button text="회원가입" size="md" color="primary" />
+                            <Link href="/signupMethod">
+                                <Button text="회원가입" size="s" color="primary" border="none" fontSize="xs sm:s" />
                             </Link>
                         </div>
                     </div>
@@ -81,13 +81,19 @@ const HeaderNonAuth = () => {
                                 >
                                     <div>
                                         <Link href="/signin">
-                                            <Button text="로그인" size="md" color="primary" border />
+                                            <Button text="로그인" size="s" color="primarynone" fontSize="m" />
                                         </Link>
                                     </div>
 
                                     <div>
                                         <Link href="/signupMethod">
-                                            <Button text="회원가입" size="md" color="primary" />
+                                            <Button
+                                                text="회원가입"
+                                                size="s"
+                                                color="primary"
+                                                border="none"
+                                                fontSize="m"
+                                            />
                                         </Link>
                                     </div>
                                 </div>
@@ -103,4 +109,4 @@ const HeaderNonAuth = () => {
 export default HeaderNonAuth;
 
 const bubbleSm =
-    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-hihigray after:border-t-0 after:ml-[12px] after:mt-[-8px]";
+    "after:content-[''] after:absolute after:top-0 after:left-[50%] after:w-0 after:h-0 after:border-[10px] after:border-solid after:border-transparent after:border-b-gray_1 after:border-t-0 after:ml-[12px] after:mt-[-8px]";

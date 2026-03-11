@@ -20,7 +20,7 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
             <div className="flex flex-row gap-2">
                 <select
                     onChange={onClickBirthYear}
-                    className="flex-1 border border-solid size-14 border-gray-3 rounded-lg w-[110px] p-2 text-body/P6_R"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R"
                 >
                     {BIRTHDAY_YEAR_LIST.map((year, index) => (
                         <option value={year} key={index}>
@@ -30,7 +30,7 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
                 </select>
                 <select
                     onChange={onClickBirthMonth}
-                    className="flex-1 border border-solid size-14 border-gray-3 rounded-lg w-[110px] p-2 text-body/P6_R"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R text-black placeholder:text-gray_4"
                 >
                     {BIRTHDAY_MONTH_LIST.map((month, index) => (
                         <option key={index}>{month}</option>
@@ -38,7 +38,7 @@ const SignUploadBitrthDay = ({ onClickBirthYear, onClickBirthMonth, onClickBirth
                 </select>
                 <select
                     onChange={onClickBirthDay}
-                    className="flex-1 border border-solid size-14 border-gray-3 rounded-lg w-[110px] p-2 text-body/P6_R"
+                    className="flex-1 border border-solid size-14 border-gray_3 rounded-lg w-[110px] p-2 text-P6_R"
                 >
                     {BIRTHDAY_DAY_LIST.map((day, index) => (
                         <option key={index}>{day}</option>

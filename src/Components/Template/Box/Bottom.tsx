@@ -25,7 +25,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
     return (
         <div>
             <ol className="flex flex-col items-start justify-start w-[800px] sm:w-full sm:items-center sm:justify-center">
-                <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
+                <p className="mb-3 text-black text-SH4_M sm:w-[370px] sm:font-medium sm:text-[20px]">프로젝트</p>
                 {project.map((project, projectIndex) => (
                     <li
                         key={projectIndex}
@@ -56,22 +56,20 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     ))}
                             </div>
 
-                            <div className="flex w-[750px] flex-col leading-snug sm:items-center sm:justify-center sm:w-[370px] sm:ml-3">
+                            <div className="flex w-[750px] flex-col sm:items-center sm:justify-center sm:w-[370px] sm:ml-3">
                                 <div className="flex justify-between w-[804px] mt-2 sm:w-[350px]">
-                                    <h3 className="text-[20px] font-medium mb-3 sm:text-[16px] sm:mt-3 sm:mb-0">
+                                    <h3 className="mb-3 text-black text-SH5_M sm:text-[16px] sm:mt-3 sm:mb-0">
                                         {project.name}
                                     </h3>
                                 </div>
 
                                 <div className="flex flex-col mt-5 sm:w-[350px]">
-                                    <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap leading-snug sm:w-[345px]">
+                                    <p className="mb-2 whitespace-pre-wrap text-gray_5 text-P7_M sm:w-[345px]">
                                         {project.introduce}
                                     </p>
-                                    <time className="text-gray3 text-[12px] font-normal leading-none my-3 sm:text-[10px]">
-                                        {project.date}
-                                    </time>
+                                    <time className="my-3 text-gray_4 text-P8_R sm:text-[10px]">{project.date}</time>
                                     {project.githubLink && (
-                                        <div className="flex items-center text-gray3 mt-2 sm:w-[350px] sm:flex-wrap">
+                                        <div className="flex items-center mt-2 text-gray_4 sm:w-[350px] sm:flex-wrap">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -80,13 +78,13 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 className="mr-1"
                                             />
                                             <Link href={project.githubLink}>
-                                                <p className="text-[12px]">{project.githubLink}</p>
+                                                <p className="text-P8_R">{project.githubLink}</p>
                                             </Link>
                                         </div>
                                     )}
 
                                     {project.deployLink && (
-                                        <div className="flex items-center text-gray3 mt-2 sm:w-[350px] sm:flex-wrap">
+                                        <div className="flex items-center text-gray_4 mt-2 sm:w-[350px] sm:flex-wrap">
                                             <Image
                                                 src="/assets/image/link.svg"
                                                 alt="link"
@@ -95,7 +93,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                                 className="mr-1"
                                             />
                                             <Link href={project.deployLink}>
-                                                <p className="text-[12px]">{project.deployLink}</p>
+                                                <p className="text-P8_R">{project.deployLink}</p>
                                             </Link>
                                         </div>
                                     )}
@@ -111,7 +109,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     <div className="sm:flex sm:justify-center sm:items-center">
                         <div className="bg-disabled w-[804px] h-[0.5px] mb-10 mt-10 sm:w-[370px]"></div>
                     </div>
-                    <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
+                    <p className="mb-3 text-black text-SH4_M sm:w-[370px] sm:font-medium sm:text-[20px]">업무경력</p>
                     <ol>
                         {career.map((experience, index) => (
                             <>
@@ -122,11 +120,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     <div className="flex w-full flex-col">
                                         {/* 제목과 날짜를 포함하는 영역 */}
                                         <div className="flex justify-between w-[804px] sm:w-full">
-                                            <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
+                                            <h3 className="mb-3 text-black text-SH5_M sm:text-[16px]">
                                                 {experience.company}
                                             </h3>
                                             {experience.date && experience.date.length > 10 && (
-                                                <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
+                                                <time className="mr-10 text-gray_5 text-P7_M sm:mr-0 ">
                                                     {experience.date}
                                                 </time>
                                             )}
@@ -135,13 +133,13 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         {/* 설명과 상세 정보를 포함하는 영역 */}
                                         <div className="flex flex-col w-[480px] sm:w-full sm:flex-wrap">
                                             {experience.department && experience.position && (
-                                                <p className="text-[14px] font-normal mb-2 text-gray4">
+                                                <p className="mb-2 text-gray_5 text-P7_R">
                                                     {experience.department} / {experience.position}
                                                 </p>
                                             )}
                                             {experience.comment && (
                                                 <div className="flex flex-col sm:w-full sm:flex-wrap">
-                                                    <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
+                                                    <p className="text-gray_5 text-P7_R whitespace-pre-wrap">
                                                         • {experience.comment}
                                                     </p>
                                                 </div>
@@ -159,7 +157,7 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                     <div className="sm:flex sm:justify-center sm:items-center">
                         <div className="bg-disabled w-[804px] h-[0.5px] mb-10 mt-10 sm:w-[370px]"></div>
                     </div>
-                    <p className="font-medium text-[20px] mb-3 sm:w-[370px] sm:font-medium sm:text-[20px]">학력</p>
+                    <p className="mb-3 text-black text-SH4_M sm:w-[370px] sm:font-medium sm:text-[20px]">학력</p>
                     <ol>
                         {education.map((education, index) => (
                             <>
@@ -170,11 +168,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                     <div className="flex w-full flex-col">
                                         {/* 제목과 날짜를 포함하는 영역 */}
                                         <div className="flex justify-between w-[804px] sm:w-full">
-                                            <h3 className="text-[16px] font-medium mb-3 sm:text-[16px]">
+                                            <h3 className="mb-3 text-black text-SH5_M sm:text-[16px]">
                                                 {education.school}
                                             </h3>
                                             {education.date && education.date.length > 10 && (
-                                                <time className="text-gray4 text-[12px] font-normal leading-none mr-10 sm:mr-0 ">
+                                                <time className="mr-10 text-gray_5 text-P8_R sm:mr-0 ">
                                                     {education.date}
                                                 </time>
                                             )}
@@ -183,13 +181,11 @@ const Bottom = ({ portfolio }: { portfolio: PortfolioInfo }) => {
                                         {/* 설명과 상세 정보를 포함하는 영역 */}
                                         <div className="flex flex-col w-[480px] sm:w-full sm:flex-wrap">
                                             {education.class && (
-                                                <p className="text-[14px] font-normal mb-2 text-gray4">
-                                                    {education.class}
-                                                </p>
+                                                <p className="mb-2 text-gray_5 text-P7_R">{education.class}</p>
                                             )}
                                             {education.comment && (
                                                 <div className="flex flex-col sm:w-full sm:flex-wrap">
-                                                    <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
+                                                    <p className="text-gray_5 text-P7_R whitespace-pre-wrap">
                                                         • {education.comment}
                                                     </p>
                                                 </div>

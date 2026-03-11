@@ -58,17 +58,17 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                 {/* 제목과 날짜를 포함하는 영역 */}
                 <div className="flex flex-col flex-wrap w-full justify-between sm:w-[360px] sm:items-center sm:justify-center">
                     <div className="flex flex-col mt-2 w-[804px] sm:w-full">
-                        <h3 className="text-[20px] font-medium mb-3 sm:w-[360px] sm:text-[16px]">{name}</h3>
-                        <time className="text-gray3 text-[12px] leading-none mb-2">{date}</time>
+                        <h3 className="mb-3 text-black text-P5_M sm:w-[360px] sm:text-[16px]">{name}</h3>
+                        <time className="text-gray_4 text-P8_R mb-2">{date}</time>
                     </div>
 
                     {/* 설명과 상세 정보를 포함하는 영역 */}
                     <div className="flex flex-col mt-2 w-[804px] sm:w-full sm:flex-wrap">
-                        <p className="text-[14px] font-normal mb-2 text-gray4 whitespace-pre-wrap sm:font-medium sm:w-[360px] leading-normal">
+                        <p className="mb-2 text-gray_5 text-P8_R whitespace-pre-wrap sm:font-medium sm:w-[360px] leading-normal">
                             {introduce}
                         </p>
                         {githubLink && (
-                            <div className="flex items-center text-gray4 mt-2 sm:w-[370px]">
+                            <div className="flex items-center text-gray_5 mt-2 sm:w-[370px]">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
@@ -77,13 +77,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                                     className="mr-1"
                                 />
                                 <Link href={githubLink}>
-                                    <p className="text-[12px]">{githubLink}</p>
+                                    <p className="text-P8_R">{githubLink}</p>
                                 </Link>
                             </div>
                         )}
 
                         {deployLink && (
-                            <div className="flex items-center text-gray4 mt-2 sm:w-[370px]">
+                            <div className="flex items-center text-gray_5 mt-2 sm:w-[370px]">
                                 <Image
                                     src="/assets/image/link.svg"
                                     alt="link"
@@ -92,7 +92,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                                     className="mr-1"
                                 />
                                 <Link href={deployLink}>
-                                    <p className="text-[12px]">{deployLink}</p>
+                                    <p className="text-P8_R">{deployLink}</p>
                                 </Link>
                             </div>
                         )}

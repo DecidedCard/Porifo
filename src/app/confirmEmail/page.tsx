@@ -91,7 +91,7 @@ const ConfirmEmail = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-gray-1 relative sm:py-0">
+        <div className="flex py-44 items-center justify-center bg-gray_1 relative sm:py-0">
             <div className="rounded-2xl w-[454px] h-[756px] bg-white flex justify-center flex-col sm:w-full sm:h-screen">
                 <div className="flex justify-center sm:hidden">
                     <Image
@@ -167,12 +167,12 @@ const ConfirmEmail = () => {
                     />
                 </div>
 
-                {personalInfoModal && (
+                {personalInfoModal ? (
                     <SignPersonalInfoCheck
                         setPersonalInfoModal={setPersonalInfoModal}
                         setPersonalInfoCheck={setPersonalInfoCheck}
                     />
-                )}
+                ) : null}
 
                 <SignButton
                     text="회원가입"

@@ -46,7 +46,7 @@ const SignInputNonStarItem = ({
 
     return (
         <div className={`${relative} mx-auto my-8 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2 flex text-body/P6_R font-medium">{setLabel}</label>
+            <label className="mb-2 flex text-P7_M">{setLabel}</label>
             <Input
                 type={type || showPassword.type}
                 value={value}
@@ -59,9 +59,9 @@ const SignInputNonStarItem = ({
                 color={color !== undefined ? color : "gray2"}
                 size="big"
             />
-            {eyeClose && (
+            {eyeClose ? (
                 <div
-                    className="absolute top-12 right-0 flex items-center pr-2 mt-2 text-body/P6_R cursor-pointer"
+                    className="absolute top-9 right-0 flex items-center pr-2 mt-2 text-[22px] cursor-pointer"
                     onClick={handlePasswordVisible}
                 >
                     {showPassword.visible ? (
@@ -75,13 +75,15 @@ const SignInputNonStarItem = ({
                     ) : (
                         <Image
                             src={`${eyeClose}`}
-                            className="w-[25px] h-[25px] my-auto"
+                            className="w-[25px] h-[25px]"
                             height={0}
                             width={0}
                             alt="password 가림 사진"
                         />
                     )}
                 </div>
+            ) : (
+                <></>
             )}
         </div>
     );

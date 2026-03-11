@@ -23,26 +23,22 @@ const WorkTimelineItem: React.FC<WorkTimelineItemProps> = ({
             <div className="flex w-full sm:w-[360px]">
                 {/* 제목과 날짜를 포함하는 영역 */}
                 <div className="flex flex-col w-1/2">
-                    <h3 className="text-[20px] font-medium mb-3 sm:text-[16px]">{company}</h3>
+                    <h3 className="mb-3 text-P5_M sm:text-[16px]">{company}</h3>
                     {date && date.length > 10 && (
-                        <time className="mb-1 text-gray3 text-[12px] font-normal leading-none sm:w-[150px]">
-                            {date}
-                        </time>
+                        <time className="mb-1 text-gray_4 text-P8_R sm:w-[150px]">{date}</time>
                     )}
                 </div>
 
                 {/* 설명과 상세 정보를 포함하는 영역 */}
                 <div className="flex flex-col w-[480px] ml-10">
                     {description && position && (
-                        <p className="text-[14px] font-normal mb-2 text-gray3">
+                        <p className="mb-2 text-gray_5 text-P7_M">
                             {description} / {position}
                         </p>
                     )}
                     {comments && (
                         <div className="flex flex-col">
-                            <p className="font-normal text-gray4 leading-6 text-[12px] whitespace-pre-wrap">
-                                {comments}
-                            </p>
+                            <p className="text-gray_5 text-P8_R whitespace-pre-wrap">{comments}</p>
                         </div>
                     )}
                 </div>

@@ -73,7 +73,7 @@ const SocialSeting = () => {
     };
 
     return (
-        <div className="flex py-44 items-center justify-center bg-hihigray relative">
+        <div className="flex py-44 items-center justify-center bg-gray_1 relative">
             <div className="rounded-2xl p-10 w-[500px] h-[600px] bg-white flex justify-center flex-col">
                 <form onSubmit={signUpNewUser}>
                     <div className="flex justify-center">
@@ -114,7 +114,7 @@ const SocialSeting = () => {
                                 alt="check"
                             />
                             <span className="flex mt-1">
-                                개인정보 수집 및 이용 <p className="ml-2 text-red-400">(필수)</p>
+                                개인정보 수집 및 이용 <p className="ml-2 text-alert">(필수)</p>
                             </span>
                         </span>
                         <Image

@@ -46,7 +46,7 @@ const SignInputItem = ({
 
     return (
         <div className={`${relative} mx-auto my-4 w-[350px] h-fit flex flex-col`}>
-            <label className="mb-2 flex text-sm font-medium">
+            <label className="mb-2 flex text-P7_M">
                 {setLabel} <p className="ml-1 text-[10px] text-alert">★</p>
             </label>
 

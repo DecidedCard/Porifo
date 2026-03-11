@@ -13,7 +13,7 @@ const Careers = () => {
     const { careers, onClickAddHandler } = useCareer();
     return (
         <div className="flex flex-col gap-5 sm:w-full">
-            <p className="flex items-center w-[657px] h-[38px] text-xl font-medium sm:w-[45%] ">업무 경력</p>
+            <p className="flex items-center w-[657px] h-[38px] text-black text-P5_M sm:w-[45%] ">업무 경력</p>
             {careers.map((career, careerIndex) => {
                 return <CareerInputForm key={careerIndex} career={career} careerIndex={careerIndex} />;
             })}

@@ -10,3 +10,5 @@ const serverClient = () => {
 };
 
 export default serverClient;
+
+export type ServerClientType = ReturnType<typeof serverClient>;
