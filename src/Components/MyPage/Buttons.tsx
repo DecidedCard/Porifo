@@ -82,7 +82,13 @@ const Buttons = () => {
                 </div>
                 <div className="flex flex-col mt-[80px] items-center border-slate-800 bg-white rounded-2xl h-[300px] pt-5 sm:hidden">
                     <div className="absolute right-[115%] w-20 flex flex-row">
-                        <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
+                        <Button
+                            text="미리보기"
+                            size="sm"
+                            color="black"
+                            onClick={onClickPreviewModal}
+                            className="text-xs"
+                        />
                     </div>
                     <div className="w-52 h-[186px] bg-gray2 overflow-hidden rounded-[8px]">
                         <div className="w-[168px] mx-auto">
@@ -135,14 +141,14 @@ const Buttons = () => {
                     {upload ? (
                         <>
                             <div className="w-[208px] sm:w-full sm:h-[48px]">
-                                <Button text="업로드 중..." size="l" border="none" disabled className="sm:text-xs" />
+                                <Button text="업로드 중..." size="big" color="gray2" disabled className="sm:text-xs" />
                             </div>
 
                             <div className="w-[208px] sm:w-full sm:h-[48px]">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
-                                    size="l"
-                                    border="none"
+                                    size="big"
+                                    color="gray2"
                                     disabled
                                     className="sm:text-xs"
                                 />
@@ -153,7 +159,7 @@ const Buttons = () => {
                             <div className="w-[208px] sm:w-full">
                                 <Button
                                     text={portfolio?.id ? "포트폴리오 수정하기" : "포트폴리오 저장하기"}
-                                    size="l"
+                                    size="big"
                                     color="primary"
                                     onClick={onClickInsertHandler}
                                     className="sm:text-xs"
@@ -163,9 +169,8 @@ const Buttons = () => {
                             <div className="w-[208px] sm:w-full">
                                 <Button
                                     text={`${portfolio?.share ? "포리포 피드에 내리기" : "포리포 피드에 올리기"}`}
-                                    size="l"
-                                    border="none"
-                                    color={!portfolio?.id || disabled ? "" : "primary"}
+                                    size="big"
+                                    color={!portfolio?.id || disabled ? "gray2" : "primary"}
                                     onClick={onClickShareToggle}
                                     disabled={!portfolio?.id || disabled}
                                     className="sm:text-xs"

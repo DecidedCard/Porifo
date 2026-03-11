@@ -45,8 +45,8 @@ const ResultPage = () => {
                 {portfolio?.template === "Box" && <Box portfolio={portfolio} />}
             </div>
             <div className="flex gap-5 w-96 mx-auto mt-10">
-                <Button text="url 복사" color="secondary" size="l" onClick={() => setLoginCheckModal(true)} />
-                <Button text="pdf 다운로드" color="primary" size="l" onClick={onClickPdfDownloadHandler} />
+                <Button text="url 복사" color="secondary" size="big" onClick={() => setLoginCheckModal(true)} />
+                <Button text="pdf 다운로드" color="primary" size="big" onClick={onClickPdfDownloadHandler} />
             </div>
             {loginCheckModal && <LoginCheckModal route="/guest/result" setLoginCheckModal={setLoginCheckModal} />}
         </>

@@ -27,12 +27,11 @@ const LoginCheckModal = ({
                     <p>로그인 하시겠습니까?</p>
                 </div>
                 <div className="flex gap-2 w-[376px]">
-                    <Button text="취소" size="m" border="none" onClick={onClickCancelHandler} />
+                    <Button text="취소" size="md" color="gray2" onClick={onClickCancelHandler} />
                     <Button
                         text="로그인"
-                        size="m"
+                        size="md"
                         color="primary"
-                        border="none"
                         onClick={() => router.replace("/signin")}
                     />
                 </div>

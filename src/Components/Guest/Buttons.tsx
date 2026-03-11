@@ -49,7 +49,13 @@ const Buttons = () => {
             <main className="relative flex flex-col items-center gap-5">
                 <div className="pt-5 pl-3 pr-3 flex flex-col mt-20 items-center border-slate-800 bg-white rounded-2xl h-[280px] sm:hidden">
                     <div className="absolute right-[120%] w-20 flex flex-row">
-                        <Button text="미리보기" size="s" color="black" onClick={onClickPreviewModal} fontSize="xs" />
+                        <Button
+                            text="미리보기"
+                            size="sm"
+                            color="black"
+                            onClick={onClickPreviewModal}
+                            className="text-xs"
+                        />
                     </div>
                     <div className="w-64 h-[186px] bg-blue overflow-hidden">
                         <div className="w-[168px] mx-auto">
@@ -76,9 +82,8 @@ const Buttons = () => {
                     <div className="w-[250px]">
                         <Button
                             text="저장하기"
-                            size="l"
-                            border="none"
-                            color={disabled ? "" : "primary"}
+                            size="big"
+                            color={disabled ? "gray2" : "primary"}
                             onClick={onCliCkHandler}
                             disabled={disabled}
                         />

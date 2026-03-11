@@ -66,8 +66,7 @@ const TemplateSelect = ({
                                     <div className="w-[100px] mt-2">
                                         <Button
                                             text="사용하기"
-                                            size="m"
-                                            border="none"
+                                            size="md"
                                             color="primary"
                                             onClick={() => onClickTemplateSelectHandler("Standard")}
                                         />
@@ -90,8 +89,7 @@ const TemplateSelect = ({
                                     <div className="w-[100px] mt-2">
                                         <Button
                                             text="사용하기"
-                                            size="m"
-                                            border="none"
+                                            size="md"
                                             color="primary"
                                             onClick={() => onClickTemplateSelectHandler("Grid")}
                                         />
@@ -117,8 +115,7 @@ const TemplateSelect = ({
                                     <div className="w-[100px] mt-2">
                                         <Button
                                             text="사용하기"
-                                            size="m"
-                                            border="none"
+                                            size="md"
                                             color="primary"
                                             onClick={() => onClickTemplateSelectHandler("Modern")}
                                         />
@@ -141,8 +138,7 @@ const TemplateSelect = ({
                                     <div className="w-[100px] mt-2">
                                         <Button
                                             text="사용하기"
-                                            size="m"
-                                            border="none"
+                                            size="md"
                                             color="primary"
                                             onClick={() => onClickTemplateSelectHandler("Box")}
                                         />
