@@ -61,7 +61,7 @@ const Cards = () => {
             fetchNextPage();
         }
         return;
-    }, [inView, hasNextPage]);
+    }, [inView, hasNextPage, fetchNextPage]);
 
     if (isPending) {
         return (
@@ -81,9 +81,9 @@ const Cards = () => {
                                 key={item.id}
                                 className="cursor-pointer "
                                 onClick={() => {
-                                    setIsOpenModal(true),
+                                    (setIsOpenModal(true),
                                         setCardId(item.id),
-                                        queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] });
+                                        queryClient.removeQueries({ queryKey: [QUERY_KEY.detailPortfolio] }));
                                 }}
                             >
                                 <div className="group relative flex flex-col gap-2 mb-8 sm:w-[330px] sm:h-[240px]">
